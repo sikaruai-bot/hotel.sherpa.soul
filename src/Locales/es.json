@@ -1,0 +1,534 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "room": "Habitación",
+    "gallery": "Galería",
+    "contact": "Contacto",
+    "quick": "Reserva Rápida"
+  },
+
+  "home": {
+    "hero": {
+      "title": "Hotel Sherpa Soul",
+      "subtitle": "Confort Premium",
+      "paragraph": "Experimenta una hospitalidad inigualable en el corazón de Katmandú. Nuestro hotel boutique combina a la perfección el encanto tradicional nepalí con el lujo contemporáneo, creando recuerdos que duran toda la vida.",
+      "bookButton": "Reserva tu estancia",
+      "tourButton": "Tour Virtual",
+      "modalTitle": "Tour Virtual - Hotel Sherpa Soul",
+      "modalDesc": "Realiza un recorrido virtual por nuestras lujosas habitaciones y descubre la combinación perfecta de tradición y modernidad."
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Sobre Nosotros",
+      "subtitle": "Recibiendo a huéspedes nacionales e internacionales con auténtica hospitalidad Sherpa"
+    }
+  },
+  "roomsHero": {
+    "badgeTitle": "Servicio de habitaciones 24/7",
+    "badgeSubtitle": "Siempre aquí para ti",
+    "headingLine1": "Descubre habitaciones",
+    "headingLine2": "adaptadas a tu estilo de vida",
+    "paragraph": "Comodidad, estilo y funcionalidad, todo en un solo lugar."
+  },
+  "gallery": {
+    "title": "Nuestra Galería",
+    "subtitle": "Una colección curada que muestra momentos que definen nuestro viaje y visión",
+    "featuredTitle": "Colección Destacada",
+    "featuredDesc": "Explora nuestras imágenes cuidadosamente seleccionadas que capturan la esencia de nuestra marca e historia",
+    "viewImage": "Ver Imagen",
+    "image": "Imagen",
+    "of": "de",
+    "description": "Descripción",
+    "desc1": "Nuestras acogedoras habitaciones dobles ofrecen un ambiente tranquilo con instalaciones de primera calidad, adecuadas tanto para familias como para viajeros individuales. Perfectas para estancias relajantes con fácil acceso a las comodidades del hotel.",
+    "desc2": "Las habitaciones individuales están diseñadas para la comodidad y conveniencia, ideales para huéspedes que buscan un espacio privado y tranquilo con decoración moderna y comodidades esenciales.",
+    "desc3": "Habitaciones espaciosas con mobiliario elegante y cama king-size, perfectas para parejas o viajeros de negocios que buscan lujo y comodidad.",
+    "desc4": "Habitaciones Deluxe con vistas panorámicas, equipadas con Wi-Fi de alta velocidad y servicios premium para una estancia excepcional.",
+    "desc5": "Nuestra suite ejecutiva ofrece una exquisita combinación de confort y estilo, diseñada para satisfacer las necesidades de huéspedes exigentes.",
+    "desc6": "Habitaciones cómodas con elementos de diseño contemporáneo, asegurando un ambiente relajante y todas las comodidades necesarias.",
+    "desc7": "Habitaciones estándar con ropa de cama acogedora y acceso a todos los servicios del hotel, ideales para viajeros con presupuesto limitado.",
+    "desc8": "Habitaciones bien equipadas, perfectas para familias, con amplio espacio y facilidades para niños.",
+    "desc9": "Habitaciones clásicas con comodidades modernas y fácil acceso a opciones de restauración y entretenimiento del hotel.",
+    "desc10": "Comodidad y elegancia combinadas en estas habitaciones, adecuadas tanto para estancias cortas como largas, con un enfoque en la satisfacción del huésped."
+  },
+  "contactHero": {
+    "title": "Contáctanos",
+    "subtitle": "Nos encantaría saber de ti"
+  },
+  "contactForm": {
+    "en": {
+      "alertFillFields": "Por favor completa todos los campos requeridos.",
+      "whatsappGreeting": "¡Hola Hotel Sherpa Soul!",
+      "letsStart": "Comencemos una",
+      "conversation": "Conversación",
+      "contactDescription": "Ya sea que estés planificando tu visita, necesites asistencia o quieras compartir comentarios, estamos aquí para ayudarte a que tu experiencia en Hotel Sherpa Soul sea inolvidable.",
+      "quickResponseTitle": "Respuesta Rápida",
+      "quickResponseDesc": "Dentro de 24 horas",
+      "personalTouchTitle": "Toque Personal",
+      "personalTouchDesc": "Soporte dedicado",
+      "sendMessage": "Enviar Mensaje",
+      "fillFormMsg": "¡Completa el formulario a continuación y nos pondremos en contacto contigo pronto!",
+      "fullName": "Nombre Completo",
+      "fullNamePlaceholder": "Ingresa tu nombre completo",
+      "emailAddress": "Correo Electrónico",
+      "emailPlaceholder": "tu@correo.com",
+      "yourMessage": "Tu Mensaje",
+      "messagePlaceholder": "Cuéntanos sobre tu consulta o solicitud...",
+      "sending": "Enviando",
+      "sendViaWhatsApp": "Enviar vía WhatsApp",
+      "selectLanguage": "Selecciona Idioma"
+    }
+  },
+
+  "getInTouch": {
+    "phoneCopied": "¡Número de teléfono copiado al portapapeles!",
+    "callWhatsApp": "Llamar o WhatsApp",
+    "whatsappDescription": "Envíanos un mensaje directo por WhatsApp en cualquier momento",
+    "emailUs": "Envíanos un correo",
+    "emailResponseTime": "Normalmente respondemos en 24 horas",
+    "visitUs": "Visítanos",
+    "visitDescription": "En el corazón del distrito turístico de Katmandú",
+    "getIn": "Ponerse en",
+    "touch": "Contacto",
+    "readyDescription": "¿Listo para experimentar la auténtica hospitalidad Sherpa? Contáctanos para reservas, preguntas o sugerencias."
+  },
+  "contactMap": {
+    "en": {
+      "title": "Hotel Sherpa Soul – Thamel, Katmandú",
+      "description": "Estamos ubicados en Thamel, el bullicioso corazón de Katmandú, a solo unos pasos de monumentos culturales, restaurantes, tiendas y experiencias locales.",
+      "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
+      "phone": "+977-9852030175",
+      "email": "info@hotelsherpasoul.com",
+      "mapTitle": "Ubicación de Hotel Sherpa Soul"
+    }
+  },
+  "aboutStory": {
+    "ourStory": "Nuestra Historia",
+    "welcomeTo": "Bienvenido a",
+    "sherpaSoul": "Sherpa Soul",
+    "paragraph1": "Ubicado en el corazón de Thamel, Katmandú, Hotel Sherpa Soul ofrece una mezcla única de encanto cultural, confort y conveniencia para viajeros nacionales e internacionales que exploran las maravillas de Nepal.",
+    "paragraph2": "Ya sea que seas un huésped local descubriendo los tesoros de tu propio país o un visitante internacional explorando los majestuosos paisajes y sitios históricos de Nepal, nuestro hotel sirve como la base perfecta con hospitalidad cálida y comodidades modernas.",
+    "paragraph3": "En Hotel Sherpa Soul, damos la bienvenida con orgullo a huéspedes de todo Nepal y del mundo, compartiendo la esencia auténtica de la calidez Sherpa en el barrio más vibrante de la capital.",
+    "exploreLocation": "Explora Nuestra Ubicación",
+    "imageAlt": "Vista del Hotel Sherpa Soul"
+  },
+  "aboutWhy": {
+    "whyChoose": "Por Qué Elegir",
+    "sherpaSoul": "Sherpa Soul",
+    "subtitle": "Qué hace de nuestra casa de huéspedes una base tranquila y práctica en Katmandú",
+    "authenticSherpaCulture": {
+      "title": "Cultura Sherpa Auténtica",
+      "description": "Experimenta la calidez y las tradiciones de la hospitalidad Sherpa, dando la bienvenida a huéspedes nepaleses e internacionales con el mismo cuidado."
+    },
+    "primeThamelLocation": {
+      "title": "Ubicación Privilegiada en Thamel",
+      "description": "Ideal para exploradores de Katmandú, cerca de mercados, restaurantes y sitios históricos."
+    },
+    "guestAmenities": {
+      "title": "Comodidades irresistibles",
+      "description": "Habitaciones espaciosas, baños privados, Wi-Fi de alta velocidad gratuito y todas las comodidades que necesitas."
+    },
+    "airportPickupForInternationalGuests": {
+      "title": "Servicios para huéspedes internacionales",
+      "description": "Recogida y guía en el aeropuerto sin inconvenientes para viajeros de todo el mundo."
+    },
+    "foreignCurrencyExchange": {
+      "title": "Cambio de moneda extranjera",
+      "description": "Cómodos servicios de cambio de divisas para que su estancia no tenga complicaciones."
+    },
+    "cleanAndSecure": {
+      "title": "Limpio y Seguro",
+      "description": "Limpieza diaria y acceso seguro para que te sientas tranquilo."
+    },
+    "showOtherLanguages": "Mostrar otros idiomas",
+    "hideOtherLanguages": "Ocultar otros idiomas"
+  },
+  "aboutVision": {
+    "buddhistAlt": "Símbolo Budista",
+    "our": "Nuestra",
+    "vision": "Visión",
+    "description": {
+      "part1": "Ser el hotel más confiable y querido en Katmandú, donde cada huésped, ya sea de Nepal o del extranjero, experimente la armonía de ",
+      "para2": "Creemos en crear experiencias transformadoras que conecten a las comunidades y fomenten un profundo entendimiento. Mediante enfoques innovadores y prácticas conscientes, buscamos tender puentes entre la sabiduría ancestral y las soluciones modernas, empoderando a las personas para que descubran su verdadero potencial y contribuyan significativamente a la sociedad.",
+      "para3": "Nuestro compromiso va más allá de la simple prestación de servicios: nos esforzamos por cultivar relaciones duraderas, inspirar cambios positivos y crear un impacto sostenible que perdure entre generaciones. Cada paso que damos está guiado por la compasión, la autenticidad y una dedicación inquebrantable a la excelencia.",
+      "highlight": "hospitalidad Sherpa",
+      "part2": ", la riqueza cultural y el confort pensado que combina la calidez local con los estándares internacionales en el corazón del Himalaya."
+    },
+    "startJourney": "Comienza tu Viaje"
+  },
+
+  "roomsCard": {
+    "roomsSuites": "Habitaciones y Suites",
+    "ourRooms": "Nuestras Habitaciones",
+    "description": "Descubre comodidad y elegancia en nuestros alojamientos cuidadosamente diseñados",
+    "room": "Habitación",
+    "roomsPluralSuffix": "s",
+    "available": "Disponibles",
+    "from": "desde",
+    "guest": "Huésped",
+    "guestsSuffix": "s"
+  },
+  "roomDetails": {
+    "title": "Detalles de la Habitación",
+    "subtitle": "Descubre la comodidad y los servicios de la habitación elegida",
+    "pricePerNight": "Precio por noche",
+    "guests": "Huéspedes",
+    "size": "Tamaño",
+    "beds": "Camas",
+    "description": "Descripción",
+    "amenities": "Servicios",
+    "bookNow": "Reservar Ahora",
+    "viewGallery": "Ver Galería",
+    "availability": "Disponibilidad",
+    "checkIn": "Entrada",
+    "checkOut": "Salida",
+    "relatedRooms": "Habitaciones Relacionadas"
+  },
+  "homeStats": {
+    "title": "Confiado por Miles",
+    "description": "Nuestro compromiso con la excelencia nos ha otorgado reconocimiento y numerosos huéspedes satisfechos",
+    "statLabels": {
+      "happyGuests": "Huéspedes Felices",
+      "sinceYear": "Desde 2018",
+      "years": "Años",
+      "ofExcellence": "6 de Excelencia",
+      "reviewsSuffix": "+ Reseñas"
+    }
+  },
+  "footer": {
+    "brand": {
+      "title": "Hotel Sherpa Soul",
+      "description": "Un escape tranquilo en el corazón de Thamel, combinando confort, cultura y hospitalidad Sherpa"
+    },
+    "quickLinks": {
+      "title": "Enlaces Rápidos",
+      "links": {
+        "home": "Inicio",
+        "aboutUs": "Sobre Nosotros",
+        "rooms": "Habitaciones",
+        "gallery": "Galería",
+        "contact": "Contacto"
+      }
+    },
+    "contactUs": {
+      "title": "Contáctanos",
+      "phone": "+977 9851068219",
+      "email": "mingmasaino@gmail.com",
+      "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal"
+    },
+    "followUs": {
+      "title": "Síguenos",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "tripAdvisor": "TripAdvisor"
+    },
+    "copyright": {
+      "prefix": "©",
+      "hotelName": "Hotel Sherpa Soul",
+      "suffix": "Todos los derechos reservados"
+    }
+  },
+  "homeServices": {
+    "sectionTag": "Servicios",
+    "sectionTitle": "Nuestros Servicios",
+    "intro": {
+      "title": "Servicios que Ofrecemos",
+      "desc": "Proporcionamos alojamientos cómodos con todas las comodidades esenciales de un hotel moderno. Disfruta de una experiencia sin complicaciones con un servicio confiable."
+    },
+    "services": [
+      {
+        "title": "Habitaciones Limpias y Ventiladas",
+        "desc": "Habitaciones espaciosas y bien ventiladas con servicio de limpieza diario."
+      },
+      {
+        "title": "Wi-Fi Gratis",
+        "desc": "Internet de alta velocidad disponible en todo el edificio."
+      },
+      {
+        "title": "Televisión por Cable",
+        "desc": "Acceso a canales locales e internacionales."
+      },
+      {
+        "title": "Servicio a la Habitación",
+        "desc": "Deliciosas comidas y bebidas entregadas directamente a tu habitación."
+      },
+      {
+        "title": "Almacenamiento Seguro",
+        "desc": "Cajas fuertes disponibles para guardar tus objetos de valor."
+      },
+      {
+        "title": "Duchas Calientes",
+        "desc": "Agua caliente 24 horas para tu comodidad."
+      }
+    ]
+  },
+  "homeTestimonial": [
+    {
+      "text": "Sherpa Soul me dio el calor de un hogar mientras viajaba. La comida local y el personal amable hicieron que mi estadía fuera inolvidable.",
+      "name": "Sanjay Shrestha",
+      "title": "Nepal",
+      "flag": "🇳🇵"
+    },
+    {
+      "text": "Las habitaciones estaban impecables y el personal me ayudó a organizar una caminata cercana. Una auténtica hospitalidad sherpa.",
+      "name": "Mina Lama",
+      "title": "Nepal",
+      "flag": "🇳🇵"
+    },
+    {
+      "text": "Me sentí seguro y cuidado como viajero solitario. Las tradiciones sherpa combinadas con servicios modernos fueron impresionantes.",
+      "name": "Prakash Rai",
+      "title": "Nepal",
+      "flag": "🇳🇵"
+    },
+    {
+      "text": "Desde las duchas calientes hasta los programas culturales nocturnos, cada detalle reflejaba atención y respeto hacia los huéspedes.",
+      "name": "Kritika Gurung",
+      "title": "Nepal",
+      "flag": "🇳🇵"
+    },
+    {
+      "text": "Las vistas del Himalaya desde el balcón con té matutino fueron inolvidables. Una mezcla perfecta de tradición y comodidad.",
+      "name": "Rohit Thapa",
+      "title": "Nepal",
+      "flag": "🇳🇵"
+    },
+    {
+      "text": "La posada organizó todo para mi caminata, desde guías hasta comidas. Admiré sus prácticas sostenibles y su hospitalidad.",
+      "name": "Li Wei",
+      "title": "China",
+      "flag": "🇨🇳"
+    },
+    {
+      "text": "Aprecié las comidas adaptadas a la cultura árabe y los arreglos para la oración. La amabilidad del personal me hizo sentir como en casa.",
+      "name": "Fatima Al Mansouri",
+      "title": "United Arab Emirates",
+      "flag": "🇦🇪"
+    },
+    {
+      "text": "El diseño de la posada refleja hermosamente la cultura sherpa. El personal nos guió a monasterios escondidos que nunca habría encontrado sola.",
+      "name": "Anna Müller",
+      "title": "Germany",
+      "flag": "🇩🇪"
+    },
+    {
+      "text": "Relajarme con un masaje después de la caminata fue celestial. El personal fue atento y el Wi-Fi facilitó mantenerme conectado.",
+      "name": "George Thompson",
+      "title": "United Kingdom",
+      "flag": "🇬🇧"
+    },
+    {
+      "text": "Desde las sonrisas al registrarme hasta las bendiciones al salir, me sentí bienvenida como en familia. El té con mantequilla en la terraza fue un momento destacado.",
+      "name": "Isabelle Laurent",
+      "title": "France",
+      "flag": "🇫🇷"
+    }
+  ],
+  "hotelName": "Hotel Sherpa Soul",
+  "introsub": "Ubicado en el vibrante corazón de Katmandú, nuestro refugio boutique ofrece una fusión perfecta del patrimonio nepali atemporal y la elegancia moderna. Cada detalle está diseñado para brindar calidez, confort y experiencias inolvidables a cada huésped.",
+  "heroParagraph": "Experimenta una hospitalidad sin igual en el corazón de Katmandú. Nuestro hotel boutique combina perfectamente el encanto tradicional nepalí con el lujo contemporáneo, creando recuerdos que duran toda la vida.",
+  "bookButton": "Reserva tu Estancia",
+  "virtualTourButton": "Tour Virtual",
+  "videoUrl": "https://www.youtube.com/embed/8IoDrKmbeBs?si=fQZBO4KHYiGJvmt4",
+  "videoTitle": "Tour Virtual Hotel Sherpa Soul",
+  "modalTitle": "Tour Virtual - Hotel Sherpa Soul",
+  "modalDescription": "Realiza un recorrido virtual por nuestros lujosos alojamientos y descubre la combinación perfecta de tradición y modernidad.",
+  "heroSlides": [
+    {
+      "image": "changes_photo/singleBedWithSofa.jpeg",
+      "title": "Luxury Redefined",
+      "subtitle": "Premium Comfort"
+    },
+    {
+      "image": "changes_photo/doubleBedRoom.jpeg",
+      "title": "Nepalese Heritage",
+      "subtitle": "Modern Elegance"
+    },
+    {
+      "image": "changes_photo/viewSeen.jpeg",
+      "title": "Unforgettable Experience",
+      "subtitle": "Heart of Thamel"
+    }
+  ],
+  "stats": {
+    "tripadvisor": "Trip Advisor",
+    "google": "Reseñas en Google",
+    "guest": "Huéspedes Felices",
+    "exp": "Años de Experiencia"
+  },
+  "homestats": {
+    "title": "Confiado por Miles",
+    "subtitle": "Nuestro compromiso con la excelencia nos ha otorgado reconocimiento y numerosos huéspedes satisfechos",
+    "review": "Reseñas"
+  },
+  "facilities": {
+    "title1": "Instalaciones",
+    "title2": "Nuestras Instalaciones",
+    "laundry": {
+      "title": "Servicio de lavandería",
+      "desc": "Lavandería y limpieza en seco disponibles por un costo adicional para mantener tu ropa fresca y lista en cualquier momento."
+    },
+    "pickup": {
+      "title": "Traslado desde y hacia el aeropuerto",
+      "desc": "Traslados cómodos y confiables desde y hacia el aeropuerto disponibles bajo solicitud para una experiencia de viaje fluida."
+    },
+    "frontdesk": {
+      "title": "Recepción 24/7 y asistencia de viajes",
+      "desc": "Nuestro equipo está disponible las 24 horas para asistir con el check-in, consultas, planificación de tours y arreglos de viaje locales."
+    },
+    "showers": {
+      "title": "Duchas calientes",
+      "desc": "Todas las habitaciones están equipadas con duchas calientes para garantizar una estancia relajante y refrescante a cualquier hora del día."
+    }
+  },
+  "testimonialIntro": "Experiencias reales de viajeros que descubrieron su alma en Sherpa Soul Stay Inn. Cada historia refleja nuestro compromiso con la auténtica hospitalidad Sherpa y aventuras montañosas inolvidables.",
+  "storiesFrom": "Historias de",
+  "clients": "Clientes",
+  "button": {
+    "title": "¿Listo para crear tu propia historia inolvidable?",
+    "but": "Reserva tu Estancia"
+  },
+  "room": {
+    "title1": "Habitaciones y Suites",
+    "title2": "Nuestras Habitaciones",
+    "desc": "Descubre comodidad y elegancia en nuestros alojamientos cuidadosamente diseñados",
+    "size": "Tamaño en pies",
+    "guest": "Huéspedes",
+    "rooms": {
+      "1": {
+        "name": "Habitación Individual"
+      },
+      "2": {
+        "name": "Habitación Doble"
+      },
+      "3": {
+        "name": "Habitación Triple (individual + doble)"
+      }
+    },
+    "details": "Ver Todas las Habitaciones",
+    "roomdet": "Ver Detalles",
+    "book": "Reservar Ahora",
+    "pack": "Las habitaciones están completamente ocupadas"
+  },
+  "contact": {
+    "title": "Comencemos una Conversación",
+    "subtitle": "Ya sea que estés planeando tu visita, necesites asistencia o quieras compartir comentarios, estamos aquí para ayudarte a que tu experiencia en Hotel Sherpa Soul sea inolvidable.",
+    "card": {
+      "res": {
+        "title": "Respuesta Rápida",
+        "des": "Dentro de 24 horas"
+      },
+      "per": {
+        "title": "Toque Personal",
+        "des": "Soporte Dedicado"
+      }
+    },
+    "form": {
+      "title": "Enviar Mensaje",
+      "desc": "¡Completa el formulario a continuación y nos pondremos en contacto contigo pronto!",
+      "data": {
+        "name": "Nombre Completo",
+        "email": "Correo Electrónico",
+        "msg": "Tu Mensaje",
+        "name2": "Ingresa tu nombre completo",
+        "email2": "tu@correo.com",
+        "msg2": "Cuéntanos sobre tu solicitud o consulta"
+      },
+      "send": "Enviar por WhatsApp",
+      "send2": "Enviando..."
+    }
+  },
+  "roomdetails": {
+    "back": "Regresar",
+    "buttons": {
+      "book": "Reservar Esta Habitación Ahora",
+      "check": "Ver Disponibilidad"
+    },
+    "cta": {
+      "heading": "¿Listo para Reservar tu Estancia?",
+      "sub": "No te pierdas esta increíble habitación. Reserva ahora y crea recuerdos inolvidables."
+    },
+    "info": {
+      "heading": "Información Importante",
+      "points": {
+        "1": "Se requiere identificación válida con foto al registrarse",
+        "2": "Contacta a recepción para solicitudes de entrada anticipada o salida tardía",
+        "3": "Almacenamiento de equipaje disponible antes del check-in y después del check-out"
+      }
+    },
+    "checkin": {
+      "heading": "Horarios de Entrada y Salida",
+      "checkin": "Hora de Entrada",
+      "checkindes": "Bienvenido a tu estancia",
+      "checkindes2": "La entrada anticipada puede estar disponible previa solicitud y sujeta a disponibilidad.",
+      "checkout": "Hora de Salida",
+      "checkoutdes": "Buen viaje",
+      "checkoutdes2": "La salida tardía puede estar disponible por un cargo adicional, sujeta a disponibilidad."
+    }
+  },
+  "book": {
+    "guests": "Huéspedes",
+    "room": "Habitaciones",
+    "rate": "Tarifa por noche",
+    "back": "Volver a Detalles de la Habitación",
+    "title": "Reserva tu Estancia",
+    "title2": "Completa tu Reserva",
+    "subtitle": "Completa tus datos para asegurar tu reserva",
+    "form": {
+      "info": "Información Personal",
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "number": "Número de Teléfono",
+      "room": "Detalles de Habitación y Estancia",
+      "type": "Tipo de Habitación",
+      "guestnote": "Cada habitación puede alojar hasta 2 huéspedes",
+      "guests": "Número de Huéspedes",
+      "checkin": "Fecha de Entrada",
+      "checkout": "Fecha de Salida",
+      "noroom": "Número de Habitaciones",
+      "id": "Verificación de ID",
+      "idDet": "Por favor sube imágenes claras de tu identificación emitida por el gobierno (frente y reverso). Formatos aceptados: JPEG, PNG. Tamaño máximo por imagen: 5MB.",
+      "button": "Completar Reserva",
+      "drag": "Arrastra y suelta tus imágenes de ID aquí",
+      "choose": "Elegir Archivos"
+    },
+    "summary": {
+      "title": "Resumen de Reserva",
+      "total": "Monto Total",
+      "policies": {
+        "booking": "Políticas de Reserva",
+        "cancel": "Cancelación gratuita hasta 24 horas antes del check-in",
+        "id": "Se requiere identificación válida al registrarse"
+      }
+    }
+  },
+  "aboutstats": {
+    "title1": "Tu hogar lejos de",
+    "title2": "Casa",
+    "para1": "Experimenta la auténtica hospitalidad sherpa en nuestra acogedora casa de huéspedes. Creemos que un alojamiento cómodo no debe ser costoso. Nuestro establecimiento familiar ofrece un servicio cálido y personalizado con todas las comodidades esenciales que necesitas para una estancia memorable.",
+    "para2": "Ya sea que estés aquí por negocios, por placer o de paso en tu viaje, ofrecemos un ambiente limpio, seguro y acogedor donde cada huésped es tratado como familia. Nuestro compromiso con el lujo asequible significa que obtienes un valor excepcional sin comprometer la calidad o el confort.",
+    "amenities": {
+      "1": "Habitaciones cómodas",
+      "2": "Wifi en todo el edificio",
+      "3": "Ubicación privilegiada",
+      "4": "Servicio de recogida y traslado"
+    },
+    "stat": {
+      "1": "Años de experiencia",
+      "2": "Huéspedes felices",
+      "3": "Soporte",
+      "4": "Calificación"
+    }
+  },
+  "modal": {
+    "title": "Elige tu habitación",
+    "subtitle": "Selecciona entre nuestras habitaciones disponibles",
+    "load": "Cargando habitaciones...",
+    "try": "Intentar de nuevo",
+    "not": "No hay habitaciones disponibles en este momento",
+    "booked": "Todas las habitaciones están reservadas",
+    "book": "Reservar ahora",
+    "Unavailable": "No disponible"
+  }
+}
