@@ -15,11 +15,13 @@ import BookingForm from "./Components/RoomsComponents/RoomBooking";
 import LanguageSwitcher from "./Components/HelperComponents/LanguageSwticher";
 import WhatsAppButton from "./Components/HelperComponents/Whatsapp";
 import ActionButtons from "./Components/HelperComponents/ActionButtons";
+import MetaPixel from "./Components/Analytics/MetaPixel";
 
 
 function App() {
   return (
     <div>
+      <MetaPixel />
       {/* <WhatsAppButton/>
       <LanguageSwitcher /> */}
       <ActionButtons/>

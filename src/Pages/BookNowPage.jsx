@@ -14,6 +14,7 @@ import {
   FileText,
   Sparkles,
 } from "lucide-react";
+import { trackMetaEvent } from "../Components/Analytics/pixelEvents";
 
 const roomOptions = [
   { label: "Single Bed", maxGuests: 1 },
@@ -67,6 +68,10 @@ export default function BookNowPage() {
   };
 
   const handleSubmit = () => {
+    trackMetaEvent("Lead", {
+      content_category: "hotel_booking",
+      content_name: formData.roomType,
+    });
     setSubmitted(true);
   };
 

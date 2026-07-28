@@ -1,6 +1,7 @@
 import { Heart, Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { trackMetaEvent } from "../Analytics/pixelEvents";
 
 // Simple toast notification component
 const Toast = ({ message, show, onClose }) => {
@@ -53,6 +54,7 @@ export default function GetInTouch() {
   };
 
   const handleEmailClick = () => {
+    trackMetaEvent("Contact", { contact_method: "email" });
     window.open("mailto:info@hotelsherpasoul.com", "_blank");
   };
 

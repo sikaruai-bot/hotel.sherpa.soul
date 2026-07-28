@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import GetInTouch from "./GetInTouch";
 import { useTranslation } from "react-i18next";
+import { trackMetaEvent } from "../Analytics/pixelEvents";
 
 export default function ContactForm() {
   const { t } = useTranslation();
@@ -44,6 +45,7 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
+      trackMetaEvent("Contact", { contact_method: "whatsapp" });
       window.open(whatsappURL, "_blank");
       setFormData({ name: "", email: "", message: "" });
     }, 2000);

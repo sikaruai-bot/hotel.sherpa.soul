@@ -18,6 +18,7 @@ import {
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import api from "../Utils/api";
+import { trackMetaEvent } from "../Analytics/pixelEvents";
 
 export default function RoomDetail() {
   const { id } = useParams();
@@ -74,6 +75,18 @@ export default function RoomDetail() {
 
     fetchRoom();
   }, [id]);
+
+  useEffect(() => {
+    if (!room) return;
+
+    trackMetaEvent("ViewContent", {
+      content_ids: [room.id],
+      content_name: room.name,
+      content_type: "hotel_room",
+      value: Number(room.price) || 0,
+      currency: "USD",
+    });
+  }, [room]);
 
   // 🔹 Loading screen
   if (loading) {

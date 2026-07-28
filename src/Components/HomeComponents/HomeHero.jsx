@@ -14,6 +14,7 @@ import {
 import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import BookingModal from "../HelperComponents/BookingModal";
+import { trackMetaEvent } from "../Analytics/pixelEvents";
 import { FaTiktok, FaWhatsapp } from "react-icons/fa";
 
 export default function HomeIntro() {
@@ -197,6 +198,10 @@ export default function HomeIntro() {
               >
                 <button
                   onClick={() => {
+                    trackMetaEvent("InitiateCheckout", {
+                      content_category: "hotel_booking",
+                      entry_point: "home_hero",
+                    });
                     setIsBookingModalOpen(true);
                     setIsModalOpen(false);
                   }}

@@ -208,6 +208,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import BookingModal from "./HelperComponents/BookingModal";
+import { trackMetaEvent } from "./Analytics/pixelEvents";
 import LanguageSwitcher from "./HelperComponents/LanguageSwticher";
 
 export default function Navbar() {
@@ -239,6 +240,10 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   const handleBookingClick = () => {
+    trackMetaEvent("InitiateCheckout", {
+      content_category: "hotel_booking",
+      entry_point: "navigation",
+    });
     setIsBookingModalOpen(true);
     setIsMobileMenuOpen(false);
   };

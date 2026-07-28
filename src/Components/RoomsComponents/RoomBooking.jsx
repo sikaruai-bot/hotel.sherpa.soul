@@ -13,24 +13,23 @@ import {
   AlertCircle,
   CreditCard,
   MapPin,
-  Star,
   Shield,
   Clock,
 } from "lucide-react";
-import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import api from "../Utils/api";
+import { trackMetaEvent } from "../Analytics/pixelEvents";
 
 export default function BookingForm() {
   const [t] = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Room data
   const [room, setRoom] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,36 +39,43 @@ export default function BookingForm() {
     checkIn: "",
     checkOut: "",
     numberOfRooms: 1,
+    availableRooms: 1,
   });
 
-  // File upload state
   const [idVerificationImages, setIdVerificationImages] = useState([]);
   const [dragActive, setDragActive] = useState(false);
-
-  // Form state
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  // Fetch room details
   useEffect(() => {
     const fetchRoom = async () => {
       try {
         const response = await api.get(`/get-room/${id}`);
+
         if (response.data.success) {
           const roomData = response.data.oneRoom;
-          console.log(roomData);
+
+          console.log("Room Data:", roomData);
+
           setRoom(roomData);
 
-          // Set default roomType in formData
           setFormData((prev) => ({
             ...prev,
-            roomType: roomData.name || "", // or use roomData.roomType if available
-            availableRooms: roomData.availableRooms,
+            roomType: roomData.name || "",
+            availableRooms: roomData.availableRooms || 1,
           }));
+        } else {
+          toast.error(response.data.message || "Failed to fetch room details.", {
+            position: "top-right",
+          });
         }
       } catch (error) {
         console.error("Error fetching room details:", error);
+
+        toast.error("Error fetching room details.", {
+          position: "top-right",
+        });
       } finally {
         setLoading(false);
       }
@@ -78,23 +84,27 @@ export default function BookingForm() {
     fetchRoom();
   }, [id]);
 
-  // Calculate total price and update guest limits when room number changes
   useEffect(() => {
     if (room && formData.checkIn && formData.checkOut) {
       const checkInDate = new Date(formData.checkIn);
       const checkOutDate = new Date(formData.checkOut);
+
       const nights = Math.ceil(
         (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24)
       );
 
       if (nights > 0) {
         setTotalPrice(nights * room.price * formData.numberOfRooms);
+      } else {
+        setTotalPrice(0);
       }
+    } else {
+      setTotalPrice(0);
     }
 
-    // Auto-adjust number of guests if it exceeds the new room capacity
     if (room && formData.numberOfRooms) {
       const maxAllowedGuests = (room.guests || 0) * formData.numberOfRooms;
+
       if (formData.numberOfGuests > maxAllowedGuests && maxAllowedGuests > 0) {
         setFormData((prev) => ({
           ...prev,
@@ -102,18 +112,49 @@ export default function BookingForm() {
         }));
       }
     }
-  }, [room, formData.checkIn, formData.checkOut, formData.numberOfRooms]);
+  }, [
+    room,
+    formData.checkIn,
+    formData.checkOut,
+    formData.numberOfRooms,
+    formData.numberOfGuests,
+  ]);
 
-  // Handle input changes
+  const getTomorrow = () => {
+    const date = new Date();
+    date.setDate(date.getDate() + 1);
+    return date.toISOString().split("T")[0];
+  };
+
   const handleInputChange = (e) => {
     const { name, value, type } = e.target;
+
     let newValue = type === "number" ? parseInt(value) || 0 : value;
 
-    // Additional validation for numberOfGuests to not exceed room capacity
     if (name === "numberOfGuests" && room) {
       const maxAllowed = (room.guests || 0) * (formData.numberOfRooms || 1);
+
       if (newValue > maxAllowed) {
         newValue = maxAllowed;
+      }
+    }
+
+    if (name === "numberOfRooms" && room) {
+      const maxRooms = Number(
+        formData.availableRooms || room.availableRooms || 1
+      );
+
+      if (newValue > maxRooms) {
+        newValue = maxRooms;
+      }
+
+      const maxAllowedGuests = (room.guests || 0) * newValue;
+
+      if (formData.numberOfGuests > maxAllowedGuests && maxAllowedGuests > 0) {
+        setFormData((prev) => ({
+          ...prev,
+          numberOfGuests: maxAllowedGuests,
+        }));
       }
     }
 
@@ -122,7 +163,6 @@ export default function BookingForm() {
       [name]: newValue,
     }));
 
-    // Clear specific error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -131,34 +171,39 @@ export default function BookingForm() {
     }
   };
 
-  // Handle file upload
   const handleFileUpload = (files) => {
     const newFiles = Array.from(files).filter((file) => {
       if (file.size > 5 * 1024 * 1024) {
-        // 5MB limit
-        alert(`File ${file.name} is too large. Maximum size is 5MB.`);
+        toast.error(`File ${file.name} is too large. Maximum size is 5MB.`, {
+          position: "top-right",
+        });
         return false;
       }
+
       if (!file.type.startsWith("image/")) {
-        alert(`File ${file.name} is not an image.`);
+        toast.error(`File ${file.name} is not an image.`, {
+          position: "top-right",
+        });
         return false;
       }
+
       return true;
     });
 
     setIdVerificationImages((prev) => [...prev, ...newFiles]);
+
+    if (errors.idVerificationImages) {
+      setErrors((prev) => ({
+        ...prev,
+        idVerificationImages: "",
+      }));
+    }
   };
 
-  const getTomorrow = () => {
-    const date = new Date();
-    date.setDate(date.getDate() + 1);
-    return date.toISOString().split("T")[0];
-  };
-
-  // Handle drag and drop
   const handleDrag = (e) => {
     e.preventDefault();
     e.stopPropagation();
+
     if (e.type === "dragenter" || e.type === "dragover") {
       setDragActive(true);
     } else if (e.type === "dragleave") {
@@ -169,6 +214,7 @@ export default function BookingForm() {
   const handleDrop = (e) => {
     e.preventDefault();
     e.stopPropagation();
+
     setDragActive(false);
 
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
@@ -176,39 +222,52 @@ export default function BookingForm() {
     }
   };
 
-  // Remove uploaded file
   const removeFile = (index) => {
     setIdVerificationImages((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // Validate form
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email is invalid";
     }
+
     if (!formData.number) {
       newErrors.number = "Phone number is required";
     } else if (!/^\d{10,}$/.test(formData.number.toString())) {
       newErrors.number = "Phone number must be at least 10 digits";
     }
-    if (!formData.roomType) newErrors.roomType = "Room type is required";
-    if (!formData.checkIn) newErrors.checkIn = "Check-in date is required";
-    if (!formData.checkOut) newErrors.checkOut = "Check-out date is required";
+
+    if (!formData.roomType) {
+      newErrors.roomType = "Room type is required";
+    }
+
+    if (!formData.checkIn) {
+      newErrors.checkIn = "Check-in date is required";
+    }
+
+    if (!formData.checkOut) {
+      newErrors.checkOut = "Check-out date is required";
+    }
 
     if (formData.checkIn && formData.checkOut) {
       const checkIn = new Date(formData.checkIn);
       const checkOut = new Date(formData.checkOut);
       const today = new Date();
+
       today.setHours(0, 0, 0, 0);
 
       if (checkIn < today) {
         newErrors.checkIn = "Check-in date cannot be in the past";
       }
+
       if (checkOut <= checkIn) {
         newErrors.checkOut = "Check-out date must be after check-in date";
       }
@@ -217,43 +276,63 @@ export default function BookingForm() {
     if (formData.numberOfGuests < 1) {
       newErrors.numberOfGuests = "At least 1 guest is required";
     }
+
     if (formData.numberOfRooms < 1) {
       newErrors.numberOfRooms = "At least 1 room is required";
     }
+
     if (idVerificationImages.length === 0) {
       newErrors.idVerificationImages = "ID verification images are required";
     }
 
     setErrors(newErrors);
+
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle form submission
+  const resetFormAfterSuccess = () => {
+    setFormData({
+      name: "",
+      email: "",
+      number: "",
+      roomType: room?.name || "",
+      numberOfGuests: 1,
+      checkIn: "",
+      checkOut: "",
+      numberOfRooms: 1,
+      availableRooms: room?.availableRooms || 1,
+    });
+
+    setIdVerificationImages([]);
+    setErrors({});
+    setTotalPrice(0);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      toast.error("Please fill all required fields correctly.", {
+        position: "top-right",
+      });
+      return;
+    }
 
     setIsSubmitting(true);
 
     try {
-      // Create FormData for file upload
       const submitData = new FormData();
 
-      // Append form fields
       Object.keys(formData).forEach((key) => {
         submitData.append(key, formData[key]);
       });
 
-      // Append room ID
       submitData.append("room", id);
 
-      // Append ID verification images
-      idVerificationImages.forEach((file, index) => {
+      idVerificationImages.forEach((file) => {
         submitData.append("idVerificationImages", file);
       });
 
-      // Add room snapshot data
       if (room) {
         submitData.append(
           "roomSnapshot",
@@ -273,13 +352,39 @@ export default function BookingForm() {
         },
       });
 
+      console.log("Booking Response:", response.data);
+
       if (response.data.success) {
-        alert("Booking created successfully!");
-        navigate("/bookings"); // Navigate to bookings page or confirmation page
+        trackMetaEvent("Lead", {
+          content_category: "hotel_booking",
+          content_ids: [id],
+          content_name: room?.name,
+          value: Number(totalPrice) || 0,
+          currency: "USD",
+        });
+        toast.success(
+          response.data.message || "Booking created successfully!",
+          {
+            position: "top-right",
+          }
+        );
+
+        resetFormAfterSuccess();
+      } else {
+        toast.error(response.data.message || "Booking failed.", {
+          position: "top-right",
+        });
       }
     } catch (error) {
       console.error("Error creating booking:", error);
-      alert("Error creating booking. Please try again.");
+
+      const errorMessage =
+        error.response?.data?.message ||
+        "Error creating booking. Please try again.";
+
+      toast.error(errorMessage, {
+        position: "top-right",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -287,39 +392,64 @@ export default function BookingForm() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-amber-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading room details...</p>
+      <>
+        <ToastContainer position="top-right" autoClose={3000} />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-amber-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading room details...</p>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (!room) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            Room not found
-          </h2>
-          <p className="text-gray-600">
-            The room you're trying to book doesn't exist.
-          </p>
-          <button
-            onClick={() => navigate(-1)}
-            className="mt-4 bg-amber-500 text-white px-6 py-2 rounded-lg hover:bg-amber-600 transition-colors"
-          >
-            Go Back
-          </button>
+      <>
+        <ToastContainer position="top-right" autoClose={3000} />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">
+              Room not found
+            </h2>
+
+            <p className="text-gray-600">
+              The room you're trying to book doesn't exist.
+            </p>
+
+            <button
+              onClick={() => navigate(-1)}
+              className="mt-4 bg-amber-500 text-white px-6 py-2 rounded-lg hover:bg-amber-600 transition-colors"
+            >
+              Go Back
+            </button>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
+  const nights =
+    formData.checkIn && formData.checkOut
+      ? Math.ceil(
+          (new Date(formData.checkOut) - new Date(formData.checkIn)) /
+            (1000 * 60 * 60 * 24)
+        )
+      : 0;
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
+
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center gap-4">
@@ -330,7 +460,9 @@ export default function BookingForm() {
               <ChevronLeft className="w-5 h-5" />
               <span className="font-medium">{t("book.back")}</span>
             </button>
+
             <div className="h-6 w-px bg-gray-300"></div>
+
             <h1 className="text-2xl font-bold text-gray-900">
               {t("book.title")}
             </h1>
@@ -340,28 +472,29 @@ export default function BookingForm() {
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Booking Form */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
               <div className="mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">
                   {t("book.title2")}
                 </h2>
+
                 <p className="text-gray-600">{t("book.subtitle")}</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-8">
-                {/* Personal Information */}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <Users className="w-5 h-5 text-amber-600" />
                     {t("book.form.info")}
                   </h3>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {t("book.form.name")} *
                       </label>
+
                       <input
                         type="text"
                         name="name"
@@ -372,6 +505,7 @@ export default function BookingForm() {
                         }`}
                         placeholder="Enter your full name"
                       />
+
                       {errors.name && (
                         <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
                           <AlertCircle className="w-4 h-4" />
@@ -384,8 +518,10 @@ export default function BookingForm() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {t("book.form.email")} *
                       </label>
+
                       <div className="relative">
                         <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+
                         <input
                           type="email"
                           name="email"
@@ -397,6 +533,7 @@ export default function BookingForm() {
                           placeholder="your.email@example.com"
                         />
                       </div>
+
                       {errors.email && (
                         <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
                           <AlertCircle className="w-4 h-4" />
@@ -409,8 +546,10 @@ export default function BookingForm() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Phone {t("book.form.number")} *
                       </label>
+
                       <div className="relative">
                         <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+
                         <input
                           type="tel"
                           name="number"
@@ -422,6 +561,7 @@ export default function BookingForm() {
                           placeholder="Enter your phone number"
                         />
                       </div>
+
                       {errors.number && (
                         <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
                           <AlertCircle className="w-4 h-4" />
@@ -432,17 +572,18 @@ export default function BookingForm() {
                   </div>
                 </div>
 
-                {/* Room & Stay Details */}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <Bed className="w-5 h-5 text-amber-600" />
                     {t("book.form.room")}
                   </h3>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {t("book.form.type")} *
                       </label>
+
                       <input
                         type="text"
                         name="roomType"
@@ -461,11 +602,10 @@ export default function BookingForm() {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t("book.form.guests")} * (Max:{" "}
-                        {(room.guests || 0) * (formData.numberOfRooms || 1)} for{" "}
-                        {formData.numberOfRooms} room
-                        {formData.numberOfRooms > 1 ? "s" : ""})
+                        {t("book.form.guests")} * Max:{" "}
+                        {(room.guests || 0) * (formData.numberOfRooms || 1)}
                       </label>
+
                       <input
                         type="number"
                         name="numberOfGuests"
@@ -479,10 +619,12 @@ export default function BookingForm() {
                             : "border-gray-300"
                         }`}
                       />
+
                       <p className="text-xs text-gray-500 mt-1">
                         {t("book.form.guestnote")} {room.guests || 0}{" "}
                         {t("book.guests")}
                       </p>
+
                       {errors.numberOfGuests && (
                         <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
                           <AlertCircle className="w-4 h-4" />
@@ -495,8 +637,10 @@ export default function BookingForm() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {t("book.form.checkin")} *
                       </label>
+
                       <div className="relative">
                         <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+
                         <input
                           type="date"
                           name="checkIn"
@@ -510,6 +654,7 @@ export default function BookingForm() {
                           }`}
                         />
                       </div>
+
                       {errors.checkIn && (
                         <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
                           <AlertCircle className="w-4 h-4" />
@@ -522,8 +667,10 @@ export default function BookingForm() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {t("book.form.checkout")} *
                       </label>
+
                       <div className="relative">
                         <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+
                         <input
                           type="date"
                           name="checkOut"
@@ -534,7 +681,7 @@ export default function BookingForm() {
                               ? new Date(
                                   new Date(formData.checkIn).getTime() +
                                     86400000
-                                ) // check-in + 1 day
+                                )
                                   .toISOString()
                                   .split("T")[0]
                               : getTomorrow()
@@ -546,6 +693,7 @@ export default function BookingForm() {
                           }`}
                         />
                       </div>
+
                       {errors.checkOut && (
                         <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
                           <AlertCircle className="w-4 h-4" />
@@ -556,9 +704,10 @@ export default function BookingForm() {
 
                     <div className="md:col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t("book.form.noroom")} * (Rooms Available :{" "}
-                        {formData.availableRooms})
+                        {t("book.form.noroom")} * Rooms Available:{" "}
+                        {formData.availableRooms}
                       </label>
+
                       <input
                         type="number"
                         name="numberOfRooms"
@@ -583,18 +732,17 @@ export default function BookingForm() {
                   </div>
                 </div>
 
-                {/* ID Verification */}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <Upload className="w-5 h-5 text-amber-600" />
                     {t("book.form.id")} *
                   </h3>
+
                   <div className="space-y-4">
                     <p className="text-sm text-gray-600">
                       {t("book.form.idDet")}
                     </p>
 
-                    {/* File Upload Area */}
                     <div
                       className={`border-2 border-dashed rounded-lg p-8 text-center transition-all duration-200 ${
                         dragActive
@@ -609,10 +757,13 @@ export default function BookingForm() {
                       onDrop={handleDrop}
                     >
                       <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+
                       <p className="text-lg font-medium text-gray-700 mb-2">
                         {t("book.form.drag")}
                       </p>
+
                       <p className="text-gray-500 mb-4">or</p>
+
                       <label className="bg-amber-500 text-white px-6 py-3 rounded-lg cursor-pointer hover:bg-amber-600 transition-colors inline-flex items-center gap-2">
                         <Upload className="w-4 h-4" />
                         {t("book.form.choose")}
@@ -633,24 +784,27 @@ export default function BookingForm() {
                       </p>
                     )}
 
-                    {/* Uploaded Files */}
                     {idVerificationImages.length > 0 && (
                       <div className="space-y-3">
                         <h4 className="font-medium text-gray-900">
                           Uploaded Files:
                         </h4>
+
                         {idVerificationImages.map((file, index) => (
                           <div
                             key={index}
                             className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg"
                           >
                             <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+
                             <span className="flex-1 text-sm text-gray-700">
                               {file.name}
                             </span>
+
                             <span className="text-xs text-gray-500">
                               {(file.size / 1024 / 1024).toFixed(2)} MB
                             </span>
+
                             <button
                               type="button"
                               onClick={() => removeFile(index)}
@@ -665,7 +819,6 @@ export default function BookingForm() {
                   </div>
                 </div>
 
-                {/* Submit Button */}
                 <div className="border-t pt-8">
                   <button
                     type="submit"
@@ -689,7 +842,6 @@ export default function BookingForm() {
             </div>
           </div>
 
-          {/* Booking Summary */}
           <div className="lg:col-span-1">
             <div className="sticky top-8">
               <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
@@ -697,7 +849,6 @@ export default function BookingForm() {
                   {t("book.summary.title")}
                 </h3>
 
-                {/* Room Info */}
                 <div className="space-y-4 mb-6">
                   <div className="flex gap-4">
                     <img
@@ -705,19 +856,23 @@ export default function BookingForm() {
                       alt={room.name}
                       className="w-20 h-20 rounded-lg object-cover"
                     />
+
                     <div className="flex-1">
                       <h4 className="font-semibold text-gray-900 mb-1">
                         {room.name}
                       </h4>
+
                       <div className="text-sm text-gray-600 space-y-1">
                         <div className="flex items-center gap-1">
                           <MapPin className="w-3 h-3" />
                           {room.size} sq ft
                         </div>
+
                         <div className="flex items-center gap-1">
                           <Users className="w-3 h-3" />
                           Up to {room.guests} guests
                         </div>
+
                         <div className="flex items-center gap-1">
                           <Bed className="w-3 h-3" />
                           {room.beds}
@@ -727,7 +882,6 @@ export default function BookingForm() {
                   </div>
                 </div>
 
-                {/* Booking Details */}
                 <div className="space-y-3 mb-6 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">
@@ -739,9 +893,10 @@ export default function BookingForm() {
                         : "-"}
                     </span>
                   </div>
+
                   <div className="flex justify-between">
                     <span className="text-gray-600">
-                      {t("book.form.checkin")}:
+                      {t("book.form.checkout")}:
                     </span>
                     <span className="font-medium">
                       {formData.checkOut
@@ -749,38 +904,35 @@ export default function BookingForm() {
                         : "-"}
                     </span>
                   </div>
+
                   <div className="flex justify-between">
                     <span className="text-gray-600">{t("book.guests")}:</span>
                     <span className="font-medium">
                       {formData.numberOfGuests}
                     </span>
                   </div>
+
                   <div className="flex justify-between">
                     <span className="text-gray-600">{t("book.room")}:</span>
                     <span className="font-medium">
                       {formData.numberOfRooms}
                     </span>
                   </div>
-                  {formData.checkIn && formData.checkOut && (
+
+                  {nights > 0 && (
                     <div className="flex justify-between">
                       <span className="text-gray-600">Nights:</span>
-                      <span className="font-medium">
-                        {Math.ceil(
-                          (new Date(formData.checkOut) -
-                            new Date(formData.checkIn)) /
-                            (1000 * 60 * 60 * 24)
-                        )}
-                      </span>
+                      <span className="font-medium">{nights}</span>
                     </div>
                   )}
                 </div>
 
-                {/* Price Breakdown */}
                 <div className="border-t pt-4 space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">{t("book.rate")}:</span>
                     <span>$ {room.price}</span>
                   </div>
+
                   {formData.numberOfRooms > 1 && (
                     <div className="flex justify-between">
                       <span className="text-gray-600">
@@ -789,23 +941,15 @@ export default function BookingForm() {
                       <span>$ {room.price * formData.numberOfRooms}</span>
                     </div>
                   )}
+
                   {totalPrice > 0 && (
                     <div className="flex justify-between">
-                      <span className="text-gray-600">
-                        ×{" "}
-                        {Math.ceil(
-                          (new Date(formData.checkOut) -
-                            new Date(formData.checkIn)) /
-                            (1000 * 60 * 60 * 24)
-                        )}{" "}
-                        nights:
-                      </span>
+                      <span className="text-gray-600">Total:</span>
                       <span>$ {totalPrice}</span>
                     </div>
                   )}
                 </div>
 
-                {/* Total */}
                 <div className="border-t pt-4 mt-4">
                   <div className="flex justify-between items-center text-lg font-bold">
                     <span>Total Amount:</span>
@@ -815,25 +959,28 @@ export default function BookingForm() {
                   </div>
                 </div>
 
-                {/* Policies */}
                 <div className="mt-6 p-4 bg-gray-50 rounded-lg">
                   <h5 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                     <Shield className="w-4 h-4 text-amber-600" />
                     Booking Policies
                   </h5>
+
                   <div className="space-y-2 text-xs text-gray-600">
                     <div className="flex items-start gap-2">
                       <Clock className="w-3 h-3 mt-0.5 text-amber-600 flex-shrink-0" />
                       <span>{t("book.form.checkin")}: 2:00 PM - 11:00 PM</span>
                     </div>
+
                     <div className="flex items-start gap-2">
                       <Clock className="w-3 h-3 mt-0.5 text-amber-600 flex-shrink-0" />
                       <span>{t("book.form.checkout")}: 12:00 PM</span>
                     </div>
+
                     <div className="flex items-start gap-2">
                       <X className="w-3 h-3 mt-0.5 text-red-500 flex-shrink-0" />
                       <span>{t("book.summary.policies.cancel")}</span>
                     </div>
+
                     <div className="flex items-start gap-2">
                       <Shield className="w-3 h-3 mt-0.5 text-green-500 flex-shrink-0" />
                       <span>{t("book.summary.policies.id")}</span>
@@ -841,33 +988,20 @@ export default function BookingForm() {
                   </div>
                 </div>
 
-                {/* Security Notice */}
-                {/* <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Shield className="w-4 h-4 text-blue-600" />
-                    <span className="text-sm font-medium text-blue-900">
-                      Secure Booking
-                    </span>
-                  </div>
-                  <p className="text-xs text-blue-700">
-                    Your personal information is encrypted and secure. We never
-                    share your data with third parties.
-                  </p>
-                </div> */}
-
-                {/* Contact Info */}
                 <div className="mt-4 text-center">
                   <p className="text-xs text-gray-500 mb-2">Need help?</p>
+
                   <div className="flex items-center justify-center gap-4 text-xs">
                     <a
-                      href="tel:+977-1-234-5678"
+                      href="tel:+9779851068219"
                       className="flex items-center gap-1 text-amber-600 hover:text-amber-700"
                     >
                       <Phone className="w-3 h-3" />
                       Call Support
                     </a>
+
                     <a
-                      href="mailto:support@hotel.com"
+                      href="mailto:info@hotelsherpasoul.com"
                       className="flex items-center gap-1 text-amber-600 hover:text-amber-700"
                     >
                       <Mail className="w-3 h-3" />
@@ -878,6 +1012,7 @@ export default function BookingForm() {
               </div>
             </div>
           </div>
+          {/* Booking Summary End */}
         </div>
       </div>
     </div>
