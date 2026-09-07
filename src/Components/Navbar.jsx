@@ -226,6 +226,7 @@ export default function Navbar() {
     { id: "about", label: t("nav.about"), href: "/about" },
     { id: "room", label: t("nav.room"), href: "/rooms" },
     { id: "gallery", label: t("nav.gallery"), href: "/gallery" },
+    { id: "blog", label: "Blog", href: "/blog" },
     { id: "contact", label: t("nav.contact"), href: "/contact" },
   ];
 

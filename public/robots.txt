@@ -1,0 +1,9 @@
+# Robots.txt for Hotel Sherpa Soul (https://hotelsherpasoul.com)
+User-agent: *
+Allow: /
+
+# Disallow internal backend / assets if needed
+Disallow: /api/
+
+# Sitemap Location
+Sitemap: https://hotelsherpasoul.com/sitemap.xml

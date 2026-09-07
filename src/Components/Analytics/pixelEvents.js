@@ -30,8 +30,24 @@ export const initializeMetaPixel = () => {
   initialized = true;
 };
 
-export const trackMetaEvent = (eventName, parameters = {}) => {
+// Unified tracking function for Meta Pixel AND Google Tag Manager (dataLayer)
+export const trackEvent = (eventName, parameters = {}) => {
   if (typeof window === "undefined") return;
+
+  // 1. Meta / Facebook Pixel
   initializeMetaPixel();
-  window.fbq("track", eventName, parameters);
+  if (window.fbq) {
+    window.fbq("track", eventName, parameters);
+  }
+
+  // 2. Google Tag Manager / GA4 dataLayer
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: eventName,
+    timestamp: new Date().toISOString(),
+    ...parameters,
+  });
 };
+
+// Backward compatibility alias
+export const trackMetaEvent = trackEvent;

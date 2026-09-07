@@ -11,6 +11,7 @@ import RoomDetails from "./Components/RoomsComponents/RoomDetails";
 import ScrollToTop from "./Components/HelperComponents/ScrollToTop";
 import Layout from "./Components/HelperComponents/Layout";
 import BookNowPage from "./Pages/BookNowPage";
+import BlogPage from "./Pages/BlogPage";
 import BookingForm from "./Components/RoomsComponents/RoomBooking";
 import LanguageSwitcher from "./Components/HelperComponents/LanguageSwticher";
 import WhatsAppButton from "./Components/HelperComponents/Whatsapp";
@@ -33,6 +34,7 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/rooms" element={<RoomsPage />} />
           <Route path="/book-now" element={<BookNowPage />} />
+          <Route path="/blog" element={<BlogPage />} />
           <Route path="/room/:id" element={<RoomDetails />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/gallery" element={<FullGallery />} />
