@@ -41,6 +41,10 @@ export default function MetaPixel() {
         trackMetaEvent("Contact", { contact_method: "email" });
       } else if (href.includes("wa.me/") || href.includes("whatsapp.com/")) {
         trackMetaEvent("Contact", { contact_method: "whatsapp" });
+        trackMetaEvent("Lead", { content_name: "WhatsApp Inquiry", method: "whatsapp" });
+      } else if (href.startsWith("tel:")) {
+        trackMetaEvent("Contact", { contact_method: "phone_call" });
+        trackMetaEvent("Lead", { content_name: "Direct Phone Call", method: "phone" });
       }
     };
 
