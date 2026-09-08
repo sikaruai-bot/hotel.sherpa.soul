@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
   Image as ImageIcon,
   Film,
@@ -12,7 +12,6 @@ import {
   Sparkles,
   Play,
   RotateCw,
-  Eye,
 } from "lucide-react";
 import { optimizeMediaFile, HOTEL_PRESET_PHOTOS } from "./mediaUtils";
 
@@ -24,54 +23,42 @@ export default function CMSMediaTab({
 }) {
   const [activeSubTab, setActiveSubTab] = useState("gallery"); // gallery | heroMedia
   const [editingItem, setEditingItem] = useState(null);
-  const [isAddingNew, setIsAddingNew] = useState(false);
   const [showLibraryPicker, setShowLibraryPicker] = useState(false);
   const [libraryTarget, setLibraryTarget] = useState(null); // "new" | "edit" | "hero"
   const [isUploading, setIsUploading] = useState(false);
-
-  const fileInputRef = useRef(null);
-  const replaceCardInputRef = useRef(null);
-  const [replaceTargetId, setReplaceTargetId] = useState(null);
-
-  const heroFileInputRef = useRef(null);
-
-  const [newItem, setNewItem] = useState({
-    src: "",
-    type: "image",
-    title: "",
-    alt: "",
-    category: "rooms",
-  });
+  const [uploadSuccessMsg, setUploadSuccessMsg] = useState(null);
 
   const gallery = media?.gallery || [];
   const hero = content?.hero || {};
 
   // Handle direct file upload from device
-  const handleDeviceUpload = async (e, target) => {
+  const handleDeviceUpload = async (e, target, cardId = null) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     try {
       setIsUploading(true);
+      setUploadSuccessMsg(null);
       const optimized = await optimizeMediaFile(file);
 
-      if (target === "new") {
-        setNewItem((prev) => ({
-          ...prev,
+      if (target === "quickAdd") {
+        // Immediately add to gallery
+        const fileName = file.name.replace(/\.[^/.]+$/, "");
+        const newItem = {
+          id: "g_" + Date.now(),
           src: optimized.src,
           type: optimized.type,
-          title: prev.title || file.name.replace(/\.[^/.]+$/, ""),
-          alt: prev.alt || "Hotel Sherpa Soul " + file.name.replace(/\.[^/.]+$/, ""),
-        }));
-      } else if (target === "edit" && editingItem) {
-        setEditingItem((prev) => ({
-          ...prev,
-          src: optimized.src,
-          type: optimized.type,
-        }));
-      } else if (target === "replace" && replaceTargetId) {
+          title: fileName || "New Upload",
+          alt: "Hotel Sherpa Soul " + fileName,
+          category: "rooms",
+        };
+        onUpdateGallery([newItem, ...gallery]);
+        setUploadSuccessMsg("Photo successfully uploaded from folder and added to gallery!");
+        setTimeout(() => setUploadSuccessMsg(null), 3500);
+      } else if (target === "replace" && cardId) {
+        // Immediately replace the specific photo
         const updated = gallery.map((item) => {
-          if (item.id === replaceTargetId) {
+          if (item.id === cardId) {
             return {
               ...item,
               src: optimized.src,
@@ -81,13 +68,22 @@ export default function CMSMediaTab({
           return item;
         });
         onUpdateGallery(updated);
-        setReplaceTargetId(null);
+        setUploadSuccessMsg("Photo replaced successfully!");
+        setTimeout(() => setUploadSuccessMsg(null), 3500);
+      } else if (target === "edit" && editingItem) {
+        setEditingItem((prev) => ({
+          ...prev,
+          src: optimized.src,
+          type: optimized.type,
+        }));
       } else if (target === "hero") {
         if (optimized.type === "video") {
           onUpdateContent("hero", { bgVideo: optimized.src });
         } else {
           onUpdateContent("hero", { bgImage: optimized.src });
         }
+        setUploadSuccessMsg("Hero background updated successfully!");
+        setTimeout(() => setUploadSuccessMsg(null), 3500);
       }
     } catch (err) {
       alert("Error processing file: " + err.message);
@@ -98,42 +94,27 @@ export default function CMSMediaTab({
   };
 
   const handlePickPreset = (path) => {
-    if (libraryTarget === "new") {
-      setNewItem((prev) => ({ ...prev, src: path, type: "image" }));
+    if (libraryTarget === "quickAdd") {
+      const newItem = {
+        id: "g_" + Date.now(),
+        src: path,
+        type: "image",
+        title: "Hotel Sherpa Soul Photo",
+        alt: "Hotel Sherpa Soul Thamel Kathmandu",
+        category: "rooms",
+      };
+      onUpdateGallery([newItem, ...gallery]);
+      setUploadSuccessMsg("Photo from hotel library added to gallery!");
+      setTimeout(() => setUploadSuccessMsg(null), 3500);
     } else if (libraryTarget === "edit" && editingItem) {
       setEditingItem((prev) => ({ ...prev, src: path, type: "image" }));
     } else if (libraryTarget === "hero") {
       onUpdateContent("hero", { bgImage: path });
+      setUploadSuccessMsg("Hero background updated!");
+      setTimeout(() => setUploadSuccessMsg(null), 3500);
     }
     setShowLibraryPicker(false);
     setLibraryTarget(null);
-  };
-
-  const handleSaveNewItem = (e) => {
-    e.preventDefault();
-    if (!newItem.src.trim()) {
-      alert("Please upload a photo from your computer or pick from the hotel library.");
-      return;
-    }
-
-    const itemToAdd = {
-      id: "g_" + Date.now(),
-      src: newItem.src.trim(),
-      type: newItem.type,
-      title: newItem.title.trim() || "Hotel Sherpa Soul Gallery",
-      alt: newItem.alt.trim() || "Hotel Sherpa Soul Kathmandu",
-      category: newItem.category || "rooms",
-    };
-
-    onUpdateGallery([...gallery, itemToAdd]);
-    setNewItem({
-      src: "",
-      type: "image",
-      title: "",
-      alt: "",
-      category: "rooms",
-    });
-    setIsAddingNew(false);
   };
 
   const handleSaveEdit = (e) => {
@@ -148,28 +129,14 @@ export default function CMSMediaTab({
   };
 
   const handleDeleteItem = (id) => {
-    if (window.confirm("Are you sure you want to remove this photo from the gallery?")) {
+    if (window.confirm("Are you sure you want to remove this photo from the website gallery?")) {
       const updated = gallery.filter((item) => item.id !== id);
       onUpdateGallery(updated);
     }
   };
 
-  const triggerCardReplace = (id) => {
-    setReplaceTargetId(id);
-    replaceCardInputRef.current?.click();
-  };
-
   return (
     <div className="space-y-8">
-      {/* Hidden file input for single-click card replace */}
-      <input
-        type="file"
-        ref={replaceCardInputRef}
-        accept="image/*,video/mp4"
-        className="hidden"
-        onChange={(e) => handleDeviceUpload(e, "replace")}
-      />
-
       {/* Sub-tabs */}
       <div className="flex flex-wrap gap-2 p-1.5 bg-slate-900/80 rounded-2xl border border-slate-800">
         {[
@@ -198,178 +165,64 @@ export default function CMSMediaTab({
       {/* 1. GALLERY MEDIA MANAGER */}
       {activeSubTab === "gallery" && (
         <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/60 border border-slate-800 rounded-3xl p-6">
-            <div>
-              <h3 className="text-base font-semibold text-white flex items-center gap-2">
-                <ImageIcon className="w-5 h-5 text-amber-400" />
-                Website Photos & Videos ({gallery.length})
-              </h3>
-              <p className="text-xs text-slate-400 mt-1">
-                You can directly upload photos from your computer/mobile or pick from existing hotel photos.
-              </p>
-            </div>
-            <button
-              onClick={() => setIsAddingNew(true)}
-              className="flex items-center justify-center gap-2 px-5 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Upload New Photo / Video</span>
-            </button>
-          </div>
-
-          {/* ADD NEW MEDIA MODAL / CARD */}
-          {isAddingNew && (
-            <div className="bg-slate-900/95 border-2 border-amber-500/50 rounded-3xl p-6 md:p-8 animate-fadeIn shadow-2xl">
-              <div className="flex items-center justify-between mb-6">
-                <h4 className="text-base font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-amber-400" />
-                  Add New Photo to Website Gallery
-                </h4>
-                <button
-                  onClick={() => setIsAddingNew(false)}
-                  className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+          {/* Direct Upload Actions Banner */}
+          <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 md:p-8">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              <div>
+                <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                  <ImageIcon className="w-5 h-5 text-amber-400" />
+                  Website Gallery ({gallery.length} Photos & Videos)
+                </h3>
+                <p className="text-xs text-slate-400 mt-1">
+                  Click the button below to directly open your computer or phone folder and pick any photo.
+                </p>
               </div>
 
-              <form onSubmit={handleSaveNewItem} className="space-y-6">
-                {/* 2 Easy Action Buttons */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Option A: Upload from Device */}
-                  <div className="border border-slate-700/80 bg-slate-800/50 hover:bg-slate-800 p-6 rounded-2xl flex flex-col items-center justify-center text-center group cursor-pointer transition-all">
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      accept="image/*,video/mp4"
-                      className="hidden"
-                      onChange={(e) => handleDeviceUpload(e, "new")}
-                    />
-                    <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                      <Upload className="w-6 h-6" />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => fileInputRef.current?.click()}
-                      className="text-sm font-bold text-white group-hover:text-amber-400"
-                    >
-                      Upload from Computer / Mobile
-                    </button>
-                    <p className="text-xs text-slate-400 mt-1">
-                      Pick any JPG, PNG, WebP or MP4 from your folder
-                    </p>
-                  </div>
+              {/* TWO DIRECT ACTION BUTTONS (NATIVE LABELS FOR 100% RELIABLE FILE PICKING) */}
+              <div className="flex flex-wrap items-center gap-3">
+                {/* 1. Direct Computer / Mobile Folder Upload */}
+                <label className="cursor-pointer inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 text-sm font-bold rounded-2xl shadow-xl shadow-amber-500/20 transition-all select-none">
+                  <input
+                    type="file"
+                    accept="image/*,video/mp4"
+                    className="sr-only"
+                    onChange={(e) => handleDeviceUpload(e, "quickAdd")}
+                  />
+                  <Upload className="w-4 h-4" />
+                  <span>📁 Upload Photo from Computer / Mobile</span>
+                </label>
 
-                  {/* Option B: Choose from Hotel Media Library */}
-                  <div
-                    onClick={() => {
-                      setLibraryTarget("new");
-                      setShowLibraryPicker(true);
-                    }}
-                    className="border border-slate-700/80 bg-slate-800/50 hover:bg-slate-800 p-6 rounded-2xl flex flex-col items-center justify-center text-center group cursor-pointer transition-all"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                      <FolderOpen className="w-6 h-6" />
-                    </div>
-                    <span className="text-sm font-bold text-white group-hover:text-blue-400">
-                      Choose from Hotel Photo Library
-                    </span>
-                    <p className="text-xs text-slate-400 mt-1">
-                      Pick from rooms, balconies, washrooms, or views
-                    </p>
-                  </div>
-                </div>
-
-                {isUploading && (
-                  <div className="flex items-center justify-center gap-2 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-300">
-                    <div className="w-4 h-4 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
-                    <span>Processing and optimizing image...</span>
-                  </div>
-                )}
-
-                {/* Selected Image Preview */}
-                {newItem.src && (
-                  <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 flex items-center gap-4">
-                    <div className="w-24 h-24 rounded-xl overflow-hidden bg-slate-800 shrink-0 border border-slate-700">
-                      {newItem.type === "video" ? (
-                        <video
-                          src={newItem.src}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <img
-                          src={newItem.src}
-                          alt="Preview"
-                          className="w-full h-full object-cover"
-                        />
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <span className="text-xs font-semibold text-emerald-400 flex items-center gap-1">
-                        <Check className="w-3.5 h-3.5" />
-                        Photo Ready to Add
-                      </span>
-                      <p className="text-[11px] text-slate-400 truncate mt-1">
-                        {newItem.src.startsWith("data:")
-                          ? "Custom Device Upload"
-                          : newItem.src}
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                      Photo Title / Caption (Optional)
-                    </label>
-                    <input
-                      type="text"
-                      value={newItem.title}
-                      onChange={(e) =>
-                        setNewItem({ ...newItem, title: e.target.value })
-                      }
-                      placeholder="e.g. Deluxe Double Balcony Room"
-                      className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                      Category
-                    </label>
-                    <select
-                      value={newItem.category}
-                      onChange={(e) =>
-                        setNewItem({ ...newItem, category: e.target.value })
-                      }
-                      className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm"
-                    >
-                      <option value="rooms">Rooms & Suites</option>
-                      <option value="exterior">Exterior & Views</option>
-                      <option value="amenities">Amenities & Facilities</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="flex justify-end gap-3 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setIsAddingNew(false)}
-                    className="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={!newItem.src}
-                    className="px-6 py-2.5 bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-bold rounded-xl text-xs shadow-md shadow-amber-500/20 transition-all"
-                  >
-                    Save Photo to Website
-                  </button>
-                </div>
-              </form>
+                {/* 2. Choose from Hotel Library */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLibraryTarget("quickAdd");
+                    setShowLibraryPicker(true);
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 text-sm font-semibold rounded-2xl border border-slate-700 transition-all select-none"
+                >
+                  <FolderOpen className="w-4 h-4 text-blue-400" />
+                  <span>🖼️ Pick from Hotel Library</span>
+                </button>
+              </div>
             </div>
-          )}
+
+            {/* Uploading Status Banner */}
+            {isUploading && (
+              <div className="mt-4 flex items-center gap-2.5 p-3.5 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-xs text-amber-300 animate-pulse">
+                <div className="w-4 h-4 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
+                <span>Processing and uploading photo from folder...</span>
+              </div>
+            )}
+
+            {/* Success Feedback Banner */}
+            {uploadSuccessMsg && (
+              <div className="mt-4 flex items-center gap-2 p-3.5 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-xs text-emerald-400">
+                <Check className="w-4 h-4 shrink-0" />
+                <span>{uploadSuccessMsg}</span>
+              </div>
+            )}
+          </div>
 
           {/* EDIT MEDIA MODAL */}
           {editingItem && (
@@ -388,7 +241,7 @@ export default function CMSMediaTab({
                 </div>
 
                 <div className="space-y-4">
-                  <div className="w-full h-40 rounded-xl overflow-hidden bg-slate-950 border border-slate-800">
+                  <div className="w-full h-44 rounded-xl overflow-hidden bg-slate-950 border border-slate-800">
                     {editingItem.type === "video" ? (
                       <video
                         src={editingItem.src}
@@ -405,13 +258,13 @@ export default function CMSMediaTab({
                   </div>
 
                   <div className="flex gap-2">
-                    <label className="flex-1 py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded-xl text-center cursor-pointer border border-slate-700 flex items-center justify-center gap-1.5">
-                      <Upload className="w-3.5 h-3.5 text-amber-400" />
-                      <span>Upload New from Device</span>
+                    <label className="flex-1 py-2.5 px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold rounded-xl text-center cursor-pointer flex items-center justify-center gap-1.5 shadow-md transition-all">
+                      <Upload className="w-3.5 h-3.5" />
+                      <span>Upload from Device</span>
                       <input
                         type="file"
                         accept="image/*,video/mp4"
-                        className="hidden"
+                        className="sr-only"
                         onChange={(e) => handleDeviceUpload(e, "edit")}
                       />
                     </label>
@@ -422,7 +275,7 @@ export default function CMSMediaTab({
                         setLibraryTarget("edit");
                         setShowLibraryPicker(true);
                       }}
-                      className="flex-1 py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-1.5"
+                      className="flex-1 py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-1.5"
                     >
                       <FolderOpen className="w-3.5 h-3.5 text-blue-400" />
                       <span>Pick from Library</span>
@@ -481,12 +334,12 @@ export default function CMSMediaTab({
             </div>
           )}
 
-          {/* GALLERY CARDS WITH INSTANT REPLACE BUTTON */}
+          {/* GALLERY CARDS WITH INSTANT NATIVE REPLACE LABEL BUTTON */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {gallery.map((item, index) => (
               <div
                 key={item.id || index}
-                className="group relative bg-slate-900/60 border border-slate-800 rounded-3xl overflow-hidden hover:border-amber-500/50 transition-all shadow-xl flex flex-col"
+                className="group relative bg-slate-900/70 border border-slate-800 rounded-3xl overflow-hidden hover:border-amber-500/50 transition-all shadow-xl flex flex-col"
               >
                 <div className="relative aspect-video bg-slate-950 overflow-hidden">
                   {item.type === "video" ? (
@@ -526,16 +379,17 @@ export default function CMSMediaTab({
 
                   {/* Actions on Card */}
                   <div className="space-y-2 mt-4 pt-3 border-t border-slate-800">
-                    {/* Instant Replace Button */}
-                    <button
-                      type="button"
-                      onClick={() => triggerCardReplace(item.id)}
-                      className="w-full py-2 px-3 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
-                      title="Upload a new photo from your folder to replace this one"
-                    >
+                    {/* Native Label for Instant OS File Picker on Click */}
+                    <label className="cursor-pointer w-full py-2.5 px-3 bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-md transition-all select-none">
+                      <input
+                        type="file"
+                        accept="image/*,video/mp4"
+                        className="sr-only"
+                        onChange={(e) => handleDeviceUpload(e, "replace", item.id)}
+                      />
                       <RotateCw className="w-3.5 h-3.5" />
-                      <span>Replace Photo</span>
-                    </button>
+                      <span>Replace Photo from Folder</span>
+                    </label>
 
                     <div className="flex items-center justify-between gap-2">
                       <button
@@ -577,23 +431,18 @@ export default function CMSMediaTab({
           </div>
 
           <div className="space-y-6 max-w-2xl">
-            {/* Upload Buttons for Hero */}
+            {/* Native Label for Hero Upload */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input
-                type="file"
-                ref={heroFileInputRef}
-                accept="image/*,video/mp4"
-                className="hidden"
-                onChange={(e) => handleDeviceUpload(e, "hero")}
-              />
-              <button
-                type="button"
-                onClick={() => heroFileInputRef.current?.click()}
-                className="p-5 bg-slate-800/80 hover:bg-slate-800 border border-slate-700 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-white transition-all shadow-md"
-              >
-                <Upload className="w-4 h-4 text-amber-400" />
-                <span>Upload New Hero from Device</span>
-              </button>
+              <label className="cursor-pointer p-5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold shadow-xl transition-all select-none">
+                <input
+                  type="file"
+                  accept="image/*,video/mp4"
+                  className="sr-only"
+                  onChange={(e) => handleDeviceUpload(e, "hero")}
+                />
+                <Upload className="w-4 h-4" />
+                <span>Upload Hero Photo from Folder</span>
+              </label>
 
               <button
                 type="button"
@@ -601,7 +450,7 @@ export default function CMSMediaTab({
                   setLibraryTarget("hero");
                   setShowLibraryPicker(true);
                 }}
-                className="p-5 bg-slate-800/80 hover:bg-slate-800 border border-slate-700 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-white transition-all shadow-md"
+                className="p-5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-white transition-all shadow-md"
               >
                 <FolderOpen className="w-4 h-4 text-blue-400" />
                 <span>Pick from Hotel Photo Library</span>

@@ -12,7 +12,6 @@ export const optimizeMediaFile = (file) => {
     const isVideo = file.type.startsWith("video/");
 
     if (isVideo) {
-      // For video, read directly as Data URL
       const reader = new FileReader();
       reader.onload = (e) => resolve({ type: "video", src: e.target.result });
       reader.onerror = (err) => reject(err);
@@ -20,45 +19,52 @@ export const optimizeMediaFile = (file) => {
       return;
     }
 
-    // For images, optimize and resize to keep storage lightweight and fast
     const reader = new FileReader();
     reader.onload = (event) => {
+      const rawDataUrl = event.target.result;
       const img = new Image();
       img.onload = () => {
-        const MAX_WIDTH = 1600;
-        const MAX_HEIGHT = 1200;
-        let width = img.width;
-        let height = img.height;
+        try {
+          const MAX_WIDTH = 1600;
+          const MAX_HEIGHT = 1200;
+          let width = img.width;
+          let height = img.height;
 
-        if (width > height) {
-          if (width > MAX_WIDTH) {
-            height = Math.round((height * MAX_WIDTH) / width);
-            width = MAX_WIDTH;
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height = Math.round((height * MAX_WIDTH) / width);
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width = Math.round((width * MAX_HEIGHT) / height);
+              height = MAX_HEIGHT;
+            }
           }
-        } else {
-          if (height > MAX_HEIGHT) {
-            width = Math.round((width * MAX_HEIGHT) / height);
-            height = MAX_HEIGHT;
+
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+
+          let dataUrl = canvas.toDataURL("image/webp", 0.85);
+          if (!dataUrl.startsWith("data:image/webp")) {
+            dataUrl = canvas.toDataURL("image/jpeg", 0.85);
           }
+
+          resolve({ type: "image", src: dataUrl });
+        } catch (e) {
+          // Fallback to raw data url if canvas has any issue
+          resolve({ type: "image", src: rawDataUrl });
         }
-
-        const canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
-
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, width, height);
-
-        // Export as optimized WebP or JPEG
-        let dataUrl = canvas.toDataURL("image/webp", 0.85);
-        if (!dataUrl.startsWith("data:image/webp")) {
-          dataUrl = canvas.toDataURL("image/jpeg", 0.85);
-        }
-
-        resolve({ type: "image", src: dataUrl });
       };
-      img.onerror = () => reject(new Error("Failed to load image"));
-      img.src = event.target.result;
+      img.onerror = () => {
+        // Fallback directly to raw data url
+        resolve({ type: "image", src: rawDataUrl });
+      };
+      img.src = rawDataUrl;
     };
     reader.onerror = (err) => reject(err);
     reader.readAsDataURL(file);
