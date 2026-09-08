@@ -8,13 +8,16 @@ import {
   Phone,
   Sparkles,
   MapPin,
-  Clock,
-  Car,
-  Wifi,
+  BedDouble,
   Utensils,
-  Mountain,
-  ShieldCheck,
-  CreditCard,
+  Car,
+  Wind,
+  Wifi,
+  Coffee,
+  Users,
+  Plane,
+  Landmark,
+  CheckCircle2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -25,84 +28,98 @@ export default function HomeFAQ() {
   const faqItems = [
     {
       icon: MapPin,
-      question: t(
-        "faq.q1",
-        "Where is Hotel Sherpa Soul located in Kathmandu?"
-      ),
+      question: t("faq.q1", "Where is Hotel Sherpa Soul located?"),
       answer: t(
         "faq.a1",
-        "Hotel Sherpa Soul is situated on Thamel Bhagawati Marg 26 in the heart of Thamel, Kathmandu, Nepal. We are within walking distance to famous restaurants, shops, and cultural heritage sites, and approximately 6 km from Tribhuvan International Airport."
+        "Hotel Sherpa Soul is located in Thamel, Kathmandu, Nepal, a popular area for travellers and visitors to Kathmandu."
       ),
     },
     {
-      icon: Clock,
-      question: t("faq.q2", "What are the check-in and check-out times?"),
+      icon: BedDouble,
+      question: t("faq.q2", "What room types are available?"),
       answer: t(
         "faq.a2",
-        "Check-in begins at 14:00 (2:00 PM) and check-out is until 12:00 (12:00 PM). Our front desk is open 24/7, and flexible early check-in or late check-out is available upon request subject to room availability."
-      ),
-    },
-    {
-      icon: Car,
-      question: t(
-        "faq.q3",
-        "Do you offer airport pickup and shuttle services?"
-      ),
-      answer: t(
-        "faq.a3",
-        "Yes, we provide reliable airport pickup and drop-off transfers between Tribhuvan International Airport (KTM) and the hotel. You can request a transfer during direct booking or by contacting us via WhatsApp at +977-9851068219."
-      ),
-    },
-    {
-      icon: Wifi,
-      question: t(
-        "faq.q4",
-        "Is high-speed Wi-Fi available throughout the hotel?"
-      ),
-      answer: t(
-        "faq.a4",
-        "Yes, complimentary high-speed fiber-optic Wi-Fi is available in all guest rooms, suites, the rooftop terrace, and common areas, perfect for remote workers and travelers staying connected."
+        "Hotel Sherpa Soul offers three room categories: Solo Comfort Room for single occupancy, Double Comfort Room for two guests, and Triple Comfort Room for three guests."
       ),
     },
     {
       icon: Utensils,
-      question: t(
-        "faq.q5",
-        "Is there a kitchen facility for guests to use?"
+      question: t("faq.q3", "Is Hotel Sherpa Soul a hotel with a restaurant?"),
+      answer: t(
+        "faq.a3",
+        "No. Hotel Sherpa Soul does not operate a restaurant. Our focus is on comfortable accommodation and a peaceful environment for our guests."
       ),
+    },
+    {
+      icon: Car,
+      question: t("faq.q4", "Do you have private parking?"),
+      answer: t(
+        "faq.a4",
+        "Private parking is not available at the hotel. Guests who need parking should contact the hotel before arrival for information about nearby options."
+      ),
+    },
+    {
+      icon: Wind,
+      question: t("faq.q5", "Do the rooms have air conditioning?"),
       answer: t(
         "faq.a5",
-        "Yes, Hotel Sherpa Soul features a clean, fully equipped shared guest kitchen where you can cook your favorite meals, brew fresh Himalayan tea, or prepare snacks anytime during your stay."
+        "Air conditioning is available as a room facility where specified. Guests should check the selected room category for exact facilities."
       ),
     },
     {
-      icon: Mountain,
-      question: t(
-        "faq.q6",
-        "Can you arrange trekking permits and Himalayan tours?"
-      ),
+      icon: Wifi,
+      question: t("faq.q6", "Do you provide Wi-Fi?"),
       answer: t(
         "faq.a6",
-        "Absolutely! Drawing from our authentic Sherpa mountain heritage, our team provides complete travel desk support including Everest, Annapurna, and Langtang trek permits, licensed Sherpa guides, domestic flights, and valley sightseeing."
+        "Yes, Wi-Fi is provided for guests to stay connected during their visit."
       ),
     },
     {
-      icon: ShieldCheck,
-      question: t(
-        "faq.q7",
-        "Can I securely store my luggage while on a trek?"
-      ),
+      icon: Coffee,
+      question: t("faq.q7", "Does the hotel have a shared kitchen?"),
       answer: t(
         "faq.a7",
-        "Yes, we offer complimentary secure luggage storage before check-in, after check-out, and for trekkers during their multi-day Himalayan journeys until they return."
+        "Yes. Hotel Sherpa Soul provides a shared self-use kitchen for registered guests, particularly useful for longer stays. Please check the current kitchen facilities and house rules with the hotel."
       ),
     },
     {
-      icon: CreditCard,
-      question: t("faq.q8", "What payment methods do you accept?"),
+      icon: Users,
+      question: t("faq.q8", "Who can use the shared kitchen?"),
       answer: t(
         "faq.a8",
-        "We accept cash (NPR, USD, EUR), credit and debit cards (Visa, MasterCard), Fonepay QR transfers, and direct bank transfers."
+        "The shared kitchen is intended for registered hotel guests. Guests are expected to clean after use and respect other guests sharing the facility."
+      ),
+    },
+    {
+      icon: Plane,
+      question: t("faq.q9", "How far is Kathmandu Airport?"),
+      answer: t(
+        "faq.a9",
+        "The hotel is approximately 20 minutes from Tribhuvan International Airport by vehicle, depending on traffic."
+      ),
+    },
+    {
+      icon: Landmark,
+      question: t("faq.q10", "How far is Pashupatinath Temple?"),
+      answer: t(
+        "faq.a10",
+        "Pashupatinath Temple is approximately 15 minutes away by vehicle, depending on traffic."
+      ),
+    },
+    {
+      icon: Sparkles,
+      question: t("faq.q11", "How far is Boudhanath Stupa?"),
+      answer: t(
+        "faq.a11",
+        "Boudhanath Stupa is approximately 20 minutes away by vehicle, depending on traffic."
+      ),
+    },
+    {
+      icon: CheckCircle2,
+      question: t("faq.q12", "How can I book a room?"),
+      answer: t(
+        "faq.a12",
+        "You can book directly through our website or contact the hotel directly via WhatsApp or phone to check availability."
       ),
     },
   ];
@@ -149,7 +166,7 @@ export default function HomeFAQ() {
           >
             {t(
               "faq.subtitle",
-              "Find answers to common questions about our rooms, location in Thamel, airport pickups, and hospitality services."
+              "Clear, practical answers about our rooms, quiet atmosphere, shared kitchen, and Thamel location."
             )}
           </motion.p>
         </div>
@@ -166,7 +183,7 @@ export default function HomeFAQ() {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.4, delay: index * 0.04 }}
                 className={`border rounded-2xl transition-all duration-300 ${
                   isOpen
                     ? "bg-white border-amber-300 shadow-md ring-2 ring-amber-100/50"
@@ -234,15 +251,15 @@ export default function HomeFAQ() {
           <div className="text-center md:text-left space-y-2">
             <div className="inline-flex items-center gap-1.5 text-amber-400 text-xs font-semibold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
-              {t("faq.supportTag", "24/7 Front Desk Assistance")}
+              {t("faq.supportTag", "Friendly Front Desk Support")}
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold">
-              {t("faq.helpTitle", "Still have questions about your stay?")}
+              {t("faq.helpTitle", "Have a question before booking?")}
             </h3>
             <p className="text-gray-300 text-sm sm:text-base max-w-xl">
               {t(
                 "faq.helpSubtitle",
-                "Our warm Sherpa team is always ready to assist with customized itineraries, special requests, and room bookings."
+                "We are happy to help you choose the right room and plan your stay in Kathmandu."
               )}
             </p>
           </div>

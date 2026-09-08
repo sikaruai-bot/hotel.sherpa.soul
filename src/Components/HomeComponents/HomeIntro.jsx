@@ -90,9 +90,12 @@ export default function HomeIntro() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-4"
             >
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-none tracking-tight">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-600/40 text-amber-200 text-xs sm:text-sm font-semibold tracking-wider uppercase border border-amber-400/30 backdrop-blur-md">
+                A Quiet Place to Come Back To
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight">
                 {t("hotelName")}
               </h2>
             </motion.div>
@@ -102,7 +105,7 @@ export default function HomeIntro() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="text-white/80 text-lg leading-relaxed max-w-2xl font-light"
+              className="text-white/90 text-lg sm:text-xl leading-relaxed max-w-3xl font-light"
             >
               {t("introsub")}
             </motion.p>

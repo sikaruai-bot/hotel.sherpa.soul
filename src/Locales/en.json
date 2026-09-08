@@ -2,34 +2,36 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "room": "Room",
+    "room": "Rooms",
     "gallery": "Gallery",
+    "blog": "Blog",
     "contact": "Contact",
-    "quick": "Quick Book"
+    "pms": "Staff PMS",
+    "quick": "Book Your Stay"
   },
   "home": {
     "hero": {
-      "title": "Hotel Sherpa Soul",
-      "subtitle": "Premium Comfort",
-      "paragraph": "Experience unparalleled hospitality in the heart of Kathmandu. Our boutique hotel seamlessly blends traditional Nepalese charm with contemporary luxury, creating memories that last a lifetime.",
+      "title": "A Simple Stay in Thamel. A Better Night's Sleep.",
+      "subtitle": "No Restaurant. No Noise. Sleep Well.",
+      "paragraph": "Welcome to Hotel Sherpa Soul, a small and comfortable hotel in the heart of Thamel, Kathmandu. We keep things simple: comfortable rooms, a peaceful place to rest, practical facilities, friendly service and a convenient location for exploring Kathmandu.",
       "bookButton": "Book Your Stay",
-      "tourButton": "Virtual Tour",
-      "modalTitle": "Virtual Tour - Hotel Sherpa Soul",
-      "modalDesc": "Take a virtual journey through our luxurious accommodations and discover the perfect blend of tradition and modernity."
+      "tourButton": "View Our Rooms",
+      "modalTitle": "Hotel Sherpa Soul - Thamel, Kathmandu",
+      "modalDesc": "A peaceful stay in Thamel focused on comfortable rooms, practical facilities, and a restful night's sleep."
     }
   },
   "about": {
     "hero": {
-      "title": "About Us",
-      "subtitle": "Welcoming National & International Guests with Authentic Sherpa Hospitality"
+      "title": "About Hotel Sherpa Soul",
+      "subtitle": "Hospitality That Keeps Things Simple in the Heart of Thamel"
     }
   },
   "roomsHero": {
-    "badgeTitle": "24/7 Room Service",
-    "badgeSubtitle": "Always here for you",
-    "headingLine1": "Discover rooms",
-    "headingLine2": "tailored to your lifestyle",
-    "paragraph": "Comfort, style, and functionality—all in one place."
+    "badgeTitle": "Hotel Sherpa Soul",
+    "badgeSubtitle": "Thamel, Kathmandu",
+    "headingLine1": "Comfortable Rooms for",
+    "headingLine2": "Different Ways of Travelling",
+    "paragraph": "Every traveller has a different reason for coming to Kathmandu. Our room categories are designed around simple, practical comfort."
   },
   "gallery": {
     "title": "Our Gallery",
@@ -103,57 +105,57 @@
   },
   "aboutStory": {
     "ourStory": "Our Story",
-    "welcomeTo": "Welcome to Hotel",
-    "sherpaSoul": "Sherpa Soul",
-    "paragraph1": "Nestled in the heart of Thamel, Kathmandu, Hotel Sherpa Soul offers a unique blend of cultural charm, comfort, and convenience for both national and international travelers exploring the wonders of Nepal.",
-    "paragraph2": "Whether you're a local guest discovering your own country's treasures or an international visitor exploring Nepal's majestic landscapes and historic sites, our hotel serves as the perfect base with warm hospitality and modern amenities.",
-    "paragraph3": "At Hotel Sherpa Soul, we proudly welcome guests from across Nepal and around the world, sharing the authentic essence of Sherpa warmth in the capital's most vibrant neighborhood.",
+    "welcomeTo": "Hospitality That Keeps",
+    "sherpaSoul": "Things Simple",
+    "paragraph1": "Hotel Sherpa Soul is a small hotel in Thamel, Kathmandu, created for travellers who value comfort, convenience and a good night's sleep.",
+    "paragraph2": "For us, hospitality is not about having the biggest building or the longest list of facilities. It is about getting the important things right: a clean and comfortable room, a convenient location, a peaceful environment, helpful service and a warm welcome when you arrive in Kathmandu.",
+    "paragraph3": "We understand that many travellers spend most of their day exploring the city or travelling through Nepal. When they return to the hotel, they want somewhere comfortable to relax and recharge.",
     "exploreLocation": "Explore Our Location",
-    "imageAlt": "Hotel Sherpa Soul View"
+    "imageAlt": "Hotel Sherpa Soul - Peaceful Stay in Thamel"
   },
   "aboutWhy": {
-    "whyChoose": "Why Choose",
-    "sherpaSoul": "Sherpa Soul",
-    "subtitle": "A peaceful, practical base in Kathmandu with Sherpa warmth and modern comforts",
+    "whyChoose": "Why Stay With",
+    "sherpaSoul": "Hotel Sherpa Soul?",
+    "subtitle": "A peaceful, practical base in Thamel designed for rest, comfort and convenience",
     "authenticSherpaLifestyle": {
-      "title": "Authentic Sherpa Lifestyle",
-      "description": "Immerse yourself in genuine Sherpa traditions and hospitality for a memorable cultural experience."
+      "title": "Peaceful Nights",
+      "description": "We do not have a restaurant or noisy entertainment area inside the hotel. Our focus is on a calm environment where you can relax and sleep comfortably."
     },
     "primeThamelLocation": {
-      "title": "Prime Thamel Location",
-      "description": "Stay in the heart of Kathmandu — close to markets, eateries, and heritage sites."
+      "title": "In the Heart of Thamel",
+      "description": "Stay close to the energy, shops, cafés and trekking agencies of Thamel while having a comfortable, quiet place to return to."
     },
     "guestAmenities": {
-      "title": "Irresistible Amenities",
-      "description": "Spacious rooms, attached bathrooms, complimentary high-speed Wi‑Fi, and all the comforts you need."
+      "title": "Three Practical Room Options",
+      "description": "Choose a Solo Comfort Room, Double Comfort Room or Triple Comfort Room depending on your travel plans and group size."
     },
     "airportPickupForInternationalGuests": {
-      "title": "International Guest Services",
-      "description": "Seamless airport pick-up and guidance for travelers from all over the world."
+      "title": "Air Conditioning & Free Wi-Fi",
+      "description": "Air-conditioned rooms and high-speed Wi-Fi keep you comfortable and connected with family, work or travel plans."
     },
     "foreignCurrencyExchange": {
-      "title": "Foreign Currency Exchange",
-      "description": "Convenient currency exchange services to make your stay hassle-free."
+      "title": "Shared Self-Kitchen",
+      "description": "Our shared self-use kitchen gives long-stay guests the flexibility to prepare simple home-cooked meals with induction cooktop, fridge, and microwave."
     },
     "cleanAndSecure": {
-      "title": "Clean & Secure",
-      "description": "Daily housekeeping, secure access, and a worry-free environment for peace of mind."
+      "title": "Friendly, Personal Service",
+      "description": "We are a small hotel, so our guests are not just another room number. We make your Kathmandu stay easy, comfortable and welcoming."
     },
     "showOtherLanguages": "Show other languages",
     "hideOtherLanguages": "Hide other languages"
   },
   "aboutVision": {
-    "buddhistAlt": "Buddhist Symbol",
+    "buddhistAlt": "Sherpa Heritage & Peace",
     "our": "Our",
-    "vision": "Vision",
+    "vision": "Philosophy: No Restaurant. No Noise. Sleep Well.",
     "description": {
-      "part1": "To be the most trusted and beloved hotel in Kathmandu — where every guest, whether from Nepal or abroad, experiences the harmony of ",
-      "para2": "We believe in creating transformative experiences that connect communities and foster deep understanding. Through innovative approaches and mindful practices, we aim to build bridges between ancient wisdom and modern solutions, empowering individuals to discover their true potential and contribute meaningfully to society.",
-      "para3": "Our commitment extends beyond mere service delivery – we strive to cultivate lasting relationships, inspire positive change, and create sustainable impact that resonates across generations. Every step we take is guided by compassion, authenticity, and an unwavering dedication to excellence.",
-      "highlight": "Sherpa hospitality",
-      "part2": ", cultural richness, and thoughtful comfort that bridges local warmth with international standards in the heart of the Himalayas."
+      "part1": "We intentionally keep the hotel simple and peaceful. Instead of running a busy restaurant or entertainment space, our focus is entirely on ",
+      "highlight": "peaceful accommodation and restful sleep",
+      "part2": "for travellers exploring Kathmandu."
     },
-    "startJourney": "Start Your Journey"
+    "para2": "Hotel Sherpa Soul is built around a simple understanding of hospitality: travellers need a place where they feel comfortable, welcome and able to rest after walking Kathmandu's vibrant streets or returning from a Himalayan trek.",
+    "para3": "What we offer is simpler and more meaningful: a comfortable room, a convenient location in Thamel, a quiet night's sleep, and genuine Sherpa warmth welcoming you to Nepal.",
+    "startJourney": "Book Your Stay"
   },
   "roomsCard": {
     "roomsSuites": "Rooms & Suites",
@@ -196,7 +198,7 @@
   "footer": {
     "brand": {
       "title": "Hotel Sherpa Soul",
-      "description": "A peaceful escape in the heart of Thamel, blending comfort, culture, and Sherpa hospitality"
+      "description": "A small, comfortable hotel in Thamel, Kathmandu. No Restaurant. No Noise. Sleep Well."
     },
     "quickLinks": {
       "title": "Quick Links",
@@ -227,44 +229,44 @@
     }
   },
   "homeServices": {
-    "sectionTag": "Services",
-    "sectionTitle": "Our Services",
+    "sectionTag": "Why Choose Us",
+    "sectionTitle": "Why Stay With Hotel Sherpa Soul?",
     "intro": {
-      "title": "Services We Offer",
-      "desc": "We provide comfortable accommodations with all the essential amenities of a modern hotel. Enjoy a hassle-free experience with reliable service."
+      "title": "A Calm Base in the Heart of Kathmandu",
+      "desc": "We keep things simple. Comfortable rooms, a peaceful place to rest, practical facilities, friendly service and a convenient location for exploring Kathmandu."
     },
     "services": [
       {
-        "title": "Clean & Airy Rooms",
-        "desc": "Spacious and well-ventilated rooms with daily cleaning service."
+        "title": "Peaceful Nights",
+        "desc": "No restaurant or noisy entertainment area inside the hotel. Calm environment where you can sleep comfortably."
+      },
+      {
+        "title": "In the Heart of Thamel",
+        "desc": "Stay close to the energy of Thamel while having a comfortable place to return to at the end of the day."
+      },
+      {
+        "title": "Air Conditioning",
+        "desc": "Air-conditioned rooms help you stay comfortable in every season during your time in Kathmandu."
       },
       {
         "title": "Free Wi-Fi",
-        "desc": "High-speed internet available throughout the building."
+        "desc": "Reliable high-speed Wi-Fi to stay connected with family, friends, work or your travel plans."
       },
       {
-        "title": "Room Service",
-        "desc": "Delicious meals and drinks delivered right to your room."
+        "title": "Private Bathrooms",
+        "desc": "Private en-suite bathroom facilities with 24/7 hot & cold showers, towels, toiletries and toothpaste."
       },
       {
-        "title": "Laundry Service",
-        "desc": "Quick laundry and dry-cleaning available at extra cost."
+        "title": "Shared Self-Kitchen",
+        "desc": "Shared kitchen with induction cooktop, fridge, and microwave giving long-stay guests meal flexibility."
       },
       {
-        "title": "Showers",
-        "desc": "24-hour hot water to ensure your comfort."
+        "title": "Baggage Storage",
+        "desc": "Secure storage space to keep personal belongings and trek luggage safe during your stay."
       },
       {
-        "title": "Pickup & Drop Service",
-        "desc": "Convenient airport and local transport services for guests."
-      },
-      {
-        "title": "Tour & Travel Assistance",
-        "desc": "Pick-up and drop service available on request."
-      },
-      {
-        "title": "24/7 Front Desk",
-        "desc": "Round-the-clock assistance for your needs."
+        "title": "Friendly, Personal Service",
+        "desc": "We are a small hotel, so our guests are not just another room number. We ensure a warm, easy stay."
       }
     ]
   },
@@ -331,7 +333,7 @@
     }
   ],
   "hotelName": "Hotel Sherpa Soul",
-  "introsub": "Nestled in the vibrant heart of Kathmandu, our boutique haven offers a perfect fusion of timeless Nepalese heritage and modern elegance. Every detail is crafted to provide warmth, comfort, and unforgettable experiences for every guest.",
+  "introsub": "Thamel is full of life. There are cafés, restaurants, shops, trekking agencies and plenty of places to explore. But after a long day of walking around Kathmandu or returning from a trek, sometimes all you want is a quiet room and a good night's sleep. That is what we focus on at Hotel Sherpa Soul. We give our guests a clean, comfortable and peaceful place to stay while they experience Kathmandu.",
   "heroParagraph": "Experience unparalleled hospitality in the heart of Kathmandu. Our boutique hotel seamlessly blends traditional Nepalese charm with contemporary luxury, creating memories that last a lifetime.",
   "bookButton": "Book Your Stay",
   "virtualTourButton": "Virtual Tour",
@@ -368,23 +370,23 @@
     "review": "Reviews"
   },
   "facilities": {
-    "title1": "Facilities",
-    "title2": "Our Facilities",
+    "title1": "Long Stays & Amenities",
+    "title2": "Shared Self-Kitchen & Facilities",
     "laundry": {
-      "title": "Laundry Service",
-      "desc": "Convenient laundry and dry-cleaning available at extra cost to keep your clothes fresh and ready anytime."
+      "title": "Shared Self-Kitchen",
+      "desc": "Induction cooktop, refrigerator, microwave oven, electric kettle, pots, pans, utensils, and dining area for long-stay travellers."
     },
     "pickup": {
-      "title": "Airport Pickup & Drop",
-      "desc": "Comfortable and reliable airport transfers available on request for a smooth travel experience."
+      "title": "Airport Transfers",
+      "desc": "Convenient airport pickup and drop-off available (~20 minutes from Tribhuvan International Airport depending on traffic)."
     },
     "frontdesk": {
-      "title": "24/7 Front Desk & Travel Assistance",
-      "desc": "Our team is available round-the-clock to assist with check-ins, queries, tour planning, and local travel arrangements."
+      "title": "24/7 Front Desk & Travel Help",
+      "desc": "Friendly assistance for check-ins, trek preparation, permits, transportation, and local Kathmandu advice."
     },
     "showers": {
-      "title": "Hot Showers",
-      "desc": "All rooms are equipped with hot showers to ensure a relaxing and refreshing stay at any time of day."
+      "title": "Hot & Cold Showers",
+      "desc": "Private bathrooms equipped with hot and cold showers, clean towels, practical toiletries, and toothpaste."
     }
   },
   "testimonialIntro": "Real experiences from travelers who discovered their soul at Sherpa Soul Stay Inn. Each story reflects our commitment to authentic Sherpa hospitality and unforgettable mountain adventures.",
@@ -395,20 +397,20 @@
     "but": "Book Your Stay"
   },
   "room": {
-    "title1": "Rooms & Suites",
-    "title2": "Our Rooms",
-    "desc": "Discover comfort and elegance in our thoughtfully designed accommodations",
+    "title1": "Rooms & Accommodation",
+    "title2": "Our Room Categories",
+    "desc": "Practical and comfortable rooms for solo travellers, couples, friends and small families.",
     "size": "Feets Size",
     "guest": "Guests",
     "rooms": {
       "1": {
-        "name": "Single Single Bed Room"
+        "name": "Solo Comfort Room"
       },
       "2": {
-        "name": "Twin Bed Room"
+        "name": "Double Comfort Room"
       },
       "3": {
-        "name": "Triple Bed Room (single + Double)"
+        "name": "Triple Comfort Room"
       }
     },
     "details": "View All Rooms",
@@ -551,25 +553,33 @@
   "faq": {
     "badge": "Frequently Asked Questions",
     "title": "Everything You Need to Know",
-    "subtitle": "Find answers to common questions about our rooms, location in Thamel, airport pickups, and hospitality services.",
-    "supportTag": "24/7 Front Desk Assistance",
-    "helpTitle": "Still have questions about your stay?",
-    "helpSubtitle": "Our warm Sherpa team is always ready to assist with customized itineraries, special requests, and room bookings.",
-    "q1": "Where is Hotel Sherpa Soul located in Kathmandu?",
-    "a1": "Hotel Sherpa Soul is situated on Thamel Bhagawati Marg 26 in the heart of Thamel, Kathmandu, Nepal. We are within walking distance to famous restaurants, shops, and cultural heritage sites, and approximately 6 km from Tribhuvan International Airport.",
-    "q2": "What are the check-in and check-out times?",
-    "a2": "Check-in begins at 14:00 (2:00 PM) and check-out is until 12:00 (12:00 PM). Our front desk is open 24/7, and flexible early check-in or late check-out is available upon request subject to room availability.",
-    "q3": "Do you offer airport pickup and shuttle services?",
-    "a3": "Yes, we provide reliable airport pickup and drop-off transfers between Tribhuvan International Airport (KTM) and the hotel. You can request a transfer during direct booking or by contacting us via WhatsApp at +977-9851068219.",
-    "q4": "Is high-speed Wi-Fi available throughout the hotel?",
-    "a4": "Yes, complimentary high-speed fiber-optic Wi-Fi is available in all guest rooms, suites, the rooftop terrace, and common areas, perfect for remote workers and travelers staying connected.",
-    "q5": "Is there a kitchen facility for guests to use?",
-    "a5": "Yes, Hotel Sherpa Soul features a clean, fully equipped shared guest kitchen where you can cook your favorite meals, brew fresh Himalayan tea, or prepare snacks anytime during your stay.",
-    "q6": "Can you arrange trekking permits and Himalayan tours?",
-    "a6": "Absolutely! Drawing from our authentic Sherpa mountain heritage, our team provides complete travel desk support including Everest, Annapurna, and Langtang trek permits, licensed Sherpa guides, domestic flights, and valley sightseeing.",
-    "q7": "Can I securely store my luggage while on a trek?",
-    "a7": "Yes, we offer complimentary secure luggage storage before check-in, after check-out, and for trekkers during their multi-day Himalayan journeys until they return.",
-    "q8": "What payment methods do you accept?",
-    "a8": "We accept cash (NPR, USD, EUR), credit and debit cards (Visa, MasterCard), Fonepay QR transfers, and direct bank transfers."
+    "subtitle": "Clear, practical answers about our rooms, quiet atmosphere, shared kitchen, and Thamel location.",
+    "supportTag": "Friendly Front Desk Support",
+    "helpTitle": "Have a question before booking?",
+    "helpSubtitle": "We are happy to help you choose the right room and plan your stay in Kathmandu.",
+    "q1": "Where is Hotel Sherpa Soul located?",
+    "a1": "Hotel Sherpa Soul is located in Thamel, Kathmandu, Nepal, a popular area for travellers and visitors to Kathmandu.",
+    "q2": "What room types are available?",
+    "a2": "Hotel Sherpa Soul offers three room categories: Solo Comfort Room for single occupancy, Double Comfort Room for two guests, and Triple Comfort Room for three guests.",
+    "q3": "Is Hotel Sherpa Soul a hotel with a restaurant?",
+    "a3": "No. Hotel Sherpa Soul does not operate a restaurant. Our focus is on comfortable accommodation and a peaceful environment for our guests.",
+    "q4": "Do you have private parking?",
+    "a4": "Private parking is not available at the hotel. Guests who need parking should contact the hotel before arrival for information about nearby options.",
+    "q5": "Do the rooms have air conditioning?",
+    "a5": "Air conditioning is available as a room facility where specified. Guests should check the selected room category for exact facilities.",
+    "q6": "Do you provide Wi-Fi?",
+    "a6": "Yes, Wi-Fi is provided for guests to stay connected during their visit.",
+    "q7": "Does the hotel have a shared kitchen?",
+    "a7": "Yes. Hotel Sherpa Soul provides a shared self-use kitchen for registered guests, particularly useful for longer stays. Please check the current kitchen facilities and house rules with the hotel.",
+    "q8": "Who can use the shared kitchen?",
+    "a8": "The shared kitchen is intended for registered hotel guests. Guests are expected to clean after use and respect other guests sharing the facility.",
+    "q9": "How far is Kathmandu Airport?",
+    "a9": "The hotel is approximately 20 minutes from Tribhuvan International Airport by vehicle, depending on traffic.",
+    "q10": "How far is Pashupatinath Temple?",
+    "a10": "Pashupatinath Temple is approximately 15 minutes away by vehicle, depending on traffic.",
+    "q11": "How far is Boudhanath Stupa?",
+    "a11": "Boudhanath Stupa is approximately 20 minutes away by vehicle, depending on traffic.",
+    "q12": "How can I book a room?",
+    "a12": "You can book directly through our website or contact the hotel directly via WhatsApp or phone to check availability."
   }
 }

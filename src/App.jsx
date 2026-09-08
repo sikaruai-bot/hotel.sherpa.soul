@@ -31,6 +31,20 @@ function PageLoader() {
   );
 }
 
+function ExternalRedirect({ to }) {
+  React.useEffect(() => {
+    window.location.href = to;
+  }, [to]);
+  return (
+    <div className="min-h-[50vh] flex items-center justify-center">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-9 h-9 border-3 border-amber-600/20 border-t-amber-600 rounded-full animate-spin" />
+        <span className="text-xs uppercase tracking-widest text-gray-500 font-medium">Redirecting to PMS Staff Portal...</span>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div>
@@ -54,6 +68,10 @@ function App() {
             <Route path="/gallery" element={<FullGallery />} />
             <Route path="/book/:id" element={<BookingForm />} />
 
+                        <Route path="/admin" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
+            <Route path="/dashboard" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
+            <Route path="/pms" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
+            <Route path="/staff" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

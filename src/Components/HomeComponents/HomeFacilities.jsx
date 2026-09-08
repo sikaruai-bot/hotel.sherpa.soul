@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Utensils, CheckCircle2, Coffee, Sparkles } from "lucide-react";
 
 const HomeFacilities = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,8 +16,8 @@ const HomeFacilities = () => {
         }
       },
       {
-        threshold: 0.2,
-        rootMargin: "0px 0px -100px 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px",
       }
     );
 
@@ -33,41 +34,64 @@ const HomeFacilities = () => {
 
   const facilities = [
     {
-      img: "laundry.jpeg",
-      number: t("facilities.laundry.title"),
+      img: "/amenities.webp",
+      number: t("facilities.laundry.title", "Shared Self-Kitchen"),
       title: "",
-      desc: t("facilities.laundry.desc"),
-      initial: { opacity: 0, x: -100 },
+      desc: t(
+        "facilities.laundry.desc",
+        "Induction cooktop, refrigerator, microwave oven, electric kettle, pots, pans, utensils, and dining area for long-stay travellers."
+      ),
+      initial: { opacity: 0, x: -60 },
       animate: { opacity: 1, x: 0 },
       delay: 0,
     },
     {
-      img: "/changes_photo/frontend_desk.jpeg",
-      number: t("facilities.frontdesk.title"),
+      img: "/changes_photo/frontend_desk.webp",
+      number: t("facilities.frontdesk.title", "24/7 Front Desk"),
       title: "",
-      desc: t("facilities.frontdesk.desc"),
-      initial: { opacity: 0, y: 100 },
+      desc: t(
+        "facilities.frontdesk.desc",
+        "Friendly assistance for check-ins, trek preparation, permits, transportation, and local Kathmandu advice."
+      ),
+      initial: { opacity: 0, y: 60 },
       animate: { opacity: 1, y: 0 },
-      delay: 0.2,
+      delay: 0.15,
     },
     {
-      img: "airportpickup.jpeg",
-      number: t("facilities.pickup.title"),
+      img: "/airportpickup.webp",
+      number: t("facilities.pickup.title", "Airport Transfers"),
       title: "",
-      desc: t("facilities.pickup.desc"),
-      initial: { opacity: 0, x: 100 },
+      desc: t(
+        "facilities.pickup.desc",
+        "Convenient airport pickup and drop-off available (~20 minutes from Tribhuvan International Airport depending on traffic)."
+      ),
+      initial: { opacity: 0, x: 60 },
       animate: { opacity: 1, x: 0 },
-      delay: 0.4,
+      delay: 0.3,
     },
     {
-      img: "changes_photo/washRoom.jpeg",
-      number: t("facilities.showers.title"),
+      img: "/changes_photo/washRoom.webp",
+      number: t("facilities.showers.title", "Hot & Cold Showers"),
       title: "",
-      desc: t("facilities.showers.desc"),
-      initial: { opacity: 0, x: 100 },
-      animate: { opacity: 1, x: 0 },
-      delay: 0.4,
+      desc: t(
+        "facilities.showers.desc",
+        "Private bathrooms equipped with hot and cold showers, clean towels, practical toiletries, and toothpaste."
+      ),
+      initial: { opacity: 0, y: 60 },
+      animate: { opacity: 1, y: 0 },
+      delay: 0.45,
     },
+  ];
+
+  const kitchenAmenities = [
+    "Induction Cooktop",
+    "Refrigerator & Freezer",
+    "Microwave Oven",
+    "Electric Kettle",
+    "Cooking Pots & Pans",
+    "Plates, Bowls & Cutlery",
+    "Food Prep & Sink Area",
+    "Dining / Eating Space",
   ];
 
   return (
@@ -79,39 +103,38 @@ const HomeFacilities = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="text-sm tracking-widest uppercase text-amber-600 mb-5 font-light">
-            {t("facilities.title1")}
+          <p className="text-sm tracking-widest uppercase text-amber-600 mb-3 font-semibold">
+            {t("facilities.title1", "Long Stays & Amenities")}
           </p>
-          <h2 className="text-6xl md:text-7xl font-light text-gray-900 tracking-tight">
-            {t("facilities.title2")}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 tracking-tight">
+            {t("facilities.title2", "Shared Self-Kitchen & Hotel Amenities")}
           </h2>
         </div>
 
-        {/* Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 relative gap-x-6 gap-y-20">
+        {/* 4 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 relative gap-x-8 gap-y-20 mb-24">
           {facilities.map((facility, index) => (
             <motion.div
               key={index}
               initial={facility.initial}
               animate={isVisible ? facility.animate : {}}
-              transition={{ duration: 1, delay: facility.delay }}
+              transition={{ duration: 0.8, delay: facility.delay }}
               className="relative group"
             >
               <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
                 <img
                   src={facility.img}
-                  alt={`${facility.title} - Hotel Sherpa Soul Amenity`}
+                  alt={`${facility.number} - Hotel Sherpa Soul Amenity`}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
               </div>
 
-              <div className="max-w-xl bg-[#AB8865] text-white flex items-start justify-center flex-col absolute -bottom-10 left-5 p-6 rounded-xl shadow-2xl backdrop-blur-sm border border-amber-600/20 hover:scale-105 transition-all duration-300 group-hover:shadow-amber-900/25">
-                <div className="text-2xl font-light mb-3 tracking-wide">
-                  <span className="mr-2">{facility.number}</span>
-                  <span className="text-lg font-normal">{facility.title}</span>
+              <div className="max-w-xl bg-[#AB8865] text-white flex items-start justify-center flex-col absolute -bottom-10 left-5 right-5 sm:right-auto p-6 rounded-xl shadow-2xl backdrop-blur-sm border border-amber-600/20 hover:scale-[1.02] transition-all duration-300 group-hover:shadow-amber-900/25">
+                <div className="text-xl font-bold mb-2 tracking-wide text-white">
+                  <span>{facility.number}</span>
                 </div>
                 <div className="text-amber-100 leading-relaxed text-sm">
                   {facility.desc}
@@ -121,16 +144,39 @@ const HomeFacilities = () => {
           ))}
         </div>
 
-        {/* Floating Decoration Circles */}
-        <div className="absolute top-20 right-10 w-2 h-2 bg-amber-300 rounded-full opacity-60 animate-pulse"></div>
-        <div
-          className="absolute bottom-20 left-10 w-3 h-3 bg-amber-400 rounded-full opacity-40 animate-bounce"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 right-20 w-1 h-1 bg-amber-500 rounded-full opacity-80 animate-ping"
-          style={{ animationDelay: "2s" }}
-        ></div>
+        {/* Highlight Banner: Shared Self-Kitchen for Longer Stays */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-gradient-to-br from-stone-900 via-stone-800 to-amber-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden mt-12 border border-amber-500/20"
+        >
+          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 text-amber-300 text-xs uppercase tracking-wider font-semibold mb-4 border border-amber-400/30">
+              <Sparkles className="w-3.5 h-3.5" />
+              Shared Self-Kitchen for Longer Stays
+            </div>
+            <h3 className="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">
+              Feel at Home, Even When You're Away
+            </h3>
+            <p className="text-stone-300 text-base sm:text-lg leading-relaxed mb-8">
+              Staying in Kathmandu for a few days is one thing. Staying for a few weeks is different.
+              Our shared self-use kitchen gives long-stay guests the flexibility to prepare simple meals,
+              brew fresh tea, work remotely, and enjoy a comfortable home routine in the heart of Thamel.
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-stone-700/60">
+              {kitchenAmenities.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-2 text-stone-200 text-sm">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -182,6 +182,9 @@ export default function HomeIntro() {
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
               {/* Text Block */}
               <div className="space-y-4 max-w-3xl">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-sm font-semibold tracking-wide backdrop-blur-sm">
+                  {t("home.hero.subtitle")}
+                </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-none tracking-tight">
                   {t("home.hero.title")}
                 </h1>
