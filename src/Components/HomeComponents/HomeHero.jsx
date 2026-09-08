@@ -27,15 +27,15 @@ export default function HomeIntro() {
 
   const heroSlides = [
     {
-      image: "hero/hero1.jpg",
+      image: "hero/hero1.webp",
       subtitle: t("home.hero.subtitle"),
     },
     {
-      image: "hero/hero2.jpeg",
+      image: "hero/hero2.webp",
       subtitle: t("home.hero.subtitle"),
     },
     {
-      image: "hero/hero4.jpeg",
+      image: "hero/hero4.webp",
       subtitle: t("home.hero.subtitle"),
     },
   ];

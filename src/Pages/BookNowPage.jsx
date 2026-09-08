@@ -141,7 +141,7 @@ export default function BookNowPage() {
                       <div>
                         <h3 className="font-bold text-gray-800">WhatsApp</h3>
                         <p className="text-green-600 font-semibold text-lg">
-                          +1 (555) 123-4567
+                          +977-9851068219
                         </p>
                       </div>
                     </div>
@@ -155,7 +155,7 @@ export default function BookNowPage() {
                       <div>
                         <h3 className="font-bold text-gray-800">Email</h3>
                         <p className="text-blue-600 font-semibold">
-                          reservations@luxuryhotel.com
+                          info@hotelsherpasoul.com
                         </p>
                       </div>
                     </div>
@@ -169,7 +169,7 @@ export default function BookNowPage() {
                       <div>
                         <h3 className="font-bold text-gray-800">Location</h3>
                         <p className="text-purple-600 font-semibold">
-                          123 Luxury Avenue, City Center
+                          Thamel Bhagawati Marg 26, Kathmandu, Nepal
                         </p>
                       </div>
                     </div>
@@ -189,6 +189,42 @@ export default function BookNowPage() {
                         </p>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* Also Listed On Major OTAs */}
+                <div className="mt-8 bg-slate-900 rounded-2xl p-6 text-white shadow-xl border border-slate-800">
+                  <h4 className="font-bold text-xs uppercase tracking-wider text-amber-400 mb-2">
+                    Prefer Booking on Trusted OTAs?
+                  </h4>
+                  <p className="text-gray-300 text-xs mb-4 leading-relaxed">
+                    You can also reserve Hotel Sherpa Soul through our official listings on major platforms:
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    <a
+                      href="https://www.booking.com/hotel/np/hotel-sherpa-soul.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-blue-600/90 hover:bg-blue-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
+                    >
+                      Booking.com
+                    </a>
+                    <a
+                      href="https://www.airbnb.com/rooms/1760024961976448522"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-rose-600/90 hover:bg-rose-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
+                    >
+                      Airbnb
+                    </a>
+                    <a
+                      href="https://www.trip.com/hotels/list?keyword=Hotel%20Sherpa%20Soul%20Kathmandu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-sky-600/90 hover:bg-sky-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
+                    >
+                      Trip.com
+                    </a>
                   </div>
                 </div>
 

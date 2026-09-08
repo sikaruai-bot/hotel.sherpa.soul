@@ -49,9 +49,9 @@ export default function HomeServices() {
           <p className="text-sm tracking-[0.2em] text-amber-600 uppercase mb-4 font-light">
             {t("homeServices.sectionTag")}
           </p>
-          <h1 className="text-5xl font-light text-gray-900 tracking-wide">
+          <h2 className="text-5xl font-light text-gray-900 tracking-wide">
             {t("homeServices.sectionTitle")}
-          </h1>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -64,8 +64,10 @@ export default function HomeServices() {
             className="bg-red-100 rounded-2xl md:rounded-r-full h-[75vh] overflow-hidden flex items-center justify-center"
           >
             <img
-              src="/intro5.jpeg"
-              alt={t("homeServices.sectionTag")}
+              src="/intro5.webp"
+              alt={`${t("homeServices.sectionTag")} - Hotel Sherpa Soul Hospitality Services`}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full object-cover"
             />
           </motion.div>

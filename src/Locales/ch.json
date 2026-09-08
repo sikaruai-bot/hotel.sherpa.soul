@@ -96,7 +96,7 @@
       "title": "喜马拉雅雪巴灵酒店 – 加德满都塔梅尔",
       "description": "我们位于加德满都繁华的塔梅尔区，距离文化地标、餐馆、商店和当地体验仅几步之遥。",
       "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
-      "phone": "+977-9852030175",
+      "phone": "+977 9851068219",
       "email": "info@hotelsherpasoul.com",
       "mapTitle": "喜马拉雅雪巴灵酒店位置"
     }
@@ -330,7 +330,6 @@
       "flag": "🇫🇷"
     }
   ],
-
   "hotelName": "雪巴灵魂酒店",
   "introsub": "我们的精品度假酒店坐落在充满活力的加德满都市中心，完美融合了永恒的尼泊尔传统与现代优雅。每个细节都经过精心设计，旨在为每位宾客提供温馨、舒适和难忘的体验。",
   "heroParagraph": "体验位于加德满都中心无与伦比的热情款待。我们的精品酒店无缝融合了传统尼泊尔魅力与现代奢华，创造永恒回忆。",
@@ -536,5 +535,41 @@
     "booked": "所有房间都已满房。",
     "book": "立即预订",
     "Unavailable": "不可用"
+  },
+  "notFound": {
+    "badge": "404 错误 • 迷失在喜马拉雅",
+    "title": "在山径上迷路了吗？",
+    "subtitle": "您寻找的页面或路线不存在或已移动。让夏尔巴人的热情好客带您回到舒适之所。",
+    "homeBtn": "返回首页",
+    "backBtn": "返回",
+    "roomsBtn": "客房与套房",
+    "galleryLink": "照片画廊",
+    "aboutLink": "品牌故事",
+    "contactBtn": "前台与位置",
+    "popularLinks": "Hotel Sherpa Soul 热门推荐"
+  },
+  "faq": {
+    "badge": "Frequently Asked Questions",
+    "title": "Everything You Need to Know",
+    "subtitle": "Find answers to common questions about our rooms, location in Thamel, airport pickups, and hospitality services.",
+    "supportTag": "24/7 Front Desk Assistance",
+    "helpTitle": "Still have questions about your stay?",
+    "helpSubtitle": "Our warm Sherpa team is always ready to assist with customized itineraries, special requests, and room bookings.",
+    "q1": "Where is Hotel Sherpa Soul located in Kathmandu?",
+    "a1": "Hotel Sherpa Soul is situated on Thamel Bhagawati Marg 26 in the heart of Thamel, Kathmandu, Nepal. We are within walking distance to famous restaurants, shops, and cultural heritage sites, and approximately 6 km from Tribhuvan International Airport.",
+    "q2": "What are the check-in and check-out times?",
+    "a2": "Check-in begins at 14:00 (2:00 PM) and check-out is until 12:00 (12:00 PM). Our front desk is open 24/7, and flexible early check-in or late check-out is available upon request subject to room availability.",
+    "q3": "Do you offer airport pickup and shuttle services?",
+    "a3": "Yes, we provide reliable airport pickup and drop-off transfers between Tribhuvan International Airport (KTM) and the hotel. You can request a transfer during direct booking or by contacting us via WhatsApp at +977-9851068219.",
+    "q4": "Is high-speed Wi-Fi available throughout the hotel?",
+    "a4": "Yes, complimentary high-speed fiber-optic Wi-Fi is available in all guest rooms, suites, the rooftop terrace, and common areas, perfect for remote workers and travelers staying connected.",
+    "q5": "Is there a kitchen facility for guests to use?",
+    "a5": "Yes, Hotel Sherpa Soul features a clean, fully equipped shared guest kitchen where you can cook your favorite meals, brew fresh Himalayan tea, or prepare snacks anytime during your stay.",
+    "q6": "Can you arrange trekking permits and Himalayan tours?",
+    "a6": "Absolutely! Drawing from our authentic Sherpa mountain heritage, our team provides complete travel desk support including Everest, Annapurna, and Langtang trek permits, licensed Sherpa guides, domestic flights, and valley sightseeing.",
+    "q7": "Can I securely store my luggage while on a trek?",
+    "a7": "Yes, we offer complimentary secure luggage storage before check-in, after check-out, and for trekkers during their multi-day Himalayan journeys until they return.",
+    "q8": "What payment methods do you accept?",
+    "a8": "We accept cash (NPR, USD, EUR), credit and debit cards (Visa, MasterCard), Fonepay QR transfers, and direct bank transfers."
   }
 }

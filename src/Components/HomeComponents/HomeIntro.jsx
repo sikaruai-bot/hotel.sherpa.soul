@@ -92,9 +92,9 @@ export default function HomeIntro() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-none tracking-tight">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-none tracking-tight">
                 {t("hotelName")}
-              </h1>
+              </h2>
             </motion.div>
 
             <motion.p

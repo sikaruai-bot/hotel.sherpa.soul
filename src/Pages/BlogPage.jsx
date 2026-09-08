@@ -16,7 +16,7 @@ export default function BlogPage() {
     <main>
       <section className="relative min-h-[78vh] overflow-hidden bg-slate-950">
         <motion.img
-          src="/changes_photo/viewSeen.jpeg"
+          src="/changes_photo/viewSeen.webp"
           alt="Hotel Sherpa Soul rooftop terrace in Kathmandu"
           className="absolute inset-0 h-full w-full object-cover"
           initial={{ scale: 1.06 }}

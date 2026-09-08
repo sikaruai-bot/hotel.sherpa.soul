@@ -96,7 +96,7 @@
       "title": "Hotel Sherpa Soul – Thamel, Kathmandu",
       "description": "Ci troviamo a Thamel, il cuore pulsante di Kathmandu — a pochi passi da monumenti, ristoranti e negozi.",
       "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
-      "phone": "+977-9852030175",
+      "phone": "+977 9851068219",
       "email": "info@hotelsherpasoul.com",
       "mapTitle": "Posizione Hotel Sherpa Soul"
     }
@@ -193,7 +193,6 @@
       "reviewsSuffix": "+ Recensioni"
     }
   },
-
   "footer": {
     "brand": {
       "title": "Hotel Sherpa Soul",
@@ -212,7 +211,7 @@
     "contactUs": {
       "title": "Contattaci",
       "phone": "+977 9851068219",
-      "email": "mingmasaino@gmail.com",
+      "email": "info@hotelsherpasoul.com",
       "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal"
     },
     "followUs": {
@@ -227,7 +226,6 @@
       "suffix": "Tutti i diritti riservati"
     }
   },
-
   "homeServices": {
     "sectionTag": "Servizi",
     "sectionTitle": "I Nostri Servizi",
@@ -262,7 +260,6 @@
       }
     ]
   },
-
   "homeTestimonial": [
     {
       "text": "Sherpa Soul mi ha dato il calore di una casa durante il viaggio. Il cibo locale e il personale cordiale hanno reso il mio soggiorno indimenticabile.",
@@ -357,13 +354,11 @@
     "guest": "Ospiti Felici",
     "exp": "Anni di Esperienza"
   },
-
   "homestats": {
     "title": "Fidato da Migliaia",
     "subtitle": "Il nostro impegno per l’eccellenza ci ha fatto ottenere riconoscimenti e innumerevoli ospiti soddisfatti",
     "review": "Recensioni"
   },
-
   "facilities": {
     "title1": "Servizi",
     "title2": "I Nostri Servizi",
@@ -384,7 +379,6 @@
       "desc": "Tutte le camere sono dotate di docce calde per garantire un soggiorno rilassante e rigenerante in qualsiasi momento della giornata."
     }
   },
-
   "testimonialIntro": "Esperienze reali di viaggiatori che hanno trovato la loro anima allo Sherpa Soul Stay Inn. Ogni storia riflette il nostro impegno per l’autentica ospitalità Sherpa e le avventure indimenticabili tra le montagne.",
   "storiesFrom": "Storie dai",
   "clients": "Clienti",
@@ -392,7 +386,6 @@
     "title": "Pronto a creare la tua storia indimenticabile?",
     "but": "Prenota il Tuo Soggiorno"
   },
-
   "room": {
     "title1": "Camere & Suite",
     "title2": "Le Nostre Camere",
@@ -415,7 +408,6 @@
     "book": "Prenota Ora",
     "pack": "Camere completamente occupate"
   },
-
   "contact": {
     "title": "Iniziamo una Conversazione",
     "subtitle": "Che tu stia pianificando la tua visita, abbia bisogno di assistenza o voglia lasciare un feedback, siamo qui per rendere indimenticabile la tua esperienza all’Hotel Sherpa Soul.",
@@ -444,7 +436,6 @@
       "send2": "Invio in corso..."
     }
   },
-
   "roomdetails": {
     "back": "Indietro",
     "buttons": {
@@ -473,7 +464,6 @@
       "checkoutdes2": "Il check-out posticipato può essere disponibile con un costo aggiuntivo, soggetto a disponibilità."
     }
   },
-
   "book": {
     "guests": "Ospiti",
     "room": "Camere",
@@ -537,5 +527,41 @@
     "booked": "Tutte le camere sono completamente occupate.",
     "book": "Prenota Ora",
     "Unavailable": "Non Disponibile"
+  },
+  "notFound": {
+    "badge": "Errore 404 • Smarrito nell'Himalaya",
+    "title": "Ti sei perso sul sentiero di montagna?",
+    "subtitle": "La pagina o il sentiero che stai cercando non esiste o è stata spostata. Lascia che la nostra ospitalità Sherpa ti guidi.",
+    "homeBtn": "Torna alla Home",
+    "backBtn": "Indietro",
+    "roomsBtn": "Camere e Suite",
+    "galleryLink": "Galleria Fotografica",
+    "aboutLink": "La Nostra Storia",
+    "contactBtn": "Reception & Posizione",
+    "popularLinks": "Destinazioni popolari all'Hotel Sherpa Soul"
+  },
+  "faq": {
+    "badge": "Frequently Asked Questions",
+    "title": "Everything You Need to Know",
+    "subtitle": "Find answers to common questions about our rooms, location in Thamel, airport pickups, and hospitality services.",
+    "supportTag": "24/7 Front Desk Assistance",
+    "helpTitle": "Still have questions about your stay?",
+    "helpSubtitle": "Our warm Sherpa team is always ready to assist with customized itineraries, special requests, and room bookings.",
+    "q1": "Where is Hotel Sherpa Soul located in Kathmandu?",
+    "a1": "Hotel Sherpa Soul is situated on Thamel Bhagawati Marg 26 in the heart of Thamel, Kathmandu, Nepal. We are within walking distance to famous restaurants, shops, and cultural heritage sites, and approximately 6 km from Tribhuvan International Airport.",
+    "q2": "What are the check-in and check-out times?",
+    "a2": "Check-in begins at 14:00 (2:00 PM) and check-out is until 12:00 (12:00 PM). Our front desk is open 24/7, and flexible early check-in or late check-out is available upon request subject to room availability.",
+    "q3": "Do you offer airport pickup and shuttle services?",
+    "a3": "Yes, we provide reliable airport pickup and drop-off transfers between Tribhuvan International Airport (KTM) and the hotel. You can request a transfer during direct booking or by contacting us via WhatsApp at +977-9851068219.",
+    "q4": "Is high-speed Wi-Fi available throughout the hotel?",
+    "a4": "Yes, complimentary high-speed fiber-optic Wi-Fi is available in all guest rooms, suites, the rooftop terrace, and common areas, perfect for remote workers and travelers staying connected.",
+    "q5": "Is there a kitchen facility for guests to use?",
+    "a5": "Yes, Hotel Sherpa Soul features a clean, fully equipped shared guest kitchen where you can cook your favorite meals, brew fresh Himalayan tea, or prepare snacks anytime during your stay.",
+    "q6": "Can you arrange trekking permits and Himalayan tours?",
+    "a6": "Absolutely! Drawing from our authentic Sherpa mountain heritage, our team provides complete travel desk support including Everest, Annapurna, and Langtang trek permits, licensed Sherpa guides, domestic flights, and valley sightseeing.",
+    "q7": "Can I securely store my luggage while on a trek?",
+    "a7": "Yes, we offer complimentary secure luggage storage before check-in, after check-out, and for trekkers during their multi-day Himalayan journeys until they return.",
+    "q8": "What payment methods do you accept?",
+    "a8": "We accept cash (NPR, USD, EUR), credit and debit cards (Visa, MasterCard), Fonepay QR transfers, and direct bank transfers."
   }
 }

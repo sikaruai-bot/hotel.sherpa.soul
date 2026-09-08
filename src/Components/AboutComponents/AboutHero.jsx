@@ -12,7 +12,7 @@ export default function AboutHero() {
         className="relative min-h-[80vh] bg-cover bg-center flex items-center justify-center"
         style={{
           // ✅ Using public folder path so it works in all languages
-          backgroundImage: "url('/changes_photo/singlesitter.jpeg')",
+          backgroundImage: "url('/changes_photo/singlesitter.webp')",
         }}
       >
         {/* Dark overlay */}

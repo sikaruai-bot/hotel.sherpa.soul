@@ -13,9 +13,22 @@
     <meta name="author" content="Hotel Sherpa Soul" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href="https://hotelsherpasoul.com/" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="cZ5JAFfqiZ7VDvThWPrhplQFXBaEIlUHunGdP0JaNVQ" />
+
+    <!-- Mobile Browser Chrome Color -->
+    <meta name="theme-color" content="#AB8865" />
+
+    <!-- Performance: Preload Critical Hero Image (LCP in WebP) -->
+    <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- Performance: DNS Prefetch & Preconnect for Third-Party Scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+    <link rel="dns-prefetch" href="https://connect.facebook.net" />
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -31,7 +44,7 @@
     <meta property="og:site_name" content="Hotel Sherpa Soul" />
     <meta property="og:title" content="Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu" />
     <meta property="og:description" content="Experience peaceful boutique comfort in the heart of Thamel, Kathmandu. Modern rooms, shared kitchen, rooftop terrace, and authentic Sherpa hospitality." />
-    <meta property="og:image" content="https://hotelsherpasoul.com/hero1.jpeg" />
+    <meta property="og:image" content="https://hotelsherpasoul.com/hero1.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Hotel Sherpa Soul Kathmandu" />
@@ -42,26 +55,38 @@
     <meta name="twitter:url" content="https://hotelsherpasoul.com/" />
     <meta name="twitter:title" content="Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu" />
     <meta name="twitter:description" content="Warm Himalayan hospitality in the vibrant center of Thamel, Kathmandu. Book direct for the best experience." />
-    <meta name="twitter:image" content="https://hotelsherpasoul.com/hero1.jpeg" />
+    <meta name="twitter:image" content="https://hotelsherpasoul.com/hero1.webp" />
 
     <!-- Structured Data (JSON-LD) for Hotel / LodgingBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Hotel",
+      "@type": ["Hotel", "LodgingBusiness"],
+      "@id": "https://hotelsherpasoul.com/#hotel",
       "name": "Hotel Sherpa Soul",
-      "image": [
-        "https://hotelsherpasoul.com/hero1.jpeg",
-        "https://hotelsherpasoul.com/logo.png"
-      ],
+      "alternateName": "Sherpa Soul Hotel Thamel",
+      "description": "Experience peaceful boutique stay at Hotel Sherpa Soul in Thamel Bhagawati Marg, Kathmandu. Featuring modern deluxe rooms, shared kitchen, 24/7 front desk, high-speed Wi-Fi, and authentic Himalayan hospitality.",
       "url": "https://hotelsherpasoul.com",
       "telephone": "+977-9851068219",
       "email": "info@hotelsherpasoul.com",
+      "logo": "https://hotelsherpasoul.com/logo.webp",
+      "image": [
+        "https://hotelsherpasoul.com/hero1.webp",
+        "https://hotelsherpasoul.com/changes_photo/doubleBedRoom.webp",
+        "https://hotelsherpasoul.com/changes_photo/singlesitter.webp",
+        "https://hotelsherpasoul.com/changes_photo/viewSeen.webp",
+        "https://hotelsherpasoul.com/logo.webp",
+        "https://hotelsherpasoul.com/hero1.jpeg"
+      ],
+      "hasMap": "https://maps.app.goo.gl/nDB9DnLtb6taeaLRA",
       "priceRange": "$$",
-      "currenciesAccepted": "NPR, USD",
-      "paymentAccepted": "Cash, Credit Card, QR Payment",
+      "currenciesAccepted": "NPR, USD, EUR",
+      "paymentAccepted": "Cash, Credit Card, QR Payment, Bank Transfer",
       "checkinTime": "14:00",
       "checkoutTime": "12:00",
+      "numberOfRooms": 15,
+      "petsAllowed": false,
+      "smokingAllowed": false,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Thamel Bhagawati Marg 26",
@@ -75,6 +100,56 @@
         "latitude": 27.7154,
         "longitude": 85.3123
       },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "600",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "3"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+977-9851068219",
+        "contactType": "reservations",
+        "email": "info@hotelsherpasoul.com",
+        "availableLanguage": [
+          "English",
+          "Nepali",
+          "Hindi",
+          "Arabic",
+          "German",
+          "French",
+          "Italian",
+          "Spanish",
+          "Chinese"
+        ],
+        "areaServed": "Worldwide"
+      },
+      "sameAs": [
+        "https://www.facebook.com/share/1JYojEJGiL/",
+        "https://www.tiktok.com/@sherpa.soul?_t=ZS-8ytRMKvOf4a&_r=1",
+        "https://maps.app.goo.gl/nDB9DnLtb6taeaLRA"
+      ],
       "amenityFeature": [
         { "@type": "LocationFeatureSpecification", "name": "Free High-Speed Wi-Fi", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "24-Hour Front Desk", "value": true },
@@ -82,7 +157,85 @@
         { "@type": "LocationFeatureSpecification", "name": "Airport Shuttle Service", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Rooftop Terrace", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Air Conditioning", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Hot Water Shower", "value": true }
+        { "@type": "LocationFeatureSpecification", "name": "Hot Water Shower", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Daily Housekeeping", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Luggage Storage", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Tour and Trekking Desk", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Family Rooms", "value": true }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data (JSON-LD) for FAQPage (Google Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is Hotel Sherpa Soul located in Kathmandu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hotel Sherpa Soul is situated on Thamel Bhagawati Marg 26 in the heart of Thamel, Kathmandu, Nepal. We are within walking distance to famous restaurants, shops, and cultural heritage sites, and approximately 6 km from Tribhuvan International Airport."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the check-in and check-out times?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check-in begins at 14:00 (2:00 PM) and check-out is until 12:00 (12:00 PM). Our front desk is open 24/7, and flexible early check-in or late check-out is available upon request subject to room availability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer airport pickup and shuttle services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we provide reliable airport pickup and drop-off transfers between Tribhuvan International Airport (KTM) and the hotel. Guests can arrange an airport transfer during direct booking or by contacting our front desk via WhatsApp at +977-9851068219."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is high-speed Wi-Fi available throughout the hotel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, complimentary high-speed fiber-optic Wi-Fi is provided in all guest rooms, suites, the rooftop terrace, and common areas, perfect for remote workers and travelers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a kitchen facility for guests to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Hotel Sherpa Soul features a clean, fully equipped shared guest kitchen where you can cook your favorite meals, brew fresh Himalayan tea, or prepare snacks anytime during your stay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you arrange trekking permits and Himalayan tours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Drawing from our authentic Sherpa mountain heritage, our team provides complete travel desk support including Everest, Annapurna, and Langtang trek permits, licensed Sherpa guides, domestic flights, and valley sightseeing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I securely store my luggage while on a trek?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we offer complimentary secure luggage storage before check-in, after check-out, and for trekkers during their multi-day Himalayan journeys until they return."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What payment methods do you accept?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We accept cash (NPR, USD, EUR), credit and debit cards (Visa, MasterCard), Fonepay QR transfers, and direct bank transfers."
+          }
+        }
       ]
     }
     </script>

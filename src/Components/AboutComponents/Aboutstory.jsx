@@ -38,8 +38,10 @@ export default function Aboutstory() {
             <div className="relative">
               <div className="relative w-full h-[500px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500">
                 <img
-                  src="/intro.jpg"
+                  src="/intro.webp"
                   alt={t("aboutStory.imageAlt")}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-top"
                 />
                 {/* Subtle overlay */}

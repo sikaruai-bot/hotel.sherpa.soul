@@ -173,7 +173,7 @@ export default function RoomDetail() {
         <div className="relative w-full h-full">
           <img
             src={images[currentImageIndex]}
-            alt={`${room.name} - Image ${currentImageIndex + 1}`}
+            alt={`${room.name || "Room"} at Hotel Sherpa Soul, Kathmandu - View ${currentImageIndex + 1}`}
             className="w-full h-full object-cover transition-opacity duration-500"
           />
 
@@ -398,9 +398,9 @@ export default function RoomDetail() {
               {/* Amenities Tab */}
               {activeTab === "amenities" && (
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">
                     Room Amenities
-                  </h3>
+                  </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {room.amenities.map((amenity, idx) => (
                       <div
@@ -424,9 +424,9 @@ export default function RoomDetail() {
               {/* Features Tab */}
               {activeTab === "features" && (
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">
                     Special Features
-                  </h3>
+                  </h2>
                   {room.features && room.features.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {room.features.map((feature, idx) => (
@@ -470,10 +470,10 @@ export default function RoomDetail() {
           {/* Check In & Check Out Times */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="bg-gradient-to-r from-amber-50 to-orange-50 px-8 py-6 border-b border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
                 <Calendar className="w-6 h-6 text-amber-600" />
                 {t("roomdetails.checkin.heading")}
-              </h3>
+              </h2>
             </div>
 
             <div className="p-8">
@@ -616,9 +616,9 @@ export default function RoomDetail() {
 
           {/* Call to Action Section */}
           <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-2xl p-8 text-white text-center">
-            <h3 className="text-2xl font-bold mb-4">
+            <h2 className="text-2xl font-bold mb-4">
               {t("roomdetails.cta.heading")}
-            </h3>
+            </h2>
             <p className="text-amber-100 mb-6 max-w-2xl mx-auto">
               {t("roomdetails.cta.sub")}
             </p>

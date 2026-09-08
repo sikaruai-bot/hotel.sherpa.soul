@@ -176,7 +176,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                       <div className="relative h-48 overflow-hidden">
                         <img
                           src={room.image || "/api/placeholder/300/200"}
-                          alt={room.name}
+                          alt={room.name ? `${room.name} - Hotel Sherpa Soul` : "Hotel Sherpa Soul Room"}
                           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                         />
                         {isSoldOut && (

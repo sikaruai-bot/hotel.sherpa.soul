@@ -305,8 +305,8 @@ export default function Navbar() {
             >
               <Link to="/" className="flex items-center justify-center">
                 <img
-                  src="/logo.png"
-                  alt="Sherpa Hotel Logo"
+                  src="/logo.webp"
+                  alt="Hotel Sherpa Soul - Boutique Stay in Thamel, Kathmandu"
                   className={`h-20 w-auto max-w-[180px] object-contain transition-all duration-300 ${
                     isScrolled ? "brightness-100" : ""
                   }`}

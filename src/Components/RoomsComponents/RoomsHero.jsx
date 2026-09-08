@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const heroImage = "/changes_photo/singlesitter.jpeg";
+const heroImage = "/changes_photo/singlesitter.webp";
 
 export default function RoomsHero() {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ export default function RoomsHero() {
     <div className="relative w-screen h-screen overflow-hidden">
       <motion.img
         src={heroImage}
-        alt="Room Hero Background"
+        alt="Hotel Sherpa Soul luxury rooms and suites in Thamel Kathmandu"
         className="absolute top-0 left-0 w-full h-full object-cover scale-110"
         style={{
           x: mousePosition.x * 0.5,

@@ -7,6 +7,7 @@ import {
   MapPin,
   QrCode,
   Smartphone,
+  ExternalLink,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { FaTiktok, FaWhatsapp } from "react-icons/fa";
@@ -93,9 +94,9 @@ export default function Footer() {
                   <span className="text-xl font-bold text-white">S</span>
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-white mb-1">
+                  <p className="text-xl font-bold text-white mb-1">
                     {t("footer.brand.title")}
-                  </h2>
+                  </p>
                   <p className="text-[#AB8865] text-xs font-medium">
                     Experience • Comfort • Hospitality
                   </p>
@@ -197,32 +198,67 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Column 4: QR Code Section */}
+            {/* Column 4: Online Booking Platforms */}
             <div className="space-y-6">
               <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                 <span className="w-1 h-6 bg-gradient-to-b from-[#AB8865] to-transparent rounded-full"></span>
-                Quick Access
+                Book on Top OTAs
               </h3>
 
               <div className="space-y-4">
                 {/* QR Code Container */}
-                <div className="bg-gradient-to-br from-slate-800/50 to-slate-700/30 p-6 rounded-xl border border-slate-700/50 backdrop-blur-sm">
-                  <div className="text-center space-y-4">
-                    {/* QR Code Placeholder */}
-                    <div className="w-32 h-32 mx-auto bg-white rounded-lg p-2 shadow-lg">
+                <div className="bg-gradient-to-br from-slate-800/50 to-slate-700/30 p-5 rounded-xl border border-slate-700/50 backdrop-blur-sm">
+                  <div className="text-center space-y-3">
+                    {/* Clickable QR Code */}
+                    <a
+                      href="https://www.booking.com/hotel/np/hotel-sherpa-soul.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Open Hotel Sherpa Soul on Booking.com"
+                      className="block w-28 h-28 mx-auto bg-white rounded-lg p-2 shadow-lg hover:scale-105 transition-transform duration-200"
+                    >
                       <div className="w-full h-full bg-gradient-to-br from-slate-900 to-slate-700 rounded flex items-center justify-center">
-                        <img src="qr.png" alt="" />
+                        <img
+                          src="/qr.webp"
+                          alt="Booking.com QR Code - Scan to Book Hotel Sherpa Soul"
+                          width="96"
+                          height="96"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
-                    </div>
+                    </a>
 
-                    {/* QR Description */}
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-center gap-2 text-[#AB8865]">
-                        <Smartphone size={16} />
-                        <span className="text-sm font-semibold">
-                          Book from booking.com
-                        </span>
-                      </div>
+                    {/* Direct OTA Action Buttons */}
+                    <div className="space-y-2 pt-1">
+                      <a
+                        href="https://www.booking.com/hotel/np/hotel-sherpa-soul.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white border border-blue-500/30 text-xs font-medium transition-all duration-200"
+                      >
+                        <Smartphone size={13} />
+                        <span>Book on Booking.com</span>
+                        <ExternalLink size={11} className="opacity-70" />
+                      </a>
+                      <a
+                        href="https://www.airbnb.com/rooms/1760024961976448522"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 text-xs font-medium transition-all duration-200"
+                      >
+                        <span>Book on Airbnb</span>
+                        <ExternalLink size={11} className="opacity-70" />
+                      </a>
+                      <a
+                        href="https://www.trip.com/hotels/list?keyword=Hotel%20Sherpa%20Soul%20Kathmandu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/30 text-xs font-medium transition-all duration-200"
+                      >
+                        <span>Book on Trip.com</span>
+                        <ExternalLink size={11} className="opacity-70" />
+                      </a>
                     </div>
                   </div>
                 </div>

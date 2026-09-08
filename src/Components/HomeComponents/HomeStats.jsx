@@ -80,7 +80,7 @@ export default function HomeStats() {
             iconColor="text-green-600"
             bgGradient="from-green-50 to-green-100"
             imageSrc="/trip.webp"
-            imageAlt="TripAdvisor"
+            imageAlt="TripAdvisor 4.8 Star Traveler Rating - Hotel Sherpa Soul"
             rating={4.8}
             reviews={500}
             inView={inView}
@@ -91,8 +91,8 @@ export default function HomeStats() {
             icon={<Star className="w-10 h-10" />}
             iconColor="text-blue-600"
             bgGradient="from-blue-50 to-blue-100"
-            imageSrc="/google.png"
-            imageAlt="Google"
+            imageSrc="/google.webp"
+            imageAlt="Google 4.9 Star Guest Reviews - Hotel Sherpa Soul"
             rating={4.9}
             reviews={600}
             inView={inView}
@@ -157,9 +157,10 @@ function StatCard({
           {imageSrc ? (
             <img
               src={imageSrc}
-              alt={imageAlt || ""}
+              alt={imageAlt || "Hotel Sherpa Soul Achievement Award"}
               className=" object-cover rounded-xl"
               loading="lazy"
+              decoding="async"
             />
           ) : (
             <div className={iconColor}>{icon}</div>

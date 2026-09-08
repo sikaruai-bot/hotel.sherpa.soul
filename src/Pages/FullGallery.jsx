@@ -4,7 +4,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Lazy loading for images/videos
-const LazyMotionItem = ({ type, src }) => {
+const LazyMotionItem = ({ type, src, alt }) => {
   if (type === "video") {
     return (
       <video
@@ -20,7 +20,7 @@ const LazyMotionItem = ({ type, src }) => {
   return (
     <motion.img
       src={src}
-      alt=""
+      alt={alt || "Hotel Sherpa Soul Gallery Photo"}
       className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
       loading="lazy"
       initial={{ opacity: 0, scale: 0.98 }}
@@ -78,37 +78,53 @@ export default function GalleryPage() {
   }, []);
 
   const gallery = [
-    { src: "/room1/room.jpeg", type: "image", descriptionKey: "gallery.desc1" },
-    { src: "/room1/room2.jpeg", type: "image", descriptionKey: "gallery.desc1" },
     {
-      src: "/changes_photo/balkani.jpeg",
+      src: "/room1/room.webp",
       type: "image",
       descriptionKey: "gallery.desc1",
+      alt: "Hotel Sherpa Soul Deluxe Bedroom Interior",
     },
     {
-      src: "/changes_photo/doubleBedRoom.jpeg",
+      src: "/room1/room2.webp",
       type: "image",
       descriptionKey: "gallery.desc1",
+      alt: "Hotel Sherpa Soul Cozy Guest Room",
     },
     {
-      src: "hero/hero1.jpeg",
+      src: "/changes_photo/balkani.webp",
       type: "image",
       descriptionKey: "gallery.desc1",
+      alt: "Hotel Sherpa Soul Private Balcony View",
     },
     {
-      src: "changes_photo/washRoom.jpeg",
+      src: "/changes_photo/doubleBedRoom.webp",
       type: "image",
       descriptionKey: "gallery.desc1",
+      alt: "Hotel Sherpa Soul Spacious Double Bedroom",
     },
     {
-      src: "changes_photo/storeRoom.jpeg",
+      src: "/hero/hero1.webp",
       type: "image",
       descriptionKey: "gallery.desc1",
+      alt: "Kathmandu City View from Hotel Sherpa Soul",
     },
     {
-      src: "changes_photo/viewSeen.jpeg",
+      src: "/changes_photo/washRoom.webp",
       type: "image",
       descriptionKey: "gallery.desc1",
+      alt: "Hotel Sherpa Soul Modern En-Suite Bathroom",
+    },
+    {
+      src: "/changes_photo/storeRoom.webp",
+      type: "image",
+      descriptionKey: "gallery.desc1",
+      alt: "Hotel Sherpa Soul Guest Amenities and Storage",
+    },
+    {
+      src: "/changes_photo/viewSeen.webp",
+      type: "image",
+      descriptionKey: "gallery.desc1",
+      alt: "Scenic Kathmandu Valley View from Hotel Sherpa Soul",
     },
   ];
 
@@ -146,8 +162,8 @@ export default function GalleryPage() {
       <section className="relative w-full h-[70vh] lg:h-[80vh] overflow-hidden">
         <div className="absolute inset-0">
           <motion.img
-            src="/changes_photo/doubleBedRoom.jpeg"
-            alt="Gallery Hero"
+            src="/changes_photo/doubleBedRoom.webp"
+            alt="Hotel Sherpa Soul Deluxe Room Gallery Preview"
             className="w-full h-full object-cover"
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -157,14 +173,11 @@ export default function GalleryPage() {
         </div>
         <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6 lg:px-8 text-white">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white/20 px-4 py-2 rounded-full text-sm inline-block mb-4">
-              {t("roomsHero.badgeTitle")} — {t("roomsHero.badgeSubtitle")}
-            </div>
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-              {t("roomsHero.headingLine1")} <br /> {t("roomsHero.headingLine2")}
+              {t("gallery.title")}
             </h1>
             <p className="text-xl lg:text-2xl max-w-3xl mx-auto text-gray-200 font-light leading-relaxed">
-              {t("roomsHero.paragraph")}
+              {t("gallery.subtitle")}
             </p>
           </div>
         </div>
@@ -175,7 +188,7 @@ export default function GalleryPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              {t("nav.gallery")}
+              {t("gallery.featuredTitle")}
             </h2>
             <div className="w-24 h-1 bg-black mx-auto mb-6"></div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -196,7 +209,7 @@ export default function GalleryPage() {
                       index % 3 === 0 ? "4/5" : index % 4 === 0 ? "3/4" : "1/1",
                   }}
                 >
-                  <LazyMotionItem type={file.type} src={file.src} />
+                  <LazyMotionItem type={file.type} src={file.src} alt={file.alt} />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div className="bg-white/95 backdrop-blur-md rounded-full px-6 py-3 transform translate-y-6 group-hover:translate-y-0 transition-all duration-500 shadow-lg">
                       <span className="text-gray-800 font-semibold text-sm">
@@ -238,7 +251,7 @@ export default function GalleryPage() {
               {gallery[selectedIndex].type === "image" ? (
                 <img
                   src={gallery[selectedIndex].src}
-                  alt=""
+                  alt={gallery[selectedIndex].alt || `Hotel Sherpa Soul Gallery Photo ${selectedIndex + 1}`}
                   className="max-w-full max-h-[70vh] object-contain  shadow-md"
                 />
               ) : (

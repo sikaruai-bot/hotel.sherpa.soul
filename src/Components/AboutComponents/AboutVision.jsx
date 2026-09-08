@@ -12,8 +12,10 @@ export default function AboutVision() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="changes_photo/feature1.jpeg"
-            alt={t("aboutVision.buddhistAlt")}
+            src="/changes_photo/feature1.webp"
+            alt={t("aboutVision.buddhistAlt") || "Buddhist Symbol - Hotel Sherpa Soul Kathmandu"}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#F69520]/40 via-slate-900/80 to-indigo-900/70"></div>
@@ -23,12 +25,12 @@ export default function AboutVision() {
         <div className="relative z-10 container mx-auto text-center">
           <div className="space-y-12">
             {/* Main Heading */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
               <span className="text-white">{t("aboutVision.our")} </span>
               <span className="bg-gradient-to-r from-[#F69520]  to-blue-500 bg-clip-text text-transparent">
                 {t("aboutVision.vision")}
               </span>
-            </h1>
+            </h2>
 
             {/* Extended Description */}
             <div className="space-y-8 container mx-auto">

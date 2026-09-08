@@ -277,7 +277,7 @@ const RoomsCard = () => {
                 ) : (
                   <img
                     src={room.image}
-                    alt={room.name}
+                    alt={`${room.name} - Hotel Sherpa Soul Kathmandu`}
                     className="w-full h-full object-cover transform transition duration-300 ease-out group-hover:scale-105"
                   />
                 )}

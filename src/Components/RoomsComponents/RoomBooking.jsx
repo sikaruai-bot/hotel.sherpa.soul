@@ -853,7 +853,7 @@ export default function BookingForm() {
                   <div className="flex gap-4">
                     <img
                       src={room.image?.[0]?.url || "/placeholder-room.jpg"}
-                      alt={room.name}
+                      alt={room.name ? `${room.name} - Hotel Sherpa Soul Kathmandu` : "Hotel Sherpa Soul Room"}
                       className="w-20 h-20 rounded-lg object-cover"
                     />
 

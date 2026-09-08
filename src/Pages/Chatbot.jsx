@@ -58,14 +58,14 @@ export default function HotelChatBot() {
       text: "📅 Make a Reservation",
       icon: "📅",
       response:
-        "Ready to book your stay? Here are your options:\n\n📞 **Call us directly:**\n+977-9851068219\n\n📧 **Email reservation:**\nmingmasaino@gmail.com\n\n💻 **Online booking:**\nVisit our website for instant confirmation\n\n🏨 **Walk-in:**\nWe welcome walk-in guests (subject to availability)\n\n✨ Book now and get 10% off for stays over 3 nights!",
+        "Ready to book your stay? Here are your options:\n\n📞 **Call us directly:**\n+977-9851068219\n\n📧 **Email reservation:**\ninfo@hotelsherpasoul.com\n\n💻 **Online booking:**\nVisit our website for instant confirmation\n\n🏨 **Walk-in:**\nWe welcome walk-in guests (subject to availability)\n\n✨ Book now and get 10% off for stays over 3 nights!",
     },
     {
       id: "contact",
       text: "📞 Contact Information",
       icon: "📞",
       response:
-        "📞 **Phone:** +977-9851068219\n📧 **Email:** mingmasaino@gmail.com\n📍 **Address:** Hotel Sherpa Soul, Thamel, Kathmandu, Nepal\n\n🕐 **Reception Hours:** 24/7\n🌐 **Languages:** English, Nepali, Hindi\n\n💬 **Need immediate help?** Our reception is always available!",
+        "📞 **Phone:** +977-9851068219\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Hotel Sherpa Soul, Thamel, Kathmandu, Nepal\n\n🕐 **Reception Hours:** 24/7\n🌐 **Languages:** English, Nepali, Hindi\n\n💬 **Need immediate help?** Our reception is always available!",
     },
   ];
 
@@ -151,7 +151,7 @@ export default function HotelChatBot() {
         "💰 Our room rates start from $150/night for Standard rooms. Would you like to see all our room types and pricing? Please select 'Room Types & Pricing' above!";
     } else if (msg.includes("book") || msg.includes("reservation")) {
       response =
-        "📅 I'd love to help you book! Please call +977-9851068219 or email mingmasaino@gmail.com for reservations. You can also select 'Make a Reservation' above for all booking options!";
+        "📅 I'd love to help you book! Please call +977-9851068219 or email info@hotelsherpasoul.com for reservations. You can also select 'Make a Reservation' above for all booking options!";
     } else if (msg.includes("location") || msg.includes("address")) {
       response =
         "📍 We're located in Thamel, the heart of Kathmandu! Perfect for exploring the city. Select 'Location & Nearby' above for detailed information about our location and nearby attractions.";
@@ -242,9 +242,9 @@ export default function HotelChatBot() {
                   <Bot size={20} />
                 </div>
                 <div>
-                  <h2 className="font-semibold text-lg">
+                  <p className="font-semibold text-lg">
                     Sherpa Soul Assistant
-                  </h2>
+                  </p>
                   <div className="flex items-center space-x-1 text-sm opacity-90">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                     <span>Online now</span>

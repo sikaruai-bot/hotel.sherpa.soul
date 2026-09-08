@@ -7,6 +7,7 @@ import HomeServices from "./HomeServices";
 import HomeTestimonials from "./HomeTestimonials";
 import HomeFacilities from "./HomeFacilities";
 import HomeStats from "./HomeStats";
+import HomeFAQ from "./HomeFAQ";
 
 export default function HomeMain() {
   return (
@@ -18,6 +19,7 @@ export default function HomeMain() {
       <HomeServices />
       <HomeFacilities />
       <HomeTestimonials />
+      <HomeFAQ />
       <HomeLocation />
     </div>
   );

@@ -100,7 +100,9 @@ const HomeFacilities = () => {
               <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
                 <img
                   src={facility.img}
-                  alt={facility.title}
+                  alt={`${facility.title} - Hotel Sherpa Soul Amenity`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

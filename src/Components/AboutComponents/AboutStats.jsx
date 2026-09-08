@@ -147,8 +147,10 @@ export default function AboutStats() {
                 }}
               >
                 <img
-                  src="changes_photo/feature.jpeg"
-                  alt=""
+                  src="/changes_photo/feature.webp"
+                  alt="Hotel Sherpa Soul boutique accommodations in Thamel, Kathmandu"
+                  loading="lazy"
+                  decoding="async"
                   className="object-contain rounded-2xl"
                 />
               </motion.div>
