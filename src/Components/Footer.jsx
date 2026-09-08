@@ -160,17 +160,6 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
-                <li>
-                  <a
-                    href="https://hotelsherpasoulpms-sigma.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-amber-400 hover:text-amber-300 transition-all duration-300 flex items-center group py-1 text-sm font-medium"
-                  >
-                    <span className="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                    <span>Staff PMS Portal</span>
-                  </a>
-                </li>
               </ul>
             </div>
 
@@ -308,14 +297,6 @@ export default function Footer() {
                 {t("footer.legal.terms", "Terms of Service")}
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#AB8865] group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <a
-                href="https://hotelsherpasoulpms-sigma.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors duration-300 text-amber-300/80 font-medium ml-2"
-              >
-                Staff Login &rarr;
-              </a>
             </div>
           </div>
         </div>

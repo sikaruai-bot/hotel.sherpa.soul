@@ -118,18 +118,6 @@ export default function Navbar() {
 
             {/* Right Actions */}
             <div className="flex items-center space-x-2 lg:space-x-3 z-50">
-              {/* Staff PMS Portal Link */}
-              <a
-                href="https://hotelsherpasoulpms-sigma.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-amber-50 hover:text-amber-800 border border-slate-300 hover:border-amber-400 transition-all shadow-sm"
-                title="Hotel Staff PMS Dashboard"
-              >
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Staff PMS</span>
-              </a>
-
               {/* Language Switcher */}
               <LanguageSwitcher />
 
@@ -212,23 +200,6 @@ export default function Navbar() {
                   />
                 ))}
 
-                {/* Mobile Staff PMS Link */}
-                <div className="pt-4 mt-2 border-t border-gray-100 px-6">
-                  <a
-                    href="https://hotelsherpasoulpms-sigma.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900 text-white font-medium text-sm hover:bg-slate-800 transition-colors shadow-md"
-                  >
-                    <span className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                      PMS Staff Dashboard
-                    </span>
-                    <span className="text-xs text-amber-300 bg-amber-900/50 px-2 py-0.5 rounded border border-amber-500/30">
-                      Login &rarr;
-                    </span>
-                  </a>
-                </div>
               </nav>
             </motion.div>
           </>
