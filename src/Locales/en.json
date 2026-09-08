@@ -142,7 +142,11 @@
       "description": "We are a small hotel, so our guests are not just another room number. We make your Kathmandu stay easy, comfortable and welcoming."
     },
     "showOtherLanguages": "Show other languages",
-    "hideOtherLanguages": "Hide other languages"
+    "hideOtherLanguages": "Hide other languages",
+    "multilingualSupport": {
+      "title": "Multilingual Support",
+      "description": "Welcoming international travelers with support in English, Nepali, Hindi, Arabic, German, French, and Chinese."
+    }
   },
   "aboutVision": {
     "buddhistAlt": "Sherpa Heritage & Peace",
@@ -151,7 +155,9 @@
     "description": {
       "part1": "We intentionally keep the hotel simple and peaceful. Instead of running a busy restaurant or entertainment space, our focus is entirely on ",
       "highlight": "peaceful accommodation and restful sleep",
-      "part2": "for travellers exploring Kathmandu."
+      "part2": "for travellers exploring Kathmandu.",
+      "para2": "Hotel Sherpa Soul is built around a simple understanding of hospitality: travellers need a place where they feel comfortable, welcome and able to rest after walking Kathmandu's vibrant streets or returning from a Himalayan trek.",
+      "para3": "What we offer is simpler and more meaningful: a comfortable room, a convenient location in Thamel, a quiet night's sleep, and genuine Sherpa warmth welcoming you to Nepal."
     },
     "para2": "Hotel Sherpa Soul is built around a simple understanding of hospitality: travellers need a place where they feel comfortable, welcome and able to rest after walking Kathmandu's vibrant streets or returning from a Himalayan trek.",
     "para3": "What we offer is simpler and more meaningful: a comfortable room, a convenient location in Thamel, a quiet night's sleep, and genuine Sherpa warmth welcoming you to Nepal.",
@@ -226,6 +232,10 @@
       "prefix": "©",
       "hotelName": "Hotel Sherpa Soul",
       "suffix": "All rights reserved"
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
     }
   },
   "homeServices": {
@@ -581,5 +591,10 @@
     "a11": "Boudhanath Stupa is approximately 20 minutes away by vehicle, depending on traffic.",
     "q12": "How can I book a room?",
     "a12": "You can book directly through our website or contact the hotel directly via WhatsApp or phone to check availability."
-  }
+  },
+  "homeLocation": {
+    "mapTitle": "Hotel Sherpa Soul Location in Thamel"
+  },
+  "loading": "Loading room details...",
+  "pleasewait": "Please wait..."
 }

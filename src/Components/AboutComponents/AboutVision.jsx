@@ -43,11 +43,17 @@ export default function AboutVision() {
               </p>
 
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-                {t("aboutVision.description.para2")}
+                {t(
+                  "aboutVision.description.para2",
+                  "Hotel Sherpa Soul is built around a simple understanding of hospitality: travellers need a place where they feel comfortable, welcome and able to rest after walking Kathmandu's vibrant streets or returning from a Himalayan trek."
+                )}
               </p>
 
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-                {t("aboutVision.description.para3")}
+                {t(
+                  "aboutVision.description.para3",
+                  "What we offer is simpler and more meaningful: a comfortable room, a convenient location in Thamel, a quiet night's sleep, and genuine Sherpa warmth welcoming you to Nepal."
+                )}
               </p>
             </div>
 
