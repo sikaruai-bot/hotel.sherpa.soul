@@ -19,9 +19,8 @@ async function verify() {
       const jsUrl = 'https://hotel-sherpa-soul.vercel.app' + match[1];
       const js = await get(jsUrl);
       console.log('Bundle length:', js.length);
-      console.log('Has vision para2 content:', js.includes("Hotel Sherpa Soul is built around a simple understanding"));
-      console.log('Has vision para3 content:', js.includes("What we offer is simpler and more meaningful"));
-      console.log('Has Staff PMS button:', js.includes("Staff PMS"));
+      console.log('Has CMS Provider/Context:', js.includes("HSS_CMS_DATA_V1"));
+      console.log('Has CMS route /cms:', js.includes("/cms"));
     }
   } catch (e) {
     console.error(e);

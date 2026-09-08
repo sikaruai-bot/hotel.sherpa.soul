@@ -1,8 +1,21 @@
-import React, { useState } from "react";
-import { BedDouble, Plus, Edit2, Trash2, Check, X, Sparkles } from "lucide-react";
+import React, { useState, useRef } from "react";
+import {
+  BedDouble,
+  Edit2,
+  Trash2,
+  Check,
+  X,
+  Sparkles,
+  Upload,
+  FolderOpen,
+} from "lucide-react";
+import { optimizeMediaFile, HOTEL_PRESET_PHOTOS } from "./mediaUtils";
 
 export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
   const [editingRoom, setEditingRoom] = useState(null);
+  const [showPresetPicker, setShowPresetPicker] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const roomFileInputRef = useRef(null);
 
   const handleToggleStatus = (id) => {
     const updated = rooms.map((r) => {
@@ -15,6 +28,32 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
       return r;
     });
     onUpdateRooms(updated);
+  };
+
+  const handleRoomPhotoUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file || !editingRoom) return;
+
+    try {
+      setIsUploading(true);
+      const optimized = await optimizeMediaFile(file);
+      const nextImgs = [...(editingRoom.image || [])];
+      nextImgs[0] = optimized.src;
+      setEditingRoom({ ...editingRoom, image: nextImgs });
+    } catch (err) {
+      alert("Error processing photo: " + err.message);
+    } finally {
+      setIsUploading(false);
+      e.target.value = "";
+    }
+  };
+
+  const handlePickPreset = (path) => {
+    if (!editingRoom) return;
+    const nextImgs = [...(editingRoom.image || [])];
+    nextImgs[0] = path;
+    setEditingRoom({ ...editingRoom, image: nextImgs });
+    setShowPresetPicker(false);
   };
 
   const handleSaveRoom = (e) => {
@@ -37,7 +76,7 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
             Rooms & Pricing Catalog ({rooms.length} Room Types)
           </h3>
           <p className="text-xs text-slate-400 mt-1">
-            Update room rates, bed configurations, sizes, descriptions and images.
+            Update room rates, bed configurations, sizes, descriptions and upload new photos from your computer.
           </p>
         </div>
       </div>
@@ -45,7 +84,7 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
       {/* Edit Room Modal */}
       {editingRoom && (
         <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-          <div className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl my-8">
+          <div className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl my-8 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <h4 className="text-base font-bold text-white flex items-center gap-2">
                 <Edit2 className="w-4 h-4 text-amber-400" />
@@ -59,7 +98,59 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
               </button>
             </div>
 
-            <form onSubmit={handleSaveRoom} className="space-y-4 text-left">
+            <form onSubmit={handleSaveRoom} className="space-y-5 text-left">
+              {/* Room Photo Preview & Upload Controls */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  Room Photo
+                </label>
+                <div className="flex flex-col sm:flex-row gap-4 items-center bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                  <div className="w-36 h-24 rounded-xl overflow-hidden bg-slate-800 shrink-0 border border-slate-700">
+                    <img
+                      src={editingRoom.image?.[0] || "/room1/room.webp"}
+                      alt={editingRoom.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.src = "/hero/hero1.webp";
+                      }}
+                    />
+                  </div>
+
+                  <div className="flex-1 space-y-2 w-full">
+                    <input
+                      type="file"
+                      ref={roomFileInputRef}
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleRoomPhotoUpload}
+                    />
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={() => roomFileInputRef.current?.click()}
+                        className="flex-1 py-2 px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md transition-all"
+                      >
+                        <Upload className="w-3.5 h-3.5" />
+                        <span>Upload Photo from Device</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setShowPresetPicker(true)}
+                        className="py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700"
+                      >
+                        <FolderOpen className="w-3.5 h-3.5 text-blue-400" />
+                        <span>Pick from Library</span>
+                      </button>
+                    </div>
+
+                    {isUploading && (
+                      <p className="text-[11px] text-amber-400">Processing photo...</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
@@ -156,22 +247,6 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                  Primary Photo Path / URL
-                </label>
-                <input
-                  type="text"
-                  value={editingRoom.image?.[0] || ""}
-                  onChange={(e) => {
-                    const nextImgs = [...(editingRoom.image || [])];
-                    nextImgs[0] = e.target.value;
-                    setEditingRoom({ ...editingRoom, image: nextImgs });
-                  }}
-                  className="w-full px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm"
-                />
-              </div>
-
               <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
                 <button
                   type="button"
@@ -182,12 +257,65 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold rounded-xl text-xs"
+                  className="px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs shadow-md"
                 >
                   Save Changes
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Preset Photo Picker Modal for Rooms */}
+      {showPresetPicker && (
+        <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl max-h-[85vh] flex flex-col">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+              <h4 className="text-base font-bold text-white flex items-center gap-2">
+                <FolderOpen className="w-5 h-5 text-amber-400" />
+                Select Photo from Hotel Library
+              </h4>
+              <button
+                onClick={() => setShowPresetPicker(false)}
+                className="text-slate-400 hover:text-white"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="overflow-y-auto flex-1 py-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {HOTEL_PRESET_PHOTOS.map((photo, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => handlePickPreset(photo.path)}
+                  className="group cursor-pointer bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-400 transition-all"
+                >
+                  <div className="aspect-video relative overflow-hidden bg-slate-800">
+                    <img
+                      src={photo.path}
+                      alt={photo.label}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                    />
+                  </div>
+                  <div className="p-2 text-center">
+                    <span className="text-[11px] text-white font-medium truncate block">
+                      {photo.label}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-3 border-t border-slate-800 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setShowPresetPicker(false)}
+                className="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
