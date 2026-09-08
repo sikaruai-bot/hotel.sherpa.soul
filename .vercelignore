@@ -1,0 +1,7 @@
+dist.zip
+*.zip
+backend
+dist
+node_modules
+.git
+scratch
