@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useCMS } from "../Context/CMSContext";
 
 // Lazy loading for images/videos
 const LazyMotionItem = ({ type, src, alt }) => {
@@ -27,6 +28,9 @@ const LazyMotionItem = ({ type, src, alt }) => {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
+      onError={(e) => {
+        e.target.src = "/hero/hero1.webp";
+      }}
     />
   );
 };
@@ -66,6 +70,7 @@ const GallerySkeletonGrid = ({ count = 12 }) => {
 
 export default function GalleryPage() {
   const { t } = useTranslation();
+  const { media } = useCMS();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -73,57 +78,49 @@ export default function GalleryPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 1200);
     return () => clearTimeout(timer);
   }, []);
 
-  const gallery = [
+  const gallery = media?.gallery && media.gallery.length > 0 ? media.gallery : [
     {
       src: "/room1/room.webp",
       type: "image",
-      descriptionKey: "gallery.desc1",
       alt: "Hotel Sherpa Soul Deluxe Bedroom Interior",
     },
     {
       src: "/room1/room2.webp",
       type: "image",
-      descriptionKey: "gallery.desc1",
       alt: "Hotel Sherpa Soul Cozy Guest Room",
     },
     {
       src: "/changes_photo/balkani.webp",
       type: "image",
-      descriptionKey: "gallery.desc1",
       alt: "Hotel Sherpa Soul Private Balcony View",
     },
     {
       src: "/changes_photo/doubleBedRoom.webp",
       type: "image",
-      descriptionKey: "gallery.desc1",
       alt: "Hotel Sherpa Soul Spacious Double Bedroom",
     },
     {
       src: "/hero/hero1.webp",
       type: "image",
-      descriptionKey: "gallery.desc1",
       alt: "Kathmandu City View from Hotel Sherpa Soul",
     },
     {
       src: "/changes_photo/washRoom.webp",
       type: "image",
-      descriptionKey: "gallery.desc1",
       alt: "Hotel Sherpa Soul Modern En-Suite Bathroom",
     },
     {
       src: "/changes_photo/storeRoom.webp",
       type: "image",
-      descriptionKey: "gallery.desc1",
       alt: "Hotel Sherpa Soul Guest Amenities and Storage",
     },
     {
       src: "/changes_photo/viewSeen.webp",
       type: "image",
-      descriptionKey: "gallery.desc1",
       alt: "Scenic Kathmandu Valley View from Hotel Sherpa Soul",
     },
   ];
@@ -201,7 +198,7 @@ export default function GalleryPage() {
             <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 lg:gap-8 space-y-6 lg:space-y-8">
               {gallery.map((file, index) => (
                 <div
-                  key={index}
+                  key={file.id || index}
                   className="group cursor-pointer relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] bg-white break-inside-avoid mb-6 lg:mb-8"
                   onClick={() => openModal(index)}
                   style={{
@@ -225,7 +222,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Modal */}
-      {isModalOpen && selectedIndex !== null && (
+      {isModalOpen && selectedIndex !== null && gallery[selectedIndex] && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4">
           <button
             onClick={closeModal}
@@ -252,14 +249,16 @@ export default function GalleryPage() {
                 <img
                   src={gallery[selectedIndex].src}
                   alt={gallery[selectedIndex].alt || `Hotel Sherpa Soul Gallery Photo ${selectedIndex + 1}`}
-                  className="max-w-full max-h-[70vh] object-contain  shadow-md"
+                  className="max-w-full max-h-[70vh] object-contain shadow-md"
+                  onError={(e) => {
+                    e.target.src = "/hero/hero1.webp";
+                  }}
                 />
               ) : (
                 <video
                   src={gallery[selectedIndex].src}
                   autoPlay
-                  muted
-                  loop
+                  controls
                   className="max-w-full max-h-[70vh] object-contain shadow-md"
                 />
               )}

@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useCMS } from "../../Context/CMSContext";
 
-const BASE_URL = "https://hotelsherpasoul.com";
+const DEFAULT_BASE_URL = "https://hotelsherpasoul.com";
 
-const ROUTE_TITLES = {
+const DEFAULT_ROUTE_TITLES = {
   "/": "Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu, Nepal",
   "/about": "About Us | Hotel Sherpa Soul Thamel, Kathmandu",
   "/services": "Services & Amenities | Hotel Sherpa Soul Kathmandu",
@@ -11,18 +12,19 @@ const ROUTE_TITLES = {
   "/book-now": "Book Direct | Hotel Sherpa Soul Kathmandu",
   "/blog": "Stories & Travel Guide | Hotel Sherpa Soul Blog",
   "/contact": "Contact & Location | Hotel Sherpa Soul Thamel Kathmandu",
-  "/gallery": "Photo Gallery | Hotel Sherpa Soul Kathmandu",
+  "/gallery": "Photo & Video Gallery | Hotel Sherpa Soul Kathmandu",
 };
 
 /**
- * Dynamic Canonical URL and OpenGraph URL manager
- * - Strips query strings (?utm_..., ?fbclid=...) and hashes for clean canonical links
- * - Normalizes trailing slashes (root / has trailing slash, interior pages do not)
- * - Updates <link rel="canonical">, <meta property="og:url">, and <meta name="twitter:url"> in real-time
- * - Updates document.title to match the active route
+ * Dynamic Technical SEO & Canonical URL Manager
+ * - Reads live SEO settings from CMSContext
+ * - Updates canonical link, robots, title, meta description, keywords
+ * - Updates OpenGraph (og:title, og:description, og:image, og:url) and Twitter cards
+ * - Injects Google Search Console verification meta tag
  */
 export default function CanonicalManager() {
   const location = useLocation();
+  const { seo } = useCMS();
 
   useEffect(() => {
     // 1. Normalize pathname: strip trailing slash (except for root '/')
@@ -31,45 +33,92 @@ export default function CanonicalManager() {
       cleanPath = cleanPath.slice(0, -1);
     }
 
-    // 2. Build full canonical URL (without query params or fragments)
-    const canonicalUrl = `${BASE_URL}${cleanPath === "/" ? "/" : cleanPath}`;
+    const baseUrl = (seo?.global?.canonicalBase || DEFAULT_BASE_URL).replace(/\/$/, "");
+    const canonicalUrl = `${baseUrl}${cleanPath === "/" ? "/" : cleanPath}`;
 
-    // 3. Update or create <link rel="canonical"> in <head>
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement("link");
-      canonicalLink.setAttribute("rel", "canonical");
-      document.head.appendChild(canonicalLink);
-    }
-    canonicalLink.setAttribute("href", canonicalUrl);
+    // Helper to update or create a meta tag
+    const setMetaTag = (attr, key, content) => {
+      if (!content) return;
+      let el = document.querySelector(`meta[${attr}="${key}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
 
-    // 4. Update OpenGraph URL
-    let ogUrl = document.querySelector('meta[property="og:url"]');
-    if (!ogUrl) {
-      ogUrl = document.createElement("meta");
-      ogUrl.setAttribute("property", "og:url");
-      document.head.appendChild(ogUrl);
-    }
-    ogUrl.setAttribute("content", canonicalUrl);
+    // Helper to update or create a link tag
+    const setLinkTag = (rel, href) => {
+      if (!href) return;
+      let el = document.querySelector(`link[rel="${rel}"]`);
+      if (!el) {
+        el = document.createElement("link");
+        el.setAttribute("rel", rel);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("href", href);
+    };
 
-    // 5. Update Twitter URL
-    let twitterUrl = document.querySelector('meta[name="twitter:url"]');
-    if (!twitterUrl) {
-      twitterUrl = document.createElement("meta");
-      twitterUrl.setAttribute("name", "twitter:url");
-      document.head.appendChild(twitterUrl);
-    }
-    twitterUrl.setAttribute("content", canonicalUrl);
+    // 2. Canonical URL & Social URLs
+    setLinkTag("canonical", canonicalUrl);
+    setMetaTag("property", "og:url", canonicalUrl);
+    setMetaTag("name", "twitter:url", canonicalUrl);
 
-    // 6. Update document.title if route is defined
-    if (ROUTE_TITLES[cleanPath]) {
-      document.title = ROUTE_TITLES[cleanPath];
-    } else if (cleanPath.startsWith("/room/")) {
-      document.title = "Room Details | Hotel Sherpa Soul Thamel Kathmandu";
-    } else if (cleanPath.startsWith("/book/")) {
-      document.title = "Complete Your Reservation | Hotel Sherpa Soul";
+    // 3. Page SEO Data from CMS
+    const pageData = seo?.pages?.[cleanPath] || {};
+    const title =
+      pageData.title ||
+      DEFAULT_ROUTE_TITLES[cleanPath] ||
+      (cleanPath.startsWith("/room/")
+        ? "Room Details | Hotel Sherpa Soul Thamel Kathmandu"
+        : cleanPath.startsWith("/book/")
+        ? "Complete Your Reservation | Hotel Sherpa Soul"
+        : seo?.global?.defaultTitle);
+
+    const description =
+      pageData.description ||
+      seo?.global?.defaultDescription ||
+      "Stay at Hotel Sherpa Soul, a peaceful hotel in Thamel, Kathmandu. Comfortable rooms, air conditioning, Wi-Fi, friendly service and practical facilities for travellers.";
+
+    const keywords = pageData.keywords || seo?.global?.defaultKeywords;
+    const ogImage = pageData.ogImage || seo?.social?.ogImage || `${baseUrl}/hero1.webp`;
+
+    // 4. Update Document Title
+    if (title) {
+      document.title = title;
     }
-  }, [location.pathname]);
+
+    // 5. Update Meta Description & Keywords
+    setMetaTag("name", "description", description);
+    setMetaTag("name", "title", title);
+    if (keywords) {
+      setMetaTag("name", "keywords", keywords);
+    }
+
+    // 6. Robots Tag
+    if (seo?.global?.robots) {
+      setMetaTag("name", "robots", seo.global.robots);
+    }
+
+    // 7. OpenGraph Social Tags
+    setMetaTag("property", "og:title", pageData.title || seo?.social?.ogTitle || title);
+    setMetaTag("property", "og:description", pageData.description || seo?.social?.ogDescription || description);
+    setMetaTag("property", "og:image", ogImage);
+    setMetaTag("property", "og:site_name", seo?.social?.ogSiteName || "Hotel Sherpa Soul");
+    setMetaTag("property", "og:type", seo?.social?.ogType || "website");
+
+    // 8. Twitter Card Tags
+    setMetaTag("name", "twitter:card", seo?.social?.twitterCard || "summary_large_image");
+    setMetaTag("name", "twitter:title", pageData.title || seo?.social?.twitterTitle || title);
+    setMetaTag("name", "twitter:description", pageData.description || seo?.social?.twitterDescription || description);
+    setMetaTag("name", "twitter:image", ogImage);
+
+    // 9. Google Search Console Verification
+    if (seo?.analytics?.googleVerification) {
+      setMetaTag("name", "google-site-verification", seo.analytics.googleVerification);
+    }
+  }, [location.pathname, seo]);
 
   return null;
 }

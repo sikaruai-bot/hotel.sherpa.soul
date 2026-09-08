@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { CMSProvider } from "./Context/CMSContext";
 
 import HomePage from "./Pages/HomePage";
 import ScrollToTop from "./Components/HelperComponents/ScrollToTop";
@@ -19,6 +20,7 @@ const BookNowPage = lazy(() => import("./Pages/BookNowPage"));
 const BlogPage = lazy(() => import("./Pages/BlogPage"));
 const BookingForm = lazy(() => import("./Components/RoomsComponents/RoomBooking"));
 const NotFoundPage = lazy(() => import("./Pages/NotFoundPage"));
+const CMSAdminPage = lazy(() => import("./Pages/CMSAdminPage"));
 
 function PageLoader() {
   return (
@@ -45,13 +47,29 @@ function ExternalRedirect({ to }) {
   );
 }
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isCmsRoute =
+    location.pathname === "/cms" ||
+    location.pathname === "/site-admin" ||
+    location.pathname.startsWith("/cms/");
+
+  if (isCmsRoute) {
+    return (
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/cms" element={<CMSAdminPage />} />
+          <Route path="/site-admin" element={<CMSAdminPage />} />
+          <Route path="/cms/*" element={<CMSAdminPage />} />
+        </Routes>
+      </Suspense>
+    );
+  }
+
   return (
     <div>
       <MetaPixel />
       <CanonicalManager />
-      {/* <WhatsAppButton/>
-      <LanguageSwitcher /> */}
       <ActionButtons />
       <Layout>
         <ScrollToTop />
@@ -68,7 +86,7 @@ function App() {
             <Route path="/gallery" element={<FullGallery />} />
             <Route path="/book/:id" element={<BookingForm />} />
 
-                        <Route path="/admin" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
+            <Route path="/admin" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
             <Route path="/dashboard" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
             <Route path="/pms" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
             <Route path="/staff" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
@@ -77,6 +95,14 @@ function App() {
         </Suspense>
       </Layout>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <CMSProvider>
+      <AppContent />
+    </CMSProvider>
   );
 }
 

@@ -2,9 +2,12 @@ import { ChevronRight, Heart, Sparkles, Star } from "lucide-react";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useCMS } from "../../Context/CMSContext";
 
 export default function AboutVision() {
   const { t } = useTranslation();
+  const { content: cmsContent } = useCMS();
+  const vision = cmsContent?.aboutVision || {};
 
   return (
     <div>
@@ -13,7 +16,7 @@ export default function AboutVision() {
         <div className="absolute inset-0 z-0">
           <img
             src="/changes_photo/feature1.webp"
-            alt={t("aboutVision.buddhistAlt") || "Buddhist Symbol - Hotel Sherpa Soul Kathmandu"}
+            alt={vision.buddhistAlt || t("aboutVision.buddhistAlt") || "Buddhist Symbol - Hotel Sherpa Soul Kathmandu"}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover"
@@ -28,29 +31,29 @@ export default function AboutVision() {
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
               <span className="text-white">{t("aboutVision.our")} </span>
               <span className="bg-gradient-to-r from-[#F69520]  to-blue-500 bg-clip-text text-transparent">
-                {t("aboutVision.vision")}
+                {vision.title || t("aboutVision.vision")}
               </span>
             </h2>
 
             {/* Extended Description */}
             <div className="space-y-8 container mx-auto">
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-                {t("aboutVision.description.part1")}{" "}
+                {vision.part1 || t("aboutVision.description.part1")}{" "}
                 <span className="text-white font-semibold">
-                  {t("aboutVision.description.highlight")}
+                  {vision.highlight || t("aboutVision.description.highlight")}
                 </span>{" "}
-                {t("aboutVision.description.part2")}
+                {vision.part2 || t("aboutVision.description.part2")}
               </p>
 
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-                {t(
+                {vision.para2 || t(
                   "aboutVision.description.para2",
                   "Hotel Sherpa Soul is built around a simple understanding of hospitality: travellers need a place where they feel comfortable, welcome and able to rest after walking Kathmandu's vibrant streets or returning from a Himalayan trek."
                 )}
               </p>
 
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-                {t(
+                {vision.para3 || t(
                   "aboutVision.description.para3",
                   "What we offer is simpler and more meaningful: a comfortable room, a convenient location in Thamel, a quiet night's sleep, and genuine Sherpa warmth welcoming you to Nepal."
                 )}

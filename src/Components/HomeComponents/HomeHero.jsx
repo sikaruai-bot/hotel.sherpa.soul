@@ -16,9 +16,12 @@ import { useTranslation } from "react-i18next";
 import BookingModal from "../HelperComponents/BookingModal";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
 import { FaTiktok, FaWhatsapp } from "react-icons/fa";
+import { useCMS } from "../../Context/CMSContext";
 
 export default function HomeIntro() {
   const { t, i18n } = useTranslation();
+  const { content: cmsContent } = useCMS();
+  const heroData = cmsContent?.hero || {};
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -27,16 +30,16 @@ export default function HomeIntro() {
 
   const heroSlides = [
     {
-      image: "hero/hero1.webp",
-      subtitle: t("home.hero.subtitle"),
+      image: heroData.bgImage || "hero/hero1.webp",
+      subtitle: heroData.subtitle || t("home.hero.subtitle"),
     },
     {
       image: "hero/hero2.webp",
-      subtitle: t("home.hero.subtitle"),
+      subtitle: heroData.subtitle || t("home.hero.subtitle"),
     },
     {
       image: "hero/hero4.webp",
-      subtitle: t("home.hero.subtitle"),
+      subtitle: heroData.subtitle || t("home.hero.subtitle"),
     },
   ];
 
@@ -183,13 +186,13 @@ export default function HomeIntro() {
               {/* Text Block */}
               <div className="space-y-4 max-w-3xl">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-sm font-semibold tracking-wide backdrop-blur-sm">
-                  {t("home.hero.subtitle")}
+                  {heroData.subtitle || t("home.hero.subtitle")}
                 </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-none tracking-tight">
-                  {t("home.hero.title")}
+                  {heroData.title || t("home.hero.title")}
                 </h1>
                 <p className="text-white/90 text-lg leading-relaxed font-light">
-                  {t("home.hero.paragraph")}
+                  {heroData.paragraph || t("home.hero.paragraph")}
                 </p>
               </div>
 
@@ -210,7 +213,7 @@ export default function HomeIntro() {
                   }}
                   className="group bg-white text-gray-800 px-6 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2"
                 >
-                  <span>{t("home.hero.bookButton")}</span>
+                  <span>{heroData.bookButtonText || t("home.hero.bookButton")}</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
 
@@ -219,7 +222,7 @@ export default function HomeIntro() {
                   className="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-800 transition-all duration-300 flex items-center justify-center space-x-2"
                 >
                   <Play className="w-5 h-5" />
-                  <span>{t("home.hero.tourButton")}</span>
+                  <span>{heroData.tourButtonText || t("home.hero.tourButton")}</span>
                 </button>
               </div>
             </div>

@@ -5,9 +5,12 @@ import { BedIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import api from "../Utils/api";
 
-import { rooms as fallbackRooms } from "../HelperComponents/RoomsData";
+import { rooms as defaultFallbackRooms } from "../HelperComponents/RoomsData";
+import { useCMS } from "../../Context/CMSContext";
 
 const RoomsCard = () => {
+  const { rooms: cmsRooms } = useCMS();
+  const fallbackRooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultFallbackRooms;
   const [rooms, setRooms] = useState(fallbackRooms);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);

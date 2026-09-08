@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { rooms } from "../HelperComponents/RoomsData";
+import { rooms as defaultRooms } from "../HelperComponents/RoomsData";
 import {
   ChevronLeft,
   MapPin,
@@ -19,9 +19,12 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 import api from "../Utils/api";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
+import { useCMS } from "../../Context/CMSContext";
 
 export default function RoomDetail() {
   const { id } = useParams();
+  const { rooms: cmsRooms } = useCMS();
+  const rooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultRooms;
   const [room, setRoom] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("overview");

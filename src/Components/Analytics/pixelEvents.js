@@ -1,8 +1,11 @@
-const META_PIXEL_ID = "1952950858737501";
-let initialized = false;
+const DEFAULT_META_PIXEL_ID = "1952950858737501";
+let activePixelId = null;
 
-export const initializeMetaPixel = () => {
-  if (typeof window === "undefined" || initialized) return;
+export const initializeMetaPixel = (customPixelId) => {
+  if (typeof window === "undefined") return;
+  const targetId = customPixelId || activePixelId || DEFAULT_META_PIXEL_ID;
+
+  if (activePixelId === targetId) return;
 
   ((f, b, e, v, n, t, s) => {
     if (f.fbq) return;
@@ -26,8 +29,10 @@ export const initializeMetaPixel = () => {
     "https://connect.facebook.net/en_US/fbevents.js"
   );
 
-  window.fbq("init", META_PIXEL_ID);
-  initialized = true;
+  if (targetId) {
+    window.fbq("init", targetId);
+    activePixelId = targetId;
+  }
 };
 
 // Unified tracking function for Meta Pixel AND Google Tag Manager (dataLayer)
