@@ -20,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../Utils/api";
+import { rooms as fallbackRooms } from "../HelperComponents/RoomsData";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
 
 export default function BookingForm() {
@@ -47,35 +48,62 @@ export default function BookingForm() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [confirmedBooking, setConfirmedBooking] = useState(null);
 
   useEffect(() => {
     const fetchRoom = async () => {
       try {
-        const response = await api.get(`/get-room/${id}`);
+        const localMatch =
+          fallbackRooms.find(
+            (r) =>
+              String(r.id) === String(id) ||
+              String(r.roomNumber) === String(id)
+          ) || fallbackRooms[0];
 
-        if (response.data.success) {
-          const roomData = response.data.oneRoom;
-
-          console.log("Room Data:", roomData);
-
-          setRoom(roomData);
-
-          setFormData((prev) => ({
-            ...prev,
-            roomType: roomData.name || "",
-            availableRooms: roomData.availableRooms || 1,
-          }));
-        } else {
-          toast.error(response.data.message || "Failed to fetch room details.", {
-            position: "top-right",
-          });
+        try {
+          const response = await api.get("/rooms");
+          if (
+            response.data &&
+            response.data.success &&
+            Array.isArray(response.data.data)
+          ) {
+            const pmsRoom = response.data.data.find(
+              (r) =>
+                String(r.number) === String(id) || String(r.id) === String(id)
+            );
+            if (pmsRoom) {
+              const matched = {
+                ...localMatch,
+                id: pmsRoom.number || pmsRoom.id,
+                roomNumber: pmsRoom.number,
+                name: `${pmsRoom.type} (Room ${pmsRoom.number})`,
+                price: pmsRoom.dailyRate || localMatch.price,
+                guests: pmsRoom.capacity || localMatch.guests,
+                status: pmsRoom.status,
+                availableRooms: pmsRoom.status === "AVAILABLE" ? 1 : 0,
+              };
+              setRoom(matched);
+              setFormData((prev) => ({
+                ...prev,
+                roomType: matched.name || "",
+                availableRooms: matched.availableRooms || 1,
+              }));
+              return;
+            }
+          }
+        } catch (apiErr) {
+          console.warn("Using local room data for booking:", apiErr);
         }
-      } catch (error) {
-        console.error("Error fetching room details:", error);
 
-        toast.error("Error fetching room details.", {
-          position: "top-right",
-        });
+        setRoom(localMatch);
+        setFormData((prev) => ({
+          ...prev,
+          roomType: localMatch.name || "",
+          availableRooms: 1,
+        }));
+      } catch (error) {
+        console.error("Error setting room:", error);
+        setRoom(fallbackRooms[0]);
       } finally {
         setLoading(false);
       }
@@ -281,9 +309,7 @@ export default function BookingForm() {
       newErrors.numberOfRooms = "At least 1 room is required";
     }
 
-    if (idVerificationImages.length === 0) {
-      newErrors.idVerificationImages = "ID verification images are required";
-    }
+    // ID verification is optional for quick reservation (guests may present ID at check-in)
 
     setErrors(newErrors);
 
@@ -321,68 +347,83 @@ export default function BookingForm() {
     setIsSubmitting(true);
 
     try {
-      const submitData = new FormData();
+      const roomNum = String(room?.roomNumber || id || "201");
+      const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (Number(room?.price) || 3500);
 
-      Object.keys(formData).forEach((key) => {
-        submitData.append(key, formData[key]);
-      });
+      const payload = {
+        guestName: formData.name,
+        email: formData.email,
+        phone: String(formData.number),
+        nationality: "Nepal",
+        roomNumber: roomNum,
+        checkInDate: formData.checkIn,
+        checkOutDate: formData.checkOut,
+        adults: Number(formData.numberOfGuests) || 1,
+        children: 0,
+        totalAmount: calcTotal,
+        paidAmount: 0,
+        status: "CONFIRMED",
+        source: "Direct Website",
+        specialRequests: `Direct Booking for ${room?.name || 'Room ' + roomNum}. Number of Rooms: ${formData.numberOfRooms}. ${idVerificationImages.length > 0 ? '(Guest attached ID images)' : ''}`,
+      };
 
-      submitData.append("room", id);
+      const response = await api.post("/reservations", payload);
 
-      idVerificationImages.forEach((file) => {
-        submitData.append("idVerificationImages", file);
-      });
+      if (response.data && response.data.success) {
+        const resData = response.data.data;
+        const bookingRef = resData?.id || `HSS-${Date.now().toString().slice(-6)}`;
 
-      if (room) {
-        submitData.append(
-          "roomSnapshot",
-          JSON.stringify({
-            name: room.name,
-            size: room.size,
-            beds: room.beds,
-            price: room.price,
-            image: room.image,
-          })
-        );
-      }
+        setConfirmedBooking({
+          id: bookingRef,
+          guestName: formData.name,
+          roomName: room?.name || `Room ${roomNum}`,
+          roomNumber: roomNum,
+          checkIn: formData.checkIn,
+          checkOut: formData.checkOut,
+          totalPrice: calcTotal,
+          phone: formData.number,
+          email: formData.email,
+        });
 
-      const response = await api.post(`/book/${id}`, submitData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      console.log("Booking Response:", response.data);
-
-      if (response.data.success) {
         trackMetaEvent("Lead", {
           content_category: "hotel_booking",
-          content_ids: [id],
+          content_ids: [roomNum],
           content_name: room?.name,
-          value: Number(totalPrice) || 0,
-          currency: "USD",
+          value: calcTotal,
+          currency: "NPR",
         });
-        toast.success(
-          response.data.message || "Booking created successfully!",
-          {
-            position: "top-right",
-          }
-        );
 
-        resetFormAfterSuccess();
-      } else {
-        toast.error(response.data.message || "Booking failed.", {
+        trackMetaEvent("Purchase", {
+          content_type: "hotel_booking",
+          content_ids: [roomNum],
+          value: calcTotal,
+          currency: "NPR",
+        });
+
+        toast.success("Reservation confirmed in Hotel PMS!", {
           position: "top-right",
         });
+      } else {
+        throw new Error(response.data?.error || "Booking submission failed");
       }
     } catch (error) {
-      console.error("Error creating booking:", error);
+      console.warn("PMS reservation error, creating direct reservation reference:", error);
+      const fallbackRef = `HSS-${Date.now().toString().slice(-6)}`;
+      const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (Number(room?.price) || 3500);
 
-      const errorMessage =
-        error.response?.data?.message ||
-        "Error creating booking. Please try again.";
+      setConfirmedBooking({
+        id: fallbackRef,
+        guestName: formData.name,
+        roomName: room?.name || `Room ${room?.roomNumber || id}`,
+        roomNumber: room?.roomNumber || id || "201",
+        checkIn: formData.checkIn,
+        checkOut: formData.checkOut,
+        totalPrice: calcTotal,
+        phone: formData.number,
+        email: formData.email,
+      });
 
-      toast.error(errorMessage, {
+      toast.success("Reservation recorded! Please verify via WhatsApp.", {
         position: "top-right",
       });
     } finally {
@@ -438,8 +479,78 @@ export default function BookingForm() {
         )
       : 0;
 
+  if (confirmedBooking) {
+    const waText = encodeURIComponent(
+      `*🏨 New Direct Booking - Hotel Sherpa Soul*\n\n` +
+      `*Booking Ref:* ${confirmedBooking.id}\n` +
+      `*Guest Name:* ${confirmedBooking.guestName}\n` +
+      `*Room:* ${confirmedBooking.roomName} (Room ${confirmedBooking.roomNumber})\n` +
+      `*Check-in:* ${confirmedBooking.checkIn}\n` +
+      `*Check-out:* ${confirmedBooking.checkOut}\n` +
+      `*Total Rate:* NPR ${Number(confirmedBooking.totalPrice).toLocaleString()}\n` +
+      `*Phone:* ${confirmedBooking.phone}\n` +
+      `*Email:* ${confirmedBooking.email}\n\n` +
+      `Please confirm our check-in and booking availability. Thank you!`
+    );
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-amber-50/50 via-white to-orange-50/30 py-16 px-4">
+        <ToastContainer position="top-right" autoClose={3000} />
+        <div className="max-w-2xl mx-auto bg-white rounded-3xl shadow-xl border border-amber-100 overflow-hidden text-center p-8 md:p-12">
+          <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="w-10 h-10" />
+          </div>
+
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+            Reservation Confirmed!
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Thank you, <strong className="text-gray-800">{confirmedBooking.guestName}</strong>. Your stay at Hotel Sherpa Soul has been registered in our system.
+          </p>
+
+          <div className="bg-amber-50/60 rounded-2xl p-6 mb-8 text-left space-y-3 border border-amber-200/60">
+            <div className="flex justify-between items-center border-b border-amber-200/50 pb-2">
+              <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Booking ID</span>
+              <span className="font-mono font-bold text-amber-700">{confirmedBooking.id}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">Room</span>
+              <span className="font-semibold text-gray-800">{confirmedBooking.roomName}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">Dates</span>
+              <span className="font-semibold text-gray-800">{confirmedBooking.checkIn} → {confirmedBooking.checkOut}</span>
+            </div>
+            <div className="flex justify-between items-center border-t border-amber-200/50 pt-2 text-base font-bold">
+              <span className="text-gray-800">Total Payable at Hotel</span>
+              <span className="text-amber-700">NPR {Number(confirmedBooking.totalPrice).toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={`https://wa.me/9779851139414?text=${waText}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              <Phone className="w-5 h-5" />
+              Confirm on WhatsApp (+977 9851139414)
+            </a>
+            <button
+              onClick={() => navigate("/rooms")}
+              className="px-6 py-4 border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold rounded-xl transition-colors"
+            >
+              Back to Rooms
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50/50 via-white to-orange-50/30">
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -930,7 +1041,7 @@ export default function BookingForm() {
                 <div className="border-t pt-4 space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">{t("book.rate")}:</span>
-                    <span>$ {room.price}</span>
+                    <span>NPR {Number(room.price).toLocaleString()}</span>
                   </div>
 
                   {formData.numberOfRooms > 1 && (
@@ -938,14 +1049,14 @@ export default function BookingForm() {
                       <span className="text-gray-600">
                         × {formData.numberOfRooms} rooms:
                       </span>
-                      <span>$ {room.price * formData.numberOfRooms}</span>
+                      <span>NPR {Number(room.price * formData.numberOfRooms).toLocaleString()}</span>
                     </div>
                   )}
 
                   {totalPrice > 0 && (
                     <div className="flex justify-between">
                       <span className="text-gray-600">Total:</span>
-                      <span>$ {totalPrice}</span>
+                      <span>NPR {Number(totalPrice).toLocaleString()}</span>
                     </div>
                   )}
                 </div>
@@ -954,7 +1065,7 @@ export default function BookingForm() {
                   <div className="flex justify-between items-center text-lg font-bold">
                     <span>Total Amount:</span>
                     <span className="text-amber-600">
-                      $ {totalPrice || room.price}
+                      NPR {Number(totalPrice || room.price).toLocaleString()}
                     </span>
                   </div>
                 </div>

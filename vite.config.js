@@ -5,6 +5,14 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://hotelsherpasoulpms-sigma.vercel.app",
+        changeOrigin: true,
+      },
+    },
+  },
   build: {
     target: "es2020",
     cssCodeSplit: true,

@@ -5,8 +5,10 @@ import { BedIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import api from "../Utils/api";
 
+import { rooms as fallbackRooms } from "../HelperComponents/RoomsData";
+
 const RoomsCard = () => {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState(fallbackRooms);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,47 +19,46 @@ const RoomsCard = () => {
     try {
       setLoading(true);
       setError(null);
-      const { data } = await api.get("/get-rooms");
+      const { data } = await api.get("/rooms");
 
-      if (data.success && Array.isArray(data.room)) {
-        const cleanArray = (arr) => {
-          if (!Array.isArray(arr)) return [];
-          return arr
-            .flatMap((item) =>
-              item
-                .replace(/^"|"$/g, "") // remove wrapping quotes
-                .split(",") // split by comma
-                .map((v) => v.trim().replace(/^"|"$/g, ""))
-            )
-            .filter(Boolean);
-        };
-        // Map API data to match our card format
-        const formattedRooms = data.room.map((r) => ({
-          id: r._id,
-          name: r.name,
-          guests: r.guests,
-          size: r.size,
-          beds: r.beds,
-          Noroom: r.availableRooms,
-          features: cleanArray(r.features) || [],
-          description: r.description,
-          amenities: cleanArray(r.amenities) || [],
-          price: r.price,
-          image: r.image?.[0]?.url || "",
-        }));
-        formattedRooms.sort((a, b) => {
-          if (a.Noroom === 0 && b.Noroom !== 0) return 1; // a after b
-          if (a.Noroom !== 0 && b.Noroom === 0) return -1; // a before b
-          return 0; // keep original order for others
+      if (data && data.success && Array.isArray(data.data) && data.data.length > 0) {
+        const formattedRooms = data.data.map((r) => {
+          const fallback =
+            fallbackRooms.find(
+              (f) => String(f.roomNumber) === String(r.number) || f.type === r.type
+            ) || fallbackRooms[0];
+
+          return {
+            id: r.number || r.id,
+            roomNumber: r.number,
+            name: `${r.type} (Room ${r.number})`,
+            type: r.type,
+            guests: r.capacity || fallback.guests || 2,
+            size: fallback.size || "280 Sq. Ft.",
+            beds: r.bedType || fallback.beds || "1 Bed",
+            Noroom: r.status === "AVAILABLE" ? 1 : 0,
+            features: [
+              ...(r.kitchenEligible ? ["Kitchen Access"] : []),
+              ...(r.longStayEligible ? ["Long Stay Option"] : []),
+              ...(fallback.features || []),
+            ],
+            description: fallback.description || "Comfortable boutique stay in Thamel.",
+            amenities: fallback.amenities || ["Wi-Fi", "Hot Water", "Kitchen Access"],
+            price: r.dailyRate || fallback.price,
+            status: r.status,
+            image: (fallback.image && fallback.image[0]) || "/room1/room.webp",
+          };
         });
 
+        // Show available rooms first
+        formattedRooms.sort((a, b) => (b.Noroom - a.Noroom));
         setRooms(formattedRooms);
       } else {
-        setError("No rooms data available");
+        setRooms(fallbackRooms);
       }
     } catch (err) {
-      console.error("Error fetching rooms:", err);
-      setError("Failed to load rooms. Please try again.");
+      console.warn("Using fallback room inventory:", err);
+      setRooms(fallbackRooms);
     } finally {
       setLoading(false);
     }
@@ -284,7 +285,7 @@ const RoomsCard = () => {
 
                 {/* Price Badge */}
                 <div className="absolute top-4 right-4 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
-                  from $ {room.price}
+                  NPR {Number(room.price).toLocaleString()} <span className="text-xs font-normal opacity-90">/ night</span>
                 </div>
 
                 {/* Features Badge */}

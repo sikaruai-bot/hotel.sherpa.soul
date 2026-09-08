@@ -45,29 +45,46 @@ export default function RoomDetail() {
   useEffect(() => {
     const fetchRoom = async () => {
       try {
-        const response = await api.get(`/get-room/${id}`);
-        if (response.data.success && response.data.oneRoom) {
-          const r = response.data.oneRoom;
-          const formattedRoom = {
-            id: r._id,
-            name: r.name,
-            guests: r.guests,
-            size: r.size,
-            beds: r.beds,
-            availableRooms: r.availableRooms,
-            features: cleanArray(r.features) || [],
-            description: r.description,
-            amenities: cleanArray(r.amenities) || [],
-            price: r.price,
-            image: r.image || [],
-          };
-          setRoom(formattedRoom);
-        } else {
-          setRoom(null);
+        const localMatch =
+          rooms.find(
+            (r) =>
+              String(r.id) === String(id) ||
+              String(r.roomNumber) === String(id)
+          ) || rooms[0];
+
+        try {
+          const response = await api.get("/rooms");
+          if (
+            response.data &&
+            response.data.success &&
+            Array.isArray(response.data.data)
+          ) {
+            const pmsRoom = response.data.data.find(
+              (r) =>
+                String(r.number) === String(id) || String(r.id) === String(id)
+            );
+            if (pmsRoom) {
+              setRoom({
+                ...localMatch,
+                id: pmsRoom.number || pmsRoom.id,
+                roomNumber: pmsRoom.number,
+                name: `${pmsRoom.type} (Room ${pmsRoom.number})`,
+                price: pmsRoom.dailyRate || localMatch.price,
+                guests: pmsRoom.capacity || localMatch.guests,
+                status: pmsRoom.status,
+                availableRooms: pmsRoom.status === "AVAILABLE" ? 1 : 0,
+              });
+              return;
+            }
+          }
+        } catch (apiErr) {
+          console.warn("Using local room inventory:", apiErr);
         }
+
+        setRoom(localMatch);
       } catch (error) {
-        console.error("Error fetching room details:", error);
-        setRoom(null);
+        console.error("Error setting room details:", error);
+        setRoom(rooms[0]);
       } finally {
         setLoading(false);
       }
@@ -75,6 +92,7 @@ export default function RoomDetail() {
 
     fetchRoom();
   }, [id]);
+
 
   useEffect(() => {
     if (!room) return;
@@ -84,7 +102,7 @@ export default function RoomDetail() {
       content_name: room.name,
       content_type: "hotel_room",
       value: Number(room.price) || 0,
-      currency: "USD",
+      currency: "NPR",
     });
   }, [room]);
 
@@ -163,7 +181,7 @@ export default function RoomDetail() {
   };
 
   const handleBookRoom = () => {
-    navigate(`/book/${id}`);
+    navigate(`/book/${room?.roomNumber || id}`);
   };
 
   return (
@@ -286,7 +304,7 @@ export default function RoomDetail() {
               <div className="text-center md:text-left">
                 <div className="flex items-baseline gap-2 mb-2">
                   <span className="text-4xl font-bold text-gray-900">
-                    $ {room.price}
+                    NPR {Number(room.price).toLocaleString()}
                   </span>
                   <span className="text-xl text-gray-600">/ night</span>
                 </div>
