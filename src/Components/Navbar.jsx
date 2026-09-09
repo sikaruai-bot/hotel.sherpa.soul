@@ -100,9 +100,9 @@ export default function Navbar() {
             >
               <Link to="/" className="flex items-center justify-center">
                 <img
-                  src="/logo.webp"
+                  src="/logo.webp?v=2"
                   alt="Hotel Sherpa Soul - Boutique Stay in Thamel, Kathmandu"
-                  className="h-14 sm:h-16 w-auto max-w-[210px] object-contain transition-all duration-300"
+                  className="h-14 sm:h-16 w-auto max-w-[220px] object-contain transition-all duration-300"
                 />
               </Link>
             </motion.div>

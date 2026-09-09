@@ -91,7 +91,7 @@ export default function Footer() {
               <div className="flex items-center gap-4 mb-6">
                 <Link to="/" className="inline-block">
                   <img
-                    src="/logo.webp"
+                    src="/logo.webp?v=2"
                     alt="Hotel Sherpa Soul Kathmandu"
                     className="h-16 w-auto max-w-[200px] object-contain bg-white/95 px-3 py-1.5 rounded-xl shadow-md"
                   />
