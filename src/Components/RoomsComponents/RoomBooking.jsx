@@ -78,6 +78,7 @@ export default function BookingForm() {
                 roomNumber: pmsRoom.number,
                 name: `${pmsRoom.type} (Room ${pmsRoom.number})`,
                 price: pmsRoom.dailyRate || localMatch.price,
+                priceNprApprox: pmsRoom.dailyRate ? Math.round(Number(pmsRoom.dailyRate) * 135) : localMatch.priceNprApprox,
                 guests: pmsRoom.capacity || localMatch.guests,
                 status: pmsRoom.status,
                 availableRooms: pmsRoom.status === "AVAILABLE" ? 1 : 0,
@@ -348,7 +349,12 @@ export default function BookingForm() {
 
     try {
       const roomNum = String(room?.roomNumber || id || "201");
-      const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (Number(room?.price) || 3500);
+      const roomUsdRate = Number(room?.price) || 20;
+      const roomNprRate = Number(room?.priceNprApprox) || (roomUsdRate * 135);
+      const nightsCount = Math.max(1, nights);
+      const roomsCount = Number(formData.numberOfRooms) || 1;
+      const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (nightsCount * roomUsdRate * roomsCount);
+      const calcTotalNpr = nightsCount * roomNprRate * roomsCount;
 
       const payload = {
         guestName: formData.name,
@@ -364,7 +370,7 @@ export default function BookingForm() {
         paidAmount: 0,
         status: "CONFIRMED",
         source: "Direct Website",
-        specialRequests: `Direct Booking for ${room?.name || 'Room ' + roomNum}. Number of Rooms: ${formData.numberOfRooms}. ${idVerificationImages.length > 0 ? '(Guest attached ID images)' : ''}`,
+        specialRequests: `Direct Booking for ${room?.name || 'Room ' + roomNum}. Number of Rooms: ${formData.numberOfRooms}. Total USD: $${calcTotal}, Total NPR: NPR ${calcTotalNpr.toLocaleString()}. ${idVerificationImages.length > 0 ? '(Guest attached ID images)' : ''}`,
       };
 
       const response = await api.post("/reservations", payload);
@@ -381,6 +387,7 @@ export default function BookingForm() {
           checkIn: formData.checkIn,
           checkOut: formData.checkOut,
           totalPrice: calcTotal,
+          totalNpr: calcTotalNpr,
           phone: formData.number,
           email: formData.email,
         });
@@ -429,7 +436,12 @@ export default function BookingForm() {
     } catch (error) {
       console.warn("PMS reservation error, creating direct reservation reference:", error);
       const fallbackRef = `HSS-${Date.now().toString().slice(-6)}`;
-      const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (Number(room?.price) || 3500);
+      const roomUsdRate = Number(room?.price) || 20;
+      const roomNprRate = Number(room?.priceNprApprox) || (roomUsdRate * 135);
+      const nightsCount = Math.max(1, nights);
+      const roomsCount = Number(formData.numberOfRooms) || 1;
+      const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (nightsCount * roomUsdRate * roomsCount);
+      const calcTotalNpr = nightsCount * roomNprRate * roomsCount;
 
       // Trigger official booking confirmation voucher & hotel staff alert email
       fetch("/api/send-email", {
@@ -447,7 +459,7 @@ export default function BookingForm() {
           numberOfRooms: formData.numberOfRooms,
           numberOfGuests: formData.numberOfGuests,
           totalPrice: calcTotal,
-          specialRequests: `Direct Booking. ID attached: ${idVerificationImages.length > 0}`,
+          specialRequests: `Direct Booking. Total USD: $${calcTotal}, Total NPR: NPR ${calcTotalNpr.toLocaleString()}. ID attached: ${idVerificationImages.length > 0}`,
         }),
       }).catch((err) => console.warn("Booking email delivery notice:", err));
 
@@ -459,6 +471,7 @@ export default function BookingForm() {
         checkIn: formData.checkIn,
         checkOut: formData.checkOut,
         totalPrice: calcTotal,
+        totalNpr: calcTotalNpr,
         phone: formData.number,
         email: formData.email,
       });
@@ -527,7 +540,7 @@ export default function BookingForm() {
       `*Room:* ${confirmedBooking.roomName} (Room ${confirmedBooking.roomNumber})\n` +
       `*Check-in:* ${confirmedBooking.checkIn}\n` +
       `*Check-out:* ${confirmedBooking.checkOut}\n` +
-      `*Total Rate:* NPR ${Number(confirmedBooking.totalPrice).toLocaleString()}\n` +
+      `*Total Rate:* $${Number(confirmedBooking.totalPrice).toLocaleString()} USD (~NPR ${Number(confirmedBooking.totalNpr || (confirmedBooking.totalPrice * 135)).toLocaleString()})\n` +
       `*Phone:* ${confirmedBooking.phone}\n` +
       `*Email:* ${confirmedBooking.email}\n\n` +
       `Please confirm our check-in and booking availability. Thank you!`
@@ -563,7 +576,10 @@ export default function BookingForm() {
             </div>
             <div className="flex justify-between items-center border-t border-amber-200/50 pt-2 text-base font-bold">
               <span className="text-gray-800">Total Payable at Hotel</span>
-              <span className="text-amber-700">NPR {Number(confirmedBooking.totalPrice).toLocaleString()}</span>
+              <div className="text-right">
+                <span className="text-amber-700 block">${Number(confirmedBooking.totalPrice).toLocaleString()} USD</span>
+                <span className="text-xs text-gray-600 block font-semibold">~NPR {Number(confirmedBooking.totalNpr || (confirmedBooking.totalPrice * 135)).toLocaleString()}</span>
+              </div>
             </div>
           </div>
 
@@ -1078,37 +1094,48 @@ export default function BookingForm() {
                   )}
                 </div>
 
-                <div className="border-t pt-4 space-y-2 text-sm">
-                  <div className="flex justify-between">
+                <div className="border-t pt-4 space-y-2.5 text-sm">
+                  <div className="flex justify-between items-start">
                     <span className="text-gray-600">{t("book.rate")}:</span>
-                    <span className="font-semibold text-gray-900">
-                      {room.currency === "USD" || Number(room.price) <= 100
-                        ? `$${room.price} USD`
-                        : `NPR ${Number(room.price).toLocaleString()}`}
-                    </span>
+                    <div className="text-right">
+                      <span className="font-semibold text-gray-900 block">
+                        ${room.price} USD / night
+                      </span>
+                      <span className="text-xs text-amber-600 font-medium block">
+                        ~NPR {(room.priceNprApprox || (room.price * 135)).toLocaleString()}
+                      </span>
+                    </div>
                   </div>
 
                   {formData.numberOfRooms > 1 && (
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-start">
                       <span className="text-gray-600">
                         × {formData.numberOfRooms} rooms:
                       </span>
-                      <span className="font-semibold text-gray-900">
-                        {room.currency === "USD" || Number(room.price) <= 100
-                          ? `$${room.price * formData.numberOfRooms} USD`
-                          : `NPR ${Number(room.price * formData.numberOfRooms).toLocaleString()}`}
-                      </span>
+                      <div className="text-right">
+                        <span className="font-semibold text-gray-900 block">
+                          ${room.price * formData.numberOfRooms} USD
+                        </span>
+                        <span className="text-xs text-amber-600 font-medium block">
+                          ~NPR {((room.priceNprApprox || (room.price * 135)) * formData.numberOfRooms).toLocaleString()}
+                        </span>
+                      </div>
                     </div>
                   )}
 
                   {totalPrice > 0 && (
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Total:</span>
-                      <span className="font-semibold text-gray-900">
-                        {room.currency === "USD" || Number(room.price) <= 100
-                          ? `$${totalPrice} USD`
-                          : `NPR ${Number(totalPrice).toLocaleString()}`}
+                    <div className="flex justify-between items-start">
+                      <span className="text-gray-600">
+                        Total ({nights} {nights === 1 ? "night" : "nights"}):
                       </span>
+                      <div className="text-right">
+                        <span className="font-semibold text-gray-900 block">
+                          ${totalPrice} USD
+                        </span>
+                        <span className="text-xs text-amber-600 font-medium block">
+                          ~NPR {((room.priceNprApprox || (room.price * 135)) * (nights || 1) * (formData.numberOfRooms || 1)).toLocaleString()}
+                        </span>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -1116,12 +1143,18 @@ export default function BookingForm() {
                 <div className="border-t pt-4 mt-4">
                   <div className="flex justify-between items-center text-lg font-bold">
                     <span>Total Amount:</span>
-                    <span className="text-[#FB6C01]">
-                      {room.currency === "USD" || Number(room.price) <= 100
-                        ? `$${totalPrice || room.price} USD`
-                        : `NPR ${Number(totalPrice || room.price).toLocaleString()}`}
-                    </span>
+                    <div className="text-right">
+                      <span className="text-[#FB6C01] block">
+                        ${totalPrice || room.price} USD
+                      </span>
+                      <span className="text-sm font-semibold text-gray-700 block">
+                        ~NPR {((room.priceNprApprox || (room.price * 135)) * (nights || 1) * (formData.numberOfRooms || 1)).toLocaleString()}
+                      </span>
+                    </div>
                   </div>
+                  <p className="text-[11px] text-gray-500 text-right mt-1">
+                    Nepali guests pay in NPR at front desk
+                  </p>
                 </div>
 
                 <div className="mt-6 p-4 bg-gray-50 rounded-lg">

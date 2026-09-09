@@ -29,6 +29,7 @@ const RoomCarousel = () => {
       featureHighlight: "1 King + 1 Single Bed • 24/7 Hot Water • Kitchen (Long Stay)",
       price: 20,
       currency: "USD",
+      priceNprApprox: 2700,
       image: "/changes_photo/doubleBedRoom.jpeg",
     },
     {
@@ -40,6 +41,7 @@ const RoomCarousel = () => {
       featureHighlight: "Air Conditioned (AC) • 1 King Bed • 24/7 Hot Water • Kitchen (Long Stay)",
       price: 20,
       currency: "USD",
+      priceNprApprox: 2700,
       image: "/changes_photo/singleBedWithSofa.jpeg",
     },
     {
@@ -51,6 +53,7 @@ const RoomCarousel = () => {
       featureHighlight: "Air Conditioned (AC) • King + Single Bed • Kitchen (Long Stay)",
       price: 30,
       currency: "USD",
+      priceNprApprox: 4000,
       image: "/changes_photo/doubleBed.jpeg",
     },
   ];
@@ -155,9 +158,14 @@ const RoomCarousel = () => {
                       </p>
                     </div>
 
-                    <div className="absolute top-4 right-4 bg-[#01366E]/95 backdrop-blur-sm rounded-lg px-3 py-1.5 text-white text-xs font-semibold shadow flex items-center gap-1.5">
-                      <span className="text-[#FB6C01] font-bold">${room.price} USD</span>
-                      <span className="text-slate-200">/ night</span>
+                    <div className="absolute top-4 right-4 bg-[#01366E]/95 backdrop-blur-md rounded-xl px-3 py-1.5 text-white text-xs font-semibold shadow-lg flex flex-col items-end">
+                      <div className="flex items-center gap-1">
+                        <span className="text-[#FB6C01] font-bold text-sm">${room.price} USD</span>
+                        <span className="text-slate-200 text-[11px]">/ night</span>
+                      </div>
+                      <span className="text-amber-200 text-[11px] font-medium">
+                        ~NPR {(room.priceNprApprox || room.price * 135).toLocaleString()}
+                      </span>
                     </div>
 
                     <AnimatePresence>

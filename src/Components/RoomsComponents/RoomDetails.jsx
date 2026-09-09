@@ -74,6 +74,7 @@ export default function RoomDetail() {
                 roomNumber: pmsRoom.number,
                 name: `${pmsRoom.type} (Room ${pmsRoom.number})`,
                 price: pmsRoom.dailyRate || localMatch.price,
+                priceNprApprox: pmsRoom.dailyRate ? Math.round(Number(pmsRoom.dailyRate) * 135) : localMatch.priceNprApprox,
                 guests: pmsRoom.capacity || localMatch.guests,
                 status: pmsRoom.status,
                 availableRooms: pmsRoom.status === "AVAILABLE" ? 1 : 0,
@@ -308,17 +309,21 @@ export default function RoomDetail() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex items-center gap-4">
               <div className="text-center md:text-left">
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-4xl font-bold text-[#01366E]">
-                    {room.currency === "USD" || Number(room.price) <= 100
-                      ? `$${room.price} USD`
-                      : `NPR ${Number(room.price).toLocaleString()}`}
+                <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                  <span className="text-3xl sm:text-4xl font-extrabold text-[#01366E]">
+                    ${room.price} USD
                   </span>
-                  <span className="text-xl text-gray-600">/ night</span>
+                  <span className="text-xl sm:text-2xl font-bold text-amber-600">
+                    (~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()})
+                  </span>
+                  <span className="text-base sm:text-lg text-gray-500 font-medium">/ night</span>
                 </div>
-                <p className="text-gray-600 text-sm">
-                  {room.priceNprApprox ? `Approx. NPR ${room.priceNprApprox.toLocaleString()} • ` : ""}Best direct rate guaranteed
-                </p>
+                <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+                    Nepali Guests: ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                  </span>
+                  <span>• Best direct rate guaranteed</span>
+                </div>
               </div>
             </div>
 
@@ -417,10 +422,13 @@ export default function RoomDetail() {
                     </div>
                     <div className="bg-gradient-to-br from-amber-50 to-amber-100 p-4 rounded-lg text-center">
                       <Star className="w-8 h-8 text-[#FB6C01] mx-auto mb-2" />
-                      <div className="font-semibold text-gray-900">
+                      <div className="font-bold text-gray-900 text-sm sm:text-base">
                         ${room.price} USD
                       </div>
-                      <div className="text-xs text-gray-600">Per Night</div>
+                      <div className="text-xs font-semibold text-amber-700 mt-0.5">
+                        ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                      </div>
+                      <div className="text-[11px] text-gray-500">Per Night</div>
                     </div>
                   </div>
                 </div>

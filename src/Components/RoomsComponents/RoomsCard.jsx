@@ -48,6 +48,8 @@ const RoomsCard = () => {
             description: fallback.description || "Comfortable boutique stay in Thamel.",
             amenities: fallback.amenities || ["Wi-Fi", "Hot Water", "Kitchen (Long Stay Only)"],
             price: r.dailyRate || fallback.price,
+            currency: r.currency || fallback.currency || "USD",
+            priceNprApprox: fallback.priceNprApprox || (r.dailyRate ? Math.round(Number(r.dailyRate) * 135) : 2700),
             status: r.status,
             image: (fallback.image && fallback.image[0]) || "/room1/room.webp",
           };
@@ -287,13 +289,18 @@ const RoomsCard = () => {
                 )}
 
                 {/* Price Badge */}
-                <div className="absolute top-4 right-4 bg-[#01366E]/95 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg flex items-center gap-1.5">
-                  <span className="text-[#FB6C01] font-bold">
-                    {room.currency === "USD" || Number(room.price) <= 100
-                      ? `$${room.price} USD`
-                      : `NPR ${Number(room.price).toLocaleString()}`}
+                <div className="absolute top-4 right-4 bg-[#01366E]/95 backdrop-blur-md text-white px-3.5 py-1.5 rounded-xl shadow-lg flex flex-col items-end">
+                  <div className="flex items-center gap-1">
+                    <span className="text-[#FB6C01] font-bold text-sm sm:text-base">
+                      {room.currency === "USD" || Number(room.price) <= 100
+                        ? `$${room.price} USD`
+                        : `NPR ${Number(room.price).toLocaleString()}`}
+                    </span>
+                    <span className="text-xs font-normal opacity-80">/ night</span>
+                  </div>
+                  <span className="text-amber-200 text-xs font-medium">
+                    ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
                   </span>
-                  <span className="text-xs font-normal opacity-90">/ night</span>
                 </div>
 
                 {/* Features Badge */}

@@ -22,6 +22,7 @@ const roomOptions = [
     label: "Budget Family Room - $20 USD/night (~NPR 2,700) (Max 3 Adults, 1 Child)",
     roomNumber: "101",
     price: 20,
+    priceNpr: 2700,
     currency: "USD",
     maxGuests: 4,
     bedInfo: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
@@ -30,6 +31,7 @@ const roomOptions = [
     label: "Deluxe Room - $20 USD/night (~NPR 2,700) (Air Conditioned | Max 2 Adults, 1 Child)",
     roomNumber: "201",
     price: 20,
+    priceNpr: 2700,
     currency: "USD",
     maxGuests: 3,
     bedInfo: "1 King Bed (32.5 sq. ft)",
@@ -38,6 +40,7 @@ const roomOptions = [
     label: "Family Room - $30 USD/night (~NPR 4,000) (Air Conditioned | Max 3 Adults, 1 Child)",
     roomNumber: "301",
     price: 30,
+    priceNpr: 4000,
     currency: "USD",
     maxGuests: 4,
     bedInfo: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
@@ -68,6 +71,13 @@ export default function BookNowPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingRefId, setBookingRefId] = useState("");
   const [totalCalculated, setTotalCalculated] = useState(0);
+
+  const selectedRoomObj = roomOptions.find((r) => r.label === formData.roomType) || null;
+  const estimatedNights = formData.checkIn && formData.checkOut
+    ? Math.max(1, Math.ceil((new Date(formData.checkOut) - new Date(formData.checkIn)) / (1000 * 60 * 60 * 24)))
+    : 1;
+  const estimatedTotalUsd = selectedRoomObj ? estimatedNights * selectedRoomObj.price * (Number(formData.numberOfRooms) || 1) : 0;
+  const estimatedTotalNpr = selectedRoomObj ? estimatedNights * (selectedRoomObj.priceNpr || (selectedRoomObj.price * 135)) * (Number(formData.numberOfRooms) || 1) : 0;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -106,7 +116,7 @@ export default function BookNowPage() {
       1,
       Math.ceil((new Date(formData.checkOut) - new Date(formData.checkIn)) / (1000 * 60 * 60 * 24))
     );
-    const totalAmount = nights * (selectedRoom.price || 3500) * (formData.numberOfRooms || 1);
+    const totalAmount = nights * (selectedRoom.price || 20) * (formData.numberOfRooms || 1);
     setTotalCalculated(totalAmount);
 
     try {
@@ -578,6 +588,30 @@ export default function BookNowPage() {
                     </p>
                   </div>
 
+                  {/* Estimated Price Indicator */}
+                  {selectedRoomObj && (
+                    <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 mb-2">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div>
+                          <span className="text-xs font-bold text-amber-800 uppercase tracking-wider block">
+                            Estimated Total ({estimatedNights} {estimatedNights === 1 ? "night" : "nights"}, {formData.numberOfRooms} {formData.numberOfRooms > 1 ? "rooms" : "room"})
+                          </span>
+                          <span className="text-xs text-gray-600">
+                            Nepali guests pay in NPR at front desk
+                          </span>
+                        </div>
+                        <div className="text-left sm:text-right">
+                          <span className="text-2xl font-bold text-[#01366E] block">
+                            ${estimatedTotalUsd} USD
+                          </span>
+                          <span className="text-sm font-bold text-amber-700 block">
+                            ~NPR {estimatedTotalNpr.toLocaleString()}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Submit Button */}
                   <button
                     onClick={handleSubmit}
@@ -639,6 +673,13 @@ export default function BookNowPage() {
                   <div>
                     <span className="text-gray-600">Rooms:</span>
                     <p className="font-semibold">{formData.numberOfRooms}</p>
+                  </div>
+                  <div className="col-span-2 pt-2 border-t border-blue-200 flex justify-between items-center">
+                    <span className="text-gray-700 font-medium">Total Rate:</span>
+                    <div className="text-right">
+                      <span className="font-bold text-[#01366E] text-base">${Number(totalCalculated)} USD</span>
+                      <span className="text-xs font-semibold text-amber-700 block">~NPR ${(Number(totalCalculated) * 135).toLocaleString()}</span>
+                    </div>
                   </div>
                 </div>
               </div>

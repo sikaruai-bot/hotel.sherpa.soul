@@ -151,7 +151,7 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                     Room Display Name
@@ -167,7 +167,7 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Price per Night (NPR)
+                    Price per Night (USD)
                   </label>
                   <input
                     type="number"
@@ -176,6 +176,22 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                       setEditingRoom({
                         ...editingRoom,
                         price: Number(e.target.value),
+                      })
+                    }
+                    className="w-full px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Nepali Guest Rate (NPR)
+                  </label>
+                  <input
+                    type="number"
+                    value={editingRoom.priceNprApprox || (editingRoom.price ? Math.round(editingRoom.price * 135) : 2700)}
+                    onChange={(e) =>
+                      setEditingRoom({
+                        ...editingRoom,
+                        priceNprApprox: Number(e.target.value),
                       })
                     }
                     className="w-full px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm"
@@ -360,7 +376,10 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                 <div className="text-right">
                   <span className="text-xs text-slate-400">from</span>
                   <p className="text-base font-bold text-amber-400">
-                    NPR {room.price?.toLocaleString()}
+                    ${room.price} USD
+                  </p>
+                  <p className="text-xs text-slate-300 font-medium">
+                    ~NPR {(room.priceNprApprox || (room.price * 135))?.toLocaleString()}
                   </p>
                 </div>
               </div>

@@ -40,6 +40,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
           description: r.description,
           amenities: r.amenities || [],
           price: r.price,
+          priceNprApprox: r.priceNprApprox || (Number(r.price) <= 100 ? Number(r.price) * 135 : Number(r.price)),
           image: r.image?.[0]?.url || "",
         }))
         // Ensure available rooms appear first, sold-out last
@@ -256,11 +257,16 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                         <div className="flex items-center justify-between">
                           <div>
                             {room.price && (
-                              <div className="text-lg font-bold text-orange-500">
-                                $ {room.price}
-                                <span className="text-sm font-normal text-gray-500">
-                                  /night
-                                </span>
+                              <div>
+                                <div className="text-lg font-bold text-orange-500">
+                                  ${room.price} USD
+                                  <span className="text-xs font-normal text-gray-500 ml-1">
+                                    /night
+                                  </span>
+                                </div>
+                                <div className="text-xs font-semibold text-amber-700">
+                                  ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                                </div>
                               </div>
                             )}
                           </div>
