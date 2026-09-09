@@ -35,11 +35,11 @@ const HomeFacilities = () => {
   const facilities = [
     {
       img: "/amenities.webp",
-      number: t("facilities.laundry.title", "Shared Self-Kitchen"),
+      number: t("facilities.laundry.title", "Shared Self-Kitchen (Long Stay Only)"),
       title: "",
       desc: t(
         "facilities.laundry.desc",
-        "Induction cooktop, refrigerator, microwave oven, electric kettle, pots, pans, utensils, and dining area for long-stay travellers."
+        "Reserved exclusively for registered long-stay guests: induction cooktop, refrigerator, microwave oven, electric kettle, pots, pans, utensils, and dining area."
       ),
       initial: { opacity: 0, x: -60 },
       animate: { opacity: 1, x: 0 },
@@ -157,15 +157,15 @@ const HomeFacilities = () => {
           <div className="relative z-10 max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/20 text-orange-300 text-xs uppercase tracking-wider font-semibold mb-4 border border-orange-400/30">
               <Sparkles className="w-3.5 h-3.5 text-[#FB6C01]" />
-              Shared Self-Kitchen for Guests & Long Stays
+              Shared Self-Kitchen • Exclusively for Long Stays
             </div>
             <h3 className="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">
               Feel at Home, Even When You're Away
             </h3>
             <p className="text-stone-300 text-base sm:text-lg leading-relaxed mb-8">
               Staying in Kathmandu for a few days is one thing. Staying for a few weeks is different.
-              Our shared self-use kitchen gives long-stay guests the flexibility to prepare simple meals,
-              brew fresh tea, work remotely, and enjoy a comfortable home routine in the heart of Thamel.
+              Our shared self-use kitchen is reserved exclusively for registered long-stay guests (weekly and monthly stays),
+              giving them the flexibility to prepare simple home meals, brew fresh tea, work remotely, and enjoy a comfortable routine in Thamel.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-stone-700/60">

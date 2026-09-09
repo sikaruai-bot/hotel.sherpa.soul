@@ -37,14 +37,14 @@ export default function HotelChatBot() {
       text: "🛏️ Room Types & Pricing",
       icon: "🛏️",
       response:
-        "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size (32.5 sq. ft) + 1 Single (19.5 sq. ft)\n• Ceiling fan/heating, private hot shower, free Wi-Fi & shared self-kitchen\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size (32.5 sq. ft)\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size (32.5 sq. ft) + 1 Single (19.5 sq. ft)\n• ❄️ **Air Conditioning (AC)**, extra spacious living & rooftop kitchen access\n\nAll rooms include high-speed Wi-Fi & shared self-kitchen access! 🍳",
+        "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size (32.5 sq. ft) + 1 Single (19.5 sq. ft)\n• Ceiling fan/heating, private hot shower & free Wi-Fi\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size (32.5 sq. ft)\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size (32.5 sq. ft) + 1 Single (19.5 sq. ft)\n• ❄️ **Air Conditioning (AC)**, extra spacious living\n\nAll rooms include high-speed Wi-Fi. (Shared self-kitchen available exclusively for registered long-stay guests) 🍳",
     },
     {
       id: "facilities",
       text: "🏢 Hotel Facilities",
       icon: "🏢",
       response:
-        "Our hotel offers practical facilities for travellers:\n\n🍳 **Shared Self-Kitchen**\n• Induction cooktop, fridge, microwave, electric kettle & utensils\n\n🏨 **24/7 Front Desk**\n• Always here to help, local tips & safe luggage storage\n\n📶 **High-Speed Free Wi-Fi**\n• Reliable internet across all rooms\n\n🚿 **24/7 Hot & Cold Showers**\n• Clean ensuite bathrooms in all rooms\n\n🚗 **Airport Transfer**\n• Convenient pickup/drop available (~20 mins from airport)",
+        "Our hotel offers practical facilities for travellers:\n\n🍳 **Shared Self-Kitchen (Long-Stay Guests Only)**\n• Reserved strictly for registered long-stay guests: induction cooktop, fridge, microwave, electric kettle & utensils\n\n🏨 **24/7 Front Desk**\n• Always here to help, local tips & safe luggage storage\n\n📶 **High-Speed Free Wi-Fi**\n• Reliable internet across all rooms\n\n🚿 **24/7 Hot & Cold Showers**\n• Clean ensuite bathrooms in all rooms\n\n🚗 **Airport Transfer**\n• Convenient pickup/drop available (~20 mins from airport)",
     },
     {
       id: "location",

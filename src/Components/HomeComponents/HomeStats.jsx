@@ -20,9 +20,9 @@ export default function HomeStats() {
     },
     {
       icon: <UtensilsCrossed className="w-8 h-8 text-[#FB6C01]" />,
-      badge: "Guest Convenience",
-      title: "Shared Self-Use Kitchen",
-      desc: "Equipped with an induction cooktop, refrigerator, microwave, and electric kettle — perfect for preparing morning tea or home-cooked meals.",
+      badge: "Long Stay Convenience",
+      title: "Shared Kitchen (Long Stay Only)",
+      desc: "Reserved exclusively for registered long-stay guests: equipped with an induction cooktop, refrigerator, microwave, and kettle for preparing simple home-cooked meals.",
     },
     {
       icon: <ShieldCheck className="w-8 h-8 text-[#01366E]" />,

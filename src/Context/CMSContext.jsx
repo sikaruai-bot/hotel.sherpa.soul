@@ -33,7 +33,7 @@ const DEFAULT_CMS_DATA = {
       },
       "/rooms": {
         title: "Rooms & Accommodation | Hotel Sherpa Soul Thamel, Kathmandu",
-        description: "Explore our quiet rooms in Thamel: Budget Family Room ($20 USD), Deluxe Room ($20 USD), and Family Room ($30 USD) with King and Single beds, 24/7 hot water, and shared self-kitchen.",
+        description: "Explore our quiet rooms in Thamel: Budget Family Room ($20 USD), Deluxe Room ($20 USD), and Family Room ($30 USD) with King and Single beds, 24/7 hot water, and shared self-kitchen for long-stay guests.",
         keywords: "Hotel Sherpa Soul Rooms, Budget Family Room, Deluxe Room Thamel, Family Room Kathmandu",
         ogImage: "https://hotelsherpasoul.com/room1/room.webp",
       },
@@ -57,8 +57,8 @@ const DEFAULT_CMS_DATA = {
       },
       "/services": {
         title: "Services & Amenities | Hotel Sherpa Soul Kathmandu",
-        description: "Practical facilities designed for travellers: shared rooftop kitchen, elevator, 24/7 hot water, high-speed Wi-Fi, and luggage storage.",
-        keywords: "Hotel Sherpa Soul Amenities, Shared Kitchen Thamel, Kathmandu Facilities",
+        description: "Practical facilities designed for travellers: shared self-kitchen for long-stay guests, elevator, 24/7 hot water, high-speed Wi-Fi, and luggage storage.",
+        keywords: "Hotel Sherpa Soul Amenities, Shared Kitchen Long Stay Thamel, Kathmandu Facilities",
         ogImage: "https://hotelsherpasoul.com/hero1.webp",
       },
       "/blog": {
@@ -72,7 +72,7 @@ const DEFAULT_CMS_DATA = {
       ogType: "website",
       ogSiteName: "Hotel Sherpa Soul",
       ogTitle: "Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu",
-      ogDescription: "Experience peaceful boutique comfort in the heart of Thamel, Kathmandu. Modern rooms, shared kitchen, rooftop terrace, and authentic Sherpa hospitality.",
+      ogDescription: "Experience peaceful boutique comfort in the heart of Thamel, Kathmandu. Modern rooms, shared kitchen for long-stay guests, rooftop terrace, and authentic Sherpa hospitality.",
       ogImage: "https://hotelsherpasoul.com/hero1.webp",
       twitterCard: "summary_large_image",
       twitterTitle: "Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu",
@@ -90,7 +90,7 @@ const DEFAULT_CMS_DATA = {
     schema: {
       hotelName: "Hotel Sherpa Soul",
       alternateName: "Sherpa Soul Hotel Thamel",
-      description: "Experience peaceful boutique stay at Hotel Sherpa Soul in Thamel Bhagawati Marg, Kathmandu. Featuring modern deluxe rooms, shared kitchen, 24/7 front desk, high-speed Wi-Fi, and authentic Himalayan hospitality.",
+      description: "Experience peaceful boutique stay at Hotel Sherpa Soul in Thamel Bhagawati Marg, Kathmandu. Featuring modern deluxe rooms, shared kitchen for long-stay guests, 24/7 front desk, high-speed Wi-Fi, and authentic Himalayan hospitality.",
       telephone: "+977-9851068219",
       email: "info@hotelsherpasoul.com",
       addressStreet: "Thamel Bhagawati Marg 26",

@@ -49,7 +49,7 @@
     "desc6": "Comfortable rooms with contemporary design elements, ensuring a relaxing atmosphere and all necessary conveniences.",
     "desc7": "Standard rooms featuring cozy bedding and access to all hotel services, ideal for budget-conscious travelers.",
     "desc8": "Well-appointed rooms perfect for families, offering ample space and quiet surroundings.",
-    "desc9": "Classic rooms with modern amenities and convenient access to the shared self-kitchen.",
+    "desc9": "Classic rooms with modern amenities and shared self-kitchen access for long-stay guests.",
     "desc10": "Comfort and simplicity combined in these rooms, suited for both short and long stays with a focus on guest comfort."
   },
   "contactHero": {
@@ -133,8 +133,8 @@
       "description": "Air-conditioned rooms and high-speed Wi-Fi keep you comfortable and connected with family, work or travel plans."
     },
     "foreignCurrencyExchange": {
-      "title": "Shared Self-Kitchen",
-      "description": "Our shared self-use kitchen gives long-stay guests the flexibility to prepare simple home-cooked meals with induction cooktop, fridge, and microwave."
+      "title": "Shared Kitchen (Long Stay Only)",
+      "description": "Our shared self-use kitchen is reserved exclusively for registered long-stay guests, offering the flexibility to prepare simple home-cooked meals with induction cooktop, fridge, and microwave."
     },
     "cleanAndSecure": {
       "title": "Friendly, Personal Service",
@@ -266,8 +266,8 @@
         "desc": "Private en-suite bathroom facilities with 24/7 hot & cold showers, towels, toiletries and toothpaste."
       },
       {
-        "title": "Shared Self-Kitchen",
-        "desc": "Shared kitchen with induction cooktop, fridge, and microwave giving long-stay guests meal flexibility."
+        "title": "Shared Kitchen (Long Stay Only)",
+        "desc": "Shared kitchen with induction cooktop, fridge, and microwave reserved exclusively for registered long-stay guests."
       },
       {
         "title": "Baggage Storage",
@@ -282,7 +282,7 @@
   "homeTestimonial": [],
   "hotelName": "Hotel Sherpa Soul",
   "introsub": "Thamel is full of life. There are cafés, restaurants, shops, trekking agencies and plenty of places to explore. But after a long day of walking around Kathmandu or returning from a trek, sometimes all you want is a quiet room and a good night's sleep. That is what we focus on at Hotel Sherpa Soul. We give our guests a clean, comfortable and peaceful place to stay while they experience Kathmandu.",
-  "heroParagraph": "Welcome to Hotel Sherpa Soul, your peaceful boutique stay in Thamel, Kathmandu. We provide clean, quiet rooms, reliable hot water, high-speed Wi-Fi, shared self-kitchen, and authentic Sherpa hospitality for travelers seeking a good night's sleep.",
+  "heroParagraph": "Welcome to Hotel Sherpa Soul, your peaceful boutique stay in Thamel, Kathmandu. We provide clean, quiet rooms, reliable hot water, high-speed Wi-Fi, shared self-kitchen for long-stay guests, and authentic Sherpa hospitality for travelers seeking a good night's sleep.",
   "bookButton": "Book Your Stay",
   "virtualTourButton": "Virtual Tour",
   "videoUrl": "https://www.youtube.com/embed/8IoDrKmbeBs?si=fQZBO4KHYiGJvmt4",
@@ -321,8 +321,8 @@
     "title1": "Long Stays & Amenities",
     "title2": "Shared Self-Kitchen & Facilities",
     "laundry": {
-      "title": "Shared Self-Kitchen",
-      "desc": "Induction cooktop, refrigerator, microwave oven, electric kettle, pots, pans, utensils, and dining area for long-stay travellers."
+      "title": "Shared Self-Kitchen (Long Stay Only)",
+      "desc": "Induction cooktop, refrigerator, microwave oven, electric kettle, pots, pans, utensils, and dining area reserved exclusively for long-stay travellers."
     },
     "pickup": {
       "title": "Airport Transfers",
@@ -518,9 +518,9 @@
     "q6": "Do you provide Wi-Fi?",
     "a6": "Yes, Wi-Fi is provided for guests to stay connected during their visit.",
     "q7": "Does the hotel have a shared kitchen?",
-    "a7": "Yes. Hotel Sherpa Soul provides a shared self-use kitchen for registered guests, particularly useful for longer stays. Please check the current kitchen facilities and house rules with the hotel.",
+    "a7": "Yes. Hotel Sherpa Soul provides a shared self-use kitchen reserved strictly for registered long-stay guests (weekly and monthly stays). It is not available for short single-night stays.",
     "q8": "Who can use the shared kitchen?",
-    "a8": "The shared kitchen is intended for registered hotel guests. Guests are expected to clean after use and respect other guests sharing the facility.",
+    "a8": "The shared kitchen is reserved exclusively for registered long-stay guests. House rules and registration apply before use to ensure a clean and quiet atmosphere for everyone.",
     "q9": "How far is Kathmandu Airport?",
     "a9": "The hotel is approximately 20 minutes from Tribhuvan International Airport by vehicle, depending on traffic.",
     "q10": "How far is Pashupatinath Temple?",

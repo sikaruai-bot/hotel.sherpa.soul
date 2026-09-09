@@ -79,7 +79,7 @@ export default function HomeFAQ() {
       question: t("faq.q7", "Does the hotel have a shared kitchen?"),
       answer: t(
         "faq.a7",
-        "Yes. Hotel Sherpa Soul provides a shared self-use kitchen for registered guests, particularly useful for longer stays. Please check the current kitchen facilities and house rules with the hotel."
+        "Yes, Hotel Sherpa Soul provides a shared self-use kitchen reserved strictly for registered long-stay guests (weekly and monthly stays). Short single-night stays do not have kitchen access."
       ),
     },
     {
@@ -87,7 +87,7 @@ export default function HomeFAQ() {
       question: t("faq.q8", "Who can use the shared kitchen?"),
       answer: t(
         "faq.a8",
-        "The shared kitchen is intended for registered hotel guests. Guests are expected to clean after use and respect other guests sharing the facility."
+        "The shared kitchen is reserved exclusively for registered long-stay guests. House rules and prior registration apply to ensure a clean, orderly environment for all."
       ),
     },
     {
