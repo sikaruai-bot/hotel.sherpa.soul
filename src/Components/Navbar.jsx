@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import BookingModal from "./HelperComponents/BookingModal";
 import { trackMetaEvent } from "./Analytics/pixelEvents";
 import LanguageSwitcher from "./HelperComponents/LanguageSwticher";
+import hotelLogo from "../assets/logo.webp";
 
 export default function Navbar() {
   const location = useLocation();
@@ -101,7 +102,7 @@ export default function Navbar() {
             >
               <Link to="/" className="flex items-center justify-center">
                 <img
-                  src="/logo.webp?v=2"
+                  src={hotelLogo}
                   alt="Hotel Sherpa Soul - Boutique Stay in Thamel, Kathmandu"
                   className="h-14 sm:h-16 w-auto max-w-[220px] object-contain transition-all duration-300"
                 />

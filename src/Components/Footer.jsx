@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import { FaTiktok, FaWhatsapp } from "react-icons/fa";
 import BookingModal from "./HelperComponents/BookingModal";
 import { trackMetaEvent } from "./Analytics/pixelEvents";
+import hotelLogo from "../assets/logo.webp";
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -141,7 +142,7 @@ export default function Footer() {
               <div className="flex items-center gap-4 mb-6">
                 <Link to="/" className="inline-block">
                   <img
-                    src="/logo.webp?v=2"
+                    src={hotelLogo}
                     alt="Hotel Sherpa Soul Kathmandu"
                     className="h-16 w-auto max-w-[200px] object-contain bg-white/95 px-3 py-1.5 rounded-xl shadow-md"
                   />
