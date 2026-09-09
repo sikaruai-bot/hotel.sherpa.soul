@@ -274,24 +274,20 @@ export default function RoomDetail() {
           )}
 
           {/* Room Title Overlay */}
-          <div className="absolute bottom-8 left-8 text-white">
+          <div className="absolute bottom-8 left-8 text-white max-w-4xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{room.name}</h1>
-            <div className="flex flex-wrap gap-6 text-lg opacity-90">
+            <div className="flex flex-wrap gap-6 text-base md:text-lg opacity-90">
               <span className="flex items-center gap-2">
-                <Users className="w-5 h-5" />
-                {room.guests} Guests
+                <Users className="w-5 h-5 text-[#FB6C01]" />
+                {room.occupancy || `${room.guests} Guests`}
               </span>
               <span className="flex items-center gap-2">
-                <MapPin className="w-5 h-5" />
-                {room.size} sq ft
+                <MapPin className="w-5 h-5 text-[#FB6C01]" />
+                {room.size}
               </span>
               <span className="flex items-center gap-2">
-                <Bed className="w-5 h-5" />
+                <Bed className="w-5 h-5 text-[#FB6C01]" />
                 {room.beds}
-              </span>
-              <span className="flex items-center gap-2">
-                <Bed className="w-5 h-5" />
-                {room.availableRooms}
               </span>
             </div>
           </div>
@@ -306,27 +302,34 @@ export default function RoomDetail() {
             <div className="flex items-center gap-4">
               <div className="text-center md:text-left">
                 <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-4xl font-bold text-gray-900">
-                    NPR {Number(room.price).toLocaleString()}
+                  <span className="text-4xl font-bold text-[#01366E]">
+                    {room.currency === "USD" || Number(room.price) <= 100
+                      ? `$${room.price} USD`
+                      : `NPR ${Number(room.price).toLocaleString()}`}
                   </span>
                   <span className="text-xl text-gray-600">/ night</span>
                 </div>
-                <p className="text-gray-600">Best rate guaranteed</p>
+                <p className="text-gray-600 text-sm">
+                  {room.priceNprApprox ? `Approx. NPR ${room.priceNprApprox.toLocaleString()} • ` : ""}Best direct rate guaranteed
+                </p>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={handleBookRoom}
-                className="group bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-3"
+                className="group bg-[#01366E] hover:bg-[#072340] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-3 shadow-md"
               >
-                <CreditCard className="w-5 h-5" />
+                <CreditCard className="w-5 h-5 text-[#FB6C01]" />
                 {t("roomdetails.buttons.book")}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-5 h-5 text-[#FB6C01] group-hover:translate-x-1 transition-transform duration-300" />
               </button>
 
-              <button className="border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
-                <Calendar className="w-5 h-5" />
+              <button
+                onClick={handleBookRoom}
+                className="border-2 border-[#01366E] text-[#01366E] hover:bg-blue-50 font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <Calendar className="w-5 h-5 text-[#FB6C01]" />
                 {t("roomdetails.buttons.check")}
               </button>
             </div>
@@ -360,7 +363,7 @@ export default function RoomDetail() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-6 py-4 font-medium transition-all duration-200 ${
                     activeTab === tab.id
-                      ? "bg-amber-50 text-amber-600 border-b-2 border-amber-500"
+                      ? "bg-blue-50 text-[#01366E] border-b-2 border-[#01366E]"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
@@ -385,32 +388,32 @@ export default function RoomDetail() {
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center">
-                      <Users className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                      <div className="font-semibold text-gray-900">
-                        {room.guests}
+                      <Users className="w-8 h-8 text-[#01366E] mx-auto mb-2" />
+                      <div className="font-semibold text-gray-900 text-sm md:text-base">
+                        {room.occupancy || `${room.guests} Guests`}
                       </div>
-                      <div className="text-sm text-gray-600">Max Guests</div>
+                      <div className="text-xs text-gray-600">Occupancy</div>
                     </div>
                     <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg text-center">
                       <MapPin className="w-8 h-8 text-green-600 mx-auto mb-2" />
                       <div className="font-semibold text-gray-900">
                         {room.size}
                       </div>
-                      <div className="text-sm text-gray-600">Square Feet</div>
+                      <div className="text-xs text-gray-600">Room Area</div>
                     </div>
                     <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg text-center">
-                      <Bed className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-                      <div className="font-semibold text-gray-900">
+                      <Bed className="w-8 h-8 text-[#FB6C01] mx-auto mb-2" />
+                      <div className="font-semibold text-gray-900 text-sm">
                         {room.beds}
                       </div>
-                      <div className="text-sm text-gray-600">Bed Type</div>
+                      <div className="text-xs text-gray-600">Bed Setup</div>
                     </div>
                     <div className="bg-gradient-to-br from-amber-50 to-amber-100 p-4 rounded-lg text-center">
-                      <Star className="w-8 h-8 text-amber-600 mx-auto mb-2" />
+                      <Star className="w-8 h-8 text-[#FB6C01] mx-auto mb-2" />
                       <div className="font-semibold text-gray-900">
-                        $ {room.price}
+                        ${room.price} USD
                       </div>
-                      <div className="text-sm text-gray-600">Per Night</div>
+                      <div className="text-xs text-gray-600">Per Night</div>
                     </div>
                   </div>
                 </div>

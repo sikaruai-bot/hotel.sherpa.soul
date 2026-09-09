@@ -402,13 +402,13 @@
     "guest": "嘉宾",
     "rooms": {
       "1": {
-        "name": "单人床房"
+        "name": "经济家庭房 (Budget Family Room)"
       },
       "2": {
-        "name": "双床房"
+        "name": "豪华房 (Deluxe Room)"
       },
       "3": {
-        "name": "三人房（单人床+双人床）"
+        "name": "家庭房 (Family Room)"
       }
     },
     "details": "查看所有房间",

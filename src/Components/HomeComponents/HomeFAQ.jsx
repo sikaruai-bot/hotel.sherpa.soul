@@ -39,7 +39,7 @@ export default function HomeFAQ() {
       question: t("faq.q2", "What room types are available?"),
       answer: t(
         "faq.a2",
-        "Hotel Sherpa Soul offers three room categories: Solo Comfort Room for single occupancy, Double Comfort Room for two guests, and Triple Comfort Room for three guests."
+        "Hotel Sherpa Soul offers three room categories: (A) Budget Family Room (3 adults, 1 child; King 32.5 sq. ft + Single 19.5 sq. ft; $20 USD/night), (B) Deluxe Room (2 adults, 1 child; King 32.5 sq. ft; $20 USD/night), and (C) Family Room (3 adults, 1 child; King 32.5 sq. ft + Single 19.5 sq. ft; $30 USD/night)."
       ),
     },
     {

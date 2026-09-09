@@ -394,13 +394,13 @@
     "guest": "Huéspedes",
     "rooms": {
       "1": {
-        "name": "Habitación Individual"
+        "name": "Habitación Budget Family"
       },
       "2": {
-        "name": "Habitación Doble"
+        "name": "Habitación Deluxe"
       },
       "3": {
-        "name": "Habitación Triple (individual + doble)"
+        "name": "Habitación Family"
       }
     },
     "details": "Ver Todas las Habitaciones",

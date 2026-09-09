@@ -21,27 +21,33 @@ const RoomCarousel = () => {
 
   const rooms = [
     {
-      id: 1,
-      name: t("room.rooms.1.name"),
-      guests: 2,
-      size: "19.5 " + t("room.size"),
-      price: 10,
+      id: 101,
+      name: t("room.rooms.1.name", "Budget Family Room"),
+      occupancy: "3 Adults, 1 Child",
+      beds: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
+      bedShort: "King 32.5 sq.ft + Single 19.5 sq.ft",
+      price: 20,
+      currency: "USD",
       image: "/changes_photo/doubleBedRoom.jpeg",
     },
     {
-      id: 2,
-      name: t("room.rooms.2.name"),
-      guests: 2,
-      size: "32.5 " + t("room.size"),
+      id: 201,
+      name: t("room.rooms.2.name", "Deluxe Room"),
+      occupancy: "2 Adults, 1 Child",
+      beds: "1 King Bed (32.5 sq. ft)",
+      bedShort: "King 32.5 sq.ft",
       price: 20,
+      currency: "USD",
       image: "/changes_photo/singleBedWithSofa.jpeg",
     },
     {
-      id: 3,
-      name: t("room.rooms.3.name"),
-      guests: 3,
-      size: "19.5/ 32.5 " + t("room.size"),
+      id: 301,
+      name: t("room.rooms.3.name", "Family Room"),
+      occupancy: "3 Adults, 1 Child",
+      beds: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
+      bedShort: "King 32.5 sq.ft + Single 19.5 sq.ft",
       price: 30,
+      currency: "USD",
       image: "/changes_photo/doubleBed.jpeg",
     },
   ];
@@ -127,47 +133,50 @@ const RoomCarousel = () => {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300">
-                  <img
-                    src={room.image}
-                    alt={`${room.name} - Hotel Sherpa Soul Kathmandu`}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                <Link to={`/room/${room.id}`} className="block w-full h-full">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300">
+                    <img
+                      src={room.image}
+                      alt={`${room.name} - Hotel Sherpa Soul Kathmandu`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
 
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-                    <h3 className="text-lg md:text-2xl font-bold mb-1">
-                      {room.name}
-                    </h3>
-                    <p className="text-sm text-slate-200">
-                      {room.guests} {t("room.guest")} • {room.size}
-                    </p>
+                    <div className="absolute bottom-0 left-0 right-0 p-5 text-white bg-gradient-to-t from-black/85 via-black/50 to-transparent">
+                      <h3 className="text-lg md:text-2xl font-bold mb-1 text-white">
+                        {room.name}
+                      </h3>
+                      <p className="text-xs md:text-sm text-slate-200 font-medium">
+                        {room.occupancy} • {room.bedShort}
+                      </p>
+                    </div>
+
+                    <div className="absolute top-4 right-4 bg-[#01366E]/95 backdrop-blur-sm rounded-lg px-3 py-1.5 text-white text-xs font-semibold shadow flex items-center gap-1.5">
+                      <span className="text-[#FB6C01] font-bold">${room.price} USD</span>
+                      <span className="text-slate-200">/ night</span>
+                    </div>
+
+                    <AnimatePresence>
+                      {!isMobile && hoveredIndex === index && (
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-t from-[#01366E]/95 via-[#01366E]/70 to-transparent flex flex-col justify-end p-6 text-white"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <p className="text-sm text-slate-200 mb-2 font-light">
+                            {room.beds} • 24/7 Hot Water • Shared Kitchen
+                          </p>
+                          <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#FB6C01]">
+                            View Room Details & Rates <ArrowRight className="w-4 h-4" />
+                          </span>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-
-                  <div className="absolute top-4 right-4 bg-[#01366E]/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-white text-xs font-semibold shadow">
-                    <span>Direct Rate</span>
-                  </div>
-
-                  <AnimatePresence>
-                    {!isMobile && hoveredIndex === index && (
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-t from-[#01366E]/90 via-[#01366E]/60 to-transparent flex flex-col justify-end p-6 text-white"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <p className="text-sm text-slate-200 mb-2">
-                          Peaceful rest • 24/7 Hot Water • Free Wi-Fi
-                        </p>
-                        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#FB6C01]">
-                          View Room Details <ArrowRight className="w-4 h-4" />
-                        </span>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>

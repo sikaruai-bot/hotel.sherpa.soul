@@ -126,7 +126,7 @@
     },
     "guestAmenities": {
       "title": "Three Practical Room Options",
-      "description": "Choose a Solo Comfort Room, Double Comfort Room or Triple Comfort Room depending on your travel plans and group size."
+      "description": "Choose from Budget Family Room (3 Adults, 1 Child), Deluxe Room (2 Adults, 1 Child), or Family Room (3 Adults, 1 Child) tailored for restful stays in Thamel."
     },
     "airportPickupForInternationalGuests": {
       "title": "Air Conditioning & Free Wi-Fi",
@@ -352,13 +352,13 @@
     "guest": "Guests",
     "rooms": {
       "1": {
-        "name": "Solo Comfort Room"
+        "name": "Budget Family Room"
       },
       "2": {
-        "name": "Double Comfort Room"
+        "name": "Deluxe Room"
       },
       "3": {
-        "name": "Triple Comfort Room"
+        "name": "Family Room"
       }
     },
     "details": "View All Rooms",
@@ -508,7 +508,7 @@
     "q1": "Where is Hotel Sherpa Soul located?",
     "a1": "Hotel Sherpa Soul is located in Thamel, Kathmandu, Nepal, a popular area for travellers and visitors to Kathmandu.",
     "q2": "What room types are available?",
-    "a2": "Hotel Sherpa Soul offers three room categories: Solo Comfort Room for single occupancy, Double Comfort Room for two guests, and Triple Comfort Room for three guests.",
+    "a2": "Hotel Sherpa Soul offers three room categories: (A) Budget Family Room (3 adults, 1 child; 1 King size bed 32.5 sq. ft + 1 Single bed 19.5 sq. ft; $20 USD/night), (B) Deluxe Room (2 adults, 1 child; 1 King size bed 32.5 sq. ft; $20 USD/night), and (C) Family Room (3 adults, 1 child; 1 King size bed 32.5 sq. ft + 1 Single bed 19.5 sq. ft; $30 USD/night).",
     "q3": "Is Hotel Sherpa Soul a hotel with a restaurant?",
     "a3": "No. Hotel Sherpa Soul does not operate a restaurant. Our focus is on comfortable accommodation and a peaceful environment for our guests.",
     "q4": "Do you have private parking?",

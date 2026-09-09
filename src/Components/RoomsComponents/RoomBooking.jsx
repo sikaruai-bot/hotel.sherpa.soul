@@ -1081,7 +1081,11 @@ export default function BookingForm() {
                 <div className="border-t pt-4 space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">{t("book.rate")}:</span>
-                    <span>NPR {Number(room.price).toLocaleString()}</span>
+                    <span className="font-semibold text-gray-900">
+                      {room.currency === "USD" || Number(room.price) <= 100
+                        ? `$${room.price} USD`
+                        : `NPR ${Number(room.price).toLocaleString()}`}
+                    </span>
                   </div>
 
                   {formData.numberOfRooms > 1 && (
@@ -1089,14 +1093,22 @@ export default function BookingForm() {
                       <span className="text-gray-600">
                         × {formData.numberOfRooms} rooms:
                       </span>
-                      <span>NPR {Number(room.price * formData.numberOfRooms).toLocaleString()}</span>
+                      <span className="font-semibold text-gray-900">
+                        {room.currency === "USD" || Number(room.price) <= 100
+                          ? `$${room.price * formData.numberOfRooms} USD`
+                          : `NPR ${Number(room.price * formData.numberOfRooms).toLocaleString()}`}
+                      </span>
                     </div>
                   )}
 
                   {totalPrice > 0 && (
                     <div className="flex justify-between">
                       <span className="text-gray-600">Total:</span>
-                      <span>NPR {Number(totalPrice).toLocaleString()}</span>
+                      <span className="font-semibold text-gray-900">
+                        {room.currency === "USD" || Number(room.price) <= 100
+                          ? `$${totalPrice} USD`
+                          : `NPR ${Number(totalPrice).toLocaleString()}`}
+                      </span>
                     </div>
                   )}
                 </div>
@@ -1104,8 +1116,10 @@ export default function BookingForm() {
                 <div className="border-t pt-4 mt-4">
                   <div className="flex justify-between items-center text-lg font-bold">
                     <span>Total Amount:</span>
-                    <span className="text-amber-600">
-                      NPR {Number(totalPrice || room.price).toLocaleString()}
+                    <span className="text-[#FB6C01]">
+                      {room.currency === "USD" || Number(room.price) <= 100
+                        ? `$${totalPrice || room.price} USD`
+                        : `NPR ${Number(totalPrice || room.price).toLocaleString()}`}
                     </span>
                   </div>
                 </div>

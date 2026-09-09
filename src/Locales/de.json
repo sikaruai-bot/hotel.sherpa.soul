@@ -402,13 +402,13 @@
     "guest": "Gäste",
     "rooms": {
       "1": {
-        "name": "Einzelbettzimmer"
+        "name": "Budget-Familienzimmer"
       },
       "2": {
-        "name": "Zweibettzimmer"
+        "name": "Deluxe-Zimmer"
       },
       "3": {
-        "name": "Dreibettzimmer (Einzel + Doppelzimmer)"
+        "name": "Familienzimmer"
       }
     },
     "details": "Alle Zimmer anzeigen",

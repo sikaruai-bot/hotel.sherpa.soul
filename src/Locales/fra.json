@@ -401,13 +401,13 @@
       "guest": "Invités",
       "rooms": {
         "1": {
-          "name": "Chambre avec lit simple"
+          "name": "Chambre Budget Family"
         },
         "2": {
-          "name": "Chambre avec lits jumeaux"
+          "name": "Chambre Deluxe"
         },
         "3": {
-          "name": "Chambre triple (simple + double)"
+          "name": "Chambre Family"
         }
       },
       "details": "Voir toutes les chambres",

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { rooms as initialRooms } from "../Components/HelperComponents/RoomsData";
 
-const CMS_STORAGE_KEY = "HSS_CMS_DATA_V1";
+const CMS_STORAGE_KEY = "HSS_CMS_DATA_V2";
 const CMS_AUTH_KEY = "HSS_CMS_AUTH_TOKEN";
 const DEFAULT_PASSWORD = "sherpasoul2026";
 
@@ -32,9 +32,9 @@ const DEFAULT_CMS_DATA = {
         ogImage: "https://hotelsherpasoul.com/hero1.webp",
       },
       "/rooms": {
-        title: "Rooms & Suites | Hotel Sherpa Soul Thamel, Kathmandu",
-        description: "Explore our quiet, spacious rooms featuring orthopedic beds, private bathrooms, high-speed Wi-Fi, and shared kitchen access in Thamel.",
-        keywords: "Hotel Sherpa Soul Rooms, Deluxe Rooms Thamel, Twin Room Kathmandu",
+        title: "Rooms & Accommodation | Hotel Sherpa Soul Thamel, Kathmandu",
+        description: "Explore our quiet rooms in Thamel: Budget Family Room ($20 USD), Deluxe Room ($20 USD), and Family Room ($30 USD) with King and Single beds, 24/7 hot water, and shared self-kitchen.",
+        keywords: "Hotel Sherpa Soul Rooms, Budget Family Room, Deluxe Room Thamel, Family Room Kathmandu",
         ogImage: "https://hotelsherpasoul.com/room1/room.webp",
       },
       "/book-now": {

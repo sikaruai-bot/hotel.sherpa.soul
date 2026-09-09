@@ -216,10 +216,10 @@ const RoomsCard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 md:py-16">
       <div className="text-center mb-12 px-4">
-        <p className="text-xs text-amber-600 uppercase tracking-[0.3em] mb-3 font-medium">
+        <p className="text-xs text-[#FB6C01] uppercase tracking-[0.3em] mb-3 font-semibold">
           {t("room.title1")}
         </p>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#01366E] mb-4">
           {t("room.title2")}
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base mb-2">
@@ -287,13 +287,18 @@ const RoomsCard = () => {
                 )}
 
                 {/* Price Badge */}
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
-                  NPR {Number(room.price).toLocaleString()} <span className="text-xs font-normal opacity-90">/ night</span>
+                <div className="absolute top-4 right-4 bg-[#01366E]/95 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg flex items-center gap-1.5">
+                  <span className="text-[#FB6C01] font-bold">
+                    {room.currency === "USD" || Number(room.price) <= 100
+                      ? `$${room.price} USD`
+                      : `NPR ${Number(room.price).toLocaleString()}`}
+                  </span>
+                  <span className="text-xs font-normal opacity-90">/ night</span>
                 </div>
 
                 {/* Features Badge */}
-                {room.features.length > 0 && (
-                  <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs">
+                {room.features && room.features.length > 0 && (
+                  <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium">
                     {room.features[0]}
                   </div>
                 )}
@@ -305,14 +310,14 @@ const RoomsCard = () => {
               {/* Content */}
               <div className="relative p-5 sm:p-6 space-y-4">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-light text-gray-900 mb-2 group-hover:text-amber-700 transition-colors duration-300">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#01366E] transition-colors duration-300">
                     {room.name}
                   </h3>
 
                   <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 mb-3">
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center gap-1 font-semibold text-gray-800">
                       <svg
-                        className="w-4 h-4"
+                        className="w-4 h-4 text-[#FB6C01]"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -322,12 +327,12 @@ const RoomsCard = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                      {room.guests} Guest{room.guests > 1 ? "s" : ""}
+                      {room.occupancy || `${room.guests} Guests`}
                     </span>
                     <span className="text-gray-400">•</span>
                     <span className="flex items-center gap-1">
                       <svg
-                        className="w-4 h-4"
+                        className="w-4 h-4 text-[#01366E]"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -342,12 +347,8 @@ const RoomsCard = () => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <p className="text-sm text-gray-700 mb-3 leading-relaxed">
+                    <p className="text-sm font-semibold text-[#01366E] mb-2 leading-relaxed">
                       {room.beds}
-                    </p>
-                    <p className="text-sm text-gray-700 mb-3 leading-relaxed flex items-center gap-3">
-                      <BedIcon />
-                      {room.Noroom}
                     </p>
                   </div>
 
@@ -358,15 +359,15 @@ const RoomsCard = () => {
 
                 {/* Amenities */}
                 <div className="flex flex-wrap gap-1">
-                  {room.amenities.slice(0, 3).map((amenity, idx) => (
+                  {room.amenities && room.amenities.slice(0, 3).map((amenity, idx) => (
                     <span
                       key={idx}
-                      className="px-2 py-1 bg-amber-50 text-amber-700 text-xs rounded-full border border-amber-200"
+                      className="px-2.5 py-1 bg-blue-50 text-[#01366E] text-xs font-medium rounded-full border border-blue-100"
                     >
                       {amenity}
                     </span>
                   ))}
-                  {room.amenities.length > 3 && (
+                  {room.amenities && room.amenities.length > 3 && (
                     <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
                       +{room.amenities.length - 3} more
                     </span>
@@ -375,25 +376,25 @@ const RoomsCard = () => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-100">
-                  <Link to={`/room/${room.id}`}>
+                  <Link to={`/room/${room.id}`} className="flex-1">
                     <button
                       disabled={isSoldOut}
-                      className={`flex-1 px-4 py-2.5 border text-sm rounded-lg font-medium transition-all duration-300 ${
+                      className={`w-full px-4 py-2.5 border text-sm rounded-lg font-medium transition-all duration-300 ${
                         isSoldOut
                           ? "border-gray-300 text-gray-400 cursor-not-allowed"
-                          : "border-amber-600 text-amber-700 hover:bg-amber-50 hover:shadow-md"
+                          : "border-[#01366E] text-[#01366E] hover:bg-blue-50 hover:shadow-md"
                       }`}
                     >
                       {t("room.details")}
                     </button>
                   </Link>
-                  <Link to={`/book/${room.id}`}>
+                  <Link to={`/book/${room.id}`} className="flex-1">
                     <button
                       disabled={isSoldOut}
-                      className={`flex-1 px-4 py-2.5 text-white rounded-lg font-medium text-sm transition-all duration-300 transform ${
+                      className={`w-full px-4 py-2.5 text-white rounded-lg font-medium text-sm transition-all duration-300 transform ${
                         isSoldOut
                           ? "bg-gray-400 cursor-not-allowed"
-                          : "bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 hover:shadow-lg hover:scale-105"
+                          : "bg-[#01366E] hover:bg-[#072340] hover:shadow-lg hover:scale-105"
                       }`}
                     >
                       {t("room.book")}
@@ -412,7 +413,7 @@ const RoomsCard = () => {
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="p-2 rounded-full border border-gray-300 text-gray-600 hover:bg-amber-50 hover:border-amber-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+            className="p-2 rounded-full border border-gray-300 text-gray-600 hover:bg-blue-50 hover:border-[#01366E] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
           >
             <svg
               className="w-5 h-5"
@@ -435,8 +436,8 @@ const RoomsCard = () => {
               onClick={() => setCurrentPage(index + 1)}
               className={`w-10 h-10 text-sm rounded-full border transition-all duration-300 ${
                 currentPage === index + 1
-                  ? "bg-gradient-to-r from-amber-600 to-amber-700 text-white border-amber-600 shadow-lg"
-                  : "bg-white text-gray-700 border-gray-300 hover:bg-amber-50 hover:border-amber-300"
+                  ? "bg-[#01366E] text-white border-[#01366E] shadow-lg"
+                  : "bg-white text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-[#01366E]"
               }`}
             >
               {index + 1}
@@ -448,7 +449,7 @@ const RoomsCard = () => {
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className="p-2 rounded-full border border-gray-300 text-gray-600 hover:bg-amber-50 hover:border-amber-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+            className="p-2 rounded-full border border-gray-300 text-gray-600 hover:bg-blue-50 hover:border-[#01366E] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
           >
             <svg
               className="w-5 h-5"

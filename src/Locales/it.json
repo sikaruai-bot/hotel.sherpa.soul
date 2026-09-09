@@ -394,13 +394,13 @@
     "guest": "Ospiti",
     "rooms": {
       "1": {
-        "name": "Camera Singola"
+        "name": "Camera Budget Family"
       },
       "2": {
-        "name": "Camera Doppia"
+        "name": "Camera Deluxe"
       },
       "3": {
-        "name": "Camera Tripla (Singola + Matrimoniale)"
+        "name": "Camera Family"
       }
     },
     "details": "Vedi Tutte le Camere",

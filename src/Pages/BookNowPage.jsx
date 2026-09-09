@@ -18,11 +18,30 @@ import { trackMetaEvent } from "../Components/Analytics/pixelEvents";
 import api from "../Components/Utils/api";
 
 const roomOptions = [
-  { label: "Standard Double (Room 201) - NPR 3,500/night", roomNumber: "201", price: 3500, maxGuests: 2 },
-  { label: "Deluxe Twin (Room 203) - NPR 4,200/night", roomNumber: "203", price: 4200, maxGuests: 2 },
-  { label: "Deluxe Double (Room 301) - NPR 4,500/night", roomNumber: "301", price: 4500, maxGuests: 2 },
-  { label: "Standard Twin (Room 302) - NPR 3,800/night", roomNumber: "302", price: 3800, maxGuests: 2 },
-  { label: "Family Suite (Room 303) - NPR 6,500/night", roomNumber: "303", price: 6500, maxGuests: 4 },
+  {
+    label: "Budget Family Room - $20 USD/night (~NPR 2,700) (Max 3 Adults, 1 Child)",
+    roomNumber: "101",
+    price: 20,
+    currency: "USD",
+    maxGuests: 4,
+    bedInfo: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
+  },
+  {
+    label: "Deluxe Room - $20 USD/night (~NPR 2,700) (Max 2 Adults, 1 Child)",
+    roomNumber: "201",
+    price: 20,
+    currency: "USD",
+    maxGuests: 3,
+    bedInfo: "1 King Bed (32.5 sq. ft)",
+  },
+  {
+    label: "Family Room - $30 USD/night (~NPR 4,000) (Max 3 Adults, 1 Child)",
+    roomNumber: "301",
+    price: 30,
+    currency: "USD",
+    maxGuests: 4,
+    bedInfo: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
+  },
 ];
 
 export default function BookNowPage() {
@@ -643,7 +662,7 @@ export default function BookNowPage() {
                     `*Check-in:* ${formData.checkIn}\n` +
                     `*Check-out:* ${formData.checkOut}\n` +
                     `*Rooms:* ${formData.numberOfRooms} | *Guests:* ${formData.numberOfPeople}\n` +
-                    `*Total Payable:* NPR ${Number(totalCalculated).toLocaleString()}\n` +
+                    `*Total Payable:* $${Number(totalCalculated)} USD (~NPR ${(Number(totalCalculated) * 135).toLocaleString()})\n` +
                     `*Phone:* ${formData.phone}\n\n` +
                     `Please confirm my reservation check-in. Thank you!`
                   )}`}

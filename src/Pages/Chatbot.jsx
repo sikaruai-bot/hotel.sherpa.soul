@@ -37,14 +37,14 @@ export default function HotelChatBot() {
       text: "🛏️ Room Types & Pricing",
       icon: "🛏️",
       response:
-        "We offer several room types:\n\n🏨 **Standard Room** - $150/night\n• Perfect for solo travelers or couples\n• Free Wi-Fi & hot shower\n\n🏨 **Deluxe Room** - $200/night\n• Spacious with city view\n• Air conditioning & mini-fridge\n\n🏨 **Family Suite** - $350/night\n• Ideal for families\n• Separate living area\n\nAll rooms include complimentary breakfast! 🍳",
+        "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size (32.5 sq. ft) + 1 Single (19.5 sq. ft)\n• Private hot shower, free Wi-Fi & shared self-kitchen\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size (32.5 sq. ft)\n• Air conditioning, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size (32.5 sq. ft) + 1 Single (19.5 sq. ft)\n• Extra spacious living & rooftop kitchen access\n\nAll rooms include high-speed Wi-Fi & shared self-kitchen access! 🍳",
     },
     {
       id: "facilities",
       text: "🏢 Hotel Facilities",
       icon: "🏢",
       response:
-        "Our hotel offers amazing facilities:\n\n🍽️ **Rooftop Restaurant**\n• Panoramic city views\n• Traditional & international cuisine\n\n🏨 **24/7 Reception**\n• Always here to help\n• Tourist information available\n\n📶 **Free Wi-Fi**\n• High-speed internet throughout\n\n🚗 **Airport Transfer**\n• Complimentary pickup service\n\n🗺️ **Guided Tours**\n• Explore Kathmandu with local guides",
+        "Our hotel offers practical facilities for travellers:\n\n🍳 **Shared Self-Kitchen**\n• Induction cooktop, fridge, microwave, electric kettle & utensils\n\n🏨 **24/7 Front Desk**\n• Always here to help, local tips & safe luggage storage\n\n📶 **High-Speed Free Wi-Fi**\n• Reliable internet across all rooms\n\n🚿 **24/7 Hot & Cold Showers**\n• Clean ensuite bathrooms in all rooms\n\n🚗 **Airport Transfer**\n• Convenient pickup/drop available (~20 mins from airport)",
     },
     {
       id: "location",
@@ -58,21 +58,21 @@ export default function HotelChatBot() {
       text: "📅 Make a Reservation",
       icon: "📅",
       response:
-        "Ready to book your stay? Here are your options:\n\n📞 **Call us directly:**\n+977-9851068219\n\n📧 **Email reservation:**\ninfo@hotelsherpasoul.com\n\n💻 **Online booking:**\nVisit our website for instant confirmation\n\n🏨 **Walk-in:**\nWe welcome walk-in guests (subject to availability)\n\n✨ Book now and get 10% off for stays over 3 nights!",
+        "Ready to book your stay? Here are your options:\n\n📞 **Call or WhatsApp:**\n+977-9851068219 / +977-9851139414\n\n📧 **Email reservation:**\ninfo@hotelsherpasoul.com\n\n💻 **Online booking:**\nVisit our 'Book Your Stay' page for direct confirmation\n\n🏨 **Walk-in:**\nWe welcome walk-in guests (subject to availability)",
     },
     {
       id: "contact",
       text: "📞 Contact Information",
       icon: "📞",
       response:
-        "📞 **Phone:** +977-9851068219\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Hotel Sherpa Soul, Thamel, Kathmandu, Nepal\n\n🕐 **Reception Hours:** 24/7\n🌐 **Languages:** English, Nepali, Hindi\n\n💬 **Need immediate help?** Our reception is always available!",
+        "📞 **Phone/WhatsApp:** +977-9851068219 / +977-9851139414\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Thamel Bhagawati Marg 26, Kathmandu, Nepal\n\n🕐 **Reception Hours:** 24/7\n🌐 **Languages:** English, Nepali, Hindi\n\n💬 **Need immediate help?** Reach out on WhatsApp anytime!",
     },
   ];
 
   const quickReplies = [
     "Check availability",
     "Airport pickup",
-    "Restaurant hours",
+    "Shared kitchen",
     "Wi-Fi password",
     "Tourist info",
   ];
@@ -148,7 +148,7 @@ export default function HotelChatBot() {
     const msg = customMessage.toLowerCase();
     if (msg.includes("price") || msg.includes("cost") || msg.includes("rate")) {
       response =
-        "💰 Our room rates start from $150/night for Standard rooms. Would you like to see all our room types and pricing? Please select 'Room Types & Pricing' above!";
+        "💰 Our room rates are: Deluxe Room at $20 USD/night (~NPR 2,700), Budget Family Room at $20 USD/night (~NPR 2,700), and Family Room at $30 USD/night (~NPR 4,000). Would you like to check details? Please select 'Room Types & Pricing' above!";
     } else if (msg.includes("book") || msg.includes("reservation")) {
       response =
         "📅 I'd love to help you book! Please call +977-9851068219 or email info@hotelsherpasoul.com for reservations. You can also select 'Make a Reservation' above for all booking options!";
