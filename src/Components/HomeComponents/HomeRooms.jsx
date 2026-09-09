@@ -76,10 +76,10 @@ const RoomCarousel = () => {
   return (
     <div className="min-h-screen bg-white py-8 md:py-16">
       <div className="text-center mb-12">
-        <p className="text-xs text-amber-600 uppercase tracking-[0.2em] mb-2">
+        <p className="text-xs text-[#FB6C01] uppercase tracking-[0.2em] mb-2 font-semibold">
           {t("room.title1")}
         </p>
-        <h2 className="text-3xl md:text-5xl font-light text-gray-900">
+        <h2 className="text-3xl md:text-5xl font-bold text-[#01366E]">
           {t("room.title2")}
         </h2>
       </div>
@@ -88,16 +88,16 @@ const RoomCarousel = () => {
         <motion.button
           onClick={prevSlide}
           disabled={isTransitioning}
-          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10"
+          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 shadow-md rounded-full flex items-center justify-center text-[#01366E] hover:text-[#FB6C01]"
         >
-          <ChevronLeft />
+          <ChevronLeft className="w-6 h-6" />
         </motion.button>
         <motion.button
           onClick={nextSlide}
           disabled={isTransitioning}
-          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10"
+          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 shadow-md rounded-full flex items-center justify-center text-[#01366E] hover:text-[#FB6C01]"
         >
-          <ChevronRight />
+          <ChevronRight className="w-6 h-6" />
         </motion.button>
 
         <div className="overflow-hidden mx-8 md:mx-16">
@@ -127,69 +127,43 @@ const RoomCarousel = () => {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="relative w-full h-full rounded-lg overflow-hidden">
-                  <motion.div
-                    className="absolute inset-0 bg-white z-10"
-                    initial={{ x: 0 }}
-                    whileInView={{ x: "100%" }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 1, ease: "easeInOut" }}
-                  />
+                <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300">
                   <img
                     src={room.image}
                     alt={`${room.name} - Hotel Sherpa Soul Kathmandu`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
 
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white bg-gradient-to-t from-black/70 to-transparent">
-                    <h3 className="text-lg md:text-2xl font-light mb-1">
+                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                    <h3 className="text-lg md:text-2xl font-bold mb-1">
                       {room.name}
                     </h3>
-                    <p className="text-sm">
+                    <p className="text-sm text-slate-200">
                       {room.guests} {t("room.guest")} • {room.size}
                     </p>
                   </div>
 
-                  {isMobile && (
-                    <div className="absolute top-4 right-4 bg-black bg-opacity-70 rounded-lg px-3 py-2 text-white">
-                      <span className="text-sm opacity-80">from </span>
-                      <span className="text-lg font-light">
-                        $. {room.price}
-                      </span>
-                    </div>
-                  )}
+                  <div className="absolute top-4 right-4 bg-[#01366E]/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-white text-xs font-semibold shadow">
+                    <span>Direct Rate</span>
+                  </div>
+
                   <AnimatePresence>
                     {!isMobile && hoveredIndex === index && (
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent flex flex-col justify-center items-center text-white"
+                        className="absolute inset-0 bg-gradient-to-t from-[#01366E]/90 via-[#01366E]/60 to-transparent flex flex-col justify-end p-6 text-white"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <motion.div
-                          className="text-center"
-                          initial={{ y: 30, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: 30, opacity: 0 }}
-                          transition={{ duration: 0.4, delay: 0.1 }}
-                        >
-                          <p className="text-sm opacity-80 mb-2 tracking-wider">
-                            from
-                          </p>
-                          <div className="text-6xl font-light mb-8 tracking-wide">
-                            $ {room.price}
-                          </div>
-                          {/* <motion.button
-                            className="px-8 py-3 border capitalize border-white/50 text-sm tracking-[0.15em] uppercase hover:bg-white hover:text-black transition-all duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            {t("room.details")}
-                          </motion.button> */}
-                        </motion.div>
+                        <p className="text-sm text-slate-200 mb-2">
+                          Peaceful rest • 24/7 Hot Water • Free Wi-Fi
+                        </p>
+                        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#FB6C01]">
+                          View Room Details <ArrowRight className="w-4 h-4" />
+                        </span>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -197,14 +171,15 @@ const RoomCarousel = () => {
               </motion.div>
             ))}
           </motion.div>
+
           {isMobile && (
             <div className="flex justify-center mt-6 gap-2">
               {rooms.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? "bg-[#AB8865] w-6" : "bg-gray-300"
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? "bg-[#FB6C01] w-6" : "bg-gray-300"
                   }`}
                 />
               ))}
@@ -212,11 +187,12 @@ const RoomCarousel = () => {
           )}
         </div>
       </div>
-      <div className="flex items-center justify-center mt-8 md:mt-6 px-4">
+
+      <div className="flex items-center justify-center mt-10 px-4">
         <Link to="/rooms">
-          <button className="flex items-center gap-3 justify-between hover:text-[#AB8865] transition-colors duration-300">
-            <span className="text-lg md:text-xl"> {t("room.details")}</span>
-            <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+          <button className="flex items-center gap-3 justify-between bg-[#01366E] hover:bg-[#072340] text-white px-8 py-3.5 rounded-full font-semibold transition-colors duration-300 shadow-md">
+            <span className="text-base">Explore All Rooms & Rates</span>
+            <ArrowRight className="w-5 h-5 text-[#FB6C01]" />
           </button>
         </Link>
       </div>

@@ -202,17 +202,16 @@ export default function BookNowPage() {
         <div className="relative z-10 h-full flex items-center justify-center px-4">
           <div className="text-center text-white max-w-4xl">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6 border border-white/20">
-              <Sparkles className="w-5 h-5 text-yellow-300" />
-              <span className="text-sm font-medium">Premium Experience</span>
+              <Sparkles className="w-5 h-5 text-orange-300" />
+              <span className="text-sm font-medium">Direct Booking Guarantee</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight">
-              Reserve Your Perfect Stay
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
+              Reserve Your Peaceful Stay
             </h1>
-            <p className="text-xl md:text-2xl font-light mb-8 text-blue-100 max-w-2xl mx-auto leading-relaxed">
-              Experience luxury and comfort in the heart of the city with our
-              premium accommodations
+            <p className="text-lg md:text-xl font-light mb-8 text-slate-100 max-w-2xl mx-auto leading-relaxed">
+              Clean, quiet rooms, authentic Sherpa hospitality, and comfortable rest in the heart of Thamel
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
+            <div className="w-24 h-1 bg-[#FB6C01] mx-auto rounded-full" />
           </div>
         </div>
       </div>

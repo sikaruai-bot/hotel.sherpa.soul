@@ -65,11 +65,11 @@ export const rooms = [
     beds: "1 King Bed",
     features: ["Mountain / City Glimpse", "Extra Spacious"],
     description:
-      "Our premier Deluxe Double Room on the 3rd floor offers upscale Himalayan hospitality, a plush king-sized bed, seating corner, and serene atmosphere after a busy day in Kathmandu.",
+      "Our comfortable Deluxe Double Room on the 3rd floor offers warm Sherpa hospitality, a restful king-sized bed, seating corner, and serene atmosphere after a busy day in Kathmandu.",
     amenities: [
       "High-speed Wi-Fi",
       "King Size Bed",
-      "Ensuite Luxury Bathroom",
+      "Private Attached Bathroom (24/7 Hot Water)",
       "Flat-screen TV",
       "Tea/Coffee Maker",
       "Shared Kitchen Access",

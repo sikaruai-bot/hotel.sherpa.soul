@@ -10,7 +10,7 @@ export default function HomeLocation() {
       <section className="py-16 px-6 md:px-20 grid md:grid-cols-2 gap-12 items-center">
         {/* Text Content */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#AB8865] mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#01366E] mb-6">
             {t("contactMap.en.title")}
           </h2>
 
@@ -20,15 +20,15 @@ export default function HomeLocation() {
 
           <ul className="space-y-4 mt-6">
             <li className="flex items-center gap-3">
-              <MapPin className="text-[#AB8865]" />
+              <MapPin className="text-[#FB6C01]" />
               <span>{t("contactMap.en.address")}</span>
             </li>
             <li className="flex items-center gap-3">
-              <Phone className="text-[#AB8865]" />
+              <Phone className="text-[#FB6C01]" />
               <span>+977 9851068219</span>
             </li>
             <li className="flex items-center gap-3">
-              <Mail className="text-[#AB8865]" />
+              <Mail className="text-[#FB6C01]" />
               <span>{t("contactMap.en.email")}</span>
             </li>
           </ul>

@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-blue: #01366E;
+  --color-brand-blue-dark: #072340;
+  --color-brand-blue-light: #154D85;
+  --color-brand-orange: #FB6C01;
+  --color-brand-orange-hover: #E05A00;
+  --color-brand-orange-light: #FFF4EB;
+  --color-brand-orange-50: #FFF7ED;
+  --color-brand-warm: #FFFBF7;
+}
+
+:root {
+  --brand-blue: #01366E;
+  --brand-orange: #FB6C01;
+  --brand-orange-hover: #E05A00;
+}
+
 @keyframes scrollX {
   0% {
     transform: translateX(0%);
@@ -12,3 +29,4 @@
 .animate-scroll {
   animation: scrollX 60s linear infinite;
 }
+

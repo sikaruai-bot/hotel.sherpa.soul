@@ -55,20 +55,20 @@ export default function Navbar() {
         <Link
           to={item.href}
           onClick={onClick}
-          className={`relative transition-colors duration-300 font-medium ${
+          className={`relative transition-colors duration-300 font-semibold text-sm lg:text-base ${
             mobile ? "block text-xl py-4 px-6 rounded-lg" : "py-3 px-1"
           } ${
             isActive
-              ? "text-orange-500"
+              ? "text-[#FB6C01]"
               : mobile
-              ? "text-blue-700 hover:text-orange-500 hover:bg-orange-50"
-              : "text-blue-700 hover:text-orange-500"
+              ? "text-[#01366E] hover:text-[#FB6C01] hover:bg-orange-50"
+              : "text-[#01366E] hover:text-[#FB6C01]"
           }`}
         >
           {item.label}
           {!mobile && (
             <motion.span
-              className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-500 origin-left"
+              className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: isActive ? 1 : 0 }}
               whileHover={{ scaleX: 1 }}
@@ -83,8 +83,8 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 shadow-lg border-b border-blue-100 transition-all duration-300 z-50 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md" : "bg-white/70"
+        className={`fixed top-0 left-0 right-0 shadow-sm border-b border-slate-100 transition-all duration-300 z-50 ${
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-md" : "bg-white/90 backdrop-blur-sm"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -94,17 +94,15 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <motion.div
-              className="flex-shrink-0 z-50"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="flex-shrink-0 z-50 py-1"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
             >
               <Link to="/" className="flex items-center justify-center">
                 <img
                   src="/logo.webp"
                   alt="Hotel Sherpa Soul - Boutique Stay in Thamel, Kathmandu"
-                  className={`h-20 w-auto max-w-[180px] object-contain transition-all duration-300 ${
-                    isScrolled ? "brightness-100" : ""
-                  }`}
+                  className="h-14 sm:h-16 w-auto max-w-[210px] object-contain transition-all duration-300"
                 />
               </Link>
             </motion.div>
@@ -124,9 +122,9 @@ export default function Navbar() {
               {/* Book Now Button */}
               <motion.button
                 onClick={handleBookingClick}
-                className="hidden sm:flex items-center justify-center bg-orange-500 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-sm lg:text-base hover:bg-orange-600"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-200 text-sm lg:text-base"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
               >
                 {t("nav.quick", "Book Your Stay")}
               </motion.button>

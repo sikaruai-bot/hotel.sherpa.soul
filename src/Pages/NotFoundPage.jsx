@@ -74,12 +74,12 @@ export default function NotFoundPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="relative mb-6"
         >
-          <span className="text-8xl sm:text-9xl md:text-[12rem] font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-[#AB8865] to-slate-700 select-none drop-shadow-sm leading-none">
+          <span className="text-8xl sm:text-9xl md:text-[12rem] font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#01366E] via-[#154D85] to-[#FB6C01] select-none drop-shadow-sm leading-none">
             404
           </span>
           <div className="mt-2 flex justify-center">
-            <span className="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-amber-200 text-xs font-medium text-gray-700 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+            <span className="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-orange-200 text-xs font-medium text-gray-700 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[#FB6C01]" />
               Hotel Sherpa Soul, Thamel
             </span>
           </div>
@@ -92,7 +92,7 @@ export default function NotFoundPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="space-y-4 max-w-2xl mx-auto mb-10"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#01366E] tracking-tight">
             {t("notFound.title", "Lost on the Mountain Trail?")}
           </h1>
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
@@ -112,7 +112,7 @@ export default function NotFoundPage() {
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-amber-600 to-[#AB8865] text-white font-medium text-sm sm:text-base shadow-lg shadow-amber-900/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#01366E] to-[#FB6C01] text-white font-medium text-sm sm:text-base shadow-lg shadow-blue-950/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
           >
             <Home className="w-5 h-5" />
             {t("notFound.homeBtn", "Return to Home")}

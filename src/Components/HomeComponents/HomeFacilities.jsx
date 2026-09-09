@@ -132,11 +132,12 @@ const HomeFacilities = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
               </div>
 
-              <div className="max-w-xl bg-[#AB8865] text-white flex items-start justify-center flex-col absolute -bottom-10 left-5 right-5 sm:right-auto p-6 rounded-xl shadow-2xl backdrop-blur-sm border border-amber-600/20 hover:scale-[1.02] transition-all duration-300 group-hover:shadow-amber-900/25">
-                <div className="text-xl font-bold mb-2 tracking-wide text-white">
+              <div className="max-w-xl bg-[#01366E] text-white flex items-start justify-center flex-col absolute -bottom-10 left-5 right-5 sm:right-auto p-6 rounded-xl shadow-2xl border border-white/10 hover:scale-[1.02] transition-all duration-300">
+                <div className="text-xl font-bold mb-2 tracking-wide text-white flex items-center gap-2">
+                  <span className="text-[#FB6C01]">❖</span>
                   <span>{facility.number}</span>
                 </div>
-                <div className="text-amber-100 leading-relaxed text-sm">
+                <div className="text-slate-200 leading-relaxed text-sm">
                   {facility.desc}
                 </div>
               </div>
@@ -150,13 +151,13 @@ const HomeFacilities = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-br from-stone-900 via-stone-800 to-amber-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden mt-12 border border-amber-500/20"
+          className="bg-gradient-to-br from-[#01366E] via-[#082844] to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden mt-12 border border-white/10"
         >
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 text-amber-300 text-xs uppercase tracking-wider font-semibold mb-4 border border-amber-400/30">
-              <Sparkles className="w-3.5 h-3.5" />
-              Shared Self-Kitchen for Longer Stays
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/20 text-orange-300 text-xs uppercase tracking-wider font-semibold mb-4 border border-orange-400/30">
+              <Sparkles className="w-3.5 h-3.5 text-[#FB6C01]" />
+              Shared Self-Kitchen for Guests & Long Stays
             </div>
             <h3 className="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">
               Feel at Home, Even When You're Away

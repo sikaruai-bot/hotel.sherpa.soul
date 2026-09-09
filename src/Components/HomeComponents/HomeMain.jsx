@@ -4,7 +4,7 @@ import HomeIntro from "./HomeIntro";
 import HomeLocation from "./HomeLocation";
 import HomeRooms from "./HomeRooms";
 import HomeServices from "./HomeServices";
-import HomeTestimonials from "./HomeTestimonials";
+import HomeGoogleReviews from "./HomeGoogleReviews";
 import HomeFacilities from "./HomeFacilities";
 import HomeStats from "./HomeStats";
 import HomeFAQ from "./HomeFAQ";
@@ -18,7 +18,7 @@ export default function HomeMain() {
       <HomeRooms />
       <HomeServices />
       <HomeFacilities />
-      <HomeTestimonials />
+      <HomeGoogleReviews />
       <HomeFAQ />
       <HomeLocation />
     </div>

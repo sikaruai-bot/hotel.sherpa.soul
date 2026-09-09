@@ -43,14 +43,14 @@
     "description": "Description",
     "desc1": "Our cozy sitter rooms offer a peaceful environment with top-notch facilities suitable for families and solo travelers alike. Perfect for relaxing stays with easy access to hotel amenities.",
     "desc2": "The single sitter rooms are designed for comfort and convenience, ideal for guests looking for a quiet, private space with modern decor and essential amenities.",
-    "desc3": "Spacious rooms featuring elegant furnishings and a king-size bed, perfect for couples or business travelers seeking luxury and convenience.",
-    "desc4": "Deluxe rooms with scenic views, equipped with high-speed Wi-Fi and premium services tailored for an exceptional stay.",
-    "desc5": "Our executive suite offers an exquisite blend of comfort and style, designed to meet the needs of discerning guests.",
+    "desc3": "Spacious double rooms featuring comfortable bedding and private bathroom, perfect for couples or solo travelers seeking quiet rest and convenience.",
+    "desc4": "Deluxe rooms with natural daylight, equipped with high-speed Wi-Fi and air conditioning for a restful stay in Thamel.",
+    "desc5": "Our spacious family rooms offer practical comfort and quiet rest, designed to meet the needs of travelers visiting Kathmandu.",
     "desc6": "Comfortable rooms with contemporary design elements, ensuring a relaxing atmosphere and all necessary conveniences.",
     "desc7": "Standard rooms featuring cozy bedding and access to all hotel services, ideal for budget-conscious travelers.",
-    "desc8": "Well-appointed rooms perfect for families, offering ample space and child-friendly facilities.",
-    "desc9": "Classic rooms with modern amenities and easy access to hotel dining and recreational options.",
-    "desc10": "Comfort and elegance combined in these rooms, suited for both short and long stays with a focus on guest satisfaction."
+    "desc8": "Well-appointed rooms perfect for families, offering ample space and quiet surroundings.",
+    "desc9": "Classic rooms with modern amenities and convenient access to the shared self-kitchen.",
+    "desc10": "Comfort and simplicity combined in these rooms, suited for both short and long stays with a focus on guest comfort."
   },
   "contactHero": {
     "title": "Contact Us",
@@ -279,87 +279,26 @@
       }
     ]
   },
-  "homeTestimonial": [
-    {
-      "text": "Sherpa Soul gave me the warmth of home while traveling. The local food and friendly staff made my stay unforgettable.",
-      "name": "Sanjay Shrestha",
-      "title": "Nepal",
-      "flag": "🇳🇵"
-    },
-    {
-      "text": "The rooms were spotless, and the staff helped me arrange a quick trek nearby. Truly authentic Sherpa hospitality.",
-      "name": "Mina Lama",
-      "title": "Nepal",
-      "flag": "🇳🇵"
-    },
-    {
-      "text": "I felt safe and cared for as a solo traveler. The Sherpa traditions combined with modern services were impressive.",
-      "name": "Prakash Rai",
-      "title": "Nepal",
-      "flag": "🇳🇵"
-    },
-    {
-      "text": "From the hot showers to the evening cultural programs, every detail reflected thoughtfulness and respect for guests.",
-      "name": "Kritika Gurung",
-      "title": "Nepal",
-      "flag": "🇳🇵"
-    },
-    {
-      "text": "The balcony views of the Himalayas with morning tea were unforgettable. A perfect blend of tradition and comfort.",
-      "name": "Rohit Thapa",
-      "title": "Nepal",
-      "flag": "🇳🇵"
-    },
-    {
-      "text": "The inn arranged everything for my trek, from guides to meals. I admired their sustainable practices and hospitality.",
-      "name": "Li Wei",
-      "title": "China",
-      "flag": "🇨🇳"
-    },
-    {
-      "text": "I appreciated the Arabic-friendly meals and prayer arrangements. The kindness of the staff made me feel at home.",
-      "name": "Fatima Al Mansouri",
-      "title": "United Arab Emirates",
-      "flag": "🇦🇪"
-    },
-    {
-      "text": "The inn’s design reflects Sherpa culture beautifully. The staff guided us to hidden monasteries I’d never have found alone.",
-      "name": "Anna Müller",
-      "title": "Germany",
-      "flag": "🇩🇪"
-    },
-    {
-      "text": "Relaxing with a massage after trekking was heavenly. The staff were caring, and the Wi-Fi made it easy to stay connected.",
-      "name": "George Thompson",
-      "title": "United Kingdom",
-      "flag": "🇬🇧"
-    },
-    {
-      "text": "From check-in smiles to check-out blessings, I felt welcomed like family. The butter tea on the terrace was a highlight.",
-      "name": "Isabelle Laurent",
-      "title": "France",
-      "flag": "🇫🇷"
-    }
-  ],
+  "homeTestimonial": [],
   "hotelName": "Hotel Sherpa Soul",
   "introsub": "Thamel is full of life. There are cafés, restaurants, shops, trekking agencies and plenty of places to explore. But after a long day of walking around Kathmandu or returning from a trek, sometimes all you want is a quiet room and a good night's sleep. That is what we focus on at Hotel Sherpa Soul. We give our guests a clean, comfortable and peaceful place to stay while they experience Kathmandu.",
-  "heroParagraph": "Experience unparalleled hospitality in the heart of Kathmandu. Our boutique hotel seamlessly blends traditional Nepalese charm with contemporary luxury, creating memories that last a lifetime.",
+  "heroParagraph": "Welcome to Hotel Sherpa Soul, your peaceful boutique stay in Thamel, Kathmandu. We provide clean, quiet rooms, reliable hot water, high-speed Wi-Fi, shared self-kitchen, and authentic Sherpa hospitality for travelers seeking a good night's sleep.",
   "bookButton": "Book Your Stay",
   "virtualTourButton": "Virtual Tour",
   "videoUrl": "https://www.youtube.com/embed/8IoDrKmbeBs?si=fQZBO4KHYiGJvmt4",
   "videoTitle": "Hotel Sherpa Soul Virtual Tour",
   "modalTitle": "Virtual Tour - Hotel Sherpa Soul",
-  "modalDescription": "Take a virtual journey through our luxurious accommodations and discover the perfect blend of tradition and modernity.",
+  "modalDescription": "Take a visual look through our clean and comfortable accommodations in the heart of Thamel, Kathmandu.",
   "heroSlides": [
     {
       "image": "changes_photo/singleBedWithSofa.jpeg",
-      "title": "Luxury Redefined",
-      "subtitle": "Premium Comfort"
+      "title": "Peaceful Sleep in Thamel",
+      "subtitle": "Clean & Restful"
     },
     {
       "image": "changes_photo/doubleBedRoom.jpeg",
-      "title": "Nepalese Heritage",
-      "subtitle": "Modern Elegance"
+      "title": "Sherpa Hospitality",
+      "subtitle": "Simple & Welcoming"
     },
     {
       "image": "changes_photo/viewSeen.jpeg",
@@ -523,7 +462,7 @@
     "title1": "Your Home Away From",
     "title2": "Home ",
     "para1": "Experience authentic Sherpa hospitality in our cozy guest house. We believe that comfortable accommodation shouldn't break the bank. Our family-run establishment offers warm, personalized service with all the essential amenities you need for a memorable stay.",
-    "para2": "Whether you're here for business, leisure, or passing through on your journey, we provide a clean, safe, and welcoming environment where every guest is treated like family. Our commitment to affordable luxury means you get exceptional value without compromising on quality or comfort.",
+    "para2": "Whether you're here for trekking, sightseeing, or resting on your journey, we provide a clean, safe, and welcoming environment where every guest is treated like family. Our commitment to honest hospitality means you get exceptional comfort and value in the center of Thamel.",
     "amenities": {
       "1": "Comfortable Rooms",
       "2": "Wifi throughout the building",

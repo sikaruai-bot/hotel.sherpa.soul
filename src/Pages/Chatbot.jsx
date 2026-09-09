@@ -196,7 +196,7 @@ export default function HotelChatBot() {
           >
             <motion.button
               onClick={() => setIsOpen(true)}
-              className="bg-gradient-to-br from-[#AB8865] to-[#8B6B47] text-white rounded-full p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 relative group"
+              className="bg-gradient-to-br from-[#FB6C01] to-[#E05A00] text-white rounded-full p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 relative group"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -214,7 +214,7 @@ export default function HotelChatBot() {
               )}
 
               {/* Pulse Animation */}
-              <div className="absolute inset-0 rounded-full bg-[#AB8865] animate-ping opacity-20"></div>
+              <div className="absolute inset-0 rounded-full bg-[#FB6C01] animate-ping opacity-20"></div>
             </motion.button>
 
             {/* Tooltip */}
@@ -236,7 +236,7 @@ export default function HotelChatBot() {
             className="bg-white shadow-2xl rounded-2xl w-80 sm:w-96 h-[500px] flex flex-col border border-gray-200 overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#AB8865] to-[#8B6B47] text-white p-4 flex justify-between items-center">
+            <div className="bg-gradient-to-r from-[#01366E] to-[#154D85] text-white p-4 flex justify-between items-center">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                   <Bot size={20} />
@@ -278,7 +278,7 @@ export default function HotelChatBot() {
                     {/* Avatar */}
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm ${
-                        msg.sender === "bot" ? "bg-[#AB8865]" : "bg-blue-500"
+                        msg.sender === "bot" ? "bg-[#01366E]" : "bg-[#FB6C01]"
                       }`}
                     >
                       {msg.sender === "bot" ? (
@@ -293,7 +293,7 @@ export default function HotelChatBot() {
                       className={`max-w-[75%] p-3 rounded-2xl shadow-sm ${
                         msg.sender === "bot"
                           ? "bg-white text-gray-800 rounded-bl-sm border border-gray-200"
-                          : "bg-[#AB8865] text-white rounded-br-sm"
+                          : "bg-[#01366E] text-white rounded-br-sm"
                       }`}
                     >
                       <div className="text-sm leading-relaxed whitespace-pre-wrap">
@@ -322,7 +322,7 @@ export default function HotelChatBot() {
                     exit={{ opacity: 0, y: -20 }}
                     className="flex items-end space-x-2"
                   >
-                    <div className="w-8 h-8 bg-[#AB8865] rounded-full flex items-center justify-center text-white">
+                    <div className="w-8 h-8 bg-[#01366E] rounded-full flex items-center justify-center text-white">
                       <Bot size={16} />
                     </div>
                     <div className="bg-white p-3 rounded-2xl rounded-bl-sm border border-gray-200 shadow-sm">
@@ -361,7 +361,7 @@ export default function HotelChatBot() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
-                        className="px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-[#AB8865] hover:text-white transition-colors duration-200"
+                        className="px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-[#FB6C01] hover:text-white transition-colors duration-200"
                         onClick={() =>
                           handleOption({
                             id: `quick-${index}`,
@@ -403,7 +403,7 @@ export default function HotelChatBot() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
                           onClick={() => handleOption(option)}
-                          className="w-full text-left text-sm py-2 px-3 border border-gray-200 rounded-lg hover:bg-[#AB8865] hover:text-white hover:border-[#AB8865] transition-all duration-200 group"
+                          className="w-full text-left text-sm py-2 px-3 border border-gray-200 rounded-lg hover:bg-[#01366E] hover:text-white hover:border-[#01366E] transition-all duration-200 group"
                         >
                           <div className="flex items-center space-x-2">
                             <span className="group-hover:scale-110 transition-transform">
@@ -429,14 +429,14 @@ export default function HotelChatBot() {
                     value={customMessage}
                     onChange={(e) => setCustomMessage(e.target.value)}
                     placeholder="Type your message..."
-                    className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#AB8865] focus:border-transparent"
+                    className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#FB6C01] focus:border-transparent"
                   />
                   <motion.button
                     type="submit"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     disabled={!customMessage.trim()}
-                    className="bg-[#AB8865] text-white p-2 rounded-full hover:bg-[#8B6B47] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-[#FB6C01] text-white p-2 rounded-full hover:bg-[#E05A00] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send size={16} />
                   </motion.button>

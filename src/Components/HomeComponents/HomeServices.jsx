@@ -26,14 +26,14 @@ export default function HomeServices() {
   const services = t("homeServices.services", { returnObjects: true });
 
   const icons = [
-    <BedDouble key="bed" className="w-8 h-8 text-[#8B4513]" />,
-    <Wifi key="wifi" className="w-8 h-8 text-[#8B4513]" />,
-    <Bed key="Bed" className="w-8 h-8 text-[#8B4513]" />,
-    <WashingMachine key="WashingMachine" className="w-8 h-8 text-[#8B4513]" />,
-    <ShowerHead key="shower" className="w-8 h-8 text-[#8B4513]" />,
-    <Car key="Car" className="w-8 h-8 text-[#8B4513]" />,
-    <Bus key="DollarSign" className="w-8 h-8 text-[#8B4513]" />,
-    <Clock key="Clock" className="w-8 h-8 text-[#8B4513]" />,
+    <BedDouble key="bed" className="w-8 h-8 text-[#FB6C01]" />,
+    <Wifi key="wifi" className="w-8 h-8 text-[#01366E]" />,
+    <Bed key="Bed" className="w-8 h-8 text-[#FB6C01]" />,
+    <WashingMachine key="WashingMachine" className="w-8 h-8 text-[#01366E]" />,
+    <ShowerHead key="shower" className="w-8 h-8 text-[#FB6C01]" />,
+    <Car key="Car" className="w-8 h-8 text-[#01366E]" />,
+    <Bus key="DollarSign" className="w-8 h-8 text-[#FB6C01]" />,
+    <Clock key="Clock" className="w-8 h-8 text-[#01366E]" />,
   ];
 
   return (
@@ -42,14 +42,14 @@ export default function HomeServices() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="min-h-screen bg-[#fff5ed] py-16"
+      className="min-h-screen bg-[#FFFBF7] py-16 border-t border-slate-100"
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
-          <p className="text-sm tracking-[0.2em] text-amber-600 uppercase mb-4 font-light">
+          <p className="text-xs tracking-[0.2em] text-[#FB6C01] uppercase mb-3 font-semibold">
             {t("homeServices.sectionTag")}
           </p>
-          <h2 className="text-5xl font-light text-gray-900 tracking-wide">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#01366E] tracking-tight">
             {t("homeServices.sectionTitle")}
           </h2>
         </div>
@@ -81,10 +81,10 @@ export default function HomeServices() {
             className="mt-0 md:mt-16 px-4 md:pr-12"
           >
             <div className="flex items-start flex-col mb-6">
-              <div className="text-2xl font-extrabold mb-2">
+              <div className="text-2xl font-bold mb-2 text-[#01366E]">
                 {t("homeServices.intro.title")}
               </div>
-              <div className="max-w-xl">{t("homeServices.intro.desc")}</div>
+              <div className="max-w-xl text-slate-600">{t("homeServices.intro.desc")}</div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {services.map((service, index) => (
@@ -96,12 +96,12 @@ export default function HomeServices() {
                   transition={{ delay: 0.1 * index, duration: 0.4 }}
                   viewport={{ once: true }}
                 >
-                  <div>{icons[index]}</div>
+                  <div className="p-3 bg-white rounded-xl shadow-sm border border-slate-100 flex-shrink-0">{icons[index]}</div>
                   <div>
-                    <h4 className="text-lg font-semibold text-[#1a1a1a]">
+                    <h4 className="text-lg font-bold text-[#01366E] mb-1">
                       {service.title}
                     </h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <p className="text-slate-600 text-sm leading-relaxed">
                       {service.desc}
                     </p>
                   </div>

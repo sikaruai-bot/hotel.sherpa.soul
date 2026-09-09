@@ -102,19 +102,22 @@ export default function ContactForm() {
         {/* Light overlay */}
         <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
 
-        {/* Floating shapes */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-orange-400/10 to-pink-400/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-blue-400/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+        {/* Soft mountain tints */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-500/5 rounded-full filter blur-3xl"></div>
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Message */}
             <div className="text-slate-900">
               <div className="mb-10">
-                <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-[#AB8865]">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#FB6C01] text-xs font-semibold tracking-wide uppercase mb-4">
+                  <span>❖</span> Front Desk & Inquiries
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-[#01366E]">
                   {t("contact.title")}
                 </h2>
-                <p className="text-xl text-slate-700 leading-relaxed mb-10">
+                <p className="text-lg text-slate-600 leading-relaxed mb-8">
                   {t("contact.subtitle")}
                 </p>
               </div>
@@ -122,15 +125,15 @@ export default function ContactForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#01366E] to-[#154D85] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <Clock className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-800">
-                        {t("contact.card.res.title")}
+                        {t("contact.card.quick.title")}
                       </h4>
                       <p className="text-slate-600 text-sm">
-                        {t("contact.card.res.des")}
+                        {t("contact.card.quick.des")}
                       </p>
                     </div>
                   </div>
@@ -138,7 +141,7 @@ export default function ContactForm() {
 
                 <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#FB6C01] to-[#E05A00] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <Users className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -156,15 +159,15 @@ export default function ContactForm() {
 
             {/* Form Section */}
             <div className="relative">
-              <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-white/40 overflow-hidden">
-                <div className="bg-[#AB8865] p-8 relative overflow-hidden">
+              <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
+                <div className="bg-[#01366E] p-8 relative overflow-hidden">
                   <div className="absolute inset-0 bg-black/10"></div>
                   <div className="relative z-10">
                     <h3 className="text-2xl font-bold text-white flex items-center">
-                      <Send className="w-7 h-7 mr-3" />
+                      <Send className="w-6 h-6 mr-3 text-[#FB6C01]" />
                       {t("contact.form.title")}
                     </h3>
-                    <p className="text-white/90 mt-3 text-lg">
+                    <p className="text-slate-200 mt-2 text-base">
                       {t("contact.form.desc")}
                     </p>
                   </div>
@@ -172,7 +175,7 @@ export default function ContactForm() {
 
                 <div className="p-8 space-y-6">
                   <div className="group">
-                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#AB8865]">
+                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#01366E]">
                       {t("contact.form.data.name")} *
                     </label>
                     <input
@@ -180,14 +183,14 @@ export default function ContactForm() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#AB8865] focus:bg-white transition-all duration-300"
+                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
                       placeholder="Enter your full name"
                       required
                     />
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#AB8865]">
+                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#01366E]">
                       {t("contact.form.data.email")} *
                     </label>
                     <input
@@ -195,14 +198,14 @@ export default function ContactForm() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#AB8865] focus:bg-white transition-all duration-300"
+                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
                       placeholder="your@email.com"
                       required
                     />
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#AB8865]">
+                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#01366E]">
                       Phone Number (Optional)
                     </label>
                     <input
@@ -210,13 +213,13 @@ export default function ContactForm() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#AB8865] focus:bg-white transition-all duration-300"
+                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
                       placeholder="+977 98XXXXXXXX"
                     />
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#AB8865]">
+                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#01366E]">
                       {t("contact.form.data.msg")} *
                     </label>
                     <textarea
@@ -224,7 +227,7 @@ export default function ContactForm() {
                       value={formData.message}
                       onChange={handleInputChange}
                       rows="5"
-                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#AB8865] focus:bg-white resize-none transition-all duration-300"
+                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white resize-none transition-all duration-300"
                       placeholder="Tell us about your inquiry, booking dates, or request..."
                       required
                     />
@@ -271,22 +274,19 @@ export default function ContactForm() {
                     type="button"
                     onClick={handleSubmit}
                     disabled={isSubmitting}
-                    className="group w-full bg-[#AB8865] text-white py-4 px-8 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden"
+                    className="group w-full bg-[#FB6C01] hover:bg-[#E05A00] text-white py-4 px-8 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    <span className="relative z-10 flex items-center justify-center gap-2">
-                      {isSubmitting ? (
-                        <>
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                          {t("contact.form.send2")}
-                        </>
-                      ) : (
-                        <>
-                          <Send className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                          {t("contact.form.send")}
-                        </>
-                      )}
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        {t("contact.form.send2")}
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                        {t("contact.form.send")}
+                      </>
+                    )}
                   </button>
                 </div>
               </div>

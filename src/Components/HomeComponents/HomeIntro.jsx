@@ -67,11 +67,11 @@ export default function HomeIntro() {
             style={{
               background: `
                 linear-gradient(to top, 
-                  rgba(171, 136, 101, 0.95) 0%, 
-                  rgba(171, 136, 101, 0.8) 20%, 
-                  rgba(171, 136, 101, 0.4) 40%, 
-                  rgba(171, 136, 101, 0.1) 70%,
-                  rgba(171, 136, 101, 0) 100%
+                  rgba(1, 54, 110, 0.95) 0%, 
+                  rgba(1, 54, 110, 0.8) 25%, 
+                  rgba(1, 54, 110, 0.45) 50%, 
+                  rgba(1, 54, 110, 0.1) 75%,
+                  rgba(1, 54, 110, 0) 100%
                 )
               `,
             }}
@@ -92,8 +92,8 @@ export default function HomeIntro() {
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-600/40 text-amber-200 text-xs sm:text-sm font-semibold tracking-wider uppercase border border-amber-400/30 backdrop-blur-md">
-                A Quiet Place to Come Back To
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/30 text-orange-200 text-xs sm:text-sm font-semibold tracking-wider uppercase border border-orange-400/40 backdrop-blur-md">
+                <span>❖</span> A Quiet Base in Kathmandu
               </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight">
                 {t("hotelName")}
@@ -150,11 +150,11 @@ export default function HomeIntro() {
               />
             </div>
 
-            <div className="p-6 bg-gradient-to-r from-amber-900/50 to-amber-800/50">
+            <div className="p-6 bg-[#01366E] text-white">
               <h3 className="text-xl font-bold text-white mb-2">
                 {t("modalTitle")}
               </h3>
-              <p className="text-white/80">{t("modalDescription")}</p>
+              <p className="text-slate-200">{t("modalDescription")}</p>
             </div>
           </div>
         </div>

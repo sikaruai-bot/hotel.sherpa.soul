@@ -89,16 +89,19 @@ export default function Footer() {
             <div className="space-y-6">
               {/* Logo and Brand */}
               <div className="flex items-center gap-4 mb-6">
-                {/* Logo placeholder - replace with actual logo */}
-                <div className="w-14 h-14 bg-gradient-to-br from-[#AB8865] to-[#8B7355] rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-xl font-bold text-white">S</span>
-                </div>
+                <Link to="/" className="inline-block">
+                  <img
+                    src="/logo.webp"
+                    alt="Hotel Sherpa Soul Kathmandu"
+                    className="h-16 w-auto max-w-[200px] object-contain bg-white/95 px-3 py-1.5 rounded-xl shadow-md"
+                  />
+                </Link>
                 <div>
                   <p className="text-xl font-bold text-white mb-1">
                     {t("footer.brand.title")}
                   </p>
-                  <p className="text-[#AB8865] text-xs font-medium">
-                    Experience • Comfort • Hospitality
+                  <p className="text-[#FB6C01] text-xs font-semibold tracking-wide">
+                    No Restaurant • No Noise • Sleep Well
                   </p>
                 </div>
               </div>
@@ -110,8 +113,8 @@ export default function Footer() {
 
               {/* Social Media */}
               <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-[#AB8865] uppercase tracking-wider flex items-center gap-2">
-                  <span className="w-4 h-px bg-[#AB8865]"></span>
+                <h4 className="text-sm font-semibold text-[#FB6C01] uppercase tracking-wider flex items-center gap-2">
+                  <span className="w-4 h-px bg-[#FB6C01]"></span>
                   {t("footer.followUs.title")}
                 </h4>
                 <div className="flex gap-3">
@@ -143,7 +146,7 @@ export default function Footer() {
             {/* Column 2: Quick Links */}
             <div className="space-y-6">
               <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                <span className="w-1 h-6 bg-gradient-to-b from-[#AB8865] to-transparent rounded-full"></span>
+                <span className="w-1 h-6 bg-gradient-to-b from-[#FB6C01] to-transparent rounded-full"></span>
                 {t("footer.quickLinks.title")}
               </h3>
               <ul className="space-y-3">
@@ -151,9 +154,9 @@ export default function Footer() {
                   <li key={link.key}>
                     <Link
                       to={link.to}
-                      className="text-gray-300 hover:text-[#AB8865] transition-all duration-300 flex items-center group py-1 text-sm"
+                      className="text-gray-300 hover:text-[#FB6C01] transition-all duration-300 flex items-center group py-1 text-sm"
                     >
-                      <span className="w-0 h-px bg-[#AB8865] mr-0 group-hover:w-3 group-hover:mr-3 transition-all duration-300 rounded-full"></span>
+                      <span className="w-0 h-px bg-[#FB6C01] mr-0 group-hover:w-3 group-hover:mr-3 transition-all duration-300 rounded-full"></span>
                       <span className="group-hover:translate-x-1 transition-transform duration-300">
                         {t(`footer.quickLinks.links.${link.key}`)}
                       </span>
@@ -166,7 +169,7 @@ export default function Footer() {
             {/* Column 3: Contact Info */}
             <div className="space-y-6">
               <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                <span className="w-1 h-6 bg-gradient-to-b from-[#AB8865] to-transparent rounded-full"></span>
+                <span className="w-1 h-6 bg-gradient-to-b from-[#FB6C01] to-transparent rounded-full"></span>
                 {t("footer.contactUs.title")}
               </h3>
               <ul className="space-y-4">
@@ -175,10 +178,10 @@ export default function Footer() {
                     key={index}
                     className="flex items-start gap-3 text-gray-300 hover:text-white transition-colors duration-300 group"
                   >
-                    <div className="p-2 bg-gradient-to-br from-[#AB8865]/20 to-[#AB8865]/10 rounded-lg group-hover:from-[#AB8865] group-hover:to-[#8B7355] transition-all duration-300 border border-[#AB8865]/20 mt-0.5 flex-shrink-0">
+                    <div className="p-2 bg-gradient-to-br from-[#FB6C01]/20 to-[#FB6C01]/10 rounded-lg group-hover:from-[#FB6C01] group-hover:to-[#8B7355] transition-all duration-300 border border-[#FB6C01]/20 mt-0.5 flex-shrink-0">
                       <item.icon
                         size={16}
-                        className="text-[#AB8865] group-hover:text-white transition-colors duration-300"
+                        className="text-[#FB6C01] group-hover:text-white transition-colors duration-300"
                       />
                     </div>
                     {item.href ? (
@@ -201,7 +204,7 @@ export default function Footer() {
             {/* Column 4: Online Booking Platforms */}
             <div className="space-y-6">
               <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                <span className="w-1 h-6 bg-gradient-to-b from-[#AB8865] to-transparent rounded-full"></span>
+                <span className="w-1 h-6 bg-gradient-to-b from-[#FB6C01] to-transparent rounded-full"></span>
                 Book on Top OTAs
               </h3>
 
@@ -273,9 +276,9 @@ export default function Footer() {
         <div className="px-4 sm:px-6 lg:px-20 py-6">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-xs sm:text-sm text-gray-400 flex items-center gap-2 text-center md:text-left">
-              <span className="w-2 h-2 bg-[#AB8865] rounded-full hidden sm:block"></span>
+              <span className="w-2 h-2 bg-[#FB6C01] rounded-full hidden sm:block"></span>
               {t("footer.copyright.prefix")} {new Date().getFullYear()}{" "}
-              <span className="text-[#AB8865] font-semibold">
+              <span className="text-[#FB6C01] font-semibold">
                 {t("footer.copyright.hotelName")}
               </span>
               . {t("footer.copyright.suffix")}
@@ -285,17 +288,17 @@ export default function Footer() {
             <div className="flex gap-6 text-xs sm:text-sm text-gray-400 items-center">
               <Link
                 to="/privacy"
-                className="hover:text-[#AB8865] transition-colors duration-300 relative group"
+                className="hover:text-[#FB6C01] transition-colors duration-300 relative group"
               >
                 {t("footer.legal.privacy", "Privacy Policy")}
-                <span className="absolute bottom-0 left-0 w-0 h-px bg-[#AB8865] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-[#FB6C01] group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 to="/terms"
-                className="hover:text-[#AB8865] transition-colors duration-300 relative group"
+                className="hover:text-[#FB6C01] transition-colors duration-300 relative group"
               >
                 {t("footer.legal.terms", "Terms of Service")}
-                <span className="absolute bottom-0 left-0 w-0 h-px bg-[#AB8865] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-[#FB6C01] group-hover:w-full transition-all duration-300"></span>
               </Link>
             </div>
           </div>

@@ -1,230 +1,76 @@
 import React from "react";
-import { Star, MapPin, Users, Award, Coffee } from "lucide-react";
+import { MapPin, Moon, UtensilsCrossed, ShieldCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
-// Mock CountUp component since it's not available in this environment
-const CountUp = ({ end, decimals = 0, duration = 2, suffix = "" }) => {
-  const [count, setCount] = React.useState(0);
-
-  React.useEffect(() => {
-    let startTime = null;
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-      const currentCount = progress * end;
-      setCount(
-        decimals ? currentCount.toFixed(decimals) : Math.floor(currentCount)
-      );
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-    requestAnimationFrame(animate);
-  }, [end, decimals, duration]);
-
-  return (
-    <>
-      {count}
-      {suffix}
-    </>
-  );
-};
-
-// Mock useInView hook
-const useInView = ({ triggerOnce, threshold }) => {
-  const [inView, setInView] = React.useState(false);
-  const ref = React.useRef();
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          if (triggerOnce) observer.disconnect();
-        }
-      },
-      { threshold }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [triggerOnce, threshold]);
-
-  return [ref, inView];
-};
 
 export default function HomeStats() {
   const { t } = useTranslation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+
+  const trustPillars = [
+    {
+      icon: <MapPin className="w-8 h-8 text-[#FB6C01]" />,
+      badge: "Quiet Thamel Location",
+      title: "Tucked Away From Noise",
+      desc: "Located on Bhagawati Marg, just 2 minutes walk from Thamel center, yet peacefully insulated from late-night bar and traffic noise.",
+    },
+    {
+      icon: <Moon className="w-8 h-8 text-[#01366E]" />,
+      badge: "Our Golden Rule",
+      title: "No Restaurant. Sleep Well.",
+      desc: "We deliberately have no in-house restaurant, loud bar, or party crowd. Our sole priority is clean rooms and a deep, undisturbed sleep.",
+    },
+    {
+      icon: <UtensilsCrossed className="w-8 h-8 text-[#FB6C01]" />,
+      badge: "Guest Convenience",
+      title: "Shared Self-Use Kitchen",
+      desc: "Equipped with an induction cooktop, refrigerator, microwave, and electric kettle — perfect for preparing morning tea or home-cooked meals.",
+    },
+    {
+      icon: <ShieldCheck className="w-8 h-8 text-[#01366E]" />,
+      badge: "Trekker Friendly",
+      title: "Free Luggage Storage & 24/7 Desk",
+      desc: "Heading to Everest or Annapurna? Leave your extra bags in our safe luggage room free of charge while you trek in the mountains.",
+    },
+  ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {t("homestats.title")}
+    <section className="py-14 bg-gradient-to-b from-white via-slate-50 to-white border-y border-slate-100 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#FB6C01] text-xs font-semibold tracking-wide uppercase mb-3">
+            <span>❖</span> Authentic Sherpa Hospitality <span>❖</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#01366E] tracking-tight">
+            Why Travelers Choose Hotel Sherpa Soul
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {t("homestats.subtitle")}
+          <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Honest, practical boutique hospitality in Kathmandu. No exaggerated claims — just clean comfort, quiet nights, and personal care.
           </p>
         </div>
 
-        <div
-          ref={ref}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {/* TripAdvisor Rating */}
-          <StatCard
-            icon={<Award className="w-10 h-10" />}
-            iconColor="text-green-600"
-            bgGradient="from-green-50 to-green-100"
-            imageSrc="/trip.webp"
-            imageAlt="TripAdvisor 4.8 Star Traveler Rating - Hotel Sherpa Soul"
-            rating={4.8}
-            reviews={500}
-            inView={inView}
-          />
-
-          {/* Google Reviews */}
-          <StatCard
-            icon={<Star className="w-10 h-10" />}
-            iconColor="text-blue-600"
-            bgGradient="from-blue-50 to-blue-100"
-            imageSrc="/google.webp"
-            imageAlt="Google 4.9 Star Guest Reviews - Hotel Sherpa Soul"
-            rating={4.9}
-            reviews={600}
-            inView={inView}
-          />
-
-          {/* Happy Guests */}
-          <StatCard
-            icon={<Users className="w-10 h-10" />}
-            iconColor="text-orange-600"
-            bgGradient="from-orange-50 to-orange-100"
-            count={5000}
-            label="Happy Guests"
-            subLabel="Since 2018"
-            inView={inView}
-          />
-
-          {/* Years of Excellence */}
-          <StatCard
-            icon={<Coffee className="w-10 h-10" />}
-            iconColor="text-purple-600"
-            bgGradient="from-purple-50 to-purple-100"
-            count={6}
-            label="Years"
-            subLabel="Of Excellence"
-            inView={inView}
-          />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {trustPillars.map((pillar, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div>
+                <div className="w-14 h-14 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-5 group-hover:bg-orange-50/60 group-hover:border-orange-100 transition-colors duration-300">
+                  {pillar.icon}
+                </div>
+                <span className="text-xs font-semibold text-[#FB6C01] uppercase tracking-wider block mb-1">
+                  {pillar.badge}
+                </span>
+                <h3 className="text-lg font-bold text-slate-800 mb-2 leading-snug">
+                  {pillar.title}
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  {pillar.desc}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function StatCard({
-  icon,
-  iconColor,
-  bgGradient,
-  imageSrc,
-  imageAlt,
-  rating,
-  source,
-  reviews,
-  count,
-  label,
-  subLabel,
-  inView,
-}) {
-  const { t } = useTranslation();
-  return (
-    <div>
-      <div
-        className={`
-        relative p-8 backdrop-blur-sm
-      `}
-      >
-        {/* Icon Container */}
-        <div
-          className={`
-          w-20 h-20 bg-gradient-to-br ${bgGradient} 
-          rounded-2xl flex items-center justify-center mx-auto mb-6
-        `}
-        >
-          {imageSrc ? (
-            <img
-              src={imageSrc}
-              alt={imageAlt || "Hotel Sherpa Soul Achievement Award"}
-              className=" object-cover rounded-xl"
-              loading="lazy"
-              decoding="async"
-            />
-          ) : (
-            <div className={iconColor}>{icon}</div>
-          )}
-        </div>
-
-        {/* Content */}
-        <div className="text-center space-y-3">
-          {rating ? (
-            <>
-              {/* Star Rating */}
-              <div className="flex justify-center items-center space-x-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-5 h-5 transition-colors duration-300 ${
-                      source === "TripAdvisor"
-                        ? "fill-green-500 text-green-500"
-                        : "fill-blue-500 text-blue-500"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              {/* Rating Value */}
-              <div className="text-4xl font-bold text-gray-900 mb-2">
-                {inView && <CountUp end={rating} decimals={1} duration={2} />}
-              </div>
-
-              {/* Source */}
-              <div className="text-lg font-semibold text-gray-700">
-                {source}
-              </div>
-
-              {/* Review Count */}
-              <div className="text-sm text-gray-500">
-                {inView && <CountUp end={reviews} />}+ {t("homestats.review")}
-              </div>
-            </>
-          ) : (
-            <>
-              {/* Count Value */}
-              <div className="text-4xl font-bold text-gray-900 mb-2">
-                {inView && (
-                  <CountUp
-                    end={count}
-                    duration={2}
-                    suffix={count >= 1000 ? "+" : ""}
-                  />
-                )}
-              </div>
-
-              {/* Label */}
-              <div className="text-lg font-semibold text-gray-700">{label}</div>
-
-              {/* Sub Label */}
-              <div className="text-sm text-gray-500">{subLabel}</div>
-            </>
-          )}
-        </div>
-
-        {/* Subtle decoration */}
-        <div className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-br from-white to-gray-200 rounded-full opacity-50"></div>
-      </div>
-    </div>
   );
 }

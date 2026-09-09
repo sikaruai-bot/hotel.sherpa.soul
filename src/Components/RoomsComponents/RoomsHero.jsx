@@ -23,7 +23,7 @@ export default function RoomsHero() {
     <div className="relative w-screen h-screen overflow-hidden">
       <motion.img
         src={heroImage}
-        alt="Hotel Sherpa Soul luxury rooms and suites in Thamel Kathmandu"
+        alt="Hotel Sherpa Soul comfortable and quiet rooms in Thamel Kathmandu"
         className="absolute top-0 left-0 w-full h-full object-cover scale-110"
         style={{
           x: mousePosition.x * 0.5,
