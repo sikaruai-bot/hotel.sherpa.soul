@@ -10,6 +10,8 @@ import {
   Mail,
   Calendar,
   Clock,
+  MapPin,
+  Bed,
 } from "lucide-react";
 import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -101,7 +103,7 @@ export default function HomeIntro() {
               }`}
             >
               <div
-                className="w-full h-full mt-[80px]"
+                className="w-full h-full"
                 style={{
                   backgroundImage: `url('${slide.image}')`,
                   backgroundSize: "cover",
@@ -109,8 +111,9 @@ export default function HomeIntro() {
                   backgroundPosition: "center",
                 }}
               />
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              {/* Left-focused gradient overlay to let text shine on the left while keeping the room bright on the right */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -170,72 +173,74 @@ export default function HomeIntro() {
 
         {/* Content Panel */}
         <div
-          className={`relative z-10 w-full flex flex-col justify-end px-6 sm:px-12 lg:px-20 pb-2 md:pb-12 max-w-6xl text-white ${
+          className={`relative z-10 w-full min-h-screen flex items-center px-6 sm:px-12 lg:px-20 pt-28 pb-12 max-w-7xl text-white ${
             isArabic ? "text-right" : "text-left"
           }`}
         >
           <Motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 35 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="space-y-8"
+            className="space-y-6 max-w-2xl"
           >
-            {/* Text + Buttons container */}
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-              {/* Text Block */}
-              <div className="space-y-4 max-w-3xl">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-sm font-semibold tracking-wide backdrop-blur-sm">
-                  {heroData.subtitle || t("home.hero.subtitle")}
-                </div>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-none tracking-tight">
-                  {heroData.title || t("home.hero.title")}
-                </h1>
-                <p className="text-white/90 text-base sm:text-lg leading-relaxed font-light">
-                  {heroData.paragraph || t("home.hero.paragraph")}
-                </p>
-                {/* Trust Line */}
-                <div className="pt-1 flex flex-wrap items-center gap-2 text-xs sm:text-sm font-medium text-amber-200/90">
-                  <span>✦ Central Thamel Location</span>
-                  <span>•</span>
-                  <span>Comfortable Rooms</span>
-                  <span>•</span>
-                  <span>Peaceful Stay</span>
-                </div>
-              </div>
-
-              {/* Buttons Block */}
-              <div
-                className={`flex flex-col justify-between gap-4 ${
-                  isArabic ? "sm:flex-row-reverse" : ""
-                }`}
-              >
-                <button
-                  onClick={() => {
-                    trackMetaEvent("InitiateCheckout", {
-                      content_category: "hotel_booking",
-                      entry_point: "home_hero",
-                    });
-                    setIsBookingModalOpen(true);
-                    setIsModalOpen(false);
-                  }}
-                  className="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2"
-                >
-                  <span>{heroData.bookButtonText || t("home.hero.bookButton", "Book Your Stay")}</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
-
-                <a
-                  href="/rooms"
-                  className="group bg-white/10 hover:bg-white text-white hover:text-gray-900 border-2 border-white/60 hover:border-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2 backdrop-blur-md"
-                >
-                  <span>{heroData.tourButtonText || t("home.hero.tourButton", "Explore Our Rooms")}</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
-              </div>
+            <div className="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-300 font-semibold drop-shadow">
+              WELCOME TO HOTEL SHERPA SOUL
             </div>
 
-            <div className="flex gap-4 md:hidden space-y-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight text-white drop-shadow-md">
+              Sleep Well in the{" "}
+              <span className="text-[#FB6C01]">Heart of Thamel</span>, Kathmandu
+            </h1>
+
+            <p className="text-white/95 text-base sm:text-lg leading-relaxed font-light drop-shadow">
+              Discover a peaceful and comfortable stay at Hotel Sherpa Soul, located in the vibrant heart of Thamel, Kathmandu. Explore the city by day, return to a quiet room at night, and wake up refreshed for your next adventure.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <button
+                onClick={() => {
+                  trackMetaEvent("InitiateCheckout", {
+                    content_category: "hotel_booking",
+                    entry_point: "home_hero",
+                  });
+                  setIsBookingModalOpen(true);
+                  setIsModalOpen(false);
+                }}
+                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              >
+                <Calendar className="w-5 h-5" />
+                <span>Book Your Stay</span>
+              </button>
+
+              <a
+                href="/rooms"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/70 hover:border-white font-semibold text-base sm:text-lg backdrop-blur-md transition-all duration-300 transform hover:scale-105"
+              >
+                <span>Explore Our Rooms</span>
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
+
+            {/* Trust Line */}
+            <div className="pt-4 flex flex-wrap items-center gap-3 sm:gap-5 text-xs sm:text-sm text-slate-200 font-medium">
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-[#FB6C01]" />
+                <span>Central Thamel Location</span>
+              </span>
+              <span className="text-white/40">•</span>
+              <span className="flex items-center gap-1.5">
+                <Bed className="w-4 h-4 text-[#FB6C01]" />
+                <span>Comfortable Rooms</span>
+              </span>
+              <span className="text-white/40">•</span>
+              <span className="flex items-center gap-1.5">
+                <span className="text-base leading-none">🪷</span>
+                <span>Peaceful Stay</span>
+              </span>
+            </div>
+            {/* Mobile Social Links */}
+            <div className="flex items-center gap-3 md:hidden pt-2">
               {socialLinks.map((social, index) => {
                 const IconComponent = social.icon;
                 return (
@@ -247,10 +252,10 @@ export default function HomeIntro() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                    className="group w-10 h-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-110"
+                    className="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300"
                     aria-label={social.label}
                   >
-                    <IconComponent className="w-4 h-4 text-white group-hover:text-amber-300 transition-colors duration-300" />
+                    <IconComponent className="w-4 h-4 text-white hover:text-amber-300 transition-colors duration-300" />
                   </Motion.a>
                 );
               })}
