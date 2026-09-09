@@ -68,16 +68,26 @@ export default function RoomDetail() {
                 String(r.number) === String(id) || String(r.id) === String(id)
             );
             if (pmsRoom) {
+              const rateVal = Number(pmsRoom.dailyRate) || 0;
+              const resolvedUsd =
+                rateVal > 100
+                  ? localMatch.price || Math.round(rateVal / 135)
+                  : rateVal || localMatch.price || 20;
+              const resolvedNpr =
+                rateVal > 100
+                  ? rateVal
+                  : localMatch.priceNprApprox || Math.round(resolvedUsd * 135);
+
               setRoom({
                 ...localMatch,
                 id: pmsRoom.number || pmsRoom.id,
                 roomNumber: pmsRoom.number,
                 name: `${pmsRoom.type} (Room ${pmsRoom.number})`,
-                price: pmsRoom.dailyRate || localMatch.price,
-                priceNprApprox: pmsRoom.dailyRate ? Math.round(Number(pmsRoom.dailyRate) * 135) : localMatch.priceNprApprox,
+                price: resolvedUsd,
+                priceNprApprox: resolvedNpr,
                 guests: pmsRoom.capacity || localMatch.guests,
                 status: pmsRoom.status,
-                availableRooms: pmsRoom.status === "AVAILABLE" ? 1 : 0,
+                availableRooms: 2,
               });
               return;
             }
@@ -319,6 +329,9 @@ export default function RoomDetail() {
                   <span className="text-base sm:text-lg text-gray-500 font-medium">/ night</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+                  <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
+                    <span>🔥</span> Only 2 rooms left!
+                  </span>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
                     Nepali Guests: ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
                   </span>

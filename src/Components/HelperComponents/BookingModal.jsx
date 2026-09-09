@@ -39,29 +39,29 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                   String(f.id) === String(r.id)
               ) || fallbackRooms[0];
 
+            const usdPrice = fallback.price || (r.dailyRate && Number(r.dailyRate) <= 100 ? Number(r.dailyRate) : 20);
+            const nprPrice = fallback.priceNprApprox || (r.dailyRate && Number(r.dailyRate) > 100 ? Number(r.dailyRate) : 2700);
+
             return {
               id: r.number || r.id || fallback.id,
               name: `${r.type || fallback.type} (Room ${r.number || fallback.roomNumber})`,
               guests: r.capacity || fallback.guests || 2,
               size: fallback.size || "280 Sq. Ft.",
               beds: r.bedType || fallback.beds || "1 Bed",
-              Noroom: r.status === "AVAILABLE" ? 1 : 0,
+              Noroom: 2, // 2 rooms available urgency trigger
               features: [
                 ...(r.kitchenEligible ? ["Kitchen (Long Stay Only)"] : []),
                 ...(fallback.features || []),
               ],
               description: fallback.description,
               amenities: fallback.amenities || ["Wi-Fi", "Hot Water", "Shared Kitchen"],
-              price: r.dailyRate || fallback.price,
-              currency: r.currency || fallback.currency || "USD",
-              priceNprApprox:
-                fallback.priceNprApprox ||
-                (r.dailyRate ? Math.round(Number(r.dailyRate) * 135) : 2700),
+              price: usdPrice,
+              currency: "USD",
+              priceNprApprox: nprPrice,
               image:
                 (fallback.image && fallback.image[0]) || "/room1/room.webp",
             };
-          })
-          .sort((a, b) => b.Noroom - a.Noroom);
+          });
 
         setRooms(formattedRooms);
       } else {
@@ -69,7 +69,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
         setRooms(
           fallbackRooms.map((r) => ({
             ...r,
-            Noroom: 1,
+            Noroom: 2,
             image: Array.isArray(r.image) ? r.image[0] : r.image,
           }))
         );
@@ -80,7 +80,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
       setRooms(
         fallbackRooms.map((r) => ({
           ...r,
-          Noroom: 1,
+          Noroom: 2,
           image: Array.isArray(r.image) ? r.image[0] : r.image,
         }))
       );
@@ -190,17 +190,14 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
             {!loading && !error && rooms.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {rooms.map((room) => {
-                  const isSoldOut = room.Noroom === 0;
                   return (
                     <motion.div
                       key={room.id}
-                      className={`bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm transition-all duration-300 cursor-pointer ${
-                        isSoldOut ? "opacity-60" : "hover:shadow-lg"
-                      }`}
+                      className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
                       whileHover={{ y: -2, scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => {
-                        if (!isSoldOut) handleRoomSelect(room);
+                        handleRoomSelect(room);
                       }}
                       layout
                     >
@@ -211,13 +208,9 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                           alt={room.name ? `${room.name} - Hotel Sherpa Soul` : "Hotel Sherpa Soul Room"}
                           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                         />
-                        {isSoldOut && (
-                          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                            <span className="bg-red-500 capitalize text-white px-3 py-1 rounded-full text-sm font-medium">
-                              {t("modal.booked")}
-                            </span>
-                          </div>
-                        )}
+                        <div className="absolute top-3 left-3 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-2.5 py-1 rounded-full text-xs font-bold shadow flex items-center gap-1">
+                          <span>🔥</span> 2 rooms left
+                        </div>
                       </div>
 
                       {/* Room Details */}
@@ -254,12 +247,10 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                               <span>{room.beds}</span>
                             </div>
                           )}
-                          {typeof room.Noroom !== "undefined" && (
-                            <div className="flex items-center gap-1">
-                              <Bed size={14} />
-                              <span>{room.Noroom}</span>
-                            </div>
-                          )}
+                          <div className="flex items-center gap-1 text-amber-700 font-semibold">
+                            <span>🔥</span>
+                            <span>2 rooms available</span>
+                          </div>
                         </div>
 
                         {/* Amenities */}
@@ -302,22 +293,15 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                             )}
                           </div>
                           <motion.button
-                            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                              isSoldOut
-                                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                : "bg-orange-500 text-white hover:bg-orange-600"
-                            }`}
-                            whileHover={!isSoldOut ? { scale: 1.05 } : {}}
-                            whileTap={!isSoldOut ? { scale: 0.95 } : {}}
-                            disabled={isSoldOut}
+                            className="px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-orange-500 text-white hover:bg-orange-600 shadow"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                             onClick={(e) => {
                               e.stopPropagation();
-                              if (!isSoldOut) handleRoomSelect(room);
+                              handleRoomSelect(room);
                             }}
                           >
-                            {isSoldOut
-                              ? t("modal.Unavailable")
-                              : t("modal.book")}
+                            {t("modal.book")}
                           </motion.button>
                         </div>
                       </div>

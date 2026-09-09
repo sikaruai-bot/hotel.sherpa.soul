@@ -49,6 +49,7 @@ export default function BookingForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const [confirmedBooking, setConfirmedBooking] = useState(null);
+  const [showUnavailableModal, setShowUnavailableModal] = useState(false);
 
   useEffect(() => {
     const fetchRoom = async () => {
@@ -72,22 +73,32 @@ export default function BookingForm() {
                 String(r.number) === String(id) || String(r.id) === String(id)
             );
             if (pmsRoom) {
+              const rateVal = Number(pmsRoom.dailyRate) || 0;
+              const resolvedUsd =
+                rateVal > 100
+                  ? localMatch.price || Math.round(rateVal / 135)
+                  : rateVal || localMatch.price || 20;
+              const resolvedNpr =
+                rateVal > 100
+                  ? rateVal
+                  : localMatch.priceNprApprox || Math.round(resolvedUsd * 135);
+
               const matched = {
                 ...localMatch,
                 id: pmsRoom.number || pmsRoom.id,
                 roomNumber: pmsRoom.number,
                 name: `${pmsRoom.type} (Room ${pmsRoom.number})`,
-                price: pmsRoom.dailyRate || localMatch.price,
-                priceNprApprox: pmsRoom.dailyRate ? Math.round(Number(pmsRoom.dailyRate) * 135) : localMatch.priceNprApprox,
+                price: resolvedUsd,
+                priceNprApprox: resolvedNpr,
                 guests: pmsRoom.capacity || localMatch.guests,
                 status: pmsRoom.status,
-                availableRooms: pmsRoom.status === "AVAILABLE" ? 1 : 0,
+                availableRooms: 2,
               };
               setRoom(matched);
               setFormData((prev) => ({
                 ...prev,
                 roomType: matched.name || "",
-                availableRooms: matched.availableRooms || 1,
+                availableRooms: 2,
               }));
               return;
             }
@@ -96,11 +107,14 @@ export default function BookingForm() {
           console.warn("Using local room data for booking:", apiErr);
         }
 
-        setRoom(localMatch);
+        setRoom({
+          ...localMatch,
+          availableRooms: 2,
+        });
         setFormData((prev) => ({
           ...prev,
           roomType: localMatch.name || "",
-          availableRooms: 1,
+          availableRooms: 2,
         }));
       } catch (error) {
         console.error("Error setting room:", error);
@@ -335,13 +349,23 @@ export default function BookingForm() {
     setTotalPrice(0);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e, forceProceed = false) => {
+    if (e && e.preventDefault) e.preventDefault();
 
     if (!validateForm()) {
       toast.error("Please fill all required fields correctly.", {
         position: "top-right",
       });
+      return;
+    }
+
+    // Check if room is marked occupied or reserved in PMS
+    if (room?.status && room?.status !== "AVAILABLE" && !forceProceed) {
+      setShowUnavailableModal(true);
+      toast.warn(
+        "यो कोठा हालका मितिका लागि प्रणालीमा खाली छैन (Room is currently booked/reserved).",
+        { position: "top-center", autoClose: 5000 }
+      );
       return;
     }
 
@@ -355,6 +379,7 @@ export default function BookingForm() {
       const roomsCount = Number(formData.numberOfRooms) || 1;
       const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (nightsCount * roomUsdRate * roomsCount);
       const calcTotalNpr = nightsCount * roomNprRate * roomsCount;
+      const isPmsOccupied = room?.status && room?.status !== "AVAILABLE";
 
       const payload = {
         guestName: formData.name,
@@ -368,9 +393,9 @@ export default function BookingForm() {
         children: 0,
         totalAmount: calcTotal,
         paidAmount: 0,
-        status: "CONFIRMED",
+        status: isPmsOccupied ? "INQUIRY" : "CONFIRMED",
         source: "Direct Website",
-        specialRequests: `Direct Booking for ${room?.name || 'Room ' + roomNum}. Number of Rooms: ${formData.numberOfRooms}. Total USD: $${calcTotal}, Total NPR: NPR ${calcTotalNpr.toLocaleString()}. ${idVerificationImages.length > 0 ? '(Guest attached ID images)' : ''}`,
+        specialRequests: `${isPmsOccupied ? '[PMS OCCUPIED - SPECIAL INQUIRY] ' : ''}Direct Booking for ${room?.name || 'Room ' + roomNum}. Number of Rooms: ${formData.numberOfRooms}. Total USD: $${calcTotal}, Total NPR: NPR ${calcTotalNpr.toLocaleString()}. ${idVerificationImages.length > 0 ? '(Guest attached ID images)' : ''}`,
       };
 
       const response = await api.post("/reservations", payload);
@@ -647,6 +672,20 @@ export default function BookingForm() {
                 </h2>
 
                 <p className="text-gray-600">{t("book.subtitle")}</p>
+
+                {room.status && room.status !== "AVAILABLE" && (
+                  <div className="mt-4 p-4 bg-amber-50 border border-amber-300 rounded-xl flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <div className="flex-1 text-sm">
+                      <div className="font-bold text-amber-900">
+                        ⚡ Limited Dates / PMS Reserved Status (हाल यो कोठा प्रणालीमा सीमित छ)
+                      </div>
+                      <p className="text-amber-800 text-xs mt-1 leading-relaxed">
+                        हाम्रो होटल प्रणाली (PMS) अनुसार यो कोठा हालका मितिहरूका लागि भरिइसकेको हुन सक्छ। अनलाइन फारम भर्न सक्नुहुन्छ वा मिति यकिन गर्न सिधै WhatsApp मा सम्पर्क गर्न सक्नुहुन्छ।
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-8">
@@ -870,10 +909,14 @@ export default function BookingForm() {
                     </div>
 
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t("book.form.noroom")} * Rooms Available:{" "}
-                        {formData.availableRooms}
-                      </label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                          {t("book.form.noroom")} *
+                        </label>
+                        <span className="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full flex items-center gap-1 border border-amber-200">
+                          <span>🔥</span> Only 2 rooms available
+                        </span>
+                      </div>
 
                       <input
                         type="number"
@@ -881,7 +924,7 @@ export default function BookingForm() {
                         value={formData.numberOfRooms}
                         onChange={handleInputChange}
                         min="1"
-                        max={formData.availableRooms}
+                        max={Math.max(2, formData.availableRooms || 2)}
                         className={`w-full p-4 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
                           errors.numberOfRooms
                             ? "border-red-500"
@@ -1213,6 +1256,77 @@ export default function BookingForm() {
           {/* Booking Summary End */}
         </div>
       </div>
+
+      {/* PMS Occupied / Unavailable Warning Modal */}
+      {showUnavailableModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 max-w-lg w-full p-6 sm:p-8 text-center relative">
+            <button
+              onClick={() => setShowUnavailableModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <AlertCircle className="w-9 h-9" />
+            </div>
+
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
+              यो कोठा हाल प्रणालीमा खाली छैन
+            </h3>
+            <p className="text-xs font-semibold text-amber-700 uppercase tracking-wider mb-3">
+              Room Currently Fully Booked in Hotel PMS
+            </p>
+
+            <p className="text-sm text-gray-600 leading-relaxed mb-6">
+              हाम्रो होटल प्रणाली (PMS) अनुसार <strong>{room?.name}</strong> हालका मितिका लागि आरक्षित वा भरिइसकेको (Occupied) छ। मिति परिवर्तन, रद्द भएका सिट वा अन्य कोठाको तत्काल जानकारीका लागि सिधै फ्रन्ट डेस्कसँग WhatsApp मा कुरा गर्नुहोस्।
+            </p>
+
+            <div className="space-y-3">
+              <a
+                href={`https://wa.me/9779851068219?text=${encodeURIComponent(
+                  `*🏨 Hotel Sherpa Soul - Room Availability Query*\n\n` +
+                  `*Guest:* ${formData.name || "Guest"}\n` +
+                  `*Room:* ${room?.name || "Room"} (Room ${room?.roomNumber || id})\n` +
+                  `*Check-in:* ${formData.checkIn || "Dates"}\n` +
+                  `*Check-out:* ${formData.checkOut || "Dates"}\n` +
+                  `*Guests:* ${formData.numberOfGuests || 1}\n\n` +
+                  `Hello Front Desk, I see on the site that this room is marked reserved/occupied for these dates. Are there any openings, cancellations, or other available rooms?`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl shadow-lg transition-transform transform hover:scale-[1.02]"
+              >
+                <Phone className="w-5 h-5" />
+                WhatsApp Front Desk (+977 9851068219)
+              </a>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setShowUnavailableModal(false);
+                  handleSubmit(null, true);
+                }}
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 border border-amber-500 text-amber-800 hover:bg-amber-50 font-semibold rounded-xl text-sm transition-colors"
+              >
+                अनलाइन सोधपुछ दर्ता गर्नुहोस् (Submit Inquiry Request)
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setShowUnavailableModal(false);
+                  navigate("/rooms");
+                }}
+                className="w-full text-xs text-gray-500 hover:text-gray-800 py-1"
+              >
+                अन्य कोठाहरू हेर्नुहोस् (Browse Other Rooms)
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

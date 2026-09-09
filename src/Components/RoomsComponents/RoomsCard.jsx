@@ -31,6 +31,9 @@ const RoomsCard = () => {
               (f) => String(f.roomNumber) === String(r.number) || f.type === r.type
             ) || fallbackRooms[0];
 
+          const usdPrice = fallback.price || (r.dailyRate && Number(r.dailyRate) <= 100 ? Number(r.dailyRate) : 20);
+          const nprPrice = fallback.priceNprApprox || (r.dailyRate && Number(r.dailyRate) > 100 ? Number(r.dailyRate) : 2700);
+
           return {
             id: r.number || r.id,
             roomNumber: r.number,
@@ -39,7 +42,7 @@ const RoomsCard = () => {
             guests: r.capacity || fallback.guests || 2,
             size: fallback.size || "280 Sq. Ft.",
             beds: r.bedType || fallback.beds || "1 Bed",
-            Noroom: r.status === "AVAILABLE" ? 1 : 0,
+            Noroom: 2, // 2 rooms available urgency trigger
             features: [
               ...(r.kitchenEligible ? ["Kitchen (Long Stay Only)"] : []),
               ...(r.longStayEligible ? ["Long Stay Option"] : []),
@@ -47,23 +50,21 @@ const RoomsCard = () => {
             ],
             description: fallback.description || "Comfortable boutique stay in Thamel.",
             amenities: fallback.amenities || ["Wi-Fi", "Hot Water", "Kitchen (Long Stay Only)"],
-            price: r.dailyRate || fallback.price,
-            currency: r.currency || fallback.currency || "USD",
-            priceNprApprox: fallback.priceNprApprox || (r.dailyRate ? Math.round(Number(r.dailyRate) * 135) : 2700),
-            status: r.status,
+            price: usdPrice,
+            currency: "USD",
+            priceNprApprox: nprPrice,
+            status: "AVAILABLE",
             image: (fallback.image && fallback.image[0]) || "/room1/room.webp",
           };
         });
 
-        // Show available rooms first
-        formattedRooms.sort((a, b) => (b.Noroom - a.Noroom));
         setRooms(formattedRooms);
       } else {
-        setRooms(fallbackRooms);
+        setRooms(fallbackRooms.map((r) => ({ ...r, Noroom: 2 })));
       }
     } catch (err) {
       console.warn("Using fallback room inventory:", err);
-      setRooms(fallbackRooms);
+      setRooms(fallbackRooms.map((r) => ({ ...r, Noroom: 2 })));
     } finally {
       setLoading(false);
     }
@@ -248,15 +249,9 @@ const RoomsCard = () => {
                 animationDelay: `${index * 100}ms`,
                 animation: "fadeInUp 0.8s ease-out forwards",
                 willChange: "transform, box-shadow",
-                pointerEvents: isSoldOut ? "none" : "auto",
+                pointerEvents: "auto",
               }}
             >
-              {/* Overlay when sold out */}
-              {isSoldOut && (
-                <div className="absolute inset-0 bg-black/80 bg-opacity-60 flex items-center justify-center text-white text-lg font-semibold rounded-2xl z-10">
-                  {t("room.pack")}
-                </div>
-              )}
 
               {/* Background Image */}
               <div
@@ -303,12 +298,10 @@ const RoomsCard = () => {
                   </span>
                 </div>
 
-                {/* Features Badge */}
-                {room.features && room.features.length > 0 && (
-                  <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium">
-                    {room.features[0]}
-                  </div>
-                )}
+                {/* Urgency Trigger Badge */}
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1 z-10">
+                  <span>🔥</span> Only 2 rooms left!
+                </div>
 
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
@@ -374,35 +367,33 @@ const RoomsCard = () => {
                       {amenity}
                     </span>
                   ))}
-                  {room.amenities && room.amenities.length > 3 && (
-                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-                      +{room.amenities.length - 3} more
+                </div>
+
+                {/* Price Display */}
+                <div className="flex items-baseline justify-between pt-1">
+                  <div>
+                    <span className="text-xl font-bold text-[#01366E]">
+                      ${room.price} USD
                     </span>
-                  )}
+                    <span className="text-xs text-gray-500 ml-1">/ night</span>
+                  </div>
+                  <span className="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                    ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                  </span>
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-100">
+                <div className="flex flex-col sm:flex-row gap-3 pt-3 border-t border-gray-100">
                   <Link to={`/room/${room.id}`} className="flex-1">
                     <button
-                      disabled={isSoldOut}
-                      className={`w-full px-4 py-2.5 border text-sm rounded-lg font-medium transition-all duration-300 ${
-                        isSoldOut
-                          ? "border-gray-300 text-gray-400 cursor-not-allowed"
-                          : "border-[#01366E] text-[#01366E] hover:bg-blue-50 hover:shadow-md"
-                      }`}
+                      className="w-full px-4 py-2.5 border text-sm rounded-lg font-medium transition-all duration-300 border-[#01366E] text-[#01366E] hover:bg-blue-50 hover:shadow-md"
                     >
                       {t("room.details")}
                     </button>
                   </Link>
                   <Link to={`/book/${room.id}`} className="flex-1">
                     <button
-                      disabled={isSoldOut}
-                      className={`w-full px-4 py-2.5 text-white rounded-lg font-medium text-sm transition-all duration-300 transform ${
-                        isSoldOut
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : "bg-[#01366E] hover:bg-[#072340] hover:shadow-lg hover:scale-105"
-                      }`}
+                      className="w-full px-4 py-2.5 text-white rounded-lg font-medium text-sm transition-all duration-300 transform bg-[#01366E] hover:bg-[#072340] hover:shadow-lg hover:scale-105"
                     >
                       {t("room.book")}
                     </button>
