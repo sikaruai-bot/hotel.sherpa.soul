@@ -341,17 +341,17 @@
   "modalDescription": "通过我们的豪华住宿体验虚拟之旅，发现传统与现代的完美结合。",
   "heroSlides": [
     {
-      "image": "changes_photo/singleBedWithSofa.jpeg",
+      "image": "/changes_photo/singleBedWithSofa.webp",
       "title": "奢华再定义",
       "subtitle": "尊贵舒适"
     },
     {
-      "image": "changes_photo/doubleBedRoom.jpeg",
+      "image": "/changes_photo/doubleBedRoom.webp",
       "title": "尼泊尔遗产",
       "subtitle": "现代优雅"
     },
     {
-      "image": "changes_photo/viewSeen.jpeg",
+      "image": "/changes_photo/viewSeen.webp",
       "title": "难忘体验",
       "subtitle": "塔梅尔中心"
     }

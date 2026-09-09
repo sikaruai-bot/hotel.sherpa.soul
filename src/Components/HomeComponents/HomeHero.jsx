@@ -30,15 +30,15 @@ export default function HomeIntro() {
 
   const heroSlides = [
     {
-      image: heroData.bgImage || "hero/hero1.webp",
+      image: heroData.bgImage || "/hero/hero1.webp",
       subtitle: heroData.subtitle || t("home.hero.subtitle"),
     },
     {
-      image: "hero/hero2.webp",
+      image: "/hero/hero2.webp",
       subtitle: heroData.subtitle || t("home.hero.subtitle"),
     },
     {
-      image: "hero/hero4.webp",
+      image: "/hero/hero4.webp",
       subtitle: heroData.subtitle || t("home.hero.subtitle"),
     },
   ];

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { rooms as initialRooms } from "../Components/HelperComponents/RoomsData";
 
-const CMS_STORAGE_KEY = "HSS_CMS_DATA_V2";
+const CMS_STORAGE_KEY = "HSS_CMS_DATA_V3";
 const CMS_AUTH_KEY = "HSS_CMS_AUTH_TOKEN";
 const DEFAULT_PASSWORD = "sherpasoul2026";
 
@@ -222,17 +222,37 @@ const CMSContext = createContext(null);
 export function CMSProvider({ children }) {
   const [data, setData] = useState(() => {
     try {
+      // Purge legacy storage keys to eliminate any broken .jpeg references
+      try {
+        localStorage.removeItem("HSS_CMS_DATA");
+        localStorage.removeItem("HSS_CMS_DATA_V1");
+        localStorage.removeItem("HSS_CMS_DATA_V2");
+      } catch (e) {
+        // ignore
+      }
+
       const stored = localStorage.getItem(CMS_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        // Deep merge with defaults so new schema fields are always present
+        // Sanitize rooms to ensure only 3 categories with valid webp images
+        const sanitizedRooms = Array.isArray(parsed.rooms) && parsed.rooms.length > 0 && parsed.rooms.length <= 3
+          ? parsed.rooms.map((r) => {
+              const cleanedImg = Array.isArray(r.image)
+                ? r.image.map((i) => typeof i === "string" ? i.replace(/\.jpeg$/i, ".webp") : i)
+                : typeof r.image === "string"
+                ? r.image.replace(/\.jpeg$/i, ".webp")
+                : r.image;
+              return { ...r, image: cleanedImg, Noroom: 2 };
+            })
+          : DEFAULT_CMS_DATA.rooms;
+
         return {
           ...DEFAULT_CMS_DATA,
           ...parsed,
           seo: { ...DEFAULT_CMS_DATA.seo, ...(parsed.seo || {}) },
           content: { ...DEFAULT_CMS_DATA.content, ...(parsed.content || {}) },
           media: { ...DEFAULT_CMS_DATA.media, ...(parsed.media || {}) },
-          rooms: Array.isArray(parsed.rooms) && parsed.rooms.length > 0 ? parsed.rooms : DEFAULT_CMS_DATA.rooms,
+          rooms: sanitizedRooms,
         };
       }
     } catch (err) {

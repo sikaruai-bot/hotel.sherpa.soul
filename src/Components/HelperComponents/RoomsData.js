@@ -30,8 +30,8 @@ export const rooms = [
     priceNprApprox: 2700,
     status: "AVAILABLE",
     image: [
-      "/changes_photo/doubleBedRoom.jpeg",
-      "/changes_photo/doubleBed.jpeg",
+      "/changes_photo/doubleBedRoom.webp",
+      "/changes_photo/doubleBed.webp",
       "/room1/room.webp",
       "/room1/room2.webp",
     ],
@@ -66,7 +66,7 @@ export const rooms = [
     priceNprApprox: 2700,
     status: "AVAILABLE",
     image: [
-      "/changes_photo/singleBedWithSofa.jpeg",
+      "/changes_photo/singleBedWithSofa.webp",
       "/room4/DSC00140.webp",
       "/room4/DSC00141.webp",
       "/room4/DSC00142.webp",
@@ -104,7 +104,7 @@ export const rooms = [
     priceNprApprox: 4000,
     status: "AVAILABLE",
     image: [
-      "/changes_photo/doubleBed.jpeg",
+      "/changes_photo/doubleBed.webp",
       "/room4/DSC00145.webp",
       "/room4/DSC00146.webp",
       "/room4/DSC00153.webp",

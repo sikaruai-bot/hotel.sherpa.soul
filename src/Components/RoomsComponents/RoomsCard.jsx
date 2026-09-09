@@ -26,14 +26,18 @@ const RoomsCard = () => {
       // 1. Budget Family Room
       // 2. Deluxe Room
       // 3. Family Room
-      const categories = fallbackRooms.map((cat) => ({
-        ...cat,
-        id: cat.id,
-        roomNumber: cat.roomNumber,
-        name: cat.name, // Clean category name
-        Noroom: 2,
-        image: Array.isArray(cat.image) ? cat.image[0] : cat.image,
-      }));
+      const categories = fallbackRooms.map((cat) => {
+        const rawImg = Array.isArray(cat.image) ? cat.image[0] : cat.image;
+        const cleanedImg = typeof rawImg === "string" ? rawImg.replace(/\.jpeg$/i, ".webp") : rawImg;
+        return {
+          ...cat,
+          id: cat.id,
+          roomNumber: cat.roomNumber,
+          name: cat.name,
+          Noroom: 2,
+          image: cleanedImg,
+        };
+      });
 
       try {
         const { data } = await api.get("/rooms");
@@ -235,16 +239,15 @@ const RoomsCard = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto px-4">
         {currentRooms.map((room, index) => {
-          const isSoldOut = room.Noroom === 0;
+          const rawImg = Array.isArray(room.image)
+            ? (typeof room.image[0] === "string" ? room.image[0] : room.image[0]?.url)
+            : (typeof room.image === "string" ? room.image : room.image?.url) || "/room1/room.webp";
+          const displayImage = String(rawImg).replace(/\.jpeg$/i, ".webp");
 
           return (
             <div
               key={room.id}
-              className={`group relative bg-white rounded-2xl shadow-md transition duration-200 ease-out overflow-hidden transform ${
-                isSoldOut
-                  ? "opacity-50 cursor-not-allowed"
-                  : "hover:shadow-lg hover:-translate-y-1"
-              }`}
+              className="group relative bg-white rounded-2xl shadow-md transition duration-200 ease-out overflow-hidden transform hover:shadow-lg hover:-translate-y-1"
               style={{
                 animationDelay: `${index * 100}ms`,
                 animation: "fadeInUp 0.8s ease-out forwards",
@@ -252,23 +255,11 @@ const RoomsCard = () => {
                 pointerEvents: "auto",
               }}
             >
-
-              {/* Background Image */}
-              <div
-                className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-200 pointer-events-none"
-                style={{
-                  backgroundImage: `url("flag2.jpg")`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-
               {/* Main Image */}
-              <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden">
-                {room.image && room.image.endsWith(".mp4") ? (
+              <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden bg-slate-100">
+                {displayImage && displayImage.endsWith(".mp4") ? (
                   <video
-                    src={room.image}
+                    src={displayImage}
                     className="w-full h-full object-cover"
                     autoPlay
                     loop
@@ -277,9 +268,14 @@ const RoomsCard = () => {
                   />
                 ) : (
                   <img
-                    src={room.image}
+                    src={displayImage}
                     alt={`${room.name} - Hotel Sherpa Soul Kathmandu`}
                     className="w-full h-full object-cover transform transition duration-300 ease-out group-hover:scale-105"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/room1/room.webp";
+                    }}
                   />
                 )}
 
@@ -303,8 +299,8 @@ const RoomsCard = () => {
                   <span>🔥</span> Only 2 rooms left!
                 </div>
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                {/* Subtle Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Content */}

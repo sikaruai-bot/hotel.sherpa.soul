@@ -345,17 +345,17 @@
   "modalDescription": "Совершите виртуальное путешествие по нашим роскошным номерам и откройте идеальное сочетание традиций и современности.",
   "heroSlides": [
     {
-      "image": "changes_photo/singleBedWithSofa.jpeg",
+      "image": "/changes_photo/singleBedWithSofa.webp",
       "title": "Роскошь переосмыслена",
       "subtitle": "Премиум комфорт"
     },
     {
-      "image": "changes_photo/doubleBedRoom.jpeg",
+      "image": "/changes_photo/doubleBedRoom.webp",
       "title": "Непальское наследие",
       "subtitle": "Современная элегантность"
     },
     {
-      "image": "changes_photo/viewSeen.jpeg",
+      "image": "/changes_photo/viewSeen.webp",
       "title": "Незабываемый опыт",
       "subtitle": "Сердце Тамеля"
     }

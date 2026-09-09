@@ -50,7 +50,7 @@ export default function HomeIntro() {
               <div
                 className="w-full h-full"
                 style={{
-                  backgroundImage: `url('${slide.image}')`,
+                  backgroundImage: `url('${slide.image?.startsWith("/") ? slide.image : "/" + (slide.image || "changes_photo/doubleBedRoom.webp")}')`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}

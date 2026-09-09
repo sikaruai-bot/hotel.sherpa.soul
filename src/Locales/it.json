@@ -333,17 +333,17 @@
   "modalDescription": "Fai un viaggio virtuale attraverso le nostre sistemazioni di lusso e scopri la perfetta fusione tra tradizione e modernità.",
   "heroSlides": [
     {
-      "image": "changes_photo/singleBedWithSofa.jpeg",
+      "image": "/changes_photo/singleBedWithSofa.webp",
       "title": "Riposo Tranquillo a Thamel",
       "subtitle": "Premium Comfort"
     },
     {
-      "image": "changes_photo/doubleBedRoom.jpeg",
+      "image": "/changes_photo/doubleBedRoom.webp",
       "title": "Nepalese Heritage",
       "subtitle": "Modern Elegance"
     },
     {
-      "image": "changes_photo/viewSeen.jpeg",
+      "image": "/changes_photo/viewSeen.webp",
       "title": "Unforgettable Experience",
       "subtitle": "Heart of Thamel"
     }

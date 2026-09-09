@@ -379,17 +379,17 @@
   "modalDescription": "Take a visual look through our clean and comfortable accommodations in the heart of Thamel, Kathmandu.",
   "heroSlides": [
     {
-      "image": "changes_photo/singleBedWithSofa.jpeg",
+      "image": "/changes_photo/singleBedWithSofa.webp",
       "title": "Peaceful Sleep in Thamel",
       "subtitle": "Clean & Restful"
     },
     {
-      "image": "changes_photo/doubleBedRoom.jpeg",
+      "image": "/changes_photo/doubleBedRoom.webp",
       "title": "Sherpa Hospitality",
       "subtitle": "Simple & Welcoming"
     },
     {
-      "image": "changes_photo/viewSeen.jpeg",
+      "image": "/changes_photo/viewSeen.webp",
       "title": "Unforgettable Experience",
       "subtitle": "Heart of Thamel"
     }

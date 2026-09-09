@@ -29,13 +29,17 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
       // 1. Budget Family Room
       // 2. Deluxe Room
       // 3. Family Room
-      const categories = fallbackRooms.map((r) => ({
-        ...r,
-        id: r.id,
-        name: r.name, // Clean category name (no Room 101/201 etc.)
-        Noroom: 2,
-        image: Array.isArray(r.image) ? r.image[0] : r.image,
-      }));
+      const categories = fallbackRooms.map((r) => {
+        const rawImg = Array.isArray(r.image) ? r.image[0] : r.image;
+        const cleanedImg = typeof rawImg === "string" ? rawImg.replace(/\.jpeg$/i, ".webp") : rawImg;
+        return {
+          ...r,
+          id: r.id,
+          name: r.name, // Clean category name (no Room 101/201 etc.)
+          Noroom: 2,
+          image: cleanedImg,
+        };
+      });
 
       try {
         const response = await api.get("/rooms");
@@ -194,11 +198,15 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                       layout
                     >
                       {/* Room Image */}
-                      <div className="relative h-48 overflow-hidden">
+                      <div className="relative h-48 overflow-hidden bg-slate-100">
                         <img
-                          src={(Array.isArray(room.image) ? room.image[0] : room.image) || "/room1/room.webp"}
+                          src={String((Array.isArray(room.image) ? room.image[0] : room.image) || "/room1/room.webp").replace(/\.jpeg$/i, ".webp")}
                           alt={room.name ? `${room.name} - Hotel Sherpa Soul` : "Hotel Sherpa Soul Room"}
                           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = "/room1/room.webp";
+                          }}
                         />
                         <div className="absolute top-3 left-3 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-2.5 py-1 rounded-full text-xs font-bold shadow flex items-center gap-1">
                           <span>🔥</span> 2 rooms left

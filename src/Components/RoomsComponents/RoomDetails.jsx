@@ -169,10 +169,21 @@ export default function RoomDetail() {
     );
   }
 
-  // Handle both single image and array of images
-  const images = Array.isArray(room.image)
-    ? room.image.map((img) => img.url || img)
-    : [];
+  // Handle both single image and array of images safely
+  const rawImages = Array.isArray(room.image)
+    ? room.image
+    : room.image
+    ? [room.image]
+    : ["/room1/room.webp"];
+
+  const images = rawImages
+    .map((img) => {
+      const src = typeof img === "object" ? img.url || img.src : img;
+      return typeof src === "string"
+        ? src.replace(/\.jpeg$/i, ".webp")
+        : "/room1/room.webp";
+    })
+    .filter(Boolean);
 
   const nextImage = () =>
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
@@ -211,9 +222,13 @@ export default function RoomDetail() {
       <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-black">
         <div className="relative w-full h-full">
           <img
-            src={images[currentImageIndex]}
+            src={images[currentImageIndex] || "/room1/room.webp"}
             alt={`${room.name || "Room"} at Hotel Sherpa Soul, Kathmandu - View ${currentImageIndex + 1}`}
             className="w-full h-full object-cover transition-opacity duration-500"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = "/room1/room.webp";
+            }}
           />
 
           <div className="z-50 absolute top-8 left-6">
@@ -234,7 +249,7 @@ export default function RoomDetail() {
             <>
               <button
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
                 aria-label="Previous image"
               >
                 <svg
@@ -253,7 +268,7 @@ export default function RoomDetail() {
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm"
                 aria-label="Next image"
               >
                 <svg
@@ -273,20 +288,30 @@ export default function RoomDetail() {
             </>
           )}
 
-          {/* Image Indicators */}
+          {/* Image Thumbnail Indicators */}
           {images.length > 1 && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-              {images.map((_, index) => (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center space-x-2 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-2xl z-20 max-w-[90vw] overflow-x-auto">
+              {images.map((thumbSrc, index) => (
                 <button
                   key={index}
                   onClick={() => goToImage(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                  className={`w-10 h-7 sm:w-14 sm:h-9 rounded-lg overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${
                     index === currentImageIndex
-                      ? "bg-amber-400 w-8"
-                      : "bg-white/50 hover:bg-white/80"
+                      ? "border-[#FB6C01] scale-105 shadow-md ring-2 ring-orange-400/50"
+                      : "border-white/50 opacity-60 hover:opacity-100"
                   }`}
                   aria-label={`Go to image ${index + 1}`}
-                />
+                >
+                  <img
+                    src={thumbSrc}
+                    alt={`Preview ${index + 1}`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/room1/room.webp";
+                    }}
+                  />
+                </button>
               ))}
             </div>
           )}

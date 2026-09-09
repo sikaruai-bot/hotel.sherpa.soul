@@ -341,17 +341,17 @@
   "modalDescription": "قم برحلة افتراضية عبر أماكن الإقامة الفاخرة لدينا واكتشف المزيج المثالي بين التقاليد والحداثة.",
   "heroSlides": [
     {
-      "image": "changes_photo/singleBedWithSofa.jpeg",
+      "image": "/changes_photo/singleBedWithSofa.webp",
       "title": "الفخامة المعاد تعريفها",
       "subtitle": "راحة فاخرة"
     },
     {
-      "image": "changes_photo/doubleBedRoom.jpeg",
+      "image": "/changes_photo/doubleBedRoom.webp",
       "title": "التراث النيبالي",
       "subtitle": "أناقة عصرية"
     },
     {
-      "image": "changes_photo/viewSeen.jpeg",
+      "image": "/changes_photo/viewSeen.webp",
       "title": "تجربة لا تُنسى",
       "subtitle": "قلب ثامل"
     }

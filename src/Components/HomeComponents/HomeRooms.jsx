@@ -30,7 +30,7 @@ const RoomCarousel = () => {
       price: 20,
       currency: "USD",
       priceNprApprox: 2700,
-      image: "/changes_photo/doubleBedRoom.jpeg",
+      image: "/changes_photo/doubleBedRoom.webp",
     },
     {
       id: 201,
@@ -42,7 +42,7 @@ const RoomCarousel = () => {
       price: 20,
       currency: "USD",
       priceNprApprox: 2700,
-      image: "/changes_photo/singleBedWithSofa.jpeg",
+      image: "/changes_photo/singleBedWithSofa.webp",
     },
     {
       id: 301,
@@ -54,7 +54,7 @@ const RoomCarousel = () => {
       price: 30,
       currency: "USD",
       priceNprApprox: 4000,
-      image: "/changes_photo/doubleBed.jpeg",
+      image: "/changes_photo/doubleBed.webp",
     },
   ];
 
@@ -159,6 +159,10 @@ const RoomCarousel = () => {
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = "/room1/room.webp";
+                      }}
                     />
 
                     <div className="absolute bottom-0 left-0 right-0 p-5 text-white bg-gradient-to-t from-black/85 via-black/50 to-transparent">
@@ -183,13 +187,13 @@ const RoomCarousel = () => {
                     <AnimatePresence>
                       {!isMobile && hoveredIndex === index && (
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-t from-[#01366E]/95 via-[#01366E]/70 to-transparent flex flex-col justify-end p-6 text-white"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.3 }}
+                          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#01366E]/95 via-[#01366E]/85 to-transparent flex flex-col justify-end p-6 pt-14 text-white"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.25 }}
                         >
-                          <p className="text-sm text-slate-200 mb-2 font-light">
+                          <p className="text-sm text-slate-100 mb-2 font-light">
                             {room.featureHighlight || `${room.beds} • 24/7 Hot Water • Shared Kitchen`}
                           </p>
                           <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#FB6C01]">

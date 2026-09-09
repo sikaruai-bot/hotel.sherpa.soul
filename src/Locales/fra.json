@@ -341,17 +341,17 @@
   "modalDescription": "Faites un voyage virtuel à travers nos hébergements luxueux et découvrez le parfait mélange de tradition et de modernité.",
   "heroSlides": [
     {
-      "image": "changes_photo/singleBedWithSofa.jpeg",
+      "image": "/changes_photo/singleBedWithSofa.webp",
       "title": "Luxe redéfini",
       "subtitle": "Confort Premium"
     },
     {
-      "image": "changes_photo/doubleBedRoom.jpeg",
+      "image": "/changes_photo/doubleBedRoom.webp",
       "title": "Héritage népalais",
       "subtitle": "Élégance moderne"
     },
     {
-      "image": "changes_photo/viewSeen.jpeg",
+      "image": "/changes_photo/viewSeen.webp",
       "title": "Expérience inoubliable",
       "subtitle": "Au cœur de Thamel"
     }

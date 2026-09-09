@@ -8,7 +8,7 @@ export default function ContactHero() {
   return (
     <section
       className="relative w-screen h-[80vh] bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: "url('/changes_photo/doubleBed.jpeg')" }}
+      style={{ backgroundImage: "url('/changes_photo/doubleBed.webp')" }}
     >
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/50"></div>
