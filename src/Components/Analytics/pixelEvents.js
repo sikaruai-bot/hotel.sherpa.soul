@@ -35,7 +35,7 @@ export const initializeMetaPixel = (customPixelId) => {
   }
 };
 
-// Unified tracking function for Meta Pixel AND Google Tag Manager (dataLayer)
+// Unified tracking function for Meta Pixel, Google Analytics 4, and Google Tag Manager
 export const trackEvent = (eventName, parameters = {}) => {
   if (typeof window === "undefined") return;
 
@@ -52,6 +52,21 @@ export const trackEvent = (eventName, parameters = {}) => {
     timestamp: new Date().toISOString(),
     ...parameters,
   });
+
+  // 3. Google Analytics 4 (gtag.js) direct dispatch
+  if (typeof window.gtag === "function") {
+    const ga4EventMap = {
+      PageView: "page_view",
+      InitiateCheckout: "begin_checkout",
+      Lead: "generate_lead",
+      Purchase: "purchase",
+      Contact: "contact",
+      ViewContent: "view_item",
+    };
+
+    const gaEventName = ga4EventMap[eventName] || eventName;
+    window.gtag("event", gaEventName, parameters);
+  }
 };
 
 // Backward compatibility alias

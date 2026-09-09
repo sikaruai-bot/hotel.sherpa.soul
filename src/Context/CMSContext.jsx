@@ -80,10 +80,10 @@ const DEFAULT_CMS_DATA = {
       twitterImage: "https://hotelsherpasoul.com/hero1.webp",
     },
     analytics: {
-      ga4Id: "",
+      ga4Id: "G-E7Z3QDR3KD",
       gtmId: "GTM-PFRV7ZTV",
       metaPixelId: "1952950858737501",
-      googleVerification: "cZ5JAFfqiZ7VDvThWPrhplQFXBaEIlUHunGdP0JaNVQ",
+      googleVerification: "E9sWdPkI-frcA6WZQyLOuTU9tZL2qfoUnzIYk6c3h3c",
       customHeadScript: "",
       customBodyScript: "",
     },

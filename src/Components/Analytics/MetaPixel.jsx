@@ -10,7 +10,9 @@ export default function MetaPixel() {
   const location = useLocation();
   const { seo } = useCMS();
 
-  // Dynamic Meta Pixel initialization
+  const ga4Id = seo?.analytics?.ga4Id || import.meta.env.VITE_GA4_ID || "";
+
+  // Dynamic Meta Pixel & GA4 initialization and SPA PageView tracking
   useEffect(() => {
     const pixelId = seo?.analytics?.metaPixelId || "1952950858737501";
     initializeMetaPixel(pixelId);
@@ -18,8 +20,17 @@ export default function MetaPixel() {
     const page = `${location.pathname}${location.search}`;
 
     if (lastPageView !== page) {
+      // 1. Meta Pixel PageView
       if (window.fbq) {
         window.fbq("track", "PageView");
+      }
+      // 2. Google Analytics 4 SPA PageView
+      if (typeof window.gtag === "function" && ga4Id) {
+        window.gtag("event", "page_view", {
+          page_path: page,
+          page_location: window.location.href,
+          page_title: document.title,
+        });
       }
       lastPageView = page;
     }
@@ -36,14 +47,24 @@ export default function MetaPixel() {
     } else if (!isCheckout) {
       lastCheckoutPage = "";
     }
-  }, [location.pathname, location.search, seo?.analytics?.metaPixelId]);
+  }, [location.pathname, location.search, seo?.analytics?.metaPixelId, ga4Id]);
 
-  // Dynamic Google Analytics 4 (GA4) Tag injection if configured
+  // Dynamic Google Analytics 4 (GA4) Script & Global gtag Injection
   useEffect(() => {
-    const ga4Id = seo?.analytics?.ga4Id;
     if (!ga4Id) return;
 
-    let existingScript = document.getElementById("ga4-gtag-script");
+    window.dataLayer = window.dataLayer || [];
+    if (!window.gtag) {
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+    }
+
+    // Check if gtag script already exists (either from index.html or injected)
+    let existingScript =
+      document.getElementById("ga4-gtag-script") ||
+      document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${ga4Id}"]`);
+
     if (!existingScript) {
       const script = document.createElement("script");
       script.id = "ga4-gtag-script";
@@ -51,14 +72,12 @@ export default function MetaPixel() {
       script.src = `https://www.googletagmanager.com/gtag/js?id=${ga4Id}`;
       document.head.appendChild(script);
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        window.dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", ga4Id);
+      window.gtag("js", new Date());
+      window.gtag("config", ga4Id, {
+        send_page_view: false, // SPA route changes tracked explicitly above
+      });
     }
-  }, [seo?.analytics?.ga4Id]);
+  }, [ga4Id]);
 
   // Track user engagement clicks (WhatsApp, Phone, Email)
   useEffect(() => {

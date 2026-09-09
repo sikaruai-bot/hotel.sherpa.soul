@@ -115,8 +115,9 @@ export default function CanonicalManager() {
     setMetaTag("name", "twitter:image", ogImage);
 
     // 9. Google Search Console Verification
-    if (seo?.analytics?.googleVerification) {
-      setMetaTag("name", "google-site-verification", seo.analytics.googleVerification);
+    const verificationTag = seo?.analytics?.googleVerification || "E9sWdPkI-frcA6WZQyLOuTU9tZL2qfoUnzIYk6c3h3c";
+    if (verificationTag) {
+      setMetaTag("name", "google-site-verification", verificationTag);
     }
   }, [location.pathname, seo]);
 
