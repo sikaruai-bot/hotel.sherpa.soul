@@ -85,9 +85,9 @@ export default function BookingForm() {
 
               const matched = {
                 ...localMatch,
-                id: pmsRoom.number || pmsRoom.id,
-                roomNumber: pmsRoom.number,
-                name: `${pmsRoom.type} (Room ${pmsRoom.number})`,
+                id: localMatch.id,
+                roomNumber: pmsRoom.number || localMatch.roomNumber,
+                name: localMatch.name,
                 price: resolvedUsd,
                 priceNprApprox: resolvedNpr,
                 guests: pmsRoom.capacity || localMatch.guests,
@@ -97,7 +97,7 @@ export default function BookingForm() {
               setRoom(matched);
               setFormData((prev) => ({
                 ...prev,
-                roomType: matched.name || "",
+                roomType: localMatch.name || "",
                 availableRooms: 2,
               }));
               return;

@@ -25,61 +25,53 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await api.get("/rooms");
-      const apiRooms = response?.data?.data || response?.data?.room || [];
+      // Strictly show the 3 room categories:
+      // 1. Budget Family Room
+      // 2. Deluxe Room
+      // 3. Family Room
+      const categories = fallbackRooms.map((r) => ({
+        ...r,
+        id: r.id,
+        name: r.name, // Clean category name (no Room 101/201 etc.)
+        Noroom: 2,
+        image: Array.isArray(r.image) ? r.image[0] : r.image,
+      }));
 
-      if (Array.isArray(apiRooms) && apiRooms.length > 0) {
-        const formattedRooms = apiRooms
-          .map((r) => {
-            const fallback =
-              fallbackRooms.find(
-                (f) =>
-                  String(f.roomNumber) === String(r.number) ||
-                  f.type === r.type ||
-                  String(f.id) === String(r.id)
-              ) || fallbackRooms[0];
-
-            const usdPrice = fallback.price || (r.dailyRate && Number(r.dailyRate) <= 100 ? Number(r.dailyRate) : 20);
-            const nprPrice = fallback.priceNprApprox || (r.dailyRate && Number(r.dailyRate) > 100 ? Number(r.dailyRate) : 2700);
-
-            return {
-              id: r.number || r.id || fallback.id,
-              name: `${r.type || fallback.type} (Room ${r.number || fallback.roomNumber})`,
-              guests: r.capacity || fallback.guests || 2,
-              size: fallback.size || "280 Sq. Ft.",
-              beds: r.bedType || fallback.beds || "1 Bed",
-              Noroom: 2, // 2 rooms available urgency trigger
-              features: [
-                ...(r.kitchenEligible ? ["Kitchen (Long Stay Only)"] : []),
-                ...(fallback.features || []),
-              ],
-              description: fallback.description,
-              amenities: fallback.amenities || ["Wi-Fi", "Hot Water", "Shared Kitchen"],
-              price: usdPrice,
-              currency: "USD",
-              priceNprApprox: nprPrice,
-              image:
-                (fallback.image && fallback.image[0]) || "/room1/room.webp",
-            };
+      try {
+        const response = await api.get("/rooms");
+        const apiRooms = response?.data?.data || response?.data?.room || [];
+        if (Array.isArray(apiRooms) && apiRooms.length > 0) {
+          // If PMS provides dynamic rates, optionally match to category
+          const updatedCategories = categories.map((cat) => {
+            const pmsMatch = apiRooms.find(
+              (r) =>
+                r.type === cat.type ||
+                r.type === cat.name ||
+                String(r.number) === String(cat.roomNumber)
+            );
+            if (pmsMatch && pmsMatch.dailyRate) {
+              const rateVal = Number(pmsMatch.dailyRate);
+              const usd = rateVal > 100 ? cat.price : rateVal || cat.price;
+              const npr = rateVal > 100 ? rateVal : cat.priceNprApprox;
+              return { ...cat, price: usd, priceNprApprox: npr };
+            }
+            return cat;
           });
-
-        setRooms(formattedRooms);
-      } else {
-        // Use local fallback rooms seamlessly
-        setRooms(
-          fallbackRooms.map((r) => ({
-            ...r,
-            Noroom: 2,
-            image: Array.isArray(r.image) ? r.image[0] : r.image,
-          }))
-        );
+          setRooms(updatedCategories);
+          return;
+        }
+      } catch (apiErr) {
+        console.warn("Using local room categories for modal:", apiErr);
       }
+
+      setRooms(categories);
     } catch (err) {
       console.warn("Using fallback rooms for booking modal:", err);
-      // Fallback immediately so guest never sees 404 error
       setRooms(
         fallbackRooms.map((r) => ({
           ...r,
+          id: r.id,
+          name: r.name,
           Noroom: 2,
           image: Array.isArray(r.image) ? r.image[0] : r.image,
         }))

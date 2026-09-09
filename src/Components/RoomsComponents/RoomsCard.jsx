@@ -22,46 +22,46 @@ const RoomsCard = () => {
     try {
       setLoading(true);
       setError(null);
-      const { data } = await api.get("/rooms");
+      // Strictly present the 3 room categories:
+      // 1. Budget Family Room
+      // 2. Deluxe Room
+      // 3. Family Room
+      const categories = fallbackRooms.map((cat) => ({
+        ...cat,
+        id: cat.id,
+        roomNumber: cat.roomNumber,
+        name: cat.name, // Clean category name
+        Noroom: 2,
+        image: Array.isArray(cat.image) ? cat.image[0] : cat.image,
+      }));
 
-      if (data && data.success && Array.isArray(data.data) && data.data.length > 0) {
-        const formattedRooms = data.data.map((r) => {
-          const fallback =
-            fallbackRooms.find(
-              (f) => String(f.roomNumber) === String(r.number) || f.type === r.type
-            ) || fallbackRooms[0];
-
-          const usdPrice = fallback.price || (r.dailyRate && Number(r.dailyRate) <= 100 ? Number(r.dailyRate) : 20);
-          const nprPrice = fallback.priceNprApprox || (r.dailyRate && Number(r.dailyRate) > 100 ? Number(r.dailyRate) : 2700);
-
-          return {
-            id: r.number || r.id,
-            roomNumber: r.number,
-            name: `${r.type} (Room ${r.number})`,
-            type: r.type,
-            guests: r.capacity || fallback.guests || 2,
-            size: fallback.size || "280 Sq. Ft.",
-            beds: r.bedType || fallback.beds || "1 Bed",
-            Noroom: 2, // 2 rooms available urgency trigger
-            features: [
-              ...(r.kitchenEligible ? ["Kitchen (Long Stay Only)"] : []),
-              ...(r.longStayEligible ? ["Long Stay Option"] : []),
-              ...(fallback.features || []),
-            ],
-            description: fallback.description || "Comfortable boutique stay in Thamel.",
-            amenities: fallback.amenities || ["Wi-Fi", "Hot Water", "Kitchen (Long Stay Only)"],
-            price: usdPrice,
-            currency: "USD",
-            priceNprApprox: nprPrice,
-            status: "AVAILABLE",
-            image: (fallback.image && fallback.image[0]) || "/room1/room.webp",
-          };
-        });
-
-        setRooms(formattedRooms);
-      } else {
-        setRooms(fallbackRooms.map((r) => ({ ...r, Noroom: 2 })));
+      try {
+        const { data } = await api.get("/rooms");
+        if (data && data.success && Array.isArray(data.data) && data.data.length > 0) {
+          // If PMS provides dynamic rates, optionally match to the categories
+          const updatedCategories = categories.map((cat) => {
+            const pmsMatch = data.data.find(
+              (r) =>
+                r.type === cat.type ||
+                r.type === cat.name ||
+                String(r.number) === String(cat.roomNumber)
+            );
+            if (pmsMatch && pmsMatch.dailyRate) {
+              const rateVal = Number(pmsMatch.dailyRate);
+              const usd = rateVal > 100 ? cat.price : rateVal || cat.price;
+              const npr = rateVal > 100 ? rateVal : cat.priceNprApprox;
+              return { ...cat, price: usd, priceNprApprox: npr };
+            }
+            return cat;
+          });
+          setRooms(updatedCategories);
+          return;
+        }
+      } catch (apiErr) {
+        console.warn("Using local room categories:", apiErr);
       }
+
+      setRooms(categories);
     } catch (err) {
       console.warn("Using fallback room inventory:", err);
       setRooms(fallbackRooms.map((r) => ({ ...r, Noroom: 2 })));
@@ -229,7 +229,7 @@ const RoomsCard = () => {
           {t("room.desc")}
         </p>
         <p className="text-gray-500 text-sm">
-          {rooms.length} Room{rooms.length !== 1 ? "s" : ""} Available
+          3 Room Categories Available
         </p>
       </div>
 
