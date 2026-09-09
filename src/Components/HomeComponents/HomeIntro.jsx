@@ -93,36 +93,50 @@ export default function HomeIntro() {
               className="space-y-4"
             >
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/30 text-orange-200 text-xs sm:text-sm font-semibold tracking-wider uppercase border border-orange-400/40 backdrop-blur-md">
-                <span>❖</span> A Quiet Base in Kathmandu
+                <span>❖</span> {t("mainBrand.brandStatement", "No Restaurant. No Noise. Sleep Well.")}
               </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight">
-                {t("hotelName")}
+                {t("mainBrand.heading", "Thamel Outside. Peace Inside.")}
               </h2>
             </motion.div>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="text-white/90 text-lg sm:text-xl leading-relaxed max-w-3xl font-light"
+              className="space-y-4 max-w-3xl"
             >
-              {t("introsub")}
-            </motion.p>
+              <p className="text-white/95 text-lg sm:text-xl leading-relaxed font-light">
+                {t("mainBrand.copy", "Thamel is full of life, energy and adventure. Hotel Sherpa Soul gives you a quieter place to come back to. Located in Thamel, Kathmandu, our hotel is designed for travelers who value a comfortable room, a convenient location and a peaceful night's sleep.")}
+              </p>
+              <p className="text-amber-300/90 text-sm sm:text-base font-medium italic border-l-2 border-amber-400/60 pl-3">
+                "{t("mainBrand.supportingCopy", "Sometimes, the best hotel experience is simply a clean, comfortable room, a great location and a good night's sleep.")}"
+              </p>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
-              className={`flex flex-col sm:flex-row justify-start sm:justify-end gap-4 pt-4 ${
+              className={`flex flex-wrap items-center gap-4 pt-4 ${
                 isRTL ? "flex-row-reverse" : ""
               }`}
             >
-              {/* <button className="group bg-white text-gray-800 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2">
-                <span>{t("bookButton")}</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </button> */}
+              <a
+                href="/rooms"
+                className="bg-amber-500 hover:bg-amber-600 text-white px-7 py-3.5 rounded-full font-bold text-base transition-all duration-300 shadow-lg flex items-center gap-2"
+              >
+                <span>View Rooms & Rates</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="/about"
+                className="bg-white/15 hover:bg-white text-white hover:text-slate-950 border border-white/40 px-6 py-3.5 rounded-full font-semibold text-base transition-all duration-300 backdrop-blur-sm"
+              >
+                Our Story
+              </a>
             </motion.div>
           </motion.div>
         </div>

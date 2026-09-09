@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Facebook,
@@ -8,12 +8,25 @@ import {
   QrCode,
   Smartphone,
   ExternalLink,
+  Sparkles,
+  CalendarCheck,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { FaTiktok, FaWhatsapp } from "react-icons/fa";
+import BookingModal from "./HelperComponents/BookingModal";
+import { trackMetaEvent } from "./Analytics/pixelEvents";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  const handleBookingClick = () => {
+    trackMetaEvent("InitiateCheckout", {
+      content_category: "hotel_booking",
+      entry_point: "footer_cta",
+    });
+    setIsBookingModalOpen(true);
+  };
 
   const socialLinks = [
     {
@@ -62,14 +75,20 @@ export default function Footer() {
 
   const quickLinks = [
     { to: "/", key: "home" },
-    { to: "/about", key: "aboutUs" },
     { to: "/rooms", key: "rooms" },
+    { to: "/about", key: "aboutUs" },
     { to: "/gallery", key: "gallery" },
+    { to: "/blog", key: "blog" },
     { to: "/contact", key: "contact" },
   ];
 
   return (
     <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white font-sans relative overflow-hidden">
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
+
       {/* Decorative background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -83,9 +102,40 @@ export default function Footer() {
       {/* Main footer content */}
       <div className="relative px-4 sm:px-6 lg:px-20 pt-12">
         <div className="max-w-7xl mx-auto">
+          {/* Section 12: Footer CTA Banner */}
+          <div className="relative mb-14 overflow-hidden rounded-3xl bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 p-8 sm:p-12 shadow-2xl border border-amber-400/30">
+            <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-amber-100 text-xs font-bold uppercase tracking-widest mb-3 backdrop-blur-sm">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-200" />
+                  Hotel Sherpa Soul • Thamel, Kathmandu
+                </div>
+                <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
+                  {t("footer.cta.heading", "Ready to Sleep Well?")}
+                </h3>
+                <p className="text-amber-100 text-sm sm:text-base leading-relaxed">
+                  {t(
+                    "footer.cta.copy",
+                    "Stay in the heart of Thamel and make Hotel Sherpa Soul your comfortable base for Kathmandu and your journey through Nepal."
+                  )}
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <button
+                  onClick={handleBookingClick}
+                  className="px-8 py-4 bg-white text-slate-900 hover:bg-amber-50 font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 text-base sm:text-lg flex items-center gap-2"
+                >
+                  <CalendarCheck className="w-5 h-5 text-amber-600" />
+                  <span>{t("footer.cta.button", "Book Your Stay")}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
           {/* 4 Column Layout on large screens, 1 column on mobile */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
-            {/* Column 1: Brand & Description */}
+            {/* Column 1: Brand & Description (Section 13) */}
             <div className="space-y-6">
               {/* Logo and Brand */}
               <div className="flex items-center gap-4 mb-6">
@@ -98,17 +148,20 @@ export default function Footer() {
                 </Link>
                 <div>
                   <p className="text-xl font-bold text-white mb-1">
-                    {t("footer.brand.title")}
+                    {t("footer.brand.title", "Hotel Sherpa Soul")}
                   </p>
                   <p className="text-[#FB6C01] text-xs font-semibold tracking-wide">
-                    No Restaurant • No Noise • Sleep Well
+                    {t("footer.brand.tagline", "No Restaurant. No Noise. Sleep Well.")}
                   </p>
                 </div>
               </div>
 
               {/* Description */}
               <p className="text-gray-300 leading-relaxed text-sm">
-                {t("footer.brand.description")}
+                {t(
+                  "footer.brand.description",
+                  "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+                )}
               </p>
 
               {/* Social Media */}

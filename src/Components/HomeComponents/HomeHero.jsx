@@ -191,9 +191,17 @@ export default function HomeIntro() {
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-none tracking-tight">
                   {heroData.title || t("home.hero.title")}
                 </h1>
-                <p className="text-white/90 text-lg leading-relaxed font-light">
+                <p className="text-white/90 text-base sm:text-lg leading-relaxed font-light">
                   {heroData.paragraph || t("home.hero.paragraph")}
                 </p>
+                {/* Trust Line */}
+                <div className="pt-1 flex flex-wrap items-center gap-2 text-xs sm:text-sm font-medium text-amber-200/90">
+                  <span>✦ Central Thamel Location</span>
+                  <span>•</span>
+                  <span>Comfortable Rooms</span>
+                  <span>•</span>
+                  <span>Peaceful Stay</span>
+                </div>
               </div>
 
               {/* Buttons Block */}
@@ -211,19 +219,19 @@ export default function HomeIntro() {
                     setIsBookingModalOpen(true);
                     setIsModalOpen(false);
                   }}
-                  className="group bg-white text-gray-800 px-6 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2"
+                  className="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2"
                 >
-                  <span>{heroData.bookButtonText || t("home.hero.bookButton")}</span>
+                  <span>{heroData.bookButtonText || t("home.hero.bookButton", "Book Your Stay")}</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
 
-                <button
-                  onClick={openModal}
-                  className="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-800 transition-all duration-300 flex items-center justify-center space-x-2"
+                <a
+                  href="/rooms"
+                  className="group bg-white/10 hover:bg-white text-white hover:text-gray-900 border-2 border-white/60 hover:border-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2 backdrop-blur-md"
                 >
-                  <Play className="w-5 h-5" />
-                  <span>{heroData.tourButtonText || t("home.hero.tourButton")}</span>
-                </button>
+                  <span>{heroData.tourButtonText || t("home.hero.tourButton", "Explore Our Rooms")}</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
               </div>
             </div>
 

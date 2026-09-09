@@ -36,7 +36,7 @@ export default function AboutHero() {
                        bg-gradient-to-r from-white via-orange-200 to-orange-500 
                        bg-clip-text text-transparent bg-[length:200%_200%] bg-left"
           >
-            {t("about.hero.title")}
+            {t("aboutPageContent.h1", t("about.hero.title", "About Hotel Sherpa Soul"))}
           </motion.h1>
 
           <motion.p
@@ -45,7 +45,7 @@ export default function AboutHero() {
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
             className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed drop-shadow-lg"
           >
-            {t("about.hero.subtitle")}
+            {t("aboutPageContent.introHeading", t("about.hero.subtitle", "A peaceful place to stay in the heart of Thamel, Kathmandu."))}
           </motion.p>
         </div>
       </div>

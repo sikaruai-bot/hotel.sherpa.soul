@@ -10,13 +10,103 @@
   },
   "home": {
     "hero": {
-      "title": "A Simple Stay in Thamel. A Better Night's Sleep.",
+      "title": "Sleep Well in the Heart of Thamel, Kathmandu",
       "subtitle": "No Restaurant. No Noise. Sleep Well.",
-      "paragraph": "Welcome to Hotel Sherpa Soul, a small and comfortable hotel in the heart of Thamel, Kathmandu. We keep things simple: comfortable rooms, a peaceful place to rest, practical facilities, friendly service and a convenient location for exploring Kathmandu.",
+      "paragraph": "Discover a peaceful and comfortable stay at Hotel Sherpa Soul, located in the vibrant heart of Thamel, Kathmandu. Explore the city by day, return to a quiet room at night, and wake up refreshed for your next adventure.",
       "bookButton": "Book Your Stay",
-      "tourButton": "View Our Rooms",
+      "tourButton": "Explore Our Rooms",
+      "trustLine": "Central Thamel Location • Comfortable Rooms • Peaceful Stay",
       "modalTitle": "Hotel Sherpa Soul - Thamel, Kathmandu",
       "modalDesc": "A peaceful stay in Thamel focused on comfortable rooms, practical facilities, and a restful night's sleep."
+    }
+  },
+  "mainBrand": {
+    "heading": "Thamel Outside. Peace Inside.",
+    "copy": "Thamel is full of life, energy and adventure. Hotel Sherpa Soul gives you a quieter place to come back to. Located in Thamel, Kathmandu, our hotel is designed for travelers who value a comfortable room, a convenient location and a peaceful night's sleep.",
+    "brandStatement": "No Restaurant. No Noise. Sleep Well.",
+    "supportingCopy": "Sometimes, the best hotel experience is simply a clean, comfortable room, a great location and a good night's sleep."
+  },
+  "roomsSection": {
+    "heading": "Your Room. Your Space. Your Rest.",
+    "copy": "After a day exploring Kathmandu, shopping in Thamel or preparing for your next trek, come back to a room where you can slow down, relax and recharge.",
+    "cta": "View Rooms & Rates",
+    "deluxeDouble": {
+      "name": "Deluxe Double Room",
+      "shortDesc": "A comfortable choice for couples, friends and travelers looking for extra space and a relaxing stay in Thamel.",
+      "cta": "View Room"
+    }
+  },
+  "locationSection": {
+    "heading": "Stay Where Kathmandu Comes Alive",
+    "copy": "From Hotel Sherpa Soul, Thamel is right outside your door. Discover Kathmandu's cafés, shops, local streets and travel hubs while keeping a peaceful place to return to after a day of exploring.",
+    "cta": "Explore Our Location"
+  },
+  "trekkersSection": {
+    "heading": "Made for the Journey Ahead",
+    "copy": "Kathmandu is often the beginning of something bigger. Whether you're starting a Himalayan trek, exploring Nepal for the first time, or simply discovering Kathmandu, Hotel Sherpa Soul gives you a comfortable base in Thamel.",
+    "beforeTrek": {
+      "title": "Before the Trek",
+      "desc": "Rest, recharge and prepare for your journey."
+    },
+    "afterTrek": {
+      "title": "After the Trek",
+      "desc": "Come back to Kathmandu and enjoy a comfortable place to relax."
+    },
+    "cityExploration": {
+      "title": "City Exploration",
+      "desc": "Stay close to the energy of Thamel while having a peaceful room to return to."
+    }
+  },
+  "whySherpaSoul": {
+    "heading": "Why Travelers Choose Sherpa Soul",
+    "items": [
+      {
+        "title": "Central Thamel Location",
+        "desc": "Stay in one of Kathmandu's most popular areas for travelers."
+      },
+      {
+        "title": "Peaceful Environment",
+        "desc": "Enjoy a quieter place to rest after exploring the city."
+      },
+      {
+        "title": "Comfortable Rooms",
+        "desc": "A practical and comfortable space for short and extended stays."
+      },
+      {
+        "title": "Traveler-Friendly Stay",
+        "desc": "A convenient base for Kathmandu exploration and Nepal adventures."
+      },
+      {
+        "title": "Simple, Honest Hospitality",
+        "desc": "No unnecessary extras. Just a comfortable stay and a good night's sleep."
+      }
+    ]
+  },
+  "bookingCta": {
+    "heading": "Your Kathmandu Adventure Starts Here.",
+    "copy": "Explore Thamel. Discover Kathmandu. Prepare for the Himalayas. And when the day is done, come back to a place where you can simply sleep well.",
+    "primaryCta": "Book Your Stay at Hotel Sherpa Soul",
+    "secondaryCta": "Check Room Availability"
+  },
+  "aboutPageContent": {
+    "h1": "About Hotel Sherpa Soul",
+    "introHeading": "A peaceful place to stay in the heart of Thamel, Kathmandu.",
+    "copy": "Hotel Sherpa Soul was created for travelers who want to experience Kathmandu without giving up the comfort of a peaceful night's sleep. Located in Thamel, one of Kathmandu's most popular traveler neighborhoods, we offer a simple and comfortable base for exploring the city, preparing for a trek or beginning your journey through Nepal.",
+    "philosophy": {
+      "heading": "No Restaurant. No Noise. Sleep Well.",
+      "copy": "We believe a hotel doesn't need to be complicated to feel welcoming. For us, hospitality is about creating a comfortable space where travelers can rest, recharge and feel ready for the next day."
+    },
+    "location": {
+      "heading": "At the Heart of Thamel",
+      "copy": "Thamel is one of Kathmandu's best-known areas for travelers, surrounded by cafés, shops, travel services and local experiences. Hotel Sherpa Soul gives you the convenience of staying close to it all while offering a peaceful place to return to."
+    },
+    "forTravelers": {
+      "heading": "From Kathmandu to the Himalayas",
+      "copy": "Many journeys through Nepal begin in Kathmandu. Whether you are visiting Nepal for culture and sightseeing, preparing for a Himalayan trek or returning from the mountains, Sherpa Soul is designed to be your comfortable Kathmandu base."
+    },
+    "closing": {
+      "heading": "Come for Kathmandu. Stay for the comfort. Sleep well for the journey ahead.",
+      "cta": "Book Your Stay"
     }
   },
   "about": {
@@ -201,9 +291,15 @@
     }
   },
   "footer": {
+    "cta": {
+      "heading": "Ready to Sleep Well?",
+      "copy": "Stay in the heart of Thamel and make Hotel Sherpa Soul your comfortable base for Kathmandu and your journey through Nepal.",
+      "button": "Book Your Stay"
+    },
     "brand": {
       "title": "Hotel Sherpa Soul",
-      "description": "A small, comfortable hotel in Thamel, Kathmandu. No Restaurant. No Noise. Sleep Well."
+      "description": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+      "tagline": "No Restaurant. No Noise. Sleep Well."
     },
     "quickLinks": {
       "title": "Quick Links",
@@ -238,44 +334,36 @@
     }
   },
   "homeServices": {
-    "sectionTag": "Why Choose Us",
-    "sectionTitle": "Why Stay With Hotel Sherpa Soul?",
+    "sectionTag": "Why Hotel Sherpa Soul",
+    "sectionTitle": "Why Travelers Choose Sherpa Soul",
     "intro": {
       "title": "A Calm Base in the Heart of Kathmandu",
-      "desc": "We keep things simple. Comfortable rooms, a peaceful place to rest, practical facilities, friendly service and a convenient location for exploring Kathmandu."
+      "desc": "Sometimes, the best hotel experience is simply a clean, comfortable room, a great location and a good night's sleep."
     },
     "services": [
       {
-        "title": "Peaceful Nights",
-        "desc": "No restaurant or noisy entertainment area inside the hotel. Calm environment where you can sleep comfortably."
+        "title": "Central Thamel Location",
+        "desc": "Stay in one of Kathmandu's most popular areas for travelers, steps away from cafés and shops."
       },
       {
-        "title": "In the Heart of Thamel",
-        "desc": "Stay close to the energy of Thamel while having a comfortable place to return to at the end of the day."
+        "title": "Peaceful Environment",
+        "desc": "Enjoy a quieter place to rest after exploring the city. No restaurant, no noise, sleep well."
       },
       {
-        "title": "Air Conditioning",
-        "desc": "Air-conditioned rooms help you stay comfortable in every season during your time in Kathmandu."
+        "title": "Comfortable Rooms",
+        "desc": "A practical and comfortable space for short and extended stays with 24/7 hot water."
       },
       {
-        "title": "Free Wi-Fi",
-        "desc": "Reliable high-speed Wi-Fi to stay connected with family, friends, work or your travel plans."
+        "title": "Traveler-Friendly Stay",
+        "desc": "A convenient base for Kathmandu exploration and Nepal adventures with luggage storage."
       },
       {
-        "title": "Private Bathrooms",
-        "desc": "Private en-suite bathroom facilities with 24/7 hot & cold showers, towels, toiletries and toothpaste."
+        "title": "Simple, Honest Hospitality",
+        "desc": "No unnecessary extras. Just a comfortable stay and a good night's sleep."
       },
       {
-        "title": "Shared Kitchen (Long Stay Only)",
-        "desc": "Shared kitchen with induction cooktop, fridge, and microwave reserved exclusively for registered long-stay guests."
-      },
-      {
-        "title": "Baggage Storage",
-        "desc": "Secure storage space to keep personal belongings and trek luggage safe during your stay."
-      },
-      {
-        "title": "Friendly, Personal Service",
-        "desc": "We are a small hotel, so our guests are not just another room number. We ensure a warm, easy stay."
+        "title": "Shared Self-Kitchen",
+        "desc": "Reserved exclusively for registered long-stay guests with fridge, microwave, and induction cooktop."
       }
     ]
   },

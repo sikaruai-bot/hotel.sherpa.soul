@@ -10,26 +10,45 @@ export default function HomeLocation() {
       <section className="py-16 px-6 md:px-20 grid md:grid-cols-2 gap-12 items-center">
         {/* Text Content */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#01366E] mb-6">
-            {t("contactMap.en.title")}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider mb-3">
+            <span>📍</span> Prime Thamel Location
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-bold text-[#01366E] mb-4 tracking-tight">
+            {t("locationSection.heading", "Stay Where Kathmandu Comes Alive")}
           </h2>
 
-          <p className="text-base md:text-lg leading-relaxed mb-4">
-            {t("contactMap.en.description")}
+          <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6 font-light">
+            {t(
+              "locationSection.copy",
+              "From Hotel Sherpa Soul, Thamel is right outside your door. Discover Kathmandu's cafés, shops, local streets and travel hubs while keeping a peaceful place to return to after a day of exploring."
+            )}
           </p>
 
-          <ul className="space-y-4 mt-6">
-            <li className="flex items-center gap-3">
-              <MapPin className="text-[#FB6C01]" />
-              <span>{t("contactMap.en.address")}</span>
+          <div className="mb-6">
+            <a
+              href="https://maps.app.goo.gl/nDB9DnLtb6taeaLRA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#01366E] hover:bg-[#072340] text-white font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              <span>{t("locationSection.cta", "Explore Our Location")}</span>
+              <MapPin className="w-4 h-4 text-amber-400" />
+            </a>
+          </div>
+
+          <ul className="space-y-3 pt-2 border-t border-gray-200 text-sm">
+            <li className="flex items-center gap-3 text-gray-700">
+              <MapPin className="text-[#FB6C01] w-4 h-4 flex-shrink-0" />
+              <span>{t("contactMap.en.address", "Thamel Bhagawati Marg 26, Kathmandu, Nepal")}</span>
             </li>
-            <li className="flex items-center gap-3">
-              <Phone className="text-[#FB6C01]" />
+            <li className="flex items-center gap-3 text-gray-700">
+              <Phone className="text-[#FB6C01] w-4 h-4 flex-shrink-0" />
               <span>+977 9851068219</span>
             </li>
-            <li className="flex items-center gap-3">
-              <Mail className="text-[#FB6C01]" />
-              <span>{t("contactMap.en.email")}</span>
+            <li className="flex items-center gap-3 text-gray-700">
+              <Mail className="text-[#FB6C01] w-4 h-4 flex-shrink-0" />
+              <span>info@hotelsherpasoul.com</span>
             </li>
           </ul>
         </div>

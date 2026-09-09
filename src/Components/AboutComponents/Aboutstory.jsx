@@ -16,21 +16,37 @@ export default function Aboutstory() {
             {/* Text Content */}
             <div className="space-y-8">
               <div>
-                <div className="inline-block py-2 text-black text-md font-semibold mb-2">
-                  {t("aboutStory.ourStory")}
+                <div className="inline-block py-1.5 px-3 bg-amber-100 text-amber-900 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+                  {t("aboutStory.ourStory", "Our Story")}
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-tight">
-                  {t("aboutStory.welcomeTo")}{" "}
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F79724] to-[#2CACE2]">
-                    {t("aboutStory.sherpaSoul")}
-                  </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#01366E] mb-6 leading-tight">
+                  {t(
+                    "aboutPageContent.introHeading",
+                    "A peaceful place to stay in the heart of Thamel, Kathmandu."
+                  )}
                 </h2>
               </div>
 
-              <div className="space-y-6 text-lg leading-relaxed text-gray-600">
-                <p>{t("aboutStory.paragraph1")}</p>
-                <p>{t("aboutStory.paragraph2")}</p>
-                <p>{t("aboutStory.paragraph3")}</p>
+              <div className="space-y-5 text-base md:text-lg leading-relaxed text-gray-700">
+                <p>
+                  {t(
+                    "aboutPageContent.copy",
+                    "Hotel Sherpa Soul was created for travelers who want to experience Kathmandu without giving up the comfort of a peaceful night's sleep. Located in Thamel, one of Kathmandu's most popular traveler neighborhoods, we offer a simple and comfortable base for exploring the city, preparing for a trek or beginning your journey through Nepal."
+                  )}
+                </p>
+
+                <div className="pt-4 border-t border-slate-100">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-[#FB6C01]" />
+                    {t("aboutPageContent.location.heading", "At the Heart of Thamel")}
+                  </h3>
+                  <p className="text-gray-600 text-base">
+                    {t(
+                      "aboutPageContent.location.copy",
+                      "Thamel is one of Kathmandu's best-known areas for travelers, surrounded by cafés, shops, travel services and local experiences. Hotel Sherpa Soul gives you the convenience of staying close to it all while offering a peaceful place to return to."
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
 

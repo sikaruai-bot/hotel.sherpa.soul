@@ -18,10 +18,11 @@ export default function Navbar() {
 
   const navItems = [
     { id: "home", label: t("nav.home", "Home"), href: "/" },
-    { id: "about", label: t("nav.about", "About"), href: "/about" },
     { id: "room", label: t("nav.room", "Rooms"), href: "/rooms" },
+    { id: "about", label: t("nav.about", "About Us"), href: "/about" },
     { id: "gallery", label: t("nav.gallery", "Gallery"), href: "/gallery" },
-    { id: "blog", label: "Blog", href: "/blog" },
+    { id: "location", label: t("nav.location", "Location"), href: "/#location" },
+    { id: "blog", label: t("nav.blog", "Blog"), href: "/blog" },
     { id: "contact", label: t("nav.contact", "Contact"), href: "/contact" },
   ];
 
@@ -136,27 +137,21 @@ export default function Navbar() {
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.span
-                  className={`w-6 h-0.5 rounded-full transition-colors duration-300 ${
-                    isScrolled ? "bg-blue-700" : "bg-white"
-                  }`}
+                  className="w-6 h-0.5 rounded-full transition-colors duration-300 bg-[#01366E]"
                   animate={{
                     rotate: isMobileMenuOpen ? 45 : 0,
                     y: isMobileMenuOpen ? 6 : 0,
                   }}
                 />
                 <motion.span
-                  className={`w-6 h-0.5 rounded-full transition-colors duration-300 ${
-                    isScrolled ? "bg-blue-700" : "bg-white"
-                  }`}
+                  className="w-6 h-0.5 rounded-full transition-colors duration-300 bg-[#01366E]"
                   animate={{
                     opacity: isMobileMenuOpen ? 0 : 1,
                     scale: isMobileMenuOpen ? 0 : 1,
                   }}
                 />
                 <motion.span
-                  className={`w-6 h-0.5 rounded-full transition-colors duration-300 ${
-                    isScrolled ? "bg-blue-700" : "bg-white"
-                  }`}
+                  className="w-6 h-0.5 rounded-full transition-colors duration-300 bg-[#01366E]"
                   animate={{
                     rotate: isMobileMenuOpen ? -45 : 0,
                     y: isMobileMenuOpen ? -6 : 0,

@@ -4,6 +4,7 @@ import HomeIntro from "./HomeIntro";
 import HomeLocation from "./HomeLocation";
 import HomeRooms from "./HomeRooms";
 import HomeServices from "./HomeServices";
+import HomeTrekkers from "./HomeTrekkers";
 import HomeGoogleReviews from "./HomeGoogleReviews";
 import HomeFacilities from "./HomeFacilities";
 import HomeStats from "./HomeStats";
@@ -17,6 +18,7 @@ export default function HomeMain() {
       <HomeIntro />
       <HomeRooms />
       <HomeServices />
+      <HomeTrekkers />
       <HomeFacilities />
       <HomeGoogleReviews />
       <HomeFAQ />

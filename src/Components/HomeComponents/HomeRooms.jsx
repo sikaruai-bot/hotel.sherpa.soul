@@ -87,13 +87,25 @@ const RoomCarousel = () => {
 
   return (
     <div className="min-h-screen bg-white py-8 md:py-16">
-      <div className="text-center mb-12">
-        <p className="text-xs text-[#FB6C01] uppercase tracking-[0.2em] mb-2 font-semibold">
-          {t("room.title1")}
+      <div className="text-center mb-12 max-w-3xl mx-auto px-4">
+        <p className="text-xs text-[#FB6C01] uppercase tracking-[0.2em] mb-2 font-bold">
+          ✦ Accommodation & Rest
         </p>
-        <h2 className="text-3xl md:text-5xl font-bold text-[#01366E]">
-          {t("room.title2")}
+        <h2 className="text-3xl md:text-5xl font-bold text-[#01366E] mb-3">
+          {t("roomsSection.heading", "Your Room. Your Space. Your Rest.")}
         </h2>
+        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+          {t("roomsSection.copy", "After a day exploring Kathmandu, shopping in Thamel or preparing for your next trek, come back to a room where you can slow down, relax and recharge.")}
+        </p>
+        <div className="mt-4">
+          <Link
+            to="/rooms"
+            className="inline-flex items-center gap-2 text-sm font-bold text-amber-600 hover:text-amber-700 underline underline-offset-4"
+          >
+            <span>{t("roomsSection.cta", "View Rooms & Rates")}</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4">
