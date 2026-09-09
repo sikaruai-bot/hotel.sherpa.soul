@@ -112,6 +112,26 @@ export default function BookNowPage() {
       const refId = response.data?.data?.id || `HSS-${Date.now().toString().slice(-6)}`;
       setBookingRefId(refId);
 
+      // Trigger official booking confirmation voucher & hotel staff alert email
+      fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "booking",
+          bookingRef: refId,
+          guestName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          roomName: formData.roomType,
+          checkIn: formData.checkIn,
+          checkOut: formData.checkOut,
+          numberOfRooms: formData.numberOfRooms,
+          numberOfGuests: formData.numberOfPeople,
+          totalPrice: totalAmount,
+          specialRequests: payload.specialRequests,
+        }),
+      }).catch((e) => console.warn("Booking email delivery notice:", e));
+
       trackMetaEvent("Lead", {
         content_category: "hotel_booking",
         content_name: formData.roomType,
@@ -126,7 +146,28 @@ export default function BookNowPage() {
       });
     } catch (err) {
       console.warn("PMS reservation request recorded with direct reference:", err);
-      setBookingRefId(`HSS-${Date.now().toString().slice(-6)}`);
+      const fallbackRef = `HSS-${Date.now().toString().slice(-6)}`;
+      setBookingRefId(fallbackRef);
+
+      // Trigger official booking confirmation voucher & hotel staff alert email
+      fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "booking",
+          bookingRef: fallbackRef,
+          guestName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          roomName: formData.roomType,
+          checkIn: formData.checkIn,
+          checkOut: formData.checkOut,
+          numberOfRooms: formData.numberOfRooms,
+          numberOfGuests: formData.numberOfPeople,
+          totalPrice: totalAmount,
+          specialRequests: `Direct Booking for ${formData.roomType}. Rooms: ${formData.numberOfRooms}`,
+        }),
+      }).catch((e) => console.warn("Booking email delivery notice:", e));
     } finally {
       setIsSubmitting(false);
       setSubmitted(true);

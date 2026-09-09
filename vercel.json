@@ -46,6 +46,14 @@
   ],
   "rewrites": [
     {
+      "source": "/api/send-email",
+      "destination": "/api/send-email"
+    },
+    {
+      "source": "/api/contact",
+      "destination": "/api/contact"
+    },
+    {
       "source": "/api/:path*",
       "destination": "https://hotelsherpasoulpms-sigma.vercel.app/api/:path*"
     },

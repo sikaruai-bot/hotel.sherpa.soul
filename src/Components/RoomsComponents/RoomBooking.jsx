@@ -400,7 +400,27 @@ export default function BookingForm() {
           currency: "NPR",
         });
 
-        toast.success("Reservation confirmed in Hotel PMS!", {
+        // Trigger official booking confirmation voucher & hotel staff alert email
+        fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "booking",
+            bookingRef,
+            guestName: formData.name,
+            email: formData.email,
+            phone: formData.number,
+            roomName: room?.name || `Room ${roomNum}`,
+            checkIn: formData.checkIn,
+            checkOut: formData.checkOut,
+            numberOfRooms: formData.numberOfRooms,
+            numberOfGuests: formData.numberOfGuests,
+            totalPrice: calcTotal,
+            specialRequests: payload.specialRequests,
+          }),
+        }).catch((err) => console.warn("Booking email delivery notice:", err));
+
+        toast.success("Reservation confirmed! Confirmation sent to your email.", {
           position: "top-right",
         });
       } else {
@@ -410,6 +430,26 @@ export default function BookingForm() {
       console.warn("PMS reservation error, creating direct reservation reference:", error);
       const fallbackRef = `HSS-${Date.now().toString().slice(-6)}`;
       const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (Number(room?.price) || 3500);
+
+      // Trigger official booking confirmation voucher & hotel staff alert email
+      fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "booking",
+          bookingRef: fallbackRef,
+          guestName: formData.name,
+          email: formData.email,
+          phone: formData.number,
+          roomName: room?.name || `Room ${room?.roomNumber || id}`,
+          checkIn: formData.checkIn,
+          checkOut: formData.checkOut,
+          numberOfRooms: formData.numberOfRooms,
+          numberOfGuests: formData.numberOfGuests,
+          totalPrice: calcTotal,
+          specialRequests: `Direct Booking. ID attached: ${idVerificationImages.length > 0}`,
+        }),
+      }).catch((err) => console.warn("Booking email delivery notice:", err));
 
       setConfirmedBooking({
         id: fallbackRef,
@@ -423,7 +463,7 @@ export default function BookingForm() {
         email: formData.email,
       });
 
-      toast.success("Reservation recorded! Please verify via WhatsApp.", {
+      toast.success("Reservation recorded! Confirmation sent to your email.", {
         position: "top-right",
       });
     } finally {

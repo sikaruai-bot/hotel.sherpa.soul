@@ -7,6 +7,8 @@ import {
   Users,
   Star,
   Heart,
+  CheckCircle,
+  AlertCircle,
 } from "lucide-react";
 import React, { useState } from "react";
 import GetInTouch from "./GetInTouch";
@@ -18,9 +20,12 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState("idle"); // idle | success | error
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleInputChange = (e) => {
     setFormData({
@@ -29,36 +34,61 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    if (e && e.preventDefault) e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill in all required fields.");
+      alert("Please fill in all required fields (Name, Email, Message).");
       return;
     }
 
-    const whatsappNumber = "9851068219";
-    const whatsappURL = `https://wa.me/977${whatsappNumber}?text=Hello%20Hotel%20Sherpa%20Soul!%0AName:%20${encodeURIComponent(
-      formData.name
-    )}%0AEmail:%20${encodeURIComponent(
-      formData.email
-    )}%0AMessage:%20${encodeURIComponent(formData.message)}`;
-
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      trackMetaEvent("Contact", { contact_method: "whatsapp" });
-      window.open(whatsappURL, "_blank");
-      setFormData({ name: "", email: "", message: "" });
-    }, 2000);
-  };
+    setSubmitStatus("idle");
 
-  const name = t("contact.form.data.name2");
-  const mail = t("contact.form.data.email2");
-  const msg = t("contact.form.data.msg2");
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "contact",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || "",
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok && data.success) {
+        setSubmitStatus("success");
+        setStatusMessage(
+          "Thank you! Your message has been sent to info@hotelsherpasoul.com. A confirmation copy has been sent to your email."
+        );
+        trackMetaEvent("Contact", { contact_method: "official_email" });
+        trackMetaEvent("Lead", {
+          content_name: "Website Contact Form",
+          method: "official_email",
+        });
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        throw new Error(data.error || "Failed to deliver message");
+      }
+    } catch (error) {
+      console.warn("Contact form email fallback to WhatsApp:", error);
+      setSubmitStatus("error");
+      setStatusMessage(
+        "Could not send email directly. You can message us directly on WhatsApp for instant assistance!"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div>
       {/* Contact Info Section */}
       <GetInTouch />
+
       {/* Contact Form Section with Background Image */}
       <section
         className="py-24 px-6 relative overflow-hidden min-h-screen flex items-center"
@@ -70,7 +100,7 @@ export default function ContactForm() {
         }}
       >
         {/* Light overlay */}
-        <div className="absolute inset-0 bg-wh/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
 
         {/* Floating shapes */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-orange-400/10 to-pink-400/10 rounded-full filter blur-3xl animate-pulse"></div>
@@ -79,12 +109,12 @@ export default function ContactForm() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Message */}
-            <div className="text-white">
+            <div className="text-slate-900">
               <div className="mb-10">
-                <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-[#AB8865]">
                   {t("contact.title")}
                 </h2>
-                <p className="text-xl text-white leading-relaxed mb-10">
+                <p className="text-xl text-slate-700 leading-relaxed mb-10">
                   {t("contact.subtitle")}
                 </p>
               </div>
@@ -158,7 +188,7 @@ export default function ContactForm() {
 
                   <div className="group">
                     <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#AB8865]">
-                      {t("contact.form.data.email")}s *
+                      {t("contact.form.data.email")} *
                     </label>
                     <input
                       type="email"
@@ -173,6 +203,20 @@ export default function ContactForm() {
 
                   <div className="group">
                     <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#AB8865]">
+                      Phone Number (Optional)
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#AB8865] focus:bg-white transition-all duration-300"
+                      placeholder="+977 98XXXXXXXX"
+                    />
+                  </div>
+
+                  <div className="group">
+                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#AB8865]">
                       {t("contact.form.data.msg")} *
                     </label>
                     <textarea
@@ -181,10 +225,47 @@ export default function ContactForm() {
                       onChange={handleInputChange}
                       rows="5"
                       className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#AB8865] focus:bg-white resize-none transition-all duration-300"
-                      placeholder="Tell us about your inquiry or request..."
+                      placeholder="Tell us about your inquiry, booking dates, or request..."
                       required
                     />
                   </div>
+
+                  {submitStatus === "success" && (
+                    <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3 text-emerald-800">
+                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <div className="text-sm">
+                        <p className="font-semibold">{statusMessage}</p>
+                        <p className="mt-1 text-emerald-700 text-xs">
+                          Need instant assistance? You can also reach our 24/7 Front Desk on WhatsApp:{" "}
+                          <a
+                            href="https://wa.me/9779851068219"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-bold underline text-emerald-900"
+                          >
+                            +977-9851068219
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
+                  {submitStatus === "error" && (
+                    <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-3 text-amber-800">
+                      <AlertCircle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                      <div className="text-sm">
+                        <p className="font-semibold">{statusMessage}</p>
+                        <a
+                          href="https://wa.me/9779851068219?text=Hello%20Hotel%20Sherpa%20Soul"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-block bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold"
+                        >
+                          Chat on WhatsApp
+                        </a>
+                      </div>
+                    </div>
+                  )}
 
                   <button
                     type="button"
