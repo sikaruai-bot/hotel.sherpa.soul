@@ -4,6 +4,7 @@ import { X, Users, Bed, Wifi, Car, Coffee, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import api from "../Utils/api";
+import { rooms as fallbackRooms } from "./RoomsData";
 import { useTranslation } from "react-i18next";
 
 const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
@@ -24,35 +25,65 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await api.get("/get-rooms");
-      const apiRooms = response?.data?.room || [];
+      const response = await api.get("/rooms");
+      const apiRooms = response?.data?.data || response?.data?.room || [];
 
-      // Map API data to match RoomsCard format and UX
-      const formattedRooms = apiRooms
-        .map((r) => ({
-          id: r._id,
-          name: r.name,
-          guests: r.guests,
-          size: r.size,
-          beds: r.beds,
-          Noroom: r.availableRooms,
-          features: r.features || [],
-          description: r.description,
-          amenities: r.amenities || [],
-          price: r.price,
-          priceNprApprox: r.priceNprApprox || (Number(r.price) <= 100 ? Number(r.price) * 135 : Number(r.price)),
-          image: r.image?.[0]?.url || "",
-        }))
-        // Ensure available rooms appear first, sold-out last
-        .sort((a, b) => {
-          if (a.Noroom === 0 && b.Noroom !== 0) return 1;
-          if (a.Noroom !== 0 && b.Noroom === 0) return -1;
-          return 0;
-        });
+      if (Array.isArray(apiRooms) && apiRooms.length > 0) {
+        const formattedRooms = apiRooms
+          .map((r) => {
+            const fallback =
+              fallbackRooms.find(
+                (f) =>
+                  String(f.roomNumber) === String(r.number) ||
+                  f.type === r.type ||
+                  String(f.id) === String(r.id)
+              ) || fallbackRooms[0];
 
-      setRooms(formattedRooms);
+            return {
+              id: r.number || r.id || fallback.id,
+              name: `${r.type || fallback.type} (Room ${r.number || fallback.roomNumber})`,
+              guests: r.capacity || fallback.guests || 2,
+              size: fallback.size || "280 Sq. Ft.",
+              beds: r.bedType || fallback.beds || "1 Bed",
+              Noroom: r.status === "AVAILABLE" ? 1 : 0,
+              features: [
+                ...(r.kitchenEligible ? ["Kitchen (Long Stay Only)"] : []),
+                ...(fallback.features || []),
+              ],
+              description: fallback.description,
+              amenities: fallback.amenities || ["Wi-Fi", "Hot Water", "Shared Kitchen"],
+              price: r.dailyRate || fallback.price,
+              currency: r.currency || fallback.currency || "USD",
+              priceNprApprox:
+                fallback.priceNprApprox ||
+                (r.dailyRate ? Math.round(Number(r.dailyRate) * 135) : 2700),
+              image:
+                (fallback.image && fallback.image[0]) || "/room1/room.webp",
+            };
+          })
+          .sort((a, b) => b.Noroom - a.Noroom);
+
+        setRooms(formattedRooms);
+      } else {
+        // Use local fallback rooms seamlessly
+        setRooms(
+          fallbackRooms.map((r) => ({
+            ...r,
+            Noroom: 1,
+            image: Array.isArray(r.image) ? r.image[0] : r.image,
+          }))
+        );
+      }
     } catch (err) {
-      setError(err.message || "Failed to fetch rooms");
+      console.warn("Using fallback rooms for booking modal:", err);
+      // Fallback immediately so guest never sees 404 error
+      setRooms(
+        fallbackRooms.map((r) => ({
+          ...r,
+          Noroom: 1,
+          image: Array.isArray(r.image) ? r.image[0] : r.image,
+        }))
+      );
     } finally {
       setLoading(false);
     }
@@ -176,7 +207,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                       {/* Room Image */}
                       <div className="relative h-48 overflow-hidden">
                         <img
-                          src={room.image || "/api/placeholder/300/200"}
+                          src={(Array.isArray(room.image) ? room.image[0] : room.image) || "/room1/room.webp"}
                           alt={room.name ? `${room.name} - Hotel Sherpa Soul` : "Hotel Sherpa Soul Room"}
                           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                         />

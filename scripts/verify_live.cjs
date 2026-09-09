@@ -12,15 +12,18 @@ function get(url) {
 
 async function verify() {
   try {
-    const html = await get('https://hotel-sherpa-soul.vercel.app/index.html');
-    const match = html.match(/src="([^"]+\.js)"/);
-    console.log('Script tag found:', match ? match[1] : 'None');
-    if (match) {
-      const jsUrl = 'https://hotel-sherpa-soul.vercel.app' + match[1];
-      const js = await get(jsUrl);
-      console.log('Bundle length:', js.length);
-      console.log('Has CMS Provider/Context:', js.includes("HSS_CMS_DATA_V1"));
-      console.log('Has CMS route /cms:', js.includes("/cms"));
+    for (const domain of ['https://hotelsherpasoul.com', 'https://hotel-sherpa-soul.vercel.app']) {
+      console.log(`\nTesting ${domain}...`);
+      const html = await get(domain + '/index.html?t=' + Date.now());
+      const match = html.match(/src="([^"]+\.js)"/);
+      console.log('Script tag found:', match ? match[1] : 'None');
+      if (match) {
+        const jsUrl = domain + match[1];
+        const js = await get(jsUrl);
+        console.log('Bundle length:', js.length);
+        console.log('Has NPR price:', js.includes('NPR'));
+        console.log('Has 2,700:', js.includes('2,700'));
+      }
     }
   } catch (e) {
     console.error(e);
