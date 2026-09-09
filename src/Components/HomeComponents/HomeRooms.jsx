@@ -26,6 +26,7 @@ const RoomCarousel = () => {
       occupancy: "3 Adults, 1 Child",
       beds: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
       bedShort: "King 32.5 sq.ft + Single 19.5 sq.ft",
+      featureHighlight: "1 King + 1 Single Bed • 24/7 Hot Water • Shared Kitchen",
       price: 20,
       currency: "USD",
       image: "/changes_photo/doubleBedRoom.jpeg",
@@ -35,7 +36,8 @@ const RoomCarousel = () => {
       name: t("room.rooms.2.name", "Deluxe Room"),
       occupancy: "2 Adults, 1 Child",
       beds: "1 King Bed (32.5 sq. ft)",
-      bedShort: "King 32.5 sq.ft",
+      bedShort: "Air Conditioned • King 32.5 sq.ft",
+      featureHighlight: "Air Conditioned (AC) • 1 King Bed • 24/7 Hot Water • Shared Kitchen",
       price: 20,
       currency: "USD",
       image: "/changes_photo/singleBedWithSofa.jpeg",
@@ -45,7 +47,8 @@ const RoomCarousel = () => {
       name: t("room.rooms.3.name", "Family Room"),
       occupancy: "3 Adults, 1 Child",
       beds: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
-      bedShort: "King 32.5 sq.ft + Single 19.5 sq.ft",
+      bedShort: "Air Conditioned • King + Single",
+      featureHighlight: "Air Conditioned (AC) • King + Single Bed • Shared Kitchen",
       price: 30,
       currency: "USD",
       image: "/changes_photo/doubleBed.jpeg",
@@ -167,7 +170,7 @@ const RoomCarousel = () => {
                           transition={{ duration: 0.3 }}
                         >
                           <p className="text-sm text-slate-200 mb-2 font-light">
-                            {room.beds} • 24/7 Hot Water • Shared Kitchen
+                            {room.featureHighlight || `${room.beds} • 24/7 Hot Water • Shared Kitchen`}
                           </p>
                           <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#FB6C01]">
                             View Room Details & Rates <ArrowRight className="w-4 h-4" />

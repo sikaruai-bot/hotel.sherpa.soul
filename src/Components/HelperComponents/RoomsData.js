@@ -12,7 +12,7 @@ export const rooms = [
       king: "1 King Size Bed (32.5 sq. ft)",
       single: "1 Single Bed (19.5 sq. ft)",
     },
-    features: ["Budget Friendly", "Shared Kitchen Access", "High-speed Wi-Fi"],
+    features: ["Budget Friendly", "Shared Kitchen Access", "Quiet Rest"],
     description:
       "A comfortable, budget-friendly family room designed for small families or trekking groups visiting Kathmandu. Features one King size bed (32.5 sq. ft) and one Single bed (19.5 sq. ft), comfortably accommodating up to 3 adults and 1 child. Includes private attached bathroom with 24/7 hot water, bright natural light, and access to our shared self-kitchen.",
     amenities: [
@@ -20,7 +20,7 @@ export const rooms = [
       "1 King Bed (32.5 sq. ft)",
       "1 Single Bed (19.5 sq. ft)",
       "Private Attached Bathroom (24/7 Hot Water)",
-      "Air Conditioning",
+      "Ceiling Fan & Heater",
       "Shared Kitchen Access",
       "Luggage Storage",
       "Daily Housekeeping",
@@ -48,14 +48,14 @@ export const rooms = [
     bedDetails: {
       king: "1 King Size Bed (32.5 sq. ft)",
     },
-    features: ["Bright Daylight", "Work Friendly", "Quiet Rest"],
+    features: ["Air Conditioned", "Work Friendly", "Quiet Rest"],
     description:
-      "A serene and comfortable deluxe room featuring a restful King size bed (32.5 sq. ft) accommodating up to 2 adults and 1 child. Perfect for couples or travelers seeking quiet, peaceful sleep in the heart of Thamel. Equipped with air conditioning, private ensuite bathroom with continuous hot water, work desk, and full access to our shared self-kitchen.",
+      "A serene and comfortable deluxe room featuring a restful King size bed (32.5 sq. ft) accommodating up to 2 adults and 1 child. Perfect for couples or travelers seeking quiet, peaceful sleep in the heart of Thamel. Equipped with air conditioning (AC), private ensuite bathroom with continuous hot water, work desk, and full access to our shared self-kitchen.",
     amenities: [
+      "Air Conditioning (AC)",
       "High-speed Wi-Fi",
       "1 King Size Bed (32.5 sq. ft)",
       "Private Ensuite Bathroom (24/7 Hot Water)",
-      "Air Conditioning",
       "Work Desk & Chair",
       "Shared Kitchen Access",
       "Luggage Storage",
@@ -85,15 +85,15 @@ export const rooms = [
       king: "1 King Size Bed (32.5 sq. ft)",
       single: "1 Single Bed (19.5 sq. ft)",
     },
-    features: ["Extra Spacious", "Family Friendly", "Shared Kitchen Access"],
+    features: ["Air Conditioned", "Extra Spacious", "Shared Kitchen Access"],
     description:
-      "Spacious and peaceful family accommodation designed for 3 adults and 1 child. Equipped with one King size bed (32.5 sq. ft) and one Single bed (19.5 sq. ft) with supportive mattresses, ample space for luggage, private attached bathroom with continuous hot water, and direct proximity to the shared rooftop self-use kitchen.",
+      "Spacious and peaceful family accommodation designed for 3 adults and 1 child. Equipped with air conditioning (AC), one King size bed (32.5 sq. ft) and one Single bed (19.5 sq. ft) with supportive mattresses, ample space for luggage, private attached bathroom with continuous hot water, and direct proximity to the shared rooftop self-use kitchen.",
     amenities: [
+      "Air Conditioning (AC)",
       "High-speed Wi-Fi",
       "1 King Size Bed (32.5 sq. ft)",
       "1 Single Bed (19.5 sq. ft)",
       "Private Attached Bathroom (24/7 Hot Water)",
-      "Air Conditioning",
       "Seating Corner",
       "Shared Kitchen Access",
       "Luggage Storage",

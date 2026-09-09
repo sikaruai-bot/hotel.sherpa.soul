@@ -14,6 +14,7 @@ import {
   Utensils,
   ArrowRight,
   CreditCard,
+  Wind,
 } from "lucide-react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
@@ -172,13 +173,19 @@ export default function RoomDetail() {
 
   const getAmenityIcon = (amenity) => {
     const amenityLower = amenity.toLowerCase();
+    if (
+      amenityLower.includes("air condition") ||
+      amenityLower.includes("ac") ||
+      amenityLower.includes("conditioning")
+    )
+      return <Wind className="w-4 h-4 text-[#01366E]" />;
     if (amenityLower.includes("wifi") || amenityLower.includes("internet"))
       return <Wifi className="w-4 h-4" />;
     if (amenityLower.includes("parking") || amenityLower.includes("car"))
       return <Car className="w-4 h-4" />;
     if (amenityLower.includes("coffee") || amenityLower.includes("tea"))
       return <Coffee className="w-4 h-4" />;
-    if (amenityLower.includes("dining") || amenityLower.includes("restaurant"))
+    if (amenityLower.includes("dining") || amenityLower.includes("restaurant") || amenityLower.includes("kitchen"))
       return <Utensils className="w-4 h-4" />;
     return <Star className="w-4 h-4" />;
   };

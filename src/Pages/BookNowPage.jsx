@@ -27,7 +27,7 @@ const roomOptions = [
     bedInfo: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
   },
   {
-    label: "Deluxe Room - $20 USD/night (~NPR 2,700) (Max 2 Adults, 1 Child)",
+    label: "Deluxe Room - $20 USD/night (~NPR 2,700) (Air Conditioned | Max 2 Adults, 1 Child)",
     roomNumber: "201",
     price: 20,
     currency: "USD",
@@ -35,7 +35,7 @@ const roomOptions = [
     bedInfo: "1 King Bed (32.5 sq. ft)",
   },
   {
-    label: "Family Room - $30 USD/night (~NPR 4,000) (Max 3 Adults, 1 Child)",
+    label: "Family Room - $30 USD/night (~NPR 4,000) (Air Conditioned | Max 3 Adults, 1 Child)",
     roomNumber: "301",
     price: 30,
     currency: "USD",
