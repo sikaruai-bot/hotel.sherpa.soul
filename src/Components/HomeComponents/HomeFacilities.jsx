@@ -47,6 +47,7 @@ const HomeFacilities = () => {
     },
     {
       img: "/changes_photo/frontend_desk.webp",
+      objectPosition: "center 20%",
       number: t("facilities.frontdesk.title", "24/7 Front Desk"),
       title: "",
       desc: t(
@@ -127,6 +128,7 @@ const HomeFacilities = () => {
                   alt={`${facility.number} - Hotel Sherpa Soul Amenity`}
                   loading="lazy"
                   decoding="async"
+                  style={{ objectPosition: facility.objectPosition || "center" }}
                   className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>

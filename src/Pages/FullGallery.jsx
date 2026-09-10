@@ -94,6 +94,11 @@ export default function GalleryPage() {
       alt: "Hotel Sherpa Soul Cozy Guest Room",
     },
     {
+      src: "/changes_photo/frontend_desk.webp",
+      type: "image",
+      alt: "Hotel Sherpa Soul 24/7 Front Desk & Reception",
+    },
+    {
       src: "/changes_photo/balkani.webp",
       type: "image",
       alt: "Hotel Sherpa Soul Private Balcony View",
