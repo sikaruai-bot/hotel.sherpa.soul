@@ -34,7 +34,8 @@ const HomeFacilities = () => {
 
   const facilities = [
     {
-      img: "/amenities.webp",
+      img: "/changes_photo/shared_kitchen.webp",
+      objectPosition: "center 30%",
       number: t("facilities.laundry.title", "Shared Self-Kitchen (Long Stay Only)"),
       title: "",
       desc: t(

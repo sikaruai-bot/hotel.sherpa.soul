@@ -99,6 +99,11 @@ export default function GalleryPage() {
       alt: "Hotel Sherpa Soul 24/7 Front Desk & Reception",
     },
     {
+      src: "/changes_photo/shared_kitchen.webp",
+      type: "image",
+      alt: "Hotel Sherpa Soul Shared Self-Kitchen & Dining Area",
+    },
+    {
       src: "/changes_photo/balkani.webp",
       type: "image",
       alt: "Hotel Sherpa Soul Private Balcony View",

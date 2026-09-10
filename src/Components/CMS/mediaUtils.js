@@ -89,5 +89,6 @@ export const HOTEL_PRESET_PHOTOS = [
   { label: "Single Room", path: "/single.webp" },
   { label: "Hotel Front Desk", path: "/front-desk.webp" },
   { label: "Shared Kitchen & Amenities", path: "/amenities.webp" },
+  { label: "Shared Self-Kitchen & Dining", path: "/changes_photo/shared_kitchen.webp" },
   { label: "Hotel Logo", path: "/logo.webp" },
 ];
