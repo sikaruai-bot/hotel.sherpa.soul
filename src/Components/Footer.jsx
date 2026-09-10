@@ -81,12 +81,12 @@ export default function Footer() {
   ];
 
   const quickLinks = [
-    { to: "/", key: "home" },
-    { to: "/rooms", key: "rooms" },
-    { to: "/about", key: "aboutUs" },
-    { to: "/gallery", key: "gallery" },
-    { to: "/blog", key: "blog" },
-    { to: "/contact", key: "contact" },
+    { to: "/", key: "home", defaultLabel: "Home" },
+    { to: "/rooms", key: "rooms", defaultLabel: "Rooms" },
+    { to: "/about", key: "aboutUs", defaultLabel: "About Us" },
+    { to: "/gallery", key: "gallery", defaultLabel: "Gallery" },
+    { to: "/blog", key: "blog", defaultLabel: "Blog" },
+    { to: "/contact", key: "contact", defaultLabel: "Contact" },
   ];
 
   return (
@@ -218,7 +218,7 @@ export default function Footer() {
                     >
                       <span className="w-0 h-px bg-[#FB6C01] mr-0 group-hover:w-3 group-hover:mr-3 transition-all duration-300 rounded-full"></span>
                       <span className="group-hover:translate-x-1 transition-transform duration-300">
-                        {t(`footer.quickLinks.links.${link.key}`)}
+                        {t(`footer.quickLinks.links.${link.key}`, link.defaultLabel)}
                       </span>
                     </Link>
                   </li>
