@@ -25,8 +25,8 @@ export const optimizeMediaFile = (file) => {
       const img = new Image();
       img.onload = () => {
         try {
-          const MAX_WIDTH = 1600;
-          const MAX_HEIGHT = 1200;
+          const MAX_WIDTH = 1200;
+          const MAX_HEIGHT = 900;
           let width = img.width;
           let height = img.height;
 
@@ -49,9 +49,9 @@ export const optimizeMediaFile = (file) => {
           const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, width, height);
 
-          let dataUrl = canvas.toDataURL("image/webp", 0.85);
+          let dataUrl = canvas.toDataURL("image/webp", 0.78);
           if (!dataUrl.startsWith("data:image/webp")) {
-            dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+            dataUrl = canvas.toDataURL("image/jpeg", 0.78);
           }
 
           resolve({ type: "image", src: dataUrl });
@@ -72,7 +72,10 @@ export const optimizeMediaFile = (file) => {
 };
 
 export const HOTEL_PRESET_PHOTOS = [
-  { label: "Deluxe Double Bedroom", path: "/changes_photo/doubleBedRoom.webp" },
+  { label: "Budget Family Room (King + Single Bed)", path: "/triple.webp" },
+  { label: "Deluxe King Room with Sofa", path: "/changes_photo/singleBedWithSofa.webp" },
+  { label: "Family Room AC (Wood Panel & Balcony)", path: "/changes_photo/doubleBed.webp" },
+  { label: "Twin Bed Room", path: "/changes_photo/doubleBedRoom.webp" },
   { label: "Balcony Scenic View", path: "/changes_photo/balkani.webp" },
   { label: "Executive Room Interior", path: "/room1/room.webp" },
   { label: "Cozy Bedroom Angle 2", path: "/room1/room2.webp" },
@@ -85,10 +88,8 @@ export const HOTEL_PRESET_PHOTOS = [
   { label: "Hotel Sherpa Soul Night Exterior", path: "/hero/hero2.webp" },
   { label: "Thamel Street Ambiance", path: "/hero/hero4.webp" },
   { label: "Double Bed Classic", path: "/double.webp" },
-  { label: "Triple Room", path: "/triple.webp" },
   { label: "Single Room", path: "/single.webp" },
-  { label: "Hotel Front Desk", path: "/front-desk.webp" },
-  { label: "Shared Kitchen & Amenities", path: "/amenities.webp" },
-  { label: "Shared Self-Kitchen & Dining", path: "/changes_photo/shared_kitchen.webp" },
+  { label: "Hotel Front Desk & Reception", path: "/assets/frontdesk_new-JHvt5Fe8.webp" },
+  { label: "Shared Self-Kitchen & Dining", path: "/assets/shared_kitchen_new-HROE-pWG.webp" },
   { label: "Hotel Logo", path: "/logo.webp" },
 ];

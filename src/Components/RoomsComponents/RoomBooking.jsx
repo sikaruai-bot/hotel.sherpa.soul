@@ -20,13 +20,16 @@ import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../Utils/api";
-import { rooms as fallbackRooms } from "../HelperComponents/RoomsData";
+import { rooms as defaultFallbackRooms } from "../HelperComponents/RoomsData";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
+import { useCMS } from "../../Context/CMSContext";
 
 export default function BookingForm() {
   const [t] = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
+  const { rooms: cmsRooms } = useCMS();
+  const fallbackRooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultFallbackRooms;
 
   const [room, setRoom] = useState(null);
   const [loading, setLoading] = useState(true);

@@ -4,11 +4,14 @@ import { X, Users, Bed, Wifi, Car, Coffee, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import api from "../Utils/api";
-import { rooms as fallbackRooms } from "./RoomsData";
+import { rooms as defaultFallbackRooms } from "./RoomsData";
 import { useTranslation } from "react-i18next";
+import { useCMS } from "../../Context/CMSContext";
 
 const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
   const { t } = useTranslation();
+  const { rooms: cmsRooms } = useCMS();
+  const fallbackRooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultFallbackRooms;
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

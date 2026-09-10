@@ -174,11 +174,27 @@ const DEFAULT_CMS_DATA = {
       },
       {
         id: "g4",
-        src: "/changes_photo/doubleBedRoom.webp",
+        src: "/triple.webp",
         type: "image",
-        title: "Spacious Double Bedroom",
-        alt: "Hotel Sherpa Soul Spacious Double Bedroom",
+        title: "Budget Family Room (King & Single Bed)",
+        alt: "Hotel Sherpa Soul Budget Family Room",
         category: "rooms",
+      },
+      {
+        id: "g_frontdesk",
+        src: "/assets/frontdesk_new-JHvt5Fe8.webp",
+        type: "image",
+        title: "24/7 Front Desk & Reception",
+        alt: "Hotel Sherpa Soul 24/7 Front Desk & Reception",
+        category: "amenities",
+      },
+      {
+        id: "g_kitchen",
+        src: "/assets/shared_kitchen_new-HROE-pWG.webp",
+        type: "image",
+        title: "Shared Self-Kitchen & Dining",
+        alt: "Hotel Sherpa Soul Shared Self-Kitchen",
+        category: "amenities",
       },
       {
         id: "g5",
@@ -222,7 +238,7 @@ const CMSContext = createContext(null);
 export function CMSProvider({ children }) {
   const [data, setData] = useState(() => {
     try {
-      // Purge legacy storage keys to eliminate any broken .jpeg references
+      // Purge legacy storage keys to eliminate any broken references
       try {
         localStorage.removeItem("HSS_CMS_DATA");
         localStorage.removeItem("HSS_CMS_DATA_V1");
@@ -234,12 +250,12 @@ export function CMSProvider({ children }) {
       const stored = localStorage.getItem(CMS_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        // Sanitize rooms to ensure only 3 categories with valid webp images
-        const sanitizedRooms = Array.isArray(parsed.rooms) && parsed.rooms.length > 0 && parsed.rooms.length <= 3
-          ? parsed.rooms.map((r) => {
+        // Sanitize rooms to ensure categories have valid images
+        const sanitizedRooms = Array.isArray(parsed.rooms) && parsed.rooms.length > 0
+          ? parsed.rooms.slice(0, 3).map((r) => {
               const cleanedImg = Array.isArray(r.image)
-                ? r.image.map((i) => typeof i === "string" ? i.replace(/\.jpeg$/i, ".webp") : i)
-                : typeof r.image === "string"
+                ? r.image.map((i) => typeof i === "string" && !i.startsWith("data:") ? i.replace(/\.jpeg$/i, ".webp") : i)
+                : typeof r.image === "string" && !r.image.startsWith("data:")
                 ? r.image.replace(/\.jpeg$/i, ".webp")
                 : r.image;
               return { ...r, image: cleanedImg, Noroom: 2 };

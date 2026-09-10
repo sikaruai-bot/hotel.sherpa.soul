@@ -106,7 +106,7 @@ export default function RoomDetail() {
     };
 
     fetchRoom();
-  }, [id]);
+  }, [id, cmsRooms]);
 
 
   useEffect(() => {

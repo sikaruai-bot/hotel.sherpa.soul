@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useCMS } from "../../Context/CMSContext";
 
 const RoomCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,6 +12,7 @@ const RoomCarousel = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const { t } = useTranslation();
+  const { rooms: cmsRooms } = useCMS();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -19,7 +21,7 @@ const RoomCarousel = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const rooms = [
+  const defaultRooms = [
     {
       id: 101,
       name: t("room.rooms.1.name", "Budget Family Room"),
@@ -30,7 +32,7 @@ const RoomCarousel = () => {
       price: 20,
       currency: "USD",
       priceNprApprox: 2700,
-      image: "/changes_photo/doubleBedRoom.webp",
+      image: "/triple.webp",
     },
     {
       id: 201,
@@ -57,6 +59,22 @@ const RoomCarousel = () => {
       image: "/changes_photo/doubleBed.webp",
     },
   ];
+
+  const rooms = defaultRooms.map((def) => {
+    const cmsMatch = cmsRooms?.find(
+      (cr) => cr.id === def.id || String(cr.roomNumber) === String(def.id)
+    );
+    if (!cmsMatch) return def;
+    const rawImg = Array.isArray(cmsMatch.image) ? cmsMatch.image[0] : cmsMatch.image;
+    return {
+      ...def,
+      name: cmsMatch.name || def.name,
+      price: cmsMatch.price || def.price,
+      priceNprApprox: cmsMatch.priceNprApprox || def.priceNprApprox,
+      beds: cmsMatch.beds || def.beds,
+      image: rawImg || def.image,
+    };
+  });
 
   const infiniteRooms = [...rooms, ...rooms, ...rooms];
   const getSlideWidth = () => (isMobile ? 280 : 400);

@@ -15,6 +15,7 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
   const [editingRoom, setEditingRoom] = useState(null);
   const [showPresetPicker, setShowPresetPicker] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [saveNotification, setSaveNotification] = useState(null);
   const roomFileInputRef = useRef(null);
 
   const handleToggleStatus = (id) => {
@@ -56,6 +57,17 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
     setShowPresetPicker(false);
   };
 
+  const handleResetPhoto = () => {
+    if (!editingRoom) return;
+    const defaultImg =
+      editingRoom.id === 101 ? "/triple.webp" :
+      editingRoom.id === 201 ? "/changes_photo/singleBedWithSofa.webp" :
+      "/changes_photo/doubleBed.webp";
+    const nextImgs = [...(editingRoom.image || [])];
+    nextImgs[0] = defaultImg;
+    setEditingRoom({ ...editingRoom, image: nextImgs });
+  };
+
   const handleSaveRoom = (e) => {
     e.preventDefault();
     if (!editingRoom) return;
@@ -65,10 +77,19 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
     );
     onUpdateRooms(updated);
     setEditingRoom(null);
+    setSaveNotification(`Room #${editingRoom.roomNumber} (${editingRoom.name}) updated successfully! Changes are live.`);
+    setTimeout(() => setSaveNotification(null), 4500);
   };
 
   return (
     <div className="space-y-6">
+      {saveNotification && (
+        <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 rounded-2xl flex items-center gap-3 animate-fade-in shadow-lg">
+          <Check className="w-5 h-5 text-emerald-400 shrink-0" />
+          <span className="text-sm font-medium">{saveNotification}</span>
+        </div>
+      )}
+
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/60 border border-slate-800 rounded-3xl p-6">
         <div>
           <h3 className="text-base font-semibold text-white flex items-center gap-2">
@@ -107,7 +128,7 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                 <div className="flex flex-col sm:flex-row gap-4 items-center bg-slate-950 p-4 rounded-2xl border border-slate-800">
                   <div className="w-36 h-24 rounded-xl overflow-hidden bg-slate-800 shrink-0 border border-slate-700">
                     <img
-                      src={editingRoom.image?.[0] || "/room1/room.webp"}
+                      src={editingRoom.image?.[0] || "/triple.webp"}
                       alt={editingRoom.name}
                       className="w-full h-full object-cover"
                       onError={(e) => {
@@ -141,6 +162,16 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                       >
                         <FolderOpen className="w-3.5 h-3.5 text-blue-400" />
                         <span>Pick from Library</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleResetPhoto}
+                        className="py-2 px-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-red-500/30 transition-all"
+                        title="Reset photo to recommended default"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                        <span>Reset / Clear</span>
                       </button>
                     </div>
 

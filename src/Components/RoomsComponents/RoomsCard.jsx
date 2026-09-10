@@ -76,7 +76,7 @@ const RoomsCard = () => {
 
   useEffect(() => {
     fetchRooms();
-  }, []);
+  }, [cmsRooms]);
 
   // Auto-reload every 30 seconds
   useEffect(() => {

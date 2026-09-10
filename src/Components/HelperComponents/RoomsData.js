@@ -30,8 +30,8 @@ export const rooms = [
     priceNprApprox: 2700,
     status: "AVAILABLE",
     image: [
+      "/triple.webp",
       "/changes_photo/doubleBedRoom.webp",
-      "/changes_photo/doubleBed.webp",
       "/room1/room.webp",
       "/room1/room2.webp",
     ],
