@@ -17,7 +17,7 @@ import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import BookingModal from "../HelperComponents/BookingModal";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
-import { FaTiktok, FaWhatsapp } from "react-icons/fa";
+import { FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { useCMS } from "../../Context/CMSContext";
 
 export default function HomeIntro() {
@@ -50,18 +50,25 @@ export default function HomeIntro() {
       icon: Facebook,
       href: "https://www.facebook.com/share/1JYojEJGiL/",
       label: "Facebook",
-      text: "blue",
+      colorClass: "text-[#1877F2]",
     },
     {
       icon: FaTiktok,
       href: "https://www.tiktok.com/@sherpa.soul?_t=ZS-8ytRMKvOf4a&_r=1",
       label: "Tiktok",
+      colorClass: "text-slate-900",
+    },
+    {
+      icon: FaYoutube,
+      href: "https://www.youtube.com/@HotelSherpaSoul26",
+      label: "YouTube",
+      colorClass: "text-[#FF0000]",
     },
     {
       icon: FaWhatsapp,
       href: "https://wa.me/9779851068219?text=Hello! I'd like to talk with you.",
       label: "Whatsapp",
-      text: "green",
+      colorClass: "text-[#25D366]",
     },
   ];
 
@@ -156,11 +163,11 @@ export default function HomeIntro() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                  className="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-110"
+                  className="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg"
                   aria-label={social.label}
                 >
                   <IconComponent
-                    className={`w-6 h-6 text-${social.text}-500 group-hover:text-amber-300 transition-colors duration-300`}
+                    className={`w-5 h-5 ${social.colorClass || "text-slate-800"} group-hover:scale-110 transition-transform duration-300`}
                   />
                 </Motion.a>
               );

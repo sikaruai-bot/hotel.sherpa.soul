@@ -12,7 +12,7 @@ import {
   CalendarCheck,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { FaTiktok, FaWhatsapp } from "react-icons/fa";
+import { FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import BookingModal from "./HelperComponents/BookingModal";
 import { trackMetaEvent } from "./Analytics/pixelEvents";
 import hotelLogo from "../assets/logo.webp";
@@ -41,6 +41,12 @@ export default function Footer() {
       href: "https://www.tiktok.com/@sherpa.soul?_t=ZS-8ytRMKvOf4a&_r=1",
       label: "TikTok",
       color: "hover:text-pink-500 hover:bg-pink-500/10",
+    },
+    {
+      icon: FaYoutube,
+      href: "https://www.youtube.com/@HotelSherpaSoul26",
+      label: "YouTube",
+      color: "hover:text-red-500 hover:bg-red-500/10",
     },
     {
       icon: FaWhatsapp,
