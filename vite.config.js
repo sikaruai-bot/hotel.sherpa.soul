@@ -7,6 +7,14 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
+      "/api/send-email": {
+        target: "https://hotel-sherpa-soul.vercel.app",
+        changeOrigin: true,
+      },
+      "/api/contact": {
+        target: "https://hotel-sherpa-soul.vercel.app",
+        changeOrigin: true,
+      },
       "/api": {
         target: "https://hotelsherpasoulpms-sigma.vercel.app",
         changeOrigin: true,

@@ -23,6 +23,7 @@ import api from "../Utils/api";
 import { rooms as defaultFallbackRooms } from "../HelperComponents/RoomsData";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
 import { useCMS } from "../../Context/CMSContext";
+import { sendEmailNotification } from "../Utils/emailService";
 
 export default function BookingForm() {
   const [t] = useTranslation();
@@ -436,23 +437,19 @@ export default function BookingForm() {
         });
 
         // Trigger official booking confirmation voucher & hotel staff alert email
-        fetch("/api/send-email", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            type: "booking",
-            bookingRef,
-            guestName: formData.name,
-            email: formData.email,
-            phone: formData.number,
-            roomName: room?.name || `Room ${roomNum}`,
-            checkIn: formData.checkIn,
-            checkOut: formData.checkOut,
-            numberOfRooms: formData.numberOfRooms,
-            numberOfGuests: formData.numberOfGuests,
-            totalPrice: calcTotal,
-            specialRequests: payload.specialRequests,
-          }),
+        sendEmailNotification({
+          type: "booking",
+          bookingRef,
+          guestName: formData.name,
+          email: formData.email,
+          phone: formData.number,
+          roomName: room?.name || `Room ${roomNum}`,
+          checkIn: formData.checkIn,
+          checkOut: formData.checkOut,
+          numberOfRooms: formData.numberOfRooms,
+          numberOfGuests: formData.numberOfGuests,
+          totalPrice: calcTotal,
+          specialRequests: payload.specialRequests,
         }).catch((err) => console.warn("Booking email delivery notice:", err));
 
         toast.success("Reservation confirmed! Confirmation sent to your email.", {
@@ -472,23 +469,19 @@ export default function BookingForm() {
       const calcTotalNpr = nightsCount * roomNprRate * roomsCount;
 
       // Trigger official booking confirmation voucher & hotel staff alert email
-      fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "booking",
-          bookingRef: fallbackRef,
-          guestName: formData.name,
-          email: formData.email,
-          phone: formData.number,
-          roomName: room?.name || `Room ${room?.roomNumber || id}`,
-          checkIn: formData.checkIn,
-          checkOut: formData.checkOut,
-          numberOfRooms: formData.numberOfRooms,
-          numberOfGuests: formData.numberOfGuests,
-          totalPrice: calcTotal,
-          specialRequests: `Direct Booking. Total USD: $${calcTotal}, Total NPR: NPR ${calcTotalNpr.toLocaleString()}. ID attached: ${idVerificationImages.length > 0}`,
-        }),
+      sendEmailNotification({
+        type: "booking",
+        bookingRef: fallbackRef,
+        guestName: formData.name,
+        email: formData.email,
+        phone: formData.number,
+        roomName: room?.name || `Room ${room?.roomNumber || id}`,
+        checkIn: formData.checkIn,
+        checkOut: formData.checkOut,
+        numberOfRooms: formData.numberOfRooms,
+        numberOfGuests: formData.numberOfGuests,
+        totalPrice: calcTotal,
+        specialRequests: `Direct Booking. Total USD: $${calcTotal}, Total NPR: NPR ${calcTotalNpr.toLocaleString()}. ID attached: ${idVerificationImages.length > 0}`,
       }).catch((err) => console.warn("Booking email delivery notice:", err));
 
       setConfirmedBooking({

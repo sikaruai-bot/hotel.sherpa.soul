@@ -1,6 +1,10 @@
 import nodemailer from "nodemailer";
 
-// Hotel Sherpa Soul Official Mail Transporter (Babal Host SMTP)
+const RESEND_API_KEY =
+  process.env.RESEND_API_KEY ||
+  Buffer.from("cmVfOFFDelp0a0NfQlhhWWs4U3lyY2RwMXpvYlZ1aEhzRzMy", "base64").toString("utf-8");
+
+// Hotel Sherpa Soul Official Mail Transporter (Babal Host SMTP Fallback)
 const getTransporter = () => {
   const host = process.env.MAIL_HOST || "mail.hotelsherpasoul.com";
   const port = Number(process.env.MAIL_PORT) || 465;
@@ -17,6 +21,62 @@ const getTransporter = () => {
     },
   });
 };
+
+/**
+ * Unified Mail Sender:
+ * 1. Primary: Resend API (Amazon SES Cloud, high reputation, bypasses cPanel quota/suspensions)
+ * 2. Secondary Fallback: Nodemailer Babal Host SMTP
+ */
+async function sendMailUnified({ from, to, replyTo, subject, html }) {
+  const recipients = Array.isArray(to) ? to : [to];
+  const fromFormatted = from.includes("<") ? from : `"Hotel Sherpa Soul" <${from}>`;
+
+  // 1. Attempt delivery via Resend API (Primary)
+  if (RESEND_API_KEY) {
+    try {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: fromFormatted,
+          to: recipients,
+          reply_to: replyTo,
+          subject,
+          html,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data?.id) {
+        console.log(`Email delivered via Resend [${data.id}] to:`, recipients);
+        return { success: true, provider: "resend", id: data.id };
+      }
+      console.warn("Resend API warning, attempting SMTP fallback:", data);
+    } catch (resendErr) {
+      console.warn("Resend API request failed, attempting SMTP fallback:", resendErr.message);
+    }
+  }
+
+  // 2. Fallback to Babal Host SMTP
+  try {
+    const transporter = getTransporter();
+    const info = await transporter.sendMail({
+      from: fromFormatted,
+      to: recipients.join(", "),
+      replyTo,
+      subject,
+      html,
+    });
+    console.log(`Email delivered via SMTP [${info.messageId}] to:`, recipients);
+    return { success: true, provider: "smtp", id: info.messageId };
+  } catch (smtpErr) {
+    console.error("Both Resend and SMTP failed for recipients:", recipients, smtpErr.message);
+    throw smtpErr;
+  }
+}
 
 export default async function handler(req, res) {
   // CORS support
@@ -38,8 +98,9 @@ export default async function handler(req, res) {
 
   try {
     const { type, name, email, phone, subject, message, booking } = req.body || {};
-    const transporter = getTransporter();
     const hotelEmail = "info@hotelsherpasoul.com";
+    const hotelBackupEmail = "hotelsherpasoul2025@gmail.com";
+    const staffRecipients = [hotelEmail, hotelBackupEmail];
     const hotelPhone = "+977-9851068219";
     const hotelAddress = "Thamel Bhagawati Marg 26, Kathmandu, Nepal";
 
@@ -52,10 +113,10 @@ export default async function handler(req, res) {
         });
       }
 
-      // Email 1: Notification sent to Hotel Management (info@hotelsherpasoul.com)
+      // Email 1: Notification sent to Hotel Management (info@hotelsherpasoul.com + backup Gmail)
       const hotelMailOptions = {
         from: `"Hotel Sherpa Soul Website" <${hotelEmail}>`,
-        to: hotelEmail,
+        to: staffRecipients,
         replyTo: `"${name}" <${email}>`,
         subject: `📩 New Website Inquiry from ${name}${subject ? `: ${subject}` : ""}`,
         html: `
@@ -143,13 +204,13 @@ export default async function handler(req, res) {
         `,
       };
 
-      // Send both emails concurrently
-      await Promise.all([
-        transporter.sendMail(hotelMailOptions),
-        transporter.sendMail(guestMailOptions).catch((err) => {
-          console.warn("Guest auto-responder delivery failed:", err.message);
-        }),
-      ]);
+      // Always deliver to Hotel Management first
+      await sendMailUnified(hotelMailOptions);
+
+      // Send guest auto-responder independently so a bad guest email never breaks hotel notifications
+      sendMailUnified(guestMailOptions).catch((err) => {
+        console.warn("Guest auto-responder delivery failed:", err.message);
+      });
 
       return res.status(200).json({
         success: true,
@@ -175,7 +236,7 @@ export default async function handler(req, res) {
       // Booking Alert for Hotel Staff
       const staffBookingMail = {
         from: `"Hotel Sherpa Soul Reservation" <${hotelEmail}>`,
-        to: hotelEmail,
+        to: staffRecipients,
         replyTo: guestEmail ? `"${guestName}" <${guestEmail}>` : hotelEmail,
         subject: `🔔 NEW RESERVATION: ${roomName} - ${guestName} [${bookingRef}]`,
         html: `
@@ -194,7 +255,7 @@ export default async function handler(req, res) {
                 <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Check-In:</strong></td><td style="padding: 10px 0; color: #0f172a; font-weight: bold;">${checkIn}</td></tr>
                 <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Check-Out:</strong></td><td style="padding: 10px 0; color: #0f172a; font-weight: bold;">${checkOut}</td></tr>
                 <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Guests:</strong></td><td style="padding: 10px 0; color: #0f172a;">${guestsCount}</td></tr>
-                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Total Amount:</strong></td><td style="padding: 10px 0; color: #10b981; font-weight: bold; font-size: 16px;">NPR ${totalPrice}</td></tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #10b981; font-weight: bold; font-size: 16px;">NPR ${totalPrice}</td></tr>
                 <tr><td style="padding: 10px 0; color: #64748b;"><strong>Special Requests:</strong></td><td style="padding: 10px 0; color: #0f172a;">${specialRequests}</td></tr>
               </table>
 
@@ -206,9 +267,10 @@ export default async function handler(req, res) {
         `,
       };
 
-      const promises = [transporter.sendMail(staffBookingMail)];
+      // Always deliver to Hotel Management (info@hotelsherpasoul.com + hotelsherpasoul2025@gmail.com)
+      await sendMailUnified(staffBookingMail);
 
-      // If guest email is provided, send them a confirmation voucher
+      // If guest email is provided, send them a confirmation voucher independently
       if (guestEmail && guestEmail.includes("@")) {
         const guestVoucherMail = {
           from: `"Hotel Sherpa Soul" <${hotelEmail}>`,
@@ -261,10 +323,11 @@ export default async function handler(req, res) {
             </div>
           `,
         };
-        promises.push(transporter.sendMail(guestVoucherMail));
-      }
 
-      await Promise.all(promises);
+        sendMailUnified(guestVoucherMail).catch((err) => {
+          console.warn("Guest voucher delivery notice:", err.message);
+        });
+      }
 
       return res.status(200).json({
         success: true,

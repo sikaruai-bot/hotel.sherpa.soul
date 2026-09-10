@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { trackMetaEvent } from "../Components/Analytics/pixelEvents";
 import api from "../Components/Utils/api";
+import { sendEmailNotification } from "../Components/Utils/emailService";
 
 const roomOptions = [
   {
@@ -142,23 +143,19 @@ export default function BookNowPage() {
       setBookingRefId(refId);
 
       // Trigger official booking confirmation voucher & hotel staff alert email
-      fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "booking",
-          bookingRef: refId,
-          guestName: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          roomName: formData.roomType,
-          checkIn: formData.checkIn,
-          checkOut: formData.checkOut,
-          numberOfRooms: formData.numberOfRooms,
-          numberOfGuests: formData.numberOfPeople,
-          totalPrice: totalAmount,
-          specialRequests: payload.specialRequests,
-        }),
+      sendEmailNotification({
+        type: "booking",
+        bookingRef: refId,
+        guestName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        roomName: formData.roomType,
+        checkIn: formData.checkIn,
+        checkOut: formData.checkOut,
+        numberOfRooms: formData.numberOfRooms,
+        numberOfGuests: formData.numberOfPeople,
+        totalPrice: totalAmount,
+        specialRequests: payload.specialRequests,
       }).catch((e) => console.warn("Booking email delivery notice:", e));
 
       trackMetaEvent("Lead", {
@@ -179,23 +176,19 @@ export default function BookNowPage() {
       setBookingRefId(fallbackRef);
 
       // Trigger official booking confirmation voucher & hotel staff alert email
-      fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "booking",
-          bookingRef: fallbackRef,
-          guestName: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          roomName: formData.roomType,
-          checkIn: formData.checkIn,
-          checkOut: formData.checkOut,
-          numberOfRooms: formData.numberOfRooms,
-          numberOfGuests: formData.numberOfPeople,
-          totalPrice: totalAmount,
-          specialRequests: `Direct Booking for ${formData.roomType}. Rooms: ${formData.numberOfRooms}`,
-        }),
+      sendEmailNotification({
+        type: "booking",
+        bookingRef: fallbackRef,
+        guestName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        roomName: formData.roomType,
+        checkIn: formData.checkIn,
+        checkOut: formData.checkOut,
+        numberOfRooms: formData.numberOfRooms,
+        numberOfGuests: formData.numberOfPeople,
+        totalPrice: totalAmount,
+        specialRequests: `Direct Booking for ${formData.roomType}. Rooms: ${formData.numberOfRooms}`,
       }).catch((e) => console.warn("Booking email delivery notice:", e));
     } finally {
       setIsSubmitting(false);

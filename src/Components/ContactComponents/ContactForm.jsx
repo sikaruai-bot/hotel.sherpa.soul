@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import GetInTouch from "./GetInTouch";
 import { useTranslation } from "react-i18next";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
+import { sendEmailNotification } from "../Utils/emailService";
 
 export default function ContactForm() {
   const { t } = useTranslation();
@@ -45,21 +46,15 @@ export default function ContactForm() {
     setSubmitStatus("idle");
 
     try {
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "contact",
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || "",
-          message: formData.message,
-        }),
+      const data = await sendEmailNotification({
+        type: "contact",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || "",
+        message: formData.message,
       });
 
-      const data = await response.json().catch(() => ({}));
-
-      if (response.ok && data.success) {
+      if (data && data.success) {
         setSubmitStatus("success");
         setStatusMessage(
           "Thank you! Your message has been sent to info@hotelsherpasoul.com. A confirmation copy has been sent to your email."
@@ -71,7 +66,7 @@ export default function ContactForm() {
         });
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
-        throw new Error(data.error || "Failed to deliver message");
+        throw new Error(data?.error || "Failed to deliver message");
       }
     } catch (error) {
       console.warn("Contact form email fallback to WhatsApp:", error);
