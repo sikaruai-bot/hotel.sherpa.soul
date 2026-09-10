@@ -148,6 +148,19 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
             </motion.button>
           </div>
 
+          {/* 10% Direct Discount Banner */}
+          <div className="bg-gradient-to-r from-amber-500/15 via-[#FB6C01]/15 to-amber-500/15 border-b border-amber-300/40 px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm">
+            <div className="flex items-center gap-2 text-[#01366E] font-semibold">
+              <span className="text-base">🎉</span>
+              <span>
+                Direct Booking Privilege: <strong className="text-[#FB6C01] font-bold">10% Discount</strong> is automatically applied to all rates below!
+              </span>
+            </div>
+            <span className="hidden sm:inline-block bg-[#FB6C01] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Best Rate Guaranteed
+            </span>
+          </div>
+
           {/* Content */}
           <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
             {loading && (
@@ -208,8 +221,8 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                             e.currentTarget.src = "/room1/room.webp";
                           }}
                         />
-                        <div className="absolute top-3 left-3 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-2.5 py-1 rounded-full text-xs font-bold shadow flex items-center gap-1">
-                          <span>🔥</span> 2 rooms left
+                        <div className="absolute top-3 left-3 bg-gradient-to-r from-[#FB6C01] to-amber-600 text-white px-2.5 py-1 rounded-full text-xs font-bold shadow flex items-center gap-1 border border-amber-300/30">
+                          <span>🏷️</span> 10% Direct OFF
                         </div>
                       </div>
 
@@ -280,14 +293,20 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                           <div>
                             {room.price && (
                               <div>
-                                <div className="text-lg font-bold text-orange-500">
-                                  ${room.price} USD
-                                  <span className="text-xs font-normal text-gray-500 ml-1">
+                                <div className="flex items-center gap-1.5">
+                                  <span className="line-through text-gray-400 text-xs">${room.price}</span>
+                                  <span className="text-lg font-bold text-[#FB6C01]">
+                                    ${Math.round(room.price * 0.9)} USD
+                                  </span>
+                                  <span className="text-xs font-normal text-gray-500">
                                     /night
                                   </span>
                                 </div>
+                                <div className="text-[10px] font-bold text-emerald-600">
+                                  10% Direct Discount Applied
+                                </div>
                                 <div className="text-xs font-semibold text-amber-700">
-                                  ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                                  ~NPR {Math.round((room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))) * 0.9).toLocaleString()}
                                 </div>
                               </div>
                             )}

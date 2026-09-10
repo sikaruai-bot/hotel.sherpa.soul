@@ -181,8 +181,24 @@ export default function HomeIntro() {
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-6 max-w-2xl"
+            className="space-y-5 sm:space-y-6 max-w-2xl"
           >
+            {/* 10% OFF Glowing Top Pill */}
+            <div className="flex flex-wrap items-center gap-2 pt-2">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#FB6C01]/30 via-amber-500/25 to-[#FB6C01]/30 border border-amber-400/60 backdrop-blur-md shadow-lg shadow-orange-950/40 text-white">
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FB6C01]"></span>
+                </span>
+                <span className="bg-[#FB6C01] text-white text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  10% OFF
+                </span>
+                <span className="text-xs sm:text-sm font-semibold tracking-wide text-amber-200">
+                  Direct Booking Offer: <strong className="text-white font-extrabold underline decoration-amber-400 decoration-2 underline-offset-2">Save 10% Instantly</strong>
+                </span>
+              </div>
+            </div>
+
             <div className="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-300 font-semibold drop-shadow">
               WELCOME TO HOTEL SHERPA SOUL
             </div>
@@ -196,30 +212,73 @@ export default function HomeIntro() {
               Discover a peaceful and comfortable stay at Hotel Sherpa Soul, located in the vibrant heart of Thamel, Kathmandu. Explore the city by day, return to a quiet room at night, and wake up refreshed for your next adventure.
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                onClick={() => {
-                  trackMetaEvent("InitiateCheckout", {
-                    content_category: "hotel_booking",
-                    entry_point: "home_hero",
-                  });
-                  setIsBookingModalOpen(true);
-                  setIsModalOpen(false);
-                }}
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              >
-                <Calendar className="w-5 h-5" />
-                <span>Book Your Stay</span>
-              </button>
+            {/* 10% Direct Booking Special Highlight Card */}
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-black/75 via-[#01366E]/50 to-black/75 border border-amber-400/50 backdrop-blur-md shadow-2xl">
+              <div className="flex items-center justify-between gap-3 sm:gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-xl bg-gradient-to-br from-[#FB6C01] via-amber-500 to-yellow-400 flex flex-col items-center justify-center text-white shadow-lg flex-shrink-0">
+                    <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider leading-none">SAVE</span>
+                    <span className="text-base sm:text-lg font-black leading-none mt-0.5">10%</span>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-white font-bold text-sm sm:text-base">
+                        Direct Booking Discount
+                      </span>
+                      <span className="bg-emerald-500/25 text-emerald-300 border border-emerald-400/40 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                        Active Deal
+                      </span>
+                    </div>
+                    <p className="text-slate-200 text-xs sm:text-sm font-light leading-snug mt-0.5">
+                      Get an instant <strong className="text-amber-300 font-bold">10% OFF</strong> when booking directly. Best rate guarantee & no hidden charges.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => {
+                    trackMetaEvent("InitiateCheckout", {
+                      content_category: "hotel_booking",
+                      entry_point: "hero_discount_card",
+                    });
+                    setIsBookingModalOpen(true);
+                  }}
+                  className="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-white bg-[#FB6C01] hover:bg-[#e05a00] px-3.5 py-2 rounded-xl transition-all shadow-md flex-shrink-0"
+                >
+                  Claim 10% Off &rarr;
+                </button>
+              </div>
+            </div>
 
-              <a
-                href="/rooms"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/70 hover:border-white font-semibold text-base sm:text-lg backdrop-blur-md transition-all duration-300 transform hover:scale-105"
-              >
-                <span>Explore Our Rooms</span>
-                <ArrowRight className="w-5 h-5" />
-              </a>
+            {/* Action Buttons */}
+            <div className="pt-1">
+              <div className="flex flex-wrap items-center gap-4">
+                <button
+                  onClick={() => {
+                    trackMetaEvent("InitiateCheckout", {
+                      content_category: "hotel_booking",
+                      entry_point: "home_hero",
+                    });
+                    setIsBookingModalOpen(true);
+                    setIsModalOpen(false);
+                  }}
+                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                >
+                  <Calendar className="w-5 h-5" />
+                  <span>Book Direct & Save 10%</span>
+                </button>
+
+                <a
+                  href="/rooms"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/70 hover:border-white font-semibold text-base sm:text-lg backdrop-blur-md transition-all duration-300 transform hover:scale-105"
+                >
+                  <span>Explore Our Rooms</span>
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+              </div>
+              <p className="text-[11px] sm:text-xs text-amber-200/90 font-medium pt-2 pl-2 flex items-center gap-1.5">
+                <span>✨</span>
+                <span>Direct booking benefit automatically applied • Instant confirmation</span>
+              </p>
             </div>
 
             {/* Trust Line */}

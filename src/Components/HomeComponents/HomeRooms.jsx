@@ -88,6 +88,10 @@ const RoomCarousel = () => {
   return (
     <div className="min-h-screen bg-white py-8 md:py-16">
       <div className="text-center mb-12 max-w-3xl mx-auto px-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 mb-2 rounded-full bg-orange-50 border border-orange-200 text-xs text-[#FB6C01] font-bold shadow-sm">
+          <span>🏷️</span>
+          <span>Direct Booking Perk: Instant 10% Discount on All Rates</span>
+        </div>
         <p className="text-xs text-[#FB6C01] uppercase tracking-[0.2em] mb-2 font-bold">
           ✦ Accommodation & Rest
         </p>
@@ -165,6 +169,12 @@ const RoomCarousel = () => {
                       }}
                     />
 
+                    {/* Direct Booking 10% OFF Badge */}
+                    <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-[#FB6C01] to-amber-600 text-white rounded-xl px-2.5 py-1 text-[11px] font-extrabold shadow-lg flex items-center gap-1 border border-amber-300/40">
+                      <span>🏷️</span>
+                      <span>10% OFF Direct</span>
+                    </div>
+
                     <div className="absolute bottom-0 left-0 right-0 p-5 text-white bg-gradient-to-t from-black/85 via-black/50 to-transparent">
                       <h3 className="text-lg md:text-2xl font-bold mb-1 text-white">
                         {room.name}
@@ -174,13 +184,17 @@ const RoomCarousel = () => {
                       </p>
                     </div>
 
-                    <div className="absolute top-4 right-4 bg-[#01366E]/95 backdrop-blur-md rounded-xl px-3 py-1.5 text-white text-xs font-semibold shadow-lg flex flex-col items-end">
-                      <div className="flex items-center gap-1">
-                        <span className="text-[#FB6C01] font-bold text-sm">${room.price} USD</span>
+                    <div className="absolute top-4 right-4 z-10 bg-[#01366E]/95 backdrop-blur-md rounded-xl px-3 py-1.5 text-white text-xs font-semibold shadow-lg flex flex-col items-end border border-white/10">
+                      <div className="flex items-center gap-1.5">
+                        <span className="line-through text-slate-300 text-[11px]">${room.price}</span>
+                        <span className="text-amber-300 font-black text-sm">${Math.round(room.price * 0.9)} USD</span>
                         <span className="text-slate-200 text-[11px]">/ night</span>
                       </div>
+                      <span className="text-emerald-300 text-[10px] font-bold">
+                        Save 10% Direct
+                      </span>
                       <span className="text-amber-200 text-[11px] font-medium">
-                        ~NPR {(room.priceNprApprox || room.price * 135).toLocaleString()}
+                        ~NPR {Math.round((room.priceNprApprox || room.price * 135) * 0.9).toLocaleString()}
                       </span>
                     </div>
 
