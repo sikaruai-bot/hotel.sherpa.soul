@@ -103,11 +103,10 @@ export default function HomeIntro() {
           {heroSlides.map((slide, index) => (
             <div
               key={index}
-              className={`absolute inset-0 transition-all duration-[3000ms] ease-in-out ${
-                index === currentSlide
+              className={`absolute inset-0 transition-all duration-[3000ms] ease-in-out ${index === currentSlide
                   ? "opacity-100 scale-100"
                   : "opacity-0 scale-105"
-              }`}
+                }`}
             >
               <div
                 className="w-full h-full"
@@ -133,9 +132,8 @@ export default function HomeIntro() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className={`absolute ${
-            isArabic ? "left-8" : "right-8"
-          } bottom-8 z-20 hidden md:block`}
+          className={`absolute ${isArabic ? "left-8" : "right-8"
+            } bottom-8 z-20 hidden md:block`}
         >
           {/* "SOCIAL" text vertically */}
           <div className="mb-6 text-center">
@@ -180,9 +178,8 @@ export default function HomeIntro() {
 
         {/* Content Panel */}
         <div
-          className={`relative z-10 w-full min-h-screen flex items-center px-6 sm:px-12 lg:px-20 pt-28 pb-12 max-w-7xl text-white ${
-            isArabic ? "text-right" : "text-left"
-          }`}
+          className={`relative z-10 w-full min-h-screen flex items-center px-6 sm:px-12 lg:px-20 pt-28 pb-12 max-w-7xl text-white ${isArabic ? "text-right" : "text-left"
+            }`}
         >
           <Motion.div
             initial={{ opacity: 0, y: 35 }}
