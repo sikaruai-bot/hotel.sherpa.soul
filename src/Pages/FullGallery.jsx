@@ -4,6 +4,9 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCMS } from "../Context/CMSContext";
 
+import frontDeskPhoto from "../assets/frontdesk_new.webp";
+import kitchenPhoto from "../assets/shared_kitchen_new.webp";
+
 // Lazy loading for images/videos
 const LazyMotionItem = ({ type, src, alt }) => {
   if (type === "video") {
@@ -94,12 +97,12 @@ export default function GalleryPage() {
       alt: "Hotel Sherpa Soul Cozy Guest Room",
     },
     {
-      src: "/changes_photo/frontend_desk.webp",
+      src: frontDeskPhoto,
       type: "image",
       alt: "Hotel Sherpa Soul 24/7 Front Desk & Reception",
     },
     {
-      src: "/changes_photo/shared_kitchen.webp",
+      src: kitchenPhoto,
       type: "image",
       alt: "Hotel Sherpa Soul Shared Self-Kitchen & Dining Area",
     },
