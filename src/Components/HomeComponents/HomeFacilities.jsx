@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Utensils, CheckCircle2, Coffee, Sparkles } from "lucide-react";
+import frontDeskPhoto from "../../assets/frontdesk_new.webp";
+import kitchenPhoto from "../../assets/shared_kitchen_new.webp";
 
 const HomeFacilities = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,7 +36,7 @@ const HomeFacilities = () => {
 
   const facilities = [
     {
-      img: "/changes_photo/shared_kitchen.webp",
+      img: kitchenPhoto,
       objectPosition: "center 30%",
       number: t("facilities.laundry.title", "Shared Self-Kitchen (Long Stay Only)"),
       title: "",
@@ -47,7 +49,7 @@ const HomeFacilities = () => {
       delay: 0,
     },
     {
-      img: "/changes_photo/frontend_desk.webp",
+      img: frontDeskPhoto,
       objectPosition: "center 20%",
       number: t("facilities.frontdesk.title", "24/7 Front Desk"),
       title: "",
