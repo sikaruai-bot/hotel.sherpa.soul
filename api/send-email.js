@@ -204,13 +204,14 @@ export default async function handler(req, res) {
         `,
       };
 
-      // Always deliver to Hotel Management first
-      await sendMailUnified(hotelMailOptions);
-
-      // Send guest auto-responder independently so a bad guest email never breaks hotel notifications
-      sendMailUnified(guestMailOptions).catch((err) => {
-        console.warn("Guest auto-responder delivery failed:", err.message);
-      });
+      // Await both hotel staff alert and guest auto-responder using Promise.allSettled
+      // This prevents serverless functions from killing the process before all emails are dispatched
+      await Promise.allSettled([
+        sendMailUnified(hotelMailOptions),
+        sendMailUnified(guestMailOptions).catch((err) => {
+          console.warn("Guest auto-responder delivery failed:", err.message);
+        }),
+      ]);
 
       return res.status(200).json({
         success: true,
@@ -267,10 +268,9 @@ export default async function handler(req, res) {
         `,
       };
 
-      // Always deliver to Hotel Management (info@hotelsherpasoul.com + hotelsherpasoul2025@gmail.com)
-      await sendMailUnified(staffBookingMail);
+      const bookingMailPromises = [sendMailUnified(staffBookingMail)];
 
-      // If guest email is provided, send them a confirmation voucher independently
+      // If guest email is provided, send them a confirmation voucher
       if (guestEmail && guestEmail.includes("@")) {
         const guestVoucherMail = {
           from: `"Hotel Sherpa Soul" <${hotelEmail}>`,
@@ -324,10 +324,15 @@ export default async function handler(req, res) {
           `,
         };
 
-        sendMailUnified(guestVoucherMail).catch((err) => {
-          console.warn("Guest voucher delivery notice:", err.message);
-        });
+        bookingMailPromises.push(
+          sendMailUnified(guestVoucherMail).catch((err) => {
+            console.warn("Guest voucher delivery notice:", err.message);
+          })
+        );
       }
+
+      // Await both hotel alert and guest voucher before closing serverless response
+      await Promise.allSettled(bookingMailPromises);
 
       return res.status(200).json({
         success: true,
