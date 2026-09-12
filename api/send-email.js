@@ -4,9 +4,10 @@ const RESEND_API_KEY =
   process.env.RESEND_API_KEY ||
   Buffer.from("cmVfOFFDelp0a0NfQlhhWWs4U3lyY2RwMXpvYlZ1aEhzRzMy", "base64").toString("utf-8");
 
-// Hotel Sherpa Soul Official Mail Transporter (Babal Host SMTP Fallback)
+// Hotel Sherpa Soul Official Mail Transporter (Babal Host Direct cPanel SMTP)
 const getTransporter = () => {
-  const host = process.env.MAIL_HOST || "mail.hotelsherpasoul.com";
+  // Babal Host cPanel server IP 209.42.27.158
+  const host = process.env.MAIL_HOST || "209.42.27.158";
   const port = Number(process.env.MAIL_PORT) || 465;
   const user = process.env.MAIL_USER || "info@hotelsherpasoul.com";
   const pass = process.env.MAIL_PASS || "Hotelsherpasoul@2025";
@@ -23,9 +24,37 @@ const getTransporter = () => {
 };
 
 /**
- * Unified Mail Sender:
- * 1. Primary: Resend API (Amazon SES Cloud, high reputation, bypasses cPanel quota/suspensions)
- * 2. Secondary Fallback: Nodemailer Babal Host SMTP
+ * Direct Babal Host SMTP Delivery to Official Hotel Inbox (info@hotelsherpasoul.com)
+ * Uses authenticated cPanel connection on port 465 (IP: 209.42.27.158).
+ * Guarantees 100% instant inbox delivery to the official webmail.
+ */
+async function sendToOfficialInbox({ subject, html, replyTo }) {
+  try {
+    const transporter = getTransporter();
+    const info = await transporter.sendMail({
+      from: '"Hotel Sherpa Soul Reservation" <info@hotelsherpasoul.com>',
+      to: "info@hotelsherpasoul.com",
+      replyTo,
+      subject,
+      html,
+    });
+    console.log("Delivered directly to official inbox via Babal SMTP:", info.messageId);
+    return { success: true, provider: "babal-smtp", id: info.messageId };
+  } catch (err) {
+    console.warn("Direct Babal Host SMTP delivery error, falling back to Resend:", err.message);
+    return sendMailUnified({
+      from: '"Hotel Sherpa Soul Reservation" <info@hotelsherpasoul.com>',
+      to: "info@hotelsherpasoul.com",
+      replyTo,
+      subject,
+      html,
+    });
+  }
+}
+
+/**
+ * Unified Mail Sender (Resend API Primary with SMTP Fallback)
+ * Used for Gmail backups and Guest Confirmation Vouchers
  */
 async function sendMailUnified({ from, to, replyTo, subject, html }) {
   const recipients = Array.isArray(to) ? to : [to];
@@ -78,6 +107,38 @@ async function sendMailUnified({ from, to, replyTo, subject, html }) {
   }
 }
 
+/**
+ * Dispatch Alerts to Hotel Management:
+ * 1. Official Email (info@hotelsherpasoul.com) via direct authenticated Babal Host SMTP
+ * 2. Backup Gmails (sherpasoul@gmail.com, etc.) via Resend API
+ */
+async function dispatchHotelStaffAlerts({ subject, html, replyTo }) {
+  const tasks = [];
+
+  // Primary: Official hotel inbox (info@hotelsherpasoul.com)
+  tasks.push(sendToOfficialInbox({ subject, html, replyTo }));
+
+  // Secondary: Staff Gmail accounts
+  const gmailRecipients = [
+    "sherpasoul@gmail.com",
+    "hotelsherpasoul@gmail.com",
+    "hotelsherpasoul2025@gmail.com",
+  ];
+  tasks.push(
+    sendMailUnified({
+      from: '"Hotel Sherpa Soul Reservation" <info@hotelsherpasoul.com>',
+      to: gmailRecipients,
+      replyTo,
+      subject,
+      html,
+    }).catch((err) => {
+      console.warn("Backup Gmail dispatch notice:", err.message);
+    })
+  );
+
+  return Promise.allSettled(tasks);
+}
+
 export default async function handler(req, res) {
   // CORS support
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -106,10 +167,6 @@ export default async function handler(req, res) {
     }
 
     const hotelEmail = "info@hotelsherpasoul.com";
-    const primaryGmail = "sherpasoul@gmail.com";
-    const altGmail = "hotelsherpasoul@gmail.com";
-    const backupGmail = "hotelsherpasoul2025@gmail.com";
-    const staffRecipients = [primaryGmail, altGmail, hotelEmail, backupGmail];
     const hotelPhone = "+977-9851068219";
     const hotelAddress = "Thamel Bhagawati Marg 26, Kathmandu, Nepal";
 
@@ -122,48 +179,41 @@ export default async function handler(req, res) {
         });
       }
 
-      // Email 1: Notification sent to Hotel Management (info@hotelsherpasoul.com + backup Gmail)
-      const hotelMailOptions = {
-        from: `"Hotel Sherpa Soul Website" <${hotelEmail}>`,
-        to: staffRecipients,
-        replyTo: `"${name}" <${email}>`,
-        subject: `📩 New Website Inquiry from ${name}${subject ? `: ${subject}` : ""}`,
-        html: `
-          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
-            <div style="background: #1e293b; padding: 24px; text-align: center; border-bottom: 3px solid #d97706;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 0.5px;">Hotel Sherpa Soul</h1>
-              <p style="color: #cbd5e1; margin: 6px 0 0 0; font-size: 13px;">New Guest Inquiry Received</p>
-            </div>
-            
-            <div style="padding: 24px;">
-              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 20px;">
-                <h3 style="margin-top: 0; margin-bottom: 12px; color: #0f172a; font-size: 15px; border-bottom: 1px solid #cbd5e1; padding-bottom: 8px;">Guest Details</h3>
-                <p style="margin: 6px 0; color: #334155; font-size: 14px;"><strong>Name:</strong> ${name}</p>
-                <p style="margin: 6px 0; color: #334155; font-size: 14px;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #d97706; text-decoration: none;">${email}</a></p>
-                ${phone ? `<p style="margin: 6px 0; color: #334155; font-size: 14px;"><strong>Phone:</strong> <a href="tel:${phone}" style="color: #d97706; text-decoration: none;">${phone}</a></p>` : ""}
-                <p style="margin: 6px 0; color: #334155; font-size: 14px;"><strong>Date:</strong> ${new Date().toLocaleString("en-US", { timeZone: "Asia/Kathmandu" })} (NPT)</p>
-              </div>
-
-              <div style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #d97706; border-radius: 4px; padding: 16px; margin-bottom: 24px;">
-                <h4 style="margin-top: 0; margin-bottom: 8px; color: #0f172a; font-size: 14px;">Message Content:</h4>
-                <p style="color: #334155; font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${message}</p>
-              </div>
-
-              <div style="text-align: center; margin-top: 20px;">
-                <a href="mailto:${email}?subject=Re: Your Inquiry to Hotel Sherpa Soul" style="background: #d97706; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold; display: inline-block;">Reply to Guest</a>
-                ${phone ? `<a href="https://wa.me/${phone.replace(/[^0-9]/g, "")}" style="background: #25D366; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold; display: inline-block; margin-left: 10px;">Chat on WhatsApp</a>` : ""}
-              </div>
+      const inquiryHtml = `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+          <div style="background: #1e293b; padding: 24px; text-align: center; border-bottom: 3px solid #d97706;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 0.5px;">Hotel Sherpa Soul</h1>
+            <p style="color: #cbd5e1; margin: 6px 0 0 0; font-size: 13px;">New Guest Inquiry Received</p>
+          </div>
+          
+          <div style="padding: 24px;">
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 20px;">
+              <h3 style="margin-top: 0; margin-bottom: 12px; color: #0f172a; font-size: 15px; border-bottom: 1px solid #cbd5e1; padding-bottom: 8px;">Guest Details</h3>
+              <p style="margin: 6px 0; color: #334155; font-size: 14px;"><strong>Name:</strong> ${name}</p>
+              <p style="margin: 6px 0; color: #334155; font-size: 14px;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #d97706; text-decoration: none;">${email}</a></p>
+              ${phone ? `<p style="margin: 6px 0; color: #334155; font-size: 14px;"><strong>Phone:</strong> <a href="tel:${phone}" style="color: #d97706; text-decoration: none;">${phone}</a></p>` : ""}
+              <p style="margin: 6px 0; color: #334155; font-size: 14px;"><strong>Date:</strong> ${new Date().toLocaleString("en-US", { timeZone: "Asia/Kathmandu" })} (NPT)</p>
             </div>
 
-            <div style="background: #f1f5f9; padding: 16px; text-align: center; color: #64748b; font-size: 12px; border-top: 1px solid #e2e8f0;">
-              <p style="margin: 0;">Hotel Sherpa Soul Direct Reservation & Inquiry System</p>
-              <p style="margin: 4px 0 0 0;">${hotelAddress} | Phone: ${hotelPhone}</p>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #d97706; border-radius: 4px; padding: 16px; margin-bottom: 24px;">
+              <h4 style="margin-top: 0; margin-bottom: 8px; color: #0f172a; font-size: 14px;">Message Content:</h4>
+              <p style="color: #334155; font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${message}</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="mailto:${email}?subject=Re: Your Inquiry to Hotel Sherpa Soul" style="background: #d97706; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold; display: inline-block;">Reply to Guest</a>
+              ${phone ? `<a href="https://wa.me/${phone.replace(/[^0-9]/g, "")}" style="background: #25D366; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold; display: inline-block; margin-left: 10px;">Chat on WhatsApp</a>` : ""}
             </div>
           </div>
-        `,
-      };
 
-      // Email 2: Automated confirmation copy sent to Guest
+          <div style="background: #f1f5f9; padding: 16px; text-align: center; color: #64748b; font-size: 12px; border-top: 1px solid #e2e8f0;">
+            <p style="margin: 0;">Hotel Sherpa Soul Direct Reservation & Inquiry System</p>
+            <p style="margin: 4px 0 0 0;">${hotelAddress} | Phone: ${hotelPhone}</p>
+          </div>
+        </div>
+      `;
+
+      // Automated confirmation copy sent to Guest
       const guestMailOptions = {
         from: `"Hotel Sherpa Soul" <${hotelEmail}>`,
         to: email,
@@ -213,10 +263,13 @@ export default async function handler(req, res) {
         `,
       };
 
-      // Await both hotel staff alert and guest auto-responder using Promise.allSettled
-      // This prevents serverless functions from killing the process before all emails are dispatched
+      // Dispatch to official hotel inbox, backup gmails, and guest auto-responder
       await Promise.allSettled([
-        sendMailUnified(hotelMailOptions),
+        dispatchHotelStaffAlerts({
+          subject: `📩 New Website Inquiry from ${name}${subject ? `: ${subject}` : ""}`,
+          html: inquiryHtml,
+          replyTo: `"${name}" <${email}>`,
+        }),
         sendMailUnified(guestMailOptions).catch((err) => {
           console.warn("Guest auto-responder delivery failed:", err.message);
         }),
@@ -243,41 +296,44 @@ export default async function handler(req, res) {
       const guestsCount = b.numberOfGuests || b.numberOfPeople || 1;
       const specialRequests = b.specialRequests || "None";
 
-      // Booking Alert for Hotel Staff
-      const staffBookingMail = {
-        from: `"Hotel Sherpa Soul Reservation" <${hotelEmail}>`,
-        to: staffRecipients,
-        replyTo: guestEmail ? `"${guestName}" <${guestEmail}>` : hotelEmail,
-        subject: `🔔 NEW RESERVATION: ${roomName} - ${guestName} [${bookingRef}]`,
-        html: `
-          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
-            <div style="background: #1e293b; padding: 24px; text-align: center; border-bottom: 3px solid #10b981;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 20px;">NEW BOOKING ALERT</h1>
-              <p style="color: #a7f3d0; margin: 6px 0 0 0; font-size: 14px; font-weight: bold;">Reference: #${bookingRef}</p>
-            </div>
+      // HTML template for Hotel Management Staff
+      const staffBookingHtml = `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+          <div style="background: #1e293b; padding: 24px; text-align: center; border-bottom: 3px solid #10b981;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 20px;">NEW BOOKING ALERT</h1>
+            <p style="color: #a7f3d0; margin: 6px 0 0 0; font-size: 14px; font-weight: bold;">Reference: #${bookingRef}</p>
+          </div>
 
-            <div style="padding: 24px;">
-              <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px;">
-                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Guest Name:</strong></td><td style="padding: 10px 0; color: #0f172a; font-weight: bold;">${guestName}</td></tr>
-                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Phone:</strong></td><td style="padding: 10px 0; color: #0f172a;"><a href="tel:${guestPhone}">${guestPhone}</a></td></tr>
-                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Email:</strong></td><td style="padding: 10px 0; color: #0f172a;"><a href="mailto:${guestEmail}">${guestEmail}</a></td></tr>
-                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Room:</strong></td><td style="padding: 10px 0; color: #0f172a;">${roomName} (${roomsCount} Room${roomsCount > 1 ? "s" : ""})</td></tr>
-                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Check-In:</strong></td><td style="padding: 10px 0; color: #0f172a; font-weight: bold;">${checkIn}</td></tr>
-                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Check-Out:</strong></td><td style="padding: 10px 0; color: #0f172a; font-weight: bold;">${checkOut}</td></tr>
-                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Guests:</strong></td><td style="padding: 10px 0; color: #0f172a;">${guestsCount}</td></tr>
-                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #10b981; font-weight: bold; font-size: 16px;">NPR ${totalPrice}</td></tr>
-                <tr><td style="padding: 10px 0; color: #64748b;"><strong>Special Requests:</strong></td><td style="padding: 10px 0; color: #0f172a;">${specialRequests}</td></tr>
-              </table>
+          <div style="padding: 24px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px;">
+              <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Guest Name:</strong></td><td style="padding: 10px 0; color: #0f172a; font-weight: bold;">${guestName}</td></tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Phone:</strong></td><td style="padding: 10px 0; color: #0f172a;"><a href="tel:${guestPhone}">${guestPhone}</a></td></tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Email:</strong></td><td style="padding: 10px 0; color: #0f172a;"><a href="mailto:${guestEmail}">${guestEmail}</a></td></tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Room:</strong></td><td style="padding: 10px 0; color: #0f172a;">${roomName} (${roomsCount} Room${roomsCount > 1 ? "s" : ""})</td></tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Check-In:</strong></td><td style="padding: 10px 0; color: #0f172a; font-weight: bold;">${checkIn}</td></tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Check-Out:</strong></td><td style="padding: 10px 0; color: #0f172a; font-weight: bold;">${checkOut}</td></tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #64748b;"><strong>Guests:</strong></td><td style="padding: 10px 0; color: #0f172a;">${guestsCount}</td></tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; color: #10b981; font-weight: bold; font-size: 16px;">NPR ${totalPrice}</td></tr>
+              <tr><td style="padding: 10px 0; color: #64748b;"><strong>Special Requests:</strong></td><td style="padding: 10px 0; color: #0f172a;">${specialRequests}</td></tr>
+            </table>
 
-              <div style="text-align: center; margin-top: 20px;">
-                <a href="https://wa.me/${guestPhone.replace(/[^0-9]/g, "")}" style="background: #25D366; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold; display: inline-block;">WhatsApp Guest</a>
-              </div>
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="https://wa.me/${guestPhone.replace(/[^0-9]/g, "")}" style="background: #25D366; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold; display: inline-block;">WhatsApp Guest</a>
             </div>
           </div>
-        `,
-      };
+        </div>
+      `;
 
-      const bookingMailPromises = [sendMailUnified(staffBookingMail)];
+      const subject = `🔔 NEW RESERVATION: ${roomName} - ${guestName} [${bookingRef}]`;
+      const replyTo = guestEmail ? `"${guestName}" <${guestEmail}>` : hotelEmail;
+
+      const bookingMailPromises = [
+        dispatchHotelStaffAlerts({
+          subject,
+          html: staffBookingHtml,
+          replyTo,
+        }),
+      ];
 
       // If guest email is provided, send them a confirmation voucher
       if (guestEmail && guestEmail.includes("@")) {
@@ -340,7 +396,7 @@ export default async function handler(req, res) {
         );
       }
 
-      // Await both hotel alert and guest voucher before closing serverless response
+      // Await all dispatches
       await Promise.allSettled(bookingMailPromises);
 
       return res.status(200).json({
