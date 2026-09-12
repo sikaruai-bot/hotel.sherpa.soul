@@ -106,8 +106,9 @@ export default async function handler(req, res) {
     }
 
     const hotelEmail = "info@hotelsherpasoul.com";
-    const hotelBackupEmail = "hotelsherpasoul2025@gmail.com";
-    const staffRecipients = [hotelEmail, hotelBackupEmail];
+    const primaryGmail = "sherpasoul@gmail.com";
+    const backupGmail = "hotelsherpasoul2025@gmail.com";
+    const staffRecipients = [primaryGmail, hotelEmail, backupGmail];
     const hotelPhone = "+977-9851068219";
     const hotelAddress = "Thamel Bhagawati Marg 26, Kathmandu, Nepal";
 
