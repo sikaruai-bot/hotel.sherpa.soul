@@ -18,6 +18,7 @@ import {
 import { trackMetaEvent } from "../Components/Analytics/pixelEvents";
 import api from "../Components/Utils/api";
 import { sendEmailNotification } from "../Components/Utils/emailService";
+import { useCMS } from "../Context/CMSContext";
 
 const roomOptions = [
   {
@@ -73,6 +74,7 @@ export default function BookNowPage() {
 
   const { id } = useParams();
   const [searchParams] = useSearchParams();
+  const { channels } = useCMS();
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -443,31 +445,47 @@ export default function BookNowPage() {
                   <p className="text-gray-300 text-xs mb-4 leading-relaxed">
                     You can also reserve Hotel Sherpa Soul through our official listings on major platforms:
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                    <a
-                      href="https://www.booking.com/hotel/np/hotel-sherpa-soul.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-blue-600/90 hover:bg-blue-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
-                    >
-                      Booking.com
-                    </a>
-                    <a
-                      href="https://www.airbnb.com/rooms/1760024961976448522"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-rose-600/90 hover:bg-rose-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
-                    >
-                      Airbnb
-                    </a>
-                    <a
-                      href="https://www.trip.com/hotels/list?keyword=Hotel%20Sherpa%20Soul%20Kathmandu"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-sky-600/90 hover:bg-sky-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
-                    >
-                      Trip.com
-                    </a>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    {channels?.bookingCom?.enabled !== false && (
+                      <a
+                        href={channels?.bookingCom?.url || "https://www.booking.com/hotel/np/hotel-sherpa-soul.html"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-blue-600/90 hover:bg-blue-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
+                      >
+                        Booking.com
+                      </a>
+                    )}
+                    {channels?.airbnb?.enabled !== false && (
+                      <a
+                        href={channels?.airbnb?.url || "https://www.airbnb.com/rooms/1760024961976448522"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-rose-600/90 hover:bg-rose-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
+                      >
+                        Airbnb
+                      </a>
+                    )}
+                    {channels?.agoda?.enabled !== false && channels?.agoda?.url && (
+                      <a
+                        href={channels.agoda.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-purple-600/90 hover:bg-purple-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
+                      >
+                        Agoda
+                      </a>
+                    )}
+                    {channels?.tripCom?.enabled !== false && (
+                      <a
+                        href={channels?.tripCom?.url || "https://www.trip.com/hotels/list?keyword=Hotel%20Sherpa%20Soul%20Kathmandu"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center py-2.5 px-2 rounded-xl bg-sky-600/90 hover:bg-sky-600 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105 text-center"
+                      >
+                        Trip.com
+                      </a>
+                    )}
                   </div>
                 </div>
 

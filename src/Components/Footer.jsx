@@ -17,9 +17,11 @@ import { FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import BookingModal from "./HelperComponents/BookingModal";
 import { trackMetaEvent } from "./Analytics/pixelEvents";
 import hotelLogo from "../assets/logo.webp";
+import { useCMS } from "../Context/CMSContext";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const { channels } = useCMS();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const handleBookingClick = () => {
@@ -295,34 +297,51 @@ export default function Footer() {
 
                     {/* Direct OTA Action Buttons */}
                     <div className="space-y-2 pt-1">
-                      <a
-                        href="https://www.booking.com/hotel/np/hotel-sherpa-soul.html"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white border border-blue-500/30 text-xs font-medium transition-all duration-200"
-                      >
-                        <Smartphone size={13} />
-                        <span>Book on Booking.com</span>
-                        <ExternalLink size={11} className="opacity-70" />
-                      </a>
-                      <a
-                        href="https://www.airbnb.com/rooms/1760024961976448522"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 text-xs font-medium transition-all duration-200"
-                      >
-                        <span>Book on Airbnb</span>
-                        <ExternalLink size={11} className="opacity-70" />
-                      </a>
-                      <a
-                        href="https://www.trip.com/hotels/list?keyword=Hotel%20Sherpa%20Soul%20Kathmandu"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/30 text-xs font-medium transition-all duration-200"
-                      >
-                        <span>Book on Trip.com</span>
-                        <ExternalLink size={11} className="opacity-70" />
-                      </a>
+                      {channels?.bookingCom?.enabled !== false && (
+                        <a
+                          href={channels?.bookingCom?.url || "https://www.booking.com/hotel/np/hotel-sherpa-soul.html"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white border border-blue-500/30 text-xs font-medium transition-all duration-200"
+                        >
+                          <Smartphone size={13} />
+                          <span>Book on Booking.com</span>
+                          <ExternalLink size={11} className="opacity-70" />
+                        </a>
+                      )}
+                      {channels?.airbnb?.enabled !== false && (
+                        <a
+                          href={channels?.airbnb?.url || "https://www.airbnb.com/rooms/1760024961976448522"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 text-xs font-medium transition-all duration-200"
+                        >
+                          <span>Book on Airbnb</span>
+                          <ExternalLink size={11} className="opacity-70" />
+                        </a>
+                      )}
+                      {channels?.agoda?.enabled !== false && channels?.agoda?.url && (
+                        <a
+                          href={channels.agoda.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 text-xs font-medium transition-all duration-200"
+                        >
+                          <span>Book on Agoda</span>
+                          <ExternalLink size={11} className="opacity-70" />
+                        </a>
+                      )}
+                      {channels?.tripCom?.enabled !== false && (
+                        <a
+                          href={channels?.tripCom?.url || "https://www.trip.com/hotels/list?keyword=Hotel%20Sherpa%20Soul%20Kathmandu"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/30 text-xs font-medium transition-all duration-200"
+                        >
+                          <span>Book on Trip.com</span>
+                          <ExternalLink size={11} className="opacity-70" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

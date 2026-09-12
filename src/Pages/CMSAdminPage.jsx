@@ -6,12 +6,14 @@ import CMSSEOTab from "../Components/CMS/CMSSEOTab";
 import CMSContentTab from "../Components/CMS/CMSContentTab";
 import CMSMediaTab from "../Components/CMS/CMSMediaTab";
 import CMSRoomsTab from "../Components/CMS/CMSRoomsTab";
+import CMSChannelsTab from "../Components/CMS/CMSChannelsTab";
 import CMSBackupTab from "../Components/CMS/CMSBackupTab";
 import {
   Search,
   FileText,
   Image,
   BedDouble,
+  Globe,
   Settings,
   ExternalLink,
   LogOut,
@@ -26,6 +28,7 @@ export default function CMSAdminPage() {
     content,
     media,
     rooms,
+    channels,
     lastSaved,
     isAuthenticated,
     loginAdmin,
@@ -36,18 +39,21 @@ export default function CMSAdminPage() {
     updateContent,
     updateGallery,
     updateRooms,
+    updateChannels,
+    updateChannel,
     exportConfigJSON,
     importConfigJSON,
     resetToDefaults,
   } = useCMS();
 
-  const [activeTab, setActiveTab] = useState("seo"); // seo | content | media | rooms | backup
+  const [activeTab, setActiveTab] = useState("channels"); // channels | seo | content | media | rooms | backup
 
   if (!isAuthenticated) {
     return <CMSAuthModal onLogin={loginAdmin} />;
   }
 
   const navTabs = [
+    { id: "channels", label: "OTA & Channel Sync", icon: Globe, badge: "Sync" },
     { id: "seo", label: "Technical SEO & Analytics", icon: Search, badge: "Crucial" },
     { id: "content", label: "Copywriting & Texts", icon: FileText },
     { id: "media", label: "Photos & Videos Hub", icon: Image },
@@ -148,6 +154,13 @@ export default function CMSAdminPage() {
 
         {/* Tab Content Display */}
         <div className="animate-fadeIn">
+          {activeTab === "channels" && (
+            <CMSChannelsTab
+              channels={channels}
+              onUpdateChannels={updateChannels}
+            />
+          )}
+
           {activeTab === "seo" && (
             <CMSSEOTab
               seo={seo}

@@ -231,6 +231,44 @@ const DEFAULT_CMS_DATA = {
     ],
   },
   rooms: initialRooms,
+  channels: {
+    bookingCom: {
+      id: "bookingCom",
+      name: "Booking.com",
+      url: "https://www.booking.com/hotel/np/hotel-sherpa-soul.html",
+      iCalUrl: "",
+      enabled: true,
+      badgeColor: "bg-blue-600",
+      accentColor: "#003580",
+    },
+    airbnb: {
+      id: "airbnb",
+      name: "Airbnb",
+      url: "https://www.airbnb.com/rooms/1760024961976448522",
+      iCalUrl: "",
+      enabled: true,
+      badgeColor: "bg-rose-600",
+      accentColor: "#FF5A5F",
+    },
+    agoda: {
+      id: "agoda",
+      name: "Agoda",
+      url: "",
+      iCalUrl: "",
+      enabled: true,
+      badgeColor: "bg-purple-600",
+      accentColor: "#5856D6",
+    },
+    tripCom: {
+      id: "tripCom",
+      name: "Trip.com",
+      url: "https://www.trip.com/hotels/list?keyword=Hotel%20Sherpa%20Soul%20Kathmandu",
+      iCalUrl: "",
+      enabled: true,
+      badgeColor: "bg-sky-600",
+      accentColor: "#2681FF",
+    },
+  },
 };
 
 const CMSContext = createContext(null);
@@ -270,6 +308,10 @@ export function CMSProvider({ children }) {
             content: { ...DEFAULT_CMS_DATA.content, ...(parsed.content || {}) },
             media: { ...DEFAULT_CMS_DATA.media, ...(parsed.media || {}) },
             rooms: sanitizedRooms,
+            channels: {
+              ...DEFAULT_CMS_DATA.channels,
+              ...(parsed.channels || {}),
+            },
           };
         }
       }
@@ -378,6 +420,26 @@ export function CMSProvider({ children }) {
     }));
   };
 
+  const updateChannels = (newChannels) => {
+    saveCMSData((prev) => ({
+      ...prev,
+      channels: typeof newChannels === "function" ? newChannels(prev.channels) : newChannels,
+    }));
+  };
+
+  const updateChannel = (channelKey, channelData) => {
+    saveCMSData((prev) => ({
+      ...prev,
+      channels: {
+        ...prev.channels,
+        [channelKey]: {
+          ...(prev.channels?.[channelKey] || DEFAULT_CMS_DATA.channels[channelKey] || {}),
+          ...channelData,
+        },
+      },
+    }));
+  };
+
   // Export / Import / Reset
   const exportConfigJSON = () => {
     const jsonStr = JSON.stringify(data, null, 2);
@@ -423,6 +485,7 @@ export function CMSProvider({ children }) {
         content: data.content,
         media: data.media,
         rooms: data.rooms,
+        channels: data.channels || DEFAULT_CMS_DATA.channels,
         lastSaved,
         isAuthenticated,
         loginAdmin,
@@ -433,6 +496,8 @@ export function CMSProvider({ children }) {
         updateContent,
         updateGallery,
         updateRooms,
+        updateChannels,
+        updateChannel,
         exportConfigJSON,
         importConfigJSON,
         resetToDefaults,
