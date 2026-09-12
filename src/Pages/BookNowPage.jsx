@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import {
   Phone,
   Mail,
@@ -20,31 +21,46 @@ import { sendEmailNotification } from "../Components/Utils/emailService";
 
 const roomOptions = [
   {
-    label: "Budget Family Room - $20 USD/night (~NPR 2,700) (Max 3 Adults, 1 Child)",
+    id: "1",
+    label: "Budget Family Room",
+    title: "Budget Family Room",
     roomNumber: "101",
     price: 20,
     priceNpr: 2700,
     currency: "USD",
     maxGuests: 4,
-    bedInfo: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
+    bedInfo: "1 King Bed + 1 Single Bed",
+    image: "/triple.webp",
+    description: "Features 1 King Bed + 1 Single Bed, en-suite bathroom, 24/7 hot shower, free Wi-Fi, and shared kitchen privileges.",
+    badge: "10% OFF",
   },
   {
-    label: "Deluxe Room - $20 USD/night (~NPR 2,700) (Air Conditioned | Max 2 Adults, 1 Child)",
+    id: "2",
+    label: "Deluxe Room (AC)",
+    title: "Deluxe Room (AC)",
     roomNumber: "201",
     price: 20,
     priceNpr: 2700,
     currency: "USD",
     maxGuests: 3,
-    bedInfo: "1 King Bed (32.5 sq. ft)",
+    bedInfo: "1 King Bed • Air Conditioned",
+    image: "/changes_photo/singleBedWithSofa.webp",
+    description: "Air-conditioned boutique room with king bed, sofa seating, private modern bathroom, fast Wi-Fi, and peaceful atmosphere.",
+    badge: "10% OFF",
   },
   {
-    label: "Family Room - $30 USD/night (~NPR 4,000) (Air Conditioned | Max 3 Adults, 1 Child)",
+    id: "3",
+    label: "Family Room (AC)",
+    title: "Family Room (AC)",
     roomNumber: "301",
     price: 30,
     priceNpr: 4000,
     currency: "USD",
     maxGuests: 4,
-    bedInfo: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
+    bedInfo: "King + Single • Air Conditioned",
+    image: "/changes_photo/doubleBed.webp",
+    description: "Spacious family suite with King + Single bed, full air conditioning, private modern washroom, and city views.",
+    badge: "10% OFF",
   },
 ];
 
@@ -55,10 +71,13 @@ export default function BookNowPage() {
 
   const formatDate = (date) => date.toISOString().split("T")[0];
 
+  const { id } = useParams();
+  const [searchParams] = useSearchParams();
+
   const [formData, setFormData] = useState({
     fullName: "",
-    roomType: "",
-    numberOfPeople: 1,
+    roomType: roomOptions[0].label,
+    numberOfPeople: 2,
     numberOfRooms: 1,
     checkIn: formatDate(today),
     checkOut: formatDate(tomorrow),
@@ -68,24 +87,49 @@ export default function BookNowPage() {
 
   const [uploadedDocument, setUploadedDocument] = useState(null);
   const [submitted, setSubmitted] = useState(false);
-  const [maxGuests, setMaxGuests] = useState(1);
+  const [maxGuests, setMaxGuests] = useState(roomOptions[0].maxGuests);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingRefId, setBookingRefId] = useState("");
   const [totalCalculated, setTotalCalculated] = useState(0);
 
-  const selectedRoomObj = roomOptions.find((r) => r.label === formData.roomType) || null;
+  // Auto-detect room from URL param or search query (e.g. /book/2, /book/3, /book-now?room=2)
+  useEffect(() => {
+    const rawId = id || searchParams.get("room") || searchParams.get("id");
+    if (rawId) {
+      const match = roomOptions.find(
+        (r) =>
+          String(r.id) === String(rawId) ||
+          String(r.roomNumber) === String(rawId) ||
+          r.label.toLowerCase().includes(String(rawId).toLowerCase())
+      );
+      if (match) {
+        handleSelectRoom(match);
+      }
+    }
+  }, [id, searchParams]);
+
+  const selectedRoomObj = roomOptions.find((r) => r.label === formData.roomType || r.title === formData.roomType) || roomOptions[0];
   const estimatedNights = formData.checkIn && formData.checkOut
     ? Math.max(1, Math.ceil((new Date(formData.checkOut) - new Date(formData.checkIn)) / (1000 * 60 * 60 * 24)))
     : 1;
   const estimatedTotalUsd = selectedRoomObj ? estimatedNights * selectedRoomObj.price * (Number(formData.numberOfRooms) || 1) : 0;
   const estimatedTotalNpr = selectedRoomObj ? estimatedNights * (selectedRoomObj.priceNpr || (selectedRoomObj.price * 135)) * (Number(formData.numberOfRooms) || 1) : 0;
 
+  const handleSelectRoom = (room) => {
+    setMaxGuests(room.maxGuests);
+    setFormData((prev) => ({
+      ...prev,
+      roomType: room.label,
+      numberOfPeople: Math.min(prev.numberOfPeople || 2, room.maxGuests),
+    }));
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (name === "roomType") {
-      const selectedRoom = roomOptions.find((room) => room.label === value);
+      const selectedRoom = roomOptions.find((room) => room.label === value || room.title === value);
       if (selectedRoom) {
         setMaxGuests(selectedRoom.maxGuests);
         setFormData((prev) => ({
@@ -198,49 +242,128 @@ export default function BookNowPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Enhanced Hero Section */}
-      <div className="relative h-screen overflow-hidden">
+      {/* Sleek Hero Section */}
+      <div className="relative py-20 sm:py-24 overflow-hidden bg-slate-900">
         <div
-          className="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000"
+          className="absolute inset-0 bg-cover bg-center opacity-40 transform scale-105"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80')",
+              "url('/hero/hero1.webp')",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-purple-900/70 to-indigo-900/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#01366E]/95 via-[#0A2540]/90 to-[#01366E]/95" />
 
-        {/* Animated floating elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse" />
+        {/* Animated ambient glow */}
+        <div className="absolute top-6 left-10 w-24 h-24 bg-white/10 rounded-full blur-2xl animate-pulse" />
         <div
-          className="absolute top-32 right-20 w-32 h-32 bg-blue-300/20 rounded-full blur-2xl animate-pulse"
+          className="absolute bottom-6 right-10 w-32 h-32 bg-amber-400/15 rounded-full blur-2xl animate-pulse"
           style={{ animationDelay: "1s" }}
         />
-        <div
-          className="absolute bottom-20 left-1/4 w-16 h-16 bg-purple-300/20 rounded-full blur-lg animate-pulse"
-          style={{ animationDelay: "0.5s" }}
-        />
 
-        <div className="relative z-10 h-full flex items-center justify-center px-4">
-          <div className="text-center text-white max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6 border border-white/20">
-              <Sparkles className="w-5 h-5 text-orange-300" />
-              <span className="text-sm font-medium">Direct Booking Guarantee</span>
+        <div className="relative z-10 flex items-center justify-center px-4">
+          <div className="text-center text-white max-w-3xl pt-10 sm:pt-6">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-5 py-1.5 mb-4 border border-white/20">
+              <Sparkles className="w-4 h-4 text-[#FB6C01]" />
+              <span className="text-xs sm:text-sm font-semibold tracking-wide text-amber-200">
+                Direct Booking Privilege: <strong className="text-white">Save 10% on All Rooms</strong>
+              </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-3 text-white leading-tight">
               Reserve Your Peaceful Stay
             </h1>
-            <p className="text-lg md:text-xl font-light mb-8 text-slate-100 max-w-2xl mx-auto leading-relaxed">
-              Clean, quiet rooms, authentic Sherpa hospitality, and comfortable rest in the heart of Thamel
+            <p className="text-sm sm:text-base font-light text-slate-200 max-w-2xl mx-auto leading-relaxed">
+              Clean, quiet rooms, authentic Sherpa hospitality, and comfortable rest in the heart of Thamel, Kathmandu
             </p>
-            <div className="w-24 h-1 bg-[#FB6C01] mx-auto rounded-full" />
           </div>
         </div>
       </div>
 
       {/* Main Content */}
       {!submitted ? (
-        <div className="max-w-7xl mx-auto px-4 py-16 -mt-32 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 py-8 relative z-10">
+          {/* Step 1: Visual 3 Room Categories */}
+          <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-slate-200/80 p-6 sm:p-10 mb-10">
+            <div className="text-center max-w-2xl mx-auto mb-8">
+              <span className="inline-block bg-[#FB6C01]/10 text-[#FB6C01] font-bold text-xs uppercase tracking-widest px-3.5 py-1 rounded-full border border-[#FB6C01]/20">
+                Step 1: Choose Your Room Category
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#01366E] mt-2">
+                Select From Our 3 Room Categories
+              </h2>
+              <p className="text-slate-600 text-sm mt-1">
+                Click any room to select it — your 10% direct booking discount is automatically applied.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {roomOptions.map((room) => {
+                const isSelected = formData.roomType === room.label;
+                return (
+                  <div
+                    key={room.id}
+                    onClick={() => handleSelectRoom(room)}
+                    className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 border-2 bg-white flex flex-col justify-between ${
+                      isSelected
+                        ? "border-[#FB6C01] ring-4 ring-[#FB6C01]/20 shadow-xl scale-[1.02]"
+                        : "border-slate-200 hover:border-amber-400 hover:shadow-lg"
+                    }`}
+                  >
+                    <div className="relative h-48 overflow-hidden bg-slate-100">
+                      <img
+                        src={room.image}
+                        alt={room.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-3 left-3 bg-[#FB6C01] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">
+                        10% DIRECT OFF
+                      </div>
+                      {isSelected && (
+                        <div className="absolute top-3 right-3 bg-emerald-600 text-white p-1.5 rounded-full shadow-lg flex items-center justify-center">
+                          <Check className="w-4 h-4 stroke-[3]" />
+                        </div>
+                      )}
+                      <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/75 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs">
+                        <span className="font-bold text-[#FB6C01] text-sm">${room.price} USD</span>
+                        <span className="text-amber-300 font-semibold">~NPR {room.priceNpr.toLocaleString()} / night</span>
+                      </div>
+                    </div>
+
+                    <div className="p-5 flex-1 flex flex-col justify-between">
+                      <div>
+                        <h3 className="font-bold text-lg text-slate-900 mb-1">
+                          {room.title}
+                        </h3>
+                        <p className="text-xs text-slate-500 mb-2 font-medium">
+                          {room.bedInfo} • Max {room.maxGuests} Guests
+                        </p>
+                        <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                          {room.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-4 mt-4 border-t border-slate-100">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSelectRoom(room);
+                          }}
+                          className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all ${
+                            isSelected
+                              ? "bg-[#FB6C01] text-white shadow-md"
+                              : "bg-slate-100 text-slate-700 hover:bg-[#01366E] hover:text-white"
+                          }`}
+                        >
+                          {isSelected ? "✓ Room Selected" : "Select This Room"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 xl:grid-cols-5 gap-8">
             {/* Left - Contact Info */}
             <div className="xl:col-span-2">
@@ -385,12 +508,15 @@ export default function BookNowPage() {
             {/* Right - Enhanced Booking Form */}
             <div className="xl:col-span-3">
               <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 p-8">
-                <div className="text-center mb-8">
-                  <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-2">
-                    Booking Details
+                <div className="border-b border-slate-100 pb-5 mb-6 text-center sm:text-left">
+                  <span className="inline-block bg-[#FB6C01]/10 text-[#FB6C01] font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-[#FB6C01]/20 mb-2">
+                    Step 2 of 2: Guest Information
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-[#01366E]">
+                    Reservation for: <span className="text-[#FB6C01]">{formData.roomType}</span>
                   </h2>
-                  <p className="text-gray-600">
-                    Fill in your information to complete your reservation
+                  <p className="text-slate-600 text-sm mt-1">
+                    Fill in your details below. 10% direct booking discount is automatically applied.
                   </p>
                 </div>
 
@@ -553,16 +679,19 @@ export default function BookNowPage() {
 
                   {/* Document Upload Section */}
                   <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6 border border-indigo-100">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-1 flex items-center gap-2">
                       <FileText className="w-5 h-5 text-indigo-600" />
                       Document Upload
+                      <span className="text-xs text-slate-500 font-normal ml-auto">(Optional online)</span>
                     </h3>
+                    <p className="text-xs text-gray-500 mb-4">
+                      Upload photo of passport / citizenship for faster check-in, or present original upon arrival at reception.
+                    </p>
                     <div className="relative">
                       <input
                         type="file"
                         accept="image/*,.pdf"
                         onChange={handleFileUpload}
-                        required
                         className="w-full p-4 border-2 border-dashed border-gray-300 rounded-xl focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition-all duration-300 bg-white/80 backdrop-blur-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer"
                       />
                       <Upload className="absolute right-3 top-4 w-5 h-5 text-gray-400" />
@@ -575,10 +704,6 @@ export default function BookNowPage() {
                         </p>
                       </div>
                     )}
-                    <p className="text-sm text-gray-600 mt-2">
-                      Upload a clear photo of your ID (JPEG, PNG) or PDF
-                      document
-                    </p>
                   </div>
 
                   {/* Estimated Price Indicator */}

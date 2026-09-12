@@ -84,11 +84,11 @@ function AppContent() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/rooms" element={<RoomsPage />} />
             <Route path="/book-now" element={<BookNowPage />} />
+            <Route path="/book/:id" element={<BookNowPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/room/:id" element={<RoomDetails />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/gallery" element={<FullGallery />} />
-            <Route path="/book/:id" element={<BookingForm />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
 

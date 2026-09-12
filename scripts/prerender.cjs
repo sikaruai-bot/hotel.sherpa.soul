@@ -21,7 +21,7 @@ const NAV_HTML = `
         <span class="font-medium text-slate-100 text-xs sm:text-sm">Direct Booking Special: Get <strong class="text-amber-300 font-bold">10% Discount</strong> on all rooms!</span>
         <span class="hidden md:inline text-white/40">• Best Rate Guaranteed</span>
       </div>
-      <a href="/book/1" class="hidden sm:inline-flex items-center gap-1 font-bold text-amber-300 hover:text-white transition-colors underline underline-offset-4 text-xs">Claim 10% Off &rarr;</a>
+      <a href="/book-now" class="hidden sm:inline-flex items-center gap-1 font-bold text-amber-300 hover:text-white transition-colors underline underline-offset-4 text-xs">Claim 10% Off &rarr;</a>
     </div>
   </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +41,7 @@ const NAV_HTML = `
         <a href="/contact" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Contact</a>
       </div>
       <div class="flex items-center space-x-2 lg:space-x-3 z-50">
-        <a href="/book/1" class="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all text-sm lg:text-base">Book Your Stay</a>
+        <a href="/book-now" class="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all text-sm lg:text-base">Book Your Stay</a>
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@ const FOOTER_HTML = `
             <p class="text-amber-100 text-sm sm:text-base leading-relaxed">Stay in the heart of Thamel and make Hotel Sherpa Soul your comfortable base for Kathmandu and your journey through Nepal.</p>
           </div>
           <div class="flex-shrink-0">
-            <a href="/book/1" class="px-8 py-4 bg-white text-slate-900 hover:bg-amber-50 font-bold rounded-2xl shadow-xl transition-all text-base sm:text-lg inline-flex items-center gap-2">Book Your Stay</a>
+            <a href="/book-now" class="px-8 py-4 bg-white text-slate-900 hover:bg-amber-50 font-bold rounded-2xl shadow-xl transition-all text-base sm:text-lg inline-flex items-center gap-2">Book Your Stay</a>
           </div>
         </div>
       </div>
@@ -131,22 +131,108 @@ const FOOTER_HTML = `
 `;
 
 function getBookingPageContent(roomTitle, roomId) {
+  const currentRoomId = Number(roomId) || 1;
+
+  const roomsList = [
+    {
+      id: 1,
+      title: "Budget Family Room",
+      price: 20,
+      priceNpr: "2,700",
+      bed: "1 King Bed + 1 Single Bed",
+      guests: 4,
+      desc: "Features 1 King Bed + 1 Single Bed, en-suite bathroom, 24/7 hot shower, free Wi-Fi, and shared kitchen privileges.",
+      image: "/triple.webp",
+    },
+    {
+      id: 2,
+      title: "Deluxe Room (AC)",
+      price: 20,
+      priceNpr: "2,700",
+      bed: "1 King Bed • Air Conditioned",
+      guests: 3,
+      desc: "Air-conditioned boutique room with king bed, sofa seating, private modern bathroom, fast Wi-Fi, and peaceful atmosphere.",
+      image: "/changes_photo/singleBedWithSofa.webp",
+    },
+    {
+      id: 3,
+      title: "Family Room (AC)",
+      price: 30,
+      priceNpr: "4,000",
+      bed: "King + Single • Air Conditioned",
+      guests: 4,
+      desc: "Spacious family suite with King + Single bed, full air conditioning, private modern washroom, and city views.",
+      image: "/changes_photo/doubleBed.webp",
+    }
+  ];
+
+  const cardsHtml = roomsList.map(r => {
+    const isSelected = r.id === currentRoomId;
+    return `
+      <a href="/book/${r.id}" class="group relative rounded-2xl overflow-hidden transition-all duration-300 border-2 bg-white flex flex-col justify-between block ${isSelected ? 'border-[#FB6C01] ring-4 ring-[#FB6C01]/20 shadow-xl scale-[1.02]' : 'border-slate-200 hover:border-amber-400 hover:shadow-lg'}">
+        <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
+          <img src="${r.image}" alt="${r.title} - Hotel Sherpa Soul Thamel Kathmandu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" width="400" height="250" loading="lazy" />
+          <div class="absolute top-3 left-3 bg-[#FB6C01] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">10% DIRECT OFF</div>
+          ${isSelected ? '<div class="absolute top-3 right-3 bg-emerald-600 text-white px-2.5 py-1 rounded-full shadow-lg text-xs font-bold flex items-center gap-1">✓ Selected</div>' : '<div class="absolute top-3 right-3 bg-black/60 text-white px-2 py-1 rounded-full text-[11px] font-medium">Click to select</div>'}
+          <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs">
+            <span class="font-bold text-amber-400 text-sm sm:text-base">$${r.price} USD</span>
+            <span class="text-amber-200 font-semibold">~NPR ${r.priceNpr} / night</span>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-lg text-slate-900 mb-1 flex items-center justify-between">
+              <span>${r.title}</span>
+              <span class="text-xs text-slate-500 font-normal">Max ${r.guests} guests</span>
+            </h3>
+            <p class="text-xs text-[#01366E] mb-2 font-semibold">🛏️ ${r.bed}</p>
+            <p class="text-xs text-slate-600 leading-relaxed">${r.desc}</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100">
+            <span class="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${isSelected ? 'bg-[#FB6C01] text-white shadow-md' : 'bg-slate-100 text-slate-700 group-hover:bg-[#01366E] group-hover:text-white'}">
+              ${isSelected ? '✓ Room Selected (' + r.title + ')' : 'Select ' + r.title + ' &rarr;'}
+            </span>
+          </div>
+        </div>
+      </a>
+    `;
+  }).join('');
+
+  const selectedRoom = roomsList.find(r => r.id === currentRoomId) || roomsList[0];
+
   return `
-    \${NAV_HTML}
+    ${NAV_HTML}
     <main class="min-h-screen pt-28 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-10">
-        <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">DIRECT BOOKING PRIVILEGE</span>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-2">\${roomTitle}</h1>
-        <p class="text-slate-600 text-base sm:text-lg mt-3">Clean, quiet rooms, authentic Sherpa hospitality, and comfortable rest in the heart of Thamel.</p>
+        <span class="inline-block bg-[#FB6C01]/10 text-[#FB6C01] font-bold text-xs uppercase tracking-widest px-3.5 py-1 rounded-full border border-[#FB6C01]/20 mb-2">DIRECT BOOKING PRIVILEGE • 10% OFF</span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-1">${roomTitle}</h1>
+        <p class="text-slate-600 text-base sm:text-lg mt-2">Clean, quiet rooms, authentic Sherpa hospitality, and comfortable rest in the heart of Thamel.</p>
       </div>
+
+      <!-- Step 1: 3 Room Categories Visual Cards -->
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-8 mb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 mb-6 border-b border-slate-100 gap-2">
+          <div>
+            <span class="inline-block bg-[#FB6C01]/10 text-[#FB6C01] font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-[#FB6C01]/20">Step 1 of 2: Choose Room Category</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#01366E] mt-1.5">Select From Our 3 Room Categories</h2>
+            <p class="text-slate-600 text-sm mt-0.5">Click any room below to select it — 10% direct discount is automatically applied.</p>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3.5 py-2 rounded-xl border border-emerald-200 self-start sm:self-auto">
+            <span>✓ Active: <strong>${selectedRoom.title}</strong></span>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          ${cardsHtml}
+        </div>
+      </div>
+
+      <!-- Step 2: Booking Form & Support Info -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2 bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-8">
-          <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-100">
-            <div>
-              <h2 class="text-2xl font-bold text-[#01366E]">Booking Form</h2>
-              <p class="text-sm text-slate-500 mt-1">Direct booking receives automatic 10% discount off standard rates</p>
-            </div>
-            <span class="bg-[#FB6C01] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">10% OFF</span>
+          <div class="border-b border-slate-100 pb-5 mb-6 text-left">
+            <span class="inline-block bg-[#01366E]/10 text-[#01366E] font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-[#01366E]/20 mb-1.5">Step 2 of 2: Guest Details</span>
+            <h2 class="text-2xl font-bold text-slate-900">Reservation for: <span class="text-[#FB6C01]">${selectedRoom.title}</span></h2>
+            <p class="text-sm text-slate-500 mt-1">Direct booking receives automatic 10% discount off standard rates ($${selectedRoom.price} USD / ~NPR ${selectedRoom.priceNpr})</p>
           </div>
           <form class="space-y-6">
             <input type="text" name="website_hp" style="display:none !important;" tabindex="-1" autocomplete="off" />
@@ -168,9 +254,9 @@ function getBookingPageContent(roomTitle, roomId) {
               <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Selected Room Category *</label>
                 <select name="roomType" class="w-full p-3.5 border border-slate-300 rounded-xl font-medium bg-white">
-                  <option value="Budget Family Room" \${roomId === 1 ? 'selected' : ''}>Budget Family Room - $20 USD (~NPR 2,700)</option>
-                  <option value="Deluxe Room" \${roomId === 2 ? 'selected' : ''}>Deluxe Room (AC) - $20 USD (~NPR 2,700)</option>
-                  <option value="Family Room" \${roomId === 3 ? 'selected' : ''}>Family Room (AC) - $30 USD (~NPR 4,000)</option>
+                  <option value="Budget Family Room" ${currentRoomId === 1 ? 'selected' : ''}>Budget Family Room - $20 USD (~NPR 2,700)</option>
+                  <option value="Deluxe Room (AC)" ${currentRoomId === 2 ? 'selected' : ''}>Deluxe Room (AC) - $20 USD (~NPR 2,700)</option>
+                  <option value="Family Room (AC)" ${currentRoomId === 3 ? 'selected' : ''}>Family Room (AC) - $30 USD (~NPR 4,000)</option>
                 </select>
               </div>
             </div>
@@ -215,7 +301,7 @@ function getBookingPageContent(roomTitle, roomId) {
         </div>
       </div>
     </main>
-    \${FOOTER_HTML}
+    ${FOOTER_HTML}
   `;
 }
 
@@ -579,7 +665,7 @@ const ROUTES = [
             <div><strong>Check-in:</strong> 14:00 (2:00 PM) • <strong>Check-out:</strong> 12:00 (12:00 PM noon)</div>
           </div>
           <div class="pt-4 border-t border-slate-100">
-            <a href="/book/1" class="inline-block py-3 px-6 bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold rounded-xl shadow-md transition-all">Book Online with 10% Discount &rarr;</a>
+            <a href="/book-now" class="inline-block py-3 px-6 bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold rounded-xl shadow-md transition-all">Book Online with 10% Discount &rarr;</a>
           </div>
         </div>
       </main>
