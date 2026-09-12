@@ -21,7 +21,7 @@ const NAV_HTML = `
         <span class="font-medium text-slate-100 text-xs sm:text-sm">Direct Booking Special: Get <strong class="text-amber-300 font-bold">10% Discount</strong> on all rooms!</span>
         <span class="hidden md:inline text-white/40">• Best Rate Guaranteed</span>
       </div>
-      <a href="/book-now" class="hidden sm:inline-flex items-center gap-1 font-bold text-amber-300 hover:text-white transition-colors underline underline-offset-4 text-xs">Claim 10% Off &rarr;</a>
+      <a href="/book/1" class="hidden sm:inline-flex items-center gap-1 font-bold text-amber-300 hover:text-white transition-colors underline underline-offset-4 text-xs">Claim 10% Off &rarr;</a>
     </div>
   </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +41,7 @@ const NAV_HTML = `
         <a href="/contact" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Contact</a>
       </div>
       <div class="flex items-center space-x-2 lg:space-x-3 z-50">
-        <a href="/book-now" class="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all text-sm lg:text-base">Book Your Stay</a>
+        <a href="/book/1" class="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all text-sm lg:text-base">Book Your Stay</a>
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@ const FOOTER_HTML = `
             <p class="text-amber-100 text-sm sm:text-base leading-relaxed">Stay in the heart of Thamel and make Hotel Sherpa Soul your comfortable base for Kathmandu and your journey through Nepal.</p>
           </div>
           <div class="flex-shrink-0">
-            <a href="/book-now" class="px-8 py-4 bg-white text-slate-900 hover:bg-amber-50 font-bold rounded-2xl shadow-xl transition-all text-base sm:text-lg inline-flex items-center gap-2">Book Your Stay</a>
+            <a href="/book/1" class="px-8 py-4 bg-white text-slate-900 hover:bg-amber-50 font-bold rounded-2xl shadow-xl transition-all text-base sm:text-lg inline-flex items-center gap-2">Book Your Stay</a>
           </div>
         </div>
       </div>
@@ -130,6 +130,95 @@ const FOOTER_HTML = `
 </footer>
 `;
 
+function getBookingPageContent(roomTitle, roomId) {
+  return `
+    \${NAV_HTML}
+    <main class="min-h-screen pt-28 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">DIRECT BOOKING PRIVILEGE</span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-2">\${roomTitle}</h1>
+        <p class="text-slate-600 text-base sm:text-lg mt-3">Clean, quiet rooms, authentic Sherpa hospitality, and comfortable rest in the heart of Thamel.</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-8">
+          <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-100">
+            <div>
+              <h2 class="text-2xl font-bold text-[#01366E]">Booking Form</h2>
+              <p class="text-sm text-slate-500 mt-1">Direct booking receives automatic 10% discount off standard rates</p>
+            </div>
+            <span class="bg-[#FB6C01] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">10% OFF</span>
+          </div>
+          <form class="space-y-6">
+            <input type="text" name="website_hp" style="display:none !important;" tabindex="-1" autocomplete="off" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Guest Full Name *</label>
+                <input type="text" name="name" required placeholder="e.g. John Doe" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#FB6C01] outline-none" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address *</label>
+                <input type="email" name="email" required placeholder="john@example.com" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#FB6C01] outline-none" />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Phone / WhatsApp Number *</label>
+                <input type="tel" name="number" required placeholder="+977-98..." class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#FB6C01] outline-none" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Selected Room Category *</label>
+                <select name="roomType" class="w-full p-3.5 border border-slate-300 rounded-xl font-medium bg-white">
+                  <option value="Budget Family Room" \${roomId === 1 ? 'selected' : ''}>Budget Family Room - $20 USD (~NPR 2,700)</option>
+                  <option value="Deluxe Room" \${roomId === 2 ? 'selected' : ''}>Deluxe Room (AC) - $20 USD (~NPR 2,700)</option>
+                  <option value="Family Room" \${roomId === 3 ? 'selected' : ''}>Family Room (AC) - $30 USD (~NPR 4,000)</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Check-in Date *</label>
+                <input type="date" name="checkIn" required class="w-full p-3.5 border border-slate-300 rounded-xl" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Check-out Date *</label>
+                <input type="date" name="checkOut" required class="w-full p-3.5 border border-slate-300 rounded-xl" />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Number of Guests</label>
+                <input type="number" name="numberOfGuests" min="1" max="4" value="2" class="w-full p-3.5 border border-slate-300 rounded-xl" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Number of Rooms</label>
+                <input type="number" name="numberOfRooms" min="1" max="5" value="1" class="w-full p-3.5 border border-slate-300 rounded-xl" />
+              </div>
+            </div>
+            <div class="p-4 bg-amber-50 border border-amber-200 rounded-2xl flex items-center justify-between text-sm">
+              <span class="font-semibold text-[#01366E]">Direct Booking Benefit:</span>
+              <span class="font-bold text-[#FB6C01]">10% Discount Automatically Applied</span>
+            </div>
+            <button type="submit" class="w-full py-4 px-6 bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-lg rounded-2xl shadow-lg transition-all cursor-pointer">Confirm & Reserve Room &rarr;</button>
+          </form>
+        </div>
+        <div class="space-y-6">
+          <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 space-y-4">
+            <h3 class="text-xl font-bold text-[#01366E]">Need Quick Confirmation?</h3>
+            <p class="text-slate-600 text-sm">Feel free to message or call our 24/7 reception desk for immediate room availability:</p>
+            <div class="space-y-3 text-sm">
+              <div><strong>WhatsApp:</strong> <a href="https://wa.me/9779851068219" class="text-emerald-600 font-bold hover:underline">+977-9851068219</a></div>
+              <div><strong>Direct Phone:</strong> <a href="tel:+9779851068219" class="text-[#FB6C01] font-bold hover:underline">+977-9851068219</a></div>
+              <div><strong>Email:</strong> <a href="mailto:info@hotelsherpasoul.com" class="text-[#01366E] font-bold hover:underline">info@hotelsherpasoul.com</a></div>
+              <div><strong>Address:</strong> Thamel Bhagawati Marg 26, Kathmandu 44600</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    \${FOOTER_HTML}
+  `;
+}
+
 // Define routes and their content
 const ROUTES = [
   {
@@ -167,12 +256,12 @@ const ROUTES = [
                     <span class="text-white font-bold text-base">Direct Booking Discount Active</span>
                     <p class="text-slate-200 text-xs sm:text-sm font-light mt-0.5">Get an instant <strong class="text-amber-300 font-bold">10% OFF</strong> on all rooms when booking directly. Best rate guarantee, free luggage storage & no hidden charges.</p>
                   </div>
-                  <a href="/book-now" class="text-xs font-bold text-white bg-[#FB6C01] hover:bg-[#e05a00] px-4 py-2.5 rounded-xl transition-all shadow-md flex-shrink-0">Claim 10% Off &rarr;</a>
+                  <a href="/book/1" class="text-xs font-bold text-white bg-[#FB6C01] hover:bg-[#e05a00] px-4 py-2.5 rounded-xl transition-all shadow-md flex-shrink-0">Claim 10% Off &rarr;</a>
                 </div>
               </div>
 
               <div class="flex flex-wrap items-center gap-4 pt-2">
-                <a href="/book-now" class="px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl transition-all">Book Direct & Save 10%</a>
+                <a href="/book/1" class="px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl transition-all">Book Direct & Save 10%</a>
                 <a href="/rooms" class="px-8 py-4 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/70 font-semibold text-base sm:text-lg transition-all">Explore Our Rooms &rarr;</a>
               </div>
 
@@ -374,7 +463,7 @@ const ROUTES = [
             </div>
             <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
               <a href="/room/1" class="text-sm font-bold text-[#01366E] hover:underline">Details & Specs &rarr;</a>
-              <a href="/book-now" class="px-4 py-2 bg-[#FB6C01] text-white rounded-xl text-xs font-bold hover:bg-[#e05a00]">Book Now</a>
+              <a href="/book/1" class="px-4 py-2 bg-[#FB6C01] text-white rounded-xl text-xs font-bold hover:bg-[#e05a00]">Book Now</a>
             </div>
           </article>
           <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 p-6 flex flex-col justify-between">
@@ -389,7 +478,7 @@ const ROUTES = [
             </div>
             <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
               <a href="/room/2" class="text-sm font-bold text-[#01366E] hover:underline">Details & Specs &rarr;</a>
-              <a href="/book-now" class="px-4 py-2 bg-[#FB6C01] text-white rounded-xl text-xs font-bold hover:bg-[#e05a00]">Book Now</a>
+              <a href="/book/2" class="px-4 py-2 bg-[#FB6C01] text-white rounded-xl text-xs font-bold hover:bg-[#e05a00]">Book Now</a>
             </div>
           </article>
           <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 p-6 flex flex-col justify-between">
@@ -404,7 +493,7 @@ const ROUTES = [
             </div>
             <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
               <a href="/room/3" class="text-sm font-bold text-[#01366E] hover:underline">Details & Specs &rarr;</a>
-              <a href="/book-now" class="px-4 py-2 bg-[#FB6C01] text-white rounded-xl text-xs font-bold hover:bg-[#e05a00]">Book Now</a>
+              <a href="/book/3" class="px-4 py-2 bg-[#FB6C01] text-white rounded-xl text-xs font-bold hover:bg-[#e05a00]">Book Now</a>
             </div>
           </article>
         </div>
@@ -490,7 +579,7 @@ const ROUTES = [
             <div><strong>Check-in:</strong> 14:00 (2:00 PM) • <strong>Check-out:</strong> 12:00 (12:00 PM noon)</div>
           </div>
           <div class="pt-4 border-t border-slate-100">
-            <a href="/book-now" class="inline-block py-3 px-6 bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold rounded-xl shadow-md transition-all">Book Online with 10% Discount &rarr;</a>
+            <a href="/book/1" class="inline-block py-3 px-6 bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold rounded-xl shadow-md transition-all">Book Online with 10% Discount &rarr;</a>
           </div>
         </div>
       </main>
@@ -503,37 +592,31 @@ const ROUTES = [
     description: 'Book your stay directly at Hotel Sherpa Soul for the lowest price guaranteed, instant confirmation, 10% off promotion, and authentic Himalayan hospitality.',
     canonical: 'https://hotelsherpasoul.com/book-now',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
-    content: `
-      ${NAV_HTML}
-      <main class="min-h-screen pt-28 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">BEST RATE GUARANTEE</span>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-2 mb-6">Book Direct & Save 10% on Your Stay</h1>
-        <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
-          <p class="text-slate-700 text-lg">Direct bookings receive our guaranteed best price with an automatic 10% discount off standard rates.</p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-            <div class="p-4 rounded-xl bg-amber-50 border border-amber-200">
-              <div class="font-bold text-[#01366E]">Budget Family Room</div>
-              <div class="text-[#FB6C01] font-bold text-lg mt-1">$20 USD / ~NPR 2,700</div>
-              <div class="text-xs text-slate-500">1 King + 1 Single Bed</div>
-            </div>
-            <div class="p-4 rounded-xl bg-amber-50 border border-amber-200">
-              <div class="font-bold text-[#01366E]">Deluxe Room (AC)</div>
-              <div class="text-[#FB6C01] font-bold text-lg mt-1">$20 USD / ~NPR 2,700</div>
-              <div class="text-xs text-slate-500">1 King Bed • Air Conditioned</div>
-            </div>
-            <div class="p-4 rounded-xl bg-amber-50 border border-amber-200">
-              <div class="font-bold text-[#01366E]">Family Room (AC)</div>
-              <div class="text-[#FB6C01] font-bold text-lg mt-1">$30 USD / ~NPR 4,000</div>
-              <div class="text-xs text-slate-500">King + Single • Air Conditioned</div>
-            </div>
-          </div>
-          <div class="pt-4 text-center">
-            <a href="https://wa.me/9779851068219?text=Hello! I'd like to book a room with the 10% direct discount." class="inline-block py-3.5 px-8 bg-[#25D366] hover:bg-emerald-600 text-white font-bold rounded-2xl shadow-lg text-base transition-all">Book via WhatsApp Instantly &rarr;</a>
-          </div>
-        </div>
-      </main>
-      ${FOOTER_HTML}
-    `
+    content: getBookingPageContent('Reserve Your Peaceful Stay', 1)
+  },
+  {
+    path: '/book/1',
+    title: 'Book Budget Family Room | Hotel Sherpa Soul Kathmandu',
+    description: 'Reserve Budget Family Room at Hotel Sherpa Soul in Thamel, Kathmandu. 1 King + 1 Single Bed, en-suite bathroom, 10% direct booking discount.',
+    canonical: 'https://hotelsherpasoul.com/book/1',
+    ogImage: 'https://hotelsherpasoul.com/triple.webp',
+    content: getBookingPageContent('Book Budget Family Room ($20 / ~NPR 2,700)', 1)
+  },
+  {
+    path: '/book/2',
+    title: 'Book Deluxe Room (AC) | Hotel Sherpa Soul Kathmandu',
+    description: 'Reserve Deluxe Air-Conditioned Room at Hotel Sherpa Soul in Thamel, Kathmandu. King Bed, sofa seating, modern washroom, 10% direct discount.',
+    canonical: 'https://hotelsherpasoul.com/book/2',
+    ogImage: 'https://hotelsherpasoul.com/changes_photo/singleBedWithSofa.webp',
+    content: getBookingPageContent('Book Deluxe Room (AC) ($20 / ~NPR 2,700)', 2)
+  },
+  {
+    path: '/book/3',
+    title: 'Book Family Room (AC) | Hotel Sherpa Soul Kathmandu',
+    description: 'Reserve Family Room with AC at Hotel Sherpa Soul in Thamel, Kathmandu. King + Single Bed, spacious layout, 10% direct booking discount.',
+    canonical: 'https://hotelsherpasoul.com/book/3',
+    ogImage: 'https://hotelsherpasoul.com/changes_photo/doubleBed.webp',
+    content: getBookingPageContent('Book Family Room (AC) ($30 / ~NPR 4,000)', 3)
   },
   {
     path: '/gallery',
