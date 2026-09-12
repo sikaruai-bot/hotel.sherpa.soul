@@ -10,6 +10,7 @@ import {
   ExternalLink,
   Sparkles,
   CalendarCheck,
+  Lock,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa";
@@ -372,6 +373,14 @@ export default function Footer() {
                 Cookie Preferences
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#FB6C01] group-hover:w-full transition-all duration-300"></span>
               </button>
+              <Link
+                to="/cms"
+                className="hover:text-amber-400 text-gray-500 hover:opacity-100 transition-colors duration-300 relative group flex items-center gap-1 text-[11px]"
+                title="Website CMS & SEO Admin Portal"
+              >
+                <Lock size={11} className="text-amber-400/70" />
+                <span>CMS Portal</span>
+              </Link>
             </div>
           </div>
         </div>

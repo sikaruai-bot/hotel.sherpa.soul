@@ -29,21 +29,22 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (
-              id.includes("react-dom") ||
-              id.includes("react-router-dom") ||
-              id.includes("react/")
-            ) {
-              return "vendor-react";
-            }
-            if (id.includes("framer-motion") || id.includes("motion")) {
-              return "vendor-animation";
+            if (id.includes("lucide-react") || id.includes("react-icons")) {
+              return "vendor-icons";
             }
             if (id.includes("i18next")) {
               return "vendor-i18n";
             }
-            if (id.includes("lucide-react") || id.includes("react-icons")) {
-              return "vendor-icons";
+            if (id.includes("framer-motion") || id.includes("motion")) {
+              return "vendor-animation";
+            }
+            if (
+              id.includes("react") ||
+              id.includes("scheduler") ||
+              id.includes("@remix-run") ||
+              id.includes("use-sync-external-store")
+            ) {
+              return "vendor-react";
             }
             return "vendor-libs";
           }

@@ -52,18 +52,22 @@ function ExternalRedirect({ to }) {
 
 function AppContent() {
   const location = useLocation();
+  const cleanPath = location.pathname.toLowerCase().replace(/\/+$/, "") || "/";
   const isCmsRoute =
-    location.pathname === "/cms" ||
-    location.pathname === "/site-admin" ||
-    location.pathname.startsWith("/cms/");
+    cleanPath === "/cms" ||
+    cleanPath === "/site-admin" ||
+    cleanPath.startsWith("/cms/") ||
+    cleanPath.startsWith("/site-admin/");
 
   if (isCmsRoute) {
     return (
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/cms" element={<CMSAdminPage />} />
-          <Route path="/site-admin" element={<CMSAdminPage />} />
           <Route path="/cms/*" element={<CMSAdminPage />} />
+          <Route path="/site-admin" element={<CMSAdminPage />} />
+          <Route path="/site-admin/*" element={<CMSAdminPage />} />
+          <Route path="*" element={<CMSAdminPage />} />
         </Routes>
       </Suspense>
     );
