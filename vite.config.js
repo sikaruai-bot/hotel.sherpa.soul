@@ -24,13 +24,29 @@ export default defineConfig({
   build: {
     target: "es2020",
     cssCodeSplit: true,
+    chunkSizeWarningLimit: 800,
     rollupOptions: {
       output: {
-        manualChunks: {
-          "vendor-react": ["react", "react-dom", "react-router-dom"],
-          "vendor-animation": ["framer-motion"],
-          "vendor-i18n": ["i18next", "react-i18next"],
-          "vendor-icons": ["lucide-react", "react-icons"],
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (
+              id.includes("react-dom") ||
+              id.includes("react-router-dom") ||
+              id.includes("react/")
+            ) {
+              return "vendor-react";
+            }
+            if (id.includes("framer-motion") || id.includes("motion")) {
+              return "vendor-animation";
+            }
+            if (id.includes("i18next")) {
+              return "vendor-i18n";
+            }
+            if (id.includes("lucide-react") || id.includes("react-icons")) {
+              return "vendor-icons";
+            }
+            return "vendor-libs";
+          }
         },
       },
     },

@@ -238,38 +238,40 @@ const CMSContext = createContext(null);
 export function CMSProvider({ children }) {
   const [data, setData] = useState(() => {
     try {
-      // Purge legacy storage keys to eliminate any broken references
-      try {
-        localStorage.removeItem("HSS_CMS_DATA");
-        localStorage.removeItem("HSS_CMS_DATA_V1");
-        localStorage.removeItem("HSS_CMS_DATA_V2");
-      } catch (e) {
-        // ignore
-      }
+      if (typeof window !== "undefined" && window.localStorage) {
+        // Purge legacy storage keys to eliminate any broken references
+        try {
+          localStorage.removeItem("HSS_CMS_DATA");
+          localStorage.removeItem("HSS_CMS_DATA_V1");
+          localStorage.removeItem("HSS_CMS_DATA_V2");
+        } catch (e) {
+          // ignore
+        }
 
-      const stored = localStorage.getItem(CMS_STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        // Sanitize rooms to ensure categories have valid images
-        const sanitizedRooms = Array.isArray(parsed.rooms) && parsed.rooms.length > 0
-          ? parsed.rooms.slice(0, 3).map((r) => {
-              const cleanedImg = Array.isArray(r.image)
-                ? r.image.map((i) => typeof i === "string" && !i.startsWith("data:") ? i.replace(/\.jpeg$/i, ".webp") : i)
-                : typeof r.image === "string" && !r.image.startsWith("data:")
-                ? r.image.replace(/\.jpeg$/i, ".webp")
-                : r.image;
-              return { ...r, image: cleanedImg, Noroom: 2 };
-            })
-          : DEFAULT_CMS_DATA.rooms;
+        const stored = localStorage.getItem(CMS_STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          // Sanitize rooms to ensure categories have valid images
+          const sanitizedRooms = Array.isArray(parsed.rooms) && parsed.rooms.length > 0
+            ? parsed.rooms.slice(0, 3).map((r) => {
+                const cleanedImg = Array.isArray(r.image)
+                  ? r.image.map((i) => typeof i === "string" && !i.startsWith("data:") ? i.replace(/\.jpeg$/i, ".webp") : i)
+                  : typeof r.image === "string" && !r.image.startsWith("data:")
+                  ? r.image.replace(/\.jpeg$/i, ".webp")
+                  : r.image;
+                return { ...r, image: cleanedImg, Noroom: 2 };
+              })
+            : DEFAULT_CMS_DATA.rooms;
 
-        return {
-          ...DEFAULT_CMS_DATA,
-          ...parsed,
-          seo: { ...DEFAULT_CMS_DATA.seo, ...(parsed.seo || {}) },
-          content: { ...DEFAULT_CMS_DATA.content, ...(parsed.content || {}) },
-          media: { ...DEFAULT_CMS_DATA.media, ...(parsed.media || {}) },
-          rooms: sanitizedRooms,
-        };
+          return {
+            ...DEFAULT_CMS_DATA,
+            ...parsed,
+            seo: { ...DEFAULT_CMS_DATA.seo, ...(parsed.seo || {}) },
+            content: { ...DEFAULT_CMS_DATA.content, ...(parsed.content || {}) },
+            media: { ...DEFAULT_CMS_DATA.media, ...(parsed.media || {}) },
+            rooms: sanitizedRooms,
+          };
+        }
       }
     } catch (err) {
       console.warn("Failed to load CMS data from localStorage:", err);
@@ -278,7 +280,14 @@ export function CMSProvider({ children }) {
   });
 
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return sessionStorage.getItem(CMS_AUTH_KEY) === "true";
+    if (typeof window !== "undefined" && window.sessionStorage) {
+      try {
+        return sessionStorage.getItem(CMS_AUTH_KEY) === "true";
+      } catch (e) {
+        return false;
+      }
+    }
+    return false;
   });
 
   const [lastSaved, setLastSaved] = useState(null);

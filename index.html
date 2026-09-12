@@ -10,20 +10,22 @@
     <title>Hotel Sherpa Soul | Peaceful Hotel in Thamel, Kathmandu</title>
     <meta name="title" content="Hotel Sherpa Soul | Peaceful Hotel in Thamel, Kathmandu" />
     <meta name="description" content="Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy comfortable rooms, a central location and a peaceful stay for travelers exploring Nepal." />
-    <meta name="keywords" content="hotel in Thamel Kathmandu, hotel in Thamel, Thamel hotel, hotel Kathmandu, hotel near Thamel, accommodation in Thamel, Thamel accommodation, Kathmandu accommodation, budget hotel Kathmandu, hotel for travelers Kathmandu, peaceful hotel in Thamel, comfortable hotel in Kathmandu, hotel for trekkers Kathmandu, Nepal travel accommodation, where to stay in Thamel, best area to stay in Kathmandu, Kathmandu travel guide, Thamel travel guide, Nepal trekking accommodation" />
+    <meta name="keywords" content="Hotel in Thamel Kathmandu, Hotel Sherpa Soul, boutique hotel Kathmandu, peaceful accommodation Thamel" />
     <meta name="author" content="Hotel Sherpa Soul" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href="https://hotelsherpasoul.com/" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
-    <!-- Google Search Console Verification -->
+    <!-- Google Search Console & Bing Webmaster Verification -->
     <meta name="google-site-verification" content="E9sWdPkI-frcA6WZQyLOuTU9tZL2qfoUnzIYk6c3h3c" />
+    <meta name="msvalidate.01" content="4A887E84EC741A96515A8FA715DE758E" />
 
     <!-- Mobile Browser Chrome Color -->
     <meta name="theme-color" content="#01366E" />
 
-    <!-- Performance: Preload Critical Hero Image (LCP in WebP) -->
-    <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" fetchpriority="high" />
+    <!-- Performance: Responsive Preload of Critical Hero Image (LCP) -->
+    <link rel="preload" as="image" href="/hero/hero1-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
 
     <!-- Performance: DNS Prefetch & Preconnect for Third-Party Scripts -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
@@ -31,22 +33,37 @@
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
 
-    <!-- Google tag (gtag.js) - Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7Z3QDR3KD"></script>
+    <!-- Google Consent Mode v2 Default Configuration (Strict Privacy Gate) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-E7Z3QDR3KD', { send_page_view: false });
-    </script>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PFRV7ZTV');</script>
-    <!-- End Google Tag Manager -->
+      // Check stored consent
+      var storedConsent = null;
+      try {
+        storedConsent = localStorage.getItem('hss_cookie_consent');
+      } catch (e) {}
+
+      var isAnalyticsGranted = storedConsent === 'all' || storedConsent === 'analytics';
+      var isMarketingGranted = storedConsent === 'all';
+
+      gtag('consent', 'default', {
+        'analytics_storage': isAnalyticsGranted ? 'granted' : 'denied',
+        'ad_storage': isMarketingGranted ? 'granted' : 'denied',
+        'ad_user_data': isMarketingGranted ? 'granted' : 'denied',
+        'ad_personalization': isMarketingGranted ? 'granted' : 'denied',
+        'wait_for_update': 500
+      });
+
+      // Only load GTM if consent was previously granted
+      if (isAnalyticsGranted) {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PFRV7ZTV');
+      }
+    </script>
 
     <!-- Open Graph / Facebook / WhatsApp Preview -->
     <meta property="og:type" content="website" />
@@ -97,6 +114,17 @@
       "numberOfRooms": 15,
       "petsAllowed": false,
       "smokingAllowed": false,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "3"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Thamel Bhagawati Marg 26",
@@ -162,6 +190,40 @@
         { "@type": "LocationFeatureSpecification", "name": "Luggage Storage", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Tour and Trekking Desk", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Family Rooms", "value": true }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data (JSON-LD) for Breadcrumbs Navigation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hotelsherpasoul.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Rooms",
+          "item": "https://hotelsherpasoul.com/rooms"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "About Us",
+          "item": "https://hotelsherpasoul.com/about"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Contact",
+          "item": "https://hotelsherpasoul.com/contact"
+        }
       ]
     }
     </script>
@@ -241,22 +303,6 @@
     </script>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFRV7ZTV"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Meta / Facebook Pixel (noscript fallback) -->
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        style="display: none"
-        alt=""
-        src="https://www.facebook.com/tr?id=1952950858737501&ev=PageView&noscript=1"
-      />
-    </noscript>
-
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

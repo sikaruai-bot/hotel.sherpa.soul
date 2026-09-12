@@ -2,8 +2,13 @@
 User-agent: *
 Allow: /
 
-# Disallow internal backend / assets if needed
+# Disallow internal backend, api, and admin routes
 Disallow: /api/
+Disallow: /cms/
+Disallow: /site-admin/
+Disallow: /admin
+Disallow: /pms
+Disallow: /staff
 
 # Sitemap Location
 Sitemap: https://hotelsherpasoul.com/sitemap.xml

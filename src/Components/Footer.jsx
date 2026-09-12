@@ -345,7 +345,7 @@ export default function Footer() {
             </div>
 
             {/* Enhanced legal links */}
-            <div className="flex gap-6 text-xs sm:text-sm text-gray-400 items-center">
+            <div className="flex flex-wrap gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400 items-center">
               <Link
                 to="/privacy"
                 className="hover:text-[#FB6C01] transition-colors duration-300 relative group"
@@ -360,6 +360,18 @@ export default function Footer() {
                 {t("footer.legal.terms", "Terms of Service")}
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#FB6C01] group-hover:w-full transition-all duration-300"></span>
               </Link>
+              <button
+                type="button"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new CustomEvent("open-cookie-preferences"));
+                  }
+                }}
+                className="hover:text-[#FB6C01] transition-colors duration-300 relative group text-left cursor-pointer"
+              >
+                Cookie Preferences
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-[#FB6C01] group-hover:w-full transition-all duration-300"></span>
+              </button>
             </div>
           </div>
         </div>

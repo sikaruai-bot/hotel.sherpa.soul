@@ -97,7 +97,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { type, name, email, phone, subject, message, booking } = req.body || {};
+    const { type, name, email, phone, subject, message, booking, website_hp } = req.body || {};
+
+    // Bot / Spam Protection: Honeypot field must be empty
+    if (website_hp) {
+      console.warn("Spam bot detected via honeypot field. Silently rejecting submission.");
+      return res.status(200).json({ success: true, message: "Inquiry processed successfully." });
+    }
+
     const hotelEmail = "info@hotelsherpasoul.com";
     const hotelBackupEmail = "hotelsherpasoul2025@gmail.com";
     const staffRecipients = [hotelEmail, hotelBackupEmail];

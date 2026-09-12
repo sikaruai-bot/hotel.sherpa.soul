@@ -23,6 +23,7 @@ export default function ContactForm() {
     email: "",
     phone: "",
     message: "",
+    website_hp: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState("idle"); // idle | success | error
@@ -37,6 +38,13 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    if (formData.website_hp) {
+      // Bot trapped in honeypot
+      setSubmitStatus("success");
+      setStatusMessage("Thank you! Your message has been sent.");
+      return;
+    }
+
     if (!formData.name || !formData.email || !formData.message) {
       alert("Please fill in all required fields (Name, Email, Message).");
       return;
@@ -52,6 +60,7 @@ export default function ContactForm() {
         email: formData.email,
         phone: formData.phone || "",
         message: formData.message,
+        website_hp: formData.website_hp,
       });
 
       if (data && data.success) {
@@ -169,6 +178,20 @@ export default function ContactForm() {
                 </div>
 
                 <div className="p-8 space-y-6">
+                  {/* Anti-spam honeypot (hidden from real users) */}
+                  <div style={{ display: "none", opacity: 0, position: "absolute", left: "-9999px" }}>
+                    <label htmlFor="website_hp">Leave this field blank</label>
+                    <input
+                      type="text"
+                      id="website_hp"
+                      name="website_hp"
+                      value={formData.website_hp}
+                      onChange={handleInputChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div className="group">
                     <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#01366E]">
                       {t("contact.form.data.name")} *

@@ -8,6 +8,7 @@ import Layout from "./Components/HelperComponents/Layout";
 import ActionButtons from "./Components/HelperComponents/ActionButtons";
 import MetaPixel from "./Components/Analytics/MetaPixel";
 import CanonicalManager from "./Components/HelperComponents/CanonicalManager";
+import CookieConsent from "./Components/HelperComponents/CookieConsent";
 
 // Route-level code-splitting for optimal mobile performance
 const AboutPage = lazy(() => import("./Pages/AboutPage"));
@@ -19,6 +20,8 @@ const RoomDetails = lazy(() => import("./Components/RoomsComponents/RoomDetails"
 const BookNowPage = lazy(() => import("./Pages/BookNowPage"));
 const BlogPage = lazy(() => import("./Pages/BlogPage"));
 const BookingForm = lazy(() => import("./Components/RoomsComponents/RoomBooking"));
+const PrivacyPage = lazy(() => import("./Pages/PrivacyPage"));
+const TermsPage = lazy(() => import("./Pages/TermsPage"));
 const NotFoundPage = lazy(() => import("./Pages/NotFoundPage"));
 const CMSAdminPage = lazy(() => import("./Pages/CMSAdminPage"));
 
@@ -71,6 +74,7 @@ function AppContent() {
       <MetaPixel />
       <CanonicalManager />
       <ActionButtons />
+      <CookieConsent />
       <Layout>
         <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
@@ -85,6 +89,8 @@ function AppContent() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/gallery" element={<FullGallery />} />
             <Route path="/book/:id" element={<BookingForm />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
 
             <Route path="/admin" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
             <Route path="/dashboard" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />

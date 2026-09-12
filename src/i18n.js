@@ -14,10 +14,17 @@ import fra from "./Locales/fra.json";
 const supportedLanguages = ["en", "ar", "zh", "rs", "es", "de", "it", "fra"];
 
 // Ensure stored language is valid
-let currentLang = localStorage.getItem("i18nextLng");
-if (!supportedLanguages.includes(currentLang)) {
-  currentLang = "en";
-  localStorage.setItem("i18nextLng", currentLang);
+let currentLang = "en";
+if (typeof window !== "undefined" && window.localStorage) {
+  try {
+    currentLang = localStorage.getItem("i18nextLng") || "en";
+    if (!supportedLanguages.includes(currentLang)) {
+      currentLang = "en";
+      localStorage.setItem("i18nextLng", currentLang);
+    }
+  } catch (e) {
+    currentLang = "en";
+  }
 }
 
 i18n

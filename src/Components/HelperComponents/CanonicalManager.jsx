@@ -5,14 +5,16 @@ import { useCMS } from "../../Context/CMSContext";
 const DEFAULT_BASE_URL = "https://hotelsherpasoul.com";
 
 const DEFAULT_ROUTE_TITLES = {
-  "/": "Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu, Nepal",
-  "/about": "About Us | Hotel Sherpa Soul Thamel, Kathmandu",
-  "/services": "Services & Amenities | Hotel Sherpa Soul Kathmandu",
-  "/rooms": "Rooms & Suites | Hotel Sherpa Soul Thamel, Kathmandu",
-  "/book-now": "Book Direct | Hotel Sherpa Soul Kathmandu",
-  "/blog": "Stories & Travel Guide | Hotel Sherpa Soul Blog",
-  "/contact": "Contact & Location | Hotel Sherpa Soul Thamel Kathmandu",
-  "/gallery": "Photo & Video Gallery | Hotel Sherpa Soul Kathmandu",
+  "/": "Hotel Sherpa Soul | Peaceful Hotel in Thamel, Kathmandu",
+  "/about": "About Hotel Sherpa Soul | Peaceful Boutique Hotel in Thamel Kathmandu",
+  "/services": "Services & Amenities | Shared Kitchen & Facilities | Hotel Sherpa Soul",
+  "/rooms": "Rooms & Rates | Budget Family & Deluxe Rooms | Hotel Sherpa Soul",
+  "/book-now": "Book Direct & Save 10% | Hotel Sherpa Soul Kathmandu",
+  "/blog": "Kathmandu & Thamel Travel Guide | Hotel Sherpa Soul Blog",
+  "/contact": "Contact Hotel Sherpa Soul | Location in Thamel Kathmandu",
+  "/gallery": "Photo & Video Gallery | Rooms & Facilities | Hotel Sherpa Soul",
+  "/privacy": "Privacy Policy & Cookie Disclosures | Hotel Sherpa Soul Kathmandu",
+  "/terms": "Terms of Service & Booking Policies | Hotel Sherpa Soul",
 };
 
 /**
