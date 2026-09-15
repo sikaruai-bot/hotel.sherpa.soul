@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Cookie, Shield, Check, X, Settings2 } from "lucide-react";
-import { initializeMetaPixel } from "../Analytics/pixelEvents";
 import { CONSENT_STORAGE_KEY, getStoredConsent } from "./consentUtils";
 
 export default function CookieConsent() {
@@ -53,9 +52,8 @@ export default function CookieConsent() {
       });
     }
 
-    // 2. Meta Pixel Consent update & dynamic init
+    // 2. Meta Pixel Consent update
     if (grantMarketing) {
-      initializeMetaPixel();
       if (typeof window !== "undefined" && window.fbq) {
         window.fbq("consent", "grant");
       }

@@ -4,7 +4,8 @@ import { initializeMetaPixel, trackMetaEvent } from "./pixelEvents";
 import { useCMS } from "../../Context/CMSContext";
 import { getStoredConsent } from "../HelperComponents/consentUtils";
 
-let lastPageView = "";
+let lastMetaPageView = "";
+let lastGaPageView = "";
 let lastCheckoutPage = "";
 
 export default function MetaPixel() {
@@ -29,28 +30,32 @@ export default function MetaPixel() {
   useEffect(() => {
     const hasMarketingConsent = consent === "all";
     const hasAnalyticsConsent = consent === "all" || consent === "analytics";
+    const page = `${location.pathname}${location.search}`;
 
     if (hasMarketingConsent) {
       const pixelId = seo?.analytics?.metaPixelId || "1952950858737501";
       initializeMetaPixel(pixelId);
+      if (typeof window !== "undefined" && window.fbq) {
+        window.fbq("consent", "grant");
+      }
+
+      // Fire PageView only AFTER consent grant
+      if (lastMetaPageView !== page && typeof window !== "undefined" && window.fbq) {
+        window.fbq("track", "PageView");
+        lastMetaPageView = page;
+      }
     }
 
-    const page = `${location.pathname}${location.search}`;
-
-    if (lastPageView !== page) {
-      // 1. Meta Pixel PageView (only if marketing consent)
-      if (hasMarketingConsent && window.fbq) {
-        window.fbq("track", "PageView");
-      }
-      // 2. Google Analytics 4 SPA PageView (only if analytics consent)
-      if (hasAnalyticsConsent && typeof window.gtag === "function" && ga4Id) {
+    // Google Analytics 4 SPA PageView (only if analytics consent)
+    if (hasAnalyticsConsent && typeof window.gtag === "function" && ga4Id) {
+      if (lastGaPageView !== page) {
         window.gtag("event", "page_view", {
           page_path: page,
           page_location: window.location.href,
           page_title: document.title,
         });
+        lastGaPageView = page;
       }
-      lastPageView = page;
     }
 
     const isCheckout =
