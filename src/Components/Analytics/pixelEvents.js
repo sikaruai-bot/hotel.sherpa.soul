@@ -45,6 +45,7 @@ export const initializeMetaPixel = (customPixelId) => {
   );
 
   if (targetId) {
+    window.fbq("consent", "grant");
     window.fbq("init", targetId);
     activePixelId = targetId;
   }
