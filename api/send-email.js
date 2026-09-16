@@ -139,6 +139,31 @@ async function dispatchHotelStaffAlerts({ subject, html, replyTo }) {
   return Promise.allSettled(tasks);
 }
 
+// In-Memory Rate Limiting for Serverless Email Dispatches
+const ipTracker = new Map();
+function checkEmailRateLimit(ip) {
+  const now = Date.now();
+  const windowMs = 15 * 60 * 1000; // 15 mins
+  const maxRequests = 20; // 20 emails max per 15 min per IP
+
+  const record = ipTracker.get(ip) || { count: 0, resetTime: now + windowMs };
+  if (now > record.resetTime) {
+    record.count = 0;
+    record.resetTime = now + windowMs;
+  }
+  record.count++;
+  ipTracker.set(ip, record);
+
+  // Periodic cleanup of stale entries
+  if (ipTracker.size > 1000) {
+    for (const [key, val] of ipTracker.entries()) {
+      if (now > val.resetTime) ipTracker.delete(key);
+    }
+  }
+
+  return record.count > maxRequests;
+}
+
 export default async function handler(req, res) {
   // CORS support
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -157,8 +182,21 @@ export default async function handler(req, res) {
     return res.status(405).json({ success: false, error: "Method not allowed" });
   }
 
+  const clientIp =
+    (req.headers["x-forwarded-for"] || "").split(",")[0].trim() ||
+    req.socket?.remoteAddress ||
+    "unknown";
+
+  if (checkEmailRateLimit(clientIp)) {
+    return res.status(429).json({
+      success: false,
+      error: "Too many email requests sent. Please try again in 15 minutes.",
+    });
+  }
+
   try {
     const { type, name, email, phone, subject, message, booking, website_hp } = req.body || {};
+
 
     // Bot / Spam Protection: Honeypot field must be empty
     if (website_hp) {

@@ -25,9 +25,11 @@ dist-ssr
 
 .env.*
 
-# Local backend API and large archives
+# Local backend API, database dumps, and large archives
 backend/
 *.zip
+backups/
 
 .vercel
 .env*
+
