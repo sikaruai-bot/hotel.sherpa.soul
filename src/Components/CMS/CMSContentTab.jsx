@@ -94,6 +94,16 @@ export default function CMSContentTab({ content, onUpdateContent }) {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Check file size: browser localStorage limit is ~5MB
+    const sizeInMB = file.size / (1024 * 1024);
+    if (sizeInMB > 5) {
+      alert(
+        `तपाईंको भिडियो फाइल (${sizeInMB.toFixed(1)} MB) निकै ठूलो छ। ब्राउजर मेमोरीले ५ एमबीभन्दा ठूलो भिडियो सिधै सेभ गर्न सक्दैन।\n\nसबैभन्दा उत्तम उपाय:\n१) भिडियोलाई YouTube मा अपलोड गर्नुहोस् (Unlisted राख्न सक्नुहुन्छ)।\n२) तलको बक्समा YouTube लिङ्क पेस्ट गर्नुहोस्।\n\nयसले गर्दा मोबाइल र कम्प्युटर सबैमा भिडियो निकै छिटो र सफा चल्छ!`
+      );
+      e.target.value = "";
+      return;
+    }
+
     try {
       setUploadingVideo(true);
       const res = await optimizeMediaFile(file);
