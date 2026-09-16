@@ -131,7 +131,7 @@ export default function CMSContentTab({ content, onUpdateContent }) {
       {/* Sub-tabs Navigation */}
       <div className="flex flex-wrap gap-2 p-1.5 bg-slate-900/80 rounded-2xl border border-slate-800">
         {[
-          { id: "virtualTour", label: "360° Virtual Tour", icon: Compass, badge: "New" },
+          { id: "virtualTour", label: "Hotel Video Tour", icon: Video, badge: "Video" },
           { id: "hero", label: "Hero Banner Content", icon: Sparkles },
           { id: "philosophy", label: "About & Philosophy Copy", icon: Edit3 },
           { id: "contact", label: "Contact, WhatsApp & Location", icon: MapPin },
@@ -172,14 +172,14 @@ export default function CMSContentTab({ content, onUpdateContent }) {
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400">
-                    <Compass className="w-4 h-4" />
+                    <Video className="w-4 h-4" />
                   </div>
                   <h3 className="text-base font-bold text-white">
-                    360° Virtual Tour Experience
+                    Hotel Video Tour & Walkthrough
                   </h3>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Allow travelers to explore Hotel Sherpa Soul in full 360° panoramic view, YouTube walkthrough, or Google 360.
+                  Upload a normal MP4/WebM video or paste a YouTube walkthrough link to showcase your rooms, balconies, and kitchen.
                 </p>
               </div>
 
@@ -222,32 +222,27 @@ export default function CMSContentTab({ content, onUpdateContent }) {
                 {/* 1. Choose Tour Format */}
                 <div className="space-y-3">
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
-                    1. Select Virtual Tour Type
+                    1. Video Source Type
                   </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     {[
                       {
-                        id: "iframe",
-                        label: "Google 360 / Embed",
-                        desc: "Street View / Matterport / Kuula",
+                        id: "video",
+                        label: "Upload MP4 Video",
+                        desc: "Upload directly or paste MP4 link",
                       },
                       {
                         id: "youtube",
                         label: "YouTube Video",
-                        desc: "YouTube 360 or Walkthrough",
+                        desc: "Paste any YouTube link",
                       },
                       {
-                        id: "video",
-                        label: "MP4 Video",
-                        desc: "Direct Video URL / Upload",
-                      },
-                      {
-                        id: "image",
-                        label: "360 Panoramic",
-                        desc: "Panoramic Photo View",
+                        id: "iframe",
+                        label: "Embed / Other",
+                        desc: "Vimeo or custom embed code",
                       },
                     ].map((t) => {
-                      const selected = (virtualTour.tourType || "iframe") === t.id;
+                      const selected = (virtualTour.tourType || "video") === t.id;
                       return (
                         <button
                           key={t.id}
@@ -267,40 +262,28 @@ export default function CMSContentTab({ content, onUpdateContent }) {
                   </div>
                 </div>
 
-                {/* 2. Tour Link / Embed Snippet Input */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
-                      2. Virtual Tour Link or Embed Code
-                    </label>
-                    <span className="text-[11px] text-amber-400">
-                      Auto-extracts link from &lt;iframe&gt; or YouTube
-                    </span>
-                  </div>
+                {/* 2. Direct Video Upload or Link Input */}
+                <div className="space-y-3">
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                    2. Upload Video or Enter Link
+                  </label>
 
-                  <div className="space-y-2">
-                    <textarea
-                      rows={3}
-                      value={virtualTour.embedUrl || ""}
-                      onChange={(e) =>
-                        handleVirtualTourChange("embedUrl", e.target.value)
-                      }
-                      placeholder={
-                        virtualTour.tourType === "youtube"
-                          ? "e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ or https://youtu.be/..."
-                          : virtualTour.tourType === "video"
-                          ? "e.g. https://example.com/tour.mp4 or click upload below"
-                          : "Paste full Google Maps 360 embed code <iframe src='...'></iframe> or 360 tour URL"
-                      }
-                      className="w-full px-4 py-3 bg-slate-800/80 border border-slate-700 rounded-xl text-white text-xs font-mono focus:outline-none focus:ring-2 focus:ring-amber-500/40"
-                    />
+                  {/* Prominent Direct Upload Button */}
+                  <div className="p-4 rounded-2xl bg-slate-800/40 border border-slate-700/70 space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div>
+                        <p className="text-xs font-semibold text-white flex items-center gap-1.5">
+                          <Upload className="w-4 h-4 text-amber-400" /> Upload from Computer / Phone
+                        </p>
+                        <p className="text-[11px] text-slate-400 mt-0.5">
+                          Upload normal MP4 or WebM walkthrough video
+                        </p>
+                      </div>
 
-                    <div className="flex flex-wrap items-center gap-3">
-                      {/* Direct MP4 File Upload */}
-                      <label className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium cursor-pointer border border-slate-700 transition-colors">
-                        <Upload className="w-3.5 h-3.5 text-amber-400" />
+                      <label className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-500 hover:to-[#FB6C01] text-white text-xs font-bold cursor-pointer shadow-md transition-all flex-shrink-0">
+                        <Upload className="w-4 h-4" />
                         <span>
-                          {uploadingVideo ? "Uploading..." : "Upload MP4 Video File"}
+                          {uploadingVideo ? "Uploading Video..." : "Choose Video File"}
                         </span>
                         <input
                           type="file"
@@ -310,23 +293,34 @@ export default function CMSContentTab({ content, onUpdateContent }) {
                           disabled={uploadingVideo}
                         />
                       </label>
-
-                      {previewCleanUrl && (
-                        <a
-                          href={previewCleanUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs text-amber-400 hover:underline"
-                        >
-                          <ExternalLink className="w-3.5 h-3.5" />
-                          <span>Open Embed Link in New Tab</span>
-                        </a>
-                      )}
                     </div>
+
+                    {virtualTour.embedUrl && virtualTour.embedUrl.startsWith("data:video") && (
+                      <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-2 text-xs text-emerald-300">
+                        <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                        <span>Direct video file uploaded and ready!</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Or Link Input */}
+                  <div className="space-y-1.5">
+                    <label className="block text-[11px] font-medium text-slate-400">
+                      Or paste a YouTube video link / video URL below:
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={virtualTour.embedUrl || ""}
+                      onChange={(e) =>
+                        handleVirtualTourChange("embedUrl", e.target.value)
+                      }
+                      placeholder="e.g. https://www.youtube.com/watch?v=... or https://youtu.be/... or direct MP4 URL"
+                      className="w-full px-4 py-2.5 bg-slate-800/80 border border-slate-700 rounded-xl text-white text-xs font-mono focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                    />
                   </div>
                 </div>
 
-                {/* 3. Cover Image Selection */}
+                {/* 3. Video Thumbnail / Poster Image */}
                 <div className="space-y-3 pt-2">
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
                     3. Cover Preview Image (Displayed before visitor clicks to play)

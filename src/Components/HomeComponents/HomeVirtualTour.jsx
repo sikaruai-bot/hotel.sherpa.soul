@@ -1,19 +1,16 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
-  Compass,
+  Video,
   Play,
   Maximize2,
   Minimize2,
   Sparkles,
   CheckCircle2,
   ArrowRight,
-  RotateCw,
   Eye,
-  ShieldCheck,
-  Bed,
-  Utensils,
-  VolumeX,
+  Film,
+  Volume2,
 } from "lucide-react";
 import { useCMS } from "../../Context/CMSContext";
 
@@ -70,31 +67,43 @@ export default function HomeVirtualTour() {
     return null;
   }
 
-  const badge = tour?.badge || "360° Virtual Experience";
-  const title = tour?.title || "Step Inside Hotel Sherpa Soul in 360°";
-  const subtitle = tour?.subtitle || "Immersive Room & Hotel Walkthrough";
+  const badge = tour?.badge || "Hotel Video Tour";
+  const title = tour?.title || "Take a Video Tour of Hotel Sherpa Soul";
+  const subtitle = tour?.subtitle || "Experience Our Peaceful Stay Before You Arrive";
   const paragraph =
     tour?.paragraph ||
-    "Take an interactive virtual walkthrough of our boutique rooms, private balconies, quiet corridors, rooftop terrace, and shared guest kitchen in Thamel, Kathmandu before arriving.";
+    "Watch our hotel walkthrough video to explore our comfortable rooms, private balconies, quiet corridors, and shared rooftop kitchen in Thamel, Kathmandu.";
   const coverImage = tour?.coverImage || "/room1/room.webp";
-  const rawEmbedUrl =
-    tour?.embedUrl ||
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.186847847385!2d85.3106263!3d27.7154032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19502be1b869%3A0xb304b7b2fb66a1ec!2sHotel%20Sherpa%20Soul!5e0!3m2!1sen!2snp!4v1717000000000!5m2!1sen!2snp";
-  const tourType = tour?.tourType || "iframe";
+  const rawEmbedUrl = tour?.embedUrl || "";
   const buttonText = tour?.buttonText || "Book Your Stay Direct (10% Off)";
   const buttonLink = tour?.buttonLink || "/book-now";
 
   const defaultFeatures = [
-    "Interactive 360° Room Walkthrough",
-    "Air Conditioned Deluxe Rooms",
-    "Fully Equipped Shared Kitchen",
-    "Quiet & Soundproofed Sleep Environment",
+    "Cozy, Clean & Peaceful Rooms",
+    "Air Conditioned Deluxe Amenities",
+    "Shared Kitchen for Long-Stay Guests",
+    "Quiet Sleep Environment in Thamel",
   ];
-  const features = Array.isArray(tour?.features) && tour.features.length > 0
-    ? tour.features
-    : defaultFeatures;
+  const features =
+    Array.isArray(tour?.features) && tour.features.length > 0
+      ? tour.features
+      : defaultFeatures;
 
   const activeEmbedUrl = cleanTourEmbedUrl(rawEmbedUrl);
+
+  // Auto-detect if it is a direct video file (data:video, .mp4, .webm, or blob)
+  const isDirectVideo =
+    tour?.tourType === "video" ||
+    activeEmbedUrl.startsWith("data:video/") ||
+    activeEmbedUrl.startsWith("blob:") ||
+    activeEmbedUrl.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i);
+
+  const isIframeOrEmbed =
+    activeEmbedUrl.includes("youtube") ||
+    activeEmbedUrl.includes("vimeo") ||
+    activeEmbedUrl.includes("embed") ||
+    tour?.tourType === "iframe" ||
+    tour?.tourType === "youtube";
 
   const toggleFullscreen = () => {
     if (!containerRef.current) return;
@@ -114,7 +123,7 @@ export default function HomeVirtualTour() {
 
   return (
     <section
-      id="virtual-tour"
+      id="video-tour"
       className="py-16 md:py-24 bg-gradient-to-b from-slate-900 via-[#0A192F] to-slate-950 text-white relative overflow-hidden"
     >
       {/* Background Decorative Ambient Glow */}
@@ -125,7 +134,7 @@ export default function HomeVirtualTour() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide mb-4 shadow-sm backdrop-blur-md">
-            <Compass className="w-4 h-4 text-amber-400 animate-spin-slow" />
+            <Video className="w-4 h-4 text-amber-400" />
             <span>{badge}</span>
           </div>
 
@@ -142,19 +151,21 @@ export default function HomeVirtualTour() {
           </p>
         </div>
 
-        {/* 360 Interactive Viewer Container */}
+        {/* Video Player Container */}
         <div
           ref={containerRef}
           className={`relative rounded-3xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-950 transition-all duration-500 ${
-            isFullscreen ? "fixed inset-0 z-50 rounded-none border-none" : "w-full aspect-[16/10] sm:aspect-[16/9] max-h-[640px]"
+            isFullscreen
+              ? "fixed inset-0 z-50 rounded-none border-none"
+              : "w-full aspect-[16/10] sm:aspect-[16/9] max-h-[640px]"
           }`}
         >
           {!isPlaying ? (
-            /* Cover / Launch Overlay (Saves bandwidth & loads instantly) */
-            <div className="relative w-full h-full group">
+            /* Cover / Launch Overlay (Ultra fast loading, loads video on click) */
+            <div className="relative w-full h-full group cursor-pointer" onClick={() => setIsPlaying(true)}>
               <img
                 src={coverImage}
-                alt="Hotel Sherpa Soul 360 Virtual Tour Preview"
+                alt="Hotel Sherpa Soul Video Tour"
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 filter brightness-90"
                 loading="lazy"
               />
@@ -162,72 +173,74 @@ export default function HomeVirtualTour() {
               {/* Dark Gradient Veil */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-black/30" />
 
-              {/* Central Start Tour Button */}
+              {/* Central Play Button */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <button
-                  onClick={() => setIsPlaying(true)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsPlaying(true);
+                  }}
                   className="group/btn relative flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-[#FB6C01] to-amber-400 text-white shadow-2xl shadow-amber-500/40 hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white/40"
-                  aria-label="Start 360 Virtual Tour"
+                  aria-label="Play Hotel Tour Video"
                 >
                   <span className="absolute inset-0 rounded-full border-2 border-amber-400/60 animate-ping opacity-75" />
                   <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-white translate-x-0.5" />
                 </button>
 
                 <p className="mt-5 text-white font-bold text-lg sm:text-xl tracking-tight drop-shadow-md">
-                  Click to Explore in 360°
+                  Watch Hotel Walkthrough Video
                 </p>
                 <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-md drop-shadow">
-                  Rotate, zoom, and walk through our boutique hotel before check-in.
+                  Click to see the rooms, shared kitchen, and peaceful surroundings.
                 </p>
 
-                {/* Quick 360 Pill Badges */}
+                {/* Video Badges */}
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-slate-200 text-xs font-medium">
-                    <RotateCw className="w-3.5 h-3.5 text-amber-400" />
-                    360° Panoramic
+                    <Film className="w-3.5 h-3.5 text-amber-400" />
+                    HD Video Tour
                   </span>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-slate-200 text-xs font-medium">
-                    <Eye className="w-3.5 h-3.5 text-emerald-400" />
-                    Interactive Room View
+                    <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
+                    Sound & Visuals
                   </span>
                 </div>
               </div>
             </div>
           ) : (
-            /* Active 360 Frame / Video View */
+            /* Active Video Player View */
             <div className="relative w-full h-full bg-black">
-              {tourType === "video" ? (
+              {isDirectVideo ? (
+                /* Native MP4 / WebM HTML5 Video Player */
                 <video
                   src={activeEmbedUrl}
                   controls
                   autoPlay
-                  className="w-full h-full object-contain"
+                  playsInline
+                  className="w-full h-full object-contain bg-black"
                   poster={coverImage}
                 />
-              ) : tourType === "image" ? (
-                <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
-                  <img
-                    src={activeEmbedUrl || coverImage}
-                    alt="360 Panorama Room View"
-                    className="w-full h-full object-cover animate-pan"
-                  />
-                  <div className="absolute bottom-4 left-4 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl text-xs text-amber-300 border border-slate-700">
-                    360° Panoramic Photo View
-                  </div>
-                </div>
-              ) : (
-                /* Standard Embed: Google 360 Street View / Matterport / Kuula / YouTube 360 */
+              ) : isIframeOrEmbed && activeEmbedUrl ? (
+                /* YouTube or Vimeo Player */
                 <iframe
                   src={activeEmbedUrl}
-                  title="Hotel Sherpa Soul 360 Virtual Walkthrough"
+                  title="Hotel Sherpa Soul Video Walkthrough"
                   className="w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; xr-spatial-tracking; fullscreen"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                   allowFullScreen
-                  loading="lazy"
                 />
+              ) : (
+                /* Fallback if no video URL is provided yet */
+                <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                  <Video className="w-12 h-12 text-amber-400 mb-3" />
+                  <p className="text-base font-semibold text-white">No video uploaded yet</p>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Upload an MP4 video or paste a YouTube link in the CMS Admin panel.
+                  </p>
+                </div>
               )}
 
-              {/* Floating Viewer Controls (Top Right) */}
+              {/* Viewer Controls (Top Right) */}
               <div className="absolute top-4 right-4 flex items-center gap-2 z-20">
                 <button
                   onClick={toggleFullscreen}
@@ -245,14 +258,14 @@ export default function HomeVirtualTour() {
                   onClick={() => setIsPlaying(false)}
                   className="px-3 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white backdrop-blur-md border border-slate-700/80 text-xs font-semibold transition-all shadow-lg"
                 >
-                  Exit Tour
+                  Close Video
                 </button>
               </div>
             </div>
           )}
         </div>
 
-        {/* Feature Highlights Grid Below Tour */}
+        {/* Feature Highlights Grid Below Video */}
         <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {features.map((featureText, idx) => (
             <div
@@ -279,7 +292,7 @@ export default function HomeVirtualTour() {
               Direct Booking Guarantee
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-white">
-              Like what you see in the tour?
+              Like what you see in the video?
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 mt-1">
               Book direct with us today to secure the best rates and an exclusive 10% direct discount.
@@ -295,25 +308,6 @@ export default function HomeVirtualTour() {
           </Link>
         </div>
       </div>
-
-      {/* Embedded style for subtle panorama animation when in image mode */}
-      <style>{`
-        @keyframes pan {
-          0% { object-position: left center; }
-          50% { object-position: right center; }
-          100% { object-position: left center; }
-        }
-        .animate-pan {
-          animation: pan 25s ease-in-out infinite;
-        }
-        @keyframes spinSlow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-          animation: spinSlow 20s linear infinite;
-        }
-      `}</style>
     </section>
   );
 }
