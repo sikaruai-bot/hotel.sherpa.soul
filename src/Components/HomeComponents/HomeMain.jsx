@@ -3,6 +3,7 @@ import HomeHero from "./HomeHero";
 import HomeIntro from "./HomeIntro";
 import HomeLocation from "./HomeLocation";
 import HomeRooms from "./HomeRooms";
+import HomeVirtualTour from "./HomeVirtualTour";
 import HomeServices from "./HomeServices";
 import HomeTrekkers from "./HomeTrekkers";
 import HomeGoogleReviews from "./HomeGoogleReviews";
@@ -17,6 +18,7 @@ export default function HomeMain() {
       <HomeStats />
       <HomeIntro />
       <HomeRooms />
+      <HomeVirtualTour />
       <HomeServices />
       <HomeTrekkers />
       <HomeFacilities />

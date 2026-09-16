@@ -145,6 +145,24 @@ const DEFAULT_CMS_DATA = {
       emergency: "+977 9851068219",
       copyright: "© 2026 Hotel Sherpa Soul. All rights reserved.",
     },
+    virtualTour: {
+      enabled: true,
+      badge: "360° Virtual Experience",
+      title: "Step Inside Hotel Sherpa Soul in 360°",
+      subtitle: "Immersive Room & Hotel Walkthrough",
+      paragraph: "Take an interactive virtual walkthrough of our boutique rooms, private balconies, quiet corridors, rooftop terrace, and shared guest kitchen in Thamel, Kathmandu before arriving.",
+      tourType: "iframe", // 'iframe' | 'youtube' | 'video' | 'image'
+      embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.186847847385!2d85.3106263!3d27.7154032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19502be1b869%3A0xb304b7b2fb66a1ec!2sHotel%20Sherpa%20Soul!5e0!3m2!1sen!2snp!4v1717000000000!5m2!1sen!2snp",
+      coverImage: "/room1/room.webp",
+      buttonText: "Book Your Stay Direct (10% Off)",
+      buttonLink: "/book-now",
+      features: [
+        "Interactive 360° Room Walkthrough",
+        "Air Conditioned Deluxe Rooms",
+        "Fully Equipped Shared Kitchen",
+        "Quiet & Soundproofed Sleep Environment",
+      ],
+    },
   },
   media: {
     gallery: [
@@ -305,7 +323,14 @@ export function CMSProvider({ children }) {
             ...DEFAULT_CMS_DATA,
             ...parsed,
             seo: { ...DEFAULT_CMS_DATA.seo, ...(parsed.seo || {}) },
-            content: { ...DEFAULT_CMS_DATA.content, ...(parsed.content || {}) },
+            content: {
+              ...DEFAULT_CMS_DATA.content,
+              ...(parsed.content || {}),
+              virtualTour: {
+                ...DEFAULT_CMS_DATA.content.virtualTour,
+                ...(parsed.content?.virtualTour || {}),
+              },
+            },
             media: { ...DEFAULT_CMS_DATA.media, ...(parsed.media || {}) },
             rooms: sanitizedRooms,
             channels: {
