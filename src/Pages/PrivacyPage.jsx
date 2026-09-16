@@ -94,7 +94,7 @@ export default function PrivacyPage() {
                   Meta / Facebook Pixel
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600">
-                  We utilize the Meta Pixel (Pixel ID: <code>1952950858737501</code>) to measure the effectiveness of our direct booking campaigns. In accordance with data protection guidelines, the Meta Pixel only initializes after you explicitly click "Accept All Cookies".
+                  We utilize the Meta Pixel (Pixel ID: <code>1022329224109595</code>) to measure the effectiveness of our direct booking campaigns and provide real-time reservation assistance. You can manage or revoke tracking at any time using the cookie settings below.
                 </p>
               </div>
             </div>

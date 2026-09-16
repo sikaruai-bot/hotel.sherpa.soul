@@ -88,7 +88,7 @@ const DEFAULT_CMS_DATA = {
     analytics: {
       ga4Id: "G-E7Z3QDR3KD",
       gtmId: "GTM-PFRV7ZTV",
-      metaPixelId: "1952950858737501",
+      metaPixelId: "1022329224109595",
       googleVerification: "E9sWdPkI-frcA6WZQyLOuTU9tZL2qfoUnzIYk6c3h3c",
       customHeadScript: "",
       customBodyScript: "",

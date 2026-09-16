@@ -32,6 +32,7 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
+    <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s){
         if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -41,9 +42,12 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window,document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('consent', 'grant');
+      fbq('init', '1022329224109595');
       fbq('init', '1952950858737501');
       fbq('track', 'PageView');
     </script>
+    <!-- End Meta Pixel Code -->
 
     <!-- Google Consent Mode v2 Default Configuration (Strict Privacy Gate) -->
     <script>
@@ -315,6 +319,11 @@
     </script>
   </head>
   <body>
+    <!-- Meta Pixel Noscript Fallback -->
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1022329224109595&ev=PageView&noscript=1" alt="Meta Pixel" />
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1952950858737501&ev=PageView&noscript=1" alt="Meta Pixel" />
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

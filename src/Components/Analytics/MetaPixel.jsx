@@ -4,8 +4,14 @@ import { initializeMetaPixel, trackMetaEvent } from "./pixelEvents";
 import { useCMS } from "../../Context/CMSContext";
 import { getStoredConsent } from "../HelperComponents/consentUtils";
 
-let lastMetaPageView = "";
-let lastGaPageView = "";
+let lastMetaPageView =
+  typeof window !== "undefined"
+    ? `${window.location.pathname}${window.location.search}`
+    : "";
+let lastGaPageView =
+  typeof window !== "undefined"
+    ? `${window.location.pathname}${window.location.search}`
+    : "";
 let lastCheckoutPage = "";
 
 export default function MetaPixel() {
@@ -14,6 +20,8 @@ export default function MetaPixel() {
   const [consent, setConsent] = useState(() => getStoredConsent());
 
   const ga4Id = seo?.analytics?.ga4Id || import.meta.env.VITE_GA4_ID || "";
+  const metaPixelId =
+    seo?.analytics?.metaPixelId || "1022329224109595";
 
   // Listen for consent updates from CookieConsent component
   useEffect(() => {
@@ -28,25 +36,25 @@ export default function MetaPixel() {
 
   // Dynamic Meta Pixel & GA4 initialization and SPA PageView tracking
   useEffect(() => {
-    const hasMarketingConsent = consent === "all";
-    const hasAnalyticsConsent = consent === "all" || consent === "analytics";
+    // Tracking active unless user explicitly opted out to "essential" only
+    const hasMarketingConsent = consent !== "essential";
+    const hasAnalyticsConsent = consent !== "essential";
     const page = `${location.pathname}${location.search}`;
 
     if (hasMarketingConsent) {
-      const pixelId = seo?.analytics?.metaPixelId || "1952950858737501";
-      initializeMetaPixel(pixelId);
+      initializeMetaPixel(metaPixelId);
       if (typeof window !== "undefined" && window.fbq) {
         window.fbq("consent", "grant");
       }
 
-      // Fire PageView only AFTER consent grant
+      // Fire PageView on SPA route transitions
       if (lastMetaPageView !== page && typeof window !== "undefined" && window.fbq) {
         window.fbq("track", "PageView");
         lastMetaPageView = page;
       }
     }
 
-    // Google Analytics 4 SPA PageView (only if analytics consent)
+    // Google Analytics 4 SPA PageView
     if (hasAnalyticsConsent && typeof window.gtag === "function" && ga4Id) {
       if (lastGaPageView !== page) {
         window.gtag("event", "page_view", {
@@ -70,11 +78,11 @@ export default function MetaPixel() {
     } else if (!isCheckout) {
       lastCheckoutPage = "";
     }
-  }, [location.pathname, location.search, seo?.analytics?.metaPixelId, ga4Id, consent]);
+  }, [location.pathname, location.search, metaPixelId, ga4Id, consent]);
 
   // Dynamic Google Analytics 4 (GA4) Script & Global gtag Injection
   useEffect(() => {
-    const hasAnalyticsConsent = consent === "all" || consent === "analytics";
+    const hasAnalyticsConsent = consent !== "essential";
     if (!ga4Id || !hasAnalyticsConsent) return;
 
     window.dataLayer = window.dataLayer || [];
@@ -106,8 +114,8 @@ export default function MetaPixel() {
   // Track user engagement clicks (WhatsApp, Phone, Email)
   useEffect(() => {
     const trackContactClick = (event) => {
-      const hasMarketingConsent = getStoredConsent() === "all";
-      if (!hasMarketingConsent) return;
+      const currentConsent = getStoredConsent();
+      if (currentConsent === "essential") return;
 
       const link = event.target.closest("a");
       if (!link) return;
@@ -136,4 +144,3 @@ export default function MetaPixel() {
 
   return null;
 }
-

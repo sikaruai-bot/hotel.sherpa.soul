@@ -521,7 +521,7 @@ export default function CMSSEOTab({ seo, onUpdateSEO, onUpdatePageSEO }) {
                   onChange={(e) =>
                     handleAnalyticsFieldChange("metaPixelId", e.target.value.trim())
                   }
-                  placeholder="e.g. 1952950858737501"
+                  placeholder="e.g. 1022329224109595"
                   className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/40 font-mono"
                 />
                 <p className="text-[11px] text-slate-400">

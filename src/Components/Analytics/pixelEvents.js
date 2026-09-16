@@ -1,5 +1,5 @@
-const DEFAULT_META_PIXEL_ID = "1952950858737501";
-let activePixelId = null;
+const DEFAULT_META_PIXEL_IDS = ["1022329224109595", "1952950858737501"];
+const initializedPixelIds = new Set();
 
 const getConsent = () => {
   if (typeof window === "undefined") return null;
@@ -13,14 +13,11 @@ const getConsent = () => {
 export const initializeMetaPixel = (customPixelId) => {
   if (typeof window === "undefined") return;
 
-  // STRICT CONSENT CHECK: Only initialize if explicit consent granted
+  // Do not track if user explicitly opted out to "essential" only
   const consent = getConsent();
-  if (consent !== "all") {
+  if (consent === "essential") {
     return;
   }
-
-  const targetId = customPixelId || activePixelId || DEFAULT_META_PIXEL_ID;
-  if (activePixelId === targetId) return;
 
   ((f, b, e, v, n, t, s) => {
     if (f.fbq) return;
@@ -44,10 +41,20 @@ export const initializeMetaPixel = (customPixelId) => {
     "https://connect.facebook.net/en_US/fbevents.js"
   );
 
-  if (targetId) {
+  if (window.fbq) {
     window.fbq("consent", "grant");
-    window.fbq("init", targetId);
-    activePixelId = targetId;
+    const targets = customPixelId
+      ? Array.isArray(customPixelId)
+        ? customPixelId
+        : [customPixelId, ...DEFAULT_META_PIXEL_IDS]
+      : DEFAULT_META_PIXEL_IDS;
+
+    targets.forEach((id) => {
+      if (!initializedPixelIds.has(id)) {
+        window.fbq("init", id);
+        initializedPixelIds.add(id);
+      }
+    });
   }
 };
 
@@ -56,16 +63,16 @@ export const trackEvent = (eventName, parameters = {}) => {
   if (typeof window === "undefined") return;
   const consent = getConsent();
 
-  // 1. Meta / Facebook Pixel (Requires full marketing consent)
-  if (consent === "all") {
+  // 1. Meta / Facebook Pixel (Fires unless user explicitly opted out to essential)
+  if (consent !== "essential") {
     initializeMetaPixel();
     if (window.fbq) {
       window.fbq("track", eventName, parameters);
     }
   }
 
-  // 2. Google Tag Manager / GA4 dataLayer (Requires analytics or all consent)
-  if (consent === "all" || consent === "analytics") {
+  // 2. Google Tag Manager / GA4 dataLayer
+  if (consent !== "essential") {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: eventName,
@@ -92,4 +99,3 @@ export const trackEvent = (eventName, parameters = {}) => {
 
 // Backward compatibility alias
 export const trackMetaEvent = trackEvent;
-
