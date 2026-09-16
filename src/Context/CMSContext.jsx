@@ -151,9 +151,9 @@ const DEFAULT_CMS_DATA = {
       title: "Take a Video Tour of Hotel Sherpa Soul",
       subtitle: "Experience Our Peaceful Stay Before You Arrive",
       paragraph: "Watch our hotel walkthrough video to explore our comfortable rooms, private balconies, quiet corridors, and shared rooftop kitchen in Thamel, Kathmandu.",
-      tourType: "video", // 'video' | 'youtube' | 'iframe'
-      embedUrl: "",
-      coverImage: "/room1/room.webp",
+      tourType: "youtube",
+      embedUrl: "https://youtu.be/fvznqsF-kkM?si=wmKJwCcIt_2IH3jA",
+      coverImage: "https://img.youtube.com/vi/fvznqsF-kkM/maxresdefault.jpg",
       buttonText: "Book Your Stay Direct (10% Off)",
       buttonLink: "/book-now",
       features: [
@@ -329,6 +329,12 @@ export function CMSProvider({ children }) {
               virtualTour: {
                 ...DEFAULT_CMS_DATA.content.virtualTour,
                 ...(parsed.content?.virtualTour || {}),
+                embedUrl:
+                  parsed.content?.virtualTour?.embedUrl ||
+                  DEFAULT_CMS_DATA.content.virtualTour.embedUrl,
+                coverImage:
+                  parsed.content?.virtualTour?.coverImage ||
+                  DEFAULT_CMS_DATA.content.virtualTour.coverImage,
               },
             },
             media: { ...DEFAULT_CMS_DATA.media, ...(parsed.media || {}) },
