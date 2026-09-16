@@ -49,30 +49,35 @@
     </script>
     <!-- End Meta Pixel Code -->
 
-    <!-- Google Consent Mode v2 Default Configuration (Strict Privacy Gate) -->
+    <!-- Google tag (gtag.js) GA4: G-E7Z3QDR3KD & Google Tag Manager: GTM-PFRV7ZTV -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7Z3QDR3KD"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-      // Check stored consent
+      // Check stored consent (allowed by default for global ads unless user opted out to essential)
       var storedConsent = null;
       try {
         storedConsent = localStorage.getItem('hss_cookie_consent');
       } catch (e) {}
 
-      var isAnalyticsGranted = storedConsent === 'all' || storedConsent === 'analytics';
-      var isMarketingGranted = storedConsent === 'all';
+      var isOptedOut = storedConsent === 'essential';
 
       gtag('consent', 'default', {
-        'analytics_storage': isAnalyticsGranted ? 'granted' : 'denied',
-        'ad_storage': isMarketingGranted ? 'granted' : 'denied',
-        'ad_user_data': isMarketingGranted ? 'granted' : 'denied',
-        'ad_personalization': isMarketingGranted ? 'granted' : 'denied',
+        'analytics_storage': isOptedOut ? 'denied' : 'granted',
+        'ad_storage': isOptedOut ? 'denied' : 'granted',
+        'ad_user_data': isOptedOut ? 'denied' : 'granted',
+        'ad_personalization': isOptedOut ? 'denied' : 'granted',
         'wait_for_update': 500
       });
 
-      // Only load GTM if consent was previously granted
-      if (isAnalyticsGranted) {
+      gtag('config', 'G-E7Z3QDR3KD', {
+        send_page_view: true
+      });
+
+      // Load GTM
+      if (!isOptedOut) {
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -324,6 +329,10 @@
       <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1022329224109595&ev=PageView&noscript=1" alt="Meta Pixel" />
       <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1952950858737501&ev=PageView&noscript=1" alt="Meta Pixel" />
     </noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFRV7ZTV"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
