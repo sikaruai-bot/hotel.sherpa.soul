@@ -313,7 +313,10 @@ export default function BookNowPage() {
                     <div className="relative h-48 overflow-hidden bg-slate-100">
                       <img
                         src={room.image}
-                        alt={room.title}
+                        alt={`${room.title} - Hotel Sherpa Soul Thamel Kathmandu`}
+                        loading="lazy"
+                        width="400"
+                        height="260"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-3 left-3 bg-[#FB6C01] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">
@@ -541,142 +544,185 @@ export default function BookNowPage() {
                 <div className="space-y-8">
                   {/* Personal Information Section */}
                   <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                       <User className="w-5 h-5 text-blue-600" />
                       Personal Information
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="relative group">
-                        <input
-                          type="text"
-                          name="fullName"
-                          placeholder="Full Name"
-                          value={formData.fullName}
-                          onChange={handleChange}
-                          required
-                          className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 bg-white/80 backdrop-blur-sm placeholder-gray-400"
-                        />
-                        <User className="absolute right-3 top-4 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                      <div>
+                        <label htmlFor="booking-fullName" className="block text-sm font-semibold text-slate-800 mb-1.5">
+                          Full Name <span className="text-red-600">*</span>
+                        </label>
+                        <div className="relative group">
+                          <input
+                            type="text"
+                            id="booking-fullName"
+                            name="fullName"
+                            placeholder="e.g. John Doe"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                            required
+                            className="w-full py-3.5 px-4 pr-11 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 bg-white text-base text-slate-900 placeholder-gray-400 min-h-[48px]"
+                          />
+                          <User className="absolute right-3.5 top-3.5 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors pointer-events-none" />
+                        </div>
                       </div>
-                      <div className="relative group">
-                        <input
-                          type="email"
-                          name="email"
-                          placeholder="Email Address"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                          className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 bg-white/80 backdrop-blur-sm placeholder-gray-400"
-                        />
-                        <Mail className="absolute right-3 top-4 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+
+                      <div>
+                        <label htmlFor="booking-email" className="block text-sm font-semibold text-slate-800 mb-1.5">
+                          Email Address <span className="text-red-600">*</span>
+                        </label>
+                        <div className="relative group">
+                          <input
+                            type="email"
+                            id="booking-email"
+                            name="email"
+                            placeholder="e.g. guest@example.com"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="w-full py-3.5 px-4 pr-11 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 bg-white text-base text-slate-900 placeholder-gray-400 min-h-[48px]"
+                          />
+                          <Mail className="absolute right-3.5 top-3.5 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors pointer-events-none" />
+                        </div>
                       </div>
-                      <div className="relative group md:col-span-2">
-                        <input
-                          type="tel"
-                          name="phone"
-                          placeholder="Phone Number"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          required
-                          className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 bg-white/80 backdrop-blur-sm placeholder-gray-400"
-                        />
-                        <Phone className="absolute right-3 top-4 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+
+                      <div className="md:col-span-2">
+                        <label htmlFor="booking-phone" className="block text-sm font-semibold text-slate-800 mb-1.5">
+                          Phone / WhatsApp Number <span className="text-red-600">*</span>
+                        </label>
+                        <div className="relative group">
+                          <input
+                            type="tel"
+                            id="booking-phone"
+                            name="phone"
+                            placeholder="e.g. +977-9800000000"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            required
+                            className="w-full py-3.5 px-4 pr-11 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 bg-white text-base text-slate-900 placeholder-gray-400 min-h-[48px]"
+                          />
+                          <Phone className="absolute right-3.5 top-3.5 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors pointer-events-none" />
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Room Selection Section */}
                   <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                       <Hotel className="w-5 h-5 text-purple-600" />
                       Room Selection
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="relative">
-                        <select
-                          name="roomType"
-                          value={formData.roomType}
-                          onChange={handleChange}
-                          required
-                          className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all duration-300 bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
-                        >
-                          <option value="">Select Room Type</option>
-                          {roomOptions.map((room, idx) => (
-                            <option key={idx} value={room.label}>
-                              {room.label} (Max {room.maxGuests} guest
-                              {room.maxGuests > 1 ? "s" : ""})
-                            </option>
-                          ))}
-                        </select>
-                        <Hotel className="absolute right-3 top-4 w-5 h-5 text-gray-400 pointer-events-none" />
+                      <div>
+                        <label htmlFor="booking-roomType" className="block text-sm font-semibold text-slate-800 mb-1.5">
+                          Room Category <span className="text-red-600">*</span>
+                        </label>
+                        <div className="relative">
+                          <select
+                            id="booking-roomType"
+                            name="roomType"
+                            value={formData.roomType}
+                            onChange={handleChange}
+                            required
+                            className="w-full py-3.5 px-4 pr-11 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all duration-300 bg-white text-base text-slate-900 appearance-none cursor-pointer min-h-[48px]"
+                          >
+                            <option value="">Select Room Type</option>
+                            {roomOptions.map((room, idx) => (
+                              <option key={idx} value={room.label}>
+                                {room.label} (Max {room.maxGuests} guest
+                                {room.maxGuests > 1 ? "s" : ""})
+                              </option>
+                            ))}
+                          </select>
+                          <Hotel className="absolute right-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
+                        </div>
                       </div>
-                      <div className="relative">
-                        <input
-                          type="number"
-                          name="numberOfRooms"
-                          value={formData.numberOfRooms}
-                          onChange={handleChange}
-                          min="1"
-                          required
-                          className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all duration-300 bg-white/80 backdrop-blur-sm"
-                          placeholder="Number of Rooms"
-                        />
+
+                      <div>
+                        <label htmlFor="booking-numberOfRooms" className="block text-sm font-semibold text-slate-800 mb-1.5">
+                          Number of Rooms <span className="text-red-600">*</span>
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="number"
+                            id="booking-numberOfRooms"
+                            name="numberOfRooms"
+                            value={formData.numberOfRooms}
+                            onChange={handleChange}
+                            min="1"
+                            required
+                            className="w-full py-3.5 px-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all duration-300 bg-white text-base text-slate-900 min-h-[48px]"
+                            placeholder="Number of Rooms"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Guest Information Section */}
                   <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-2xl p-6 border border-green-100">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                       <Users className="w-5 h-5 text-green-600" />
                       Guest Information
                     </h3>
-                    <div className="relative">
-                      <input
-                        type="number"
-                        name="numberOfPeople"
-                        value={formData.numberOfPeople}
-                        onChange={handleChange}
-                        min="1"
-                        max={maxGuests}
-                        required
-                        className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 bg-white/80 backdrop-blur-sm"
-                        placeholder="Number of Guests"
-                      />
-                      <Users className="absolute right-3 top-4 w-5 h-5 text-gray-400" />
+                    <div>
+                      <label htmlFor="booking-numberOfPeople" className="block text-sm font-semibold text-slate-800 mb-1.5">
+                        Total Number of Guests <span className="text-red-600">*</span>
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="number"
+                          id="booking-numberOfPeople"
+                          name="numberOfPeople"
+                          value={formData.numberOfPeople}
+                          onChange={handleChange}
+                          min="1"
+                          max={maxGuests}
+                          required
+                          className="w-full py-3.5 px-4 pr-11 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 bg-white text-base text-slate-900 min-h-[48px]"
+                          placeholder="Number of Guests"
+                        />
+                        <Users className="absolute right-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
+                      </div>
                     </div>
                     {formData.roomType && (
-                      <p className="text-sm text-green-600 mt-2 font-medium">
-                        Maximum {maxGuests} guest{maxGuests > 1 ? "s" : ""} for{" "}
-                        {formData.roomType}
+                      <p className="text-sm text-green-700 mt-2 font-medium">
+                        Maximum {maxGuests} guest{maxGuests > 1 ? "s" : ""} allowed for {formData.roomType}
                       </p>
                     )}
                   </div>
 
                   {/* Date Selection Section */}
                   <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-100">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                       <Calendar className="w-5 h-5 text-orange-600" />
                       Stay Duration
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="relative">
+                      <div>
+                        <label htmlFor="booking-checkIn" className="block text-sm font-semibold text-slate-800 mb-1.5">
+                          Check-in Date <span className="text-red-600">*</span>
+                        </label>
                         <input
                           type="date"
+                          id="booking-checkIn"
                           name="checkIn"
                           value={formData.checkIn}
                           onChange={handleChange}
                           min={formatDate(today)}
                           required
-                          className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-4 focus:ring-orange-100 transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                          className="w-full py-3.5 px-4 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-4 focus:ring-orange-100 transition-all duration-300 bg-white text-base text-slate-900 min-h-[48px]"
                         />
-                        <label className="absolute -top-2 left-3 bg-white px-2 text-xs font-semibold text-orange-600">
-                          Check-in Date
-                        </label>
                       </div>
-                      <div className="relative">
+                      <div>
+                        <label htmlFor="booking-checkOut" className="block text-sm font-semibold text-slate-800 mb-1.5">
+                          Check-out Date <span className="text-red-600">*</span>
+                        </label>
                         <input
                           type="date"
+                          id="booking-checkOut"
                           name="checkOut"
                           value={formData.checkOut}
                           onChange={handleChange}
@@ -686,33 +732,31 @@ export default function BookNowPage() {
                               : formatDate(tomorrow)
                           }
                           required
-                          className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-4 focus:ring-orange-100 transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                          className="w-full py-3.5 px-4 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:ring-4 focus:ring-orange-100 transition-all duration-300 bg-white text-base text-slate-900 min-h-[48px]"
                         />
-                        <label className="absolute -top-2 left-3 bg-white px-2 text-xs font-semibold text-orange-600">
-                          Check-out Date
-                        </label>
                       </div>
                     </div>
                   </div>
 
                   {/* Document Upload Section */}
                   <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6 border border-indigo-100">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-1 flex items-center gap-2">
+                    <label htmlFor="booking-document" className="block text-lg font-semibold text-slate-900 mb-1 flex items-center gap-2">
                       <FileText className="w-5 h-5 text-indigo-600" />
                       Document Upload
                       <span className="text-xs text-slate-500 font-normal ml-auto">(Optional online)</span>
-                    </h3>
-                    <p className="text-xs text-gray-500 mb-4">
+                    </label>
+                    <p className="text-xs text-slate-600 mb-4">
                       Upload photo of passport / citizenship for faster check-in, or present original upon arrival at reception.
                     </p>
                     <div className="relative">
                       <input
                         type="file"
+                        id="booking-document"
                         accept="image/*,.pdf"
                         onChange={handleFileUpload}
-                        className="w-full p-4 border-2 border-dashed border-gray-300 rounded-xl focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition-all duration-300 bg-white/80 backdrop-blur-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer"
+                        className="w-full py-3.5 px-4 border-2 border-dashed border-gray-300 rounded-xl focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition-all duration-300 bg-white text-base text-slate-900 file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer min-h-[48px]"
                       />
-                      <Upload className="absolute right-3 top-4 w-5 h-5 text-gray-400" />
+                      <Upload className="absolute right-3.5 top-4 w-5 h-5 text-gray-400 pointer-events-none" />
                     </div>
                     {uploadedDocument && (
                       <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg flex items-center gap-2">

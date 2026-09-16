@@ -155,7 +155,9 @@ export default function Navbar() {
               {/* Mobile Hamburger Menu */}
               <motion.button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 z-50"
+                className="lg:hidden flex flex-col justify-center items-center w-11 h-11 min-w-[44px] min-h-[44px] p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/90 hover:bg-slate-100 space-y-1.5 z-50 focus:outline-none focus:ring-2 focus:ring-[#01366E]"
+                aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMobileMenuOpen}
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.span
@@ -190,7 +192,7 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -199,32 +201,33 @@ export default function Navbar() {
             />
 
             <motion.div
-              className="fixed top-28 bottom-0 left-0 right-0 bg-white shadow-lg overflow-y-auto z-50 rounded-t-3xl"
+              className="fixed top-28 bottom-0 left-0 right-0 bg-white shadow-2xl overflow-y-auto z-50 rounded-t-3xl border-t border-slate-200/80 pb-8"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               {/* Mobile Menu 10% Discount Banner */}
-              <div className="mx-4 mt-4 p-3.5 rounded-2xl bg-gradient-to-r from-[#01366E] to-[#0A2540] text-white border border-amber-400/40 shadow-md">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="bg-[#FB6C01] text-white font-black text-[10px] px-2 py-0.5 rounded-full uppercase">
+              <div className="mx-4 mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#01366E] to-[#0A2540] text-white border border-amber-400/40 shadow-lg">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="bg-[#FB6C01] text-white font-black text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                     10% OFF
                   </span>
-                  <span className="font-bold text-xs text-amber-300">Direct Booking Deal</span>
+                  <span className="font-bold text-sm text-amber-300">Direct Booking Special</span>
                 </div>
-                <p className="text-[11px] text-slate-200 mb-2">
-                  Get 10% discount on all room bookings made through our site.
+                <p className="text-xs text-slate-200 mb-3 leading-relaxed">
+                  Book direct on our website & save 10% on your entire stay in Thamel.
                 </p>
                 <button
                   onClick={handleBookingClick}
-                  className="w-full py-2 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white font-bold text-xs rounded-xl shadow-md"
+                  className="w-full py-3 px-4 min-h-[44px] bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-[#E05A00] hover:to-amber-600 text-white font-bold text-sm rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-98"
                 >
-                  Book with 10% Discount &rarr;
+                  <span>Book with 10% Discount</span>
+                  <span>&rarr;</span>
                 </button>
               </div>
 
-              <nav className="flex flex-col px-4 py-4">
+              <nav className="flex flex-col px-4 py-4 space-y-1">
                 {navItems.map((item) => (
                   <NavLink
                     key={item.id}
@@ -233,7 +236,6 @@ export default function Navbar() {
                     onClick={() => setIsMobileMenuOpen(false)}
                   />
                 ))}
-
               </nav>
             </motion.div>
           </>

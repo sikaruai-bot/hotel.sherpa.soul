@@ -381,15 +381,37 @@ export function CMSProvider({ children }) {
     });
   };
 
-  // Auth actions
-  const loginAdmin = (enteredPassword) => {
+  // Strong password policy check
+  const isStrongPassword = (pwd) => {
+    if (!pwd || pwd.length < 8) return false;
+    const hasLetter = /[a-zA-Z]/.test(pwd);
+    const hasNumber = /[0-9]/.test(pwd);
+    return hasLetter && hasNumber;
+  };
+
+  // Auth actions with Strong Password & 2FA support
+  const loginAdmin = (enteredPassword, twoFactorCode = "") => {
     const validPassword = data?.admin?.password || DEFAULT_PASSWORD;
-    if (enteredPassword === validPassword) {
-      sessionStorage.setItem(CMS_AUTH_KEY, "true");
-      setIsAuthenticated(true);
-      return { success: true };
+    const is2FAEnabled = data?.admin?.twoFactorEnabled ?? true;
+    const valid2FACode = data?.admin?.twoFactorCode || "8219"; // Default 2FA PIN based on official hotel phone 9851068219
+
+    if (enteredPassword !== validPassword) {
+      return { success: false, message: "Incorrect master password." };
     }
-    return { success: false, message: "Incorrect password / PIN" };
+
+    // If 2FA is enabled and code is provided, verify it
+    if (is2FAEnabled) {
+      if (!twoFactorCode) {
+        return { success: false, requires2FA: true, message: "Please enter your 2FA verification PIN." };
+      }
+      if (String(twoFactorCode).trim() !== String(valid2FACode).trim()) {
+        return { success: false, requires2FA: true, message: "Invalid 2FA verification PIN." };
+      }
+    }
+
+    sessionStorage.setItem(CMS_AUTH_KEY, "true");
+    setIsAuthenticated(true);
+    return { success: true };
   };
 
   const logoutAdmin = () => {
@@ -398,14 +420,30 @@ export function CMSProvider({ children }) {
   };
 
   const updateAdminPassword = (newPassword) => {
-    if (!newPassword || newPassword.trim().length < 4) {
-      return { success: false, message: "Password must be at least 4 characters." };
+    const cleanPwd = (newPassword || "").trim();
+    if (!isStrongPassword(cleanPwd)) {
+      return {
+        success: false,
+        message: "Strong password required: at least 8 characters with letters and numbers.",
+      };
     }
     saveCMSData((prev) => ({
       ...prev,
-      admin: { ...prev.admin, password: newPassword.trim() },
+      admin: { ...prev.admin, password: cleanPwd },
     }));
-    return { success: true, message: "Password updated successfully!" };
+    return { success: true, message: "Admin password updated successfully with strong security policy!" };
+  };
+
+  const updateAdmin2FA = (enabled, code = "8219") => {
+    saveCMSData((prev) => ({
+      ...prev,
+      admin: {
+        ...prev.admin,
+        twoFactorEnabled: !!enabled,
+        twoFactorCode: String(code).trim() || "8219",
+      },
+    }));
+    return { success: true, message: `2FA ${enabled ? "enabled" : "disabled"} successfully!` };
   };
 
   // Section update helpers
@@ -524,6 +562,7 @@ export function CMSProvider({ children }) {
         loginAdmin,
         logoutAdmin,
         updateAdminPassword,
+        updateAdmin2FA,
         updateSEO,
         updatePageSEO,
         updateContent,

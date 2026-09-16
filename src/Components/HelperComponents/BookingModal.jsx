@@ -217,7 +217,10 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                       <div className="relative h-48 overflow-hidden bg-slate-100">
                         <img
                           src={String((Array.isArray(room.image) ? room.image[0] : room.image) || "/room1/room.webp").replace(/\.jpeg$/i, ".webp")}
-                          alt={room.name ? `${room.name} - Hotel Sherpa Soul` : "Hotel Sherpa Soul Room"}
+                          alt={room.name ? `${room.name} - Hotel Sherpa Soul Thamel Kathmandu` : "Hotel Sherpa Soul Room Thamel Kathmandu"}
+                          loading="lazy"
+                          width="400"
+                          height="240"
                           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                           onError={(e) => {
                             e.currentTarget.onerror = null;

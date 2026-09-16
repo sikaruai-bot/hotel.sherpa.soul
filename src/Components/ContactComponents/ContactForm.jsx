@@ -193,59 +193,63 @@ export default function ContactForm() {
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#01366E]">
-                      {t("contact.form.data.name")} *
+                    <label htmlFor="contact-name" className="block text-sm font-bold text-slate-800 mb-2 transition-colors group-focus-within:text-[#01366E]">
+                      {t("contact.form.data.name")} <span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
+                      id="contact-name"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
+                      className="w-full border-2 border-slate-200 rounded-xl p-4 min-h-[48px] bg-slate-50/50 text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
                       placeholder="Enter your full name"
                       required
                     />
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#01366E]">
-                      {t("contact.form.data.email")} *
+                    <label htmlFor="contact-email" className="block text-sm font-bold text-slate-800 mb-2 transition-colors group-focus-within:text-[#01366E]">
+                      {t("contact.form.data.email")} <span className="text-red-600">*</span>
                     </label>
                     <input
                       type="email"
+                      id="contact-email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
+                      className="w-full border-2 border-slate-200 rounded-xl p-4 min-h-[48px] bg-slate-50/50 text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
                       placeholder="your@email.com"
                       required
                     />
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#01366E]">
+                    <label htmlFor="contact-phone" className="block text-sm font-bold text-slate-800 mb-2 transition-colors group-focus-within:text-[#01366E]">
                       Phone Number (Optional)
                     </label>
                     <input
                       type="tel"
+                      id="contact-phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
+                      className="w-full border-2 border-slate-200 rounded-xl p-4 min-h-[48px] bg-slate-50/50 text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
                       placeholder="+977 98XXXXXXXX"
                     />
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-bold text-slate-700 mb-3 transition-colors group-focus-within:text-[#01366E]">
-                      {t("contact.form.data.msg")} *
+                    <label htmlFor="contact-message" className="block text-sm font-bold text-slate-800 mb-2 transition-colors group-focus-within:text-[#01366E]">
+                      {t("contact.form.data.msg")} <span className="text-red-600">*</span>
                     </label>
                     <textarea
+                      id="contact-message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                       rows="5"
-                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white resize-none transition-all duration-300"
+                      className="w-full border-2 border-slate-200 rounded-xl p-4 bg-slate-50/50 text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white resize-none transition-all duration-300"
                       placeholder="Tell us about your inquiry, booking dates, or request..."
                       required
                     />
