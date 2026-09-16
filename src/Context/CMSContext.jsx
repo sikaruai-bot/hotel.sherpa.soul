@@ -326,16 +326,18 @@ export function CMSProvider({ children }) {
             content: {
               ...DEFAULT_CMS_DATA.content,
               ...(parsed.content || {}),
-              virtualTour: {
-                ...DEFAULT_CMS_DATA.content.virtualTour,
-                ...(parsed.content?.virtualTour || {}),
-                embedUrl:
-                  parsed.content?.virtualTour?.embedUrl ||
-                  DEFAULT_CMS_DATA.content.virtualTour.embedUrl,
-                coverImage:
-                  parsed.content?.virtualTour?.coverImage ||
-                  DEFAULT_CMS_DATA.content.virtualTour.coverImage,
-              },
+              virtualTour: (() => {
+                const rawTour = parsed.content?.virtualTour || {};
+                const tourUrl = rawTour.embedUrl || DEFAULT_CMS_DATA.content.virtualTour.embedUrl;
+                const isYt = /youtu\.?be|youtube\.com/i.test(tourUrl);
+                return {
+                  ...DEFAULT_CMS_DATA.content.virtualTour,
+                  ...rawTour,
+                  tourType: isYt ? "youtube" : (rawTour.tourType || DEFAULT_CMS_DATA.content.virtualTour.tourType),
+                  embedUrl: tourUrl.includes("google.com/maps") ? DEFAULT_CMS_DATA.content.virtualTour.embedUrl : tourUrl,
+                  coverImage: rawTour.coverImage || DEFAULT_CMS_DATA.content.virtualTour.coverImage,
+                };
+              })(),
             },
             media: { ...DEFAULT_CMS_DATA.media, ...(parsed.media || {}) },
             rooms: sanitizedRooms,

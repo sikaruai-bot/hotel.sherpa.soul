@@ -14,6 +14,32 @@ import {
 } from "lucide-react";
 import { useCMS } from "../../Context/CMSContext";
 
+export const extractYouTubeId = (input = "") => {
+  if (!input) return null;
+  const str = String(input).trim();
+  if (/^[a-zA-Z0-9_-]{11}$/.test(str)) {
+    return str;
+  }
+  const shortMatch = str.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/i);
+  if (shortMatch && shortMatch[1]) return shortMatch[1];
+
+  const longMatch = str.match(/(?:youtube\.com\/(?:embed\/|v\/|watch\?v=|shorts\/|live\/))([a-zA-Z0-9_-]{11})/i);
+  if (longMatch && longMatch[1]) return longMatch[1];
+
+  const iframeMatch = str.match(/src=["'](?:https?:)?\/\/(?:www\.)?(?:youtube\.com|youtube-nocookie\.com)\/embed\/([a-zA-Z0-9_-]{11})["']/i);
+  if (iframeMatch && iframeMatch[1]) return iframeMatch[1];
+
+  return null;
+};
+
+export const extractVimeoId = (input = "") => {
+  if (!input) return null;
+  const str = String(input).trim();
+  const match = str.match(/vimeo\.com\/(?:video\/)?([0-9]+)/i);
+  if (match && match[1]) return match[1];
+  return null;
+};
+
 export const cleanTourEmbedUrl = (rawInput) => {
   if (!rawInput) return "";
   const trimmed = String(rawInput).trim();
@@ -21,34 +47,17 @@ export const cleanTourEmbedUrl = (rawInput) => {
   // If user pasted an iframe tag, extract the src attribute
   const iframeMatch = trimmed.match(/src=["']([^"']+)["']/i);
   if (iframeMatch && iframeMatch[1]) {
-    return iframeMatch[1];
+    return cleanTourEmbedUrl(iframeMatch[1]);
   }
 
-  // If YouTube link
-  if (trimmed.includes("youtube.com/watch")) {
-    try {
-      const urlObj = new URL(trimmed);
-      const v = urlObj.searchParams.get("v");
-      if (v) return `https://www.youtube-nocookie.com/embed/${v}?autoplay=1&rel=0&modestbranding=1`;
-    } catch (e) {
-      // fallback
-    }
-  }
-  if (trimmed.includes("youtu.be/")) {
-    const id = trimmed.split("youtu.be/")[1]?.split("?")[0]?.split("&")[0];
-    if (id) return `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
-  }
-  if (trimmed.includes("youtube.com/shorts/")) {
-    const id = trimmed.split("youtube.com/shorts/")[1]?.split("?")[0];
-    if (id) return `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+  const ytId = extractYouTubeId(trimmed);
+  if (ytId) {
+    return `https://www.youtube.com/embed/${ytId}?autoplay=1&mute=0&rel=0&playsinline=1&enablejsapi=1`;
   }
 
-  // If Vimeo
-  if (trimmed.includes("vimeo.com/")) {
-    const id = trimmed.split("vimeo.com/")[1]?.split("?")[0];
-    if (id && !trimmed.includes("player.vimeo.com")) {
-      return `https://player.vimeo.com/video/${id}?autoplay=1`;
-    }
+  const vimeoId = extractVimeoId(trimmed);
+  if (vimeoId) {
+    return `https://player.vimeo.com/video/${vimeoId}?autoplay=1`;
   }
 
   return trimmed;
@@ -73,8 +82,20 @@ export default function HomeVirtualTour() {
   const paragraph =
     tour?.paragraph ||
     "Watch our hotel walkthrough video to explore our comfortable rooms, private balconies, quiet corridors, and shared rooftop kitchen in Thamel, Kathmandu.";
-  const coverImage = tour?.coverImage || "/room1/room.webp";
   const rawEmbedUrl = tour?.embedUrl || "";
+  const activeEmbedUrl = cleanTourEmbedUrl(rawEmbedUrl);
+
+  const youtubeId = extractYouTubeId(rawEmbedUrl) || extractYouTubeId(activeEmbedUrl);
+  const isYouTube = !!youtubeId;
+  const vimeoId = extractVimeoId(rawEmbedUrl) || extractVimeoId(activeEmbedUrl);
+  const isVimeo = !!vimeoId;
+
+  // Fallback cover image: if YouTube, default to high-res YouTube thumbnail
+  const defaultCover = isYouTube && youtubeId
+    ? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`
+    : "/room1/room.webp";
+  const coverImage = tour?.coverImage || defaultCover;
+
   const buttonText = tour?.buttonText || "Book Your Stay Direct (10% Off)";
   const buttonLink = tour?.buttonLink || "/book-now";
 
@@ -89,21 +110,18 @@ export default function HomeVirtualTour() {
       ? tour.features
       : defaultFeatures;
 
-  const activeEmbedUrl = cleanTourEmbedUrl(rawEmbedUrl);
-
-  // Auto-detect if it is a direct video file (data:video, .mp4, .webm, or blob)
+  // Strictly ONLY direct HTML5 video if NOT YouTube and NOT Vimeo
   const isDirectVideo =
-    tour?.tourType === "video" ||
-    activeEmbedUrl.startsWith("data:video/") ||
-    activeEmbedUrl.startsWith("blob:") ||
-    activeEmbedUrl.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i);
+    !isYouTube &&
+    !isVimeo &&
+    (
+      activeEmbedUrl.startsWith("data:video/") ||
+      activeEmbedUrl.startsWith("blob:") ||
+      /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(activeEmbedUrl) ||
+      tour?.tourType === "video"
+    );
 
-  const isIframeOrEmbed =
-    activeEmbedUrl.includes("youtube") ||
-    activeEmbedUrl.includes("vimeo") ||
-    activeEmbedUrl.includes("embed") ||
-    tour?.tourType === "iframe" ||
-    tour?.tourType === "youtube";
+  const isIframeOrEmbed = isYouTube || isVimeo || !!activeEmbedUrl;
 
   const toggleFullscreen = () => {
     if (!containerRef.current) return;
@@ -165,6 +183,10 @@ export default function HomeVirtualTour() {
             <div className="relative w-full h-full group cursor-pointer" onClick={() => setIsPlaying(true)}>
               <img
                 src={coverImage}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/room1/room.webp";
+                }}
                 alt="Hotel Sherpa Soul Video Tour"
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 filter brightness-90"
                 loading="lazy"
@@ -221,8 +243,9 @@ export default function HomeVirtualTour() {
                   poster={coverImage}
                 />
               ) : isIframeOrEmbed && activeEmbedUrl ? (
-                /* YouTube or Vimeo Player */
+                /* YouTube, Vimeo, or Embed Player */
                 <iframe
+                  key={activeEmbedUrl}
                   src={activeEmbedUrl}
                   title="Hotel Sherpa Soul Video Walkthrough"
                   className="w-full h-full border-0"
@@ -242,6 +265,19 @@ export default function HomeVirtualTour() {
 
               {/* Viewer Controls (Top Right) */}
               <div className="absolute top-4 right-4 flex items-center gap-2 z-20">
+                {isYouTube && youtubeId && (
+                  <a
+                    href={`https://www.youtube.com/watch?v=${youtubeId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-2 rounded-xl bg-red-600/90 hover:bg-red-600 text-white text-xs font-semibold backdrop-blur-md transition-all shadow-lg flex items-center gap-1.5"
+                    title="Open in YouTube"
+                  >
+                    <Film className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">YouTube</span>
+                  </a>
+                )}
+
                 <button
                   onClick={toggleFullscreen}
                   className="p-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-white backdrop-blur-md border border-slate-700/80 transition-all shadow-lg hover:scale-105"

@@ -18,7 +18,7 @@ import {
   Check,
 } from "lucide-react";
 import { optimizeMediaFile, HOTEL_PRESET_PHOTOS } from "./mediaUtils";
-import { cleanTourEmbedUrl } from "../HomeComponents/HomeVirtualTour";
+import { cleanTourEmbedUrl, extractYouTubeId } from "../HomeComponents/HomeVirtualTour";
 
 export default function CMSContentTab({ content, onUpdateContent }) {
   const [activeSection, setActiveSection] = useState("virtualTour"); // virtualTour | hero | philosophy | contact | footer
@@ -29,22 +29,21 @@ export default function CMSContentTab({ content, onUpdateContent }) {
   const footer = content?.footer || {};
   const virtualTour = content?.virtualTour || {
     enabled: true,
-    badge: "360° Virtual Experience",
-    title: "Step Inside Hotel Sherpa Soul in 360°",
-    subtitle: "Immersive Room & Hotel Walkthrough",
+    badge: "Hotel Video Tour",
+    title: "Take a Video Tour of Hotel Sherpa Soul",
+    subtitle: "Experience Our Peaceful Stay Before You Arrive",
     paragraph:
-      "Take an interactive virtual walkthrough of our boutique rooms, private balconies, quiet corridors, rooftop terrace, and shared guest kitchen in Thamel, Kathmandu before arriving.",
-    tourType: "iframe",
-    embedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.186847847385!2d85.3106263!3d27.7154032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19502be1b869%3A0xb304b7b2fb66a1ec!2sHotel%20Sherpa%20Soul!5e0!3m2!1sen!2snp!4v1717000000000!5m2!1sen!2snp",
-    coverImage: "/room1/room.webp",
+      "Watch our hotel walkthrough video to explore our comfortable rooms, private balconies, quiet corridors, and shared rooftop kitchen in Thamel, Kathmandu.",
+    tourType: "youtube",
+    embedUrl: "https://youtu.be/fvznqsF-kkM?si=wmKJwCcIt_2IH3jA",
+    coverImage: "https://img.youtube.com/vi/fvznqsF-kkM/maxresdefault.jpg",
     buttonText: "Book Your Stay Direct (10% Off)",
     buttonLink: "/book-now",
     features: [
-      "Interactive 360° Room Walkthrough",
-      "Air Conditioned Deluxe Rooms",
-      "Fully Equipped Shared Kitchen",
-      "Quiet & Soundproofed Sleep Environment",
+      "Cozy, Clean & Peaceful Rooms",
+      "Air Conditioned Deluxe Amenities",
+      "Shared Kitchen for Long-Stay Guests",
+      "Quiet Sleep Environment in Thamel",
     ],
   };
 
@@ -134,7 +133,49 @@ export default function CMSContentTab({ content, onUpdateContent }) {
     );
   };
 
+  // Auto-detect YouTube or direct video when user inputs a URL
+  const handleVirtualTourEmbedUrlChange = (val) => {
+    const trimmed = String(val).trim();
+    const detectedYtId = extractYouTubeId(trimmed);
+    if (detectedYtId) {
+      onUpdateContent("virtualTour", {
+        embedUrl: trimmed,
+        tourType: "youtube",
+        coverImage:
+          virtualTour.coverImage && !virtualTour.coverImage.includes("img.youtube.com")
+            ? virtualTour.coverImage
+            : `https://img.youtube.com/vi/${detectedYtId}/maxresdefault.jpg`,
+      });
+      return;
+    }
+    if (trimmed.includes("vimeo.com")) {
+      onUpdateContent("virtualTour", {
+        embedUrl: trimmed,
+        tourType: "iframe",
+      });
+      return;
+    }
+    if (/\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(trimmed) || trimmed.startsWith("data:video")) {
+      onUpdateContent("virtualTour", {
+        embedUrl: trimmed,
+        tourType: "video",
+      });
+      return;
+    }
+    handleVirtualTourChange("embedUrl", val);
+  };
+
   const previewCleanUrl = cleanTourEmbedUrl(virtualTour.embedUrl);
+  const previewYtId = extractYouTubeId(virtualTour.embedUrl);
+  const isPreviewDirectVideo =
+    !previewYtId &&
+    !virtualTour.embedUrl?.includes("vimeo") &&
+    (
+      virtualTour.embedUrl?.startsWith("data:video/") ||
+      virtualTour.embedUrl?.startsWith("blob:") ||
+      /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(virtualTour.embedUrl || "") ||
+      virtualTour.tourType === "video"
+    );
 
   return (
     <div className="space-y-8">
@@ -322,7 +363,7 @@ export default function CMSContentTab({ content, onUpdateContent }) {
                       rows={2}
                       value={virtualTour.embedUrl || ""}
                       onChange={(e) =>
-                        handleVirtualTourChange("embedUrl", e.target.value)
+                        handleVirtualTourEmbedUrlChange(e.target.value)
                       }
                       placeholder="e.g. https://www.youtube.com/watch?v=... or https://youtu.be/... or direct MP4 URL"
                       className="w-full px-4 py-2.5 bg-slate-800/80 border border-slate-700 rounded-xl text-white text-xs font-mono focus:outline-none focus:ring-2 focus:ring-amber-500/40"
@@ -565,7 +606,7 @@ export default function CMSContentTab({ content, onUpdateContent }) {
                   {/* Mock Container */}
                   <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden border border-slate-800 bg-black relative shadow-inner">
                     {previewCleanUrl ? (
-                      virtualTour.tourType === "video" ? (
+                      isPreviewDirectVideo ? (
                         <video
                           src={previewCleanUrl}
                           controls
@@ -574,6 +615,7 @@ export default function CMSContentTab({ content, onUpdateContent }) {
                         />
                       ) : (
                         <iframe
+                          key={previewCleanUrl}
                           src={previewCleanUrl}
                           title="Virtual Tour Preview"
                           className="w-full h-full border-0"
