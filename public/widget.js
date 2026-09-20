@@ -543,7 +543,11 @@
     messagesList.appendChild(typingEl);
     messagesList.scrollTop = messagesList.scrollHeight;
 
-    const endpoint = (apiUrl ? apiUrl : '') + '/api/chat/website';
+    // Prioritize same-origin endpoint to guarantee zero CORS/preflight issues
+    let endpoint = '/api/chat/website';
+    if (apiUrl && !window.location.hostname.includes('hotelsherpasoul.com') && window.location.hostname !== 'localhost') {
+      endpoint = apiUrl + '/api/chat/website';
+    }
 
     try {
       const res = await fetch(endpoint, {
