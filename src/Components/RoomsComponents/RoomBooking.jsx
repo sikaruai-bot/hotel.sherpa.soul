@@ -693,16 +693,17 @@ export default function BookingForm() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t("book.form.name")} *
+                      <label htmlFor="rb-name" className="block text-sm font-semibold text-slate-800 mb-2">
+                        {t("book.form.name")} <span className="text-red-600">*</span>
                       </label>
 
                       <input
                         type="text"
+                        id="rb-name"
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className={`w-full p-4 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
+                        className={`w-full p-4 min-h-[48px] text-base text-slate-900 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
                           errors.name ? "border-red-500" : "border-gray-300"
                         }`}
                         placeholder="Enter your full name"
@@ -717,19 +718,20 @@ export default function BookingForm() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t("book.form.email")} *
+                      <label htmlFor="rb-email" className="block text-sm font-semibold text-slate-800 mb-2">
+                        {t("book.form.email")} <span className="text-red-600">*</span>
                       </label>
 
                       <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                        <Mail className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
 
                         <input
                           type="email"
+                          id="rb-email"
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          className={`w-full pl-12 pr-4 py-4 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
+                          className={`w-full pl-12 pr-4 py-4 min-h-[48px] text-base text-slate-900 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
                             errors.email ? "border-red-500" : "border-gray-300"
                           }`}
                           placeholder="your.email@example.com"
@@ -745,19 +747,20 @@ export default function BookingForm() {
                     </div>
 
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone {t("book.form.number")} *
+                      <label htmlFor="rb-number" className="block text-sm font-semibold text-slate-800 mb-2">
+                        Phone {t("book.form.number")} <span className="text-red-600">*</span>
                       </label>
 
                       <div className="relative">
-                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                        <Phone className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
 
                         <input
                           type="tel"
+                          id="rb-number"
                           name="number"
                           value={formData.number}
                           onChange={handleInputChange}
-                          className={`w-full pl-12 pr-4 py-4 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
+                          className={`w-full pl-12 pr-4 py-4 min-h-[48px] text-base text-slate-900 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
                             errors.number ? "border-red-500" : "border-gray-300"
                           }`}
                           placeholder="Enter your phone number"
@@ -782,16 +785,17 @@ export default function BookingForm() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t("book.form.type")} *
+                      <label htmlFor="rb-roomType" className="block text-sm font-semibold text-slate-800 mb-2">
+                        {t("book.form.type")} <span className="text-red-600">*</span>
                       </label>
 
                       <input
                         type="text"
+                        id="rb-roomType"
                         name="roomType"
                         value={formData.roomType}
                         disabled
-                        className="w-full p-4 border-2 rounded-lg bg-gray-100 text-gray-700 cursor-not-allowed"
+                        className="w-full p-4 min-h-[48px] text-base border-2 rounded-lg bg-gray-100 text-gray-700 cursor-not-allowed"
                       />
 
                       {errors.roomType && (
@@ -803,26 +807,27 @@ export default function BookingForm() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="rb-numberOfGuests" className="block text-sm font-semibold text-slate-800 mb-2">
                         {t("book.form.guests")} * Max:{" "}
                         {(room.guests || 0) * (formData.numberOfRooms || 1)}
                       </label>
 
                       <input
                         type="number"
+                        id="rb-numberOfGuests"
                         name="numberOfGuests"
                         value={formData.numberOfGuests}
                         onChange={handleInputChange}
                         min="1"
                         max={(room.guests || 0) * (formData.numberOfRooms || 1)}
-                        className={`w-full p-4 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
+                        className={`w-full p-4 min-h-[48px] text-base text-slate-900 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
                           errors.numberOfGuests
                             ? "border-red-500"
                             : "border-gray-300"
                         }`}
                       />
 
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-slate-600 mt-1">
                         {t("book.form.guestnote")} {room.guests || 0}{" "}
                         {t("book.guests")}
                       </p>
@@ -836,20 +841,21 @@ export default function BookingForm() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t("book.form.checkin")} *
+                      <label htmlFor="rb-checkIn" className="block text-sm font-semibold text-slate-800 mb-2">
+                        {t("book.form.checkin")} <span className="text-red-600">*</span>
                       </label>
 
                       <div className="relative">
-                        <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                        <Calendar className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
 
                         <input
                           type="date"
+                          id="rb-checkIn"
                           name="checkIn"
                           value={formData.checkIn}
                           onChange={handleInputChange}
                           min={new Date().toISOString().split("T")[0]}
-                          className={`w-full pl-12 pr-4 py-4 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
+                          className={`w-full pl-12 pr-4 py-4 min-h-[48px] text-base text-slate-900 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
                             errors.checkIn
                               ? "border-red-500"
                               : "border-gray-300"
@@ -866,15 +872,16 @@ export default function BookingForm() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t("book.form.checkout")} *
+                      <label htmlFor="rb-checkOut" className="block text-sm font-semibold text-slate-800 mb-2">
+                        {t("book.form.checkout")} <span className="text-red-600">*</span>
                       </label>
 
                       <div className="relative">
-                        <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                        <Calendar className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
 
                         <input
                           type="date"
+                          id="rb-checkOut"
                           name="checkOut"
                           value={formData.checkOut}
                           onChange={handleInputChange}
@@ -888,7 +895,7 @@ export default function BookingForm() {
                                   .split("T")[0]
                               : getTomorrow()
                           }
-                          className={`w-full pl-12 pr-4 py-4 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
+                          className={`w-full pl-12 pr-4 py-4 min-h-[48px] text-base text-slate-900 border-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
                             errors.checkOut
                               ? "border-red-500"
                               : "border-gray-300"
@@ -1058,8 +1065,11 @@ export default function BookingForm() {
                 <div className="space-y-4 mb-6">
                   <div className="flex gap-4">
                     <img
-                      src={room.image?.[0]?.url || "/placeholder-room.jpg"}
-                      alt={room.name ? `${room.name} - Hotel Sherpa Soul Kathmandu` : "Hotel Sherpa Soul Room"}
+                      src={room.image?.[0]?.url || (typeof room.image === "string" ? room.image : "/room1/room.webp")}
+                      alt={room.name ? `${room.name} - Hotel Sherpa Soul Thamel Kathmandu` : "Hotel Sherpa Soul Room Thamel Kathmandu"}
+                      loading="lazy"
+                      width="80"
+                      height="80"
                       className="w-20 h-20 rounded-lg object-cover"
                     />
 
