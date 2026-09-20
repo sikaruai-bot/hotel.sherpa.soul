@@ -50,6 +50,10 @@
   ],
   "rewrites": [
     {
+      "source": "/api/chat/:path*",
+      "destination": "https://hotel-chatbot-mingma.vercel.app/api/chat/:path*"
+    },
+    {
       "source": "/api/send-email",
       "destination": "/api/send-email"
     },
