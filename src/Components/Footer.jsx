@@ -53,7 +53,7 @@ export default function Footer() {
     },
     {
       icon: FaWhatsapp,
-      href: "https://wa.me/9779851068219?text=Hello! I'd like to talk with you.",
+      href: "https://wa.me/9779818259472?text=Hello! I'd like to talk with you.",
       label: "WhatsApp",
       color: "hover:text-green-500 hover:bg-green-500/10",
     },

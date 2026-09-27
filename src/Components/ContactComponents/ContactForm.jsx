@@ -263,7 +263,7 @@ export default function ContactForm() {
                         <p className="mt-1 text-emerald-700 text-xs">
                           Need instant assistance? You can also reach our 24/7 Front Desk on WhatsApp:{" "}
                           <a
-                            href="https://wa.me/9779851068219"
+                            href="https://wa.me/9779818259472"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="font-bold underline text-emerald-900"
@@ -281,7 +281,7 @@ export default function ContactForm() {
                       <div className="text-sm">
                         <p className="font-semibold">{statusMessage}</p>
                         <a
-                          href="https://wa.me/9779851068219?text=Hello%20Hotel%20Sherpa%20Soul"
+                          href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="mt-2 inline-block bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold"

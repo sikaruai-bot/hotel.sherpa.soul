@@ -1291,7 +1291,7 @@ export default function BookingForm() {
 
             <div className="space-y-3">
               <a
-                href={`https://wa.me/9779851068219?text=${encodeURIComponent(
+                href={`https://wa.me/9779818259472?text=${encodeURIComponent(
                   `*🏨 Hotel Sherpa Soul - Room Availability Query*\n\n` +
                   `*Guest:* ${formData.name || "Guest"}\n` +
                   `*Room:* ${room?.name || "Room"} (Room ${room?.roomNumber || id})\n` +
@@ -1305,7 +1305,7 @@ export default function BookingForm() {
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl shadow-lg transition-transform transform hover:scale-[1.02]"
               >
                 <Phone className="w-5 h-5" />
-                WhatsApp Front Desk (+977 9851068219)
+                WhatsApp Front Desk (+977 9818259472)
               </a>
 
               <button
