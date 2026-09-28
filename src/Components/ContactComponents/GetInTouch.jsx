@@ -39,12 +39,12 @@ export default function GetInTouch() {
 
   const handlePhoneClick = async () => {
     try {
-      await navigator.clipboard.writeText("+977 9851068219");
+      await navigator.clipboard.writeText("+977 9818259472");
       showToast(t("getInTouch.phoneCopied"));
     } catch (err) {
       // Fallback for older browsers
       const textArea = document.createElement("textarea");
-      textArea.value = "+977-9851068219";
+      textArea.value = "+977 9818259472";
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand("copy");
@@ -66,7 +66,7 @@ export default function GetInTouch() {
     {
       icon: Phone,
       title: t("getInTouch.callWhatsApp"),
-      detail: "+977-9851068219",
+      detail: "+977 9818259472",
       description: t("getInTouch.whatsappDescription"),
       gradient: "from-emerald-400 to-teal-500",
       onClick: handlePhoneClick,

@@ -1,191 +1,166 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
-import { Utensils, CheckCircle2, Coffee, Sparkles } from "lucide-react";
-import frontDeskPhoto from "../../assets/frontdesk_new.webp";
+import React from "react";
+import {
+  Wifi,
+  Clock,
+  Briefcase,
+  Car,
+  Utensils,
+  Mountain,
+  ShowerHead,
+  Sparkles,
+  Wind,
+  Laptop,
+  CheckCircle2,
+} from "lucide-react";
 import kitchenPhoto from "../../assets/shared_kitchen_new.webp";
+import frontDeskPhoto from "../../assets/frontdesk_new.webp";
 
-const HomeFacilities = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const { t } = useTranslation();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px",
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  const facilities = [
+export default function HomeFacilities() {
+  const verifiedFacilities = [
     {
-      img: kitchenPhoto,
-      objectPosition: "center 30%",
-      number: t("facilities.laundry.title", "Shared Self-Kitchen (Long Stay Only)"),
-      title: "",
-      desc: t(
-        "facilities.laundry.desc",
-        "Reserved exclusively for registered long-stay guests: induction cooktop, refrigerator, microwave oven, electric kettle, pots, pans, utensils, and dining area."
-      ),
-      initial: { opacity: 0, x: -60 },
-      animate: { opacity: 1, x: 0 },
-      delay: 0,
+      icon: <Wifi className="w-6 h-6 text-[#FB6C01]" />,
+      label: "Free High-Speed Wi-Fi",
+      desc: "Fast, reliable fiber-optic internet connection accessible throughout all guest rooms and public spaces.",
     },
     {
-      img: frontDeskPhoto,
-      objectPosition: "center 20%",
-      number: t("facilities.frontdesk.title", "24/7 Front Desk"),
-      title: "",
-      desc: t(
-        "facilities.frontdesk.desc",
-        "Friendly assistance for check-ins, trek preparation, permits, transportation, and local Kathmandu advice."
-      ),
-      initial: { opacity: 0, y: 60 },
-      animate: { opacity: 1, y: 0 },
-      delay: 0.15,
+      icon: <Clock className="w-6 h-6 text-[#01366E]" />,
+      label: "24/7 Front Desk",
+      desc: "Round-the-clock reception assistance for flexible check-ins, late arrivals, and local Kathmandu advice.",
     },
     {
-      img: "/airportpickup.webp",
-      number: t("facilities.pickup.title", "Airport Transfers"),
-      title: "",
-      desc: t(
-        "facilities.pickup.desc",
-        "Convenient airport pickup and drop-off available (~20 minutes from Tribhuvan International Airport depending on traffic)."
-      ),
-      initial: { opacity: 0, x: 60 },
-      animate: { opacity: 1, x: 0 },
-      delay: 0.3,
+      icon: <Briefcase className="w-6 h-6 text-[#FB6C01]" />,
+      label: "Luggage Storage for Trekkers",
+      desc: "Complimentary, secure bag holding while you hike Everest Base Camp, Annapurna Circuit, or Langtang.",
     },
     {
-      img: "/changes_photo/washRoom.webp",
-      number: t("facilities.showers.title", "Hot & Cold Showers"),
-      title: "",
-      desc: t(
-        "facilities.showers.desc",
-        "Private bathrooms equipped with hot and cold showers, clean towels, practical toiletries, and toothpaste."
-      ),
-      initial: { opacity: 0, y: 60 },
-      animate: { opacity: 1, y: 0 },
-      delay: 0.45,
+      icon: <Car className="w-6 h-6 text-[#01366E]" />,
+      label: "Airport Transfer Service",
+      desc: "Convenient airport pickup and drop-off transfers between Tribhuvan International Airport (KTM) and the hotel.",
     },
-  ];
-
-  const kitchenAmenities = [
-    "Induction Cooktop",
-    "Refrigerator & Freezer",
-    "Microwave Oven",
-    "Electric Kettle",
-    "Cooking Pots & Pans",
-    "Plates, Bowls & Cutlery",
-    "Food Prep & Sink Area",
-    "Dining / Eating Space",
+    {
+      icon: <Utensils className="w-6 h-6 text-[#FB6C01]" />,
+      label: "Shared Guest Kitchen",
+      desc: "Clean kitchen with induction cooktop, refrigerator, microwave, and electric kettle for self-cooking.",
+    },
+    {
+      icon: <Mountain className="w-6 h-6 text-[#01366E]" />,
+      label: "Trekking Support & Advice",
+      desc: "Practical assistance with trekking permits, flight tickets to Lukla or Pokhara, and authentic Sherpa advice.",
+    },
+    {
+      icon: <ShowerHead className="w-6 h-6 text-[#FB6C01]" />,
+      label: "24/7 Hot Water Showers",
+      desc: "Continuous high-pressure hot and cold water in all private en-suite bathrooms at any hour.",
+    },
+    {
+      icon: <Sparkles className="w-6 h-6 text-[#01366E]" />,
+      label: "Daily Housekeeping",
+      desc: "Attentive daily room cleaning, fresh bed linens, and spotless bathroom maintenance for a comfortable stay.",
+    },
+    {
+      icon: <Wind className="w-6 h-6 text-[#FB6C01]" />,
+      label: "Air Conditioning",
+      desc: "Individual climate control equipped in Deluxe and Family room categories for year-round comfort.",
+    },
+    {
+      icon: <Laptop className="w-6 h-6 text-[#01366E]" />,
+      label: "Workspace Friendly",
+      desc: "Work desk and stable connectivity suitable for remote professionals, digital nomads, and trip planners.",
+    },
   ];
 
   return (
-    <div className="bg-stone-50 py-20 px-5" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto relative">
+    <section className="py-20 bg-stone-50 border-t border-slate-200/80" id="facilities">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ease-out ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <p className="text-sm tracking-widest uppercase text-amber-600 mb-3 font-semibold">
-            {t("facilities.title1", "Long Stays & Amenities")}
-          </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 tracking-tight">
-            {t("facilities.title2", "Shared Self-Kitchen & Hotel Amenities")}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider">
+            <span>❖</span>
+            <span>Verified Hotel Amenities</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#01366E] tracking-tight">
+            Hotel Facilities & Practical Services
           </h2>
+          <p className="mt-3 text-slate-600 text-base sm:text-lg leading-relaxed">
+            Thoughtfully planned for international tourists, backpackers, and trekking teams who appreciate functional comfort.
+          </p>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 relative gap-x-8 gap-y-20 mb-24">
-          {facilities.map((facility, index) => (
-            <motion.div
+        {/* Verified Facilities Grid (10 items: Simple Icon, Short Label, One-Sentence Explanation) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {verifiedFacilities.map((facility, index) => (
+            <div
               key={index}
-              initial={facility.initial}
-              animate={isVisible ? facility.animate : {}}
-              transition={{ duration: 0.8, delay: facility.delay }}
-              className="relative group"
+              className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-start gap-4"
             >
-              <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
-                <img
-                  src={facility.img}
-                  alt={`${facility.number} - Hotel Sherpa Soul Amenity`}
-                  loading="lazy"
-                  decoding="async"
-                  style={{ objectPosition: facility.objectPosition || "center" }}
-                  className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 shrink-0">
+                {facility.icon}
               </div>
-
-              <div className="max-w-xl bg-[#01366E] text-white flex items-start justify-center flex-col absolute -bottom-10 left-5 right-5 sm:right-auto p-6 rounded-xl shadow-2xl border border-white/10 hover:scale-[1.02] transition-all duration-300">
-                <div className="text-xl font-bold mb-2 tracking-wide text-white flex items-center gap-2">
-                  <span className="text-[#FB6C01]">❖</span>
-                  <span>{facility.number}</span>
-                </div>
-                <div className="text-slate-200 leading-relaxed text-sm">
+              <div>
+                <h3 className="font-bold text-slate-900 text-base mb-1">
+                  {facility.label}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   {facility.desc}
-                </div>
+                </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        {/* Highlight Banner: Shared Self-Kitchen for Longer Stays */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-gradient-to-br from-[#01366E] via-[#082844] to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden mt-12 border border-white/10"
-        >
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="relative z-10 max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/20 text-orange-300 text-xs uppercase tracking-wider font-semibold mb-4 border border-orange-400/30">
-              <Sparkles className="w-3.5 h-3.5 text-[#FB6C01]" />
-              Shared Self-Kitchen • Exclusively for Long Stays
+        {/* Feature Spotlight: Shared Guest Kitchen & Front Desk */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md flex flex-col justify-between">
+            <div className="h-56 overflow-hidden">
+              <img
+                src={kitchenPhoto}
+                alt="Shared Guest Kitchen at Hotel Sherpa Soul Thamel Kathmandu"
+                className="w-full h-full object-cover"
+                width="600"
+                height="320"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-            <h3 className="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">
-              Feel at Home, Even When You're Away
-            </h3>
-            <p className="text-stone-300 text-base sm:text-lg leading-relaxed mb-8">
-              Staying in Kathmandu for a few days is one thing. Staying for a few weeks is different.
-              Our shared self-use kitchen is reserved exclusively for registered long-stay guests (weekly and monthly stays),
-              giving them the flexibility to prepare simple home meals, brew fresh tea, work remotely, and enjoy a comfortable routine in Thamel.
-            </p>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-stone-700/60">
-              {kitchenAmenities.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-stone-200 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>{item}</span>
-                </div>
-              ))}
+            <div className="p-6 sm:p-8 space-y-3">
+              <span className="text-xs font-bold text-[#FB6C01] uppercase tracking-wider">
+                Self-Catering Convenience
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#01366E]">
+                Shared Guest Kitchen
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Cook your own meals, prepare special dietary requirements, or brew warm Himalayan tea anytime. Fully equipped with an induction stove, refrigerator, microwave, and cooking utensils.
+              </p>
             </div>
           </div>
-        </motion.div>
-      </div>
-    </div>
-  );
-};
 
-export default HomeFacilities;
+          <div className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md flex flex-col justify-between">
+            <div className="h-56 overflow-hidden">
+              <img
+                src={frontDeskPhoto}
+                alt="24/7 Front Desk Reception at Hotel Sherpa Soul Kathmandu"
+                className="w-full h-full object-cover"
+                width="600"
+                height="320"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="p-6 sm:p-8 space-y-3">
+              <span className="text-xs font-bold text-[#FB6C01] uppercase tracking-wider">
+                Always Available
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#01366E]">
+                24/7 Reception & Travel Desk
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Whether you arrive on a late-night international flight or leave before dawn for a mountain trek, our team is always on duty to welcome you and assist with luggage and transport.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -53,7 +53,7 @@ export default function Footer() {
     },
     {
       icon: FaWhatsapp,
-      href: "https://wa.me/9779818259472?text=Hello! I'd like to talk with you.",
+      href: "https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates.",
       label: "WhatsApp",
       color: "hover:text-green-500 hover:bg-green-500/10",
     },

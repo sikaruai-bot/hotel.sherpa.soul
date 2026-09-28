@@ -280,8 +280,8 @@ export default async function handler(req, res) {
               </p>
 
               <div style="text-align: center; margin: 24px 0;">
-                <a href="https://wa.me/9779851068219?text=Hello%20Hotel%20Sherpa%20Soul,%20I%20sent%20an%20inquiry%20via%20website" style="background: #25D366; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: bold; display: inline-block;">
-                  💬 Instant WhatsApp Chat (+977-9851068219)
+                <a href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul,%20I%20sent%20an%20inquiry%20via%20website" style="background: #25D366; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: bold; display: inline-block;">
+                  💬 Instant WhatsApp Chat (+977 9818259472)
                 </a>
               </div>
 
@@ -410,12 +410,13 @@ export default async function handler(req, res) {
                   <h4 style="margin: 0 0 8px 0; color: #0f172a; font-size: 13px;">Hotel Location & Contact:</h4>
                   <p style="margin: 4px 0; color: #475569; font-size: 13px;">📍 ${hotelAddress}</p>
                   <p style="margin: 4px 0; color: #475569; font-size: 13px;">📞 24/7 Front Desk: ${hotelPhone}</p>
+                  <p style="margin: 4px 0; color: #475569; font-size: 13px;">💬 WhatsApp: +977 9818259472</p>
                   <p style="margin: 4px 0; color: #475569; font-size: 13px;">✉️ Email: ${hotelEmail}</p>
                 </div>
 
                 <div style="text-align: center; margin: 24px 0;">
-                  <a href="https://wa.me/9779851068219?text=Hello%20Hotel%20Sherpa%20Soul,%20I%20have%20a%20confirmed%20booking%20%23${bookingRef}" style="background: #25D366; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: bold; display: inline-block;">
-                    Need Airport Pickup? Message on WhatsApp
+                  <a href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul,%20I%20have%20a%20confirmed%20booking%20%23${bookingRef}" style="background: #25D366; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: bold; display: inline-block;">
+                    Need Airport Pickup? Message on WhatsApp (+977 9818259472)
                   </a>
                 </div>
               </div>

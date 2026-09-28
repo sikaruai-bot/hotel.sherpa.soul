@@ -95,7 +95,7 @@ const FOOTER_HTML = `
         <div class="space-y-6">
           <h3 class="text-lg font-semibold text-white">Contact & Location</h3>
           <ul class="space-y-3 text-sm text-gray-300">
-            <li><strong>WhatsApp Chatbot:</strong> <a href="https://wa.me/9779818259472" class="hover:underline text-emerald-400">+977-9818259472</a></li>
+            <li><strong>WhatsApp Chatbot:</strong> <a href="https://wa.me/9779818259472" class="hover:underline text-emerald-400">+977 9818259472</a></li>
             <li><strong>Front Desk Call:</strong> <a href="tel:+9779851068219" class="hover:underline text-amber-300">+977-9851068219</a></li>
             <li><strong>Email:</strong> <a href="mailto:info@hotelsherpasoul.com" class="hover:underline text-amber-300">info@hotelsherpasoul.com</a></li>
             <li><strong>Address:</strong> Thamel Bhagawati Marg 26, Kathmandu 44600, Bagmati, Nepal</li>
@@ -293,7 +293,7 @@ function getBookingPageContent(roomTitle, roomId) {
             <h3 class="text-xl font-bold text-[#01366E]">Need Quick Confirmation?</h3>
             <p class="text-slate-600 text-sm">Feel free to message or call our 24/7 reception desk for immediate room availability:</p>
             <div class="space-y-3 text-sm">
-              <div><strong>WhatsApp:</strong> <a href="https://wa.me/9779818259472" class="text-emerald-600 font-bold hover:underline">+977-9851068219</a></div>
+              <div><strong>WhatsApp:</strong> <a href="https://wa.me/9779818259472" class="text-emerald-600 font-bold hover:underline">+977 9818259472</a></div>
               <div><strong>Direct Phone:</strong> <a href="tel:+9779851068219" class="text-[#FB6C01] font-bold hover:underline">+977-9851068219</a></div>
               <div><strong>Email:</strong> <a href="mailto:info@hotelsherpasoul.com" class="text-[#01366E] font-bold hover:underline">info@hotelsherpasoul.com</a></div>
               <div><strong>Address:</strong> Thamel Bhagawati Marg 26, Kathmandu 44600</div>
@@ -511,7 +511,7 @@ const ROUTES = [
             </div>
             <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
               <h3 class="font-bold text-slate-800 text-base">Do you provide airport transfer and pickup services?</h3>
-              <p class="text-sm text-slate-600 mt-2">Yes, we provide reliable airport pickup and drop-off transfers between Kathmandu Airport (KTM) and the hotel. Contact us on WhatsApp at +977-9818259472 to arrange your transfer.</p>
+              <p class="text-sm text-slate-600 mt-2">Yes, we provide reliable airport pickup and drop-off transfers between Kathmandu Airport (KTM) and the hotel. Contact us on WhatsApp at +977 9818259472 to arrange your transfer.</p>
             </div>
             <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
               <h3 class="font-bold text-slate-800 text-base">Can I store my luggage while on a trek?</h3>
@@ -648,7 +648,7 @@ const ROUTES = [
   {
     path: '/contact',
     title: 'Contact Hotel Sherpa Soul | Location in Thamel Kathmandu',
-    description: 'Contact Hotel Sherpa Soul in Thamel, Kathmandu. Call or WhatsApp +977-9851068219 or email info@hotelsherpasoul.com for bookings and airport pickup.',
+    description: 'Contact Hotel Sherpa Soul in Thamel, Kathmandu. Call +977 9851068219 or WhatsApp +977 9818259472 or email info@hotelsherpasoul.com for bookings and airport pickup.',
     canonical: 'https://hotelsherpasoul.com/contact',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     content: `
@@ -661,7 +661,7 @@ const ROUTES = [
           <div class="space-y-4 text-slate-700">
             <div><strong>Address:</strong> Thamel Bhagawati Marg 26, Kathmandu 44600, Bagmati, Nepal</div>
             <div><strong>Direct Phone:</strong> <a href="tel:+9779851068219" class="text-[#FB6C01] font-bold hover:underline">+977-9851068219</a></div>
-            <div><strong>WhatsApp:</strong> <a href="https://wa.me/9779818259472" class="text-emerald-600 font-bold hover:underline">+977-9818259472 (Instant Chat)</a></div>
+            <div><strong>WhatsApp:</strong> <a href="https://wa.me/9779818259472" class="text-emerald-600 font-bold hover:underline">+977 9818259472 (Instant Chat)</a></div>
             <div><strong>Official Email:</strong> <a href="mailto:info@hotelsherpasoul.com" class="text-[#01366E] font-bold hover:underline">info@hotelsherpasoul.com</a></div>
             <div><strong>Check-in:</strong> 14:00 (2:00 PM) • <strong>Check-out:</strong> 12:00 (12:00 PM noon)</div>
           </div>

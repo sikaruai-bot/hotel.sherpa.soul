@@ -1,271 +1,235 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { useCMS } from "../../Context/CMSContext";
+import { Users, Bed, Wifi, Wind, Bath, Utensils, CheckCircle2, ArrowRight, Calendar, Sparkles } from "lucide-react";
+import BookingModal from "../HelperComponents/BookingModal";
+import { trackBookingClick } from "../Analytics/pixelEvents";
 
-const RoomCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+export default function HomeRooms() {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedRoomForModal, setSelectedRoomForModal] = useState(null);
 
-  const { t } = useTranslation();
-  const { rooms: cmsRooms } = useCMS();
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const defaultRooms = [
+  const roomCategories = [
     {
       id: 101,
-      name: t("room.rooms.1.name", "Budget Family Room"),
-      occupancy: "3 Adults, 1 Child",
-      beds: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
-      bedShort: "King 32.5 sq.ft + Single 19.5 sq.ft",
-      featureHighlight: "1 King + 1 Single Bed • 24/7 Hot Water • Kitchen (Long Stay)",
-      price: 20,
-      currency: "USD",
-      priceNprApprox: 2700,
+      slug: "budget-family-room",
+      name: "Budget Family Room",
       image: "/triple.webp",
+      bedType: "1 King Bed + 1 Single Bed",
+      occupancy: "Up to 4 Guests (3 Adults, 1 Child)",
+      size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
+      priceUsd: 20,
+      priceNpr: "2,700",
+      description: "Comfortable and budget-conscious accommodation with en-suite hot shower, bright windows, and shared kitchen access for groups or families.",
+      facilities: [
+        "1 King Bed + 1 Single Bed",
+        "Private Attached Bathroom (24/7 Hot Water)",
+        "Free High-Speed Fiber Wi-Fi",
+        "Shared Guest Kitchen Access",
+        "Trekker Luggage Storage Included",
+      ],
+      hasAC: false,
     },
     {
       id: 201,
-      name: t("room.rooms.2.name", "Deluxe Room"),
-      occupancy: "2 Adults, 1 Child",
-      beds: "1 King Bed (32.5 sq. ft)",
-      bedShort: "Air Conditioned • King 32.5 sq.ft",
-      featureHighlight: "Air Conditioned (AC) • 1 King Bed • 24/7 Hot Water • Kitchen (Long Stay)",
-      price: 20,
-      currency: "USD",
-      priceNprApprox: 2700,
+      slug: "deluxe-room",
+      name: "Deluxe Room (AC)",
       image: "/changes_photo/singleBedWithSofa.webp",
+      bedType: "1 King Bed",
+      occupancy: "Up to 3 Guests (2 Adults, 1 Child)",
+      size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
+      priceUsd: 20,
+      priceNpr: "2,700",
+      description: "Air-conditioned boutique room with king-size bed, private modern bathroom, work desk, and quiet ambiance for restful sleep.",
+      facilities: [
+        "Individual Climate Control (AC)",
+        "1 Comfortable King Bed",
+        "Private Modern Bathroom (24/7 Hot Shower)",
+        "Free High-Speed Fiber Wi-Fi",
+        "Shared Guest Kitchen Access",
+      ],
+      hasAC: true,
+      popular: true,
     },
     {
       id: 301,
-      name: t("room.rooms.3.name", "Family Room"),
-      occupancy: "3 Adults, 1 Child",
-      beds: "1 King Bed (32.5 sq. ft) + 1 Single Bed (19.5 sq. ft)",
-      bedShort: "Air Conditioned • King + Single",
-      featureHighlight: "Air Conditioned (AC) • King + Single Bed • Kitchen (Long Stay)",
-      price: 30,
-      currency: "USD",
-      priceNprApprox: 4000,
+      slug: "family-room",
+      name: "Family Room (AC)",
       image: "/changes_photo/doubleBed.webp",
+      bedType: "1 King Bed + 1 Single Bed",
+      occupancy: "Up to 4 Guests (3 Adults, 1 Child)",
+      size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
+      priceUsd: 30,
+      priceNpr: "4,000",
+      description: "Spacious family suite featuring air conditioning, one king bed and one single bed, private bathroom, and extra room for luggage.",
+      facilities: [
+        "Individual Climate Control (AC)",
+        "1 King Bed + 1 Single Bed",
+        "Spacious Private Bathroom (24/7 Hot Water)",
+        "Free High-Speed Fiber Wi-Fi",
+        "Shared Guest Kitchen Access",
+      ],
+      hasAC: true,
     },
   ];
 
-  const rooms = defaultRooms.map((def) => {
-    const cmsMatch = cmsRooms?.find(
-      (cr) => cr.id === def.id || String(cr.roomNumber) === String(def.id)
-    );
-    if (!cmsMatch) return def;
-    const rawImg = Array.isArray(cmsMatch.image) ? cmsMatch.image[0] : cmsMatch.image;
-    return {
-      ...def,
-      name: cmsMatch.name || def.name,
-      price: cmsMatch.price || def.price,
-      priceNprApprox: cmsMatch.priceNprApprox || def.priceNprApprox,
-      beds: cmsMatch.beds || def.beds,
-      image: rawImg || def.image,
-    };
-  });
-
-  const infiniteRooms = [...rooms, ...rooms, ...rooms];
-  const getSlideWidth = () => (isMobile ? 280 : 400);
-  const getSlideGap = () => (isMobile ? 16 : 32);
-
-  const handleTransitionEnd = useCallback(() => {
-    setIsTransitioning(false);
-    if (currentIndex >= rooms.length * 2 || currentIndex < rooms.length) {
-      setCurrentIndex(rooms.length);
-    }
-  }, [currentIndex, rooms.length]);
-
-  const nextSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => prev + 1);
+  const handleOpenBooking = (room) => {
+    setSelectedRoomForModal(room);
+    trackBookingClick("home_rooms_card", { room_name: room.name, room_id: room.id });
+    setIsBookingModalOpen(true);
   };
-
-  const prevSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => prev - 1);
-  };
-
-  useEffect(() => {
-    setCurrentIndex(rooms.length);
-  }, [rooms.length]);
 
   return (
-    <div className="min-h-screen bg-white py-8 md:py-16">
-      <div className="text-center mb-12 max-w-3xl mx-auto px-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 mb-2 rounded-full bg-orange-50 border border-orange-200 text-xs text-[#FB6C01] font-bold shadow-sm">
-          <span>🏷️</span>
-          <span>Direct Booking Perk: Instant 10% Discount on All Rates</span>
+    <section className="py-20 bg-slate-50/60 border-t border-slate-100" id="rooms">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full bg-orange-50 border border-orange-200 text-xs text-[#FB6C01] font-bold shadow-sm uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Room Types & Current Rates</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#01366E] tracking-tight">
+            Clean, Quiet Rooms in Thamel
+          </h2>
+          <p className="mt-3 text-slate-600 text-base sm:text-lg leading-relaxed">
+            Every room includes private attached bathroom with continuous 24/7 hot water, high-speed fiber Wi-Fi, and access to our shared self-kitchen.
+          </p>
         </div>
-        <p className="text-xs text-[#FB6C01] uppercase tracking-[0.2em] mb-2 font-bold">
-          ✦ Accommodation & Rest
-        </p>
-        <h2 className="text-3xl md:text-5xl font-bold text-[#01366E] mb-3">
-          {t("roomsSection.heading", "Your Room. Your Space. Your Rest.")}
-        </h2>
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-          {t("roomsSection.copy", "After a day exploring Kathmandu, shopping in Thamel or preparing for your next trek, come back to a room where you can slow down, relax and recharge.")}
-        </p>
-        <div className="mt-4">
+
+        {/* 3 Room Cards - Exactly Once, No Duplicate Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {roomCategories.map((room) => (
+            <article
+              key={room.id}
+              className={`bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border flex flex-col justify-between relative group ${
+                room.popular ? "border-amber-400 ring-2 ring-amber-400/20" : "border-slate-200"
+              }`}
+            >
+              {room.popular && (
+                <div className="absolute top-3 left-3 z-10 bg-[#FB6C01] text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                  Most Popular
+                </div>
+              )}
+
+              {/* Room Image */}
+              <div className="relative h-64 overflow-hidden bg-slate-100">
+                <img
+                  src={room.image}
+                  alt={`${room.name} at Hotel Sherpa Soul Thamel Kathmandu`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  width="400"
+                  height="260"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs font-semibold">
+                  <span className="text-amber-300 font-bold text-sm sm:text-base">${room.priceUsd} USD</span>
+                  <span className="text-slate-300 text-[11px] block">~NPR {room.priceNpr} / night</span>
+                </div>
+              </div>
+
+              {/* Room Card Body */}
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
+                <div>
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#01366E] transition-colors">
+                      {room.name}
+                    </h3>
+                  </div>
+
+                  <div className="space-y-1.5 text-xs text-slate-600 mb-3.5">
+                    <div className="flex items-center gap-2">
+                      <Bed className="w-4 h-4 text-[#FB6C01] flex-shrink-0" />
+                      <span className="font-semibold text-slate-800">Bed:</span>
+                      <span>{room.bedType}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4 text-[#01366E] flex-shrink-0" />
+                      <span className="font-semibold text-slate-800">Occupancy:</span>
+                      <span>{room.occupancy}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-500">
+                      <span className="font-semibold text-slate-700">Room Size:</span>
+                      <span className="italic">{room.size}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                    {room.description}
+                  </p>
+
+                  {/* Facilities list */}
+                  <div className="pt-3 border-t border-slate-100 space-y-1.5">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
+                      Key Amenities
+                    </span>
+                    {room.facilities.map((fac, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-xs text-slate-700">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                        <span>{fac}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Card CTA Buttons */}
+                <div className="pt-4 border-t border-slate-100 space-y-2">
+                  <div className="flex items-center justify-between text-xs text-emerald-700 font-semibold mb-1">
+                    <span>Direct Booking Benefit:</span>
+                    <span className="bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-bold">
+                      10% Discount
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link
+                      to={`/rooms/${room.slug}`}
+                      className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-1 min-h-[44px]"
+                    >
+                      <span>View Details</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+
+                    <button
+                      onClick={() => handleOpenBooking(room)}
+                      className="w-full py-2.5 px-3 rounded-xl bg-[#FB6C01] hover:bg-[#E05A00] text-white text-xs sm:text-sm font-bold shadow-md transition-colors flex items-center justify-center gap-1 min-h-[44px]"
+                    >
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>Check Availability</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Bottom Guarantee Banner */}
+        <div className="mt-12 p-6 rounded-2xl bg-amber-50 border border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">🏷️</span>
+            <div>
+              <p className="font-bold text-slate-900 text-sm sm:text-base">
+                Best Available Direct-Booking Offer
+              </p>
+              <p className="text-slate-600 text-xs sm:text-sm">
+                No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.
+              </p>
+            </div>
+          </div>
           <Link
             to="/rooms"
-            className="inline-flex items-center gap-2 text-sm font-bold text-amber-600 hover:text-amber-700 underline underline-offset-4"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#01366E] hover:bg-[#082844] text-white font-bold rounded-xl text-xs sm:text-sm transition-all shadow-md flex-shrink-0 min-h-[44px]"
           >
-            <span>{t("roomsSection.cta", "View Rooms & Rates")}</span>
+            <span>Compare All Rooms</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4">
-        <motion.button
-          onClick={prevSlide}
-          disabled={isTransitioning}
-          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 shadow-md rounded-full flex items-center justify-center text-[#01366E] hover:text-[#FB6C01]"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </motion.button>
-        <motion.button
-          onClick={nextSlide}
-          disabled={isTransitioning}
-          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 shadow-md rounded-full flex items-center justify-center text-[#01366E] hover:text-[#FB6C01]"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </motion.button>
-
-        <div className="overflow-hidden mx-8 md:mx-16">
-          <motion.div
-            className="flex"
-            style={{ gap: `${getSlideGap()}px` }}
-            animate={{ x: -currentIndex * (getSlideWidth() + getSlideGap()) }}
-            transition={
-              isTransitioning
-                ? { type: "spring", stiffness: 300, damping: 30 }
-                : { duration: 0 }
-            }
-            onAnimationComplete={handleTransitionEnd}
-          >
-            {infiniteRooms.map((room, index) => (
-              <motion.div
-                key={`${room.id}-${index}`}
-                className="relative flex-shrink-0 group cursor-pointer"
-                style={{
-                  width: `${getSlideWidth()}px`,
-                  height: isMobile ? "400px" : "500px",
-                }}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <Link to={`/room/${room.id}`} className="block w-full h-full">
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300">
-                    <img
-                      src={room.image}
-                      alt={`${room.name} - Hotel Sherpa Soul Kathmandu`}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = "/room1/room.webp";
-                      }}
-                    />
-
-                    {/* Direct Booking 10% OFF Badge */}
-                    <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-[#FB6C01] to-amber-600 text-white rounded-xl px-2.5 py-1 text-[11px] font-extrabold shadow-lg flex items-center gap-1 border border-amber-300/40">
-                      <span>🏷️</span>
-                      <span>10% OFF Direct</span>
-                    </div>
-
-                    <div className="absolute bottom-0 left-0 right-0 p-5 text-white bg-gradient-to-t from-black/85 via-black/50 to-transparent">
-                      <h3 className="text-lg md:text-2xl font-bold mb-1 text-white">
-                        {room.name}
-                      </h3>
-                      <p className="text-xs md:text-sm text-slate-200 font-medium">
-                        {room.occupancy} • {room.bedShort}
-                      </p>
-                    </div>
-
-                    <div className="absolute top-4 right-4 z-10 bg-[#01366E]/95 backdrop-blur-md rounded-xl px-3 py-1.5 text-white text-xs font-semibold shadow-lg flex flex-col items-end border border-white/10">
-                      <div className="flex items-center gap-1.5">
-                        <span className="line-through text-slate-300 text-[11px]">${room.price}</span>
-                        <span className="text-amber-300 font-black text-sm">${Math.round(room.price * 0.9)} USD</span>
-                        <span className="text-slate-200 text-[11px]">/ night</span>
-                      </div>
-                      <span className="text-emerald-300 text-[10px] font-bold">
-                        Save 10% Direct
-                      </span>
-                      <span className="text-amber-200 text-[11px] font-medium">
-                        ~NPR {Math.round((room.priceNprApprox || room.price * 135) * 0.9).toLocaleString()}
-                      </span>
-                    </div>
-
-                    <AnimatePresence>
-                      {!isMobile && hoveredIndex === index && (
-                        <motion.div
-                          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#01366E]/95 via-[#01366E]/85 to-transparent flex flex-col justify-end p-6 pt-14 text-white"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.25 }}
-                        >
-                          <p className="text-sm text-slate-100 mb-2 font-light">
-                            {room.featureHighlight || `${room.beds} • 24/7 Hot Water • Shared Kitchen`}
-                          </p>
-                          <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#FB6C01]">
-                            View Room Details & Rates <ArrowRight className="w-4 h-4" />
-                          </span>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {isMobile && (
-            <div className="flex justify-center mt-6 gap-2">
-              {rooms.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? "bg-[#FB6C01] w-6" : "bg-gray-300"
-                  }`}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      <div className="flex items-center justify-center mt-10 px-4">
-        <Link to="/rooms">
-          <button className="flex items-center gap-3 justify-between bg-[#01366E] hover:bg-[#072340] text-white px-8 py-3.5 rounded-full font-semibold transition-colors duration-300 shadow-md">
-            <span className="text-base">Explore All Rooms & Rates</span>
-            <ArrowRight className="w-5 h-5 text-[#FB6C01]" />
-          </button>
-        </Link>
-      </div>
-    </div>
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
+    </section>
   );
-};
-
-export default RoomCarousel;
+}

@@ -89,6 +89,13 @@ export const trackEvent = (eventName, parameters = {}) => {
         Purchase: "purchase",
         Contact: "contact",
         ViewContent: "view_item",
+        BookingClick: "booking_click",
+        WhatsAppClick: "whatsapp_click",
+        PhoneClick: "phone_click",
+        EmailClick: "email_click",
+        GoogleMapsClick: "maps_click",
+        ContactFormSubmit: "form_submit",
+        BookingFormSubmit: "booking_submit",
       };
 
       const gaEventName = ga4EventMap[eventName] || eventName;
@@ -99,3 +106,55 @@ export const trackEvent = (eventName, parameters = {}) => {
 
 // Backward compatibility alias
 export const trackMetaEvent = trackEvent;
+
+// Specific CRO conversion tracking helpers
+export const trackBookingClick = (entryPoint, extra = {}) => {
+  trackEvent("InitiateCheckout", {
+    content_category: "hotel_booking",
+    entry_point: entryPoint,
+    ...extra,
+  });
+};
+
+export const trackWhatsAppClick = (entryPoint, extra = {}) => {
+  trackEvent("Contact", {
+    channel: "whatsapp",
+    entry_point: entryPoint,
+    ...extra,
+  });
+};
+
+export const trackPhoneClick = (entryPoint) => {
+  trackEvent("Contact", {
+    channel: "phone",
+    entry_point: entryPoint,
+  });
+};
+
+export const trackEmailClick = (entryPoint) => {
+  trackEvent("Contact", {
+    channel: "email",
+    entry_point: entryPoint,
+  });
+};
+
+export const trackMapsClick = (entryPoint) => {
+  trackEvent("ViewContent", {
+    content_category: "google_maps",
+    entry_point: entryPoint,
+  });
+};
+
+export const trackContactFormSubmit = (data = {}) => {
+  trackEvent("Lead", {
+    form_type: "contact_form",
+    ...data,
+  });
+};
+
+export const trackBookingFormSubmit = (data = {}) => {
+  trackEvent("Purchase", {
+    form_type: "direct_booking_form",
+    ...data,
+  });
+};

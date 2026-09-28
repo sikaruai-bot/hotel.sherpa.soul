@@ -5,16 +5,23 @@ import { useCMS } from "../../Context/CMSContext";
 const DEFAULT_BASE_URL = "https://hotelsherpasoul.com";
 
 const DEFAULT_ROUTE_TITLES = {
-  "/": "Hotel Sherpa Soul | Peaceful Hotel in Thamel, Kathmandu",
+  "/": "Hotel in Thamel Kathmandu | Hotel Sherpa Soul",
   "/about": "About Hotel Sherpa Soul | Peaceful Boutique Hotel in Thamel Kathmandu",
   "/services": "Services & Amenities | Shared Kitchen & Facilities | Hotel Sherpa Soul",
   "/rooms": "Rooms & Rates | Budget Family & Deluxe Rooms | Hotel Sherpa Soul",
+  "/rooms/deluxe-room": "Deluxe Room in Thamel Kathmandu | Hotel Sherpa Soul",
+  "/rooms/family-room": "Family Room with AC in Thamel Kathmandu | Hotel Sherpa Soul",
+  "/rooms/budget-family-room": "Budget Family Room in Thamel Kathmandu | Hotel Sherpa Soul",
+  "/location": "Hotel in Thamel Kathmandu | Location & Directions",
   "/book-now": "Book Direct & Save 10% | Hotel Sherpa Soul Kathmandu",
   "/blog": "Kathmandu & Thamel Travel Guide | Hotel Sherpa Soul Blog",
   "/contact": "Contact Hotel Sherpa Soul | Location in Thamel Kathmandu",
   "/gallery": "Photo & Video Gallery | Rooms & Facilities | Hotel Sherpa Soul",
   "/privacy": "Privacy Policy & Cookie Disclosures | Hotel Sherpa Soul Kathmandu",
+  "/privacy-policy": "Privacy Policy & Cookie Disclosures | Hotel Sherpa Soul Kathmandu",
   "/terms": "Terms of Service & Booking Policies | Hotel Sherpa Soul",
+  "/terms-and-conditions": "Terms of Service & Booking Policies | Hotel Sherpa Soul",
+  "/cancellation-policy": "Cancellation Policy | Hotel Sherpa Soul Kathmandu",
 };
 
 /**
@@ -72,16 +79,16 @@ export default function CanonicalManager() {
     const title =
       pageData.title ||
       DEFAULT_ROUTE_TITLES[cleanPath] ||
-      (cleanPath.startsWith("/room/")
+      (cleanPath.startsWith("/room/") || cleanPath.startsWith("/rooms/")
         ? "Room Details | Hotel Sherpa Soul Thamel Kathmandu"
         : cleanPath.startsWith("/book/")
         ? "Complete Your Reservation | Hotel Sherpa Soul"
-        : seo?.global?.defaultTitle);
+        : seo?.global?.defaultTitle || "Hotel in Thamel Kathmandu | Hotel Sherpa Soul");
 
     const description =
       pageData.description ||
       seo?.global?.defaultDescription ||
-      "Stay at Hotel Sherpa Soul, a peaceful hotel in Thamel, Kathmandu. Comfortable rooms, air conditioning, Wi-Fi, friendly service and practical facilities for travellers.";
+      "Stay at Hotel Sherpa Soul, a quiet and comfortable hotel in Thamel, Kathmandu. Enjoy clean rooms, trekker-friendly services, luggage storage and direct booking benefits.";
 
     const keywords = pageData.keywords || seo?.global?.defaultKeywords;
     const ogImage = pageData.ogImage || seo?.social?.ogImage || `${baseUrl}/hero1.webp`;

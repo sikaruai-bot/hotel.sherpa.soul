@@ -263,12 +263,12 @@ export default function ContactForm() {
                         <p className="mt-1 text-emerald-700 text-xs">
                           Need instant assistance? You can also reach our 24/7 Front Desk on WhatsApp:{" "}
                           <a
-                            href="https://wa.me/9779818259472"
+                            href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="font-bold underline text-emerald-900"
                           >
-                            +977-9851068219
+                            +977 9818259472
                           </a>
                         </p>
                       </div>
@@ -281,7 +281,7 @@ export default function ContactForm() {
                       <div className="text-sm">
                         <p className="font-semibold">{statusMessage}</p>
                         <a
-                          href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul"
+                          href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
                           target="_blank"
                           rel="noopener noreferrer"
                           className="mt-2 inline-block bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold"

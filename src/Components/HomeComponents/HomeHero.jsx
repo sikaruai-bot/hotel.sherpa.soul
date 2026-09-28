@@ -66,8 +66,8 @@ export default function HomeIntro() {
     },
     {
       icon: FaWhatsapp,
-      href: "https://wa.me/9779818259472?text=Hello! I'd like to talk with you.",
-      label: "Whatsapp",
+      href: "https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates.",
+      label: "WhatsApp",
       colorClass: "text-[#25D366]",
     },
   ];
@@ -204,37 +204,36 @@ export default function HomeIntro() {
             </div>
 
             <div className="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-300 font-semibold drop-shadow">
-              WELCOME TO HOTEL SHERPA SOUL
+              WELCOME TO HOTEL SHERPA SOUL • THAMEL, KATHMANDU
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight text-white drop-shadow-md">
-              Sleep Well in the{" "}
-              <span className="text-[#FB6C01]">Heart of Thamel</span>, Kathmandu
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight text-white drop-shadow-md">
+              Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu
             </h1>
 
             <p className="text-white/95 text-base sm:text-lg leading-relaxed font-light drop-shadow">
-              Discover a peaceful and comfortable stay at Hotel Sherpa Soul, located in the vibrant heart of Thamel, Kathmandu. Explore the city by day, return to a quiet room at night, and wake up refreshed for your next adventure.
+              Stay at Hotel Sherpa Soul, a quiet and comfortable boutique hotel in Thamel Bhagawati Marg 26. Designed for international tourists, trekkers, and couples seeking clean rooms, peaceful nights, luggage storage, and warm Himalayan hospitality.
             </p>
 
-            {/* 10% Direct Booking Special Highlight Card */}
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-black/75 via-[#01366E]/50 to-black/75 border border-amber-400/50 backdrop-blur-md shadow-2xl">
+            {/* Direct Booking Benefit Card */}
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-black/80 via-[#01366E]/60 to-black/80 border border-amber-400/50 backdrop-blur-md shadow-2xl">
               <div className="flex items-center justify-between gap-3 sm:gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-xl bg-gradient-to-br from-[#FB6C01] via-amber-500 to-yellow-400 flex flex-col items-center justify-center text-white shadow-lg flex-shrink-0">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[#FB6C01] via-amber-500 to-yellow-400 flex flex-col items-center justify-center text-white shadow-lg flex-shrink-0">
                     <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider leading-none">SAVE</span>
                     <span className="text-base sm:text-lg font-black leading-none mt-0.5">10%</span>
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="text-white font-bold text-sm sm:text-base">
-                        Direct Booking Discount
+                        Direct Booking Privilege
                       </span>
                       <span className="bg-emerald-500/25 text-emerald-300 border border-emerald-400/40 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                        Active Deal
+                        Active Offer
                       </span>
                     </div>
                     <p className="text-slate-200 text-xs sm:text-sm font-light leading-snug mt-0.5">
-                      Get an instant <strong className="text-amber-300 font-bold">10% OFF</strong> when booking directly. Best rate guarantee & no hidden charges.
+                      Save 10% instantly on all room categories when booking directly with our front desk.
                     </p>
                   </div>
                 </div>
@@ -253,35 +252,56 @@ export default function HomeIntro() {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="pt-1">
-              <div className="flex flex-wrap items-center gap-4">
+            {/* 3 Clear Action Buttons (Check Availability, Book Direct & Save 10%, Chat on WhatsApp) */}
+            <div className="pt-1 space-y-3">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                {/* 1. Check Availability */}
+                <a
+                  href="/rooms"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/80 hover:border-white font-bold text-sm sm:text-base backdrop-blur-md transition-all duration-300 transform hover:scale-105 shadow-lg min-h-[44px]"
+                >
+                  <span>Check Availability</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+
+                {/* 2. Book Direct & Save 10% */}
                 <button
                   onClick={() => {
                     trackMetaEvent("InitiateCheckout", {
                       content_category: "hotel_booking",
-                      entry_point: "home_hero",
+                      entry_point: "home_hero_book_direct",
                     });
                     setIsBookingModalOpen(true);
                     setIsModalOpen(false);
                   }}
-                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-h-[44px]"
                 >
-                  <Calendar className="w-5 h-5" />
+                  <Calendar className="w-4 h-4" />
                   <span>Book Direct & Save 10%</span>
                 </button>
 
+                {/* 3. Chat on WhatsApp */}
                 <a
-                  href="/rooms"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/70 hover:border-white font-semibold text-base sm:text-lg backdrop-blur-md transition-all duration-300 transform hover:scale-105"
+                  href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    trackMetaEvent("Contact", {
+                      channel: "whatsapp",
+                      entry_point: "hero_whatsapp_btn",
+                    });
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-h-[44px]"
                 >
-                  <span>Explore Our Rooms</span>
-                  <ArrowRight className="w-5 h-5" />
+                  <FaWhatsapp className="w-4 h-4" />
+                  <span>Chat on WhatsApp</span>
                 </a>
               </div>
-              <p className="text-[11px] sm:text-xs text-amber-200/90 font-medium pt-2 pl-2 flex items-center gap-1.5">
-                <span>✨</span>
-                <span>Direct booking benefit automatically applied • Instant confirmation</span>
+
+              {/* Short trust message near the booking CTA */}
+              <p className="text-xs sm:text-sm text-amber-200/95 font-medium flex items-center gap-1.5 pl-1">
+                <span className="text-amber-300">🛡️</span>
+                <span>Best available direct-booking offer. Contact us for availability and dates.</span>
               </p>
             </div>
 

@@ -606,13 +606,13 @@ export default function BookingForm() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={`https://wa.me/9779851139414?text=${waText}`}
+              href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               <Phone className="w-5 h-5" />
-              Confirm on WhatsApp (+977 9851139414)
+              Confirm on WhatsApp (+977 9818259472)
             </a>
             <button
               onClick={() => navigate("/rooms")}

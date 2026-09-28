@@ -381,7 +381,12 @@ export default function BookNowPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="group hover:scale-105 transition-all duration-300">
+                  <a
+                    href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block group hover:scale-105 transition-all duration-300"
+                  >
                     <div className="flex items-center space-x-4 p-5 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border border-green-100 hover:shadow-lg hover:border-green-200">
                       <div className="bg-gradient-to-r from-green-500 to-emerald-500 p-4 rounded-2xl shadow-lg group-hover:shadow-green-200 transition-shadow">
                         <Phone className="w-6 h-6 text-white" />
@@ -389,11 +394,28 @@ export default function BookNowPage() {
                       <div>
                         <h3 className="font-bold text-gray-800">WhatsApp</h3>
                         <p className="text-green-600 font-semibold text-lg">
-                          +977-9851068219
+                          +977 9818259472
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </a>
+
+                  <a
+                    href="tel:+9779851068219"
+                    className="block group hover:scale-105 transition-all duration-300"
+                  >
+                    <div className="flex items-center space-x-4 p-5 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl border border-amber-100 hover:shadow-lg hover:border-amber-200">
+                      <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-4 rounded-2xl shadow-lg group-hover:shadow-amber-200 transition-shadow">
+                        <Phone className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-gray-800">Call directly</h3>
+                        <p className="text-amber-600 font-semibold text-lg">
+                          +977 9851068219
+                        </p>
+                      </div>
+                    </div>
+                  </a>
 
                   <div className="group hover:scale-105 transition-all duration-300">
                     <div className="flex items-center space-x-4 p-5 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl border border-blue-100 hover:shadow-lg hover:border-blue-200">
@@ -875,7 +897,7 @@ export default function BookNowPage() {
 
               <div className="pt-6">
                 <a
-                  href={`https://wa.me/9779851139414?text=${encodeURIComponent(
+                  href={`https://wa.me/9779818259472?text=${encodeURIComponent(
                     `*🏨 New Website Reservation - Hotel Sherpa Soul*\n\n` +
                     `*Booking Ref:* ${bookingRefId}\n` +
                     `*Guest Name:* ${formData.fullName}\n` +
@@ -892,7 +914,7 @@ export default function BookNowPage() {
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Phone className="w-5 h-5" />
-                  Confirm on WhatsApp (+977 9851139414)
+                  Confirm on WhatsApp (+977 9818259472)
                 </a>
               </div>
             </div>
