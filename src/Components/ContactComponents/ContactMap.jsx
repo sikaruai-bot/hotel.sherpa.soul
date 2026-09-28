@@ -4,6 +4,23 @@ import { useTranslation } from "react-i18next";
 
 export default function HomeLocation() {
   const { t } = useTranslation();
+  const [loadMap, setLoadMap] = React.useState(false);
+  const mapRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!mapRef.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(mapRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="font-sans text-gray-800">
@@ -42,17 +59,24 @@ export default function HomeLocation() {
         </div>
 
         {/* Google Maps Embed */}
-        <div className="w-full h-[400px] rounded-xl overflow-hidden shadow-lg">
-          <iframe
-            title={t("contactMap.en.mapTitle", "Hotel Sherpa Soul Location")}
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d443.03720922606624!2d85.31072286234645!3d27.716194896169135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1756790839653!5m2!1sen!2snp"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
+        <div ref={mapRef} className="w-full h-[400px] rounded-xl overflow-hidden shadow-lg bg-slate-100 flex items-center justify-center">
+          {loadMap ? (
+            <iframe
+              title={t("contactMap.en.mapTitle", "Hotel Sherpa Soul Location")}
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d443.03720922606624!2d85.31072286234645!3d27.716194896169135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1756790839653!5m2!1sen!2snp"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          ) : (
+            <div className="text-center p-6 text-slate-500">
+              <MapPin className="w-8 h-8 text-[#FB6C01] mx-auto mb-2 animate-bounce" />
+              <p className="text-sm font-medium">Hotel Sherpa Soul, Thamel Kathmandu</p>
+            </div>
+          )}
         </div>
       </section>
     </div>

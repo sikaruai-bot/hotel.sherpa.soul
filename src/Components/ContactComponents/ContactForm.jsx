@@ -95,16 +95,10 @@ export default function ContactForm() {
 
       {/* Contact Form Section with Background Image */}
       <section
-        className="py-24 px-6 relative overflow-hidden min-h-screen flex items-center"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
+        className="py-24 px-6 relative overflow-hidden min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-amber-50/30 to-blue-50/40"
       >
         {/* Light overlay */}
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
 
         {/* Soft mountain tints */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full filter blur-3xl"></div>
