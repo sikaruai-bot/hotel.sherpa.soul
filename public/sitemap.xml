@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
     <loc>https://hotelsherpasoul.com/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,31 +11,23 @@
   <!-- Rooms & Suites -->
   <url>
     <loc>https://hotelsherpasoul.com/rooms</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-
-  <!-- Book Now Direct -->
-  <url>
-    <loc>https://hotelsherpasoul.com/book-now</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Services & Amenities -->
-  <url>
-    <loc>https://hotelsherpasoul.com/services</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 
   <!-- About Us -->
   <url>
     <loc>https://hotelsherpasoul.com/about</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Services & Amenities -->
+  <url>
+    <loc>https://hotelsherpasoul.com/services</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -46,15 +35,43 @@
   <!-- Contact & Location -->
   <url>
     <loc>https://hotelsherpasoul.com/contact</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Photo Gallery -->
+  <!-- Book Now Direct -->
+  <url>
+    <loc>https://hotelsherpasoul.com/book-now</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Individual Room Bookings -->
+  <url>
+    <loc>https://hotelsherpasoul.com/book/1</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelsherpasoul.com/book/2</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelsherpasoul.com/book/3</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Photo & Video Gallery -->
   <url>
     <loc>https://hotelsherpasoul.com/gallery</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -62,44 +79,24 @@
   <!-- Travel & Thamel Blog -->
   <url>
     <loc>https://hotelsherpasoul.com/blog</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>
-
-  <!-- Privacy Policy -->
-  <url>
-    <loc>https://hotelsherpasoul.com/privacy</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <!-- Terms of Service -->
   <url>
     <loc>https://hotelsherpasoul.com/terms</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
-  <!-- Individual Rooms & Suites -->
+  <!-- Privacy Policy -->
   <url>
-    <loc>https://hotelsherpasoul.com/room/1</loc>
-    <lastmod>2026-09-12</lastmod>
+    <loc>https://hotelsherpasoul.com/privacy</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hotelsherpasoul.com/room/2</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hotelsherpasoul.com/room/3</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
 </urlset>
