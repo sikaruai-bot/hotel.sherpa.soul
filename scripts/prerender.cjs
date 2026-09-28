@@ -314,6 +314,10 @@ const ROUTES = [
     description: 'Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy comfortable rooms, 24/7 front desk, high-speed Wi-Fi, shared kitchen, and a peaceful stay for travelers exploring Nepal.',
     canonical: 'https://hotelsherpasoul.com/',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
+    preload: `
+    <link rel="preload" as="image" href="/hero/hero1-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    `,
     content: `
       ${NAV_HTML}
       <main class="min-h-screen pt-20">
@@ -529,62 +533,126 @@ const ROUTES = [
     description: 'Explore hotel rooms at Hotel Sherpa Soul in Thamel, Kathmandu. Choose from Budget Family Rooms, Deluxe Rooms, and Family Rooms with AC, private bathrooms, and fiber Wi-Fi.',
     canonical: 'https://hotelsherpasoul.com/rooms',
     ogImage: 'https://hotelsherpasoul.com/triple.webp',
+    preload: `
+    <link rel="preload" as="image" href="/changes_photo/singlesitter-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/changes_photo/singlesitter.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    `,
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-28 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">THAMEL ACCOMMODATION</span>
-          <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-2">Rooms & Suites at Hotel Sherpa Soul</h1>
-          <p class="text-slate-600 text-base sm:text-lg mt-3">Enjoy peaceful sleep, 24/7 hot water, high-speed Wi-Fi, and authentic Himalayan hospitality in Thamel, Kathmandu.</p>
+      <div>
+        <div class="relative w-screen h-screen overflow-hidden bg-slate-900">
+          <picture>
+            <source media="(max-width: 768px)" srcset="/changes_photo/singlesitter-mobile.webp" type="image/webp" />
+            <source media="(min-width: 769px)" srcset="/changes_photo/singlesitter.webp" type="image/webp" />
+            <img
+              src="/changes_photo/singlesitter.webp"
+              alt="Hotel Sherpa Soul comfortable and quiet rooms in Thamel Kathmandu"
+              class="absolute top-0 left-0 w-full h-full object-cover scale-110"
+              fetchpriority="high"
+              decoding="async"
+              width="960"
+              height="720"
+            />
+          </picture>
+          <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent z-10 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <div class="relative z-20 flex flex-col justify-end h-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pb-16 md:pb-20 text-white">
+            <div class="space-y-8 max-w-4xl">
+              <div class="flex items-center gap-4 text-white/90 mb-8">
+                <div class="relative">
+                  <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-500/20 rounded-full blur-lg"></div>
+                  <div class="relative w-12 h-12 flex items-center justify-center">
+                    <svg class="w-6 h-6 transition-transform hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
+                      <polyline points="12,6 12,12 16,14" stroke-width="1.5"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-lg md:text-xl font-semibold tracking-wide">Hotel Sherpa Soul</span>
+                  <span class="text-sm md:text-base text-white/70 font-light">Thamel, Kathmandu</span>
+                </div>
+              </div>
+              <div>
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6">
+                  <span class="block">Comfortable Rooms for</span>
+                  <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/80">Different Ways of Travelling</span>
+                </h1>
+                <p class="text-lg md:text-2xl font-extralight text-white/80 max-w-3xl leading-relaxed">
+                  Every traveller has a different reason for coming to Kathmandu. Our room categories are designed around simple, practical comfort.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 p-6 flex flex-col justify-between">
-            <div>
-              <img src="/triple.webp" alt="Budget Family Room - Hotel Sherpa Soul" class="w-full h-56 object-cover rounded-2xl mb-4" width="400" height="225" />
-              <div class="flex justify-between items-center mb-2">
-                <h2 class="text-2xl font-bold text-[#01366E]">Budget Family Room</h2>
-                <span class="bg-[#01366E] text-white px-3 py-1 rounded-xl text-sm font-bold">$20 / night</span>
+
+        <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 md:py-16">
+          <div class="text-center mb-12 px-4">
+            <p class="text-xs text-[#FB6C01] uppercase tracking-[0.3em] mb-3 font-semibold">OUR SANCTUARY</p>
+            <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-[#01366E] mb-4">Rooms & Suites</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base mb-2">Discover comfort and elegance in our thoughtfully designed accommodations</p>
+            <p class="text-gray-500 text-sm">3 Room Categories Available</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto px-4">
+            <div class="group relative bg-white rounded-2xl shadow-md overflow-hidden">
+              <div class="relative h-48 sm:h-56 lg:h-64 overflow-hidden bg-slate-100">
+                <img src="/triple.webp" alt="Budget Family Room - Hotel Sherpa Soul Kathmandu" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="256" />
+                <div class="absolute top-4 right-4 bg-[#01366E]/95 text-white px-3.5 py-1.5 rounded-xl text-right">
+                  <div class="flex items-center gap-1"><span class="text-[#FB6C01] font-bold text-sm sm:text-base">$20 USD</span><span class="text-xs opacity-80">/ night</span></div>
+                  <span class="text-amber-200 text-xs font-medium">~NPR 2,700</span>
+                </div>
+                <div class="absolute top-4 left-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">🔥 Only 2 rooms left!</div>
               </div>
-              <p class="text-xs text-[#FB6C01] font-bold mb-3">~NPR 2,700 • 3 Adults, 1 Child</p>
-              <p class="text-sm text-slate-600 leading-relaxed">Features 1 King Bed and 1 Single Bed, en-suite bathroom, 24/7 hot shower, and shared kitchen privileges.</p>
-            </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
-              <a href="/room/1" class="text-sm font-bold text-[#01366E] hover:underline">Details & Specs &rarr;</a>
-              <a href="/book/1" class="px-4 py-2 bg-[#FB6C01] text-white rounded-xl text-xs font-bold hover:bg-[#e05a00]">Book Now</a>
-            </div>
-          </article>
-          <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 p-6 flex flex-col justify-between">
-            <div>
-              <img src="/changes_photo/singleBedWithSofa.webp" alt="Deluxe Room - Hotel Sherpa Soul" class="w-full h-56 object-cover rounded-2xl mb-4" width="400" height="225" />
-              <div class="flex justify-between items-center mb-2">
-                <h2 class="text-2xl font-bold text-[#01366E]">Deluxe Room</h2>
-                <span class="bg-[#01366E] text-white px-3 py-1 rounded-xl text-sm font-bold">$20 / night</span>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-[#01366E] mb-1">Budget Family Room</h3>
+                <p class="text-xs text-slate-500 mb-4">3 Adults, 1 Child • 1 King Bed + 1 Single Bed</p>
+                <p class="text-sm text-slate-600 leading-relaxed mb-6">Features 1 King Bed + 1 Single Bed, en-suite bathroom, 24/7 hot shower, free Wi-Fi, and shared kitchen privileges.</p>
+                <div class="flex items-center gap-3">
+                  <a href="/book/1" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
+                </div>
               </div>
-              <p class="text-xs text-[#FB6C01] font-bold mb-3">~NPR 2,700 • 2 Adults, 1 Child</p>
-              <p class="text-sm text-slate-600 leading-relaxed">Air-conditioned boutique room with king bed, sofa seating, private bathroom, fast Wi-Fi, and peaceful atmosphere.</p>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
-              <a href="/room/2" class="text-sm font-bold text-[#01366E] hover:underline">Details & Specs &rarr;</a>
-              <a href="/book/2" class="px-4 py-2 bg-[#FB6C01] text-white rounded-xl text-xs font-bold hover:bg-[#e05a00]">Book Now</a>
-            </div>
-          </article>
-          <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 p-6 flex flex-col justify-between">
-            <div>
-              <img src="/changes_photo/doubleBed.webp" alt="Family Room - Hotel Sherpa Soul" class="w-full h-56 object-cover rounded-2xl mb-4" width="400" height="225" />
-              <div class="flex justify-between items-center mb-2">
-                <h2 class="text-2xl font-bold text-[#01366E]">Family Room</h2>
-                <span class="bg-[#01366E] text-white px-3 py-1 rounded-xl text-sm font-bold">$30 / night</span>
+
+            <div class="group relative bg-white rounded-2xl shadow-md overflow-hidden">
+              <div class="relative h-48 sm:h-56 lg:h-64 overflow-hidden bg-slate-100">
+                <img src="/changes_photo/singleBedWithSofa.webp" alt="Deluxe Room (AC) - Hotel Sherpa Soul Kathmandu" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="256" />
+                <div class="absolute top-4 right-4 bg-[#01366E]/95 text-white px-3.5 py-1.5 rounded-xl text-right">
+                  <div class="flex items-center gap-1"><span class="text-[#FB6C01] font-bold text-sm sm:text-base">$20 USD</span><span class="text-xs opacity-80">/ night</span></div>
+                  <span class="text-amber-200 text-xs font-medium">~NPR 2,700</span>
+                </div>
+                <div class="absolute top-4 left-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">🔥 Only 2 rooms left!</div>
               </div>
-              <p class="text-xs text-[#FB6C01] font-bold mb-3">~NPR 4,000 • 3 Adults, 1 Child</p>
-              <p class="text-sm text-slate-600 leading-relaxed">Spacious family suite with King + Single bed, full air conditioning, private modern washroom, and city views.</p>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-[#01366E] mb-1">Deluxe Room (AC)</h3>
+                <p class="text-xs text-slate-500 mb-4">2 Adults, 1 Child • 1 King Bed • Air Conditioned</p>
+                <p class="text-sm text-slate-600 leading-relaxed mb-6">Air-conditioned boutique room with king bed, sofa seating, private modern bathroom, fast Wi-Fi, and peaceful atmosphere.</p>
+                <div class="flex items-center gap-3">
+                  <a href="/book/2" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
+                </div>
+              </div>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
-              <a href="/room/3" class="text-sm font-bold text-[#01366E] hover:underline">Details & Specs &rarr;</a>
-              <a href="/book/3" class="px-4 py-2 bg-[#FB6C01] text-white rounded-xl text-xs font-bold hover:bg-[#e05a00]">Book Now</a>
+
+            <div class="group relative bg-white rounded-2xl shadow-md overflow-hidden">
+              <div class="relative h-48 sm:h-56 lg:h-64 overflow-hidden bg-slate-100">
+                <img src="/changes_photo/doubleBed.webp" alt="Family Room (AC) - Hotel Sherpa Soul Kathmandu" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="256" />
+                <div class="absolute top-4 right-4 bg-[#01366E]/95 text-white px-3.5 py-1.5 rounded-xl text-right">
+                  <div class="flex items-center gap-1"><span class="text-[#FB6C01] font-bold text-sm sm:text-base">$30 USD</span><span class="text-xs opacity-80">/ night</span></div>
+                  <span class="text-amber-200 text-xs font-medium">~NPR 4,000</span>
+                </div>
+                <div class="absolute top-4 left-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">🔥 Only 2 rooms left!</div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-[#01366E] mb-1">Family Room (AC)</h3>
+                <p class="text-xs text-slate-500 mb-4">3 Adults, 1 Child • King Bed + Single Bed • AC</p>
+                <p class="text-sm text-slate-600 leading-relaxed mb-6">Extra spacious deluxe family accommodation with air conditioning, premium linen, hot shower, and shared kitchen access.</p>
+                <div class="flex items-center gap-3">
+                  <a href="/book/3" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
+                </div>
+              </div>
             </div>
-          </article>
+          </div>
         </div>
-      </main>
+      </div>
       ${FOOTER_HTML}
     `
   },
@@ -815,6 +883,13 @@ function generateHtmlForRoute(route) {
   if (route.ogImage) {
     html = html.replace(/<meta property="og:image" content=".*?" \/>/i, `<meta property="og:image" content="${route.ogImage}" />`);
     html = html.replace(/<meta name="twitter:image" content=".*?" \/>/i, `<meta name="twitter:image" content="${route.ogImage}" />`);
+  }
+
+  // Inject route-specific LCP preload in <head>
+  if (route.preload) {
+    html = html.replace('<!-- ROUTE_PRELOAD -->', route.preload.trim());
+  } else {
+    html = html.replace('<!-- ROUTE_PRELOAD -->', '');
   }
 
   // Inject pre-rendered content into <div id="root">

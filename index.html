@@ -23,67 +23,88 @@
     <!-- Mobile Browser Chrome Color -->
     <meta name="theme-color" content="#01366E" />
 
-    <!-- Performance: Responsive Preload of Critical Hero Image (LCP) -->
-    <link rel="preload" as="image" href="/hero/hero1-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    <!-- Performance: Route-specific LCP Preload Placeholder -->
+    <!-- ROUTE_PRELOAD -->
 
     <!-- Performance: DNS Prefetch & Preconnect for Third-Party Scripts -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
-    <!-- Meta Pixel Code -->
+
+    <!-- Deferred Third-Party Integration (Meta Pixel, GA4, GTM, Chatbot) to protect Mobile FCP & LCP -->
     <script>
-      !function(f,b,e,v,n,t,s){
-        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window,document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('consent', 'grant');
-      fbq('init', '1022329224109595');
-      fbq('init', '1952950858737501');
-      fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
+      (function() {
+        var scriptsLoaded = false;
+        function loadDeferredThirdParties() {
+          if (scriptsLoaded) return;
+          scriptsLoaded = true;
 
-    <!-- Google tag (gtag.js) GA4: G-E7Z3QDR3KD & Google Tag Manager: GTM-PFRV7ZTV -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7Z3QDR3KD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+          // 1. Meta Pixel
+          !function(f,b,e,v,n,t,s){
+            if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('consent', 'grant');
+          fbq('init', '1022329224109595');
+          fbq('init', '1952950858737501');
+          fbq('track', 'PageView');
 
-      // Check stored consent (allowed by default for global ads unless user opted out to essential)
-      var storedConsent = null;
-      try {
-        storedConsent = localStorage.getItem('hss_cookie_consent');
-      } catch (e) {}
+          // 2. Google Tag Manager / GA4
+          var storedConsent = null;
+          try { storedConsent = localStorage.getItem('hss_cookie_consent'); } catch (e) {}
+          var isOptedOut = storedConsent === 'essential';
 
-      var isOptedOut = storedConsent === 'essential';
+          var gaScript = document.createElement('script');
+          gaScript.async = true;
+          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-E7Z3QDR3KD';
+          document.head.appendChild(gaScript);
 
-      gtag('consent', 'default', {
-        'analytics_storage': isOptedOut ? 'denied' : 'granted',
-        'ad_storage': isOptedOut ? 'denied' : 'granted',
-        'ad_user_data': isOptedOut ? 'denied' : 'granted',
-        'ad_personalization': isOptedOut ? 'denied' : 'granted',
-        'wait_for_update': 500
-      });
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-      gtag('config', 'G-E7Z3QDR3KD', {
-        send_page_view: true
-      });
+          gtag('consent', 'default', {
+            'analytics_storage': isOptedOut ? 'denied' : 'granted',
+            'ad_storage': isOptedOut ? 'denied' : 'granted',
+            'ad_user_data': isOptedOut ? 'denied' : 'granted',
+            'ad_personalization': isOptedOut ? 'denied' : 'granted',
+            'wait_for_update': 500
+          });
 
-      // Load GTM
-      if (!isOptedOut) {
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PFRV7ZTV');
-      }
+          gtag('config', 'G-E7Z3QDR3KD', { send_page_view: true });
+
+          if (!isOptedOut) {
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PFRV7ZTV');
+          }
+
+          // 3. AI Chatbot Widget
+          var chatScript = document.createElement('script');
+          chatScript.src = '/widget.js';
+          chatScript.defer = true;
+          document.body.appendChild(chatScript);
+        }
+
+        // Trigger loading after critical rendering or user interaction
+        if (document.readyState === 'complete') {
+          setTimeout(loadDeferredThirdParties, 1200);
+        } else {
+          window.addEventListener('load', function() {
+            setTimeout(loadDeferredThirdParties, 1200);
+          });
+        }
+        ['touchstart', 'scroll', 'mousemove', 'keydown'].forEach(function(evt) {
+          window.addEventListener(evt, loadDeferredThirdParties, { once: true, passive: true });
+        });
+      })();
     </script>
 
     <!-- Open Graph / Facebook / WhatsApp Preview -->
@@ -353,7 +374,5 @@
     <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-      <!-- Hotel Sherpa Soul AI Chatbot Widget -->
-    <script src="/widget.js"></script>
   </body>
 </html>

@@ -13,14 +13,16 @@ const RoomsCard = () => {
   const fallbackRooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultFallbackRooms;
   const [rooms, setRooms] = useState(fallbackRooms);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const roomsPerPage = 9;
   const { t } = useTranslation();
 
   const fetchRooms = async () => {
     try {
-      setLoading(true);
+      if (!rooms || rooms.length === 0) {
+        setLoading(true);
+      }
       setError(null);
       // Strictly present the 3 room categories:
       // 1. Budget Family Room
@@ -272,6 +274,9 @@ const RoomsCard = () => {
                     alt={`${room.name} - Hotel Sherpa Soul Kathmandu`}
                     className="w-full h-full object-cover transform transition duration-300 ease-out group-hover:scale-105"
                     loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="256"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
                       e.currentTarget.src = "/room1/room.webp";
