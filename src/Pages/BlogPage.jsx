@@ -250,19 +250,23 @@ Why Thamel Excels as a Base:
     <main className="min-h-screen bg-slate-50 font-sans">
       {/* Hero Section */}
       <section className="relative min-h-[52vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white">
-        <img
-          src="/hero2.webp"
-          alt="Kathmandu valley landscape - Hotel Sherpa Soul Travel Guide"
-          className="absolute inset-0 h-full w-full object-cover opacity-35"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40" />
+        <picture className="absolute inset-0 z-0">
+          <source media="(max-width: 768px)" srcSet="/hero2-mobile.webp" type="image/webp" />
+          <source media="(min-width: 769px)" srcSet="/hero2.webp" type="image/webp" />
+          <img
+            src="/hero2.webp"
+            alt="Kathmandu valley landscape - Hotel Sherpa Soul Travel Guide"
+            className="w-full h-full object-cover opacity-35"
+            fetchPriority="high"
+            decoding="async"
+            width="768"
+            height="400"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 z-1" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-sm">
               <BookOpen className="w-3.5 h-3.5" />
               <span>Official Travel Hub</span>
@@ -275,7 +279,7 @@ Why Thamel Excels as a Base:
               information, things to do, places to visit and practical advice for
               travelers visiting Nepal.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 

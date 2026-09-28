@@ -26,10 +26,14 @@ export default function RoomDetail() {
   const { id } = useParams();
   const { rooms: cmsRooms } = useCMS();
   const rooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultRooms;
-  const [room, setRoom] = useState(null);
+  const localDefault =
+    rooms.find(
+      (r) => String(r.id) === String(id) || String(r.roomNumber) === String(id)
+    ) || rooms[0];
+  const [room, setRoom] = useState(localDefault);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("overview");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -223,8 +227,12 @@ export default function RoomDetail() {
         <div className="relative w-full h-full">
           <img
             src={images[currentImageIndex] || "/room1/room.webp"}
-            alt={`${room.name || "Room"} at Hotel Sherpa Soul, Kathmandu - View ${currentImageIndex + 1}`}
+            alt={`${room?.name || "Room"} at Hotel Sherpa Soul, Kathmandu - View ${currentImageIndex + 1}`}
             className="w-full h-full object-cover transition-opacity duration-500"
+            fetchPriority="high"
+            decoding="async"
+            width="1200"
+            height="600"
             onError={(e) => {
               e.currentTarget.onerror = null;
               e.currentTarget.src = "/room1/room.webp";

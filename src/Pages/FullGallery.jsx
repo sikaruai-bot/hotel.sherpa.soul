@@ -76,14 +76,7 @@ export default function GalleryPage() {
   const { media } = useCMS();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1200);
-    return () => clearTimeout(timer);
-  }, []);
+  const [isLoading, setIsLoading] = useState(false);
 
   const gallery = media?.gallery && media.gallery.length > 0 ? media.gallery : [
     {
@@ -171,14 +164,19 @@ export default function GalleryPage() {
       {/* Hero Section */}
       <section className="relative w-full h-[70vh] lg:h-[80vh] overflow-hidden">
         <div className="absolute inset-0">
-          <motion.img
-            src="/changes_photo/doubleBedRoom.webp"
-            alt="Hotel Sherpa Soul Deluxe Room Gallery Preview"
-            className="w-full h-full object-cover"
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2 }}
-          />
+          <picture className="w-full h-full block">
+            <source media="(max-width: 768px)" srcSet="/changes_photo/doubleBedRoom-mobile.webp" type="image/webp" />
+            <source media="(min-width: 769px)" srcSet="/changes_photo/doubleBedRoom.webp" type="image/webp" />
+            <img
+              src="/changes_photo/doubleBedRoom.webp"
+              alt="Hotel Sherpa Soul Deluxe Room Gallery Preview"
+              className="w-full h-full object-cover"
+              fetchPriority="high"
+              decoding="async"
+              width="768"
+              height="512"
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60"></div>
         </div>
         <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6 lg:px-8 text-white">

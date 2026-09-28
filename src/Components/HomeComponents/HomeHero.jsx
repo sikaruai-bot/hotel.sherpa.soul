@@ -97,7 +97,7 @@ export default function HomeIntro() {
       className={`relative ${isArabic ? "direction-rtl" : "direction-ltr"}`}
       dir={isArabic ? "rtl" : "ltr"}
     >
-      <section className="w-screen h-screen relative overflow-hidden flex">
+      <section className="w-full h-screen relative overflow-hidden flex">
         {/* Background Image Slideshow */}
         <div className="absolute inset-0">
           {heroSlides.map((slide, index) => (
@@ -108,15 +108,31 @@ export default function HomeIntro() {
                   : "opacity-0 scale-105"
                 }`}
             >
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: `url('${slide.image}')`,
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                }}
-              />
+              {index === 0 ? (
+                <picture className="w-full h-full block">
+                  <source media="(max-width: 768px)" srcSet="/hero/hero1-mobile.webp" type="image/webp" />
+                  <source media="(min-width: 769px)" srcSet="/hero/hero1.webp" type="image/webp" />
+                  <img
+                    src="/hero/hero1.webp"
+                    alt="Hotel Sherpa Soul - Boutique Room in Thamel Kathmandu"
+                    className="w-full h-full object-cover"
+                    fetchPriority="high"
+                    decoding="async"
+                    width="1376"
+                    height="768"
+                  />
+                </picture>
+              ) : (
+                <div
+                  className="w-full h-full"
+                  style={{
+                    backgroundImage: `url('${slide.image}')`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                  }}
+                />
+              )}
               {/* Left-focused gradient overlay to let text shine on the left while keeping the room bright on the right */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
@@ -181,12 +197,7 @@ export default function HomeIntro() {
           className={`relative z-10 w-full min-h-screen flex items-center px-6 sm:px-12 lg:px-20 pt-28 pb-12 max-w-7xl text-white ${isArabic ? "text-right" : "text-left"
             }`}
         >
-          <Motion.div
-            initial={{ opacity: 0, y: 35 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-5 sm:space-y-6 max-w-2xl"
-          >
+          <div className="space-y-5 sm:space-y-6 max-w-2xl">
             {/* 10% OFF Glowing Top Pill */}
             <div className="flex flex-wrap items-center gap-2 pt-2">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#FB6C01]/30 via-amber-500/25 to-[#FB6C01]/30 border border-amber-400/60 backdrop-blur-md shadow-lg shadow-orange-950/40 text-white">
@@ -343,7 +354,7 @@ export default function HomeIntro() {
                 );
               })}
             </div>
-          </Motion.div>
+          </div>
         </div>
       </section>
 

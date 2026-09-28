@@ -6,15 +6,27 @@ export default function ContactHero() {
   const { t } = useTranslation();
 
   return (
-    <section
-      className="relative w-screen h-[80vh] bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: "url('/changes_photo/doubleBed.webp')" }}
-    >
+    <section className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden bg-slate-900">
+      {/* Responsive LCP Hero Image */}
+      <picture className="absolute inset-0 z-0">
+        <source media="(max-width: 768px)" srcSet="/changes_photo/doubleBed-mobile.webp" type="image/webp" />
+        <source media="(min-width: 769px)" srcSet="/changes_photo/doubleBed.webp" type="image/webp" />
+        <img
+          src="/changes_photo/doubleBed.webp"
+          alt="Contact Hotel Sherpa Soul - Thamel Kathmandu"
+          className="w-full h-full object-cover"
+          fetchPriority="high"
+          decoding="async"
+          width="768"
+          height="512"
+        />
+      </picture>
+
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/50"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/60 z-1"></div>
 
       {/* Animated Color Blobs */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-1">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-orange-400/20 to-pink-500/20 rounded-full animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-r from-blue-400/20 to-purple-500/20 rounded-full animate-pulse delay-1000"></div>
       </div>

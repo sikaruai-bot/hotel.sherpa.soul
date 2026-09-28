@@ -338,7 +338,7 @@ const ROUTES = [
                 <span class="text-xs sm:text-sm font-semibold text-amber-200">Direct Booking Offer: <strong class="text-white font-extrabold underline">Save 10% Instantly</strong></span>
               </div>
               <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-300 font-semibold">WELCOME TO HOTEL SHERPA SOUL</p>
-              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight text-white">Sleep Well in the <span class="text-[#FB6C01]">Heart of Thamel</span>, Kathmandu</h1>
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight text-white drop-shadow-md">Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu</h1>
               <p class="text-white/95 text-base sm:text-lg leading-relaxed font-light">Discover a peaceful and comfortable boutique hotel at Hotel Sherpa Soul, located in the vibrant heart of Thamel, Kathmandu. Explore the city by day, return to a quiet room at night, and wake up refreshed for your next Himalayan adventure.</p>
               
               <div class="p-4 rounded-2xl bg-black/70 border border-amber-400/50 backdrop-blur-md">
@@ -662,6 +662,10 @@ const ROUTES = [
     description: 'Learn about Hotel Sherpa Soul in Thamel, Kathmandu. Created for travelers who value restful sleep, authentic Himalayan hospitality, and quiet boutique rooms.',
     canonical: 'https://hotelsherpasoul.com/about',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
+    preload: `
+    <link rel="preload" as="image" href="/changes_photo/singlesitter-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/changes_photo/singlesitter.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    `,
     content: `
       ${NAV_HTML}
       <main class="min-h-screen pt-28 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -719,6 +723,10 @@ const ROUTES = [
     description: 'Contact Hotel Sherpa Soul in Thamel, Kathmandu. Call +977 9851068219 or WhatsApp +977 9818259472 or email info@hotelsherpasoul.com for bookings and airport pickup.',
     canonical: 'https://hotelsherpasoul.com/contact',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
+    preload: `
+    <link rel="preload" as="image" href="/changes_photo/doubleBed-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/changes_photo/doubleBed.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    `,
     content: `
       ${NAV_HTML}
       <main class="min-h-screen pt-28 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -747,6 +755,10 @@ const ROUTES = [
     description: 'Book your stay directly at Hotel Sherpa Soul for the lowest price guaranteed, instant confirmation, 10% off promotion, and authentic Himalayan hospitality.',
     canonical: 'https://hotelsherpasoul.com/book-now',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
+    preload: `
+    <link rel="preload" as="image" href="/hero/hero1-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    `,
     content: getBookingPageContent('Reserve Your Peaceful Stay', 1)
   },
   {
@@ -755,6 +767,9 @@ const ROUTES = [
     description: 'Reserve Budget Family Room at Hotel Sherpa Soul in Thamel, Kathmandu. 1 King + 1 Single Bed, en-suite bathroom, 10% direct booking discount.',
     canonical: 'https://hotelsherpasoul.com/book/1',
     ogImage: 'https://hotelsherpasoul.com/triple.webp',
+    preload: `
+    <link rel="preload" as="image" href="/triple.webp" type="image/webp" fetchpriority="high" />
+    `,
     content: getBookingPageContent('Book Budget Family Room ($20 / ~NPR 2,700)', 1)
   },
   {
@@ -763,6 +778,9 @@ const ROUTES = [
     description: 'Reserve Deluxe Air-Conditioned Room at Hotel Sherpa Soul in Thamel, Kathmandu. King Bed, sofa seating, modern washroom, 10% direct discount.',
     canonical: 'https://hotelsherpasoul.com/book/2',
     ogImage: 'https://hotelsherpasoul.com/changes_photo/singleBedWithSofa.webp',
+    preload: `
+    <link rel="preload" as="image" href="/changes_photo/singleBedWithSofa.webp" type="image/webp" fetchpriority="high" />
+    `,
     content: getBookingPageContent('Book Deluxe Room (AC) ($20 / ~NPR 2,700)', 2)
   },
   {
@@ -771,6 +789,10 @@ const ROUTES = [
     description: 'Reserve Family Room with AC at Hotel Sherpa Soul in Thamel, Kathmandu. King + Single Bed, spacious layout, 10% direct booking discount.',
     canonical: 'https://hotelsherpasoul.com/book/3',
     ogImage: 'https://hotelsherpasoul.com/changes_photo/doubleBed.webp',
+    preload: `
+    <link rel="preload" as="image" href="/changes_photo/doubleBed-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/changes_photo/doubleBed.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    `,
     content: getBookingPageContent('Book Family Room (AC) ($30 / ~NPR 4,000)', 3)
   },
   {
@@ -779,6 +801,10 @@ const ROUTES = [
     description: 'Explore photos of guest rooms, private balconies, modern bathrooms, shared kitchen, and Kathmandu valley views at Hotel Sherpa Soul in Thamel.',
     canonical: 'https://hotelsherpasoul.com/gallery',
     ogImage: 'https://hotelsherpasoul.com/changes_photo/doubleBedRoom.webp',
+    preload: `
+    <link rel="preload" as="image" href="/changes_photo/doubleBedRoom-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/changes_photo/doubleBedRoom.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    `,
     content: `
       ${NAV_HTML}
       <main class="min-h-screen pt-28 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -803,6 +829,10 @@ const ROUTES = [
     description: 'Discover practical Kathmandu travel tips, Thamel exploration guides, Nepal trekking advice, and cultural insights from Hotel Sherpa Soul.',
     canonical: 'https://hotelsherpasoul.com/blog',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
+    preload: `
+    <link rel="preload" as="image" href="/hero2-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero2.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    `,
     content: `
       ${NAV_HTML}
       <main class="min-h-screen pt-28 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

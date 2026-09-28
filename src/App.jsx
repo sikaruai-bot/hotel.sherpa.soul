@@ -4,6 +4,16 @@ import { CMSProvider } from "./Context/CMSContext";
 
 import HomePage from "./Pages/HomePage";
 import RoomsPage from "./Pages/RoomsPage";
+import AboutPage from "./Pages/AboutPage";
+import ServicesPage from "./Pages/ServicesPage";
+import ContactPage from "./Pages/ContactPage";
+import FullGallery from "./Pages/FullGallery";
+import RoomDetails from "./Components/RoomsComponents/RoomDetails";
+import BookNowPage from "./Pages/BookNowPage";
+import BlogPage from "./Pages/BlogPage";
+import PrivacyPage from "./Pages/PrivacyPage";
+import TermsPage from "./Pages/TermsPage";
+
 import ScrollToTop from "./Components/HelperComponents/ScrollToTop";
 import Layout from "./Components/HelperComponents/Layout";
 import ActionButtons from "./Components/HelperComponents/ActionButtons";
@@ -11,17 +21,7 @@ import MetaPixel from "./Components/Analytics/MetaPixel";
 import CanonicalManager from "./Components/HelperComponents/CanonicalManager";
 import CookieConsent from "./Components/HelperComponents/CookieConsent";
 
-// Route-level code-splitting for optimal mobile performance
-const AboutPage = lazy(() => import("./Pages/AboutPage"));
-const ServicesPage = lazy(() => import("./Pages/ServicesPage"));
-const ContactPage = lazy(() => import("./Pages/ContactPage"));
-const FullGallery = lazy(() => import("./Pages/FullGallery"));
-const RoomDetails = lazy(() => import("./Components/RoomsComponents/RoomDetails"));
-const BookNowPage = lazy(() => import("./Pages/BookNowPage"));
-const BlogPage = lazy(() => import("./Pages/BlogPage"));
-const BookingForm = lazy(() => import("./Components/RoomsComponents/RoomBooking"));
-const PrivacyPage = lazy(() => import("./Pages/PrivacyPage"));
-const TermsPage = lazy(() => import("./Pages/TermsPage"));
+// Lazy-load admin/CMS and 404 to isolate heavy administrative bundles
 const NotFoundPage = lazy(() => import("./Pages/NotFoundPage"));
 const CMSAdminPage = lazy(() => import("./Pages/CMSAdminPage"));
 
