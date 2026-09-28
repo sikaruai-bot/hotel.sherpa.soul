@@ -21,7 +21,7 @@ export default function RoomsHero() {
   }, []);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-slate-900">
+    <div className="relative w-full h-screen overflow-hidden bg-slate-900">
       {/* Responsive LCP Hero Image: Mobile WebP (32KB) vs Desktop WebP */}
       <picture>
         <source

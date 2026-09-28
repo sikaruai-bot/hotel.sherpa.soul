@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { CMSProvider } from "./Context/CMSContext";
 
 import HomePage from "./Pages/HomePage";
+import RoomsPage from "./Pages/RoomsPage";
 import ScrollToTop from "./Components/HelperComponents/ScrollToTop";
 import Layout from "./Components/HelperComponents/Layout";
 import ActionButtons from "./Components/HelperComponents/ActionButtons";
@@ -13,7 +14,6 @@ import CookieConsent from "./Components/HelperComponents/CookieConsent";
 // Route-level code-splitting for optimal mobile performance
 const AboutPage = lazy(() => import("./Pages/AboutPage"));
 const ServicesPage = lazy(() => import("./Pages/ServicesPage"));
-const RoomsPage = lazy(() => import("./Pages/RoomsPage"));
 const ContactPage = lazy(() => import("./Pages/ContactPage"));
 const FullGallery = lazy(() => import("./Pages/FullGallery"));
 const RoomDetails = lazy(() => import("./Components/RoomsComponents/RoomDetails"));

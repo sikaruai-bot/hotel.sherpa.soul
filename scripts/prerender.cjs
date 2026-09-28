@@ -540,7 +540,7 @@ const ROUTES = [
     content: `
       ${NAV_HTML}
       <div>
-        <div class="relative w-screen h-screen overflow-hidden bg-slate-900">
+        <div class="relative w-full h-screen overflow-hidden bg-slate-900">
           <picture>
             <source media="(max-width: 768px)" srcset="/changes_photo/singlesitter-mobile.webp" type="image/webp" />
             <source media="(min-width: 769px)" srcset="/changes_photo/singlesitter.webp" type="image/webp" />
