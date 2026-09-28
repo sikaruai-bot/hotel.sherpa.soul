@@ -74,6 +74,10 @@
       "destination": "/sitemap.xml"
     },
     {
+      "source": "/google09193511502f33b3.html",
+      "destination": "/google09193511502f33b3.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
