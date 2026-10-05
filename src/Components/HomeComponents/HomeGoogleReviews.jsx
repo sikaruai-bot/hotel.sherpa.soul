@@ -76,6 +76,10 @@ export default function HomeGoogleReviews() {
                   src="/google.webp"
                   alt="Google Reviews"
                   className="w-8 h-8 object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  width="32"
+                  height="32"
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
                 <div>

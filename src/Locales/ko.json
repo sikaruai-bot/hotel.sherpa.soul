@@ -1,0 +1,450 @@
+{
+  "nav": {
+    "home": "홈",
+    "about": "호텔 소개",
+    "room": "객실 안내",
+    "gallery": "갤러리",
+    "blog": "블로그",
+    "contact": "문의하기",
+    "quick": "예약하기"
+  },
+  "home": {
+    "hero": {
+      "title": "카트만두 타멜 중심에서 편안하고 깊은 숙면을",
+      "subtitle": "레스토랑 없음. 소음 없음. 편안한 잠자리.",
+      "paragraph": "카트만두 타멜의 중심에 위치한 호텔 셰르파 소울에서 조용하고 아늑한 휴식을 경험하세요. 낮에는 도시를 탐험하고, 밤에는 조용한 객실에서 휴식을 취하며 다음 여정을 준비하세요.",
+      "bookButton": "객실 예약하기",
+      "tourButton": "객실 둘러보기",
+      "trustLine": "타멜 중심 위치 • 아늑한 객실 • 조용한 숙박",
+      "modalTitle": "호텔 셰르파 소울 - 카트만두 타멜",
+      "modalDesc": "편안한 객실과 실용적인 편의시설, 깊은 숙면에 집중한 타멜의 조용한 호텔입니다."
+    }
+  },
+  "mainBrand": {
+    "heading": "활기찬 타멜 거리, 객실 안은 깊은 평온함",
+    "copy": "타멜은 활기와 에너지가 넘치는 여행자의 중심지입니다. 호텔 셰르파 소울은 하루 일정을 마친 후 돌아와 편히 쉴 수 있는 조용한 안식처를 제공합니다.",
+    "brandStatement": "레스토랑 없음. 소음 없음. 편안한 잠자리.",
+    "supportingCopy": "진정한 호텔의 가치는 깨끗하고 아늑한 객실, 편리한 위치, 그리고 방해받지 않는 깊은 숙면에서 시작됩니다."
+  },
+  "roomsSection": {
+    "heading": "오롯이 나만을 위한 휴식의 공간",
+    "copy": "카트만두 시내 관광, 쇼핑, 히말라야 트레킹 준비 후 조용한 객실에서 온전한 휴식을 누려보세요.",
+    "cta": "객실 및 요금 확인",
+    "deluxeDouble": {
+      "name": "디럭스 더블룸",
+      "shortDesc": "커플, 친구, 여유로운 공간을 원하는 여행자를 위한 편안하고 아늑한 객실.",
+      "cta": "객실 보기"
+    }
+  },
+  "locationSection": {
+    "heading": "카트만두의 모든 것이 시작되는 곳",
+    "copy": "호텔 문을 나서면 바로 타멜의 카페, 상점, 환전소, 여행사가 연결됩니다. 편리한 접근성과 밤의 고요함을 모두 누리세요.",
+    "cta": "호텔 위치 확인"
+  },
+  "trekkersSection": {
+    "heading": "히말라야 여정을 위한 든든한 베이스캠프",
+    "copy": "트레킹 전후 편안한 휴식과 완벽한 짐 정리를 위한 최적의 공간을 제공합니다.",
+    "beforeTrek": {
+      "title": "트레킹 전",
+      "desc": "체력을 비축하고 장비를 점검하며 만반의 준비를 갖추세요."
+    },
+    "afterTrek": {
+      "title": "트레킹 후",
+      "desc": "카트만두로 돌아와 따뜻한 온수 샤워와 푹신한 침대에서 피로를 푸세요."
+    },
+    "cityExploration": {
+      "title": "도시 여행",
+      "desc": "타멜의 활기와 조용한 객실의 완벽한 조화."
+    }
+  },
+  "whySherpaSoul": {
+    "heading": "여행자들이 호텔 셰르파 소울을 선택하는 이유",
+    "items": [
+      {
+        "title": "호텔 내 레스토랑/바 없음",
+        "desc": "늦은 밤 음악 소리, 소음, 음식 냄새 없이 온전한 휴식을 보장합니다."
+      },
+      {
+        "title": "바가와티 마르그의 조용한 골목",
+        "desc": "타멜 중심가 도보 2분 거리이나 클럽 골목 소음이 전혀 없습니다."
+      },
+      {
+        "title": "장기 투숙객 전용 공용 주방",
+        "desc": "일주일 이상 머무는 장기 투숙객을 위한 깨끗한 주방 완비."
+      },
+      {
+        "title": "무료 안전 수하물 보관",
+        "desc": "트레킹 기간 동안 대형 여행 가방을 안전하고 무료로 보관해 드립니다."
+      }
+    ]
+  },
+  "bookingCta": {
+    "heading": "타멜에서의 편안한 숙면을 예약하세요",
+    "copy": "호텔 셰르파 소울을 네팔 여행의 아늑한 보금자리로 선택하세요.",
+    "primaryCta": "지금 예약하기",
+    "secondaryCta": "문의하기"
+  },
+  "aboutPageContent": {
+    "h1": "호텔 셰르파 소울 소개",
+    "introHeading": "타멜 중심에서 전하는 따뜻하고 소박한 환대",
+    "copy": "호텔 셰르파 소울은 여행자의 편안한 잠자리와 청결을 최우선으로 생각하는 부티크 호텔입니다.",
+    "philosophy": "철학: 레스토랑 없음. 소음 없음. 편안한 잠자리.",
+    "location": "타멜 바가와티 마르그 26에 위치하여 이동이 매우 편리합니다.",
+    "forTravelers": "전 세계 등산가, 트레커, 여행자 여러분을 셰르파의 따뜻한 정성으로 맞이합니다.",
+    "closing": "여러분의 카트만두 여행이 특별한 기억으로 남도록 최선을 다하겠습니다."
+  },
+  "about": {
+    "hero": {
+      "title": "호텔 소개",
+      "subtitle": "진정한 셰르파 환대로 전 세계 여행자를 맞이합니다"
+    }
+  },
+  "roomsHero": {
+    "badgeTitle": "호텔 셰르파 소울",
+    "badgeSubtitle": "카트만두 타멜",
+    "headingLine1": "여행 스타일에 맞춘",
+    "headingLine2": "편안한 객실",
+    "paragraph": "실용성과 아늑함을 두루 갖춘 맞춤형 객실입니다."
+  },
+  "gallery": {
+    "title": "갤러리",
+    "subtitle": "호텔 셰르파 소울의 객실 및 시설 둘러보기",
+    "featuredTitle": "대표 사진",
+    "featuredDesc": "호텔의 아늑하고 편안한 분위기를 확인하세요",
+    "viewImage": "사진 보기",
+    "image": "사진",
+    "of": "/",
+    "description": "설명",
+    "desc1": "커플과 친구를 위한 아늑한 더블룸.",
+    "desc2": "나홀로 여행자를 위한 조용한 싱글룸.",
+    "desc3": "킹사이즈 베드가 구비된 넓은 객실.",
+    "desc4": "에어컨과 초고속 와이파이를 갖춘 디럭스룸.",
+    "desc5": "장기 숙박에 적합한 실용적 편의시설.",
+    "desc6": "모던한 디자인과 청결한 침구.",
+    "desc7": "채광과 통풍이 우수한 쾌적한 객실.",
+    "desc8": "가족 여행객을 위한 넓은 패밀리룸.",
+    "desc9": "장기 투숙객을 위한 공용 주방.",
+    "desc10": "24시간 친절한 프런트 데스크."
+  },
+  "contactHero": {
+    "title": "문의하기",
+    "subtitle": "궁금하신 점은 언제든 편하게 문의해 주세요"
+  },
+  "contactForm": {
+    "en": {
+      "title": "메시지 보내기",
+      "name": "성함",
+      "email": "이메일",
+      "phone": "전화번호",
+      "subject": "제목",
+      "message": "메시지 내용",
+      "submit": "메시지 전송",
+      "sending": "전송 중...",
+      "success": "메시지가 성공적으로 전송되었습니다!",
+      "error": "전송에 실패했습니다. 다시 시도해 주세요."
+    }
+  },
+  "getInTouch": {
+    "phoneCopied": "전화번호가 복사되었습니다!",
+    "callWhatsApp": "WhatsApp / 전화",
+    "whatsappDescription": "예약 및 문의 사항을 빠르게 상담하세요.",
+    "emailUs": "이메일 문의",
+    "emailResponseTime": "빠른 시간 내에 답변 드립니다.",
+    "visitUs": "찾아오시는 길",
+    "visitDescription": "네팔 카트만두 타멜 바가와티 마르그 26",
+    "getIn": "언제든",
+    "touch": "연락주세요",
+    "readyDescription": "카트만두 여행을 정성껏 도와드립니다."
+  },
+  "contactMap": {
+    "en": {
+      "title": "오시는 길",
+      "subtitle": "타멜 중심, 조용한 바가와티 마르그에 위치"
+    }
+  },
+  "aboutStory": {
+    "ourStory": "우리의 이야기",
+    "welcomeTo": "환영합니다",
+    "sherpaSoul": "호텔 셰르파 소울",
+    "paragraph1": "타멜에서 여행자에게 진정으로 필요한 조용하고 편안한 잠자리를 제공하고자 시작되었습니다.",
+    "paragraph2": "셰르파의 정직함과 따뜻한 환대로 집처럼 편안한 머무름을 선사합니다.",
+    "paragraph3": "도시 탐험과 트레킹의 피로를 씻어내는 평온한 안식처가 되어 드립니다.",
+    "exploreLocation": "위치 확인",
+    "imageAlt": "프런트 데스크"
+  },
+  "aboutWhy": {
+    "whyChoose": "선택하는 이유",
+    "sherpaSoul": "셰르파 소울",
+    "subtitle": "타멜 중심의 편리함과 조용한 휴식",
+    "authenticSherpaLifestyle": "전통 셰르파 환대",
+    "primeThamelLocation": "타멜 중심 특급 위치",
+    "guestAmenities": "24시간 온수 & 초고속 Wi-Fi",
+    "airportPickupForInternationalGuests": "공항 픽업 서비스",
+    "foreignCurrencyExchange": "환전 및 여행 정보 지원",
+    "cleanAndSecure": "철저한 청결과 안전",
+    "showOtherLanguages": "지원 언어 더보기",
+    "hideOtherLanguages": "언어 닫기",
+    "multilingualSupport": "다국어 지원"
+  },
+  "aboutVision": {
+    "buddhistAlt": "셰르파 전통과 문화",
+    "our": "우리의",
+    "vision": "비전",
+    "description": "카트만두에서 가장 신뢰할 수 있고 편안한 휴식처가 되는 것.",
+    "para2": "화려함보다 청결, 편안함, 고요한 휴식을 가장 소중히 여깁니다.",
+    "para3": "네팔을 찾는 모든 여행자에게 잊지 못할 추억을 선사합니다.",
+    "startJourney": "여행 시작하기"
+  },
+  "roomsCard": {
+    "roomsSuites": "객실 목록",
+    "ourRooms": "편안한 객실",
+    "description": "예산과 인원에 맞는 최적의 객실을 선택하세요.",
+    "room": "객실",
+    "roomsPluralSuffix": "개 객실",
+    "available": "예약 가능",
+    "from": "최저 요금",
+    "guest": "인",
+    "guestsSuffix": "인실"
+  },
+  "roomDetails": {
+    "title": "객실 상세정보",
+    "subtitle": "편의시설, 수용 인원 및 요금",
+    "pricePerNight": "1박 요금",
+    "guests": "기준 인원",
+    "size": "면적",
+    "beds": "침대 구성",
+    "description": "객실 설명",
+    "amenities": "편의시설",
+    "bookNow": "지금 예약",
+    "viewGallery": "갤러리 보기",
+    "availability": "예약 가능 여부",
+    "checkIn": "체크인",
+    "checkOut": "체크아웃",
+    "relatedRooms": "다른 객실 보기"
+  },
+  "homeStats": {
+    "title": "신뢰와 만족",
+    "description": "수많은 여행자들이 직접 경험하고 추천합니다",
+    "statLabels": {
+      "rating": "구글 평점",
+      "reviews": "만족한 고객",
+      "experience": "운영 경력",
+      "support": "24시간 지원"
+    }
+  },
+  "footer": {
+    "cta": {
+      "title": "편안한 숙면을 경험할 준비가 되셨나요?",
+      "desc": "타멜의 중심에서 방해받지 않는 조용한 밤을 보내세요.",
+      "button": "객실 예약하기"
+    },
+    "brand": {
+      "tagline": "레스토랑 없음. 소음 없음. 편안한 잠자리.",
+      "desc": "호텔 셰르파 소울은 카트만두 타멜에 위치한 편안하고 조용한 호텔입니다."
+    },
+    "quickLinks": {
+      "title": "바로가기",
+      "home": "홈",
+      "rooms": "객실",
+      "about": "호텔 소개",
+      "gallery": "갤러리",
+      "blog": "블로그",
+      "contact": "문의하기"
+    },
+    "contactUs": {
+      "title": "연락처",
+      "phone": "+977 9851068219",
+      "email": "info@hotelsherpasoul.com",
+      "address": "네팔 카트만두 타멜 바가와티 마르그 26"
+    },
+    "followUs": {
+      "title": "SNS 안내"
+    },
+    "copyright": "© 2026 Hotel Sherpa Soul. All rights reserved.",
+    "legal": {
+      "privacy": "개인정보처리방침",
+      "terms": "이용약관",
+      "cookies": "쿠키 설정",
+      "cms": "CMS 포털"
+    }
+  },
+  "homeServices": {
+    "sectionTag": "편의 서비스",
+    "sectionTitle": "여행자를 위한 실용적인 시설",
+    "intro": "편안하고 쾌적한 숙박을 위한 모든 시설을 갖추고 있습니다.",
+    "services": [
+      {
+        "title": "24시간 온수 공급",
+        "description": "사계절 언제든 따뜻한 온수 샤워 가능."
+      },
+      {
+        "title": "초고속 무료 Wi-Fi",
+        "description": "전 객실 및 공용 구역 안정적인 인터넷."
+      },
+      {
+        "title": "무료 수하물 보관",
+        "description": "트레킹 기간 안전한 짐 보관 서비스."
+      },
+      {
+        "title": "공용 주방",
+        "description": "장기 투숙 여행자를 위한 조리 시설."
+      }
+    ]
+  },
+  "homeTestimonial": {},
+  "hotelName": "호텔 셰르파 소울",
+  "introsub": "타멜은 활기와 에너지가 넘치지만, 하루 일과를 마치면 조용한 숙면이 필요합니다. 호텔 셰르파 소울이 쾌적한 휴식을 책임집니다.",
+  "heroParagraph": "카트만두 타멜의 호텔 셰르파 소울에 오신 것을 환영합니다. 깨끗하고 조용한 객실, 따뜻한 온수, 빠른 와이파이, 장기 투숙용 주방을 완비하고 있습니다.",
+  "bookButton": "예약하기",
+  "virtualTourButton": "가상 투어",
+  "videoUrl": "https://www.youtube.com/embed/8IoDrKmbeBs?si=fQZBO4KHYiGJvmt4",
+  "videoTitle": "호텔 셰르파 소울 영상 투어",
+  "modalTitle": "가상 투어 - 호텔 셰르파 소울",
+  "modalDescription": "타멜 중심의 깨끗하고 아늑한 호텔 내부를 둘러보세요.",
+  "heroSlides": {
+    "0": {
+      "title": "호텔 셰르파 소울",
+      "subtitle": "조용하고 편안한 머무름",
+      "description": "타멜 중심의 소음 없는 평화로운 공간."
+    },
+    "1": {
+      "title": "쾌적한 객실",
+      "subtitle": "보장된 숙면",
+      "description": "청결한 침구와 현대적 편의시설."
+    },
+    "2": {
+      "title": "따뜻한 정성",
+      "subtitle": "셰르파의 환대",
+      "description": "내 집 같은 편안함을 드립니다."
+    }
+  },
+  "stats": {
+    "tripadvisor": "최고 평가",
+    "google": "구글 평점 4.8★",
+    "guest": "만족 고객",
+    "exp": "년 운영 경력"
+  },
+  "homestats": {
+    "title": "호텔 소개",
+    "subtitle": "여행자의 신뢰",
+    "review": "우수한 서비스"
+  },
+  "facilities": {
+    "title1": "호텔",
+    "title2": "편의시설",
+    "laundry": "세탁 서비스",
+    "pickup": "공항 픽업",
+    "frontdesk": "24시간 프런트",
+    "showers": "온수 샤워"
+  },
+  "testimonialIntro": "호텔 셰르파 소울을 경험한 세계 각국 여행자들의 생생한 후기입니다.",
+  "storiesFrom": "여행자의",
+  "clients": "이야기",
+  "button": {
+    "title": "더 알아보기",
+    "but": "예약하기"
+  },
+  "room": {
+    "title1": "추천",
+    "title2": "객실",
+    "desc": "휴식과 숙면에 집중하여 준비된 객실입니다.",
+    "size": "면적",
+    "guest": "인원",
+    "rooms": "객실",
+    "details": "상세보기",
+    "roomdet": "객실 정보",
+    "book": "예약",
+    "pack": "편의시설"
+  },
+  "contact": {
+    "title": "연락처",
+    "subtitle": "편하게 문의하세요",
+    "card": "명함",
+    "form": "문의 양식"
+  },
+  "roomdetails": {
+    "back": "돌아가기",
+    "buttons": "객실 예약",
+    "cta": "예약 가능 여부 조회",
+    "info": "객실 상세 정보",
+    "checkin": "체크인: 12:00부터"
+  },
+  "book": {
+    "guests": "투숙 인원",
+    "room": "객실 선택",
+    "rate": "요금",
+    "back": "돌아가기",
+    "title": "객실 예약",
+    "title2": "예약자 정보",
+    "subtitle": "신속하게 예약을 확인해 드립니다",
+    "form": "예약서",
+    "summary": "예약 요약"
+  },
+  "aboutstats": {
+    "title1": "호텔",
+    "title2": "핵심 가치",
+    "para1": "고객의 편안한 휴식과 안락한 잠자리가 최우선입니다.",
+    "para2": "카트만두의 활기 속 오아시스 같은 평온을 선사합니다.",
+    "amenities": "시설",
+    "stat": "통계"
+  },
+  "modal": {
+    "title": "알림",
+    "subtitle": "확인해 주세요",
+    "load": "불러오는 중...",
+    "try": "다시 시도",
+    "not": "이용 불가",
+    "booked": "예약 완료!",
+    "book": "예약하기",
+    "Unavailable": "예약 마감"
+  },
+  "notFound": {
+    "badge": "404 오류",
+    "title": "페이지를 찾을 수 없습니다",
+    "subtitle": "요청하신 페이지가 삭제되었거나 이동되었습니다.",
+    "homeBtn": "홈으로 이동",
+    "backBtn": "이전으로",
+    "roomsBtn": "객실 목록",
+    "galleryLink": "갤러리",
+    "aboutLink": "호텔 소개",
+    "contactBtn": "문의하기",
+    "popularLinks": "추천 메뉴"
+  },
+  "faq": {
+    "badge": "자주 묻는 질문",
+    "title": "알아두면 유용한 안내",
+    "subtitle": "객실, 소음 방지, 공용 주방, 타멜 위치에 관한 질문과 답변입니다.",
+    "supportTag": "프런트 데스크 지원",
+    "helpTitle": "예약 전 궁금한 점이 있으신가요?",
+    "helpSubtitle": "알맞은 객실 선택과 여행 일정을 친절히 도와드립니다.",
+    "q1": "호텔 셰르파 소울의 위치는 어디인가요?",
+    "a1": "네팔 카트만두의 여행자 중심지인 타멜 바가와티 마르그에 위치해 있습니다.",
+    "q2": "어떤 객실 종류가 있나요?",
+    "a2": "알뜰 패밀리룸(1박 $20), 디럭스룸(1박 $20), 패밀리룸(1박 $30) 총 3가지 종류가 준비되어 있습니다.",
+    "q3": "호텔 내에 식당이 있나요?",
+    "a3": "아닙니다. 조용하고 평온한 수면 환경을 위해 호텔 내 식당을 운영하지 않습니다.",
+    "q4": "전용 주차장이 있나요?",
+    "a4": "전용 주차장은 없습니다. 주차가 필요하신 경우 사전 문의 바랍니다.",
+    "q5": "객실에 에어컨이 설치되어 있나요?",
+    "a5": "에어컨 시설이 명시된 객실에서 이용 가능합니다.",
+    "q6": "와이파이가 지원되나요?",
+    "a6": "네, 전 구역에서 초고속 와이파이를 무료로 이용하실 수 있습니다.",
+    "q7": "공용 주방이 있나요?",
+    "a7": "네, 일주일 이상 머무는 장기 투숙객을 위한 공용 주방이 마련되어 있습니다.",
+    "q8": "공용 주방은 누구나 쓸 수 있나요?",
+    "a8": "청결 유지를 위해 사전 등록된 장기 투숙객에 한해 이용 가능합니다.",
+    "q9": "공항에서 얼마나 걸리나요?",
+    "a9": "트리부반 국제공항에서 차량으로 약 20분 소요됩니다(교통 상황에 따름).",
+    "q10": "파슈파티나트 사원까지 얼마나 걸리나요?",
+    "a10": "차량으로 약 15분 소요됩니다.",
+    "q11": "보우다나트 사원까지 얼마나 걸리나요?",
+    "a11": "차량으로 약 20분 소요됩니다.",
+    "q12": "예약은 어떻게 하나요?",
+    "a12": "웹사이트에서 직접 예약하시거나 WhatsApp 또는 전화로 문의해 주세요."
+  },
+  "homeLocation": {
+    "mapTitle": "호텔 셰르파 소울 위치 지도"
+  },
+  "loading": "객실 정보를 불러오는 중...",
+  "pleasewait": "잠시만 기다려 주세요..."
+}

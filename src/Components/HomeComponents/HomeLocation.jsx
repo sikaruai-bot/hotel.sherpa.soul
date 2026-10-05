@@ -127,10 +127,10 @@ export default function HomeLocation() {
                 </a>
 
                 <Link
-                  to="/location"
+                  to="/contact"
                   className="py-3 px-4 rounded-xl bg-white border border-slate-300 hover:border-slate-400 text-slate-800 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all min-h-[44px]"
                 >
-                  <span>Detailed Directions</span>
+                  <span>View Location & Contact</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

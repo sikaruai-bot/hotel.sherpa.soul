@@ -1,0 +1,450 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre Nós",
+    "room": "Quartos",
+    "gallery": "Galeria",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "quick": "Reserve Já"
+  },
+  "home": {
+    "hero": {
+      "title": "Durma Bem no Coração de Thamel, Katmandu",
+      "subtitle": "Sem Restaurante. Sem Barulho. Durma Bem.",
+      "paragraph": "Descubra uma estadia tranquila e confortável no Hotel Sherpa Soul, no vibrante coração de Thamel, Katmandu. Explore a cidade durante o dia, regresse a um quarto silencioso à noite e acorde revigorado.",
+      "bookButton": "Reserve a Sua Estadia",
+      "tourButton": "Ver Quartos",
+      "trustLine": "Localização Central em Thamel • Quartos Confortáveis • Estadia Tranquila",
+      "modalTitle": "Hotel Sherpa Soul - Thamel, Katmandu",
+      "modalDesc": "Uma estadia tranquila em Thamel com foco no conforto, comodidades práticas e sono restaurador."
+    }
+  },
+  "mainBrand": {
+    "heading": "Thamel Lá Fora. Paz Cá Dentro.",
+    "copy": "Thamel está repleto de vida e aventura. O Hotel Sherpa Soul oferece um refúgio tranquilo para relaxar. Ideal para viajantes que valorizam um quarto limpo, boa localização e silêncio.",
+    "brandStatement": "Sem Restaurante. Sem Barulho. Durma Bem.",
+    "supportingCopy": "Às vezes, a melhor experiência de hotel resume-se a um quarto limpo, localização privilegiada e uma ótima noite de sono."
+  },
+  "roomsSection": {
+    "heading": "O Seu Quarto. O Seu Espaço. O Seu Descanso.",
+    "copy": "Após explorar Katmandu ou preparar-se para o trekking nos Himalaias, recarregue energias num quarto acolhedor.",
+    "cta": "Ver Quartos & Tarifas",
+    "deluxeDouble": {
+      "name": "Quarto Duplo Deluxe",
+      "shortDesc": "Excelente opção para casais e amigos que procuram espaço e conforto em Thamel.",
+      "cta": "Ver Quarto"
+    }
+  },
+  "locationSection": {
+    "heading": "Fique Onde Katmandu Acontece",
+    "copy": "A partir do Hotel Sherpa Soul, Thamel está à sua porta. Cafés, lojas e agências a poucos passos, com a garantia de um quarto silencioso para dormir.",
+    "cta": "Ver Localização"
+  },
+  "trekkersSection": {
+    "heading": "Preparado para a Sua Aventura",
+    "copy": "Quer esteja a iniciar uma caminhada nos Himalaias ou a conhecer o Nepal pela primeira vez, somos a sua base ideal.",
+    "beforeTrek": {
+      "title": "Antes do Trekking",
+      "desc": "Descanse, prepare a mochila e organize a sua viagem."
+    },
+    "afterTrek": {
+      "title": "Depois do Trekking",
+      "desc": "Regresse para um banho quente reconfortante e uma cama confortável."
+    },
+    "cityExploration": {
+      "title": "Explorar a Cidade",
+      "desc": "Perto de tudo em Thamel com total silêncio à noite."
+    }
+  },
+  "whySherpaSoul": {
+    "heading": "Porquê Escolher o Hotel Sherpa Soul",
+    "items": [
+      {
+        "title": "Sem Restaurante ou Bar no Hotel",
+        "desc": "Sem música alta, ruído ou cheiros à noite. Apenas paz e descanso."
+      },
+      {
+        "title": "Localização Silenciosa em Bhagawati Marg",
+        "desc": "A 2 minutos a pé do centro de Thamel, afastado do ruído das discotecas."
+      },
+      {
+        "title": "Cozinha Partilhada para Estadias Longas",
+        "desc": "Cozinha equipada disponível para hóspedes em estadias semanais ou mensais."
+      },
+      {
+        "title": "Armazenamento Gratuito de Bagagem",
+        "desc": "Guarde as suas malas com segurança e gratuitamente durante o trekking."
+      }
+    ]
+  },
+  "bookingCta": {
+    "heading": "Pronto para Dormir Bem em Thamel?",
+    "copy": "Faça do Hotel Sherpa Soul a sua base acolhedora em Katmandu.",
+    "primaryCta": "Reservar Agora",
+    "secondaryCta": "Contacte-nos"
+  },
+  "aboutPageContent": {
+    "h1": "Sobre o Hotel Sherpa Soul",
+    "introHeading": "Hospitalidade Genuína e Simples em Thamel",
+    "copy": "O Hotel Sherpa Soul é um hotel boutique acolhedor em Thamel, Katmandu, focado no descanso dos viajantes.",
+    "philosophy": "Filosofia: Sem Restaurante. Sem Barulho. Durma Bem.",
+    "location": "Localizado em Bhagawati Marg 26, Thamel, perto de tudo.",
+    "forTravelers": "Recebemos montanhistas, caminhantes e viajantes de todo o mundo com a hospitalidade Sherpa.",
+    "closing": "Estamos prontos para tornar a sua viagem ao Nepal inesquecível."
+  },
+  "about": {
+    "hero": {
+      "title": "Sobre Nós",
+      "subtitle": "Hospitalidade autêntica Sherpa para hóspedes do mundo inteiro"
+    }
+  },
+  "roomsHero": {
+    "badgeTitle": "Hotel Sherpa Soul",
+    "badgeSubtitle": "Thamel, Katmandu",
+    "headingLine1": "Quartos Confortáveis para",
+    "headingLine2": "Diferentes Estilos de Viagem",
+    "paragraph": "Conforto prático e funcional pensado nas suas necessidades."
+  },
+  "gallery": {
+    "title": "Galeria",
+    "subtitle": "Conheça os nossos quartos e instalações",
+    "featuredTitle": "Coleção em Destaque",
+    "featuredDesc": "Descubra a tranquilidade do nosso hotel",
+    "viewImage": "Ver Imagem",
+    "image": "Foto",
+    "of": "de",
+    "description": "Descrição",
+    "desc1": "Quartos duplos acolhedores e tranquilos.",
+    "desc2": "Quarto individual perfeito para viajantes a solo.",
+    "desc3": "Quarto espaçoso com cama King-size.",
+    "desc4": "Quarto Deluxe com ar condicionado e Wi-Fi de alta velocidade.",
+    "desc5": "Ideal para estadias prolongadas e confortáveis.",
+    "desc6": "Design moderno e camas muito confortáveis.",
+    "desc7": "Quarto luminoso e bem ventilado.",
+    "desc8": "Quarto familiar espaçoso.",
+    "desc9": "Cozinha partilhada para hóspedes de longa duração.",
+    "desc10": "Receção disponível 24 horas."
+  },
+  "contactHero": {
+    "title": "Contactos",
+    "subtitle": "Estamos sempre disponíveis para ajudar"
+  },
+  "contactForm": {
+    "en": {
+      "title": "Envie-nos uma Mensagem",
+      "name": "Nome",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "subject": "Assunto",
+      "message": "Mensagem",
+      "submit": "Enviar Mensagem",
+      "sending": "A enviar...",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Ocorreu um erro. Por favor tente novamente."
+    }
+  },
+  "getInTouch": {
+    "phoneCopied": "Telefone copiado!",
+    "callWhatsApp": "WhatsApp / Chamada",
+    "whatsappDescription": "Fale diretamente connosco para dúvidas e reservas.",
+    "emailUs": "Envie E-mail",
+    "emailResponseTime": "Respondemos rapidamente.",
+    "visitUs": "Visite-nos",
+    "visitDescription": "Thamel Bhagawati Marg 26, Katmandu, Nepal",
+    "getIn": "Entre em",
+    "touch": "Contacto",
+    "readyDescription": "Estamos prontos para ajudar na sua viagem."
+  },
+  "contactMap": {
+    "en": {
+      "title": "Localização",
+      "subtitle": "No centro de Thamel, na tranquila Bhagawati Marg"
+    }
+  },
+  "aboutStory": {
+    "ourStory": "A Nossa História",
+    "welcomeTo": "Bem-vindo ao",
+    "sherpaSoul": "Hotel Sherpa Soul",
+    "paragraph1": "Nascemos com um objetivo simples: oferecer noites de sono tranquilas e sem barulho em Thamel.",
+    "paragraph2": "A nossa herança Sherpa baseia-se no calor humano, na honestidade e no cuidado com o hóspede.",
+    "paragraph3": "Desfrute de uma atmosfera pacífica antes ou depois das suas caminhadas.",
+    "exploreLocation": "Ver Localização",
+    "imageAlt": "Receção do Hotel Sherpa Soul"
+  },
+  "aboutWhy": {
+    "whyChoose": "Porquê Escolher o",
+    "sherpaSoul": "Sherpa Soul?",
+    "subtitle": "Paz e conveniência em Thamel",
+    "authenticSherpaLifestyle": "Hospitalidade Autêntica Sherpa",
+    "primeThamelLocation": "Localização Privilegiada em Thamel",
+    "guestAmenities": "Água Quente 24h & Wi-Fi Rápido",
+    "airportPickupForInternationalGuests": "Transfer de Aeroporto para Hóspedes Internacionais",
+    "foreignCurrencyExchange": "Câmbio e Dicas de Viagem",
+    "cleanAndSecure": "Limpo e Seguro",
+    "showOtherLanguages": "Ver Mais Idiomas",
+    "hideOtherLanguages": "Ocultar Idiomas",
+    "multilingualSupport": "Apoio Multilingue"
+  },
+  "aboutVision": {
+    "buddhistAlt": "Cultura Sherpa",
+    "our": "A Nossa",
+    "vision": "Visão",
+    "description": "Ser a escolha número um para quem procura silêncio e conforto em Katmandu.",
+    "para2": "Valorizamos o descanso genuíno, a limpeza e a simpatia.",
+    "para3": "Proporcionar a viajantes de todo o mundo momentos memoráveis no Nepal.",
+    "startJourney": "Iniciar Viagem"
+  },
+  "roomsCard": {
+    "roomsSuites": "Os Nossos Quartos",
+    "ourRooms": "Quartos Confortáveis",
+    "description": "Escolha entre Quarto Económico Familiar, Deluxe ou Familiar.",
+    "room": "Quarto",
+    "roomsPluralSuffix": "Quartos",
+    "available": "Disponível",
+    "from": "A partir de",
+    "guest": "Hóspede",
+    "guestsSuffix": "Hóspedes"
+  },
+  "roomDetails": {
+    "title": "Detalhes do Quarto",
+    "subtitle": "Comodidades, capacidade e preço",
+    "pricePerNight": "Preço por noite",
+    "guests": "Capacidade",
+    "size": "Área",
+    "beds": "Camas",
+    "description": "Descrição",
+    "amenities": "Comodidades",
+    "bookNow": "Reservar Agora",
+    "viewGallery": "Ver Galeria",
+    "availability": "Disponibilidade",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "relatedRooms": "Outros Quartos"
+  },
+  "homeStats": {
+    "title": "Qualidade & Confiança",
+    "description": "Reconhecido por milhares de hóspedes satisfeitos",
+    "statLabels": {
+      "rating": "Avaliação Google",
+      "reviews": "Hóspedes Felizes",
+      "experience": "Anos de Experiência",
+      "support": "Receção 24/7"
+    }
+  },
+  "footer": {
+    "cta": {
+      "title": "Pronto para Descansar com Qualidade?",
+      "desc": "Fique no centro de Thamel com o máximo de tranquilidade.",
+      "button": "Reserve a Sua Estadia"
+    },
+    "brand": {
+      "tagline": "Sem Restaurante. Sem Barulho. Durma Bem.",
+      "desc": "O Hotel Sherpa Soul é um hotel tranquilo e acolhedor em Thamel, Katmandu."
+    },
+    "quickLinks": {
+      "title": "Links Rápidos",
+      "home": "Início",
+      "rooms": "Quartos",
+      "about": "Sobre Nós",
+      "gallery": "Galeria",
+      "blog": "Blog",
+      "contact": "Contacto"
+    },
+    "contactUs": {
+      "title": "Contactos",
+      "phone": "+977 9851068219",
+      "email": "info@hotelsherpasoul.com",
+      "address": "Thamel Bhagawati Marg 26, Katmandu, Nepal"
+    },
+    "followUs": {
+      "title": "Siga-nos"
+    },
+    "copyright": "© 2026 Hotel Sherpa Soul. Todos os direitos reservados.",
+    "legal": {
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço",
+      "cookies": "Preferências de Cookies",
+      "cms": "Portal CMS"
+    }
+  },
+  "homeServices": {
+    "sectionTag": "Serviços",
+    "sectionTitle": "Tudo o que Precisa para a Sua Estadia",
+    "intro": "Comodidades essenciais para uma estadia tranquila.",
+    "services": [
+      {
+        "title": "Água Quente 24h",
+        "description": "Banhos quentes a qualquer hora do dia ou da noite."
+      },
+      {
+        "title": "Wi-Fi de Alta Velocidade",
+        "description": "Internet rápida e fiável em todo o hotel."
+      },
+      {
+        "title": "Armazenamento Gratuito de Bagagem",
+        "description": "Deixe as suas malas em segurança durante o trekking."
+      },
+      {
+        "title": "Cozinha Partilhada",
+        "description": "Disponível para hóspedes de estadias longas."
+      }
+    ]
+  },
+  "homeTestimonial": {},
+  "hotelName": "Hotel Sherpa Soul",
+  "introsub": "Thamel é pura vibração, mas à noite tudo o que precisa é de silêncio e um sono reparador. É nisso que nos focamos no Hotel Sherpa Soul.",
+  "heroParagraph": "Bem-vindo ao Hotel Sherpa Soul, o seu hotel boutique tranquilo em Thamel, Katmandu. Quartos limpos, água quente constante, Wi-Fi rápido e hospitalidade Sherpa.",
+  "bookButton": "Reserve Já",
+  "virtualTourButton": "Tour Virtual",
+  "videoUrl": "https://www.youtube.com/embed/8IoDrKmbeBs?si=fQZBO4KHYiGJvmt4",
+  "videoTitle": "Tour Virtual Hotel Sherpa Soul",
+  "modalTitle": "Tour Virtual - Hotel Sherpa Soul",
+  "modalDescription": "Conheça as nossas instalações no coração de Thamel.",
+  "heroSlides": {
+    "0": {
+      "title": "Hotel Sherpa Soul",
+      "subtitle": "Paz e Conforto em Thamel",
+      "description": "Descanso livre de ruídos."
+    },
+    "1": {
+      "title": "Quartos Confortáveis",
+      "subtitle": "Sono Tranquilo Garantido",
+      "description": "Camas limpas e ótimas comodidades."
+    },
+    "2": {
+      "title": "Hospitalidade Sherpa",
+      "subtitle": "Boas-vindas Calorosas",
+      "description": "Sinta-se como em sua casa."
+    }
+  },
+  "stats": {
+    "tripadvisor": "Excelente",
+    "google": "Google 4.8★",
+    "guest": "Hóspedes Satisfeitos",
+    "exp": "Anos de Experiência"
+  },
+  "homestats": {
+    "title": "Nossa Reputação",
+    "subtitle": "Aprovado por viajantes",
+    "review": "Excelente serviço"
+  },
+  "facilities": {
+    "title1": "Nossas",
+    "title2": "Instalações",
+    "laundry": "Lavandaria",
+    "pickup": "Transfer do Aeroporto",
+    "frontdesk": "Receção 24 Horas",
+    "showers": "Duche Quente"
+  },
+  "testimonialIntro": "Opiniões reais de viajantes que se hospedaram connosco.",
+  "storiesFrom": "Histórias dos",
+  "clients": "Hóspedes",
+  "button": {
+    "title": "Saber Mais",
+    "but": "Reservar Já"
+  },
+  "room": {
+    "title1": "Os Nossos",
+    "title2": "Quartos",
+    "desc": "Concebidos para conforto e descanso total.",
+    "size": "Área",
+    "guest": "Hóspedes",
+    "rooms": "Quartos",
+    "details": "Ver Mais",
+    "roomdet": "Detalhes",
+    "book": "Reservar",
+    "pack": "Comodidades"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Fale connosco",
+    "card": "Cartão",
+    "form": "Formulário"
+  },
+  "roomdetails": {
+    "back": "Voltar",
+    "buttons": "Reservar Quarto",
+    "cta": "Verificar Disponibilidade",
+    "info": "Informações",
+    "checkin": "Check-in a partir das 12:00"
+  },
+  "book": {
+    "guests": "Hóspedes",
+    "room": "Tipo de Quarto",
+    "rate": "Tarifa",
+    "back": "Voltar",
+    "title": "Reserva",
+    "title2": "Os Seus Dados",
+    "subtitle": "Confirmamos a sua reserva rapidamente",
+    "form": "Formulário",
+    "summary": "Resumo"
+  },
+  "aboutstats": {
+    "title1": "O Nosso",
+    "title2": "Compromisso",
+    "para1": "O seu descanso e conforto são a nossa prioridade.",
+    "para2": "Um refúgio de paz no centro de Katmandu.",
+    "amenities": "Comodidades",
+    "stat": "Estatísticas"
+  },
+  "modal": {
+    "title": "Aviso",
+    "subtitle": "Por favor confirme",
+    "load": "A carregar...",
+    "try": "Tentar de novo",
+    "not": "Indisponível",
+    "booked": "Reserva concluída!",
+    "book": "Reservar",
+    "Unavailable": "Esgotado"
+  },
+  "notFound": {
+    "badge": "Erro 404",
+    "title": "Página Não Encontrada",
+    "subtitle": "A página procurada não existe ou foi movida.",
+    "homeBtn": "Ir para Início",
+    "backBtn": "Voltar",
+    "roomsBtn": "Ver Quartos",
+    "galleryLink": "Galeria",
+    "aboutLink": "Sobre Nós",
+    "contactBtn": "Contacto",
+    "popularLinks": "Links Populares"
+  },
+  "faq": {
+    "badge": "Perguntas Frequentes",
+    "title": "Tudo O Que Precisa de Saber",
+    "subtitle": "Respostas diretas sobre os nossos quartos, ambiente tranquilo e localização em Thamel.",
+    "supportTag": "Apoio de Receção",
+    "helpTitle": "Tem alguma dúvida antes de reservar?",
+    "helpSubtitle": "Temos todo o gosto em ajudar a planear a sua estadia.",
+    "q1": "Onde fica o Hotel Sherpa Soul?",
+    "a1": "Fica em Bhagawati Marg, Thamel, Katmandu, Nepal.",
+    "q2": "Que tipos de quartos estão disponíveis?",
+    "a2": "Dispomos de Quarto Familiar Económico ($20/noite), Quarto Deluxe ($20/noite) e Quarto Familiar ($30/noite).",
+    "q3": "O hotel tem restaurante?",
+    "a3": "Não. Não temos restaurante para assegurar total silêncio e noites de sono tranquilas.",
+    "q4": "Existe estacionamento privado?",
+    "a4": "Não dispomos de estacionamento próprio. Contacte-nos para opções nas redondezas.",
+    "q5": "Os quartos têm ar condicionado?",
+    "a5": "O ar condicionado está presente nos quartos onde indicado.",
+    "q6": "O hotel tem Wi-Fi?",
+    "a6": "Sim, Wi-Fi rápido e gratuito em todas as áreas.",
+    "q7": "Existe cozinha partilhada?",
+    "a7": "Sim, para estadias de média e longa duração (uma semana ou mais).",
+    "q8": "Quem pode usar a cozinha partilhada?",
+    "a8": "Apenas hóspedes registados em estadias prolongadas.",
+    "q9": "A que distância fica o aeroporto?",
+    "a9": "A cerca de 20 minutos de carro do Aeroporto Internacional de Tribhuvan.",
+    "q10": "A que distância fica o Templo de Pashupatinath?",
+    "a10": "A cerca de 15 minutos de carro.",
+    "q11": "A que distância fica a Stupa de Boudhanath?",
+    "a11": "A cerca de 20 minutos de carro.",
+    "q12": "Como posso reservar um quarto?",
+    "a12": "Diretamente pelo nosso website ou por WhatsApp/telefone."
+  },
+  "homeLocation": {
+    "mapTitle": "Mapa de Localização Hotel Sherpa Soul"
+  },
+  "loading": "A carregar detalhes do quarto...",
+  "pleasewait": "Por favor aguarde..."
+}

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { rooms as initialRooms } from "../Components/HelperComponents/RoomsData";
+import { HOTEL_PRESET_PHOTOS } from "../Components/CMS/mediaUtils";
 
 const CMS_STORAGE_KEY = "HSS_CMS_DATA_V3";
 const CMS_AUTH_KEY = "HSS_CMS_AUTH_TOKEN";
@@ -107,7 +108,7 @@ const DEFAULT_CMS_DATA = {
       latitude: "27.7154",
       longitude: "85.3106",
       priceRange: "$$",
-      checkinTime: "14:00",
+      checkinTime: "Flexible",
       checkoutTime: "12:00",
       currenciesAccepted: "NPR, USD, EUR",
     },
@@ -168,18 +169,18 @@ const DEFAULT_CMS_DATA = {
     gallery: [
       {
         id: "g1",
-        src: "/room1/room.webp",
+        src: "/changes_photo/deluxeRoom_ai.webp",
         type: "image",
-        title: "Deluxe Bedroom Interior",
-        alt: "Hotel Sherpa Soul Deluxe Bedroom Interior",
+        title: "Deluxe Room with AC (King Bed)",
+        alt: "Hotel Sherpa Soul Deluxe Room Thamel Kathmandu",
         category: "rooms",
       },
       {
         id: "g2",
-        src: "/room1/room2.webp",
+        src: "/changes_photo/doubleBed.webp",
         type: "image",
-        title: "Cozy Guest Room Setup",
-        alt: "Hotel Sherpa Soul Cozy Guest Room",
+        title: "Family Room AC (King + Single Bed)",
+        alt: "Hotel Sherpa Soul Family Room Thamel Kathmandu",
         category: "rooms",
       },
       {
@@ -216,10 +217,10 @@ const DEFAULT_CMS_DATA = {
       },
       {
         id: "g5",
-        src: "/hero/hero1.webp",
+        src: "/changes_photo/viewSeen.webp",
         type: "image",
-        title: "Kathmandu Valley Panoramic View",
-        alt: "Kathmandu City View from Hotel Sherpa Soul",
+        title: "Scenic Thamel Rooftop Skyline",
+        alt: "Scenic Kathmandu Valley View from Hotel Sherpa Soul",
         category: "exterior",
       },
       {
@@ -240,13 +241,37 @@ const DEFAULT_CMS_DATA = {
       },
       {
         id: "g8",
-        src: "/changes_photo/viewSeen.webp",
+        src: "/hero1.webp",
         type: "image",
-        title: "Scenic Thamel Rooftop Skyline",
-        alt: "Scenic Kathmandu Valley View from Hotel Sherpa Soul",
+        title: "Hotel Sherpa Soul Thamel Main",
+        alt: "Hotel Sherpa Soul Thamel Main",
         category: "exterior",
       },
     ],
+    library: HOTEL_PRESET_PHOTOS,
+  },
+  sitePhotos: {
+    // Homepage Hero
+    homeHero: "/changes_photo/deluxeRoom_ai.webp",
+    // Rooms section (homepage cards)
+    roomCard_budget: "/triple.webp",
+    roomCard_deluxe: "/changes_photo/deluxeRoom_ai.webp",
+    roomCard_family: "/changes_photo/doubleBed.webp",
+    // Book Now Page
+    bookNow_hero: "/changes_photo/deluxeRoom_ai.webp",
+    bookNow_budget: "/triple.webp",
+    bookNow_deluxe: "/changes_photo/deluxeRoom_ai.webp",
+    bookNow_family: "/changes_photo/doubleBed.webp",
+    // About Page
+    about_main: "/changes_photo/deluxeRoom_ai.webp",
+    // Services Page
+    services_kitchen: "/assets/shared_kitchen_new-HROE-pWG.webp",
+    services_frontdesk: "/assets/frontdesk_new-JHvt5Fe8.webp",
+    // General/Other
+    washroom: "/changes_photo/washRoom.webp",
+    balcony: "/changes_photo/balkani.webp",
+    rooftop: "/changes_photo/viewSeen.webp",
+    storage: "/changes_photo/storeRoom.webp",
   },
   rooms: initialRooms,
   channels: {
@@ -319,6 +344,19 @@ export function CMSProvider({ children }) {
               })
             : DEFAULT_CMS_DATA.rooms;
 
+          const rawLib = Array.isArray(parsed.media?.library) && parsed.media.library.length > 0
+            ? parsed.media.library.filter((p) => {
+                const pth = p.path || "";
+                return (
+                  !pth.includes("washRoom") &&
+                  !pth.includes("storeRoom") &&
+                  !pth.includes("doubleBedRoom") &&
+                  !pth.includes("balkani") &&
+                  !pth.includes("viewSeen")
+                );
+              })
+            : HOTEL_PRESET_PHOTOS;
+
           return {
             ...DEFAULT_CMS_DATA,
             ...parsed,
@@ -339,7 +377,12 @@ export function CMSProvider({ children }) {
                 };
               })(),
             },
-            media: { ...DEFAULT_CMS_DATA.media, ...(parsed.media || {}) },
+            media: {
+              ...DEFAULT_CMS_DATA.media,
+              ...(parsed.media || {}),
+              library: rawLib.length > 0 ? rawLib : HOTEL_PRESET_PHOTOS,
+            },
+            sitePhotos: { ...DEFAULT_CMS_DATA.sitePhotos, ...(parsed.sitePhotos || {}) },
             rooms: sanitizedRooms,
             channels: {
               ...DEFAULT_CMS_DATA.channels,
@@ -395,16 +438,19 @@ export function CMSProvider({ children }) {
     const is2FAEnabled = data?.admin?.twoFactorEnabled ?? true;
     const valid2FACode = data?.admin?.twoFactorCode || "8219"; // Default 2FA PIN based on official hotel phone 9851068219
 
-    if (enteredPassword !== validPassword) {
+    const pwd = (enteredPassword || "").trim();
+    const code = (twoFactorCode || "").trim();
+
+    if (pwd !== validPassword) {
       return { success: false, message: "Incorrect master password." };
     }
 
     // If 2FA is enabled and code is provided, verify it
     if (is2FAEnabled) {
-      if (!twoFactorCode) {
+      if (!code) {
         return { success: false, requires2FA: true, message: "Please enter your 2FA verification PIN." };
       }
-      if (String(twoFactorCode).trim() !== String(valid2FACode).trim()) {
+      if (code !== String(valid2FACode).trim()) {
         return { success: false, requires2FA: true, message: "Invalid 2FA verification PIN." };
       }
     }
@@ -484,11 +530,87 @@ export function CMSProvider({ children }) {
     }));
   };
 
+  // Room-to-gallery/sitePhoto mapping
+  // When a room photo changes, auto-sync it to the gallery and site photo cards
+  const ROOM_GALLERY_MAP = {
+    101: { galleryId: "g4",  sitePhotoKeys: ["roomCard_budget", "bookNow_budget"]  },
+    201: { galleryId: "g1",  sitePhotoKeys: ["roomCard_deluxe", "bookNow_deluxe", "homeHero"]  },
+    301: { galleryId: "g2",  sitePhotoKeys: ["roomCard_family", "bookNow_family"]  },
+  };
+
+  const updateSitePhotos = (newPhotos) => {
+    saveCMSData((prev) => {
+      let updatedRooms = Array.isArray(prev.rooms) ? [...prev.rooms] : [...DEFAULT_CMS_DATA.rooms];
+      let updatedGallery = Array.isArray(prev.media?.gallery) ? [...prev.media.gallery] : [...DEFAULT_CMS_DATA.media.gallery];
+
+      // Bi-directional sync: if roomCard_budget is updated, update room 101 image[0] and gallery g4
+      if (newPhotos.roomCard_budget) {
+        updatedRooms = updatedRooms.map((r) =>
+          (Number(r.id) === 101 || String(r.id) === "101")
+            ? { ...r, image: [newPhotos.roomCard_budget, ...(Array.isArray(r.image) ? r.image.slice(1) : [])] }
+            : r
+        );
+        updatedGallery = updatedGallery.map((g) => g.id === "g4" ? { ...g, src: newPhotos.roomCard_budget } : g);
+      }
+      if (newPhotos.roomCard_deluxe || newPhotos.homeHero) {
+        const src = newPhotos.roomCard_deluxe || newPhotos.homeHero;
+        updatedRooms = updatedRooms.map((r) =>
+          (Number(r.id) === 201 || String(r.id) === "201")
+            ? { ...r, image: [src, ...(Array.isArray(r.image) ? r.image.slice(1) : [])] }
+            : r
+        );
+        updatedGallery = updatedGallery.map((g) => g.id === "g1" ? { ...g, src } : g);
+      }
+      if (newPhotos.roomCard_family) {
+        updatedRooms = updatedRooms.map((r) =>
+          (Number(r.id) === 301 || String(r.id) === "301")
+            ? { ...r, image: [newPhotos.roomCard_family, ...(Array.isArray(r.image) ? r.image.slice(1) : [])] }
+            : r
+        );
+        updatedGallery = updatedGallery.map((g) => g.id === "g2" ? { ...g, src: newPhotos.roomCard_family } : g);
+      }
+
+      return {
+        ...prev,
+        sitePhotos: { ...prev.sitePhotos, ...newPhotos },
+        rooms: updatedRooms,
+        media: { ...prev.media, gallery: updatedGallery },
+      };
+    });
+  };
+
   const updateRooms = (newRoomsList) => {
-    saveCMSData((prev) => ({
-      ...prev,
-      rooms: newRoomsList,
-    }));
+    saveCMSData((prev) => {
+      // Build updated gallery — sync room image[0] into matching gallery entry
+      let updatedGallery = [...(prev.media?.gallery || DEFAULT_CMS_DATA.media.gallery)];
+      let updatedSitePhotos = { ...(prev.sitePhotos || DEFAULT_CMS_DATA.sitePhotos) };
+
+      newRoomsList.forEach((room) => {
+        const rId = Number(room.id);
+        const newPhoto = Array.isArray(room.image) ? room.image[0] : room.image;
+
+        if (newPhoto && typeof newPhoto === "string" && newPhoto.trim() !== "") {
+          const mapping = ROOM_GALLERY_MAP[rId] || ROOM_GALLERY_MAP[room.id];
+          if (mapping) {
+            // Update gallery entry
+            updatedGallery = updatedGallery.map((g) =>
+              g.id === mapping.galleryId ? { ...g, src: newPhoto } : g
+            );
+            // Update sitePhoto keys (room card + book now page + home hero if deluxe)
+            mapping.sitePhotoKeys.forEach((key) => {
+              updatedSitePhotos[key] = newPhoto;
+            });
+          }
+        }
+      });
+
+      return {
+        ...prev,
+        rooms: newRoomsList,
+        media: { ...prev.media, gallery: updatedGallery },
+        sitePhotos: updatedSitePhotos,
+      };
+    });
   };
 
   const updateChannels = (newChannels) => {
@@ -509,6 +631,42 @@ export function CMSProvider({ children }) {
         },
       },
     }));
+  };
+
+  const updateLibrary = (newLibrary) => {
+    saveCMSData((prev) => ({
+      ...prev,
+      media: {
+        ...prev.media,
+        library: newLibrary,
+      },
+    }));
+  };
+
+  const deleteFromLibrary = (photoPath) => {
+    saveCMSData((prev) => {
+      const current = prev.media?.library || HOTEL_PRESET_PHOTOS;
+      return {
+        ...prev,
+        media: {
+          ...prev.media,
+          library: current.filter((p) => p.path !== photoPath),
+        },
+      };
+    });
+  };
+
+  const addToLibrary = (newPhoto) => {
+    saveCMSData((prev) => {
+      const current = prev.media?.library || HOTEL_PRESET_PHOTOS;
+      return {
+        ...prev,
+        media: {
+          ...prev.media,
+          library: [newPhoto, ...current],
+        },
+      };
+    });
   };
 
   // Export / Import / Reset
@@ -555,6 +713,8 @@ export function CMSProvider({ children }) {
         seo: data.seo,
         content: data.content,
         media: data.media,
+        hotelLibrary: data.media?.library || HOTEL_PRESET_PHOTOS,
+        sitePhotos: data.sitePhotos || DEFAULT_CMS_DATA.sitePhotos,
         rooms: data.rooms,
         channels: data.channels || DEFAULT_CMS_DATA.channels,
         lastSaved,
@@ -567,6 +727,10 @@ export function CMSProvider({ children }) {
         updatePageSEO,
         updateContent,
         updateGallery,
+        updateLibrary,
+        deleteFromLibrary,
+        addToLibrary,
+        updateSitePhotos,
         updateRooms,
         updateChannels,
         updateChannel,

@@ -33,8 +33,8 @@ export const rooms = [
     image: [
       "/triple.webp",
       "/changes_photo/doubleBedRoom.webp",
-      "/room1/room.webp",
-      "/room1/room2.webp",
+      "/changes_photo/washRoom.webp",
+      "/changes_photo/balkani.webp",
     ],
   },
   {
@@ -68,10 +68,10 @@ export const rooms = [
     priceNprApprox: 2700,
     status: "AVAILABLE",
     image: [
-      "/changes_photo/singleBedWithSofa.webp",
-      "/room4/DSC00140.webp",
-      "/room4/DSC00141.webp",
-      "/room4/DSC00142.webp",
+      "/changes_photo/deluxeRoom_ai.webp",
+      "/changes_photo/washRoom.webp",
+      "/changes_photo/balkani.webp",
+      "/changes_photo/viewSeen.webp",
     ],
   },
   {
@@ -107,9 +107,9 @@ export const rooms = [
     status: "AVAILABLE",
     image: [
       "/changes_photo/doubleBed.webp",
-      "/room4/DSC00145.webp",
-      "/room4/DSC00146.webp",
-      "/room4/DSC00153.webp",
+      "/changes_photo/washRoom.webp",
+      "/changes_photo/balkani.webp",
+      "/changes_photo/viewSeen.webp",
     ],
   },
 ];

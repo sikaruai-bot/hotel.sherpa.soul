@@ -30,8 +30,8 @@ export default function HomeIntro() {
     setIsPlaying(true);
   };
 
-  // RTL for Arabic
-  const isRTL = i18n.language === "ar";
+  // RTL for Arabic and Hebrew
+  const isRTL = i18n.language === "ar" || i18n.language === "he";
 
   return (
     <div dir={isRTL ? "rtl" : "ltr"} className="relative">

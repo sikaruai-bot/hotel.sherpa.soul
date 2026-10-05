@@ -1,4 +1,5 @@
 {
+  "name": "site-hotel",
   "headers": [
     {
       "source": "/(.*)",
@@ -84,18 +85,6 @@
       "destination": "https://hotel-chatbot-mingma.vercel.app/api/chat/:path*"
     },
     {
-      "source": "/api/send-email",
-      "destination": "/api/send-email"
-    },
-    {
-      "source": "/api/contact",
-      "destination": "/api/contact"
-    },
-    {
-      "source": "/api/:path*",
-      "destination": "https://hotelsherpasoulpms-sigma.vercel.app/api/:path*"
-    },
-    {
       "source": "/robots.txt",
       "destination": "/robots.txt"
     },
@@ -108,7 +97,11 @@
       "destination": "/google09193511502f33b3.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/api/:path*",
+      "destination": "https://hotelsherpasoulpms-sigma.vercel.app/api/:path*"
+    },
+    {
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],

@@ -178,14 +178,14 @@ export default function RoomDetail() {
     ? room.image
     : room.image
     ? [room.image]
-    : ["/room1/room.webp"];
+    : ["/changes_photo/deluxeRoom_ai.webp"];
 
   const images = rawImages
     .map((img) => {
       const src = typeof img === "object" ? img.url || img.src : img;
       return typeof src === "string"
         ? src.replace(/\.jpeg$/i, ".webp")
-        : "/room1/room.webp";
+        : "/changes_photo/deluxeRoom_ai.webp";
     })
     .filter(Boolean);
 
@@ -229,13 +229,14 @@ export default function RoomDetail() {
             src={images[currentImageIndex] || "/room1/room.webp"}
             alt={`${room?.name || "Room"} at Hotel Sherpa Soul, Kathmandu - View ${currentImageIndex + 1}`}
             className="w-full h-full object-cover transition-opacity duration-500"
+            loading="eager"
             fetchPriority="high"
             decoding="async"
             width="1200"
             height="600"
             onError={(e) => {
               e.currentTarget.onerror = null;
-              e.currentTarget.src = "/room1/room.webp";
+              e.currentTarget.src = "/changes_photo/deluxeRoom_ai.webp";
             }}
           />
 
@@ -314,9 +315,13 @@ export default function RoomDetail() {
                     src={thumbSrc}
                     alt={`Preview ${index + 1}`}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    width="56"
+                    height="36"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
-                      e.currentTarget.src = "/room1/room.webp";
+                      e.currentTarget.src = "/changes_photo/deluxeRoom_ai.webp";
                     }}
                   />
                 </button>
@@ -606,7 +611,7 @@ export default function RoomDetail() {
                       </svg>
                     </div>
                     <span className="text-2xl font-bold text-green-700">
-                      12:00 PM
+                      Flexible
                     </span>
                   </div>
 
@@ -658,7 +663,7 @@ export default function RoomDetail() {
                       </svg>
                     </div>
                     <span className="text-2xl font-bold text-red-700">
-                      12:00 PM
+                      12:00 Noon
                     </span>
                   </div>
 

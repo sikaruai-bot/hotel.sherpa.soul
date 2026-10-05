@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Calendar, Phone, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 import BookingModal from "../HelperComponents/BookingModal";
-import { trackBookingClick, trackWhatsAppClick, trackPhoneClick } from "../Analytics/pixelEvents";
+import { trackBookingClick, trackPhoneClick } from "../Analytics/pixelEvents";
 
 export default function HomeBookingCTA() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -39,17 +38,6 @@ export default function HomeBookingCTA() {
             <Calendar className="w-5 h-5" />
             <span>Book Direct & Save 10%</span>
           </button>
-
-          <a
-            href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackWhatsAppClick("final_home_cta")}
-            className="w-full sm:w-auto px-7 py-4 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 min-h-[48px]"
-          >
-            <FaWhatsapp className="w-5 h-5" />
-            <span>Chat on WhatsApp</span>
-          </a>
 
           <a
             href="tel:+9779851068219"

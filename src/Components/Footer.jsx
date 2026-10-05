@@ -153,6 +153,10 @@ export default function Footer() {
                   <img
                     src={hotelLogo}
                     alt="Hotel Sherpa Soul Kathmandu"
+                    loading="lazy"
+                    decoding="async"
+                    width="200"
+                    height="64"
                     className="h-16 w-auto max-w-[200px] object-contain bg-white/95 px-3 py-1.5 rounded-xl shadow-md"
                   />
                 </Link>

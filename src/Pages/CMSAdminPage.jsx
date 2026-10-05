@@ -27,6 +27,7 @@ export default function CMSAdminPage() {
     seo,
     content,
     media,
+    sitePhotos,
     rooms,
     channels,
     lastSaved,
@@ -38,6 +39,7 @@ export default function CMSAdminPage() {
     updatePageSEO,
     updateContent,
     updateGallery,
+    updateSitePhotos,
     updateRooms,
     updateChannels,
     updateChannel,
@@ -180,8 +182,10 @@ export default function CMSAdminPage() {
             <CMSMediaTab
               media={media}
               content={content}
+              sitePhotos={sitePhotos}
               onUpdateGallery={updateGallery}
               onUpdateContent={updateContent}
+              onUpdateSitePhotos={updateSitePhotos}
             />
           )}
 

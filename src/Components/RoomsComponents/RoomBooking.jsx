@@ -1068,6 +1068,7 @@ export default function BookingForm() {
                       src={room.image?.[0]?.url || (typeof room.image === "string" ? room.image : "/room1/room.webp")}
                       alt={room.name ? `${room.name} - Hotel Sherpa Soul Thamel Kathmandu` : "Hotel Sherpa Soul Room Thamel Kathmandu"}
                       loading="lazy"
+                      decoding="async"
                       width="80"
                       height="80"
                       className="w-20 h-20 rounded-lg object-cover"
@@ -1215,12 +1216,12 @@ export default function BookingForm() {
                   <div className="space-y-2 text-xs text-gray-600">
                     <div className="flex items-start gap-2">
                       <Clock className="w-3 h-3 mt-0.5 text-amber-600 flex-shrink-0" />
-                      <span>{t("book.form.checkin")}: 2:00 PM - 11:00 PM</span>
+                      <span>{t("book.form.checkin")}: Flexible</span>
                     </div>
 
                     <div className="flex items-start gap-2">
                       <Clock className="w-3 h-3 mt-0.5 text-amber-600 flex-shrink-0" />
-                      <span>{t("book.form.checkout")}: 12:00 PM</span>
+                      <span>{t("book.form.checkout")}: 12:00 Noon</span>
                     </div>
 
                     <div className="flex items-start gap-2">

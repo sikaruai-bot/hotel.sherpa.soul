@@ -15,6 +15,7 @@ export default function ContactHero() {
           src="/changes_photo/doubleBed.webp"
           alt="Contact Hotel Sherpa Soul - Thamel Kathmandu"
           className="w-full h-full object-cover"
+          loading="eager"
           fetchPriority="high"
           decoding="async"
           width="768"

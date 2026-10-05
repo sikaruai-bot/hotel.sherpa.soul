@@ -58,6 +58,8 @@ export default function Aboutstory() {
                   alt={t("aboutStory.imageAlt", "Hotel Sherpa Soul boutique hotel in Thamel, Kathmandu")}
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="600"
                   className="w-full h-full object-cover object-top"
                 />
                 {/* Subtle overlay */}

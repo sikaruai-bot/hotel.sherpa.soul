@@ -73,7 +73,7 @@ export default function CMSSEOTab({ seo, onUpdateSEO, onUpdatePageSEO }) {
     ],
     priceRange: seo?.schema?.priceRange || "$$",
     currenciesAccepted: seo?.schema?.currenciesAccepted || "NPR, USD, EUR",
-    checkinTime: seo?.schema?.checkinTime || "14:00",
+    checkinTime: seo?.schema?.checkinTime || "Flexible",
     checkoutTime: seo?.schema?.checkoutTime || "12:00",
     address: {
       "@type": "PostalAddress",
@@ -686,7 +686,7 @@ export default function CMSSEOTab({ seo, onUpdateSEO, onUpdatePageSEO }) {
                   </label>
                   <input
                     type="text"
-                    value={seo?.schema?.checkinTime || "14:00"}
+                    value={seo?.schema?.checkinTime || "Flexible"}
                     onChange={(e) =>
                       handleSchemaFieldChange("checkinTime", e.target.value)
                     }

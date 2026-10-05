@@ -34,6 +34,8 @@ export default function AboutVision() {
             alt={vision.buddhistAlt || t("aboutVision.buddhistAlt") || "Buddhist Symbol - Hotel Sherpa Soul Kathmandu"}
             loading="lazy"
             decoding="async"
+            width="1920"
+            height="1080"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#F69520]/40 via-slate-900/80 to-indigo-900/70"></div>

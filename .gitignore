@@ -33,3 +33,11 @@ backups/
 .vercel
 .env*
 
+# Temporary audits and reports
+audit_page.js
+audit_workspace/
+lh_*.json
+*.report.html
+response.json
+scratch/
+*_backup.webp

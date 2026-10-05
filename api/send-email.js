@@ -1,16 +1,28 @@
+/* eslint-env node */
 import nodemailer from "nodemailer";
 
-const RESEND_API_KEY =
-  process.env.RESEND_API_KEY ||
-  Buffer.from("cmVfOFFDelp0a0NfQlhhWWs4U3lyY2RwMXpvYlZ1aEhzRzMy", "base64").toString("utf-8");
+const RESEND_API_KEY = process.env.RESEND_API_KEY; // No fallback – must be set in Vercel env
 
 // Hotel Sherpa Soul Official Mail Transporter (Babal Host Direct cPanel SMTP)
+function validateMailEnv() {
+  const required = ["MAIL_HOST", "MAIL_PORT", "MAIL_USER", "MAIL_PASS"];
+  const missing = required.filter((key) => !process.env[key]);
+  if (missing.length) {
+    console.error(`Missing email env vars: ${missing.join(", ")}`);
+    // Throw generic error without revealing which vars are missing
+    const err = new Error("Email configuration error");
+    err.status = 500;
+    throw err;
+  }
+}
+
 const getTransporter = () => {
-  // Babal Host cPanel server IP 209.42.27.158
-  const host = process.env.MAIL_HOST || "209.42.27.158";
-  const port = Number(process.env.MAIL_PORT) || 465;
-  const user = process.env.MAIL_USER || "info@hotelsherpasoul.com";
-  const pass = process.env.MAIL_PASS || "Hotelsherpasoul@2025";
+  // All required env vars must be present – validated below
+  validateMailEnv();
+  const host = process.env.MAIL_HOST;
+  const port = Number(process.env.MAIL_PORT);
+  const user = process.env.MAIL_USER;
+  const pass = process.env.MAIL_PASS;
 
   return nodemailer.createTransport({
     host,
@@ -24,43 +36,29 @@ const getTransporter = () => {
 };
 
 /**
- * Direct Babal Host SMTP Delivery to Official Hotel Inbox (info@hotelsherpasoul.com)
- * Uses authenticated cPanel connection on port 465 (IP: 209.42.27.158).
- * Guarantees 100% instant inbox delivery to the official webmail.
+ * Primary Official Hotel Inbox Delivery (info@hotelsherpasoul.com)
+ * Uses Resend API as primary production transport.
  */
 async function sendToOfficialInbox({ subject, html, replyTo }) {
-  try {
-    const transporter = getTransporter();
-    const info = await transporter.sendMail({
-      from: '"Hotel Sherpa Soul Reservation" <info@hotelsherpasoul.com>',
-      to: "info@hotelsherpasoul.com",
-      replyTo,
-      subject,
-      html,
-    });
-    console.log("Delivered directly to official inbox via Babal SMTP:", info.messageId);
-    return { success: true, provider: "babal-smtp", id: info.messageId };
-  } catch (err) {
-    console.warn("Direct Babal Host SMTP delivery error, falling back to Resend:", err.message);
-    return sendMailUnified({
-      from: '"Hotel Sherpa Soul Reservation" <info@hotelsherpasoul.com>',
-      to: "info@hotelsherpasoul.com",
-      replyTo,
-      subject,
-      html,
-    });
-  }
+  return sendMailUnified({
+    from: '"Hotel Sherpa Soul Reservation" <info@hotelsherpasoul.com>',
+    to: "info@hotelsherpasoul.com",
+    replyTo,
+    subject,
+    html,
+  });
 }
 
 /**
- * Unified Mail Sender (Resend API Primary with SMTP Fallback)
- * Used for Gmail backups and Guest Confirmation Vouchers
+ * Unified Mail Sender
+ * 1. Resend API is the PRIMARY production transport.
+ * 2. Babal Host SMTP is an optional fallback for local/dev, disabled in Vercel production to prevent TCP connection timeout.
  */
 async function sendMailUnified({ from, to, replyTo, subject, html }) {
   const recipients = Array.isArray(to) ? to : [to];
   const fromFormatted = from.includes("<") ? from : `"Hotel Sherpa Soul" <${from}>`;
 
-  // 1. Attempt delivery via Resend API (Primary)
+  // 1. Primary Production Transport: Resend API
   if (RESEND_API_KEY) {
     try {
       const res = await fetch("https://api.resend.com/emails", {
@@ -80,63 +78,61 @@ async function sendMailUnified({ from, to, replyTo, subject, html }) {
 
       const data = await res.json();
       if (res.ok && data?.id) {
-        console.log(`Email delivered via Resend [${data.id}] to:`, recipients);
+        console.log(`[Email Dispatch] provider=resend | status=accepted | id=${data.id}`);
         return { success: true, provider: "resend", id: data.id };
       }
-      console.warn("Resend API warning, attempting SMTP fallback:", data);
+
+      console.error(
+        `[Email Dispatch] provider=resend | status=failed | error=${data?.message || "Rejected by Resend API"}`
+      );
     } catch (resendErr) {
-      console.warn("Resend API request failed, attempting SMTP fallback:", resendErr.message);
+      console.error(
+        `[Email Dispatch] provider=resend | status=failed | error=${resendErr.message}`
+      );
+    }
+  } else {
+    console.error("[Email Dispatch] provider=resend | status=failed | error=RESEND_API_KEY not configured");
+  }
+
+  // 2. Optional Fallback: SMTP (disabled in Vercel production to prevent TCP connection timeout)
+  const isVercel = Boolean(process.env.VERCEL || process.env.VERCEL_ENV === "production");
+  const hasSmtpConfig = Boolean(
+    process.env.MAIL_HOST &&
+    process.env.MAIL_PORT &&
+    process.env.MAIL_USER &&
+    process.env.MAIL_PASS
+  );
+
+  if (!isVercel && hasSmtpConfig) {
+    try {
+      const transporter = getTransporter();
+      const info = await transporter.sendMail({
+        from: fromFormatted,
+        to: recipients.join(", "),
+        replyTo,
+        subject,
+        html,
+      });
+      console.log(`[Email Dispatch] provider=smtp | status=accepted | id=${info.messageId}`);
+      return { success: true, provider: "smtp", id: info.messageId };
+    } catch (smtpErr) {
+      console.error(`[Email Dispatch] provider=smtp | status=failed | error=${smtpErr.message}`);
+      throw smtpErr;
     }
   }
 
-  // 2. Fallback to Babal Host SMTP
-  try {
-    const transporter = getTransporter();
-    const info = await transporter.sendMail({
-      from: fromFormatted,
-      to: recipients.join(", "),
-      replyTo,
-      subject,
-      html,
-    });
-    console.log(`Email delivered via SMTP [${info.messageId}] to:`, recipients);
-    return { success: true, provider: "smtp", id: info.messageId };
-  } catch (smtpErr) {
-    console.error("Both Resend and SMTP failed for recipients:", recipients, smtpErr.message);
-    throw smtpErr;
-  }
+  const deliveryError = new Error("Email delivery failed");
+  deliveryError.name = "EmailDeliveryError";
+  throw deliveryError;
 }
 
 /**
  * Dispatch Alerts to Hotel Management:
- * 1. Official Email (info@hotelsherpasoul.com) via direct authenticated Babal Host SMTP
+ * 1. Official Email (info@hotelsherpasoul.com) via primary Resend API
  * 2. Backup Gmails (sherpasoul@gmail.com, etc.) via Resend API
  */
 async function dispatchHotelStaffAlerts({ subject, html, replyTo }) {
-  const tasks = [];
-
-  // Primary: Official hotel inbox (info@hotelsherpasoul.com)
-  tasks.push(sendToOfficialInbox({ subject, html, replyTo }));
-
-  // Secondary: Staff Gmail accounts
-  const gmailRecipients = [
-    "sherpasoul@gmail.com",
-    "hotelsherpasoul@gmail.com",
-    "hotelsherpasoul2025@gmail.com",
-  ];
-  tasks.push(
-    sendMailUnified({
-      from: '"Hotel Sherpa Soul Reservation" <info@hotelsherpasoul.com>',
-      to: gmailRecipients,
-      replyTo,
-      subject,
-      html,
-    }).catch((err) => {
-      console.warn("Backup Gmail dispatch notice:", err.message);
-    })
-  );
-
-  return Promise.allSettled(tasks);
+  return sendToOfficialInbox({ subject, html, replyTo });
 }
 
 // In-Memory Rate Limiting for Serverless Email Dispatches
@@ -301,17 +297,41 @@ export default async function handler(req, res) {
         `,
       };
 
-      // Dispatch to official hotel inbox, backup gmails, and guest auto-responder
-      await Promise.allSettled([
-        dispatchHotelStaffAlerts({
+      // Dispatch to official hotel inbox (primary required - must succeed)
+      try {
+        await sendToOfficialInbox({
           subject: `📩 New Website Inquiry from ${name}${subject ? `: ${subject}` : ""}`,
           html: inquiryHtml,
           replyTo: `"${name}" <${email}>`,
-        }),
-        sendMailUnified(guestMailOptions).catch((err) => {
-          console.warn("Guest auto-responder delivery failed:", err.message);
-        }),
-      ]);
+        });
+      } catch (err) {
+        console.error("[Email Dispatch] Official inbox inquiry delivery failed:", err.message);
+        return res.status(500).json({
+          success: false,
+          error: "Official email delivery failed",
+          details: { type: "EmailDeliveryError" },
+        });
+      }
+
+      // Secondary notifications (backup Gmails and guest auto-responder in background)
+      const gmailRecipients = [
+        "sherpasoul@gmail.com",
+        "hotelsherpasoul@gmail.com",
+        "hotelsherpasoul2025@gmail.com",
+      ];
+      sendMailUnified({
+        from: '"Hotel Sherpa Soul Reservation" <info@hotelsherpasoul.com>',
+        to: gmailRecipients,
+        replyTo: `"${name}" <${email}>`,
+        subject: `📩 New Website Inquiry from ${name}${subject ? `: ${subject}` : ""}`,
+        html: inquiryHtml,
+      }).catch((err) => {
+        console.warn("Backup Gmail dispatch notice:", err.message);
+      });
+
+      sendMailUnified(guestMailOptions).catch((err) => {
+        console.warn("Guest auto-responder delivery failed:", err.message);
+      });
 
       return res.status(200).json({
         success: true,
@@ -365,92 +385,107 @@ export default async function handler(req, res) {
       const subject = `🔔 NEW RESERVATION: ${roomName} - ${guestName} [${bookingRef}]`;
       const replyTo = guestEmail ? `"${guestName}" <${guestEmail}>` : hotelEmail;
 
-      const bookingMailPromises = [
-        dispatchHotelStaffAlerts({
-          subject,
-          html: staffBookingHtml,
-          replyTo,
-        }),
+      // Build staff alerts explicitly to label the official inbox promise
+      const gmailRecipients = [
+        "sherpasoul@gmail.com",
+        "hotelsherpasoul@gmail.com",
+        "hotelsherpasoul2025@gmail.com",
       ];
+      const officialInboxPromise = sendToOfficialInbox({
+        subject,
+        html: staffBookingHtml,
+        replyTo,
+      });
+      const backupGmailPromise = sendMailUnified({
+        from: "\"Hotel Sherpa Soul Reservation\" <info@hotelsherpasoul.com>",
+        to: gmailRecipients,
+        replyTo,
+        subject,
+        html: staffBookingHtml,
+      }).catch((err) => {
+        console.warn("Backup Gmail dispatch notice:", err.message);
+      });
+      const bookingMailPromises = [officialInboxPromise, backupGmailPromise];
 
-      // If guest email is provided, send them a confirmation voucher
-      if (guestEmail && guestEmail.includes("@")) {
-        const guestVoucherMail = {
-          from: `"Hotel Sherpa Soul" <${hotelEmail}>`,
-          to: guestEmail,
-          replyTo: hotelEmail,
-          subject: `🏨 Booking Confirmation - Hotel Sherpa Soul, Kathmandu [#${bookingRef}]`,
-          html: `
-            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
-              <div style="background: #1e293b; padding: 28px; text-align: center; border-bottom: 3px solid #d97706;">
-                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Hotel Sherpa Soul</h1>
-                <p style="color: #cbd5e1; margin: 4px 0 0 0; font-size: 13px;">Booking Confirmation Voucher</p>
-              </div>
 
-              <div style="padding: 28px;">
-                <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 16px; margin-bottom: 24px; text-align: center;">
-                  <h2 style="color: #065f46; margin: 0 0 4px 0; font-size: 18px;">Reservation Confirmed!</h2>
-                  <p style="color: #047857; margin: 0; font-size: 14px;">Booking Reference: <strong>#${bookingRef}</strong></p>
+        // If guest email is provided, send them a confirmation voucher (fire‑and‑forget)
+        if (guestEmail && guestEmail.includes("@")) {
+          const guestVoucherMail = {
+            from: `"Hotel Sherpa Soul" <${hotelEmail}>`,
+            to: guestEmail,
+            replyTo: hotelEmail,
+            subject: `🏨 Booking Confirmation - Hotel Sherpa Soul, Kathmandu [#${bookingRef}]`,
+            html: `
+              <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+                <div style="background: #1e293b; padding: 28px; text-align: center; border-bottom: 3px solid #d97706;">
+                  <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Hotel Sherpa Soul</h1>
+                  <p style="color: #cbd5e1; margin: 4px 0 0 0; font-size: 13px;">Booking Confirmation Voucher</p>
                 </div>
-
-                <p style="color: #334155; font-size: 14px; line-height: 1.6;">
-                  Dear <strong>${guestName}</strong>,<br />
-                  Thank you for booking directly with Hotel Sherpa Soul. We look forward to welcoming you to our peaceful boutique hotel in Thamel, Kathmandu.
-                </p>
-
-                <h3 style="color: #0f172a; font-size: 15px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-top: 24px;">Booking Summary</h3>
-                <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px;">
-                  <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 8px 0; color: #64748b;">Room:</td><td style="padding: 8px 0; color: #0f172a; font-weight: bold;">${roomName} (${roomsCount} Room${roomsCount > 1 ? "s" : ""})</td></tr>
-                  <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 8px 0; color: #64748b;">Check-In Date:</td><td style="padding: 8px 0; color: #0f172a; font-weight: bold;">${checkIn} (from 14:00)</td></tr>
-                  <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 8px 0; color: #64748b;">Check-Out Date:</td><td style="padding: 8px 0; color: #0f172a; font-weight: bold;">${checkOut} (until 12:00)</td></tr>
-                  <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 8px 0; color: #64748b;">Total Amount:</td><td style="padding: 8px 0; color: #d97706; font-weight: bold;">NPR ${totalPrice}</td></tr>
-                </table>
-
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 24px 0;">
-                  <h4 style="margin: 0 0 8px 0; color: #0f172a; font-size: 13px;">Hotel Location & Contact:</h4>
-                  <p style="margin: 4px 0; color: #475569; font-size: 13px;">📍 ${hotelAddress}</p>
-                  <p style="margin: 4px 0; color: #475569; font-size: 13px;">📞 24/7 Front Desk: ${hotelPhone}</p>
-                  <p style="margin: 4px 0; color: #475569; font-size: 13px;">💬 WhatsApp: +977 9818259472</p>
-                  <p style="margin: 4px 0; color: #475569; font-size: 13px;">✉️ Email: ${hotelEmail}</p>
+                <div style="padding: 28px;">
+                  <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 16px; margin-bottom: 24px; text-align: center;">
+                    <h2 style="color: #065f46; margin: 0 0 4px 0; font-size: 18px;">Reservation Confirmed!</h2>
+                    <p style="color: #047857; margin: 0; font-size: 14px;">Booking Reference: <strong>#${bookingRef}</strong></p>
+                  </div>
+                  <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+                    Dear <strong>${guestName}</strong>,<br />
+                    Thank you for booking directly with Hotel Sherpa Soul. We look forward to welcoming you to our peaceful boutique hotel in Thamel, Kathmandu.
+                  </p>
+                  <h3 style="color: #0f172a; font-size: 15px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-top: 24px;">Booking Summary</h3>
+                  <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px;">
+                    <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 8px 0; color: #64748b;">Room:</td><td style="padding: 8px 0; color: #0f172a; font-weight: bold;">${roomName} (${roomsCount} Room${roomsCount > 1 ? "s" : ""})</td></tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 8px 0; color: #64748b;">Check-In Date:</td><td style="padding: 8px 0; color: #0f172a; font-weight: bold;">${checkIn} (from 14:00)</td></tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 8px 0; color: #64748b;">Check-Out Date:</td><td style="padding: 8px 0; color: #0f172a; font-weight: bold;">${checkOut} (until 12:00)</td></tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 8px 0; color: #64748b;">Total Amount:</td><td style="padding: 8px 0; color: #d97706; font-weight: bold;">NPR ${totalPrice}</td></tr>
+                  </table>
+                  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 24px 0;">
+                    <h4 style="margin: 0 0 8px 0; color: #0f172a; font-size: 13px;">Hotel Location &amp; Contact:</h4>
+                    <p style="margin: 4px 0; color: #475569; font-size: 13px;">📍 ${hotelAddress}</p>
+                    <p style="margin: 4px 0; color: #475569; font-size: 13px;">📞 24/7 Front Desk: ${hotelPhone}</p>
+                    <p style="margin: 4px 0; color: #475569; font-size: 13px;">💬 WhatsApp: +977 9818259472</p>
+                    <p style="margin: 4px 0; color: #475569; font-size: 13px;">✉️ Email: <a href=\"mailto:${hotelEmail}\" style=\"color: #d97706;\">${hotelEmail}</a></p>
+                  </div>
                 </div>
-
-                <div style="text-align: center; margin: 24px 0;">
-                  <a href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul,%20I%20have%20a%20confirmed%20booking%20%23${bookingRef}" style="background: #25D366; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: bold; display: inline-block;">
-                    Need Airport Pickup? Message on WhatsApp (+977 9818259472)
-                  </a>
+                <div style="background: #f1f5f9; padding: 16px; text-align: center; color: #64748b; font-size: 12px; border-top: 1px solid #e2e8f0;">
+                  <p style="margin: 0;">Hotel Sherpa Soul | No Restaurant. No Noise. Sleep Well.</p>
                 </div>
               </div>
-
-              <div style="background: #f1f5f9; padding: 16px; text-align: center; color: #64748b; font-size: 12px; border-top: 1px solid #e2e8f0;">
-                <p style="margin: 0;">Hotel Sherpa Soul | No Restaurant. No Noise. Sleep Well.</p>
-              </div>
-            </div>
-          `,
-        };
-
-        bookingMailPromises.push(
+            `,
+          };
           sendMailUnified(guestVoucherMail).catch((err) => {
             console.warn("Guest voucher delivery notice:", err.message);
-          })
-        );
-      }
+          });
+        }
 
-      // Await all dispatches
-      await Promise.allSettled(bookingMailPromises);
+        // 1. Mandatory Official Inbox Delivery: Must be fulfilled for reservation confirmation
+        try {
+          await officialInboxPromise;
+        } catch (err) {
+          console.error("[Email Dispatch] Official inbox delivery failed:", err.message);
+          return res.status(500).json({
+            success: false,
+            error: "Official email delivery failed",
+            details: { type: "EmailDeliveryError" },
+          });
+        }
 
-      return res.status(200).json({
-        success: true,
-        message: "Booking confirmation email sent successfully!",
-      });
+        // 2. Optional Best-Effort Notifications: Backup Gmail alerts and guest vouchers.
+        // Awaited to finish execution, but non-blocking so external bounces do not fail the confirmed booking.
+        await Promise.allSettled([backupGmailPromise]);
+
+        // Official hotel inbox fulfilled; respond with success
+        return res.status(200).json({
+          success: true,
+          message: "Booking confirmation email sent successfully!",
+        });
     }
 
     return res.status(400).json({ success: false, error: "Invalid email request type" });
   } catch (error) {
-    console.error("Email sending error:", error);
+    console.error("[Email Dispatch] Unhandled request error:", error?.message || error);
     return res.status(500).json({
       success: false,
       error: "Failed to send email. Please contact front desk directly.",
-      details: error.message,
+      details: { type: "EmailDeliveryError" },
     });
   }
 }

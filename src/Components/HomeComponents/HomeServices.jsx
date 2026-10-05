@@ -68,6 +68,8 @@ export default function HomeServices() {
               alt={`${t("homeServices.sectionTag")} - Hotel Sherpa Soul Hospitality Services`}
               loading="lazy"
               decoding="async"
+              width="800"
+              height="1000"
               className="h-full w-full object-cover"
             />
           </motion.div>

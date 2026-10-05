@@ -327,7 +327,7 @@ const ROUTES = [
             <picture>
               <source media="(max-width: 768px)" srcset="/hero/hero1-mobile.webp" type="image/webp" />
               <source media="(min-width: 769px)" srcset="/hero/hero1.webp" type="image/webp" />
-              <img src="/hero/hero1.webp" alt="Hotel Sherpa Soul - Boutique Room in Thamel Kathmandu" class="w-full h-full object-cover opacity-60" width="1376" height="768" fetchpriority="high" />
+              <img src="/hero/hero1.webp" alt="Hotel Sherpa Soul - Boutique Room in Thamel Kathmandu" class="w-full h-full object-cover opacity-60" width="1376" height="768" fetchpriority="high" loading="eager" />
             </picture>
             <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
           </div>
@@ -548,6 +548,7 @@ const ROUTES = [
               src="/changes_photo/singlesitter.webp"
               alt="Hotel Sherpa Soul comfortable and quiet rooms in Thamel Kathmandu"
               class="absolute top-0 left-0 w-full h-full object-cover scale-110"
+              loading="eager"
               fetchpriority="high"
               decoding="async"
               width="960"

@@ -10,7 +10,7 @@ import { useCMS } from "../../Context/CMSContext";
 
 const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
   const { t } = useTranslation();
-  const { rooms: cmsRooms } = useCMS();
+  const { rooms: cmsRooms, sitePhotos } = useCMS();
   const fallbackRooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultFallbackRooms;
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,7 +33,17 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
       // 2. Deluxe Room
       // 3. Family Room
       const categories = fallbackRooms.map((r) => {
-        const rawImg = Array.isArray(r.image) ? r.image[0] : r.image;
+        let rawImg = Array.isArray(r.image) ? r.image[0] : r.image;
+        if (!rawImg || rawImg.trim() === "") {
+          if (r.id === 101 && (sitePhotos?.bookNow_budget || sitePhotos?.roomCard_budget)) {
+            rawImg = sitePhotos.bookNow_budget || sitePhotos.roomCard_budget;
+          } else if (r.id === 201 && (sitePhotos?.bookNow_deluxe || sitePhotos?.roomCard_deluxe)) {
+            rawImg = sitePhotos.bookNow_deluxe || sitePhotos.roomCard_deluxe;
+          } else if (r.id === 301 && (sitePhotos?.bookNow_family || sitePhotos?.roomCard_family)) {
+            rawImg = sitePhotos.bookNow_family || sitePhotos.roomCard_family;
+          }
+        }
+
         const cleanedImg = typeof rawImg === "string" ? rawImg.replace(/\.jpeg$/i, ".webp") : rawImg;
         return {
           ...r,
@@ -216,15 +226,16 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                       {/* Room Image */}
                       <div className="relative h-48 overflow-hidden bg-slate-100">
                         <img
-                          src={String((Array.isArray(room.image) ? room.image[0] : room.image) || "/room1/room.webp").replace(/\.jpeg$/i, ".webp")}
+                          src={String((Array.isArray(room.image) ? room.image[0] : room.image) || "/changes_photo/deluxeRoom_ai.webp").replace(/\.jpeg$/i, ".webp")}
                           alt={room.name ? `${room.name} - Hotel Sherpa Soul Thamel Kathmandu` : "Hotel Sherpa Soul Room Thamel Kathmandu"}
                           loading="lazy"
+                          decoding="async"
                           width="400"
                           height="240"
                           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                           onError={(e) => {
                             e.currentTarget.onerror = null;
-                            e.currentTarget.src = "/room1/room.webp";
+                            e.currentTarget.src = "/changes_photo/deluxeRoom_ai.webp";
                           }}
                         />
                         <div className="absolute top-3 left-3 bg-gradient-to-r from-[#FB6C01] to-amber-600 text-white px-2.5 py-1 rounded-full text-xs font-bold shadow flex items-center gap-1 border border-amber-300/30">

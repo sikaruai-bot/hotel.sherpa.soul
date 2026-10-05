@@ -13,18 +13,22 @@ import {
   Play,
   RotateCw,
 } from "lucide-react";
-import { optimizeMediaFile, HOTEL_PRESET_PHOTOS } from "./mediaUtils";
+import { optimizeMediaFile } from "./mediaUtils";
+import SitePhotosManager from "./SitePhotosManager";
+import { useCMS } from "../../Context/CMSContext";
 
 export default function CMSMediaTab({
   media,
   content,
+  sitePhotos,
   onUpdateGallery,
   onUpdateContent,
+  onUpdateSitePhotos,
 }) {
+  const { } = useCMS();
   const [activeSubTab, setActiveSubTab] = useState("gallery"); // gallery | heroMedia
   const [editingItem, setEditingItem] = useState(null);
-  const [showLibraryPicker, setShowLibraryPicker] = useState(false);
-  const [libraryTarget, setLibraryTarget] = useState(null); // "new" | "edit" | "hero"
+
   const [isUploading, setIsUploading] = useState(false);
   const [uploadSuccessMsg, setUploadSuccessMsg] = useState(null);
 
@@ -140,6 +144,7 @@ export default function CMSMediaTab({
       {/* Sub-tabs */}
       <div className="flex flex-wrap gap-2 p-1.5 bg-slate-900/80 rounded-2xl border border-slate-800">
         {[
+          { id: "sitePhotos", label: "🖼️ Website Photos Manager", icon: ImageIcon },
           { id: "gallery", label: "Photo & Video Gallery Hub", icon: ImageIcon },
           { id: "heroMedia", label: "Hero Background Media", icon: Film },
         ].map((tab) => {
@@ -161,6 +166,16 @@ export default function CMSMediaTab({
           );
         })}
       </div>
+
+      {/* 0. SITE PHOTOS MANAGER */}
+      {activeSubTab === "sitePhotos" && (
+        <SitePhotosManager
+          sitePhotos={sitePhotos || {}}
+          onUpdateSitePhotos={onUpdateSitePhotos}
+          presets={HOTEL_PRESET_PHOTOS}
+          onOptimize={optimizeMediaFile}
+        />
+      )}
 
       {/* 1. GALLERY MEDIA MANAGER */}
       {activeSubTab === "gallery" && (
@@ -192,18 +207,7 @@ export default function CMSMediaTab({
                   <span>📁 Upload Photo from Computer / Mobile</span>
                 </label>
 
-                {/* 2. Choose from Hotel Library */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setLibraryTarget("quickAdd");
-                    setShowLibraryPicker(true);
-                  }}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 text-sm font-semibold rounded-2xl border border-slate-700 transition-all select-none"
-                >
-                  <FolderOpen className="w-4 h-4 text-blue-400" />
-                  <span>🖼️ Pick from Hotel Library</span>
-                </button>
+
               </div>
             </div>
 
@@ -269,17 +273,7 @@ export default function CMSMediaTab({
                       />
                     </label>
 
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setLibraryTarget("edit");
-                        setShowLibraryPicker(true);
-                      }}
-                      className="flex-1 py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-1.5"
-                    >
-                      <FolderOpen className="w-3.5 h-3.5 text-blue-400" />
-                      <span>Pick from Library</span>
-                    </button>
+
                   </div>
 
                   <div>
@@ -444,17 +438,7 @@ export default function CMSMediaTab({
                 <span>Upload Hero Photo from Folder</span>
               </label>
 
-              <button
-                type="button"
-                onClick={() => {
-                  setLibraryTarget("hero");
-                  setShowLibraryPicker(true);
-                }}
-                className="p-5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold text-white transition-all shadow-md"
-              >
-                <FolderOpen className="w-4 h-4 text-blue-400" />
-                <span>Pick from Hotel Photo Library</span>
-              </button>
+
             </div>
 
             {/* Current Hero Preview */}
@@ -487,66 +471,7 @@ export default function CMSMediaTab({
         </div>
       )}
 
-      {/* MODAL: HOTEL PHOTO LIBRARY PICKER */}
-      {showLibraryPicker && (
-        <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl max-h-[85vh] flex flex-col">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-              <div>
-                <h4 className="text-base font-bold text-white flex items-center gap-2">
-                  <FolderOpen className="w-5 h-5 text-amber-400" />
-                  Hotel Photo Library
-                </h4>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  Click on any photo below to immediately select it.
-                </p>
-              </div>
-              <button
-                onClick={() => setShowLibraryPicker(false)}
-                className="text-slate-400 hover:text-white"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
 
-            <div className="overflow-y-auto flex-1 py-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {HOTEL_PRESET_PHOTOS.map((photo, i) => (
-                <div
-                  key={i}
-                  onClick={() => handlePickPreset(photo.path)}
-                  className="group cursor-pointer bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-400 transition-all shadow-md"
-                >
-                  <div className="aspect-video relative overflow-hidden bg-slate-800">
-                    <img
-                      src={photo.path}
-                      alt={photo.label}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                      onError={(e) => {
-                        e.target.src = "/hero/hero1.webp";
-                      }}
-                    />
-                  </div>
-                  <div className="p-2.5 text-center">
-                    <p className="text-white text-xs font-medium truncate">
-                      {photo.label}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-4 border-t border-slate-800 flex justify-end">
-              <button
-                type="button"
-                onClick={() => setShowLibraryPicker(false)}
-                className="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

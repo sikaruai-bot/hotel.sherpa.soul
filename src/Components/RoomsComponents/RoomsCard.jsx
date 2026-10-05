@@ -9,7 +9,7 @@ import { rooms as defaultFallbackRooms } from "../HelperComponents/RoomsData";
 import { useCMS } from "../../Context/CMSContext";
 
 const RoomsCard = () => {
-  const { rooms: cmsRooms } = useCMS();
+  const { rooms: cmsRooms, media, sitePhotos } = useCMS();
   const fallbackRooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultFallbackRooms;
   const [rooms, setRooms] = useState(fallbackRooms);
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,18 +28,25 @@ const RoomsCard = () => {
       // 1. Budget Family Room
       // 2. Deluxe Room
       // 3. Family Room
-      const categories = fallbackRooms.map((cat) => {
-        const rawImg = Array.isArray(cat.image) ? cat.image[0] : cat.image;
-        const cleanedImg = typeof rawImg === "string" ? rawImg.replace(/\.jpeg$/i, ".webp") : rawImg;
-        return {
-          ...cat,
-          id: cat.id,
-          roomNumber: cat.roomNumber,
-          name: cat.name,
-          Noroom: 2,
-          image: cleanedImg,
-        };
-      });
+       const categories = fallbackRooms.map((cat) => {
+         let rawImg = Array.isArray(cat.image) ? cat.image[0] : cat.image;
+         // Only use sitePhotos if cat.image is missing or empty
+         if (!rawImg || rawImg.trim() === "") {
+           if (cat.id === 101 && sitePhotos?.roomCard_budget) rawImg = sitePhotos.roomCard_budget;
+           else if (cat.id === 201 && sitePhotos?.roomCard_deluxe) rawImg = sitePhotos.roomCard_deluxe;
+           else if (cat.id === 301 && sitePhotos?.roomCard_family) rawImg = sitePhotos.roomCard_family;
+         }
+
+         const cleanedImg = typeof rawImg === "string" ? rawImg.replace(/\.jpeg$/i, ".webp") : rawImg;
+         return {
+           ...cat,
+           id: cat.id,
+           roomNumber: cat.roomNumber,
+           name: cat.name,
+           Noroom: 2,
+           image: cleanedImg,
+         };
+       });
 
       try {
         const { data } = await api.get("/rooms");
@@ -243,7 +250,7 @@ const RoomsCard = () => {
         {currentRooms.map((room, index) => {
           const rawImg = Array.isArray(room.image)
             ? (typeof room.image[0] === "string" ? room.image[0] : room.image[0]?.url)
-            : (typeof room.image === "string" ? room.image : room.image?.url) || "/room1/room.webp";
+            : (typeof room.image === "string" ? room.image : room.image?.url) || "/changes_photo/deluxeRoom_ai.webp";
           const displayImage = String(rawImg).replace(/\.jpeg$/i, ".webp");
 
           return (
@@ -279,7 +286,7 @@ const RoomsCard = () => {
                     height="256"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
-                      e.currentTarget.src = "/room1/room.webp";
+                      e.currentTarget.src = "/changes_photo/deluxeRoom_ai.webp";
                     }}
                   />
                 )}

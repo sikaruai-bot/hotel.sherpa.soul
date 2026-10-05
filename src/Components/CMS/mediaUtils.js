@@ -72,24 +72,10 @@ export const optimizeMediaFile = (file) => {
 };
 
 export const HOTEL_PRESET_PHOTOS = [
-  { label: "Budget Family Room (King + Single Bed)", path: "/triple.webp" },
-  { label: "Deluxe King Room with Sofa", path: "/changes_photo/singleBedWithSofa.webp" },
+  { label: "Deluxe King Room with Sofa (AC)", path: "/changes_photo/deluxeRoom_ai.webp" },
   { label: "Family Room AC (Wood Panel & Balcony)", path: "/changes_photo/doubleBed.webp" },
-  { label: "Twin Bed Room", path: "/changes_photo/doubleBedRoom.webp" },
-  { label: "Balcony Scenic View", path: "/changes_photo/balkani.webp" },
-  { label: "Executive Room Interior", path: "/room1/room.webp" },
-  { label: "Cozy Bedroom Angle 2", path: "/room1/room2.webp" },
-  { label: "Twin Room Setup", path: "/room3/DSC00136.webp" },
-  { label: "Twin Room Angle 2", path: "/room3/DSC00137.webp" },
-  { label: "Modern Washroom", path: "/changes_photo/washRoom.webp" },
-  { label: "Luggage & Storage Room", path: "/changes_photo/storeRoom.webp" },
-  { label: "Rooftop Skyline View", path: "/changes_photo/viewSeen.webp" },
-  { label: "Kathmandu Valley Panorama", path: "/hero/hero1.webp" },
-  { label: "Hotel Sherpa Soul Night Exterior", path: "/hero/hero2.webp" },
-  { label: "Thamel Street Ambiance", path: "/hero/hero4.webp" },
-  { label: "Double Bed Classic", path: "/double.webp" },
-  { label: "Single Room", path: "/single.webp" },
-  { label: "Hotel Front Desk & Reception", path: "/assets/frontdesk_new-JHvt5Fe8.webp" },
+  { label: "Budget Family Room (King + Single Bed)", path: "/triple.webp" },
+  { label: "Hotel Front Desk & 24/7 Reception", path: "/assets/frontdesk_new-JHvt5Fe8.webp" },
   { label: "Shared Self-Kitchen & Dining", path: "/assets/shared_kitchen_new-HROE-pWG.webp" },
-  { label: "Hotel Logo", path: "/logo.webp" },
+  { label: "Hotel Sherpa Soul Thamel Main", path: "/hero1.webp" },
 ];

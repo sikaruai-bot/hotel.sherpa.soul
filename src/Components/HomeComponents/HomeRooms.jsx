@@ -3,17 +3,40 @@ import { Link } from "react-router-dom";
 import { Users, Bed, Wifi, Wind, Bath, Utensils, CheckCircle2, ArrowRight, Calendar, Sparkles } from "lucide-react";
 import BookingModal from "../HelperComponents/BookingModal";
 import { trackBookingClick } from "../Analytics/pixelEvents";
+import { HOTEL_PRESET_PHOTOS } from "../CMS/mediaUtils";
+import { useCMS } from "../../Context/CMSContext";
 
 export default function HomeRooms() {
+  const { rooms: cmsRooms, sitePhotos } = useCMS();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedRoomForModal, setSelectedRoomForModal] = useState(null);
+
+  // Map preset photos to room categories by index
+  const presetPhotos = HOTEL_PRESET_PHOTOS;
+
+  const budgetRoom = cmsRooms?.find((r) => r.id === 101 || r.slug?.includes("budget")) || cmsRooms?.[0];
+  const deluxeRoom = cmsRooms?.find((r) => r.id === 201 || r.slug?.includes("deluxe")) || cmsRooms?.[1];
+  const familyRoom = cmsRooms?.find((r) => r.id === 301 || (r.slug?.includes("family") && !r.slug?.includes("budget"))) || cmsRooms?.[2];
+
+  const getRoomImg = (cmsRoom, sitePhotoKey, fallbackPath) => {
+    // 1. Highest priority: User's updated room photo from CMS Rooms tab
+    if (cmsRoom) {
+      const raw = Array.isArray(cmsRoom.image) ? cmsRoom.image[0] : cmsRoom.image;
+      if (raw && typeof raw === "string" && raw.trim() !== "") {
+        return raw.replace(/\.jpeg$/i, ".webp");
+      }
+    }
+    // 2. Secondary priority: Site Photos Manager override
+    if (sitePhotos?.[sitePhotoKey]) return sitePhotos[sitePhotoKey];
+    return fallbackPath;
+  };
 
   const roomCategories = [
     {
       id: 101,
       slug: "budget-family-room",
       name: "Budget Family Room",
-      image: "/triple.webp",
+      image: getRoomImg(budgetRoom, "roomCard_budget", presetPhotos[2].path),
       bedType: "1 King Bed + 1 Single Bed",
       occupancy: "Up to 4 Guests (3 Adults, 1 Child)",
       size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
@@ -33,7 +56,7 @@ export default function HomeRooms() {
       id: 201,
       slug: "deluxe-room",
       name: "Deluxe Room (AC)",
-      image: "/changes_photo/singleBedWithSofa.webp",
+      image: getRoomImg(deluxeRoom, "roomCard_deluxe", presetPhotos[0].path),
       bedType: "1 King Bed",
       occupancy: "Up to 3 Guests (2 Adults, 1 Child)",
       size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
@@ -54,7 +77,7 @@ export default function HomeRooms() {
       id: 301,
       slug: "family-room",
       name: "Family Room (AC)",
-      image: "/changes_photo/doubleBed.webp",
+      image: getRoomImg(familyRoom, "roomCard_family", presetPhotos[1].path),
       bedType: "1 King Bed + 1 Single Bed",
       occupancy: "Up to 4 Guests (3 Adults, 1 Child)",
       size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
@@ -172,17 +195,10 @@ export default function HomeRooms() {
                 </div>
 
                 {/* Card CTA Buttons */}
-                <div className="pt-4 border-t border-slate-100 space-y-2">
-                  <div className="flex items-center justify-between text-xs text-emerald-700 font-semibold mb-1">
-                    <span>Direct Booking Benefit:</span>
-                    <span className="bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-bold">
-                      10% Discount
-                    </span>
-                  </div>
-
+                <div className="pt-4 border-t border-slate-100">
                   <div className="grid grid-cols-2 gap-2">
                     <Link
-                      to={`/rooms/${room.slug}`}
+                      to={`/room/${room.id}`}
                       className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-1 min-h-[44px]"
                     >
                       <span>View Details</span>

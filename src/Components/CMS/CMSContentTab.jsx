@@ -17,7 +17,7 @@ import {
   Image as ImageIcon,
   Check,
 } from "lucide-react";
-import { optimizeMediaFile, HOTEL_PRESET_PHOTOS } from "./mediaUtils";
+import { optimizeMediaFile } from "./mediaUtils";
 import { cleanTourEmbedUrl, extractYouTubeId } from "../HomeComponents/HomeVirtualTour";
 
 export default function CMSContentTab({ content, onUpdateContent }) {
@@ -412,21 +412,7 @@ export default function CMSContentTab({ content, onUpdateContent }) {
                           />
                         </label>
 
-                        <select
-                          onChange={(e) => {
-                            if (e.target.value) {
-                              handleVirtualTourChange("coverImage", e.target.value);
-                            }
-                          }}
-                          className="px-3 py-1.5 bg-slate-800 text-slate-200 text-xs rounded-lg border border-slate-700 focus:outline-none"
-                        >
-                          <option value="">Choose from Hotel Photos...</option>
-                          {HOTEL_PRESET_PHOTOS.map((p, idx) => (
-                            <option key={idx} value={p.path}>
-                              {p.label}
-                            </option>
-                          ))}
-                        </select>
+
                       </div>
                     </div>
                   </div>

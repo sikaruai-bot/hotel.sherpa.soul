@@ -190,6 +190,9 @@ export default function HomeVirtualTour() {
                 alt="Hotel Sherpa Soul Video Tour"
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 filter brightness-90"
                 loading="lazy"
+                decoding="async"
+                width="1280"
+                height="720"
               />
 
               {/* Dark Gradient Veil */}

@@ -151,6 +151,8 @@ export default function AboutStats() {
                   alt="Hotel Sherpa Soul boutique accommodations in Thamel, Kathmandu"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="600"
                   className="object-contain rounded-2xl"
                 />
               </motion.div>

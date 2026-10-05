@@ -9,7 +9,7 @@ import {
   Upload,
   FolderOpen,
 } from "lucide-react";
-import { optimizeMediaFile, HOTEL_PRESET_PHOTOS } from "./mediaUtils";
+import { optimizeMediaFile } from "./mediaUtils";
 
 export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
   const [editingRoom, setEditingRoom] = useState(null);
@@ -155,14 +155,7 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                         <span>Upload Photo from Device</span>
                       </button>
 
-                      <button
-                        type="button"
-                        onClick={() => setShowPresetPicker(true)}
-                        className="py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700"
-                      >
-                        <FolderOpen className="w-3.5 h-3.5 text-blue-400" />
-                        <span>Pick from Library</span>
-                      </button>
+
 
                       <button
                         type="button"
@@ -314,58 +307,6 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
         </div>
       )}
 
-      {/* Preset Photo Picker Modal for Rooms */}
-      {showPresetPicker && (
-        <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl max-h-[85vh] flex flex-col">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-              <h4 className="text-base font-bold text-white flex items-center gap-2">
-                <FolderOpen className="w-5 h-5 text-amber-400" />
-                Select Photo from Hotel Library
-              </h4>
-              <button
-                onClick={() => setShowPresetPicker(false)}
-                className="text-slate-400 hover:text-white"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="overflow-y-auto flex-1 py-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {HOTEL_PRESET_PHOTOS.map((photo, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => handlePickPreset(photo.path)}
-                  className="group cursor-pointer bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-400 transition-all"
-                >
-                  <div className="aspect-video relative overflow-hidden bg-slate-800">
-                    <img
-                      src={photo.path}
-                      alt={photo.label}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                    />
-                  </div>
-                  <div className="p-2 text-center">
-                    <span className="text-[11px] text-white font-medium truncate block">
-                      {photo.label}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-3 border-t border-slate-800 flex justify-end">
-              <button
-                type="button"
-                onClick={() => setShowPresetPicker(false)}
-                className="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Rooms List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

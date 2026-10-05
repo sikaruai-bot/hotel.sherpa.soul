@@ -17,6 +17,7 @@ export default function AboutHero() {
             src="/changes_photo/singlesitter.webp"
             alt="About Hotel Sherpa Soul - Thamel Kathmandu"
             className="w-full h-full object-cover"
+            loading="eager"
             fetchPriority="high"
             decoding="async"
             width="960"

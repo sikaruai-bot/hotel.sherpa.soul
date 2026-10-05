@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import {
   ArrowRight,
   Play,
@@ -13,16 +13,17 @@ import {
   MapPin,
   Bed,
 } from "lucide-react";
-import { motion as Motion } from "framer-motion";
+
 import { useTranslation } from "react-i18next";
 import BookingModal from "../HelperComponents/BookingModal";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
 import { FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { useCMS } from "../../Context/CMSContext";
+import { HOTEL_PRESET_PHOTOS } from "../CMS/mediaUtils";
 
 export default function HomeIntro() {
   const { t, i18n } = useTranslation();
-  const { content: cmsContent } = useCMS();
+  const { content: cmsContent, sitePhotos, rooms: cmsRooms, media } = useCMS();
   const heroData = cmsContent?.hero || {};
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,22 +31,50 @@ export default function HomeIntro() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  const heroSlides = [
-    {
-      image: heroData.bgImage || "/hero/hero1.webp",
-      subtitle: heroData.subtitle || t("home.hero.subtitle"),
-    },
-    {
-      image: "/hero/hero2.webp",
-      subtitle: heroData.subtitle || t("home.hero.subtitle"),
-    },
-    {
-      image: "/hero/hero4.webp",
-      subtitle: heroData.subtitle || t("home.hero.subtitle"),
-    },
-  ];
+  // Dynamically resolve hero slideshow images based on LIVE CMS updates:
+  // 1. User's designated hero photo (or Deluxe Room photo)
+  // 2. Family Room photo from CMS
+  // 3. Budget Family Room photo from CMS
+  // 4. Any additional clean images from the user's Gallery
+  const heroSlides = useMemo(() => {
+    const budgetRoom = cmsRooms?.find((r) => r.id === 101 || String(r.id) === "101" || r.slug?.includes("budget")) || cmsRooms?.[0];
+    const deluxeRoom = cmsRooms?.find((r) => r.id === 201 || String(r.id) === "201" || r.slug?.includes("deluxe")) || cmsRooms?.[1];
+    const familyRoom = cmsRooms?.find((r) => r.id === 301 || String(r.id) === "301" || (r.slug?.includes("family") && !r.slug?.includes("budget"))) || cmsRooms?.[2];
 
-  const socialLinks = [
+    const getImg = (room, siteKey, fallback) => {
+      const roomImg = Array.isArray(room?.image) ? room.image[0] : room?.image;
+      if (roomImg && typeof roomImg === "string" && roomImg.trim()) return roomImg;
+      if (sitePhotos?.[siteKey]) return sitePhotos[siteKey];
+      return fallback;
+    };
+
+    const deluxeImg = sitePhotos?.homeHero || getImg(deluxeRoom, "roomCard_deluxe", "/hero/hero_deluxe_room.webp");
+    const familyImg = getImg(familyRoom, "roomCard_family", "/changes_photo/doubleBed.webp");
+    const budgetImg = getImg(budgetRoom, "roomCard_budget", "/triple.webp");
+
+    const slidesList = [
+      { label: "Deluxe Room", path: deluxeImg },
+      { label: "Family Room", path: familyImg },
+      { label: "Budget Family Room", path: budgetImg },
+    ];
+
+    // Optionally include up to 2 extra user gallery photos if available
+    if (Array.isArray(media?.gallery)) {
+      media.gallery
+        .filter((g) => g.type !== "video" && g.src && !slidesList.some((s) => s.path === g.src))
+        .slice(0, 2)
+        .forEach((g) => {
+          slidesList.push({ label: g.title || "Hotel Sherpa Soul", path: g.src });
+        });
+    }
+
+    return slidesList.map((photo) => ({
+      image: photo.path,
+      subtitle: heroData.subtitle || t("home.hero.subtitle"),
+    }));
+  }, [cmsRooms, sitePhotos, media?.gallery, heroData.subtitle, t]);
+
+  const socialLinks = useMemo(() => [
     {
       icon: Facebook,
       href: "https://www.facebook.com/share/1JYojEJGiL/",
@@ -70,7 +99,8 @@ export default function HomeIntro() {
       label: "WhatsApp",
       colorClass: "text-[#25D366]",
     },
-  ];
+  ], []);
+
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -80,17 +110,17 @@ export default function HomeIntro() {
     return () => clearInterval(timer);
   }, [isPlaying, heroSlides.length]);
 
-  const openModal = () => {
+  const openModal = useCallback(() => {
     setIsModalOpen(true);
     setIsPlaying(false);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setIsPlaying(true);
-  };
+  }, []);
 
-  const isArabic = i18n.language.toLowerCase() === "ar";
+  const isArabic = i18n.language.toLowerCase() === "ar" || i18n.language.toLowerCase() === "he";
 
   return (
     <div
@@ -108,14 +138,15 @@ export default function HomeIntro() {
                   : "opacity-0 scale-105"
                 }`}
             >
-              {index === 0 ? (
+              {index === 0 && slide.image === "/hero/hero_deluxe_room.webp" ? (
                 <picture className="w-full h-full block">
-                  <source media="(max-width: 768px)" srcSet="/hero/hero1-mobile.webp" type="image/webp" />
-                  <source media="(min-width: 769px)" srcSet="/hero/hero1.webp" type="image/webp" />
+                  <source media="(max-width: 768px)" srcSet="/hero/hero_deluxe_room-mobile.webp" type="image/webp" />
+                  <source media="(min-width: 769px)" srcSet="/hero/hero_deluxe_room.webp" type="image/webp" />
                   <img
-                    src="/hero/hero1.webp"
-                    alt="Hotel Sherpa Soul - Boutique Room in Thamel Kathmandu"
+                    src="/hero/hero_deluxe_room.webp"
+                    alt="Hotel Sherpa Soul - Deluxe Boutique Room in Thamel Kathmandu"
                     className="w-full h-full object-cover"
+                    loading="eager"
                     fetchPriority="high"
                     decoding="async"
                     width="1376"
@@ -123,13 +154,13 @@ export default function HomeIntro() {
                   />
                 </picture>
               ) : (
-                <div
-                  className="w-full h-full"
-                  style={{
-                    backgroundImage: `url('${slide.image}')`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
+                <img
+                  src={slide.image}
+                  alt={slide.subtitle || "Hotel Sherpa Soul"}
+                  className="w-full h-full object-cover"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  onError={(e) => {
+                    e.currentTarget.src = "/hero/hero_deluxe_room.webp";
                   }}
                 />
               )}
@@ -144,12 +175,9 @@ export default function HomeIntro() {
         {/* Opening Soon Banner */}
 
         {/* Vertical Social Media Links */}
-        <Motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+        <div
           className={`absolute ${isArabic ? "left-8" : "right-8"
-            } bottom-8 z-20 hidden md:block`}
+            } bottom-8 z-20 hidden md:block animate-social-slide-in`}
         >
           {/* "SOCIAL" text vertically */}
           <div className="mb-6 text-center">
@@ -169,28 +197,26 @@ export default function HomeIntro() {
             {socialLinks.map((social, index) => {
               const IconComponent = social.icon;
               return (
-                <Motion.a
+                <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                  className="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg"
+                  className="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg animate-social-link"
+                  style={{ animationDelay: `${0.8 + index * 0.1}s` }}
                   aria-label={social.label}
                 >
                   <IconComponent
                     className={`w-5 h-5 ${social.colorClass || "text-slate-800"} group-hover:scale-110 transition-transform duration-300`}
                   />
-                </Motion.a>
+                </a>
               );
             })}
           </div>
 
           {/* Bottom decorative line */}
           <div className="mt-6 h-8 w-px bg-white/40 mx-auto"></div>
-        </Motion.div>
+        </div>
 
         {/* Content Panel */}
         <div
@@ -198,22 +224,6 @@ export default function HomeIntro() {
             }`}
         >
           <div className="space-y-5 sm:space-y-6 max-w-2xl">
-            {/* 10% OFF Glowing Top Pill */}
-            <div className="flex flex-wrap items-center gap-2 pt-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#FB6C01]/30 via-amber-500/25 to-[#FB6C01]/30 border border-amber-400/60 backdrop-blur-md shadow-lg shadow-orange-950/40 text-white">
-                <span className="flex h-2 w-2 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FB6C01]"></span>
-                </span>
-                <span className="bg-[#FB6C01] text-white text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
-                  10% OFF
-                </span>
-                <span className="text-xs sm:text-sm font-semibold tracking-wide text-amber-200">
-                  Direct Booking Offer: <strong className="text-white font-extrabold underline decoration-amber-400 decoration-2 underline-offset-2">Save 10% Instantly</strong>
-                </span>
-              </div>
-            </div>
-
             <div className="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-300 font-semibold drop-shadow">
               WELCOME TO HOTEL SHERPA SOUL • THAMEL, KATHMANDU
             </div>
@@ -222,102 +232,39 @@ export default function HomeIntro() {
               Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu
             </h1>
 
-            <p className="text-white/95 text-base sm:text-lg leading-relaxed font-light drop-shadow">
-              Stay at Hotel Sherpa Soul, a quiet and comfortable boutique hotel in Thamel Bhagawati Marg 26. Designed for international tourists, trekkers, and couples seeking clean rooms, peaceful nights, luggage storage, and warm Himalayan hospitality.
+            <p className="text-white/90 text-base sm:text-lg leading-relaxed font-light drop-shadow">
+              A boutique hotel on Thamel Bhagawati Marg 26 — clean rooms, peaceful nights, 24/7 hot showers, free luggage storage, and warm Himalayan hospitality.
             </p>
 
-            {/* Direct Booking Benefit Card */}
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-black/80 via-[#01366E]/60 to-black/80 border border-amber-400/50 backdrop-blur-md shadow-2xl">
-              <div className="flex items-center justify-between gap-3 sm:gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[#FB6C01] via-amber-500 to-yellow-400 flex flex-col items-center justify-center text-white shadow-lg flex-shrink-0">
-                    <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider leading-none">SAVE</span>
-                    <span className="text-base sm:text-lg font-black leading-none mt-0.5">10%</span>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-white font-bold text-sm sm:text-base">
-                        Direct Booking Privilege
-                      </span>
-                      <span className="bg-emerald-500/25 text-emerald-300 border border-emerald-400/40 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                        Active Offer
-                      </span>
-                    </div>
-                    <p className="text-slate-200 text-xs sm:text-sm font-light leading-snug mt-0.5">
-                      Save 10% instantly on all room categories when booking directly with our front desk.
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => {
-                    trackMetaEvent("InitiateCheckout", {
-                      content_category: "hotel_booking",
-                      entry_point: "hero_discount_card",
-                    });
-                    setIsBookingModalOpen(true);
-                  }}
-                  className="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-white bg-[#FB6C01] hover:bg-[#e05a00] px-3.5 py-2 rounded-xl transition-all shadow-md flex-shrink-0"
-                >
-                  Claim 10% Off &rarr;
-                </button>
-              </div>
-            </div>
+            {/* 2 Clean CTAs */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+              {/* 1. Check Availability */}
+              <a
+                href="/rooms"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/80 hover:border-white font-bold text-sm sm:text-base backdrop-blur-md transition-all duration-300 transform hover:scale-105 shadow-lg min-h-[44px]"
+              >
+                <span>Check Availability</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
 
-            {/* 3 Clear Action Buttons (Check Availability, Book Direct & Save 10%, Chat on WhatsApp) */}
-            <div className="pt-1 space-y-3">
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                {/* 1. Check Availability */}
-                <a
-                  href="/rooms"
-                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/80 hover:border-white font-bold text-sm sm:text-base backdrop-blur-md transition-all duration-300 transform hover:scale-105 shadow-lg min-h-[44px]"
-                >
-                  <span>Check Availability</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-
-                {/* 2. Book Direct & Save 10% */}
-                <button
-                  onClick={() => {
-                    trackMetaEvent("InitiateCheckout", {
-                      content_category: "hotel_booking",
-                      entry_point: "home_hero_book_direct",
-                    });
-                    setIsBookingModalOpen(true);
-                    setIsModalOpen(false);
-                  }}
-                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-h-[44px]"
-                >
-                  <Calendar className="w-4 h-4" />
-                  <span>Book Direct & Save 10%</span>
-                </button>
-
-                {/* 3. Chat on WhatsApp */}
-                <a
-                  href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    trackMetaEvent("Contact", {
-                      channel: "whatsapp",
-                      entry_point: "hero_whatsapp_btn",
-                    });
-                  }}
-                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-h-[44px]"
-                >
-                  <FaWhatsapp className="w-4 h-4" />
-                  <span>Chat on WhatsApp</span>
-                </a>
-              </div>
-
-              {/* Short trust message near the booking CTA */}
-              <p className="text-xs sm:text-sm text-amber-200/95 font-medium flex items-center gap-1.5 pl-1">
-                <span className="text-amber-300">🛡️</span>
-                <span>Best available direct-booking offer. Contact us for availability and dates.</span>
-              </p>
+              {/* 2. Book Direct & Save */}
+              <button
+                onClick={() => {
+                  trackMetaEvent("InitiateCheckout", {
+                    content_category: "hotel_booking",
+                    entry_point: "home_hero_book_direct",
+                  });
+                  setIsBookingModalOpen(true);
+                }}
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-h-[44px]"
+              >
+                <Calendar className="w-4 h-4" />
+                <span>Book Direct & Save 10%</span>
+              </button>
             </div>
 
             {/* Trust Line */}
-            <div className="pt-4 flex flex-wrap items-center gap-3 sm:gap-5 text-xs sm:text-sm text-slate-200 font-medium">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-xs sm:text-sm text-slate-200 font-medium">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-[#FB6C01]" />
                 <span>Central Thamel Location</span>
@@ -338,19 +285,17 @@ export default function HomeIntro() {
               {socialLinks.map((social, index) => {
                 const IconComponent = social.icon;
                 return (
-                  <Motion.a
+                  <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                    className="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300"
+                    className="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 animate-social-link"
+                    style={{ animationDelay: `${0.8 + index * 0.1}s` }}
                     aria-label={social.label}
                   >
                     <IconComponent className="w-4 h-4 text-white hover:text-amber-300 transition-colors duration-300" />
-                  </Motion.a>
+                  </a>
                 );
               })}
             </div>
@@ -422,6 +367,24 @@ export default function HomeIntro() {
 
         .animate-float {
           animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes social-slide-in {
+          from { opacity: 0; transform: translateX(30px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-social-slide-in {
+          animation: social-slide-in 0.8s ease-out 0.5s both;
+        }
+
+        @keyframes social-fade-up {
+          from { opacity: 0; transform: translateY(15px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-social-link {
+          animation: social-fade-up 0.5s ease-out both;
         }
       `}</style>
     </div>

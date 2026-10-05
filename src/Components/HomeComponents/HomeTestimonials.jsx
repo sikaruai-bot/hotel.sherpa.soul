@@ -29,7 +29,7 @@ const HomeTestimonials = () => {
   const testimonials = t("homeTestimonial", { returnObjects: true });
 
   // Check if current language is right-to-left
-  const isRTL = i18n.language === "ar";
+  const isRTL = i18n.language === "ar" || i18n.language === "he";
 
   // Create enough duplicates to ensure smooth infinite scroll
   const duplicatedTestimonials = [

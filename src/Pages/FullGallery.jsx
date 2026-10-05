@@ -32,7 +32,7 @@ const LazyMotionItem = ({ type, src, alt }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
       onError={(e) => {
-        e.target.src = "/hero/hero1.webp";
+        e.target.src = "/changes_photo/deluxeRoom_ai.webp";
       }}
     />
   );
@@ -80,14 +80,24 @@ export default function GalleryPage() {
 
   const gallery = media?.gallery && media.gallery.length > 0 ? media.gallery : [
     {
-      src: "/room1/room.webp",
+      src: "/changes_photo/deluxeRoom_ai.webp",
       type: "image",
-      alt: "Hotel Sherpa Soul Deluxe Bedroom Interior",
+      alt: "Hotel Sherpa Soul Deluxe King Room with Mountain Art & Sofa",
     },
     {
-      src: "/room1/room2.webp",
+      src: "/changes_photo/doubleBed.webp",
       type: "image",
-      alt: "Hotel Sherpa Soul Cozy Guest Room",
+      alt: "Hotel Sherpa Soul Family Room AC with Balcony",
+    },
+    {
+      src: "/triple.webp",
+      type: "image",
+      alt: "Hotel Sherpa Soul Budget Family Room Triple Bed",
+    },
+    {
+      src: "/changes_photo/doubleBedRoom.webp",
+      type: "image",
+      alt: "Hotel Sherpa Soul Twin Bed Guest Room",
     },
     {
       src: frontDeskPhoto,
@@ -103,16 +113,6 @@ export default function GalleryPage() {
       src: "/changes_photo/balkani.webp",
       type: "image",
       alt: "Hotel Sherpa Soul Private Balcony View",
-    },
-    {
-      src: "/changes_photo/doubleBedRoom.webp",
-      type: "image",
-      alt: "Hotel Sherpa Soul Spacious Double Bedroom",
-    },
-    {
-      src: "/hero/hero1.webp",
-      type: "image",
-      alt: "Kathmandu City View from Hotel Sherpa Soul",
     },
     {
       src: "/changes_photo/washRoom.webp",
@@ -171,6 +171,7 @@ export default function GalleryPage() {
               src="/changes_photo/doubleBedRoom.webp"
               alt="Hotel Sherpa Soul Deluxe Room Gallery Preview"
               className="w-full h-full object-cover"
+              loading="eager"
               fetchPriority="high"
               decoding="async"
               width="768"
@@ -262,7 +263,7 @@ export default function GalleryPage() {
                   alt={gallery[selectedIndex].alt || `Hotel Sherpa Soul Gallery Photo ${selectedIndex + 1}`}
                   className="max-w-full max-h-[70vh] object-contain shadow-md"
                   onError={(e) => {
-                    e.target.src = "/hero/hero1.webp";
+                    e.target.src = "/changes_photo/deluxeRoom_ai.webp";
                   }}
                 />
               ) : (

@@ -96,6 +96,17 @@ function AppContent() {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
 
+            {/* Redirect old/broken slug routes → correct /room/:id routes */}
+            <Route path="/rooms/budget-family-room" element={<Navigate to="/room/101" replace />} />
+            <Route path="/rooms/deluxe-room" element={<Navigate to="/room/201" replace />} />
+            <Route path="/rooms/family-room" element={<Navigate to="/room/301" replace />} />
+            {/* Redirect /location → /contact (location info is in contact page) */}
+            <Route path="/location" element={<Navigate to="/contact" replace />} />
+            {/* Redirect /privacy-policy and /terms-and-conditions aliases */}
+            <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
+            <Route path="/terms-and-conditions" element={<Navigate to="/terms" replace />} />
+            <Route path="/cancellation-policy" element={<Navigate to="/terms" replace />} />
+
             <Route path="/admin" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
             <Route path="/dashboard" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />
             <Route path="/pms" element={<ExternalRedirect to="https://hotelsherpasoulpms-sigma.vercel.app" />} />

@@ -65,7 +65,7 @@ Local Tip: After a sensory-rich day exploring Thamel, retreat to a quiet, restau
       title: "Where to Stay in Thamel, Kathmandu: A Traveler's Guide",
       category: "Accommodation",
       readTime: "6 min read",
-      image: "/room1.webp",
+      image: "/changes_photo/where_to_stay_room.webp",
       seoKeywords: ["where to stay in Thamel", "best area to stay in Kathmandu", "hotels in Thamel Kathmandu"],
       summary:
         "Choosing the right neighborhood in Kathmandu can define your trip. Discover why staying on a quiet street like Bhagawati Marg gives you central access without late-night noise.",
@@ -124,7 +124,7 @@ At Hotel Sherpa Soul, our Sherpa heritage team gladly assists guests with trek p
       title: "Best Time to Visit Kathmandu and Nepal",
       category: "Travel Advice",
       readTime: "4 min read",
-      image: "/intro1.webp",
+      image: "/changes_photo/best_time_to_visit.webp",
       seoKeywords: ["best time to visit Nepal", "best time to visit Kathmandu", "Nepal travel guide"],
       summary:
         "A season-by-season guide covering autumn crystal skies (Sep-Nov), spring rhododendron blooms (Mar-May), mild winter exploring, and monsoon photography.",
@@ -257,6 +257,7 @@ Why Thamel Excels as a Base:
             src="/hero2.webp"
             alt="Kathmandu valley landscape - Hotel Sherpa Soul Travel Guide"
             className="w-full h-full object-cover opacity-35"
+            loading="eager"
             fetchPriority="high"
             decoding="async"
             width="768"
@@ -336,6 +337,9 @@ Why Thamel Excels as a Base:
                   src={post.image}
                   alt={`${post.title} - Hotel Sherpa Soul Kathmandu`}
                   loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="208"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3 bg-[#01366E]/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold shadow">
@@ -438,6 +442,10 @@ Why Thamel Excels as a Base:
                 <img
                   src={activeArticle.image}
                   alt={activeArticle.title}
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="320"
                   className="w-full h-full object-cover"
                 />
               </div>

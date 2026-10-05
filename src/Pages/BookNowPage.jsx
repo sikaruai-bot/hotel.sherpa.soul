@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import React, { useState, useEffect, useMemo } from "react";
+import { useParams, useSearchParams, useLocation } from "react-router-dom";
 import {
   Phone,
   Mail,
@@ -20,51 +20,6 @@ import api from "../Components/Utils/api";
 import { sendEmailNotification } from "../Components/Utils/emailService";
 import { useCMS } from "../Context/CMSContext";
 
-const roomOptions = [
-  {
-    id: "1",
-    label: "Budget Family Room",
-    title: "Budget Family Room",
-    roomNumber: "203",
-    price: 20,
-    priceNpr: 2700,
-    currency: "USD",
-    maxGuests: 4,
-    bedInfo: "1 King Bed + 1 Single Bed",
-    image: "/triple.webp",
-    description: "Features 1 King Bed + 1 Single Bed, en-suite bathroom, 24/7 hot shower, free Wi-Fi, and shared kitchen privileges.",
-    badge: "10% OFF",
-  },
-  {
-    id: "2",
-    label: "Deluxe Room (AC)",
-    title: "Deluxe Room (AC)",
-    roomNumber: "201",
-    price: 20,
-    priceNpr: 2700,
-    currency: "USD",
-    maxGuests: 3,
-    bedInfo: "1 King Bed • Air Conditioned",
-    image: "/changes_photo/singleBedWithSofa.webp",
-    description: "Air-conditioned boutique room with king bed, sofa seating, private modern bathroom, fast Wi-Fi, and peaceful atmosphere.",
-    badge: "10% OFF",
-  },
-  {
-    id: "3",
-    label: "Family Room (AC)",
-    title: "Family Room (AC)",
-    roomNumber: "202",
-    price: 30,
-    priceNpr: 4000,
-    currency: "USD",
-    maxGuests: 4,
-    bedInfo: "King + Single • Air Conditioned",
-    image: "/changes_photo/doubleBed.webp",
-    description: "Spacious family suite with King + Single bed, full air conditioning, private modern washroom, and city views.",
-    badge: "10% OFF",
-  },
-];
-
 export default function BookNowPage() {
   const today = new Date();
   const tomorrow = new Date();
@@ -74,11 +29,94 @@ export default function BookNowPage() {
 
   const { id } = useParams();
   const [searchParams] = useSearchParams();
-  const { channels } = useCMS();
+  const location = useLocation();
+  const { channels, rooms: cmsRooms, sitePhotos } = useCMS();
+
+  // Dynamically synchronize room categories & photos with Book Your Stay (CMS/Modal)
+  const roomOptions = useMemo(() => {
+    const budgetRoom =
+      cmsRooms?.find((r) => r.id === 101 || String(r.roomNumber) === "101" || r.slug?.includes("budget")) ||
+      cmsRooms?.[0];
+    const deluxeRoom =
+      cmsRooms?.find((r) => r.id === 201 || String(r.roomNumber) === "201" || r.slug?.includes("deluxe")) ||
+      cmsRooms?.[1];
+    const familyRoom =
+      cmsRooms?.find(
+        (r) =>
+          r.id === 301 ||
+          String(r.roomNumber) === "301" ||
+          (r.slug?.includes("family") && !r.slug?.includes("budget"))
+      ) || cmsRooms?.[2];
+
+    const getRoomPhoto = (cmsRoom, sitePhotoKey, defaultPath) => {
+      if (cmsRoom) {
+        const raw = Array.isArray(cmsRoom.image) ? cmsRoom.image[0] : cmsRoom.image;
+        if (raw && typeof raw === "string" && raw.trim() !== "") {
+          return raw.replace(/\.jpeg$/i, ".webp");
+        }
+      }
+      if (sitePhotos?.[sitePhotoKey]) return sitePhotos[sitePhotoKey];
+      return defaultPath;
+    };
+
+    return [
+      {
+        id: "1",
+        code: "101",
+        label: "Budget Family Room",
+        title: budgetRoom?.name || "Budget Family Room",
+        roomNumber: budgetRoom?.roomNumber || "101",
+        price: budgetRoom?.price || 20,
+        priceNpr: budgetRoom?.priceNprApprox || 2700,
+        currency: "USD",
+        maxGuests: budgetRoom?.guests || 4,
+        bedInfo: budgetRoom?.beds || "1 King Bed + 1 Single Bed",
+        image: getRoomPhoto(budgetRoom, "bookNow_budget", "/triple.webp"),
+        description:
+          budgetRoom?.description ||
+          "Comfortable family room with 1 King Bed + 1 Single Bed, private en-suite bathroom, 24/7 hot shower, free Wi-Fi, and shared kitchen access.",
+        badge: "10% OFF",
+      },
+      {
+        id: "2",
+        code: "201",
+        label: "Deluxe Room (AC)",
+        title: deluxeRoom?.name || "Deluxe Room (AC)",
+        roomNumber: deluxeRoom?.roomNumber || "201",
+        price: deluxeRoom?.price || 20,
+        priceNpr: deluxeRoom?.priceNprApprox || 2700,
+        currency: "USD",
+        maxGuests: deluxeRoom?.guests || 3,
+        bedInfo: deluxeRoom?.beds ? `${deluxeRoom.beds} • Air Conditioned` : "1 King Bed • Air Conditioned",
+        image: getRoomPhoto(deluxeRoom, "bookNow_deluxe", "/changes_photo/deluxeRoom_ai.webp"),
+        description:
+          deluxeRoom?.description ||
+          "Air-conditioned boutique room with king bed, Himalayan mountain art, sofa seating, private modern bathroom, and peaceful atmosphere.",
+        badge: "10% OFF",
+      },
+      {
+        id: "3",
+        code: "301",
+        label: "Family Room (AC)",
+        title: familyRoom?.name || "Family Room (AC)",
+        roomNumber: familyRoom?.roomNumber || "301",
+        price: familyRoom?.price || 30,
+        priceNpr: familyRoom?.priceNprApprox || 4000,
+        currency: "USD",
+        maxGuests: familyRoom?.guests || 4,
+        bedInfo: familyRoom?.beds ? `${familyRoom.beds} • Air Conditioned` : "King + Single • Air Conditioned",
+        image: getRoomPhoto(familyRoom, "bookNow_family", "/changes_photo/doubleBed.webp"),
+        description:
+          familyRoom?.description ||
+          "Spacious AC family suite with King + Single bed, private modern washroom, free luggage storage, and shared kitchen access.",
+        badge: "10% OFF",
+      },
+    ];
+  }, [cmsRooms, sitePhotos]);
 
   const [formData, setFormData] = useState({
     fullName: "",
-    roomType: roomOptions[0].label,
+    roomType: "Budget Family Room",
     numberOfPeople: 2,
     numberOfRooms: 1,
     checkIn: formatDate(today),
@@ -89,18 +127,34 @@ export default function BookNowPage() {
 
   const [uploadedDocument, setUploadedDocument] = useState(null);
   const [submitted, setSubmitted] = useState(false);
-  const [maxGuests, setMaxGuests] = useState(roomOptions[0].maxGuests);
+  const [maxGuests, setMaxGuests] = useState(4);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingRefId, setBookingRefId] = useState("");
   const [totalCalculated, setTotalCalculated] = useState(0);
 
-  // Auto-detect room from URL param or search query (e.g. /book/2, /book/3, /book-now?room=2)
+  // Auto-detect room from router navigation state (e.g. from Book Your Stay modal), URL param, or query
   useEffect(() => {
+    if (location.state?.roomDetails) {
+      const passed = location.state.roomDetails;
+      const match = roomOptions.find(
+        (r) =>
+          String(r.id) === String(passed.id) ||
+          String(r.code) === String(passed.id) ||
+          String(r.roomNumber) === String(passed.roomNumber) ||
+          r.label.toLowerCase() === (passed.name || passed.title || "").toLowerCase()
+      );
+      if (match) {
+        handleSelectRoom(match);
+        return;
+      }
+    }
+
     const rawId = id || searchParams.get("room") || searchParams.get("id");
     if (rawId) {
       const match = roomOptions.find(
         (r) =>
           String(r.id) === String(rawId) ||
+          String(r.code) === String(rawId) ||
           String(r.roomNumber) === String(rawId) ||
           r.label.toLowerCase().includes(String(rawId).toLowerCase())
       );
@@ -108,7 +162,7 @@ export default function BookNowPage() {
         handleSelectRoom(match);
       }
     }
-  }, [id, searchParams]);
+  }, [id, searchParams, location.state, roomOptions]);
 
   const selectedRoomObj = roomOptions.find((r) => r.label === formData.roomType || r.title === formData.roomType) || roomOptions[0];
   const estimatedNights = formData.checkIn && formData.checkOut
@@ -249,8 +303,7 @@ export default function BookNowPage() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40 transform scale-105"
           style={{
-            backgroundImage:
-              "url('/hero/hero1.webp')",
+            backgroundImage: `url('${sitePhotos?.bookNow_hero || "/changes_photo/deluxeRoom_ai.webp"}')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#01366E]/95 via-[#0A2540]/90 to-[#01366E]/95" />
@@ -315,6 +368,7 @@ export default function BookNowPage() {
                         src={room.image}
                         alt={`${room.title} - Hotel Sherpa Soul Thamel Kathmandu`}
                         loading="lazy"
+                        decoding="async"
                         width="400"
                         height="260"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

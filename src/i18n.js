@@ -3,6 +3,13 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 import en from "./Locales/en.json";
+import ne from "./Locales/ne.json";
+import hi from "./Locales/hi.json";
+import ja from "./Locales/ja.json";
+import ko from "./Locales/ko.json";
+import nl from "./Locales/nl.json";
+import he from "./Locales/he.json";
+import pt from "./Locales/pt.json";
 import ar from "./Locales/ar.json";
 import ch from "./Locales/ch.json"; // Chinese translations
 import rs from "./Locales/rs.json"; // Russian (example)
@@ -11,7 +18,23 @@ import de from "./Locales/de.json";
 import it from "./Locales/it.json";
 import fra from "./Locales/fra.json";
 
-const supportedLanguages = ["en", "ar", "zh", "rs", "es", "de", "it", "fra"];
+const supportedLanguages = [
+  "en",
+  "ne",
+  "hi",
+  "ja",
+  "ko",
+  "nl",
+  "he",
+  "pt",
+  "ar",
+  "zh",
+  "rs",
+  "es",
+  "de",
+  "it",
+  "fra",
+];
 
 // Ensure stored language is valid
 let currentLang = "en";
@@ -35,6 +58,13 @@ i18n
     load: "languageOnly",
     resources: {
       en: { translation: en },
+      ne: { translation: ne },
+      hi: { translation: hi },
+      ja: { translation: ja },
+      ko: { translation: ko },
+      nl: { translation: nl },
+      he: { translation: he },
+      pt: { translation: pt },
       ar: { translation: ar },
       zh: { translation: ch },
       rs: { translation: rs },

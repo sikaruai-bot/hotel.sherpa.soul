@@ -1,0 +1,450 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Over Ons",
+    "room": "Kamers",
+    "gallery": "Galerij",
+    "blog": "Blog",
+    "contact": "Contact",
+    "quick": "Boek Uw Verblijf"
+  },
+  "home": {
+    "hero": {
+      "title": "Rustig Slapen in het Hart van Thamel, Kathmandu",
+      "subtitle": "Geen Restaurant. Geen Lawaai. Goed Slapen.",
+      "paragraph": "Ervaar een rustig en comfortabel verblijf in Hotel Sherpa Soul, gelegen in het levendige hart van Thamel, Kathmandu. Verken de stad overdag, kom 's avonds terug naar een stille kamer en word uitgerust wakker voor uw volgende avontuur.",
+      "bookButton": "Boek Uw Verblijf",
+      "tourButton": "Bekijk Onze Kamers",
+      "trustLine": "Centraal Thamel • Comfortabele Kamers • Rustig Verblijf",
+      "modalTitle": "Hotel Sherpa Soul - Thamel, Kathmandu",
+      "modalDesc": "Een rustig verblijf in Thamel gericht op comfortabele kamers, praktische voorzieningen en een ontspannen nachtrust."
+    }
+  },
+  "mainBrand": {
+    "heading": "Thamel Buiten. Rust Binnen.",
+    "copy": "Thamel zit vol leven, energie en avontuur. Hotel Sherpa Soul biedt u een stillere plek om naar terug te keren. Ontworpen voor reizigers die waarde hechten aan een schone kamer, een gunstige locatie en een goede nachtrust.",
+    "brandStatement": "Geen Restaurant. Geen Lawaai. Goed Slapen.",
+    "supportingCopy": "Soms is de beste hotelervaring simpelweg een schone, comfortabele kamer, een geweldige locatie en een goede nachtrust."
+  },
+  "roomsSection": {
+    "heading": "Uw Kamer. Uw Ruimte. Uw Rust.",
+    "copy": "Na een dag Kathmandu verkennen, winkelen in Thamel of voorbereiden op een trektocht, komt u terug naar een rustige kamer om op te laden.",
+    "cta": "Bekijk Kamers & Prijzen",
+    "deluxeDouble": {
+      "name": "Deluxe Tweepersoonskamer",
+      "shortDesc": "Een comfortabele keuze voor stellen, vrienden en reizigers die extra ruimte en ontspanning zoeken in Thamel.",
+      "cta": "Bekijk Kamer"
+    }
+  },
+  "locationSection": {
+    "heading": "Verblijf Waar Kathmandu Tot Leven Komt",
+    "copy": "Vanaf Hotel Sherpa Soul ligt Thamel direct voor de deur. Ontdek cafés, winkels en reisbureaus terwijl u geniet van een rustige kamer.",
+    "cta": "Ontdek Onze Locatie"
+  },
+  "trekkersSection": {
+    "heading": "Klaar voor de Reis Die Voor U Ligt",
+    "copy": "Kathmandu is vaak het begin van iets groters. Of u nu start met een Himalaya-trektocht of Nepal voor het eerst verkent, Hotel Sherpa Soul is uw comfortabele basis.",
+    "beforeTrek": {
+      "title": "Voor de Trektocht",
+      "desc": "Rust uit, bereid u voor en organiseer uw bagage."
+    },
+    "afterTrek": {
+      "title": "Na de Trektocht",
+      "desc": "Keer terug naar Kathmandu en geniet van een warme douche en ontspanning."
+    },
+    "cityExploration": {
+      "title": "Stadsverkenning",
+      "desc": "Verblijf vlakbij de levendigheid van Thamel met gegarandeerde nachtrust."
+    }
+  },
+  "whySherpaSoul": {
+    "heading": "Waarom Reizigers Voor Hotel Sherpa Soul Kiezen",
+    "items": [
+      {
+        "title": "Geen In-House Restaurant of Bar",
+        "desc": "Geen muziek, lawaai of keukenluchtjes 's avonds. Alleen rustige ontspanning."
+      },
+      {
+        "title": "Rustige Locatie op Bhagawati Marg",
+        "desc": "2 minuten lopen vanaf centraal Thamel, weg van het feestlawaai."
+      },
+      {
+        "title": "Gedeelde Keuken voor Lang Verblijf",
+        "desc": "Voor wekelijkse en maandelijkse gasten is een schone, uitgeruste keuken beschikbaar."
+      },
+      {
+        "title": "Gratis Veilige Bagageopslag",
+        "desc": "Laat uw reistassen veilig en gratis achter tijdens uw trektocht."
+      }
+    ]
+  },
+  "bookingCta": {
+    "heading": "Klaar voor een Goede Nachtrust in Thamel?",
+    "copy": "Maak Hotel Sherpa Soul uw comfortabele basis in Kathmandu.",
+    "primaryCta": "Nu Boeken",
+    "secondaryCta": "Contacteer Ons"
+  },
+  "aboutPageContent": {
+    "h1": "Over Hotel Sherpa Soul",
+    "introHeading": "Eenvoudige en Oprechte Gastvrijheid in Thamel",
+    "copy": "Hotel Sherpa Soul is een rustig boetiekhotel in Thamel, Kathmandu, gericht op schone kamers en een goede nachtrust.",
+    "philosophy": "Onze filosofie: Geen Restaurant. Geen Lawaai. Goed Slapen.",
+    "location": "Gelegen aan Bhagawati Marg 26 in Thamel, vlakbij winkels en restaurants.",
+    "forTravelers": "Wij verwelkomen bergbeklimmers, trekkers en reizigers van over de hele wereld.",
+    "closing": "Wij kijken ernaar uit om uw verblijf in Kathmandu onvergetelijk te maken."
+  },
+  "about": {
+    "hero": {
+      "title": "Over Ons",
+      "subtitle": "Echte Sherpa-gastvrijheid voor binnen- en buitenlandse gasten"
+    }
+  },
+  "roomsHero": {
+    "badgeTitle": "Hotel Sherpa Soul",
+    "badgeSubtitle": "Thamel, Kathmandu",
+    "headingLine1": "Comfortabele Kamers voor",
+    "headingLine2": "Elk Type Reiziger",
+    "paragraph": "Eenvoudig en praktisch comfort afgestemd op uw behoeften."
+  },
+  "gallery": {
+    "title": "Onze Galerij",
+    "subtitle": "Een impressie van onze kamers en faciliteiten",
+    "featuredTitle": "Uitgelichte Collectie",
+    "featuredDesc": "Bekijk de rustige sfeer van ons hotel",
+    "viewImage": "Bekijk Foto",
+    "image": "Foto",
+    "of": "van",
+    "description": "Beschrijving",
+    "desc1": "Gezellige tweepersoonskamers voor een ontspannen verblijf.",
+    "desc2": "Rustige eenpersoonskamer ideaal voor soloreizigers.",
+    "desc3": "Ruime kamer met kingsize bed.",
+    "desc4": "Deluxe kamer met airconditioning en snelle wifi.",
+    "desc5": "Geschikt voor een comfortabel langdurig verblijf.",
+    "desc6": "Moderne inrichting en comfortabele bedden.",
+    "desc7": "Lichte en schone kamers met goede ventilatie.",
+    "desc8": "Ruime familiekamer voor gezinnen.",
+    "desc9": "Gedeelde keuken voor langdurige gasten.",
+    "desc10": "24-uurs vriendelijke receptie."
+  },
+  "contactHero": {
+    "title": "Contact",
+    "subtitle": "Wij staan altijd voor u klaar"
+  },
+  "contactForm": {
+    "en": {
+      "title": "Stuur Ons een Bericht",
+      "name": "Uw Naam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "subject": "Onderwerp",
+      "message": "Bericht",
+      "submit": "Verstuur Bericht",
+      "sending": "Verzenden...",
+      "success": "Bericht succesvol verzonden!",
+      "error": "Er is een fout opgetreden. Probeer het opnieuw."
+    }
+  },
+  "getInTouch": {
+    "phoneCopied": "Telefoonnummer gekopieerd!",
+    "callWhatsApp": "WhatsApp / Bellen",
+    "whatsappDescription": "Chat direct voor vragen en boekingen.",
+    "emailUs": "E-mail Ons",
+    "emailResponseTime": "Snelle reactie gegarandeerd.",
+    "visitUs": "Bezoek Ons",
+    "visitDescription": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
+    "getIn": "Neem",
+    "touch": "Contact Op",
+    "readyDescription": "Wij helpen u graag met uw verblijf in Kathmandu."
+  },
+  "contactMap": {
+    "en": {
+      "title": "Locatie",
+      "subtitle": "In het centrum van Thamel, aan de rustige Bhagawati Marg"
+    }
+  },
+  "aboutStory": {
+    "ourStory": "Ons Verhaal",
+    "welcomeTo": "Welkom bij",
+    "sherpaSoul": "Hotel Sherpa Soul",
+    "paragraph1": "Ons hotel is ontstaan uit een eenvoudig idee: reizigers in Thamel een rustige, lawaaivrije nachtrust bieden.",
+    "paragraph2": "Onze Sherpa-cultuur staat voor gastvrijheid, eerlijkheid en zorgzaamheid.",
+    "paragraph3": "Of u nu voorbereidt op een trektocht of Kathmandu verkent, onze rustige sfeer biedt u hernieuwde energie.",
+    "exploreLocation": "Bekijk Locatie",
+    "imageAlt": "Receptie Hotel Sherpa Soul"
+  },
+  "aboutWhy": {
+    "whyChoose": "Waarom Kiezen voor",
+    "sherpaSoul": "Sherpa Soul?",
+    "subtitle": "Rust en comfort in het centrum van Thamel",
+    "authenticSherpaLifestyle": "Authentieke Sherpa Gastvrijheid",
+    "primeThamelLocation": "Toplocatie in Thamel",
+    "guestAmenities": "24/7 Heet Water & Snelle Wifi",
+    "airportPickupForInternationalGuests": "Luchthavenservice voor Internationale Gasten",
+    "foreignCurrencyExchange": "Geldwisselservice & Reisadvies",
+    "cleanAndSecure": "Schoon en Veilig",
+    "showOtherLanguages": "Meer Talen Tonen",
+    "hideOtherLanguages": "Talen Verbergen",
+    "multilingualSupport": "Meertalige Ondersteuning"
+  },
+  "aboutVision": {
+    "buddhistAlt": "Sherpa Traditie",
+    "our": "Onze",
+    "vision": "Visie",
+    "description": "Het meest betrouwbare en rustige verblijf in Kathmandu bieden voor reizigers.",
+    "para2": "Wij focussen op echte rust, hygiëne en comfort.",
+    "para3": "Reizigers van over de hele wereld een onvergetelijke Nepal-ervaring bieden.",
+    "startJourney": "Begin Uw Reis"
+  },
+  "roomsCard": {
+    "roomsSuites": "Onze Kamers",
+    "ourRooms": "Comfortabele Kamers",
+    "description": "Kies uit Budget Family, Deluxe of Family kamer.",
+    "room": "Kamer",
+    "roomsPluralSuffix": "Kamers",
+    "available": "Beschikbaar",
+    "from": "Vanaf",
+    "guest": "Gast",
+    "guestsSuffix": "Gasten"
+  },
+  "roomDetails": {
+    "title": "Kamerdetails",
+    "subtitle": "Voorzieningen, capaciteit en tarieven",
+    "pricePerNight": "Prijs per nacht",
+    "guests": "Capaciteit",
+    "size": "Grootte",
+    "beds": "Bedden",
+    "description": "Beschrijving",
+    "amenities": "Voorzieningen",
+    "bookNow": "Nu Boeken",
+    "viewGallery": "Bekijk Galerij",
+    "availability": "Beschikbaarheid",
+    "checkIn": "Inchecken",
+    "checkOut": "Uitchecken",
+    "relatedRooms": "Andere Kamers"
+  },
+  "homeStats": {
+    "title": "Kwaliteit & Vertrouwen",
+    "description": "Gewaardeerd door duizenden tevreden reizigers",
+    "statLabels": {
+      "rating": "Google Score",
+      "reviews": "Tevreden Gasten",
+      "experience": "Jaar Ervaring",
+      "support": "24/7 Receptie"
+    }
+  },
+  "footer": {
+    "cta": {
+      "title": "Klaar voor een Goede Nachtrust?",
+      "desc": "Verblijf in het hart van Thamel met rust en comfort.",
+      "button": "Boek Uw Verblijf"
+    },
+    "brand": {
+      "tagline": "Geen Restaurant. Geen Lawaai. Goed Slapen.",
+      "desc": "Hotel Sherpa Soul is een rustig hotel in Thamel, Kathmandu."
+    },
+    "quickLinks": {
+      "title": "Snelle Links",
+      "home": "Home",
+      "rooms": "Kamers",
+      "about": "Over Ons",
+      "gallery": "Galerij",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "contactUs": {
+      "title": "Contactgegevens",
+      "phone": "+977 9851068219",
+      "email": "info@hotelsherpasoul.com",
+      "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal"
+    },
+    "followUs": {
+      "title": "Volg Ons"
+    },
+    "copyright": "© 2026 Hotel Sherpa Soul. Alle rechten voorbehouden.",
+    "legal": {
+      "privacy": "Privacybeleid",
+      "terms": "Algemene Voorwaarden",
+      "cookies": "Cookie-instellingen",
+      "cms": "CMS Portaal"
+    }
+  },
+  "homeServices": {
+    "sectionTag": "Voorzieningen",
+    "sectionTitle": "Alles Wat Reizigers Nodig Hebben",
+    "intro": "Praktische voorzieningen voor een ontspannen verblijf.",
+    "services": [
+      {
+        "title": "24/7 Heet Water",
+        "description": "Altijd warme douches beschikbaar."
+      },
+      {
+        "title": "Snelle Wifi",
+        "description": "Betrouwbaar internet in het hele hotel."
+      },
+      {
+        "title": "Gratis Bagageopslag",
+        "description": "Veilige opslag tijdens uw trekking."
+      },
+      {
+        "title": "Gedeelde Keuken",
+        "description": "Zelf koken voor gasten met lang verblijf."
+      }
+    ]
+  },
+  "homeTestimonial": {},
+  "hotelName": "Hotel Sherpa Soul",
+  "introsub": "Thamel zit vol leven. Maar na een dag verkennen wilt u gewoon een stille kamer en een goede nachtrust. Dat is precies wat wij bieden in Hotel Sherpa Soul.",
+  "heroParagraph": "Welkom bij Hotel Sherpa Soul, uw rustige boetiekhotel in Thamel, Kathmandu. Schone kamers, continue warm water, snelle wifi en warme gastvrijheid.",
+  "bookButton": "Boek Uw Verblijf",
+  "virtualTourButton": "Virtuele Tour",
+  "videoUrl": "https://www.youtube.com/embed/8IoDrKmbeBs?si=fQZBO4KHYiGJvmt4",
+  "videoTitle": "Hotel Sherpa Soul Virtuele Tour",
+  "modalTitle": "Virtuele Tour - Hotel Sherpa Soul",
+  "modalDescription": "Bekijk onze kamers en faciliteiten in het hart van Thamel.",
+  "heroSlides": {
+    "0": {
+      "title": "Hotel Sherpa Soul",
+      "subtitle": "Rustig en Comfortabel Verblijf",
+      "description": "Rust in het hart van Thamel."
+    },
+    "1": {
+      "title": "Comfortabele Kamers",
+      "subtitle": "Gegarandeerde Nachtrust",
+      "description": "Schone bedden en moderne voorzieningen."
+    },
+    "2": {
+      "title": "Warme Gastvrijheid",
+      "subtitle": "Authentiek Sherpa Welkom",
+      "description": "Voel u direct thuis."
+    }
+  },
+  "stats": {
+    "tripadvisor": "Top Beoordeling",
+    "google": "Google 4.8★",
+    "guest": "Tevreden Gasten",
+    "exp": "Jaar Ervaring"
+  },
+  "homestats": {
+    "title": "Onze Ervaring",
+    "subtitle": "Vertrouwd door reizigers",
+    "review": "Uitstekende service"
+  },
+  "facilities": {
+    "title1": "Onze",
+    "title2": "Faciliteiten",
+    "laundry": "Wasservice",
+    "pickup": "Luchthaventransfer",
+    "frontdesk": "24/7 Receptie",
+    "showers": "Warme Douches"
+  },
+  "testimonialIntro": "Ervaringen van reizigers die bij Hotel Sherpa Soul verbleven.",
+  "storiesFrom": "Verhalen van",
+  "clients": "Gasten",
+  "button": {
+    "title": "Meer Weten",
+    "but": "Nu Boeken"
+  },
+  "room": {
+    "title1": "Onze",
+    "title2": "Kamers",
+    "desc": "Ontworpen voor rust en comfort.",
+    "size": "Grootte",
+    "guest": "Gasten",
+    "rooms": "Kamers",
+    "details": "Details",
+    "roomdet": "Kamerdetails",
+    "book": "Boeken",
+    "pack": "Voorzieningen"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Neem gerust contact met ons op",
+    "card": "Contactkaart",
+    "form": "Contactformulier"
+  },
+  "roomdetails": {
+    "back": "Terug",
+    "buttons": "Kamer Boeken",
+    "cta": "Beschikbaarheid Controleren",
+    "info": "Kamerinformatie",
+    "checkin": "Inchecken vanaf 12:00"
+  },
+  "book": {
+    "guests": "Aantal gasten",
+    "room": "Kamertype",
+    "rate": "Prijs",
+    "back": "Terug",
+    "title": "Reservering",
+    "title2": "Uw Gegevens",
+    "subtitle": "Wij bevestigen uw boeking snel",
+    "form": "Formulier",
+    "summary": "Overzicht"
+  },
+  "aboutstats": {
+    "title1": "Onze",
+    "title2": "Focus",
+    "para1": "Rust en gastvrijheid staan bij ons centraal.",
+    "para2": "Een oase van rust in het bruisende Kathmandu.",
+    "amenities": "Voorzieningen",
+    "stat": "Cijfers"
+  },
+  "modal": {
+    "title": "Informatie",
+    "subtitle": "Let op",
+    "load": "Laden...",
+    "try": "Opnieuw proberen",
+    "not": "Niet beschikbaar",
+    "booked": "Succesvol geboekt!",
+    "book": "Boeken",
+    "Unavailable": "Niet Beschikbaar"
+  },
+  "notFound": {
+    "badge": "404 Fout",
+    "title": "Pagina Niet Gevonden",
+    "subtitle": "De gezochte pagina bestaat niet of is verplaatst.",
+    "homeBtn": "Naar Home",
+    "backBtn": "Terug",
+    "roomsBtn": "Bekijk Kamers",
+    "galleryLink": "Galerij",
+    "aboutLink": "Over Ons",
+    "contactBtn": "Contact",
+    "popularLinks": "Populaire Links"
+  },
+  "faq": {
+    "badge": "Veelgestelde Vragen",
+    "title": "Alles Wat U Moet Weten",
+    "subtitle": "Duidelijke antwoorden over onze kamers, rustige sfeer en locatie in Thamel.",
+    "supportTag": "Receptie Ondersteuning",
+    "helpTitle": "Heeft u een vraag voor het boeken?",
+    "helpSubtitle": "Wij helpen u graag met het kiezen van de juiste kamer.",
+    "q1": "Waar bevindt Hotel Sherpa Soul zich?",
+    "a1": "Hotel Sherpa Soul ligt aan Bhagawati Marg in Thamel, Kathmandu, Nepal.",
+    "q2": "Welke kamertypes zijn beschikbaar?",
+    "a2": "Wij bieden Budget Family kamers ($20/nacht), Deluxe kamers ($20/nacht) en Family kamers ($30/nacht).",
+    "q3": "Heeft het hotel een restaurant?",
+    "a3": "Nee. Wij exploiteren bewust geen restaurant om rust en stilte te waarborgen.",
+    "q4": "Is er privéparkeergelegenheid?",
+    "a4": "Er is geen privéparkeerplaats. Neem contact met ons op voor opties in de buurt.",
+    "q5": "Hebben de kamers airconditioning?",
+    "a5": "Airconditioning is aanwezig in kamers waar dit specifiek vermeld staat.",
+    "q6": "Is er wifi beschikbaar?",
+    "a6": "Ja, snel en gratis wifi is beschikbaar in het gehele hotel.",
+    "q7": "Heeft het hotel een gedeelde keuken?",
+    "a7": "Ja, voor geregistreerde gasten die een week of langer verblijven.",
+    "q8": "Wie mag de gedeelde keuken gebruiken?",
+    "a8": "Uitsluitend geregistreerde gasten met een lang verblijf.",
+    "q9": "Hoe ver is het vliegveld van Kathmandu?",
+    "a9": "Ongeveer 20 minuten rijden vanaf Tribhuvan International Airport.",
+    "q10": "Hoe ver is Pashupatinath Temple?",
+    "a10": "Ongeveer 15 minuten met de auto.",
+    "q11": "Hoe ver is Boudhanath Stupa?",
+    "a11": "Ongeveer 20 minuten met de auto.",
+    "q12": "Hoe kan ik een kamer boeken?",
+    "a12": "Direct via onze website of via WhatsApp/telefoon."
+  },
+  "homeLocation": {
+    "mapTitle": "Locatiekaart Hotel Sherpa Soul"
+  },
+  "loading": "Kamerdetails laden...",
+  "pleasewait": "Even geduld a.u.b..."
+}

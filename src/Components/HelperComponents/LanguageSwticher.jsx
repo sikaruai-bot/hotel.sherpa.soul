@@ -27,13 +27,20 @@ export default function LanguageSwitcher() {
 
   const languages = [
     { code: "en", label: "EN", flag: "🇺🇸", name: "English" },
-    { code: "zh", label: "ZH", flag: "🇨🇳", name: "Chinese" },
-    { code: "ar", label: "AR", flag: "🇦🇪", name: "Arabic" },
-    { code: "rs", label: "RU", flag: "🇷🇺", name: "Russian" },
-    { code: "es", label: "ES", flag: "🇪🇸", name: "Spanish" },
-    { code: "fr", label: "FR", flag: "🇫🇷", name: "French" },
-    { code: "de", label: "DE", flag: "🇩🇪", name: "German" },
-    { code: "it", label: "IT", flag: "🇮🇹", name: "Italian" },
+    { code: "ne", label: "NE", flag: "🇳🇵", name: "नेपाली (Nepali)" },
+    { code: "hi", label: "HI", flag: "🇮🇳", name: "हिन्दी (Hindi)" },
+    { code: "zh", label: "ZH", flag: "🇨🇳", name: "中文 (Chinese)" },
+    { code: "ja", label: "JA", flag: "🇯🇵", name: "日本語 (Japanese)" },
+    { code: "ko", label: "KO", flag: "🇰🇷", name: "한국어 (Korean)" },
+    { code: "nl", label: "NL", flag: "🇳🇱", name: "Nederlands (Dutch)" },
+    { code: "pt", label: "PT", flag: "🇵🇹", name: "Português (Portuguese)" },
+    { code: "he", label: "HE", flag: "🇮🇱", name: "עברית (Hebrew)" },
+    { code: "es", label: "ES", flag: "🇪🇸", name: "Español (Spanish)" },
+    { code: "fr", label: "FR", flag: "🇫🇷", name: "Français (French)" },
+    { code: "de", label: "DE", flag: "🇩🇪", name: "Deutsch (German)" },
+    { code: "it", label: "IT", flag: "🇮🇹", name: "Italiano (Italian)" },
+    { code: "ar", label: "AR", flag: "🇦🇪", name: "العربية (Arabic)" },
+    { code: "rs", label: "RU", flag: "🇷🇺", name: "Русский (Russian)" },
   ];
 
   const selectLanguage = (langCode) => {
@@ -46,10 +53,9 @@ export default function LanguageSwitcher() {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      {/* Dropdown Menu - Opens upward */}
+      {/* Dropdown Menu - Opens upward or downward */}
       {isOpen && (
-        //  <div className="absolute bottom-full right-0 mb-2 w-48 bg-white/95 backdrop-blur-md border border-gray-200/50 rounded-lg shadow-xl max-h-64 overflow-y-auto">
-        <div className="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-md border border-gray-200/50 rounded-lg shadow-xl max-h-64 overflow-y-auto"> 
+        <div className="absolute top-full right-0 mt-2 w-52 bg-white/95 backdrop-blur-md border border-gray-200/50 rounded-xl shadow-2xl max-h-80 overflow-y-auto z-50"> 
           <div className="py-2">
             {languages.map((language) => (
               <button
