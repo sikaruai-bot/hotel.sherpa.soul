@@ -2,34 +2,37 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Navigation, Car, Compass, ExternalLink, ArrowRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import { trackPhoneClick, trackEmailClick, trackWhatsAppClick, trackMapsClick } from "../Analytics/pixelEvents";
 
 export default function HomeLocation() {
+  const { t } = useTranslation();
+
   const verifiedAttractions = [
     {
-      name: "Thamel Gear Shops & Cafes",
-      distance: "Immediate vicinity (1-2 min walk)",
-      note: "Right outside on Thamel Bhagawati Marg",
+      name: t("homeLocationSection.l1", "Thamel Gear Shops & Cafes"),
+      distance: t("homeLocationSection.l1Dist", "Immediate vicinity (1-2 min walk)"),
+      note: t("homeLocationSection.l1Note", "Right outside on Thamel Bhagawati Marg"),
     },
     {
-      name: "Garden of Dreams",
-      distance: "~800 meters (~10 min walk)",
-      note: "Historical neo-classical garden oasis",
+      name: t("homeLocationSection.l2", "Garden of Dreams"),
+      distance: t("homeLocationSection.l2Dist", "~800 meters (~10 min walk)"),
+      note: t("homeLocationSection.l2Note", "Historical neo-classical garden oasis"),
     },
     {
-      name: "Kathmandu Durbar Square",
-      distance: "~1.8 km (~20 min walk or short taxi)",
-      note: "UNESCO World Heritage ancient royal complex",
+      name: t("homeLocationSection.l3", "Kathmandu Durbar Square"),
+      distance: t("homeLocationSection.l3Dist", "~1.8 km (~20 min walk or short taxi)"),
+      note: t("homeLocationSection.l3Note", "UNESCO World Heritage ancient royal complex"),
     },
     {
-      name: "Swayambhunath (Monkey Temple)",
-      distance: "~3 km (~15 min drive)",
-      note: "Ancient hilltop Buddhist stupa with panoramic city views",
+      name: t("homeLocationSection.l4", "Swayambhunath (Monkey Temple)"),
+      distance: t("homeLocationSection.l4Dist", "~3 km (~15 min drive)"),
+      note: t("homeLocationSection.l4Note", "Ancient hilltop Buddhist stupa with panoramic city views"),
     },
     {
-      name: "Tribhuvan International Airport (KTM)",
-      distance: "~6 km (~20 to 30 min drive)",
-      note: "Airport pickup & drop-off available upon request",
+      name: t("homeLocationSection.l5", "Tribhuvan International Airport (KTM)"),
+      distance: t("homeLocationSection.l5Dist", "~6 km (~20 to 30 min drive)"),
+      note: t("homeLocationSection.l5Note", "Airport pickup & drop-off available upon request"),
     },
   ];
 
@@ -40,13 +43,13 @@ export default function HomeLocation() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider">
             <MapPin className="w-3.5 h-3.5 text-[#FB6C01]" />
-            <span>Prime Thamel Location</span>
+            <span>{t("homeLocationSection.badge", "Prime Thamel Location")}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#01366E] tracking-tight">
-            Hotel Sherpa Soul in Thamel, Kathmandu
+            {t("homeLocationSection.title", "Hotel Sherpa Soul in Thamel, Kathmandu")}
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg leading-relaxed">
-            Conveniently situated on Thamel Bhagawati Marg 26. Step outside into the energetic culture and dining of Thamel, yet return to a quiet, noise-insulated boutique hotel at night.
+            {t("homeLocationSection.subtitle", "Conveniently situated on Thamel Bhagawati Marg 26. Step outside into the energetic culture and dining of Thamel, yet return to a quiet, noise-insulated boutique hotel at night.")}
           </p>
         </div>
 
@@ -55,7 +58,7 @@ export default function HomeLocation() {
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200 space-y-6 shadow-sm">
               <h3 className="text-xl font-bold text-slate-900 border-b border-slate-200 pb-3">
-                Property Address & Contact
+                {t("homeLocationSection.addressTitle", "Property Address & Contact")}
               </h3>
 
               <div className="space-y-4 text-sm text-slate-700">
@@ -70,7 +73,7 @@ export default function HomeLocation() {
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-[#01366E] shrink-0" />
                   <div>
-                    <span className="text-xs text-slate-500 block">Front Desk (24/7):</span>
+                    <span className="text-xs text-slate-500 block">{t("homeLocationSection.frontDesk", "Front Desk (24/7)")}:</span>
                     <a
                       href="tel:+9779851068219"
                       onClick={() => trackPhoneClick("home_location")}
@@ -84,7 +87,7 @@ export default function HomeLocation() {
                 <div className="flex items-center gap-3">
                   <FaWhatsapp className="w-5 h-5 text-emerald-600 shrink-0" />
                   <div>
-                    <span className="text-xs text-slate-500 block">WhatsApp Support:</span>
+                    <span className="text-xs text-slate-500 block">{t("homeLocationSection.whatsapp", "WhatsApp Support")}:</span>
                     <a
                       href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
                       target="_blank"
@@ -100,7 +103,7 @@ export default function HomeLocation() {
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-[#FB6C01] shrink-0" />
                   <div>
-                    <span className="text-xs text-slate-500 block">Email Inquiries:</span>
+                    <span className="text-xs text-slate-500 block">{t("homeLocationSection.email", "Email Inquiries")}:</span>
                     <a
                       href="mailto:info@hotelsherpasoul.com"
                       onClick={() => trackEmailClick("home_location")}
@@ -122,7 +125,7 @@ export default function HomeLocation() {
                   className="flex-1 py-3 px-4 rounded-xl bg-[#01366E] hover:bg-[#082844] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all min-h-[44px]"
                 >
                   <Navigation className="w-4 h-4 text-amber-400" />
-                  <span>Open in Google Maps</span>
+                  <span>{t("homeLocationSection.openMaps", "Open in Google Maps")}</span>
                   <ExternalLink className="w-3.5 h-3.5 opacity-70" />
                 </a>
 
@@ -130,7 +133,7 @@ export default function HomeLocation() {
                   to="/contact"
                   className="py-3 px-4 rounded-xl bg-white border border-slate-300 hover:border-slate-400 text-slate-800 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all min-h-[44px]"
                 >
-                  <span>View Location & Contact</span>
+                  <span>{t("homeLocationSection.viewContact", "View Location & Contact")}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -140,7 +143,7 @@ export default function HomeLocation() {
             <div className="bg-amber-50/70 rounded-3xl p-6 sm:p-8 border border-amber-200/80 space-y-4">
               <h4 className="text-base font-bold text-[#01366E] flex items-center gap-2">
                 <Compass className="w-4 h-4 text-[#FB6C01]" />
-                <span>Verified Nearby Landmarks</span>
+                <span>{t("homeLocationSection.landmarksTitle", "Verified Nearby Landmarks")}</span>
               </h4>
               <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
                 {verifiedAttractions.map((attraction, idx) => (

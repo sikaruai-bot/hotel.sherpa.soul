@@ -97,18 +97,20 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm">
             <div className="flex items-center gap-2 mx-auto sm:mx-0 text-center sm:text-left">
               <span className="bg-[#FB6C01] text-white font-black text-[10px] sm:text-xs px-2 py-0.5 rounded-full uppercase tracking-wider animate-pulse">
-                10% OFF
+                {t("nav.ribbonBadge", "10% OFF")}
               </span>
               <span className="font-medium text-slate-100 text-xs sm:text-sm">
-                Direct Booking Special: Get <strong className="text-amber-300 font-bold">10% Discount</strong> on all rooms!
+                {t("nav.ribbonSpecial", "Direct Booking Special: Get")}{" "}
+                <strong className="text-amber-300 font-bold">{t("nav.ribbonDiscount", "10% Discount")}</strong>{" "}
+                {t("nav.ribbonOnAll", "on all rooms!")}
               </span>
-              <span className="hidden md:inline text-white/40">• Best Rate Guaranteed</span>
+              <span className="hidden md:inline text-white/40">{t("nav.ribbonBestRate", "• Best Rate Guaranteed")}</span>
             </div>
             <button
               onClick={handleBookingClick}
               className="hidden sm:inline-flex items-center gap-1 font-bold text-amber-300 hover:text-white transition-colors underline underline-offset-4 text-xs"
             >
-              Claim 10% Off &rarr;
+              {t("nav.ribbonClaim", "Claim 10% Off →")}
             </button>
           </div>
         </div>
@@ -211,18 +213,18 @@ export default function Navbar() {
               <div className="mx-4 mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#01366E] to-[#0A2540] text-white border border-amber-400/40 shadow-lg">
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="bg-[#FB6C01] text-white font-black text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                    10% OFF
+                    {t("nav.ribbonBadge", "10% OFF")}
                   </span>
-                  <span className="font-bold text-sm text-amber-300">Direct Booking Special</span>
+                  <span className="font-bold text-sm text-amber-300">{t("nav.mobileSpecial", "Direct Booking Special")}</span>
                 </div>
                 <p className="text-xs text-slate-200 mb-3 leading-relaxed">
-                  Book direct on our website & save 10% on your entire stay in Thamel.
+                  {t("nav.mobileDiscountDesc", "Book direct on our website & save 10% on your entire stay in Thamel.")}
                 </p>
                 <button
                   onClick={handleBookingClick}
                   className="w-full py-3 px-4 min-h-[44px] bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-[#E05A00] hover:to-amber-600 text-white font-bold text-sm rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-98"
                 >
-                  <span>Book with 10% Discount</span>
+                  <span>{t("nav.mobileBookBtn", "Book with 10% Discount")}</span>
                   <span>&rarr;</span>
                 </button>
               </div>

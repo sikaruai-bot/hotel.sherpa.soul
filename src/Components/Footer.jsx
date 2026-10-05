@@ -119,7 +119,7 @@ export default function Footer() {
               <div className="max-w-2xl">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-amber-100 text-xs font-bold uppercase tracking-widest mb-3 backdrop-blur-sm">
                   <Sparkles className="w-3.5 h-3.5 text-amber-200" />
-                  Hotel Sherpa Soul • Thamel, Kathmandu
+                  {t("footer.cta.badge", "Hotel Sherpa Soul • Thamel, Kathmandu")}
                 </div>
                 <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
                   {t("footer.cta.heading", "Ready to Sleep Well?")}
@@ -272,7 +272,7 @@ export default function Footer() {
             <div className="space-y-6">
               <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                 <span className="w-1 h-6 bg-gradient-to-b from-[#FB6C01] to-transparent rounded-full"></span>
-                Book on Top OTAs
+                {t("footer.otas.title", "Book on Top OTAs")}
               </h3>
 
               <div className="space-y-4">
@@ -309,7 +309,7 @@ export default function Footer() {
                           className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white border border-blue-500/30 text-xs font-medium transition-all duration-200"
                         >
                           <Smartphone size={13} />
-                          <span>Book on Booking.com</span>
+                          <span>{t("footer.otas.bookingCom", "Book on Booking.com")}</span>
                           <ExternalLink size={11} className="opacity-70" />
                         </a>
                       )}
@@ -320,7 +320,7 @@ export default function Footer() {
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 text-xs font-medium transition-all duration-200"
                         >
-                          <span>Book on Airbnb</span>
+                          <span>{t("footer.otas.airbnb", "Book on Airbnb")}</span>
                           <ExternalLink size={11} className="opacity-70" />
                         </a>
                       )}
@@ -331,7 +331,7 @@ export default function Footer() {
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 text-xs font-medium transition-all duration-200"
                         >
-                          <span>Book on Agoda</span>
+                          <span>{t("footer.otas.agoda", "Book on Agoda")}</span>
                           <ExternalLink size={11} className="opacity-70" />
                         </a>
                       )}
@@ -342,7 +342,7 @@ export default function Footer() {
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/30 text-xs font-medium transition-all duration-200"
                         >
-                          <span>Book on Trip.com</span>
+                          <span>{t("footer.otas.tripCom", "Book on Trip.com")}</span>
                           <ExternalLink size={11} className="opacity-70" />
                         </a>
                       )}
@@ -393,7 +393,7 @@ export default function Footer() {
                 }}
                 className="hover:text-[#FB6C01] transition-colors duration-300 relative group text-left cursor-pointer"
               >
-                Cookie Preferences
+                {t("footer.legal.cookies", "Cookie Preferences")}
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#FB6C01] group-hover:w-full transition-all duration-300"></span>
               </button>
               <Link
@@ -402,7 +402,7 @@ export default function Footer() {
                 title="Website CMS & SEO Admin Portal"
               >
                 <Lock size={11} className="text-amber-400/70" />
-                <span>CMS Portal</span>
+                <span>{t("footer.legal.cms", "CMS Portal")}</span>
               </Link>
             </div>
           </div>

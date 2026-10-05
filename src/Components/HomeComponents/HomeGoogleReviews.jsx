@@ -1,15 +1,17 @@
 import React from "react";
-import { Star, MapPin, MessageSquare, ExternalLink, ShieldCheck, HeartHandshake, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Star, MapPin, MessageSquare, ExternalLink, HeartHandshake, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function HomeGoogleReviews() {
+  const { t } = useTranslation();
   const googleMapsUrl = "https://maps.app.goo.gl/nDB9DnLtb6taeaLRA";
 
   const directBookingPerks = [
-    "Best Direct Price Guarantee — No OTA commission markups",
-    "Instant 24/7 WhatsApp confirmation with front desk",
-    "Complimentary secure luggage storage while you trek",
-    "Flexible early check-in & late checkout (subject to availability)",
+    t("homeGoogleReviewsSection.perk1", "Best Direct Price Guarantee — No OTA commission markups"),
+    t("homeGoogleReviewsSection.perk2", "Instant 24/7 WhatsApp confirmation with front desk"),
+    t("homeGoogleReviewsSection.perk3", "Complimentary secure luggage storage while you trek"),
+    t("homeGoogleReviewsSection.perk4", "Flexible early check-in & late checkout (subject to availability)"),
   ];
 
   return (
@@ -26,15 +28,15 @@ export default function HomeGoogleReviews() {
           {/* Left Column: Authentic Hospitality Promise */}
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-orange-300 text-xs font-semibold uppercase tracking-wider">
-              <span>❖</span> Honest Hospitality & Verified Location
+              <span>❖</span> {t("homeGoogleReviewsSection.badge", "Honest Hospitality & Verified Location")}
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
-              Real Hospitality. <span className="text-[#FB6C01]">Genuine Guest Experiences.</span>
+              {t("homeGoogleReviewsSection.title1", "Real Hospitality.")} <span className="text-[#FB6C01]">{t("homeGoogleReviewsSection.title2", "Genuine Guest Experiences.")}</span>
             </h2>
 
             <p className="text-slate-200 text-base leading-relaxed">
-              At Hotel Sherpa Soul, we believe in honest hospitality without fabricated stories or star-hotel exaggerations. We are a small boutique hotel on Bhagawati Marg, Thamel, dedicated to giving travelers a quiet, spotless, and comfortable stay in Kathmandu.
+              {t("homeGoogleReviewsSection.desc", "At Hotel Sherpa Soul, we believe in honest hospitality without fabricated stories or star-hotel exaggerations. We are a small boutique hotel on Bhagawati Marg, Thamel, dedicated to giving travelers a quiet, spotless, and comfortable stay in Kathmandu.")}
             </p>
 
             <div className="space-y-3 pt-2">
@@ -51,7 +53,7 @@ export default function HomeGoogleReviews() {
                 to="/contact"
                 className="bg-[#FB6C01] hover:bg-[#E05A00] text-white px-7 py-3.5 rounded-xl font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2"
               >
-                <span>Book Direct With Us</span>
+                <span>{t("homeGoogleReviewsSection.bookDirectBtn", "Book Direct With Us")}</span>
                 <HeartHandshake className="w-4 h-4" />
               </Link>
 
@@ -99,7 +101,7 @@ export default function HomeGoogleReviews() {
                   ))}
                 </div>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
-                  "Have you stayed with us? We warmly welcome our guests to leave an honest review on Google Maps to help fellow travelers make informed decisions."
+                  "{t("homeGoogleReviewsSection.reviewPrompt", "Have you stayed with us? We warmly welcome our guests to leave an honest review on Google Maps to help fellow travelers make informed decisions.")}"
                 </p>
               </div>
 
@@ -110,11 +112,11 @@ export default function HomeGoogleReviews() {
                 className="w-full bg-[#01366E] hover:bg-[#082844] text-white py-3.5 px-6 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-md transition-all duration-200"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Write a Google Review or View Map</span>
+                <span>{t("homeGoogleReviewsSection.writeReviewBtn", "Write a Google Review or View Map")}</span>
               </a>
 
               <p className="text-center text-xs text-slate-500 mt-3">
-                100% verified, real-world traveler feedback on Google
+                {t("homeGoogleReviewsSection.verifiedNote", "100% verified, real-world traveler feedback on Google")}
               </p>
             </div>
           </div>

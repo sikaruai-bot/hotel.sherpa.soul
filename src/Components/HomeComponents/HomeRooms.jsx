@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Users, Bed, Wifi, Wind, Bath, Utensils, CheckCircle2, ArrowRight, Calendar, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import BookingModal from "../HelperComponents/BookingModal";
 import { trackBookingClick } from "../Analytics/pixelEvents";
 import { HOTEL_PRESET_PHOTOS } from "../CMS/mediaUtils";
 import { useCMS } from "../../Context/CMSContext";
 
 export default function HomeRooms() {
+  const { t } = useTranslation();
   const { rooms: cmsRooms, sitePhotos } = useCMS();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedRoomForModal, setSelectedRoomForModal] = useState(null);
@@ -19,14 +21,12 @@ export default function HomeRooms() {
   const familyRoom = cmsRooms?.find((r) => r.id === 301 || (r.slug?.includes("family") && !r.slug?.includes("budget"))) || cmsRooms?.[2];
 
   const getRoomImg = (cmsRoom, sitePhotoKey, fallbackPath) => {
-    // 1. Highest priority: User's updated room photo from CMS Rooms tab
     if (cmsRoom) {
       const raw = Array.isArray(cmsRoom.image) ? cmsRoom.image[0] : cmsRoom.image;
       if (raw && typeof raw === "string" && raw.trim() !== "") {
         return raw.replace(/\.jpeg$/i, ".webp");
       }
     }
-    // 2. Secondary priority: Site Photos Manager override
     if (sitePhotos?.[sitePhotoKey]) return sitePhotos[sitePhotoKey];
     return fallbackPath;
   };
@@ -35,40 +35,40 @@ export default function HomeRooms() {
     {
       id: 101,
       slug: "budget-family-room",
-      name: "Budget Family Room",
+      name: t("homeRoomsData.budget.name", "Budget Family Room"),
       image: getRoomImg(budgetRoom, "roomCard_budget", presetPhotos[2].path),
-      bedType: "1 King Bed + 1 Single Bed",
-      occupancy: "Up to 4 Guests (3 Adults, 1 Child)",
+      bedType: t("homeRoomsData.budget.bed", "1 King Bed + 1 Single Bed"),
+      occupancy: t("homeRoomsData.budget.occupancy", "Up to 4 Guests (3 Adults, 1 Child)"),
       size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
       priceUsd: 20,
       priceNpr: "2,700",
-      description: "Comfortable and budget-conscious accommodation with en-suite hot shower, bright windows, and shared kitchen access for groups or families.",
+      description: t("homeRoomsData.budget.desc", "Comfortable and budget-conscious accommodation with en-suite hot shower, bright windows, and shared kitchen access for groups or families."),
       facilities: [
-        "1 King Bed + 1 Single Bed",
-        "Private Attached Bathroom (24/7 Hot Water)",
-        "Free High-Speed Fiber Wi-Fi",
-        "Shared Guest Kitchen Access",
-        "Trekker Luggage Storage Included",
+        t("homeRoomsData.budget.f1", "1 King Bed + 1 Single Bed"),
+        t("homeRoomsData.budget.f2", "Private Attached Bathroom (24/7 Hot Water)"),
+        t("homeRoomsData.budget.f3", "Free High-Speed Fiber Wi-Fi"),
+        t("homeRoomsData.budget.f4", "Shared Guest Kitchen Access"),
+        t("homeRoomsData.budget.f5", "Trekker Luggage Storage Included"),
       ],
       hasAC: false,
     },
     {
       id: 201,
       slug: "deluxe-room",
-      name: "Deluxe Room (AC)",
+      name: t("homeRoomsData.deluxe.name", "Deluxe Room (AC)"),
       image: getRoomImg(deluxeRoom, "roomCard_deluxe", presetPhotos[0].path),
-      bedType: "1 King Bed",
-      occupancy: "Up to 3 Guests (2 Adults, 1 Child)",
+      bedType: t("homeRoomsData.deluxe.bed", "1 King Bed"),
+      occupancy: t("homeRoomsData.deluxe.occupancy", "Up to 3 Guests (2 Adults, 1 Child)"),
       size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
       priceUsd: 20,
       priceNpr: "2,700",
-      description: "Air-conditioned boutique room with king-size bed, private modern bathroom, work desk, and quiet ambiance for restful sleep.",
+      description: t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room with king-size bed, private modern bathroom, work desk, and quiet ambiance for restful sleep."),
       facilities: [
-        "Individual Climate Control (AC)",
-        "1 Comfortable King Bed",
-        "Private Modern Bathroom (24/7 Hot Shower)",
-        "Free High-Speed Fiber Wi-Fi",
-        "Shared Guest Kitchen Access",
+        t("homeRoomsData.deluxe.f1", "Individual Climate Control (AC)"),
+        t("homeRoomsData.deluxe.f2", "1 Comfortable King Bed"),
+        t("homeRoomsData.deluxe.f3", "Private Modern Bathroom (24/7 Hot Shower)"),
+        t("homeRoomsData.deluxe.f4", "Free High-Speed Fiber Wi-Fi"),
+        t("homeRoomsData.deluxe.f5", "Shared Guest Kitchen Access"),
       ],
       hasAC: true,
       popular: true,
@@ -76,20 +76,20 @@ export default function HomeRooms() {
     {
       id: 301,
       slug: "family-room",
-      name: "Family Room (AC)",
+      name: t("homeRoomsData.family.name", "Family Room (AC)"),
       image: getRoomImg(familyRoom, "roomCard_family", presetPhotos[1].path),
-      bedType: "1 King Bed + 1 Single Bed",
-      occupancy: "Up to 4 Guests (3 Adults, 1 Child)",
+      bedType: t("homeRoomsData.family.bed", "1 King Bed + 1 Single Bed"),
+      occupancy: t("homeRoomsData.family.occupancy", "Up to 4 Guests (3 Adults, 1 Child)"),
       size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
       priceUsd: 30,
       priceNpr: "4,000",
-      description: "Spacious family suite featuring air conditioning, one king bed and one single bed, private bathroom, and extra room for luggage.",
+      description: t("homeRoomsData.family.desc", "Spacious family suite featuring air conditioning, one king bed and one single bed, private bathroom, and extra room for luggage."),
       facilities: [
-        "Individual Climate Control (AC)",
-        "1 King Bed + 1 Single Bed",
-        "Spacious Private Bathroom (24/7 Hot Water)",
-        "Free High-Speed Fiber Wi-Fi",
-        "Shared Guest Kitchen Access",
+        t("homeRoomsData.family.f1", "Individual Climate Control (AC)"),
+        t("homeRoomsData.family.f2", "1 King Bed + 1 Single Bed"),
+        t("homeRoomsData.family.f3", "Spacious Private Bathroom (24/7 Hot Water)"),
+        t("homeRoomsData.family.f4", "Free High-Speed Fiber Wi-Fi"),
+        t("homeRoomsData.family.f5", "Shared Guest Kitchen Access"),
       ],
       hasAC: true,
     },
@@ -108,13 +108,13 @@ export default function HomeRooms() {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full bg-orange-50 border border-orange-200 text-xs text-[#FB6C01] font-bold shadow-sm uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Room Types & Current Rates</span>
+            <span>{t("homeRoomsData.badge", "Room Types & Current Rates")}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#01366E] tracking-tight">
-            Clean, Quiet Rooms in Thamel
+            {t("homeRoomsData.title", "Clean, Quiet Rooms in Thamel")}
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg leading-relaxed">
-            Every room includes private attached bathroom with continuous 24/7 hot water, high-speed fiber Wi-Fi, and access to our shared self-kitchen.
+            {t("homeRoomsData.subtitle", "Every room includes private attached bathroom with continuous 24/7 hot water, high-speed fiber Wi-Fi, and access to our shared self-kitchen.")}
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export default function HomeRooms() {
             >
               {room.popular && (
                 <div className="absolute top-3 left-3 z-10 bg-[#FB6C01] text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-                  Most Popular
+                  {t("homeRoomsData.mostPopular", "Most Popular")}
                 </div>
               )}
 
@@ -146,7 +146,7 @@ export default function HomeRooms() {
                 />
                 <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs font-semibold">
                   <span className="text-amber-300 font-bold text-sm sm:text-base">${room.priceUsd} USD</span>
-                  <span className="text-slate-300 text-[11px] block">~NPR {room.priceNpr} / night</span>
+                  <span className="text-slate-300 text-[11px] block">~NPR {room.priceNpr} {t("homeRoomsData.perNight", "/ night")}</span>
                 </div>
               </div>
 
@@ -162,16 +162,16 @@ export default function HomeRooms() {
                   <div className="space-y-1.5 text-xs text-slate-600 mb-3.5">
                     <div className="flex items-center gap-2">
                       <Bed className="w-4 h-4 text-[#FB6C01] flex-shrink-0" />
-                      <span className="font-semibold text-slate-800">Bed:</span>
+                      <span className="font-semibold text-slate-800">{t("homeRoomsData.bedLabel", "Bed:")}</span>
                       <span>{room.bedType}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Users className="w-4 h-4 text-[#01366E] flex-shrink-0" />
-                      <span className="font-semibold text-slate-800">Occupancy:</span>
+                      <span className="font-semibold text-slate-800">{t("homeRoomsData.occupancyLabel", "Occupancy:")}</span>
                       <span>{room.occupancy}</span>
                     </div>
                     <div className="flex items-center gap-2 text-slate-500">
-                      <span className="font-semibold text-slate-700">Room Size:</span>
+                      <span className="font-semibold text-slate-700">{t("homeRoomsData.sizeLabel", "Room Size:")}</span>
                       <span className="italic">{room.size}</span>
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export default function HomeRooms() {
                   {/* Facilities list */}
                   <div className="pt-3 border-t border-slate-100 space-y-1.5">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
-                      Key Amenities
+                      {t("homeRoomsData.keyAmenities", "Key Amenities")}
                     </span>
                     {room.facilities.map((fac, idx) => (
                       <div key={idx} className="flex items-center gap-2 text-xs text-slate-700">
@@ -201,7 +201,7 @@ export default function HomeRooms() {
                       to={`/room/${room.id}`}
                       className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-1 min-h-[44px]"
                     >
-                      <span>View Details</span>
+                      <span>{t("homeRoomsData.viewDetails", "View Details")}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
 
@@ -210,7 +210,7 @@ export default function HomeRooms() {
                       className="w-full py-2.5 px-3 rounded-xl bg-[#FB6C01] hover:bg-[#E05A00] text-white text-xs sm:text-sm font-bold shadow-md transition-colors flex items-center justify-center gap-1 min-h-[44px]"
                     >
                       <Calendar className="w-3.5 h-3.5" />
-                      <span>Check Availability</span>
+                      <span>{t("homeRoomsData.checkAvailability", "Check Availability")}</span>
                     </button>
                   </div>
                 </div>
@@ -225,10 +225,10 @@ export default function HomeRooms() {
             <span className="text-2xl">🏷️</span>
             <div>
               <p className="font-bold text-slate-900 text-sm sm:text-base">
-                Best Available Direct-Booking Offer
+                {t("homeRoomsData.directOfferText", "Best Available Direct-Booking Offer")}
               </p>
               <p className="text-slate-600 text-xs sm:text-sm">
-                No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.
+                {t("homeRoomsData.directOfferSub", "No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.")}
               </p>
             </div>
           </div>
@@ -236,7 +236,7 @@ export default function HomeRooms() {
             to="/rooms"
             className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#01366E] hover:bg-[#082844] text-white font-bold rounded-xl text-xs sm:text-sm transition-all shadow-md flex-shrink-0 min-h-[44px]"
           >
-            <span>Compare All Rooms</span>
+            <span>{t("homeRoomsData.compareAll", "Compare All Rooms")}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

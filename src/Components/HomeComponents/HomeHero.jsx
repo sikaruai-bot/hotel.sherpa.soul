@@ -225,15 +225,15 @@ export default function HomeIntro() {
         >
           <div className="space-y-5 sm:space-y-6 max-w-2xl">
             <div className="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-300 font-semibold drop-shadow">
-              WELCOME TO HOTEL SHERPA SOUL • THAMEL, KATHMANDU
+              {t("homeHero.welcome", "WELCOME TO HOTEL SHERPA SOUL • THAMEL, KATHMANDU")}
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight text-white drop-shadow-md">
-              Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu
+              {t("homeHero.title", "Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu")}
             </h1>
 
             <p className="text-white/90 text-base sm:text-lg leading-relaxed font-light drop-shadow">
-              A boutique hotel on Thamel Bhagawati Marg 26 — clean rooms, peaceful nights, 24/7 hot showers, free luggage storage, and warm Himalayan hospitality.
+              {t("homeHero.description", "A boutique hotel on Thamel Bhagawati Marg 26 — clean rooms, peaceful nights, 24/7 hot showers, free luggage storage, and warm Himalayan hospitality.")}
             </p>
 
             {/* 2 Clean CTAs */}
@@ -243,7 +243,7 @@ export default function HomeIntro() {
                 href="/rooms"
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/80 hover:border-white font-bold text-sm sm:text-base backdrop-blur-md transition-all duration-300 transform hover:scale-105 shadow-lg min-h-[44px]"
               >
-                <span>Check Availability</span>
+                <span>{t("homeHero.checkAvailability", "Check Availability")}</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
@@ -259,7 +259,7 @@ export default function HomeIntro() {
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-h-[44px]"
               >
                 <Calendar className="w-4 h-4" />
-                <span>Book Direct & Save 10%</span>
+                <span>{t("homeHero.bookDirect", "Book Direct & Save 10%")}</span>
               </button>
             </div>
 
@@ -267,17 +267,17 @@ export default function HomeIntro() {
             <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-xs sm:text-sm text-slate-200 font-medium">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-[#FB6C01]" />
-                <span>Central Thamel Location</span>
+                <span>{t("homeHero.trust1", "Central Thamel Location")}</span>
               </span>
               <span className="text-white/40">•</span>
               <span className="flex items-center gap-1.5">
                 <Bed className="w-4 h-4 text-[#FB6C01]" />
-                <span>Comfortable Rooms</span>
+                <span>{t("homeHero.trust2", "Comfortable Rooms")}</span>
               </span>
               <span className="text-white/40">•</span>
               <span className="flex items-center gap-1.5">
                 <span className="text-base leading-none">🪷</span>
-                <span>Peaceful Stay</span>
+                <span>{t("homeHero.trust3", "Peaceful Stay")}</span>
               </span>
             </div>
             {/* Mobile Social Links */}

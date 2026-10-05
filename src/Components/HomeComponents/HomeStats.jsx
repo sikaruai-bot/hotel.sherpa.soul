@@ -1,31 +1,34 @@
 import React from "react";
 import { MapPin, Moon, UtensilsCrossed, ShieldCheck, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function HomeStats() {
+  const { t } = useTranslation();
+
   const trustPillars = [
     {
       icon: <MapPin className="w-7 h-7 text-[#FB6C01]" />,
-      badge: "Quiet Thamel Location",
-      title: "Peaceful Alleyway Setting",
-      desc: "Located on Thamel Bhagawati Marg 26, steps away from central shops and bakeries, yet peacefully insulated from late-night bar and street noise.",
+      badge: t("homeStatsPillars.p1Badge", "Quiet Thamel Location"),
+      title: t("homeStatsPillars.p1Title", "Peaceful Alleyway Setting"),
+      desc: t("homeStatsPillars.p1Desc", "Located on Thamel Bhagawati Marg 26, steps away from central shops and bakeries, yet peacefully insulated from late-night bar and street noise."),
     },
     {
       icon: <Moon className="w-7 h-7 text-[#01366E]" />,
-      badge: "Quiet Atmosphere",
-      title: "Restful & Undisturbed Sleep",
-      desc: "Designed for peaceful stays away from loud restaurant and bar noise inside the property. Spotless rooms and deep, restorative sleep are our priority.",
+      badge: t("homeStatsPillars.p2Badge", "Quiet Atmosphere"),
+      title: t("homeStatsPillars.p2Title", "Restful & Undisturbed Sleep"),
+      desc: t("homeStatsPillars.p2Desc", "Designed for peaceful stays away from loud restaurant and bar noise inside the property. Spotless rooms and deep, restorative sleep are our priority."),
     },
     {
       icon: <UtensilsCrossed className="w-7 h-7 text-[#FB6C01]" />,
-      badge: "Guest Kitchen",
-      title: "Shared Kitchen for Light Cooking",
-      desc: "Equipped with an induction cooktop, refrigerator, microwave, and kettle, giving guests the flexibility to prepare simple home meals and brew fresh tea.",
+      badge: t("homeStatsPillars.p3Badge", "Guest Kitchen"),
+      title: t("homeStatsPillars.p3Title", "Shared Kitchen for Light Cooking"),
+      desc: t("homeStatsPillars.p3Desc", "Equipped with an induction cooktop, refrigerator, microwave, and kettle, giving guests the flexibility to prepare simple home meals and brew fresh tea."),
     },
     {
       icon: <ShieldCheck className="w-7 h-7 text-[#01366E]" />,
-      badge: "Trekker-Friendly",
-      title: "Free Luggage Storage & 24/7 Desk",
-      desc: "Heading to Everest, Annapurna, or Langtang? Leave your extra gear safely in our luggage room free of charge until you return from your trek.",
+      badge: t("homeStatsPillars.p4Badge", "Trekker-Friendly"),
+      title: t("homeStatsPillars.p4Title", "Free Luggage Storage & 24/7 Desk"),
+      desc: t("homeStatsPillars.p4Desc", "Heading to Everest, Annapurna, or Langtang? Leave your extra gear safely in our luggage room free of charge until you return from your trek."),
     },
   ];
 
@@ -35,13 +38,13 @@ export default function HomeStats() {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#FB6C01] text-xs font-semibold tracking-wide uppercase mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Why Stay at Hotel Sherpa Soul</span>
+            <span>{t("homeStatsPillars.badge", "Why Stay at Hotel Sherpa Soul")}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#01366E] tracking-tight">
-            Comfortable, Quiet Accommodation in Thamel
+            {t("homeStatsPillars.title", "Comfortable, Quiet Accommodation in Thamel")}
           </h2>
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-            Honest, practical boutique hospitality in Kathmandu. No exaggerated claims — just clean comfort, quiet nights, and personal care.
+            {t("homeStatsPillars.subtitle", "Honest, practical boutique hospitality in Kathmandu. No exaggerated claims — just clean comfort, quiet nights, and personal care.")}
           </p>
         </div>
 

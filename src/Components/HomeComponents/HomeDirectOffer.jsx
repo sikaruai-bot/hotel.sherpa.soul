@@ -1,30 +1,32 @@
 import React, { useState } from "react";
 import { ShieldCheck, Tag, Clock, Briefcase, Calendar, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import BookingModal from "../HelperComponents/BookingModal";
 import { trackBookingClick } from "../Analytics/pixelEvents";
 
 export default function HomeDirectOffer() {
+  const { t } = useTranslation();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const perks = [
     {
-      title: "10% Direct Booking Discount",
-      desc: "Instant 10% savings when booking directly with us — no OTA markups.",
+      title: t("directOffer.discountTitle", "10% Direct Booking Discount"),
+      desc: t("directOffer.discountDesc", "Instant 10% savings when booking directly with us — no OTA markups."),
       icon: <Tag className="w-5 h-5 text-[#FB6C01]" />,
     },
     {
-      title: "Free Luggage Storage",
-      desc: "Leave your bags safely while trekking the Himalayas.",
+      title: t("directOffer.luggageTitle", "Free Luggage Storage"),
+      desc: t("directOffer.luggageDesc", "Leave your bags safely while trekking the Himalayas."),
       icon: <Briefcase className="w-5 h-5 text-[#01366E]" />,
     },
     {
-      title: "Instant WhatsApp Confirmation",
-      desc: "24/7 replies, airport transfer help, and personal assistance.",
+      title: t("directOffer.whatsappTitle", "Instant WhatsApp Confirmation"),
+      desc: t("directOffer.whatsappDesc", "24/7 replies, airport transfer help, and personal assistance."),
       icon: <Clock className="w-5 h-5 text-emerald-600" />,
     },
     {
-      title: "Best Rate Guarantee",
-      desc: "Transparent, honest pricing with no hidden fees.",
+      title: t("directOffer.bestRateTitle", "Best Rate Guarantee"),
+      desc: t("directOffer.bestRateDesc", "Transparent, honest pricing with no hidden fees."),
       icon: <ShieldCheck className="w-5 h-5 text-[#FB6C01]" />,
     },
   ];
@@ -38,10 +40,10 @@ export default function HomeDirectOffer() {
           <div className="flex-1 space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-[#FB6C01] text-xs font-bold uppercase tracking-wider mb-1">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Why Book Direct</span>
+              <span>{t("directOffer.badge", "Why Book Direct")}</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-[#01366E]">
-              Book Directly with Us & Save 10%
+              {t("directOffer.title", "Book Directly with Us & Save 10%")}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {perks.map((perk, idx) => (
@@ -68,10 +70,10 @@ export default function HomeDirectOffer() {
               className="px-8 py-4 rounded-2xl bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 min-h-[48px]"
             >
               <Calendar className="w-5 h-5" />
-              <span>Book Direct & Save 10%</span>
+              <span>{t("directOffer.cta", "Book Direct & Save 10%")}</span>
             </button>
             <p className="text-[11px] text-slate-500 text-center font-medium">
-              🛡️ Best direct-booking offer. Contact us for availability.
+              🛡️ {t("directOffer.disclaimer", "Best direct-booking offer. Contact us for availability.")}
             </p>
           </div>
         </div>

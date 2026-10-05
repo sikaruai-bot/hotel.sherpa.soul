@@ -1,28 +1,31 @@
 import React from "react";
-import { Mountain, Compass, ShieldCheck, Bed, Sparkles, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Mountain, Compass, Bed, Sparkles, CheckCircle2 } from "lucide-react";
 
 export default function HomeTrekkers() {
+  const { t } = useTranslation();
+
   const trekPillars = [
     {
       step: "01",
-      title: "Before the Trek",
-      desc: "Rest after international flights, organize your gear, finalize route permits, and safely store your extra city bags in our secure luggage room free of charge.",
+      title: t("homeTrekkersSection.step1Title", "Before the Trek"),
+      desc: t("homeTrekkersSection.step1Desc", "Rest after international flights, organize your gear, finalize route permits, and safely store your extra city bags in our secure luggage room free of charge."),
       icon: <Mountain className="w-7 h-7 text-[#FB6C01]" />,
-      tag: "Gear Prep & Free Storage",
+      tag: t("homeTrekkersSection.step1Tag", "Gear Prep & Free Storage"),
     },
     {
       step: "02",
-      title: "After the Trek",
-      desc: "Return from the Himalayas to a high-pressure hot shower, clean bed, peaceful surroundings, and a well-deserved deep sleep in Thamel.",
+      title: t("homeTrekkersSection.step2Title", "After the Trek"),
+      desc: t("homeTrekkersSection.step2Desc", "Return from the Himalayas to a high-pressure hot shower, clean bed, peaceful surroundings, and a well-deserved deep sleep in Thamel."),
       icon: <Bed className="w-7 h-7 text-[#01366E]" />,
-      tag: "24/7 Hot Shower & Deep Sleep",
+      tag: t("homeTrekkersSection.step2Tag", "24/7 Hot Shower & Deep Sleep"),
     },
     {
       step: "03",
-      title: "Sherpa Guidance & Support",
-      desc: "Drawing from authentic Himalayan heritage, our front desk assists with permit advice, Lukla/Pokhara flight coordination, and practical Nepal travel tips.",
+      title: t("homeTrekkersSection.step3Title", "Sherpa Guidance & Support"),
+      desc: t("homeTrekkersSection.step3Desc", "Drawing from authentic Himalayan heritage, our front desk assists with permit advice, Lukla/Pokhara flight coordination, and practical Nepal travel tips."),
       icon: <Compass className="w-7 h-7 text-[#FB6C01]" />,
-      tag: "Authentic Local Knowledge",
+      tag: t("homeTrekkersSection.step3Tag", "Authentic Local Knowledge"),
     },
   ];
 
@@ -33,13 +36,13 @@ export default function HomeTrekkers() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-widest mb-3">
             <Sparkles className="w-3.5 h-3.5 text-[#FB6C01]" />
-            <span>Trekker-Friendly Services</span>
+            <span>{t("homeTrekkersSection.badge", "Trekker-Friendly Services")}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#01366E] tracking-tight mb-4">
-            Made for Your Himalayan Journey
+            {t("homeTrekkersSection.title", "Made for Your Himalayan Journey")}
           </h2>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-            Kathmandu is the gateway to Nepal's trails. Whether you are trekking Everest Base Camp, Annapurna Circuit, Langtang, or exploring the valley, Hotel Sherpa Soul provides a reliable, welcoming base.
+            {t("homeTrekkersSection.subtitle", "Kathmandu is the gateway to Nepal's trails. Whether you are trekking Everest Base Camp, Annapurna Circuit, Langtang, or exploring the valley, Hotel Sherpa Soul provides a reliable, welcoming base.")}
           </p>
         </div>
 
@@ -72,7 +75,7 @@ export default function HomeTrekkers() {
 
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-emerald-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Complimentary for all staying guests</span>
+                <span>{t("homeTrekkersSection.complimentary", "Complimentary for all staying guests")}</span>
               </div>
             </div>
           ))}
