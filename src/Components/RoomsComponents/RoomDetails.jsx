@@ -220,6 +220,15 @@ export default function RoomDetail() {
     navigate(`/book/${room?.roomNumber || id}`);
   };
 
+  const rId = Number(room?.id || id);
+  const roomName = rId === 101 ? t("homeRoomsData.budget.name", room.name) : rId === 201 ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
+  const roomOccupancy = rId === 101 ? t("homeRoomsData.budget.occupancy", room.occupancy) : rId === 201 ? t("homeRoomsData.deluxe.occupancy", room.occupancy) : t("homeRoomsData.family.occupancy", room.occupancy);
+  const roomBeds = rId === 101 ? t("homeRoomsData.budget.bed", room.beds) : rId === 201 ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);
+  let roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", room.description) : rId === 201 ? t("homeRoomsData.deluxe.desc", room.description) : t("homeRoomsData.family.desc", room.description);
+  if (roomDesc && (roomDesc.includes("#") || roomDesc.length > 300)) {
+    roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", "A comfortable, budget-friendly family room.") : rId === 201 ? t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room with king-size bed.") : t("homeRoomsData.family.desc", "Spacious family suite featuring air conditioning.");
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Enhanced Hero Section with Carousel */}
@@ -331,11 +340,11 @@ export default function RoomDetail() {
 
           {/* Room Title Overlay */}
           <div className="absolute bottom-8 left-8 text-white max-w-4xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{room.name}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{roomName}</h1>
             <div className="flex flex-wrap gap-6 text-base md:text-lg opacity-90">
               <span className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-[#FB6C01]" />
-                {room.occupancy || `${room.guests} Guests`}
+                {roomOccupancy}
               </span>
               <span className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-[#FB6C01]" />
@@ -343,7 +352,7 @@ export default function RoomDetail() {
               </span>
               <span className="flex items-center gap-2">
                 <Bed className="w-5 h-5 text-[#FB6C01]" />
-                {room.beds}
+                {roomBeds}
               </span>
             </div>
           </div>
@@ -364,16 +373,16 @@ export default function RoomDetail() {
                   <span className="text-xl sm:text-2xl font-bold text-amber-600">
                     (~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()})
                   </span>
-                  <span className="text-base sm:text-lg text-gray-500 font-medium">/ night</span>
+                  <span className="text-base sm:text-lg text-gray-500 font-medium">{t("roomsCard.perNight", "/ night")}</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
                   <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
-                    <span>🔥</span> Only 2 rooms left!
+                    <span>🔥</span> {t("roomsCard.onlyLeft", "Only 2 rooms left!")}
                   </span>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
-                    Nepali Guests: ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                    {t("roomdetails.nepaliRate", "Nepali Guests:")} ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
                   </span>
-                  <span>• Best direct rate guaranteed</span>
+                  <span>• {t("roomdetails.bestDirectRate", "Best direct rate guaranteed")}</span>
                 </div>
               </div>
             </div>
@@ -407,17 +416,17 @@ export default function RoomDetail() {
               {[
                 {
                   id: "overview",
-                  label: "Overview",
+                  label: t("roomdetails.tabs.overview", "Overview"),
                   icon: <Star className="w-4 h-4" />,
                 },
                 {
                   id: "amenities",
-                  label: "Amenities",
+                  label: t("roomdetails.tabs.amenities", "Amenities"),
                   icon: <Wifi className="w-4 h-4" />,
                 },
                 {
                   id: "features",
-                  label: "Features",
+                  label: t("roomdetails.tabs.features", "Features"),
                   icon: <Calendar className="w-4 h-4" />,
                 },
               ].map((tab) => (
@@ -442,10 +451,10 @@ export default function RoomDetail() {
                 <div className="space-y-6">
                   <div>
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                      About This Room
+                      {t("roomdetails.aboutThisRoom", "About This Room")}
                     </h2>
                     <p className="text-gray-600 leading-relaxed text-lg">
-                      {room.description}
+                      {roomDesc}
                     </p>
                   </div>
 
@@ -453,23 +462,23 @@ export default function RoomDetail() {
                     <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center">
                       <Users className="w-8 h-8 text-[#01366E] mx-auto mb-2" />
                       <div className="font-semibold text-gray-900 text-sm md:text-base">
-                        {room.occupancy || `${room.guests} Guests`}
+                        {roomOccupancy}
                       </div>
-                      <div className="text-xs text-gray-600">Occupancy</div>
+                      <div className="text-xs text-gray-600">{t("roomdetails.occupancyLabel", "Occupancy")}</div>
                     </div>
                     <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg text-center">
                       <MapPin className="w-8 h-8 text-green-600 mx-auto mb-2" />
                       <div className="font-semibold text-gray-900">
                         {room.size}
                       </div>
-                      <div className="text-xs text-gray-600">Room Area</div>
+                      <div className="text-xs text-gray-600">{t("roomdetails.roomArea", "Room Area")}</div>
                     </div>
                     <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg text-center">
                       <Bed className="w-8 h-8 text-[#FB6C01] mx-auto mb-2" />
                       <div className="font-semibold text-gray-900 text-sm">
-                        {room.beds}
+                        {roomBeds}
                       </div>
-                      <div className="text-xs text-gray-600">Bed Setup</div>
+                      <div className="text-xs text-gray-600">{t("roomdetails.bedSetup", "Bed Setup")}</div>
                     </div>
                     <div className="bg-gradient-to-br from-amber-50 to-amber-100 p-4 rounded-lg text-center">
                       <Star className="w-8 h-8 text-[#FB6C01] mx-auto mb-2" />

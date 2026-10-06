@@ -93,12 +93,12 @@
           document.body.appendChild(chatScript);
         }
 
-        // Trigger loading after critical rendering or user interaction
+        // Trigger loading after critical rendering or user interaction (3.5s delay to keep TBT under 200ms on mobile)
         if (document.readyState === 'complete') {
-          setTimeout(loadDeferredThirdParties, 1200);
+          setTimeout(loadDeferredThirdParties, 3500);
         } else {
           window.addEventListener('load', function() {
-            setTimeout(loadDeferredThirdParties, 1200);
+            setTimeout(loadDeferredThirdParties, 3500);
           });
         }
         ['touchstart', 'scroll', 'mousemove', 'keydown'].forEach(function(evt) {

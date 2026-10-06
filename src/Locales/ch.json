@@ -1,11 +1,22 @@
 {
   "nav": {
     "home": "首页",
-    "about": "关于",
+    "about": "关于我们",
     "room": "客房",
     "gallery": "画廊",
     "contact": "联系我们",
-    "quick": "快速预订"
+    "quick": "预订住宿",
+    "location": "位置",
+    "blog": "博客",
+    "ribbonBadge": "立减10%",
+    "ribbonSpecial": "官网直订特惠：享受",
+    "ribbonDiscount": "10% 专属折扣",
+    "ribbonOnAll": "（所有房型适用）！",
+    "ribbonBestRate": "• 最优价格保证",
+    "ribbonClaim": "领取 10% 优惠 →",
+    "mobileSpecial": "官网直订特惠",
+    "mobileDiscountDesc": "直接在官网预订，在泰梅尔的全程住宿均可享 10% 折扣。",
+    "mobileBookBtn": "享受 10% 优惠预订"
   },
   "home": {
     "hero": {
@@ -15,7 +26,8 @@
       "bookButton": "预订您的住宿",
       "tourButton": "虚拟导览",
       "modalTitle": "虚拟导览 - 喜马拉雅雪巴灵酒店",
-      "modalDesc": "通过虚拟之旅体验我们的豪华住宿，发现传统与现代的完美融合。"
+      "modalDesc": "通过虚拟之旅体验我们的豪华住宿，发现传统与现代的完美融合。",
+      "trustLine": "泰梅尔核心位置 • 舒适静谧客房 • 优质睡眠保障"
     }
   },
   "about": {
@@ -140,7 +152,11 @@
       "description": "每日客房清洁、安全出入，无忧无虑的环境，让您安心无忧。"
     },
     "showOtherLanguages": "Show other languages",
-    "hideOtherLanguages": "Hide other languages"
+    "hideOtherLanguages": "Hide other languages",
+    "multilingualSupport": {
+      "title": "Multilingual Support",
+      "description": "Welcoming international travelers with support in English, Nepali, Hindi, Arabic, German, French, and Chinese."
+    }
   },
   "aboutVision": {
     "buddhistAlt": "佛教符号",
@@ -153,7 +169,9 @@
       "highlight": "雪巴的热情好客",
       "part2": "，文化的丰富多彩以及贴心的舒适，连接本地温暖与国际标准，坐落于喜马拉雅的心脏地带。"
     },
-    "startJourney": "开启您的旅程"
+    "startJourney": "开启您的旅程",
+    "para2": "Hotel Sherpa Soul is built around a simple understanding of hospitality: travellers need a place where they feel comfortable, welcome and able to rest after walking Kathmandu's vibrant streets or returning from a Himalayan trek.",
+    "para3": "What we offer is simpler and more meaningful: a comfortable room, a convenient location in Thamel, a quiet night's sleep, and genuine Sherpa warmth welcoming you to Nepal."
   },
   "roomsCard": {
     "roomsSuites": "客房与套房",
@@ -164,7 +182,10 @@
     "available": "可用",
     "from": "起价",
     "guest": "位客人",
-    "guestsSuffix": "位"
+    "guestsSuffix": "位",
+    "categoriesAvailable": "提供 3 种客房类型",
+    "perNight": "/ 晚",
+    "onlyLeft": "仅剩 2 间空房！"
   },
   "roomDetails": {
     "title": "房间详情",
@@ -180,7 +201,18 @@
     "availability": "可用性",
     "checkIn": "入住时间",
     "checkOut": "退房时间",
-    "relatedRooms": "相关房型"
+    "relatedRooms": "相关房型",
+    "aboutThisRoom": "About This Room",
+    "occupancyLabel": "Occupancy",
+    "roomArea": "Room Area",
+    "bedSetup": "Bed Setup",
+    "nepaliRate": "Nepali Guests:",
+    "bestDirectRate": "Best direct rate guaranteed",
+    "tabs": {
+      "overview": "Overview",
+      "amenities": "Amenities",
+      "features": "Features"
+    }
   },
   "homeStats": {
     "title": "数千人信赖",
@@ -196,7 +228,8 @@
   "footer": {
     "brand": {
       "title": "喜马拉雅雪巴灵酒店",
-      "description": "位于塔梅尔中心的宁静之地，融合舒适、文化和雪巴式热情好客"
+      "description": "位于塔梅尔中心的宁静之地，融合舒适、文化和雪巴式热情好客",
+      "tagline": "No Restaurant. No Noise. Sleep Well."
     },
     "quickLinks": {
       "title": "快速链接",
@@ -205,12 +238,13 @@
         "aboutUs": "关于我们",
         "rooms": "客房",
         "gallery": "画廊",
-        "contact": "联系我们"
+        "contact": "联系我们",
+        "blog": "旅游博客"
       }
     },
     "contactUs": {
       "title": "联系我们",
-      "phone": "+977 9851068219",
+      "phone": "+977-9851068219",
       "email": "info@hotelsherpasoul.com",
       "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal"
     },
@@ -224,6 +258,25 @@
       "prefix": "©",
       "hotelName": "喜马拉雅雪巴灵酒店",
       "suffix": "版权所有"
+    },
+    "cta": {
+      "badge": "Hotel Sherpa Soul • 泰梅尔，加德满都",
+      "heading": "准备好享受优质睡眠了吗？",
+      "copy": "入住泰梅尔中心地带，让喜马拉雅雪巴灵酒店成为您在加德满都和尼泊尔之旅的舒适大本营。",
+      "button": "预订您的住宿"
+    },
+    "legal": {
+      "privacy": "隐私政策",
+      "terms": "服务条款",
+      "cookies": "Cookie 设置",
+      "cms": "CMS 管理门户"
+    },
+    "otas": {
+      "title": "官方平台预订",
+      "bookingCom": "Booking.com 预订",
+      "airbnb": "Airbnb 预订",
+      "agoda": "Agoda 预订",
+      "tripCom": "Trip.com 预订"
     }
   },
   "homeServices": {
@@ -341,7 +394,7 @@
   "modalDescription": "通过我们的豪华住宿体验虚拟之旅，发现传统与现代的完美结合。",
   "heroSlides": [
     {
-      "image": "/changes_photo/singleBedWithSofa.webp",
+      "image": "/changes_photo/deluxeRoom_ai.webp",
       "title": "奢华再定义",
       "subtitle": "尊贵舒适"
     },
@@ -570,7 +623,15 @@
     "q7": "Can I securely store my luggage while on a trek?",
     "a7": "Yes, we offer complimentary secure luggage storage before check-in, after check-out, and for trekkers during their multi-day Himalayan journeys until they return.",
     "q8": "What payment methods do you accept?",
-    "a8": "We accept cash (NPR, USD, EUR), credit and debit cards (Visa, MasterCard), Fonepay QR transfers, and direct bank transfers."
+    "a8": "We accept cash (NPR, USD, EUR), credit and debit cards (Visa, MasterCard), Fonepay QR transfers, and direct bank transfers.",
+    "q9": "How far is Kathmandu Airport?",
+    "a9": "The hotel is approximately 20 minutes from Tribhuvan International Airport by vehicle, depending on traffic.",
+    "q10": "How far is Pashupatinath Temple?",
+    "a10": "Pashupatinath Temple is approximately 15 minutes away by vehicle, depending on traffic.",
+    "q11": "How far is Boudhanath Stupa?",
+    "a11": "Boudhanath Stupa is approximately 20 minutes away by vehicle, depending on traffic.",
+    "q12": "How can I book a room?",
+    "a12": "You can book directly through our website or contact the hotel directly via WhatsApp or phone to check availability."
   },
   "homeHero": {
     "welcome": "WELCOME TO HOTEL SHERPA SOUL • THAMEL, KATHMANDU",
@@ -619,10 +680,10 @@
     "subtitle": "Every room includes private attached bathroom with continuous 24/7 hot water, high-speed fiber Wi-Fi, and access to our shared self-kitchen.",
     "perNight": "/ night",
     "budget": {
-      "name": "Budget Family Room",
-      "bed": "1 King Bed + 1 Single Bed",
-      "occupancy": "Up to 4 Guests (3 Adults, 1 Child)",
-      "desc": "Comfortable and budget-conscious accommodation with en-suite hot shower, bright windows, and shared kitchen access for groups or families.",
+      "name": "经济家庭房",
+      "bed": "1 张特大床 + 1 张单人床",
+      "occupancy": "最多 4 位客人 (3 成人, 1 儿童)",
+      "desc": "舒适且实惠的家庭房，配备独立热水淋浴间、明亮窗户和共享厨房使用权，非常适合团体或家庭入住。",
       "f1": "1 King Bed + 1 Single Bed",
       "f2": "Private Attached Bathroom (24/7 Hot Water)",
       "f3": "Free High-Speed Fiber Wi-Fi",
@@ -630,10 +691,10 @@
       "f5": "Trekker Luggage Storage Included"
     },
     "deluxe": {
-      "name": "Deluxe Room (AC)",
-      "bed": "1 King Bed",
-      "occupancy": "Up to 3 Guests (2 Adults, 1 Child)",
-      "desc": "Air-conditioned boutique room with king-size bed, private modern bathroom, work desk, and quiet ambiance for restful sleep.",
+      "name": "豪华空调房",
+      "bed": "1 张特大床 • 配备空调",
+      "occupancy": "最多 3 位客人 (2 成人, 1 儿童)",
+      "desc": "配备空调的精品客房，拥有特大床、独立现代浴室、工作台和安静的环境，确保深度睡眠。",
       "f1": "Individual Climate Control (AC)",
       "f2": "1 Comfortable King Bed",
       "f3": "Private Modern Bathroom (24/7 Hot Shower)",
@@ -641,10 +702,10 @@
       "f5": "Shared Guest Kitchen Access"
     },
     "family": {
-      "name": "Family Room (AC)",
-      "bed": "1 King Bed + 1 Single Bed",
-      "occupancy": "Up to 4 Guests (3 Adults, 1 Child)",
-      "desc": "Spacious family suite featuring air conditioning, one king bed and one single bed, private bathroom, and extra room for luggage.",
+      "name": "家庭空调套房",
+      "bed": "特大床 + 单人床 • 配备空调",
+      "occupancy": "最多 4 位客人 (3 成人, 1 儿童)",
+      "desc": "宽敞的家庭套房，拥有全套空调、特大床加单人床、私密洗手间和充足的行李存放空间。",
       "f1": "Individual Climate Control (AC)",
       "f2": "1 King Bed + 1 Single Bed",
       "f3": "Spacious Private Bathroom (24/7 Hot Water)",
@@ -656,7 +717,11 @@
     "mostPopular": "Most Popular",
     "directOfferText": "Best Available Direct-Booking Offer",
     "directOfferSub": "No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.",
-    "compareAll": "Compare All Rooms"
+    "compareAll": "Compare All Rooms",
+    "bedLabel": "Bed:",
+    "occupancyLabel": "Occupancy:",
+    "sizeLabel": "Room Size:",
+    "keyAmenities": "Key Amenities"
   },
   "facilitiesSection": {
     "badge": "Verified Hotel Amenities",
@@ -783,5 +848,216 @@
     "bookBtn": "Book Direct & Save 10%",
     "callBtn": "Call +977 9851068219",
     "disclaimer": "Best available direct-booking offer. Contact us for availability and dates."
+  },
+  "bookNowPage": {
+    "heroBadge": "直订特权：所有客房均享 10% 优惠",
+    "heroTitle": "预订您的宁静住宿",
+    "heroSub": "干净安静的客房、地道的夏尔巴热情招待，在加德满都泰梅尔中心享受舒适休息",
+    "step1Badge": "第 1 步：选择您的客房类型",
+    "step1Title": "从我们的 3 种客房类型中选择",
+    "step1Sub": "点击任意客房即可选择 — 您的 10% 直订折扣将自动应用。",
+    "directOff": "直订立减 10%",
+    "roomSelected": "✓ 已选择该客房",
+    "selectThisRoom": "选择此客房",
+    "getInTouch": "联系我们",
+    "hereToHelp": "我们 24/7 随时为您提供帮助",
+    "callDirectly": "直接致电",
+    "email": "电子邮件",
+    "location": "位置",
+    "officeHours": "办公时间",
+    "support247": "24/7 客户支持",
+    "otaTitle": "更喜欢在第三方平台预订？",
+    "otaSub": "您也可以通过以下主要官方平台预订 Hotel Sherpa Soul：",
+    "noticeTitle": "重要提示",
+    "notice1": "入住时须出示有效身份证明原件",
+    "notice2": "请在下方上传您身份证件的清晰照片",
+    "notice3": "预订确认信将发送至您的电子邮箱",
+    "notice4": "取消政策按条款规定执行",
+    "step2Badge": "第 2 步（共 2 步）：客人信息",
+    "reservationFor": "预订客房：",
+    "fillDetails": "请在下方填写您的详细信息。10% 直订折扣已自动应用。",
+    "personalInfo": "个人信息",
+    "fullName": "姓名",
+    "emailAddress": "电子邮箱",
+    "phoneWhatsApp": "电话 / WhatsApp 号码",
+    "roomSelection": "选择客房",
+    "roomCategory": "客房类型",
+    "selectRoomType": "请选择客房类型",
+    "numberOfRooms": "预订间数",
+    "guestInfo": "入住人数",
+    "totalGuests": "总入住人数",
+    "maxGuestsAllowed": "{{roomType}} 最多允许入住 {{maxGuests}} 人",
+    "stayDuration": "住宿时间",
+    "checkInDate": "入住日期",
+    "checkOutDate": "退房日期",
+    "documentUpload": "上传证件",
+    "optionalOnline": "（网上可选）",
+    "documentHelp": "上传护照/身份证件照片可加快办理入住速度，或在抵达前台时出示原件。",
+    "estimatedTotal": "预计总价（{{nights}} 晚，{{rooms}} 间）",
+    "nprNotice": "尼泊尔本地客人可在前台使用 NPR（尼泊尔卢比）支付",
+    "registering": "正在提交预订...",
+    "completeBooking": "完成预订",
+    "confirmedTitle": "预订成功确认！",
+    "thankYou": "谢谢您",
+    "reservationConfirmed": "您预订的 {{roomType}} 已成功确认。",
+    "bookingSummary": "预订摘要：",
+    "checkIn": "入住时间：",
+    "checkOut": "退房时间：",
+    "guests": "客人人数：",
+    "rooms": "房间数量：",
+    "totalRate": "费用总计：",
+    "bookingRef": "预订参考号：",
+    "emailNotice": "确认通知已在酒店系统中成功登记：",
+    "confirmWhatsApp": "在 WhatsApp 上确认 (+977 9818259472)"
+  },
+  "bookingModal": {
+    "bannerText": "直订特权：以下所有房价已自动扣减 10% 优惠！",
+    "bestRateGuaranteed": "最优价格保证",
+    "directOff": "直订立减 10%",
+    "discountApplied": "已应用 10% 直订折扣"
+  },
+  "mainBrand": {
+    "heading": "泰梅尔外繁华 • 酒店内宁静",
+    "copy": "泰梅尔充满活力与冒险气息。喜马拉雅雪巴灵酒店为您提供一个回归平静的港湾。酒店专为追求舒适、便捷与优质睡眠的旅行者打造。",
+    "brandStatement": "No Restaurant. No Noise. Sleep Well.",
+    "supportingCopy": "有时，最好的酒店体验就是一间干净舒适的房间、优越的位置和整晚无忧的好眠。"
+  },
+  "roomsSection": {
+    "heading": "您的客房。您的空间。您的休息。",
+    "copy": "在游览加德满都、购物或为徒步旅行做准备之后，回到属于您的静谧客房放慢脚步、放松身心。",
+    "cta": "查看客房与价格",
+    "deluxeDouble": {
+      "name": "Deluxe Double Room",
+      "shortDesc": "A comfortable choice for couples, friends and travelers looking for extra space and a relaxing stay in Thamel.",
+      "cta": "View Room"
+    }
+  },
+  "locationSection": {
+    "heading": "入住加德满都活力之源",
+    "copy": "从喜马拉雅雪巴灵酒店出发，泰梅尔就在门前。轻松探索咖啡馆、店铺与景点，同时享受静谧的回归之地。",
+    "cta": "探索我们的地理位置"
+  },
+  "trekkersSection": {
+    "heading": "为前方的远征量身打造",
+    "copy": "无论是开启喜马拉雅徒步、首次探索尼泊尔还是游览加德满都，喜马拉雅雪巴灵酒店都是您在泰梅尔的理想大本营。",
+    "beforeTrek": {
+      "title": "徒步前夕",
+      "desc": "充分休息，调整状态，为高山旅程做好准备。"
+    },
+    "afterTrek": {
+      "title": "徒步归来",
+      "desc": "回到加德满都，享受温暖舒适的放松环境。"
+    },
+    "cityExploration": {
+      "title": "城市探索",
+      "desc": "紧邻泰梅尔繁华圈，同时享有私密安静的休息空间。"
+    }
+  },
+  "whySherpaSoul": {
+    "heading": "为什么旅行者选择雪巴灵",
+    "items": [
+      {
+        "title": "Central Thamel Location",
+        "desc": "Stay in one of Kathmandu's most popular areas for travelers."
+      },
+      {
+        "title": "Peaceful Environment",
+        "desc": "Enjoy a quieter place to rest after exploring the city."
+      },
+      {
+        "title": "Comfortable Rooms",
+        "desc": "A practical and comfortable space for short and extended stays."
+      },
+      {
+        "title": "Traveler-Friendly Stay",
+        "desc": "A convenient base for Kathmandu exploration and Nepal adventures."
+      },
+      {
+        "title": "Simple, Honest Hospitality",
+        "desc": "No unnecessary extras. Just a comfortable stay and a good night's sleep."
+      }
+    ]
+  },
+  "bookingCta": {
+    "heading": "您的加德满都之旅由此开启",
+    "copy": "探索泰梅尔，发现加德满都，向喜马拉雅进发。当夜幕降临，回到这里安然入睡。",
+    "primaryCta": "预订喜马拉雅雪巴灵酒店",
+    "secondaryCta": "查询客房空房"
+  },
+  "aboutPageContent": {
+    "h1": "About Hotel Sherpa Soul",
+    "introHeading": "A peaceful place to stay in the heart of Thamel, Kathmandu.",
+    "copy": "Hotel Sherpa Soul was created for travelers who want to experience Kathmandu without giving up the comfort of a peaceful night's sleep. Located in Thamel, one of Kathmandu's most popular traveler neighborhoods, we offer a simple and comfortable base for exploring the city, preparing for a trek or beginning your journey through Nepal.",
+    "philosophy": {
+      "heading": "No Restaurant. No Noise. Sleep Well.",
+      "copy": "We believe a hotel doesn't need to be complicated to feel welcoming. For us, hospitality is about creating a comfortable space where travelers can rest, recharge and feel ready for the next day."
+    },
+    "location": {
+      "heading": "At the Heart of Thamel",
+      "copy": "Thamel is one of Kathmandu's best-known areas for travelers, surrounded by cafés, shops, travel services and local experiences. Hotel Sherpa Soul gives you the convenience of staying close to it all while offering a peaceful place to return to."
+    },
+    "forTravelers": {
+      "heading": "From Kathmandu to the Himalayas",
+      "copy": "Many journeys through Nepal begin in Kathmandu. Whether you are visiting Nepal for culture and sightseeing, preparing for a Himalayan trek or returning from the mountains, Sherpa Soul is designed to be your comfortable Kathmandu base."
+    },
+    "closing": {
+      "heading": "Come for Kathmandu. Stay for the comfort. Sleep well for the journey ahead.",
+      "cta": "Book Your Stay"
+    }
+  },
+  "homeLocation": {
+    "mapTitle": "Hotel Sherpa Soul Location in Thamel"
+  },
+  "loading": "Loading room details...",
+  "pleasewait": "Please wait...",
+  "blog": {
+    "badge": "Official Travel Hub",
+    "title": "Kathmandu Travel Guide",
+    "subtitle": "Discover Kathmandu through local tips, Thamel travel guides, trekking information, things to do, places to visit and practical advice for travelers visiting Nepal.",
+    "searchPlaceholder": "Search guides or topics...",
+    "readFullGuide": "Read Full Guide",
+    "noMatching": "No matching travel guides found",
+    "trySearching": "Try searching with different keywords like \"Thamel\", \"Trekking\", or \"Sightseeing\".",
+    "resetFilters": "Reset Filters",
+    "relatedTopics": "Related Topics & Search Keywords:",
+    "planningStayTitle": "Planning Your Kathmandu Stay?",
+    "planningStayDesc": "Enjoy central Thamel access with peaceful, restaurant-free sleep.",
+    "viewRoomsBtn": "View Rooms & Rates",
+    "categories": {
+      "all": "全部",
+      "thamelGuide": "泰梅尔指南",
+      "accommodation": "住宿攻略",
+      "trekking": "徒步旅行",
+      "sightseeing": "景点观光",
+      "travelAdvice": "旅行建议",
+      "transportation": "交通出行"
+    }
+  },
+  "chatbot": {
+    "tooltip": "Need help? Chat with us!",
+    "headerTitle": "Sherpa Soul Assistant",
+    "online": "Online now",
+    "howCanIHelp": "How can I help you?",
+    "inputPlaceholder": "Type your message...",
+    "option1": {
+      "title": "Room Types & Pricing",
+      "response": "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• Ceiling fan/heating, private hot shower & free Wi-Fi\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• ❄️ **Air Conditioning (AC)**, extra spacious living\n\nAll rooms include high-speed Wi-Fi. (Shared self-kitchen available) 🍳"
+    },
+    "option2": {
+      "title": "Hotel Facilities",
+      "response": "Our hotel offers practical facilities for travellers:\n\n🍳 **Shared Self-Kitchen**\n• Induction cooktop, fridge, microwave, electric kettle & utensils\n\n🏨 **24/7 Front Desk**\n• Always here to help, local tips & safe luggage storage\n\n📶 **High-Speed Free Wi-Fi**\n• Reliable internet across all rooms\n\n🚿 **24/7 Hot & Cold Showers**\n• Clean ensuite bathrooms in all rooms\n\n🚗 **Airport Transfer**\n• Convenient pickup/drop available (~20 mins from airport)"
+    },
+    "option3": {
+      "title": "Location & Nearby",
+      "response": "📍 **Prime Location in Thamel**\n\nWe're situated on Thamel Bhagawati Marg 26 in the heart of Kathmandu's tourist district:\n\n🚶 **Walking Distance:**\n• Garden of Dreams - 5 minutes\n• Durbar Square - 15 minutes\n• Local markets & gear shops - right outside\n\nPerfect base for exploring Nepal! 🇳🇵"
+    },
+    "option4": {
+      "title": "Make a Reservation",
+      "response": "Ready to book your stay? Here are your options:\n\n📞 **Call directly:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n\nBook direct with us for our best 10% discount rate!"
+    },
+    "option5": {
+      "title": "Contact Information",
+      "response": "📞 **Call:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Thamel Bhagawati Marg 26, Kathmandu, Nepal\n\n🕐 **Reception:** 24/7"
+    }
   }
 }

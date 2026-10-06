@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useSearchParams, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Phone,
   Mail,
@@ -21,6 +22,7 @@ import { sendEmailNotification } from "../Components/Utils/emailService";
 import { useCMS } from "../Context/CMSContext";
 
 export default function BookNowPage() {
+  const { t } = useTranslation();
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
@@ -64,55 +66,49 @@ export default function BookNowPage() {
         id: "1",
         code: "101",
         label: "Budget Family Room",
-        title: budgetRoom?.name || "Budget Family Room",
+        title: t("homeRoomsData.budget.name", budgetRoom?.name || "Budget Family Room"),
         roomNumber: budgetRoom?.roomNumber || "101",
         price: budgetRoom?.price || 20,
         priceNpr: budgetRoom?.priceNprApprox || 2700,
         currency: "USD",
         maxGuests: budgetRoom?.guests || 4,
-        bedInfo: budgetRoom?.beds || "1 King Bed + 1 Single Bed",
+        bedInfo: t("homeRoomsData.budget.bed", budgetRoom?.beds || "1 King Bed + 1 Single Bed"),
         image: getRoomPhoto(budgetRoom, "bookNow_budget", "/triple.webp"),
-        description:
-          budgetRoom?.description ||
-          "Comfortable family room with 1 King Bed + 1 Single Bed, private en-suite bathroom, 24/7 hot shower, free Wi-Fi, and shared kitchen access.",
+        description: t("homeRoomsData.budget.desc", budgetRoom?.description || "Comfortable family room with 1 King Bed + 1 Single Bed, private en-suite bathroom, 24/7 hot shower, free Wi-Fi, and shared kitchen access."),
         badge: "10% OFF",
       },
       {
         id: "2",
         code: "201",
         label: "Deluxe Room (AC)",
-        title: deluxeRoom?.name || "Deluxe Room (AC)",
+        title: t("homeRoomsData.deluxe.name", deluxeRoom?.name || "Deluxe Room (AC)"),
         roomNumber: deluxeRoom?.roomNumber || "201",
         price: deluxeRoom?.price || 20,
         priceNpr: deluxeRoom?.priceNprApprox || 2700,
         currency: "USD",
         maxGuests: deluxeRoom?.guests || 3,
-        bedInfo: deluxeRoom?.beds ? `${deluxeRoom.beds} • Air Conditioned` : "1 King Bed • Air Conditioned",
+        bedInfo: t("homeRoomsData.deluxe.bed", deluxeRoom?.beds ? `${deluxeRoom.beds} • Air Conditioned` : "1 King Bed • Air Conditioned"),
         image: getRoomPhoto(deluxeRoom, "bookNow_deluxe", "/changes_photo/deluxeRoom_ai.webp"),
-        description:
-          deluxeRoom?.description ||
-          "Air-conditioned boutique room with king bed, Himalayan mountain art, sofa seating, private modern bathroom, and peaceful atmosphere.",
+        description: t("homeRoomsData.deluxe.desc", deluxeRoom?.description || "Air-conditioned boutique room with king bed, Himalayan mountain art, sofa seating, private modern bathroom, and peaceful atmosphere."),
         badge: "10% OFF",
       },
       {
         id: "3",
         code: "301",
         label: "Family Room (AC)",
-        title: familyRoom?.name || "Family Room (AC)",
+        title: t("homeRoomsData.family.name", familyRoom?.name || "Family Room (AC)"),
         roomNumber: familyRoom?.roomNumber || "301",
         price: familyRoom?.price || 30,
         priceNpr: familyRoom?.priceNprApprox || 4000,
         currency: "USD",
         maxGuests: familyRoom?.guests || 4,
-        bedInfo: familyRoom?.beds ? `${familyRoom.beds} • Air Conditioned` : "King + Single • Air Conditioned",
+        bedInfo: t("homeRoomsData.family.bed", familyRoom?.beds ? `${familyRoom.beds} • Air Conditioned` : "King + Single • Air Conditioned"),
         image: getRoomPhoto(familyRoom, "bookNow_family", "/changes_photo/doubleBed.webp"),
-        description:
-          familyRoom?.description ||
-          "Spacious AC family suite with King + Single bed, private modern washroom, free luggage storage, and shared kitchen access.",
+        description: t("homeRoomsData.family.desc", familyRoom?.description || "Spacious AC family suite with King + Single bed, private modern washroom, free luggage storage, and shared kitchen access."),
         badge: "10% OFF",
       },
     ];
-  }, [cmsRooms, sitePhotos]);
+  }, [cmsRooms, sitePhotos, t]);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -320,14 +316,14 @@ export default function BookNowPage() {
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-5 py-1.5 mb-4 border border-white/20">
               <Sparkles className="w-4 h-4 text-[#FB6C01]" />
               <span className="text-xs sm:text-sm font-semibold tracking-wide text-amber-200">
-                Direct Booking Privilege: <strong className="text-white">Save 10% on All Rooms</strong>
+                {t("bookNowPage.heroBadge", "Direct Booking Privilege: Save 10% on All Rooms")}
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-3 text-white leading-tight">
-              Reserve Your Peaceful Stay
+              {t("bookNowPage.heroTitle", "Reserve Your Peaceful Stay")}
             </h1>
             <p className="text-sm sm:text-base font-light text-slate-200 max-w-2xl mx-auto leading-relaxed">
-              Clean, quiet rooms, authentic Sherpa hospitality, and comfortable rest in the heart of Thamel, Kathmandu
+              {t("bookNowPage.heroSub", "Clean, quiet rooms, authentic Sherpa hospitality, and comfortable rest in the heart of Thamel, Kathmandu")}
             </p>
           </div>
         </div>
@@ -340,19 +336,19 @@ export default function BookNowPage() {
           <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-slate-200/80 p-6 sm:p-10 mb-10">
             <div className="text-center max-w-2xl mx-auto mb-8">
               <span className="inline-block bg-[#FB6C01]/10 text-[#FB6C01] font-bold text-xs uppercase tracking-widest px-3.5 py-1 rounded-full border border-[#FB6C01]/20">
-                Step 1: Choose Your Room Category
+                {t("bookNowPage.step1Badge", "Step 1: Choose Your Room Category")}
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#01366E] mt-2">
-                Select From Our 3 Room Categories
+                {t("bookNowPage.step1Title", "Select From Our 3 Room Categories")}
               </h2>
               <p className="text-slate-600 text-sm mt-1">
-                Click any room to select it — your 10% direct booking discount is automatically applied.
+                {t("bookNowPage.step1Sub", "Click any room to select it — your 10% direct booking discount is automatically applied.")}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {roomOptions.map((room) => {
-                const isSelected = formData.roomType === room.label;
+                const isSelected = formData.roomType === room.label || formData.roomType === room.title;
                 return (
                   <div
                     key={room.id}
@@ -374,7 +370,7 @@ export default function BookNowPage() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-3 left-3 bg-[#FB6C01] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">
-                        10% DIRECT OFF
+                        {t("bookNowPage.directOff", "10% DIRECT OFF")}
                       </div>
                       {isSelected && (
                         <div className="absolute top-3 right-3 bg-emerald-600 text-white p-1.5 rounded-full shadow-lg flex items-center justify-center">
@@ -383,7 +379,7 @@ export default function BookNowPage() {
                       )}
                       <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/75 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs">
                         <span className="font-bold text-[#FB6C01] text-sm">${room.price} USD</span>
-                        <span className="text-amber-300 font-semibold">~NPR {room.priceNpr.toLocaleString()} / night</span>
+                        <span className="text-amber-300 font-semibold">~NPR {room.priceNpr.toLocaleString()} {t("roomsCard.perNight", "/ night")}</span>
                       </div>
                     </div>
 
@@ -393,7 +389,7 @@ export default function BookNowPage() {
                           {room.title}
                         </h3>
                         <p className="text-xs text-slate-500 mb-2 font-medium">
-                          {room.bedInfo} • Max {room.maxGuests} Guests
+                          {room.bedInfo} • Max {room.maxGuests} {t("room.guest", "Guests")}
                         </p>
                         <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
                           {room.description}
@@ -413,7 +409,7 @@ export default function BookNowPage() {
                               : "bg-slate-100 text-slate-700 hover:bg-[#01366E] hover:text-white"
                           }`}
                         >
-                          {isSelected ? "✓ Room Selected" : "Select This Room"}
+                          {isSelected ? t("bookNowPage.roomSelected", "✓ Room Selected") : t("bookNowPage.selectThisRoom", "Select This Room")}
                         </button>
                       </div>
                     </div>
@@ -429,9 +425,9 @@ export default function BookNowPage() {
               <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 p-8 sticky top-8">
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                    Get in Touch
+                    {t("bookNowPage.getInTouch", "Get in Touch")}
                   </h2>
-                  <p className="text-gray-600 mt-2">We're here to help 24/7</p>
+                  <p className="text-gray-600 mt-2">{t("bookNowPage.hereToHelp", "We're here to help 24/7")}</p>
                 </div>
 
                 <div className="space-y-4">
@@ -463,7 +459,7 @@ export default function BookNowPage() {
                         <Phone className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-800">Call directly</h3>
+                        <h3 className="font-bold text-gray-800">{t("bookNowPage.callDirectly", "Call directly")}</h3>
                         <p className="text-amber-600 font-semibold text-lg">
                           +977 9851068219
                         </p>
@@ -477,7 +473,7 @@ export default function BookNowPage() {
                         <Mail className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-800">Email</h3>
+                        <h3 className="font-bold text-gray-800">{t("bookNowPage.email", "Email")}</h3>
                         <p className="text-blue-600 font-semibold">
                           info@hotelsherpasoul.com
                         </p>
@@ -491,7 +487,7 @@ export default function BookNowPage() {
                         <MapPin className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-800">Location</h3>
+                        <h3 className="font-bold text-gray-800">{t("bookNowPage.location", "Location")}</h3>
                         <p className="text-purple-600 font-semibold">
                           Thamel Bhagawati Marg 26, Kathmandu, Nepal
                         </p>
@@ -506,10 +502,10 @@ export default function BookNowPage() {
                       </div>
                       <div>
                         <h3 className="font-bold text-gray-800">
-                          Office Hours
+                          {t("bookNowPage.officeHours", "Office Hours")}
                         </h3>
                         <p className="text-orange-600 font-semibold">
-                          24/7 Customer Support
+                          {t("bookNowPage.support247", "24/7 Customer Support")}
                         </p>
                       </div>
                     </div>
@@ -519,10 +515,10 @@ export default function BookNowPage() {
                 {/* Also Listed On Major OTAs */}
                 <div className="mt-8 bg-slate-900 rounded-2xl p-6 text-white shadow-xl border border-slate-800">
                   <h4 className="font-bold text-xs uppercase tracking-wider text-amber-400 mb-2">
-                    Prefer Booking on Trusted OTAs?
+                    {t("bookNowPage.otaTitle", "Prefer Booking on Trusted OTAs?")}
                   </h4>
                   <p className="text-gray-300 text-xs mb-4 leading-relaxed">
-                    You can also reserve Hotel Sherpa Soul through our official listings on major platforms:
+                    {t("bookNowPage.otaSub", "You can also reserve Hotel Sherpa Soul through our official listings on major platforms:")}
                   </p>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                     {channels?.bookingCom?.enabled !== false && (
@@ -576,24 +572,24 @@ export default function BookNowPage() {
                     </div>
                     <div>
                       <h4 className="font-bold text-amber-800 mb-3 text-lg">
-                        Important Notice
+                        {t("bookNowPage.noticeTitle", "Important Notice")}
                       </h4>
                       <ul className="text-amber-700 space-y-2 text-sm">
                         <li className="flex items-start">
                           <div className="w-2 h-2 bg-amber-400 rounded-full mt-2 mr-3 flex-shrink-0" />
-                          Original identification documents required
+                          {t("bookNowPage.notice1", "Original identification documents required")}
                         </li>
                         <li className="flex items-start">
                           <div className="w-2 h-2 bg-amber-400 rounded-full mt-2 mr-3 flex-shrink-0" />
-                          Upload a clear photo of your ID below
+                          {t("bookNowPage.notice2", "Upload a clear photo of your ID below")}
                         </li>
                         <li className="flex items-start">
                           <div className="w-2 h-2 bg-amber-400 rounded-full mt-2 mr-3 flex-shrink-0" />
-                          Booking confirmation will be sent via email
+                          {t("bookNowPage.notice3", "Booking confirmation will be sent via email")}
                         </li>
                         <li className="flex items-start">
                           <div className="w-2 h-2 bg-amber-400 rounded-full mt-2 mr-3 flex-shrink-0" />
-                          Cancellation policy applies as per terms
+                          {t("bookNowPage.notice4", "Cancellation policy applies as per terms")}
                         </li>
                       </ul>
                     </div>
@@ -607,13 +603,13 @@ export default function BookNowPage() {
               <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 p-8">
                 <div className="border-b border-slate-100 pb-5 mb-6 text-center sm:text-left">
                   <span className="inline-block bg-[#FB6C01]/10 text-[#FB6C01] font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-[#FB6C01]/20 mb-2">
-                    Step 2 of 2: Guest Information
+                    {t("bookNowPage.step2Badge", "Step 2 of 2: Guest Information")}
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-[#01366E]">
-                    Reservation for: <span className="text-[#FB6C01]">{formData.roomType}</span>
+                    {t("bookNowPage.reservationFor", "Reservation for:")} <span className="text-[#FB6C01]">{selectedRoomObj?.title || formData.roomType}</span>
                   </h2>
                   <p className="text-slate-600 text-sm mt-1">
-                    Fill in your details below. 10% direct booking discount is automatically applied.
+                    {t("bookNowPage.fillDetails", "Fill in your details below. 10% direct booking discount is automatically applied.")}
                   </p>
                 </div>
 
@@ -622,12 +618,12 @@ export default function BookNowPage() {
                   <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100">
                     <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                       <User className="w-5 h-5 text-blue-600" />
-                      Personal Information
+                      {t("bookNowPage.personalInfo", "Personal Information")}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="booking-fullName" className="block text-sm font-semibold text-slate-800 mb-1.5">
-                          Full Name <span className="text-red-600">*</span>
+                          {t("bookNowPage.fullName", "Full Name")} <span className="text-red-600">*</span>
                         </label>
                         <div className="relative group">
                           <input
@@ -646,7 +642,7 @@ export default function BookNowPage() {
 
                       <div>
                         <label htmlFor="booking-email" className="block text-sm font-semibold text-slate-800 mb-1.5">
-                          Email Address <span className="text-red-600">*</span>
+                          {t("bookNowPage.emailAddress", "Email Address")} <span className="text-red-600">*</span>
                         </label>
                         <div className="relative group">
                           <input
@@ -665,7 +661,7 @@ export default function BookNowPage() {
 
                       <div className="md:col-span-2">
                         <label htmlFor="booking-phone" className="block text-sm font-semibold text-slate-800 mb-1.5">
-                          Phone / WhatsApp Number <span className="text-red-600">*</span>
+                          {t("bookNowPage.phoneWhatsApp", "Phone / WhatsApp Number")} <span className="text-red-600">*</span>
                         </label>
                         <div className="relative group">
                           <input
@@ -688,12 +684,12 @@ export default function BookNowPage() {
                   <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100">
                     <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                       <Hotel className="w-5 h-5 text-purple-600" />
-                      Room Selection
+                      {t("bookNowPage.roomSelection", "Room Selection")}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="booking-roomType" className="block text-sm font-semibold text-slate-800 mb-1.5">
-                          Room Category <span className="text-red-600">*</span>
+                          {t("bookNowPage.roomCategory", "Room Category")} <span className="text-red-600">*</span>
                         </label>
                         <div className="relative">
                           <select
@@ -704,11 +700,10 @@ export default function BookNowPage() {
                             required
                             className="w-full py-3.5 px-4 pr-11 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all duration-300 bg-white text-base text-slate-900 appearance-none cursor-pointer min-h-[48px]"
                           >
-                            <option value="">Select Room Type</option>
+                            <option value="">{t("bookNowPage.selectRoomType", "Select Room Type")}</option>
                             {roomOptions.map((room, idx) => (
                               <option key={idx} value={room.label}>
-                                {room.label} (Max {room.maxGuests} guest
-                                {room.maxGuests > 1 ? "s" : ""})
+                                {room.title} (Max {room.maxGuests} {t("room.guest", "Guest")}{room.maxGuests > 1 ? "s" : ""})
                               </option>
                             ))}
                           </select>
@@ -718,7 +713,7 @@ export default function BookNowPage() {
 
                       <div>
                         <label htmlFor="booking-numberOfRooms" className="block text-sm font-semibold text-slate-800 mb-1.5">
-                          Number of Rooms <span className="text-red-600">*</span>
+                          {t("bookNowPage.numberOfRooms", "Number of Rooms")} <span className="text-red-600">*</span>
                         </label>
                         <div className="relative">
                           <input
@@ -730,7 +725,7 @@ export default function BookNowPage() {
                             min="1"
                             required
                             className="w-full py-3.5 px-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all duration-300 bg-white text-base text-slate-900 min-h-[48px]"
-                            placeholder="Number of Rooms"
+                            placeholder={t("bookNowPage.numberOfRooms", "Number of Rooms")}
                           />
                         </div>
                       </div>
@@ -741,11 +736,11 @@ export default function BookNowPage() {
                   <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-2xl p-6 border border-green-100">
                     <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                       <Users className="w-5 h-5 text-green-600" />
-                      Guest Information
+                      {t("bookNowPage.guestInfo", "Guest Information")}
                     </h3>
                     <div>
                       <label htmlFor="booking-numberOfPeople" className="block text-sm font-semibold text-slate-800 mb-1.5">
-                        Total Number of Guests <span className="text-red-600">*</span>
+                        {t("bookNowPage.totalGuests", "Total Number of Guests")} <span className="text-red-600">*</span>
                       </label>
                       <div className="relative">
                         <input
@@ -758,14 +753,14 @@ export default function BookNowPage() {
                           max={maxGuests}
                           required
                           className="w-full py-3.5 px-4 pr-11 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 bg-white text-base text-slate-900 min-h-[48px]"
-                          placeholder="Number of Guests"
+                          placeholder={t("bookNowPage.totalGuests", "Number of Guests")}
                         />
                         <Users className="absolute right-3.5 top-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
                       </div>
                     </div>
                     {formData.roomType && (
                       <p className="text-sm text-green-700 mt-2 font-medium">
-                        Maximum {maxGuests} guest{maxGuests > 1 ? "s" : ""} allowed for {formData.roomType}
+                        {t("bookNowPage.maxGuestsAllowed", { maxGuests, roomType: selectedRoomObj?.title || formData.roomType, defaultValue: `Maximum ${maxGuests} guests allowed for ${selectedRoomObj?.title || formData.roomType}` })}
                       </p>
                     )}
                   </div>
@@ -774,12 +769,12 @@ export default function BookNowPage() {
                   <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-100">
                     <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                       <Calendar className="w-5 h-5 text-orange-600" />
-                      Stay Duration
+                      {t("bookNowPage.stayDuration", "Stay Duration")}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="booking-checkIn" className="block text-sm font-semibold text-slate-800 mb-1.5">
-                          Check-in Date <span className="text-red-600">*</span>
+                          {t("bookNowPage.checkInDate", "Check-in Date")} <span className="text-red-600">*</span>
                         </label>
                         <input
                           type="date"
@@ -794,7 +789,7 @@ export default function BookNowPage() {
                       </div>
                       <div>
                         <label htmlFor="booking-checkOut" className="block text-sm font-semibold text-slate-800 mb-1.5">
-                          Check-out Date <span className="text-red-600">*</span>
+                          {t("bookNowPage.checkOutDate", "Check-out Date")} <span className="text-red-600">*</span>
                         </label>
                         <input
                           type="date"
@@ -818,11 +813,11 @@ export default function BookNowPage() {
                   <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6 border border-indigo-100">
                     <label htmlFor="booking-document" className="block text-lg font-semibold text-slate-900 mb-1 flex items-center gap-2">
                       <FileText className="w-5 h-5 text-indigo-600" />
-                      Document Upload
-                      <span className="text-xs text-slate-500 font-normal ml-auto">(Optional online)</span>
+                      {t("bookNowPage.documentUpload", "Document Upload")}
+                      <span className="text-xs text-slate-500 font-normal ml-auto">{t("bookNowPage.optionalOnline", "(Optional online)")}</span>
                     </label>
                     <p className="text-xs text-slate-600 mb-4">
-                      Upload photo of passport / citizenship for faster check-in, or present original upon arrival at reception.
+                      {t("bookNowPage.documentHelp", "Upload photo of passport / citizenship for faster check-in, or present original upon arrival at reception.")}
                     </p>
                     <div className="relative">
                       <input
@@ -850,10 +845,10 @@ export default function BookNowPage() {
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                         <div>
                           <span className="text-xs font-bold text-amber-800 uppercase tracking-wider block">
-                            Estimated Total ({estimatedNights} {estimatedNights === 1 ? "night" : "nights"}, {formData.numberOfRooms} {formData.numberOfRooms > 1 ? "rooms" : "room"})
+                            {t("bookNowPage.estimatedTotal", { nights: estimatedNights, nightPlural: estimatedNights === 1 ? "" : "s", rooms: formData.numberOfRooms, roomPlural: formData.numberOfRooms > 1 ? "s" : "", defaultValue: `Estimated Total (${estimatedNights} ${estimatedNights === 1 ? "night" : "nights"}, ${formData.numberOfRooms} ${formData.numberOfRooms > 1 ? "rooms" : "room"})` })}
                           </span>
                           <span className="text-xs text-gray-600">
-                            Nepali guests pay in NPR at front desk
+                            {t("bookNowPage.nprNotice", "Nepali guests pay in NPR at front desk")}
                           </span>
                         </div>
                         <div className="text-left sm:text-right">
@@ -875,7 +870,7 @@ export default function BookNowPage() {
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <span className="relative flex items-center justify-center gap-2">
-                      {isSubmitting ? "Registering Reservation..." : "Complete Booking"}
+                      {isSubmitting ? t("bookNowPage.registering", "Registering Reservation...") : t("bookNowPage.completeBooking", "Complete Booking")}
                       <Sparkles className="w-5 h-5" />
                     </span>
                   </button>
@@ -892,46 +887,42 @@ export default function BookNowPage() {
               <Check className="w-12 h-12 text-white" />
             </div>
             <h2 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-6">
-              Booking Confirmed!
+              {t("bookNowPage.confirmedTitle", "Booking Confirmed!")}
             </h2>
             <div className="space-y-4 text-gray-700">
               <p className="text-xl">
-                Thank you{" "}
+                {t("bookNowPage.thankYou", "Thank you")}{" "}
                 <span className="font-bold text-blue-600">
                   {formData.fullName}
                 </span>
                 !
               </p>
               <p className="text-lg">
-                Your reservation for a{" "}
-                <span className="font-semibold text-purple-600">
-                  {formData.roomType}
-                </span>{" "}
-                has been confirmed.
+                {t("bookNowPage.reservationConfirmed", { roomType: selectedRoomObj?.title || formData.roomType, defaultValue: `Your reservation for a ${selectedRoomObj?.title || formData.roomType} has been confirmed.` })}
               </p>
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 mt-6 border border-blue-100">
                 <h3 className="font-semibold text-gray-800 mb-3">
-                  Booking Summary:
+                  {t("bookNowPage.bookingSummary", "Booking Summary:")}
                 </h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-gray-600">Check-in:</span>
+                    <span className="text-gray-600">{t("bookNowPage.checkIn", "Check-in:")}</span>
                     <p className="font-semibold">{formData.checkIn}</p>
                   </div>
                   <div>
-                    <span className="text-gray-600">Check-out:</span>
+                    <span className="text-gray-600">{t("bookNowPage.checkOut", "Check-out:")}</span>
                     <p className="font-semibold">{formData.checkOut}</p>
                   </div>
                   <div>
-                    <span className="text-gray-600">Guests:</span>
+                    <span className="text-gray-600">{t("bookNowPage.guests", "Guests:")}</span>
                     <p className="font-semibold">{formData.numberOfPeople}</p>
                   </div>
                   <div>
-                    <span className="text-gray-600">Rooms:</span>
+                    <span className="text-gray-600">{t("bookNowPage.rooms", "Rooms:")}</span>
                     <p className="font-semibold">{formData.numberOfRooms}</p>
                   </div>
                   <div className="col-span-2 pt-2 border-t border-blue-200 flex justify-between items-center">
-                    <span className="text-gray-700 font-medium">Total Rate:</span>
+                    <span className="text-gray-700 font-medium">{t("bookNowPage.totalRate", "Total Rate:")}</span>
                     <div className="text-right">
                       <span className="font-bold text-[#01366E] text-base">${Number(totalCalculated)} USD</span>
                       <span className="text-xs font-semibold text-amber-700 block">~NPR ${(Number(totalCalculated) * 135).toLocaleString()}</span>
@@ -940,12 +931,12 @@ export default function BookNowPage() {
                 </div>
               </div>
               <div className="mt-4 p-3 bg-amber-50 rounded-xl border border-amber-200 text-sm">
-                <span className="text-gray-600">Booking Reference ID:</span>{" "}
+                <span className="text-gray-600">{t("bookNowPage.bookingRef", "Booking Reference ID:")}</span>{" "}
                 <strong className="font-mono text-amber-700">{bookingRefId || 'Confirmed'}</strong>
               </div>
 
               <p className="text-sm text-gray-600 mt-4">
-                A confirmation notification has been registered in the hotel system for{" "}
+                {t("bookNowPage.emailNotice", "A confirmation notification has been registered in the hotel system for")}{" "}
                 <span className="font-semibold">{formData.email || formData.phone}</span>
               </p>
 
@@ -968,7 +959,7 @@ export default function BookNowPage() {
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Phone className="w-5 h-5" />
-                  Confirm on WhatsApp (+977 9818259472)
+                  {t("bookNowPage.confirmWhatsApp", "Confirm on WhatsApp (+977 9818259472)")}
                 </a>
               </div>
             </div>

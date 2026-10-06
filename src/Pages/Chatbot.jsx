@@ -12,14 +12,16 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function HotelChatBot() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
       sender: "bot",
-      text: "🏨 Welcome to Hotel Sherpa Soul! I'm your virtual assistant. How may I help you today?",
+      text: t("chatbot.greeting", "🏨 Welcome to Hotel Sherpa Soul! I'm your virtual assistant. How may I help you today?"),
       timestamp: new Date(),
     },
   ]);
@@ -34,38 +36,33 @@ export default function HotelChatBot() {
   const options = [
     {
       id: "rooms",
-      text: "🛏️ Room Types & Pricing",
+      text: "🛏️ " + t("chatbot.option1.title", "Room Types & Pricing"),
       icon: "🛏️",
-      response:
-        "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size (32.5 sq. ft) + 1 Single (19.5 sq. ft)\n• Ceiling fan/heating, private hot shower & free Wi-Fi\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size (32.5 sq. ft)\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size (32.5 sq. ft) + 1 Single (19.5 sq. ft)\n• ❄️ **Air Conditioning (AC)**, extra spacious living\n\nAll rooms include high-speed Wi-Fi. (Shared self-kitchen available exclusively for registered long-stay guests) 🍳",
+      response: t("chatbot.option1.response", "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• Ceiling fan/heating, private hot shower & free Wi-Fi\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• ❄️ **Air Conditioning (AC)**, extra spacious living\n\nAll rooms include high-speed Wi-Fi. (Shared self-kitchen available) 🍳"),
     },
     {
       id: "facilities",
-      text: "🏢 Hotel Facilities",
+      text: "🏢 " + t("chatbot.option2.title", "Hotel Facilities"),
       icon: "🏢",
-      response:
-        "Our hotel offers practical facilities for travellers:\n\n🍳 **Shared Self-Kitchen (Long-Stay Guests Only)**\n• Reserved strictly for registered long-stay guests: induction cooktop, fridge, microwave, electric kettle & utensils\n\n🏨 **24/7 Front Desk**\n• Always here to help, local tips & safe luggage storage\n\n📶 **High-Speed Free Wi-Fi**\n• Reliable internet across all rooms\n\n🚿 **24/7 Hot & Cold Showers**\n• Clean ensuite bathrooms in all rooms\n\n🚗 **Airport Transfer**\n• Convenient pickup/drop available (~20 mins from airport)",
+      response: t("chatbot.option2.response", "Our hotel offers practical facilities for travellers:\n\n🍳 **Shared Self-Kitchen**\n• Reserved strictly for registered guests: induction cooktop, fridge, microwave, electric kettle & utensils\n\n🏨 **24/7 Front Desk**\n• Always here to help, local tips & safe luggage storage\n\n📶 **High-Speed Free Wi-Fi**\n• Reliable internet across all rooms\n\n🚿 **24/7 Hot & Cold Showers**\n• Clean ensuite bathrooms in all rooms\n\n🚗 **Airport Transfer**\n• Convenient pickup/drop available (~20 mins from airport)"),
     },
     {
       id: "location",
-      text: "📍 Location & Nearby",
+      text: "📍 " + t("chatbot.option3.title", "Location & Nearby"),
       icon: "📍",
-      response:
-        "📍 **Prime Location in Thamel**\n\nWe're situated in the heart of Kathmandu's tourist district:\n\n🚶 **Walking Distance:**\n• Durbar Square - 10 minutes\n• Garden of Dreams - 5 minutes\n• Local markets & shops\n\n🏛️ **Nearby Attractions:**\n• Swayambhunath Temple\n• Boudhanath Stupa\n• Pashupatinath Temple\n\nPerfect base for exploring Nepal! 🇳🇵",
+      response: t("chatbot.option3.response", "📍 **Prime Location in Thamel**\n\nWe're situated on Thamel Bhagawati Marg 26 in the heart of Kathmandu's tourist district:\n\n🚶 **Walking Distance:**\n• Garden of Dreams - 5 minutes\n• Durbar Square - 15 minutes\n• Local markets & gear shops - right outside\n\nPerfect base for exploring Nepal! 🇳🇵"),
     },
     {
       id: "booking",
-      text: "📅 Make a Reservation",
+      text: "📅 " + t("chatbot.option4.title", "Make a Reservation"),
       icon: "📅",
-      response:
-        "Ready to book your stay? Here are your options:\n\n📞 **Call directly:**\n+977 9851068219\n\n💬 **WhatsApp:**\n+977 9818259472\n\n📧 **Email reservation:**\ninfo@hotelsherpasoul.com\n\n💻 **Online booking:**\nVisit our 'Book Your Stay' page for direct confirmation\n\n🏨 **Walk-in:**\nWe welcome walk-in guests (subject to availability)",
+      response: t("chatbot.option4.response", "Ready to book your stay? Here are your options:\n\n📞 **Call directly:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n\nBook direct with us for our best 10% discount rate!"),
     },
     {
       id: "contact",
-      text: "📞 Contact Information",
+      text: "📞 " + t("chatbot.option5.title", "Contact Information"),
       icon: "📞",
-      response:
-        "📞 **Call directly:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Thamel Bhagawati Marg 26, Kathmandu, Nepal\n\n🕐 **Reception Hours:** 24/7\n🌐 **Languages:** English, Nepali, Hindi\n\n💬 **Need immediate help?** Reach out on WhatsApp anytime at +977 9818259472!",
+      response: t("chatbot.option5.response", "📞 **Call:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Thamel Bhagawati Marg 26, Kathmandu, Nepal\n\n🕐 **Reception:** 24/7"),
     },
   ];
 
@@ -219,7 +216,7 @@ export default function HotelChatBot() {
 
             {/* Tooltip */}
             <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-              Need help? Chat with us!
+              {t("chatbot.tooltip", "Need help? Chat with us!")}
             </div>
           </motion.div>
         )}
@@ -243,11 +240,11 @@ export default function HotelChatBot() {
                 </div>
                 <div>
                   <p className="font-semibold text-lg">
-                    Sherpa Soul Assistant
+                    {t("chatbot.headerTitle", "Sherpa Soul Assistant")}
                   </p>
                   <div className="flex items-center space-x-1 text-sm opacity-90">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span>Online now</span>
+                    <span>{t("chatbot.online", "Online now")}</span>
                   </div>
                 </div>
               </div>
@@ -391,7 +388,7 @@ export default function HotelChatBot() {
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium text-gray-600">
-                        How can I help you?
+                        {t("chatbot.howCanIHelp", "How can I help you?")}
                       </span>
                       <ChevronDown size={16} className="text-gray-400" />
                     </div>
@@ -428,7 +425,7 @@ export default function HotelChatBot() {
                     type="text"
                     value={customMessage}
                     onChange={(e) => setCustomMessage(e.target.value)}
-                    placeholder="Type your message..."
+                    placeholder={t("chatbot.inputPlaceholder", "Type your message...")}
                     className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#FB6C01] focus:border-transparent"
                   />
                   <motion.button

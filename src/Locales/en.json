@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About",
+    "about": "About Us",
     "room": "Rooms",
     "gallery": "Gallery",
     "location": "Location",
@@ -271,7 +271,10 @@
     "available": "Available",
     "from": "from",
     "guest": "Guest",
-    "guestsSuffix": "s"
+    "guestsSuffix": "s",
+    "categoriesAvailable": "3 Room Categories Available",
+    "perNight": "/ night",
+    "onlyLeft": "Only 2 rooms left!"
   },
   "roomDetails": {
     "title": "Room Details",
@@ -287,7 +290,18 @@
     "availability": "Availability",
     "checkIn": "Check-In",
     "checkOut": "Check-Out",
-    "relatedRooms": "Related Rooms"
+    "relatedRooms": "Related Rooms",
+    "aboutThisRoom": "About This Room",
+    "occupancyLabel": "Occupancy",
+    "roomArea": "Room Area",
+    "bedSetup": "Bed Setup",
+    "nepaliRate": "Nepali Guests:",
+    "bestDirectRate": "Best direct rate guaranteed",
+    "tabs": {
+      "overview": "Overview",
+      "amenities": "Amenities",
+      "features": "Features"
+    }
   },
   "homeStats": {
     "title": "Trusted by Thousands",
@@ -400,7 +414,7 @@
   "modalDescription": "Take a visual look through our clean and comfortable accommodations in the heart of Thamel, Kathmandu.",
   "heroSlides": [
     {
-      "image": "/changes_photo/singleBedWithSofa.webp",
+      "image": "/changes_photo/deluxeRoom_ai.webp",
       "title": "Peaceful Sleep in Thamel",
       "subtitle": "Clean & Restful"
     },
@@ -579,10 +593,10 @@
       "4": "Pick up & Drop Request"
     },
     "stat": {
-      "1": "Years Expericence",
-      "2": "Happy Guests",
-      "3": "Support",
-      "4": "Rating"
+      "1": "Front Desk Support",
+      "2": "Quiet & Peaceful",
+      "3": "Direct Booking Discount",
+      "4": "Luggage Storage"
     }
   },
   "modal": {
@@ -689,7 +703,17 @@
     "badge": "Room Types & Current Rates",
     "title": "Clean, Quiet Rooms in Thamel",
     "subtitle": "Every room includes private attached bathroom with continuous 24/7 hot water, high-speed fiber Wi-Fi, and access to our shared self-kitchen.",
+    "mostPopular": "Most Popular",
     "perNight": "/ night",
+    "bedLabel": "Bed:",
+    "occupancyLabel": "Occupancy:",
+    "sizeLabel": "Room Size:",
+    "keyAmenities": "Key Amenities",
+    "viewDetails": "View Details",
+    "checkAvailability": "Check Availability",
+    "directOfferText": "Best Available Direct-Booking Offer",
+    "directOfferSub": "No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.",
+    "compareAll": "Compare All Rooms",
     "budget": {
       "name": "Budget Family Room",
       "bed": "1 King Bed + 1 Single Bed",
@@ -722,17 +746,7 @@
       "f3": "Spacious Private Bathroom (24/7 Hot Water)",
       "f4": "Free High-Speed Fiber Wi-Fi",
       "f5": "Shared Guest Kitchen Access"
-    },
-    "viewDetails": "View Details",
-    "checkAvailability": "Check Availability",
-    "mostPopular": "Most Popular",
-    "directOfferText": "Best Available Direct-Booking Offer",
-    "directOfferSub": "No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.",
-    "compareAll": "Compare All Rooms",
-    "bedLabel": "Bed:",
-    "occupancyLabel": "Occupancy:",
-    "sizeLabel": "Room Size:",
-    "keyAmenities": "Key Amenities"
+    }
   },
   "facilitiesSection": {
     "badge": "Verified Hotel Amenities",
@@ -791,6 +805,56 @@
     "l5": "Tribhuvan International Airport (KTM)",
     "l5Dist": "~6 km (~20 to 30 min drive)",
     "l5Note": "Airport pickup & drop-off available upon request"
+  },
+  "blog": {
+    "badge": "Official Travel Hub",
+    "title": "Kathmandu Travel Guide",
+    "subtitle": "Discover Kathmandu through local tips, Thamel travel guides, trekking information, things to do, places to visit and practical advice for travelers visiting Nepal.",
+    "searchPlaceholder": "Search guides or topics...",
+    "readFullGuide": "Read Full Guide",
+    "noMatching": "No matching travel guides found",
+    "trySearching": "Try searching with different keywords like \"Thamel\", \"Trekking\", or \"Sightseeing\".",
+    "resetFilters": "Reset Filters",
+    "relatedTopics": "Related Topics & Search Keywords:",
+    "planningStayTitle": "Planning Your Kathmandu Stay?",
+    "planningStayDesc": "Enjoy central Thamel access with peaceful, restaurant-free sleep.",
+    "viewRoomsBtn": "View Rooms & Rates",
+    "categories": {
+      "all": "All",
+      "thamelGuide": "Thamel Guide",
+      "accommodation": "Accommodation",
+      "trekking": "Trekking",
+      "sightseeing": "Sightseeing",
+      "travelAdvice": "Travel Advice",
+      "transportation": "Transportation"
+    }
+  },
+  "chatbot": {
+    "tooltip": "Need help? Chat with us!",
+    "headerTitle": "Sherpa Soul Assistant",
+    "online": "Online now",
+    "howCanIHelp": "How can I help you?",
+    "inputPlaceholder": "Type your message...",
+    "option1": {
+      "title": "Room Types & Pricing",
+      "response": "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• Ceiling fan/heating, private hot shower & free Wi-Fi\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• ❄️ **Air Conditioning (AC)**, extra spacious living\n\nAll rooms include high-speed Wi-Fi. (Shared self-kitchen available) 🍳"
+    },
+    "option2": {
+      "title": "Hotel Facilities",
+      "response": "Our hotel offers practical facilities for travellers:\n\n🍳 **Shared Self-Kitchen**\n• Induction cooktop, fridge, microwave, electric kettle & utensils\n\n🏨 **24/7 Front Desk**\n• Always here to help, local tips & safe luggage storage\n\n📶 **High-Speed Free Wi-Fi**\n• Reliable internet across all rooms\n\n🚿 **24/7 Hot & Cold Showers**\n• Clean ensuite bathrooms in all rooms\n\n🚗 **Airport Transfer**\n• Convenient pickup/drop available (~20 mins from airport)"
+    },
+    "option3": {
+      "title": "Location & Nearby",
+      "response": "📍 **Prime Location in Thamel**\n\nWe're situated on Thamel Bhagawati Marg 26 in the heart of Kathmandu's tourist district:\n\n🚶 **Walking Distance:**\n• Garden of Dreams - 5 minutes\n• Durbar Square - 15 minutes\n• Local markets & gear shops - right outside\n\nPerfect base for exploring Nepal! 🇳🇵"
+    },
+    "option4": {
+      "title": "Make a Reservation",
+      "response": "Ready to book your stay? Here are your options:\n\n📞 **Call directly:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n\nBook direct with us for our best 10% discount rate!"
+    },
+    "option5": {
+      "title": "Contact Information",
+      "response": "📞 **Call:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Thamel Bhagawati Marg 26, Kathmandu, Nepal\n\n🕐 **Reception:** 24/7"
+    }
   },
   "homeTrekkersSection": {
     "badge": "Trekker-Friendly Services",
@@ -859,5 +923,72 @@
     "bookBtn": "Book Direct & Save 10%",
     "callBtn": "Call +977 9851068219",
     "disclaimer": "Best available direct-booking offer. Contact us for availability and dates."
+  },
+  "bookNowPage": {
+    "heroBadge": "Direct Booking Privilege: Save 10% on All Rooms",
+    "heroTitle": "Reserve Your Peaceful Stay",
+    "heroSub": "Clean, quiet rooms, authentic Sherpa hospitality, and comfortable rest in the heart of Thamel, Kathmandu",
+    "step1Badge": "Step 1: Choose Your Room Category",
+    "step1Title": "Select From Our 3 Room Categories",
+    "step1Sub": "Click any room to select it — your 10% direct booking discount is automatically applied.",
+    "directOff": "10% DIRECT OFF",
+    "roomSelected": "✓ Room Selected",
+    "selectThisRoom": "Select This Room",
+    "getInTouch": "Get in Touch",
+    "hereToHelp": "We're here to help 24/7",
+    "callDirectly": "Call directly",
+    "email": "Email",
+    "location": "Location",
+    "officeHours": "Office Hours",
+    "support247": "24/7 Customer Support",
+    "otaTitle": "Prefer Booking on Trusted OTAs?",
+    "otaSub": "You can also reserve Hotel Sherpa Soul through our official listings on major platforms:",
+    "noticeTitle": "Important Notice",
+    "notice1": "Original identification documents required",
+    "notice2": "Upload a clear photo of your ID below",
+    "notice3": "Booking confirmation will be sent via email",
+    "notice4": "Cancellation policy applies as per terms",
+    "step2Badge": "Step 2 of 2: Guest Information",
+    "reservationFor": "Reservation for:",
+    "fillDetails": "Fill in your details below. 10% direct booking discount is automatically applied.",
+    "personalInfo": "Personal Information",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "phoneWhatsApp": "Phone / WhatsApp Number",
+    "roomSelection": "Room Selection",
+    "roomCategory": "Room Category",
+    "selectRoomType": "Select Room Type",
+    "numberOfRooms": "Number of Rooms",
+    "guestInfo": "Guest Information",
+    "totalGuests": "Total Number of Guests",
+    "maxGuestsAllowed": "Maximum {{maxGuests}} guests allowed for {{roomType}}",
+    "stayDuration": "Stay Duration",
+    "checkInDate": "Check-in Date",
+    "checkOutDate": "Check-out Date",
+    "documentUpload": "Document Upload",
+    "optionalOnline": "(Optional online)",
+    "documentHelp": "Upload photo of passport / citizenship for faster check-in, or present original upon arrival at reception.",
+    "estimatedTotal": "Estimated Total ({{nights}} night{{nightPlural}}, {{rooms}} room{{roomPlural}})",
+    "nprNotice": "Nepali guests pay in NPR at front desk",
+    "registering": "Registering Reservation...",
+    "completeBooking": "Complete Booking",
+    "confirmedTitle": "Booking Confirmed!",
+    "thankYou": "Thank you",
+    "reservationConfirmed": "Your reservation for a {{roomType}} has been confirmed.",
+    "bookingSummary": "Booking Summary:",
+    "checkIn": "Check-in:",
+    "checkOut": "Check-out:",
+    "guests": "Guests:",
+    "rooms": "Rooms:",
+    "totalRate": "Total Rate:",
+    "bookingRef": "Booking Reference ID:",
+    "emailNotice": "A confirmation notification has been registered in the hotel system for",
+    "confirmWhatsApp": "Confirm on WhatsApp (+977 9818259472)"
+  },
+  "bookingModal": {
+    "bannerText": "Direct Booking Privilege: 10% Discount is automatically applied to all rates below!",
+    "bestRateGuaranteed": "Best Rate Guaranteed",
+    "directOff": "10% Direct OFF",
+    "discountApplied": "10% Direct Discount Applied"
   }
 }

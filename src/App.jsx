@@ -3,16 +3,18 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { CMSProvider } from "./Context/CMSContext";
 
 import HomePage from "./Pages/HomePage";
-import RoomsPage from "./Pages/RoomsPage";
-import AboutPage from "./Pages/AboutPage";
-import ServicesPage from "./Pages/ServicesPage";
-import ContactPage from "./Pages/ContactPage";
-import FullGallery from "./Pages/FullGallery";
-import RoomDetails from "./Components/RoomsComponents/RoomDetails";
-import BookNowPage from "./Pages/BookNowPage";
-import BlogPage from "./Pages/BlogPage";
-import PrivacyPage from "./Pages/PrivacyPage";
-import TermsPage from "./Pages/TermsPage";
+
+// Code-split secondary routes to shrink initial JS bundle size and minimize Total Blocking Time (TBT)
+const RoomsPage = lazy(() => import("./Pages/RoomsPage"));
+const AboutPage = lazy(() => import("./Pages/AboutPage"));
+const ServicesPage = lazy(() => import("./Pages/ServicesPage"));
+const ContactPage = lazy(() => import("./Pages/ContactPage"));
+const FullGallery = lazy(() => import("./Pages/FullGallery"));
+const RoomDetails = lazy(() => import("./Components/RoomsComponents/RoomDetails"));
+const BookNowPage = lazy(() => import("./Pages/BookNowPage"));
+const BlogPage = lazy(() => import("./Pages/BlogPage"));
+const PrivacyPage = lazy(() => import("./Pages/PrivacyPage"));
+const TermsPage = lazy(() => import("./Pages/TermsPage"));
 
 import ScrollToTop from "./Components/HelperComponents/ScrollToTop";
 import Layout from "./Components/HelperComponents/Layout";

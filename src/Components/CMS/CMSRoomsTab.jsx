@@ -61,7 +61,7 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
     if (!editingRoom) return;
     const defaultImg =
       editingRoom.id === 101 ? "/triple.webp" :
-      editingRoom.id === 201 ? "/changes_photo/singleBedWithSofa.webp" :
+      editingRoom.id === 201 ? "/changes_photo/deluxeRoom_ai.webp" :
       "/changes_photo/doubleBed.webp";
     const nextImgs = [...(editingRoom.image || [])];
     nextImgs[0] = defaultImg;

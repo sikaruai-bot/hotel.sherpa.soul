@@ -34,15 +34,10 @@ export default function RoomsHero() {
           srcSet="/changes_photo/singlesitter.webp"
           type="image/webp"
         />
-        <motion.img
+        <img
           src="/changes_photo/singlesitter.webp"
           alt="Hotel Sherpa Soul comfortable and quiet rooms in Thamel Kathmandu"
           className="absolute top-0 left-0 w-full h-full object-cover scale-110"
-          style={{
-            x: mousePosition.x * 0.5,
-            y: mousePosition.y * 0.5,
-          }}
-          transition={{ type: "spring", stiffness: 100, damping: 15 }}
           draggable={false}
           fetchpriority="high"
           loading="eager"

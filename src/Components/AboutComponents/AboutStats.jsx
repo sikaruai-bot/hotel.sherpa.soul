@@ -28,10 +28,10 @@ export default function AboutStats() {
   const { t } = useTranslation();
 
   const stats = [
-    { number: "15+", label: t("aboutstats.stat.1"), icon: Award },
-    { number: "500+", label: t("aboutstats.stat.2"), icon: Users },
-    { number: "24/7", label: t("aboutstats.stat.3"), icon: Heart },
-    { number: "4.8★", label: t("aboutstats.stat.4"), icon: Star },
+    { number: "24/7", label: t("aboutstats.stat.1", "Front Desk Support"), icon: Heart },
+    { number: "100%", label: t("aboutstats.stat.2", "Quiet & Peaceful"), icon: Award },
+    { number: "10%", label: t("aboutstats.stat.3", "Direct Booking Discount"), icon: Star },
+    { number: "Free", label: t("aboutstats.stat.4", "Luggage Storage"), icon: Users },
   ];
 
   const features = [

@@ -5,8 +5,18 @@
     "room": "Quartos",
     "gallery": "Galeria",
     "blog": "Blog",
-    "contact": "Contacto",
-    "quick": "Reserve Já"
+    "contact": "Contato",
+    "quick": "Reservar Estadia",
+    "location": "Localização",
+    "ribbonBadge": "10% DESC",
+    "ribbonSpecial": "Especial Reserva Direta: Ganhe",
+    "ribbonDiscount": "10% de Desconto",
+    "ribbonOnAll": "em todos os quartos!",
+    "ribbonBestRate": "• Melhor Tarifa Garantida",
+    "ribbonClaim": "Garantir 10% Desc. →",
+    "mobileSpecial": "Especial Reserva Direta",
+    "mobileDiscountDesc": "Reserve diretamente em nosso site e economize 10% em toda a sua estadia em Thamel.",
+    "mobileBookBtn": "Reservar com 10% de Desconto"
   },
   "home": {
     "hero": {
@@ -88,10 +98,22 @@
     "h1": "Sobre o Hotel Sherpa Soul",
     "introHeading": "Hospitalidade Genuína e Simples em Thamel",
     "copy": "O Hotel Sherpa Soul é um hotel boutique acolhedor em Thamel, Katmandu, focado no descanso dos viajantes.",
-    "philosophy": "Filosofia: Sem Restaurante. Sem Barulho. Durma Bem.",
-    "location": "Localizado em Bhagawati Marg 26, Thamel, perto de tudo.",
-    "forTravelers": "Recebemos montanhistas, caminhantes e viajantes de todo o mundo com a hospitalidade Sherpa.",
-    "closing": "Estamos prontos para tornar a sua viagem ao Nepal inesquecível."
+    "philosophy": {
+      "heading": "No Restaurant. No Noise. Sleep Well.",
+      "copy": "We believe a hotel doesn't need to be complicated to feel welcoming. For us, hospitality is about creating a comfortable space where travelers can rest, recharge and feel ready for the next day."
+    },
+    "location": {
+      "heading": "At the Heart of Thamel",
+      "copy": "Thamel is one of Kathmandu's best-known areas for travelers, surrounded by cafés, shops, travel services and local experiences. Hotel Sherpa Soul gives you the convenience of staying close to it all while offering a peaceful place to return to."
+    },
+    "forTravelers": {
+      "heading": "From Kathmandu to the Himalayas",
+      "copy": "Many journeys through Nepal begin in Kathmandu. Whether you are visiting Nepal for culture and sightseeing, preparing for a Himalayan trek or returning from the mountains, Sherpa Soul is designed to be your comfortable Kathmandu base."
+    },
+    "closing": {
+      "heading": "Come for Kathmandu. Stay for the comfort. Sleep well for the journey ahead.",
+      "cta": "Book Your Stay"
+    }
   },
   "about": {
     "hero": {
@@ -141,7 +163,26 @@
       "submit": "Enviar Mensagem",
       "sending": "A enviar...",
       "success": "Mensagem enviada com sucesso!",
-      "error": "Ocorreu um erro. Por favor tente novamente."
+      "error": "Ocorreu um erro. Por favor tente novamente.",
+      "alertFillFields": "Please fill in all required fields.",
+      "whatsappGreeting": "Hello Hotel Sherpa Soul!",
+      "letsStart": "Let's Start a",
+      "conversation": "Conversation",
+      "contactDescription": "Whether you're planning your visit, need assistance, or want to share feedback, we're here to help make your experience at Hotel Sherpa Soul unforgettable.",
+      "quickResponseTitle": "Quick Response",
+      "quickResponseDesc": "Within 24 hours",
+      "personalTouchTitle": "Personal Touch",
+      "personalTouchDesc": "Dedicated support",
+      "sendMessage": "Send Message",
+      "fillFormMsg": "Fill out the form below and we'll get back to you soon!",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "emailAddress": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "yourMessage": "Your Message",
+      "messagePlaceholder": "Tell us about your inquiry or request...",
+      "sendViaWhatsApp": "Send via WhatsApp",
+      "selectLanguage": "Select Language"
     }
   },
   "getInTouch": {
@@ -159,7 +200,12 @@
   "contactMap": {
     "en": {
       "title": "Localização",
-      "subtitle": "No centro de Thamel, na tranquila Bhagawati Marg"
+      "subtitle": "No centro de Thamel, na tranquila Bhagawati Marg",
+      "description": "We are located in Thamel, the bustling heart of Kathmandu — just steps away from cultural landmarks, restaurants, shops, and local experiences.",
+      "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
+      "phone": "+977 9851068219",
+      "email": "info@hotelsherpasoul.com",
+      "mapTitle": "Hotel Sherpa Soul Location"
     }
   },
   "aboutStory": {
@@ -176,21 +222,48 @@
     "whyChoose": "Porquê Escolher o",
     "sherpaSoul": "Sherpa Soul?",
     "subtitle": "Paz e conveniência em Thamel",
-    "authenticSherpaLifestyle": "Hospitalidade Autêntica Sherpa",
-    "primeThamelLocation": "Localização Privilegiada em Thamel",
-    "guestAmenities": "Água Quente 24h & Wi-Fi Rápido",
-    "airportPickupForInternationalGuests": "Transfer de Aeroporto para Hóspedes Internacionais",
-    "foreignCurrencyExchange": "Câmbio e Dicas de Viagem",
-    "cleanAndSecure": "Limpo e Seguro",
+    "authenticSherpaLifestyle": {
+      "title": "Peaceful Nights",
+      "description": "We do not have a restaurant or noisy entertainment area inside the hotel. Our focus is on a calm environment where you can relax and sleep comfortably."
+    },
+    "primeThamelLocation": {
+      "title": "In the Heart of Thamel",
+      "description": "Stay close to the energy, shops, cafés and trekking agencies of Thamel while having a comfortable, quiet place to return to."
+    },
+    "guestAmenities": {
+      "title": "Three Practical Room Options",
+      "description": "Choose from Budget Family Room (3 Adults, 1 Child), Deluxe Room (2 Adults, 1 Child), or Family Room (3 Adults, 1 Child) tailored for restful stays in Thamel."
+    },
+    "airportPickupForInternationalGuests": {
+      "title": "Air Conditioning & Free Wi-Fi",
+      "description": "Air-conditioned rooms and high-speed Wi-Fi keep you comfortable and connected with family, work or travel plans."
+    },
+    "foreignCurrencyExchange": {
+      "title": "Shared Kitchen (Long Stay Only)",
+      "description": "Our shared self-use kitchen is reserved exclusively for registered long-stay guests, offering the flexibility to prepare simple home-cooked meals with induction cooktop, fridge, and microwave."
+    },
+    "cleanAndSecure": {
+      "title": "Friendly, Personal Service",
+      "description": "We are a small hotel, so our guests are not just another room number. We make your Kathmandu stay easy, comfortable and welcoming."
+    },
     "showOtherLanguages": "Ver Mais Idiomas",
     "hideOtherLanguages": "Ocultar Idiomas",
-    "multilingualSupport": "Apoio Multilingue"
+    "multilingualSupport": {
+      "title": "Multilingual Support",
+      "description": "Welcoming international travelers with support in English, Nepali, Hindi, Arabic, German, French, and Chinese."
+    }
   },
   "aboutVision": {
     "buddhistAlt": "Cultura Sherpa",
     "our": "A Nossa",
     "vision": "Visão",
-    "description": "Ser a escolha número um para quem procura silêncio e conforto em Katmandu.",
+    "description": {
+      "part1": "We intentionally keep the hotel simple and peaceful. Instead of running a busy restaurant or entertainment space, our focus is entirely on ",
+      "highlight": "peaceful accommodation and restful sleep",
+      "part2": "for travellers exploring Kathmandu.",
+      "para2": "Hotel Sherpa Soul is built around a simple understanding of hospitality: travellers need a place where they feel comfortable, welcome and able to rest after walking Kathmandu's vibrant streets or returning from a Himalayan trek.",
+      "para3": "What we offer is simpler and more meaningful: a comfortable room, a convenient location in Thamel, a quiet night's sleep, and genuine Sherpa warmth welcoming you to Nepal."
+    },
     "para2": "Valorizamos o descanso genuíno, a limpeza e a simpatia.",
     "para3": "Proporcionar a viajantes de todo o mundo momentos memoráveis no Nepal.",
     "startJourney": "Iniciar Viagem"
@@ -204,7 +277,10 @@
     "available": "Disponível",
     "from": "A partir de",
     "guest": "Hóspede",
-    "guestsSuffix": "Hóspedes"
+    "guestsSuffix": "Hóspedes",
+    "categoriesAvailable": "3 Room Categories Available",
+    "perNight": "/ night",
+    "onlyLeft": "Only 2 rooms left!"
   },
   "roomDetails": {
     "title": "Detalhes do Quarto",
@@ -220,7 +296,18 @@
     "availability": "Disponibilidade",
     "checkIn": "Check-in",
     "checkOut": "Check-out",
-    "relatedRooms": "Outros Quartos"
+    "relatedRooms": "Outros Quartos",
+    "aboutThisRoom": "About This Room",
+    "occupancyLabel": "Occupancy",
+    "roomArea": "Room Area",
+    "bedSetup": "Bed Setup",
+    "nepaliRate": "Nepali Guests:",
+    "bestDirectRate": "Best direct rate guaranteed",
+    "tabs": {
+      "overview": "Overview",
+      "amenities": "Amenities",
+      "features": "Features"
+    }
   },
   "homeStats": {
     "title": "Qualidade & Confiança",
@@ -229,18 +316,28 @@
       "rating": "Avaliação Google",
       "reviews": "Hóspedes Felizes",
       "experience": "Anos de Experiência",
-      "support": "Receção 24/7"
+      "support": "Receção 24/7",
+      "happyGuests": "Happy Guests",
+      "sinceYear": "Since 2018",
+      "years": "Years",
+      "ofExcellence": "6 of Excellence",
+      "reviewsSuffix": "+ Reviews"
     }
   },
   "footer": {
     "cta": {
       "title": "Pronto para Descansar com Qualidade?",
       "desc": "Fique no centro de Thamel com o máximo de tranquilidade.",
-      "button": "Reserve a Sua Estadia"
+      "button": "Reserve a Sua Estadia",
+      "badge": "Hotel Sherpa Soul • Thamel, Kathmandu",
+      "heading": "Ready to Sleep Well?",
+      "copy": "Stay in the heart of Thamel and make Hotel Sherpa Soul your comfortable base for Kathmandu and your journey through Nepal."
     },
     "brand": {
       "tagline": "Sem Restaurante. Sem Barulho. Durma Bem.",
-      "desc": "O Hotel Sherpa Soul é um hotel tranquilo e acolhedor em Thamel, Katmandu."
+      "desc": "O Hotel Sherpa Soul é um hotel tranquilo e acolhedor em Thamel, Katmandu.",
+      "title": "Hotel Sherpa Soul",
+      "description": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
     },
     "quickLinks": {
       "title": "Links Rápidos",
@@ -249,7 +346,15 @@
       "about": "Sobre Nós",
       "gallery": "Galeria",
       "blog": "Blog",
-      "contact": "Contacto"
+      "contact": "Contacto",
+      "links": {
+        "home": "Home",
+        "rooms": "Rooms",
+        "aboutUs": "About Us",
+        "gallery": "Gallery",
+        "blog": "Blog",
+        "contact": "Contact"
+      }
     },
     "contactUs": {
       "title": "Contactos",
@@ -258,20 +363,37 @@
       "address": "Thamel Bhagawati Marg 26, Katmandu, Nepal"
     },
     "followUs": {
-      "title": "Siga-nos"
+      "title": "Siga-nos",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "tripAdvisor": "TripAdvisor"
     },
-    "copyright": "© 2026 Hotel Sherpa Soul. Todos os direitos reservados.",
+    "copyright": {
+      "prefix": "©",
+      "hotelName": "Hotel Sherpa Soul",
+      "suffix": "All rights reserved"
+    },
     "legal": {
       "privacy": "Política de Privacidade",
       "terms": "Termos de Serviço",
       "cookies": "Preferências de Cookies",
       "cms": "Portal CMS"
+    },
+    "otas": {
+      "title": "Book on Top OTAs",
+      "bookingCom": "Book on Booking.com",
+      "airbnb": "Book on Airbnb",
+      "agoda": "Book on Agoda",
+      "tripCom": "Book on Trip.com"
     }
   },
   "homeServices": {
     "sectionTag": "Serviços",
     "sectionTitle": "Tudo o que Precisa para a Sua Estadia",
-    "intro": "Comodidades essenciais para uma estadia tranquila.",
+    "intro": {
+      "title": "A Calm Base in the Heart of Kathmandu",
+      "desc": "Sometimes, the best hotel experience is simply a clean, comfortable room, a great location and a good night's sleep."
+    },
     "services": [
       {
         "title": "Água Quente 24h",
@@ -332,10 +454,22 @@
   "facilities": {
     "title1": "Nossas",
     "title2": "Instalações",
-    "laundry": "Lavandaria",
-    "pickup": "Transfer do Aeroporto",
-    "frontdesk": "Receção 24 Horas",
-    "showers": "Duche Quente"
+    "laundry": {
+      "title": "Shared Self-Kitchen (Long Stay Only)",
+      "desc": "Induction cooktop, refrigerator, microwave oven, electric kettle, pots, pans, utensils, and dining area reserved exclusively for long-stay travellers."
+    },
+    "pickup": {
+      "title": "Airport Transfers",
+      "desc": "Convenient airport pickup and drop-off available (~20 minutes from Tribhuvan International Airport depending on traffic)."
+    },
+    "frontdesk": {
+      "title": "24/7 Front Desk & Travel Help",
+      "desc": "Friendly assistance for check-ins, trek preparation, permits, transportation, and local Kathmandu advice."
+    },
+    "showers": {
+      "title": "Hot & Cold Showers",
+      "desc": "Private bathrooms equipped with hot and cold showers, clean towels, practical toiletries, and toothpaste."
+    }
   },
   "testimonialIntro": "Opiniões reais de viajantes que se hospedaram connosco.",
   "storiesFrom": "Histórias dos",
@@ -350,7 +484,17 @@
     "desc": "Concebidos para conforto e descanso total.",
     "size": "Área",
     "guest": "Hóspedes",
-    "rooms": "Quartos",
+    "rooms": {
+      "1": {
+        "name": "Budget Family Room"
+      },
+      "2": {
+        "name": "Deluxe Room"
+      },
+      "3": {
+        "name": "Family Room"
+      }
+    },
     "details": "Ver Mais",
     "roomdet": "Detalhes",
     "book": "Reservar",
@@ -359,15 +503,58 @@
   "contact": {
     "title": "Contacto",
     "subtitle": "Fale connosco",
-    "card": "Cartão",
-    "form": "Formulário"
+    "card": {
+      "res": {
+        "title": "Quick Response",
+        "des": "Within 24 hours"
+      },
+      "per": {
+        "title": "Personal Touch",
+        "des": "Dedicated Support"
+      }
+    },
+    "form": {
+      "title": "Send Message",
+      "desc": "Fill out the form below and we'll get back to you soon!",
+      "data": {
+        "name": "Full Name",
+        "email": "Email Address",
+        "msg": "Your Message",
+        "name2": "Enter your full name",
+        "email2": "your@gmail.com",
+        "msg2": "Tell us about your request or inqury"
+      },
+      "send": "Send via WhatsApp",
+      "send2": "Sending..."
+    }
   },
   "roomdetails": {
     "back": "Voltar",
-    "buttons": "Reservar Quarto",
-    "cta": "Verificar Disponibilidade",
-    "info": "Informações",
-    "checkin": "Check-in a partir das 12:00"
+    "buttons": {
+      "book": "Book This Room Now",
+      "check": "Check Availability"
+    },
+    "cta": {
+      "heading": "Ready to Book Your Stay?",
+      "sub": " Don't miss out on this amazing room. Book now and create unforgettable memories."
+    },
+    "info": {
+      "heading": "Important Information",
+      "points": {
+        "1": "Valid photo ID required at check-in",
+        "2": "Please contact reception for early check-in or late check-out requests",
+        "3": "Luggage storage available before check-in and after check-out"
+      }
+    },
+    "checkin": {
+      "heading": "Check In & Check Out Times",
+      "checkin": "Check-In Time",
+      "checkindes": "Welcome to your stay",
+      "checkindes2": "Early check-in may be available upon request and subject to availability.",
+      "checkout": "Check-Out Time",
+      "checkoutdes": "Safe travels ahead",
+      "checkoutdes2": "Late check-out may be available for an additional fee, subject to availability."
+    }
   },
   "book": {
     "guests": "Hóspedes",
@@ -377,16 +564,51 @@
     "title": "Reserva",
     "title2": "Os Seus Dados",
     "subtitle": "Confirmamos a sua reserva rapidamente",
-    "form": "Formulário",
-    "summary": "Resumo"
+    "form": {
+      "info": "Personal Information",
+      "name": "Full Name",
+      "email": "Email Address",
+      "number": "Phone Number",
+      "room": "Room & Stay Details",
+      "type": "Room Type",
+      "guestnote": "Each room can accommodate up to 2 guests",
+      "guests": "Number of Guests",
+      "checkin": "Check-In Date",
+      "checkout": "Check-Out Date",
+      "noroom": "Number of Rooms",
+      "id": "ID Verification",
+      "idDet": "Please upload clear images of your government-issued ID (front and back). Accepted formats: JPEG, PNG. Maximum file size: 5MB per image.",
+      "button": "Complete Booking",
+      "drag": "Drag and drop your ID images here",
+      "choose": "Choose Files"
+    },
+    "summary": {
+      "title": "Booking Summary",
+      "total": "Total Amount",
+      "policies": {
+        "booking": "Booking Policies",
+        "cancel": "Free cancellation up to 24 hours before check-in",
+        "id": "Valid ID required at check-in"
+      }
+    }
   },
   "aboutstats": {
     "title1": "O Nosso",
     "title2": "Compromisso",
     "para1": "O seu descanso e conforto são a nossa prioridade.",
     "para2": "Um refúgio de paz no centro de Katmandu.",
-    "amenities": "Comodidades",
-    "stat": "Estatísticas"
+    "amenities": {
+      "1": "Comfortable Rooms",
+      "2": "Wifi throughout the building",
+      "3": "Prime Location",
+      "4": "Pick up & Drop Request"
+    },
+    "stat": {
+      "1": "Front Desk Support",
+      "2": "Quiet & Peaceful",
+      "3": "Direct Booking Discount",
+      "4": "Luggage Storage"
+    }
   },
   "modal": {
     "title": "Aviso",
@@ -531,7 +753,11 @@
     "mostPopular": "Most Popular",
     "directOfferText": "Best Available Direct-Booking Offer",
     "directOfferSub": "No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.",
-    "compareAll": "Compare All Rooms"
+    "compareAll": "Compare All Rooms",
+    "bedLabel": "Bed:",
+    "occupancyLabel": "Occupancy:",
+    "sizeLabel": "Room Size:",
+    "keyAmenities": "Key Amenities"
   },
   "facilitiesSection": {
     "badge": "Verified Hotel Amenities",
@@ -658,5 +884,122 @@
     "bookBtn": "Book Direct & Save 10%",
     "callBtn": "Call +977 9851068219",
     "disclaimer": "Best available direct-booking offer. Contact us for availability and dates."
+  },
+  "bookNowPage": {
+    "heroBadge": "Privilégio de Reserva Direta: Economize 10% em todos os quartos",
+    "heroTitle": "Reserve sua estadia tranquila",
+    "heroSub": "Quartos limpos e tranquilos, autêntica hospitalidade Sherpa e descanso confortável no coração de Thamel, Katmandu",
+    "step1Badge": "Passo 1: Escolha a categoria do seu quarto",
+    "step1Title": "Selecione entre nossas 3 categorias de quartos",
+    "step1Sub": "Clique em qualquer quarto para selecioná-lo — seu desconto direto de 10% é aplicado automaticamente.",
+    "directOff": "10% DESC. DIRETO",
+    "roomSelected": "✓ Quarto selecionado",
+    "selectThisRoom": "Selecionar este quarto",
+    "getInTouch": "Entre em contato",
+    "hereToHelp": "Estamos aqui para ajudar 24/7",
+    "callDirectly": "Ligar diretamente",
+    "email": "E-mail",
+    "location": "Localização",
+    "officeHours": "Horário de atendimento",
+    "support247": "Atendimento ao cliente 24/7",
+    "otaTitle": "Prefere reservar através de plataformas OTA?",
+    "otaSub": "Você também pode reservar o Hotel Sherpa Soul através de nossos perfis oficiais:",
+    "noticeTitle": "Aviso Importante",
+    "notice1": "Documentos de identificação originais necessários",
+    "notice2": "Envie uma foto nítida do seu documento abaixo",
+    "notice3": "A confirmação da reserva será enviada por e-mail",
+    "notice4": "A política de cancelamento se aplica conforme os termos",
+    "step2Badge": "Passo 2 de 2: Informações do Hóspede",
+    "reservationFor": "Reserva para:",
+    "fillDetails": "Preencha seus dados abaixo. O desconto direto de 10% é aplicado automaticamente.",
+    "personalInfo": "Informações Pessoais",
+    "fullName": "Nome completo",
+    "emailAddress": "Endereço de e-mail",
+    "phoneWhatsApp": "Número de Telefone / WhatsApp",
+    "roomSelection": "Seleção de Quarto",
+    "roomCategory": "Categoria de Quarto",
+    "selectRoomType": "Selecione o Tipo de Quarto",
+    "numberOfRooms": "Número de Quartos",
+    "guestInfo": "Informações dos Hóspedes",
+    "totalGuests": "Número Total de Hóspedes",
+    "maxGuestsAllowed": "Máximo de {{maxGuests}} hóspedes permitidos para {{roomType}}",
+    "stayDuration": "Duração da Estadia",
+    "checkInDate": "Data de Check-in",
+    "checkOutDate": "Data de Check-out",
+    "documentUpload": "Envio de Documento",
+    "optionalOnline": "(Opcional on-line)",
+    "documentHelp": "Envie uma foto do passaporte ou documento de identidade para um check-in mais rápido ou apresente o original na chegada.",
+    "estimatedTotal": "Total estimado ({{nights}} noite(s), {{rooms}} quarto(s))",
+    "nprNotice": "Hóspedes nepaleses pagam em NPR na recepção",
+    "registering": "Registrando reserva...",
+    "completeBooking": "Concluir Reserva",
+    "confirmedTitle": "Reserva Confirmada!",
+    "thankYou": "Obrigado",
+    "reservationConfirmed": "Sua reserva para {{roomType}} foi confirmada.",
+    "bookingSummary": "Resumo da Reserva:",
+    "checkIn": "Check-in:",
+    "checkOut": "Check-out:",
+    "guests": "Hóspedes:",
+    "rooms": "Quartos:",
+    "totalRate": "Tarifa Total:",
+    "bookingRef": "ID de Referência:",
+    "emailNotice": "Uma notificação de confirmação foi registrada no sistema para",
+    "confirmWhatsApp": "Confirmar pelo WhatsApp (+977 9818259472)"
+  },
+  "bookingModal": {
+    "bannerText": "Privilégio de Reserva Direta: 10% de desconto aplicado automaticamente abaixo!",
+    "bestRateGuaranteed": "Melhor tarifa garantida",
+    "directOff": "10% DESC. DIRETO",
+    "discountApplied": "10% de desconto direto aplicado"
+  },
+  "blog": {
+    "badge": "Official Travel Hub",
+    "title": "Kathmandu Travel Guide",
+    "subtitle": "Discover Kathmandu through local tips, Thamel travel guides, trekking information, things to do, places to visit and practical advice for travelers visiting Nepal.",
+    "searchPlaceholder": "Search guides or topics...",
+    "readFullGuide": "Read Full Guide",
+    "noMatching": "No matching travel guides found",
+    "trySearching": "Try searching with different keywords like \"Thamel\", \"Trekking\", or \"Sightseeing\".",
+    "resetFilters": "Reset Filters",
+    "relatedTopics": "Related Topics & Search Keywords:",
+    "planningStayTitle": "Planning Your Kathmandu Stay?",
+    "planningStayDesc": "Enjoy central Thamel access with peaceful, restaurant-free sleep.",
+    "viewRoomsBtn": "View Rooms & Rates",
+    "categories": {
+      "all": "All",
+      "thamelGuide": "Thamel Guide",
+      "accommodation": "Accommodation",
+      "trekking": "Trekking",
+      "sightseeing": "Sightseeing",
+      "travelAdvice": "Travel Advice",
+      "transportation": "Transportation"
+    }
+  },
+  "chatbot": {
+    "tooltip": "Need help? Chat with us!",
+    "headerTitle": "Sherpa Soul Assistant",
+    "online": "Online now",
+    "howCanIHelp": "How can I help you?",
+    "inputPlaceholder": "Type your message...",
+    "option1": {
+      "title": "Room Types & Pricing",
+      "response": "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• Ceiling fan/heating, private hot shower & free Wi-Fi\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• ❄️ **Air Conditioning (AC)**, extra spacious living\n\nAll rooms include high-speed Wi-Fi. (Shared self-kitchen available) 🍳"
+    },
+    "option2": {
+      "title": "Hotel Facilities",
+      "response": "Our hotel offers practical facilities for travellers:\n\n🍳 **Shared Self-Kitchen**\n• Induction cooktop, fridge, microwave, electric kettle & utensils\n\n🏨 **24/7 Front Desk**\n• Always here to help, local tips & safe luggage storage\n\n📶 **High-Speed Free Wi-Fi**\n• Reliable internet across all rooms\n\n🚿 **24/7 Hot & Cold Showers**\n• Clean ensuite bathrooms in all rooms\n\n🚗 **Airport Transfer**\n• Convenient pickup/drop available (~20 mins from airport)"
+    },
+    "option3": {
+      "title": "Location & Nearby",
+      "response": "📍 **Prime Location in Thamel**\n\nWe're situated on Thamel Bhagawati Marg 26 in the heart of Kathmandu's tourist district:\n\n🚶 **Walking Distance:**\n• Garden of Dreams - 5 minutes\n• Durbar Square - 15 minutes\n• Local markets & gear shops - right outside\n\nPerfect base for exploring Nepal! 🇳🇵"
+    },
+    "option4": {
+      "title": "Make a Reservation",
+      "response": "Ready to book your stay? Here are your options:\n\n📞 **Call directly:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n\nBook direct with us for our best 10% discount rate!"
+    },
+    "option5": {
+      "title": "Contact Information",
+      "response": "📞 **Call:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Thamel Bhagawati Marg 26, Kathmandu, Nepal\n\n🕐 **Reception:** 24/7"
+    }
   }
 }

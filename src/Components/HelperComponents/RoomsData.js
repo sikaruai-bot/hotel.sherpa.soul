@@ -7,7 +7,7 @@ export const rooms = [
     type: "Budget Family Room",
     guests: 4,
     occupancy: "3 Adults, 1 Child",
-    size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
+    size: "224 Sq. Ft.",
     beds: "1 King Bed + 1 Single Bed",
     bedDetails: {
       king: "1 King Size Bed",
@@ -45,7 +45,7 @@ export const rooms = [
     type: "Deluxe Room",
     guests: 3,
     occupancy: "2 Adults, 1 Child",
-    size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
+    size: "168 Sq. Ft.",
     beds: "1 King Bed",
     bedDetails: {
       king: "1 King Size Bed",
@@ -82,7 +82,7 @@ export const rooms = [
     type: "Family Room",
     guests: 4,
     occupancy: "3 Adults, 1 Child",
-    size: "[CONFIRM ROOM SIZE BEFORE PUBLISHING]",
+    size: "224 Sq. Ft.",
     beds: "1 King Bed + 1 Single Bed",
     bedDetails: {
       king: "1 King Size Bed",

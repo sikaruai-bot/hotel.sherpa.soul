@@ -166,11 +166,11 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
             <div className="flex items-center gap-2 text-[#01366E] font-semibold">
               <span className="text-base">🎉</span>
               <span>
-                Direct Booking Privilege: <strong className="text-[#FB6C01] font-bold">10% Discount</strong> is automatically applied to all rates below!
+                {t("bookingModal.bannerText", "Direct Booking Privilege: 10% Discount is automatically applied to all rates below!")}
               </span>
             </div>
             <span className="hidden sm:inline-block bg-[#FB6C01] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-              Best Rate Guaranteed
+              {t("bookingModal.bestRateGuaranteed", "Best Rate Guaranteed")}
             </span>
           </div>
 
@@ -212,6 +212,14 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
             {!loading && !error && rooms.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {rooms.map((room) => {
+                  const rId = Number(room.id);
+                  const roomName = rId === 101 ? t("homeRoomsData.budget.name", room.name) : rId === 201 ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
+                  const roomBeds = rId === 101 ? t("homeRoomsData.budget.bed", room.beds) : rId === 201 ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);
+                  let roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", room.description) : rId === 201 ? t("homeRoomsData.deluxe.desc", room.description) : t("homeRoomsData.family.desc", room.description);
+                  if (roomDesc && (roomDesc.includes("#") || roomDesc.length > 250)) {
+                    roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", "Comfortable family room.") : rId === 201 ? t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room.") : t("homeRoomsData.family.desc", "Spacious family suite.");
+                  }
+
                   return (
                     <motion.div
                       key={room.id}
@@ -227,7 +235,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                       <div className="relative h-48 overflow-hidden bg-slate-100">
                         <img
                           src={String((Array.isArray(room.image) ? room.image[0] : room.image) || "/changes_photo/deluxeRoom_ai.webp").replace(/\.jpeg$/i, ".webp")}
-                          alt={room.name ? `${room.name} - Hotel Sherpa Soul Thamel Kathmandu` : "Hotel Sherpa Soul Room Thamel Kathmandu"}
+                          alt={roomName ? `${roomName} - Hotel Sherpa Soul Thamel Kathmandu` : "Hotel Sherpa Soul Room Thamel Kathmandu"}
                           loading="lazy"
                           decoding="async"
                           width="400"
@@ -239,7 +247,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                           }}
                         />
                         <div className="absolute top-3 left-3 bg-gradient-to-r from-[#FB6C01] to-amber-600 text-white px-2.5 py-1 rounded-full text-xs font-bold shadow flex items-center gap-1 border border-amber-300/30">
-                          <span>🏷️</span> 10% Direct OFF
+                          <span>🏷️</span> {t("bookingModal.directOff", "10% Direct OFF")}
                         </div>
                       </div>
 
@@ -247,7 +255,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                       <div className="p-4">
                         <div className="flex items-start justify-between mb-2">
                           <h3 className="text-lg font-semibold text-gray-900 line-clamp-1">
-                            {room.name}
+                            {roomName}
                           </h3>
                           {room.rating && (
                             <div className="flex items-center text-yellow-500">
@@ -260,7 +268,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                         </div>
 
                         <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                          {room.description}
+                          {roomDesc}
                         </p>
 
                         {/* Room Info */}
@@ -271,15 +279,15 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                               <span>{room.guests}</span>
                             </div>
                           )}
-                          {room.beds && (
+                          {roomBeds && (
                             <div className="flex items-center gap-1">
                               <Bed size={14} />
-                              <span>{room.beds}</span>
+                              <span>{roomBeds}</span>
                             </div>
                           )}
                           <div className="flex items-center gap-1 text-amber-700 font-semibold">
                             <span>🔥</span>
-                            <span>2 rooms available</span>
+                            <span>{t("roomsCard.onlyLeft", "2 rooms available")}</span>
                           </div>
                         </div>
 
@@ -291,7 +299,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                               .map((amenity, index) => (
                                 <div
                                   key={index}
-                                  className="flex items-center gap-1 bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs"
+                                  className="flex items-center gap-1 bg-blue-50 text-[#01366E] px-2 py-1 rounded-md text-xs font-medium"
                                 >
                                   {getAmenityIcon(amenity)}
                                   <span>{amenity}</span>
@@ -316,11 +324,11 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                                     ${Math.round(room.price * 0.9)} USD
                                   </span>
                                   <span className="text-xs font-normal text-gray-500">
-                                    /night
+                                    {t("roomsCard.perNight", "/ night")}
                                   </span>
                                 </div>
                                 <div className="text-[10px] font-bold text-emerald-600">
-                                  10% Direct Discount Applied
+                                  {t("bookingModal.discountApplied", "10% Direct Discount Applied")}
                                 </div>
                                 <div className="text-xs font-semibold text-amber-700">
                                   ~NPR {Math.round((room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))) * 0.9).toLocaleString()}
@@ -329,7 +337,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                             )}
                           </div>
                           <motion.button
-                            className="px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-orange-500 text-white hover:bg-orange-600 shadow"
+                            className="px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-[#01366E] text-white hover:bg-[#072340] shadow"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={(e) => {

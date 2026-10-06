@@ -1,11 +1,22 @@
 {
   "nav": {
-    "home": "بيت",
-    "about": "عن",
-    "room": "غرفة",
-    "gallery": "معرض",
-    "contact": "اتصال",
-    "quick": "كتاب سريع"
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "room": "الغرف",
+    "gallery": "المعرض",
+    "contact": "اتصل بنا",
+    "quick": "احجز إقامتك",
+    "location": "الموقع",
+    "blog": "المدونة",
+    "ribbonBadge": "خصم 10%",
+    "ribbonSpecial": "عرض الحجز المباشر: احصل على",
+    "ribbonDiscount": "خصم 10%",
+    "ribbonOnAll": "على جميع الغرف!",
+    "ribbonBestRate": "• أفضل سعر مضمون",
+    "ribbonClaim": "احصل على خصم 10% →",
+    "mobileSpecial": "عرض الحجز المباشر الخاص",
+    "mobileDiscountDesc": "احجز مباشرة من موقعنا ووفر 10% على إقامتك بالكامل في تاميل.",
+    "mobileBookBtn": "احجز بخصم 10%"
   },
   "home": {
     "hero": {
@@ -15,7 +26,8 @@
       "bookButton": "احجز إقامتك",
       "tourButton": "جولة افتراضية",
       "modalTitle": "جولة افتراضية - فندق شيربا سول",
-      "modalDesc": "انطلق في رحلة افتراضية عبر أماكن الإقامة الفاخرة لدينا واكتشف المزيج المثالي بين التقاليد والحداثة."
+      "modalDesc": "انطلق في رحلة افتراضية عبر أماكن الإقامة الفاخرة لدينا واكتشف المزيج المثالي بين التقاليد والحداثة.",
+      "trustLine": "Central Thamel Location • Comfortable Rooms • Peaceful Stay"
     }
   },
   "about": {
@@ -140,7 +152,11 @@
       "description": "خدمة تنظيف يومية، ووصول آمن، وبيئة خالية من القلق لراحة البال."
     },
     "showOtherLanguages": "Show other languages",
-    "hideOtherLanguages": "Hide other languages"
+    "hideOtherLanguages": "Hide other languages",
+    "multilingualSupport": {
+      "title": "Multilingual Support",
+      "description": "Welcoming international travelers with support in English, Nepali, Hindi, Arabic, German, French, and Chinese."
+    }
   },
   "aboutVision": {
     "buddhistAlt": "رمز بوذي",
@@ -153,7 +169,9 @@
       "highlight": "ضيافة شيربا",
       "part2": "، والغنى الثقافي، والراحة المدروسة التي تجمع بين الدفء المحلي والمعايير الدولية في قلب جبال الهملايا."
     },
-    "startJourney": "ابدأ رحلتك"
+    "startJourney": "ابدأ رحلتك",
+    "para2": "Hotel Sherpa Soul is built around a simple understanding of hospitality: travellers need a place where they feel comfortable, welcome and able to rest after walking Kathmandu's vibrant streets or returning from a Himalayan trek.",
+    "para3": "What we offer is simpler and more meaningful: a comfortable room, a convenient location in Thamel, a quiet night's sleep, and genuine Sherpa warmth welcoming you to Nepal."
   },
   "roomsCard": {
     "roomsSuites": "الغرف والأجنحة",
@@ -164,7 +182,10 @@
     "available": "متاحة",
     "from": "من",
     "guest": "ضيف",
-    "guestsSuffix": "ضيوف"
+    "guestsSuffix": "ضيوف",
+    "categoriesAvailable": "3 Room Categories Available",
+    "perNight": "/ night",
+    "onlyLeft": "Only 2 rooms left!"
   },
   "roomDetails": {
     "title": "تفاصيل الغرفة",
@@ -180,7 +201,18 @@
     "availability": "التوافر",
     "checkIn": "تسجيل الوصول",
     "checkOut": "تسجيل المغادرة",
-    "relatedRooms": "غرف ذات صلة"
+    "relatedRooms": "غرف ذات صلة",
+    "aboutThisRoom": "About This Room",
+    "occupancyLabel": "Occupancy",
+    "roomArea": "Room Area",
+    "bedSetup": "Bed Setup",
+    "nepaliRate": "Nepali Guests:",
+    "bestDirectRate": "Best direct rate guaranteed",
+    "tabs": {
+      "overview": "Overview",
+      "amenities": "Amenities",
+      "features": "Features"
+    }
   },
   "homeStats": {
     "title": "موثوق به من قبل الآلاف",
@@ -196,7 +228,8 @@
   "footer": {
     "brand": {
       "title": "فندق شيربا سول",
-      "description": "ملاذ هادئ في قلب ثامل، يمزج الراحة والثقافة وضيافة شيربا"
+      "description": "ملاذ هادئ في قلب ثامل، يمزج الراحة والثقافة وضيافة شيربا",
+      "tagline": "No Restaurant. No Noise. Sleep Well."
     },
     "quickLinks": {
       "title": "روابط سريعة",
@@ -205,7 +238,8 @@
         "aboutUs": "معلومات عنا",
         "rooms": "الغرف",
         "gallery": "المعرض",
-        "contact": "اتصل بنا"
+        "contact": "اتصل بنا",
+        "blog": "Blog"
       }
     },
     "contactUs": {
@@ -224,6 +258,25 @@
       "prefix": "©",
       "hotelName": "فندق شيربا سول",
       "suffix": "جميع الحقوق محفوظة"
+    },
+    "cta": {
+      "badge": "Hotel Sherpa Soul • Thamel, Kathmandu",
+      "heading": "Ready to Sleep Well?",
+      "copy": "Stay in the heart of Thamel and make Hotel Sherpa Soul your comfortable base for Kathmandu and your journey through Nepal.",
+      "button": "Book Your Stay"
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Preferences",
+      "cms": "CMS Portal"
+    },
+    "otas": {
+      "title": "Book on Top OTAs",
+      "bookingCom": "Book on Booking.com",
+      "airbnb": "Book on Airbnb",
+      "agoda": "Book on Agoda",
+      "tripCom": "Book on Trip.com"
     }
   },
   "homeServices": {
@@ -341,7 +394,7 @@
   "modalDescription": "قم برحلة افتراضية عبر أماكن الإقامة الفاخرة لدينا واكتشف المزيج المثالي بين التقاليد والحداثة.",
   "heroSlides": [
     {
-      "image": "/changes_photo/singleBedWithSofa.webp",
+      "image": "/changes_photo/deluxeRoom_ai.webp",
       "title": "الفخامة المعاد تعريفها",
       "subtitle": "راحة فاخرة"
     },
@@ -570,7 +623,15 @@
     "q7": "Can I securely store my luggage while on a trek?",
     "a7": "Yes, we offer complimentary secure luggage storage before check-in, after check-out, and for trekkers during their multi-day Himalayan journeys until they return.",
     "q8": "What payment methods do you accept?",
-    "a8": "We accept cash (NPR, USD, EUR), credit and debit cards (Visa, MasterCard), Fonepay QR transfers, and direct bank transfers."
+    "a8": "We accept cash (NPR, USD, EUR), credit and debit cards (Visa, MasterCard), Fonepay QR transfers, and direct bank transfers.",
+    "q9": "How far is Kathmandu Airport?",
+    "a9": "The hotel is approximately 20 minutes from Tribhuvan International Airport by vehicle, depending on traffic.",
+    "q10": "How far is Pashupatinath Temple?",
+    "a10": "Pashupatinath Temple is approximately 15 minutes away by vehicle, depending on traffic.",
+    "q11": "How far is Boudhanath Stupa?",
+    "a11": "Boudhanath Stupa is approximately 20 minutes away by vehicle, depending on traffic.",
+    "q12": "How can I book a room?",
+    "a12": "You can book directly through our website or contact the hotel directly via WhatsApp or phone to check availability."
   },
   "homeHero": {
     "welcome": "WELCOME TO HOTEL SHERPA SOUL • THAMEL, KATHMANDU",
@@ -656,7 +717,11 @@
     "mostPopular": "Most Popular",
     "directOfferText": "Best Available Direct-Booking Offer",
     "directOfferSub": "No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.",
-    "compareAll": "Compare All Rooms"
+    "compareAll": "Compare All Rooms",
+    "bedLabel": "Bed:",
+    "occupancyLabel": "Occupancy:",
+    "sizeLabel": "Room Size:",
+    "keyAmenities": "Key Amenities"
   },
   "facilitiesSection": {
     "badge": "Verified Hotel Amenities",
@@ -783,5 +848,216 @@
     "bookBtn": "Book Direct & Save 10%",
     "callBtn": "Call +977 9851068219",
     "disclaimer": "Best available direct-booking offer. Contact us for availability and dates."
+  },
+  "bookNowPage": {
+    "heroBadge": "امتياز الحجز المباشر: وفر 10% على جميع الغرف",
+    "heroTitle": "احجز إقامتك الهادئة",
+    "heroSub": "غرف نظيفة وهادئة، وضيافة شيربا أصيلة، وراحة تامة في قلب تاميل، كاتماندو",
+    "step1Badge": "الخطوة 1: اختر فئة غرفتك",
+    "step1Title": "اختر من بين فئات غرفنا الثلاث",
+    "step1Sub": "انقر على أي غرفة لاختيارها — يتم تطبيق الخصم المباشر بنسبة 10% تلقائيًا.",
+    "directOff": "خصم مباشر 10%",
+    "roomSelected": "✓ تم اختيار الغرفة",
+    "selectThisRoom": "اختر هذه الغرفة",
+    "getInTouch": "تواصل معنا",
+    "hereToHelp": "نحن هنا لمساعدتك على مدار 24/7",
+    "callDirectly": "اتصل مباشرة",
+    "email": "البريد الإلكتروني",
+    "location": "الموقع",
+    "officeHours": "ساعات العمل",
+    "support247": "دعم العملاء 24/7",
+    "otaTitle": "هل تفضل الحجز عبر المنصات العالمية؟",
+    "otaSub": "يمكنك أيضًا حجز فندق شيربا سول عبر قوائمنا الرسمية:",
+    "noticeTitle": "ملاحظة هامة",
+    "notice1": "يلزم تقديم وثائق الهوية الأصلية عند الوصول",
+    "notice2": "يرجى تحميل صورة واضحة من بطاقة الهوية أدناه",
+    "notice3": "سيتم إرسال تأكيد الحجز عبر البريد الإلكتروني",
+    "notice4": "تطبق سياسة الإلغاء الشروط والأحكام",
+    "step2Badge": "الخطوة 2 من 2: معلومات الضيف",
+    "reservationFor": "الحجز لـ:",
+    "fillDetails": "يرجى ملء بياناتك أدناه. تم تطبيق خصم الحجز المباشر بنسبة 10% تلقائيًا.",
+    "personalInfo": "المعلومات الشخصية",
+    "fullName": "الاسم الكامل",
+    "emailAddress": "البريد الإلكتروني",
+    "phoneWhatsApp": "رقم الهاتف / الواتساب",
+    "roomSelection": "اختيار الغرفة",
+    "roomCategory": "فئة الغرفة",
+    "selectRoomType": "اختر نوع الغرفة",
+    "numberOfRooms": "عدد الغرف",
+    "guestInfo": "بيانات الضيوف",
+    "totalGuests": "إجمالي عدد الضيوف",
+    "maxGuestsAllowed": "الحد الأقصى المسموح به {{maxGuests}} ضيوف لـ {{roomType}}",
+    "stayDuration": "مدة الإقامة",
+    "checkInDate": "تاريخ الوصول",
+    "checkOutDate": "تاريخ المغادرة",
+    "documentUpload": "تحميل الوثائق",
+    "optionalOnline": "(اختياري عبر الإنترنت)",
+    "documentHelp": "قم بتحميل صورة جواز السفر/الهوية لتسجيل الوصول السريع، أو قدم الأصل عند الوصول لجميع الضيوف.",
+    "estimatedTotal": "الإجمالي المقدر ({{nights}} ليلة/ليالي، {{rooms}} غرفة/غرف)",
+    "nprNotice": "يدفع الضيوف النيباليون بالروبية النيبالية في الاستقبال",
+    "registering": "جاري تسجيل الحجز...",
+    "completeBooking": "إتمام الحجز",
+    "confirmedTitle": "تم تأكيد الحجز بنجاح!",
+    "thankYou": "شكراً لك",
+    "reservationConfirmed": "تم تأكيد حجزك لـ {{roomType}} بنجاح.",
+    "bookingSummary": "ملخص الحجز:",
+    "checkIn": "تاريخ الوصول:",
+    "checkOut": "تاريخ المغادرة:",
+    "guests": "الضيوف:",
+    "rooms": "الغرف:",
+    "totalRate": "السعر الإجمالي:",
+    "bookingRef": "الرقم المرجعي للحجز:",
+    "emailNotice": "تم تسجيل إشعار التأكيد في نظام الفندق لـ",
+    "confirmWhatsApp": "التأكيد عبر الواتساب (+977 9818259472)"
+  },
+  "bookingModal": {
+    "bannerText": "امتياز الحجز المباشر: تم تطبيق خصم 10% تلقائيًا على الأسعار أدناه!",
+    "bestRateGuaranteed": "أفضل سعر مضمون",
+    "directOff": "خصم مباشر 10%",
+    "discountApplied": "تم تطبيق خصم 10% المباشر"
+  },
+  "mainBrand": {
+    "heading": "Thamel Outside. Peace Inside.",
+    "copy": "Thamel is full of life, energy and adventure. Hotel Sherpa Soul gives you a quieter place to come back to. Located in Thamel, Kathmandu, our hotel is designed for travelers who value a comfortable room, a convenient location and a peaceful night's sleep.",
+    "brandStatement": "No Restaurant. No Noise. Sleep Well.",
+    "supportingCopy": "Sometimes, the best hotel experience is simply a clean, comfortable room, a great location and a good night's sleep."
+  },
+  "roomsSection": {
+    "heading": "Your Room. Your Space. Your Rest.",
+    "copy": "After a day exploring Kathmandu, shopping in Thamel or preparing for your next trek, come back to a room where you can slow down, relax and recharge.",
+    "cta": "View Rooms & Rates",
+    "deluxeDouble": {
+      "name": "Deluxe Double Room",
+      "shortDesc": "A comfortable choice for couples, friends and travelers looking for extra space and a relaxing stay in Thamel.",
+      "cta": "View Room"
+    }
+  },
+  "locationSection": {
+    "heading": "Stay Where Kathmandu Comes Alive",
+    "copy": "From Hotel Sherpa Soul, Thamel is right outside your door. Discover Kathmandu's cafés, shops, local streets and travel hubs while keeping a peaceful place to return to after a day of exploring.",
+    "cta": "Explore Our Location"
+  },
+  "trekkersSection": {
+    "heading": "Made for the Journey Ahead",
+    "copy": "Kathmandu is often the beginning of something bigger. Whether you're starting a Himalayan trek, exploring Nepal for the first time, or simply discovering Kathmandu, Hotel Sherpa Soul gives you a comfortable base in Thamel.",
+    "beforeTrek": {
+      "title": "Before the Trek",
+      "desc": "Rest, recharge and prepare for your journey."
+    },
+    "afterTrek": {
+      "title": "After the Trek",
+      "desc": "Come back to Kathmandu and enjoy a comfortable place to relax."
+    },
+    "cityExploration": {
+      "title": "City Exploration",
+      "desc": "Stay close to the energy of Thamel while having a peaceful room to return to."
+    }
+  },
+  "whySherpaSoul": {
+    "heading": "Why Travelers Choose Sherpa Soul",
+    "items": [
+      {
+        "title": "Central Thamel Location",
+        "desc": "Stay in one of Kathmandu's most popular areas for travelers."
+      },
+      {
+        "title": "Peaceful Environment",
+        "desc": "Enjoy a quieter place to rest after exploring the city."
+      },
+      {
+        "title": "Comfortable Rooms",
+        "desc": "A practical and comfortable space for short and extended stays."
+      },
+      {
+        "title": "Traveler-Friendly Stay",
+        "desc": "A convenient base for Kathmandu exploration and Nepal adventures."
+      },
+      {
+        "title": "Simple, Honest Hospitality",
+        "desc": "No unnecessary extras. Just a comfortable stay and a good night's sleep."
+      }
+    ]
+  },
+  "bookingCta": {
+    "heading": "Your Kathmandu Adventure Starts Here.",
+    "copy": "Explore Thamel. Discover Kathmandu. Prepare for the Himalayas. And when the day is done, come back to a place where you can simply sleep well.",
+    "primaryCta": "Book Your Stay at Hotel Sherpa Soul",
+    "secondaryCta": "Check Room Availability"
+  },
+  "aboutPageContent": {
+    "h1": "About Hotel Sherpa Soul",
+    "introHeading": "A peaceful place to stay in the heart of Thamel, Kathmandu.",
+    "copy": "Hotel Sherpa Soul was created for travelers who want to experience Kathmandu without giving up the comfort of a peaceful night's sleep. Located in Thamel, one of Kathmandu's most popular traveler neighborhoods, we offer a simple and comfortable base for exploring the city, preparing for a trek or beginning your journey through Nepal.",
+    "philosophy": {
+      "heading": "No Restaurant. No Noise. Sleep Well.",
+      "copy": "We believe a hotel doesn't need to be complicated to feel welcoming. For us, hospitality is about creating a comfortable space where travelers can rest, recharge and feel ready for the next day."
+    },
+    "location": {
+      "heading": "At the Heart of Thamel",
+      "copy": "Thamel is one of Kathmandu's best-known areas for travelers, surrounded by cafés, shops, travel services and local experiences. Hotel Sherpa Soul gives you the convenience of staying close to it all while offering a peaceful place to return to."
+    },
+    "forTravelers": {
+      "heading": "From Kathmandu to the Himalayas",
+      "copy": "Many journeys through Nepal begin in Kathmandu. Whether you are visiting Nepal for culture and sightseeing, preparing for a Himalayan trek or returning from the mountains, Sherpa Soul is designed to be your comfortable Kathmandu base."
+    },
+    "closing": {
+      "heading": "Come for Kathmandu. Stay for the comfort. Sleep well for the journey ahead.",
+      "cta": "Book Your Stay"
+    }
+  },
+  "homeLocation": {
+    "mapTitle": "Hotel Sherpa Soul Location in Thamel"
+  },
+  "loading": "Loading room details...",
+  "pleasewait": "Please wait...",
+  "blog": {
+    "badge": "Official Travel Hub",
+    "title": "Kathmandu Travel Guide",
+    "subtitle": "Discover Kathmandu through local tips, Thamel travel guides, trekking information, things to do, places to visit and practical advice for travelers visiting Nepal.",
+    "searchPlaceholder": "Search guides or topics...",
+    "readFullGuide": "Read Full Guide",
+    "noMatching": "No matching travel guides found",
+    "trySearching": "Try searching with different keywords like \"Thamel\", \"Trekking\", or \"Sightseeing\".",
+    "resetFilters": "Reset Filters",
+    "relatedTopics": "Related Topics & Search Keywords:",
+    "planningStayTitle": "Planning Your Kathmandu Stay?",
+    "planningStayDesc": "Enjoy central Thamel access with peaceful, restaurant-free sleep.",
+    "viewRoomsBtn": "View Rooms & Rates",
+    "categories": {
+      "all": "All",
+      "thamelGuide": "Thamel Guide",
+      "accommodation": "Accommodation",
+      "trekking": "Trekking",
+      "sightseeing": "Sightseeing",
+      "travelAdvice": "Travel Advice",
+      "transportation": "Transportation"
+    }
+  },
+  "chatbot": {
+    "tooltip": "Need help? Chat with us!",
+    "headerTitle": "Sherpa Soul Assistant",
+    "online": "Online now",
+    "howCanIHelp": "How can I help you?",
+    "inputPlaceholder": "Type your message...",
+    "option1": {
+      "title": "Room Types & Pricing",
+      "response": "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• Ceiling fan/heating, private hot shower & free Wi-Fi\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• ❄️ **Air Conditioning (AC)**, extra spacious living\n\nAll rooms include high-speed Wi-Fi. (Shared self-kitchen available) 🍳"
+    },
+    "option2": {
+      "title": "Hotel Facilities",
+      "response": "Our hotel offers practical facilities for travellers:\n\n🍳 **Shared Self-Kitchen**\n• Induction cooktop, fridge, microwave, electric kettle & utensils\n\n🏨 **24/7 Front Desk**\n• Always here to help, local tips & safe luggage storage\n\n📶 **High-Speed Free Wi-Fi**\n• Reliable internet across all rooms\n\n🚿 **24/7 Hot & Cold Showers**\n• Clean ensuite bathrooms in all rooms\n\n🚗 **Airport Transfer**\n• Convenient pickup/drop available (~20 mins from airport)"
+    },
+    "option3": {
+      "title": "Location & Nearby",
+      "response": "📍 **Prime Location in Thamel**\n\nWe're situated on Thamel Bhagawati Marg 26 in the heart of Kathmandu's tourist district:\n\n🚶 **Walking Distance:**\n• Garden of Dreams - 5 minutes\n• Durbar Square - 15 minutes\n• Local markets & gear shops - right outside\n\nPerfect base for exploring Nepal! 🇳🇵"
+    },
+    "option4": {
+      "title": "Make a Reservation",
+      "response": "Ready to book your stay? Here are your options:\n\n📞 **Call directly:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n\nBook direct with us for our best 10% discount rate!"
+    },
+    "option5": {
+      "title": "Contact Information",
+      "response": "📞 **Call:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Thamel Bhagawati Marg 26, Kathmandu, Nepal\n\n🕐 **Reception:** 24/7"
+    }
   }
 }

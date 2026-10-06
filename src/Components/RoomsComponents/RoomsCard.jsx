@@ -242,7 +242,7 @@ const RoomsCard = () => {
           {t("room.desc")}
         </p>
         <p className="text-gray-500 text-sm">
-          3 Room Categories Available
+          {t("roomsCard.categoriesAvailable", "3 Room Categories Available")}
         </p>
       </div>
 
@@ -252,6 +252,15 @@ const RoomsCard = () => {
             ? (typeof room.image[0] === "string" ? room.image[0] : room.image[0]?.url)
             : (typeof room.image === "string" ? room.image : room.image?.url) || "/changes_photo/deluxeRoom_ai.webp";
           const displayImage = String(rawImg).replace(/\.jpeg$/i, ".webp");
+
+          const rId = Number(room.id);
+          const roomName = rId === 101 ? t("homeRoomsData.budget.name", room.name) : rId === 201 ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
+          const roomOccupancy = rId === 101 ? t("homeRoomsData.budget.occupancy", room.occupancy) : rId === 201 ? t("homeRoomsData.deluxe.occupancy", room.occupancy) : t("homeRoomsData.family.occupancy", room.occupancy);
+          const roomBeds = rId === 101 ? t("homeRoomsData.budget.bed", room.beds) : rId === 201 ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);
+          let roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", room.description) : rId === 201 ? t("homeRoomsData.deluxe.desc", room.description) : t("homeRoomsData.family.desc", room.description);
+          if (roomDesc && (roomDesc.includes("#") || roomDesc.length > 250)) {
+            roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", "Comfortable and budget-friendly family room.") : rId === 201 ? t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room with king-size bed.") : t("homeRoomsData.family.desc", "Spacious family suite featuring air conditioning.");
+          }
 
           return (
             <div
@@ -278,7 +287,7 @@ const RoomsCard = () => {
                 ) : (
                   <img
                     src={displayImage}
-                    alt={`${room.name} - Hotel Sherpa Soul Kathmandu`}
+                    alt={`${roomName} - Hotel Sherpa Soul Kathmandu`}
                     className="w-full h-full object-cover transform transition duration-300 ease-out group-hover:scale-105"
                     loading="lazy"
                     decoding="async"
@@ -299,7 +308,7 @@ const RoomsCard = () => {
                         ? `$${room.price} USD`
                         : `NPR ${Number(room.price).toLocaleString()}`}
                     </span>
-                    <span className="text-xs font-normal opacity-80">/ night</span>
+                    <span className="text-xs font-normal opacity-80">{t("roomsCard.perNight", "/ night")}</span>
                   </div>
                   <span className="text-amber-200 text-xs font-medium">
                     ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
@@ -308,7 +317,7 @@ const RoomsCard = () => {
 
                 {/* Urgency Trigger Badge */}
                 <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1 z-10">
-                  <span>🔥</span> Only 2 rooms left!
+                  <span>🔥</span> {t("roomsCard.onlyLeft", "Only 2 rooms left!")}
                 </div>
 
                 {/* Subtle Gradient Overlay */}
@@ -319,7 +328,7 @@ const RoomsCard = () => {
               <div className="relative p-5 sm:p-6 space-y-4">
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#01366E] transition-colors duration-300">
-                    {room.name}
+                    {roomName}
                   </h3>
 
                   <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 mb-3">
@@ -335,7 +344,7 @@ const RoomsCard = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                      {room.occupancy || `${room.guests} Guests`}
+                      {roomOccupancy}
                     </span>
                     <span className="text-gray-400">•</span>
                     <span className="flex items-center gap-1">
@@ -356,12 +365,12 @@ const RoomsCard = () => {
 
                   <div className="flex items-center gap-4">
                     <p className="text-sm font-semibold text-[#01366E] mb-2 leading-relaxed">
-                      {room.beds}
+                      {roomBeds}
                     </p>
                   </div>
 
                   <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
-                    {room.description}
+                    {roomDesc}
                   </p>
                 </div>
 
