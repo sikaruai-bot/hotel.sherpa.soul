@@ -20,6 +20,7 @@ import { trackMetaEvent } from "../Components/Analytics/pixelEvents";
 import api from "../Components/Utils/api";
 import { sendEmailNotification } from "../Components/Utils/emailService";
 import { useCMS } from "../Context/CMSContext";
+import { rooms as defaultRooms } from "../Components/HelperComponents/RoomsData";
 
 export default function BookNowPage() {
   const { t } = useTranslation();
@@ -36,20 +37,28 @@ export default function BookNowPage() {
 
   // Dynamically synchronize room categories & photos with Book Your Stay (CMS/Modal)
   const roomOptions = useMemo(() => {
-    const budgetRoom =
-      cmsRooms?.find((r) => r.id === "budget-family-room" || r.slug?.includes("budget") || r.id === 101 || String(r.roomNumber) === "101" || String(r.roomNumber) === "203") ||
-      cmsRooms?.[0];
-    const deluxeRoom =
-      cmsRooms?.find((r) => r.id === "deluxe-room" || r.slug?.includes("deluxe") || r.id === 201 || String(r.roomNumber) === "201") ||
-      cmsRooms?.[1];
-    const familyRoom =
-      cmsRooms?.find(
-        (r) =>
-          r.id === "family-room" ||
-          r.id === 301 ||
-          String(r.roomNumber) === "301" ||
-          (r.slug?.includes("family") && !r.slug?.includes("budget"))
-      ) || cmsRooms?.[2];
+    const isBudget = (r) => {
+      if (!r) return false;
+      const idStr = String(r.id || r.slug || r.name || r.type || "").toLowerCase();
+      const numStr = String(r.roomNumber || "");
+      return idStr.includes("budget") || numStr === "203" || numStr === "303" || numStr === "101";
+    };
+    const isDeluxe = (r) => {
+      if (!r) return false;
+      const idStr = String(r.id || r.slug || r.name || r.type || "").toLowerCase();
+      const numStr = String(r.roomNumber || "");
+      return idStr.includes("deluxe") || numStr === "201" || numStr === "301";
+    };
+    const isFamily = (r) => {
+      if (!r) return false;
+      const idStr = String(r.id || r.slug || r.name || r.type || "").toLowerCase();
+      const numStr = String(r.roomNumber || "");
+      return (idStr.includes("family") && !idStr.includes("budget")) || numStr === "202" || numStr === "302";
+    };
+
+    const budgetRoom = cmsRooms?.find(isBudget) || defaultRooms.find(isBudget);
+    const deluxeRoom = cmsRooms?.find(isDeluxe) || defaultRooms.find(isDeluxe);
+    const familyRoom = cmsRooms?.find(isFamily) || defaultRooms.find(isFamily);
 
     const getRoomPhoto = (cmsRoom, sitePhotoKey, defaultPath) => {
       if (cmsRoom) {
@@ -156,18 +165,29 @@ export default function BookNowPage() {
 
     const rawId = id || searchParams.get("room") || searchParams.get("id");
     if (rawId) {
-      const normalizedRaw = String(rawId).toLowerCase();
-      const match = roomOptions.find(
-        (r) =>
-          String(r.id).toLowerCase() === normalizedRaw ||
-          String(r.slug).toLowerCase() === normalizedRaw ||
-          String(r.code).toLowerCase() === normalizedRaw ||
-          String(r.roomNumber).toLowerCase() === normalizedRaw ||
-          (r.aliases && r.aliases.includes(normalizedRaw)) ||
-          r.label.toLowerCase().includes(normalizedRaw)
-      );
-      if (match) {
-        handleSelectRoom(match);
+      const normalizedRaw = String(rawId).toLowerCase().trim();
+      if (normalizedRaw.includes("deluxe") || normalizedRaw === "201" || normalizedRaw === "2" || normalizedRaw === "301") {
+        const deluxeMatch = roomOptions.find((r) => r.slug === "deluxe-room" || r.code === "deluxe-room" || r.id === "deluxe-room");
+        if (deluxeMatch) handleSelectRoom(deluxeMatch);
+      } else if ((normalizedRaw.includes("family") && !normalizedRaw.includes("budget")) || normalizedRaw === "202" || normalizedRaw === "3" || normalizedRaw === "302") {
+        const familyMatch = roomOptions.find((r) => r.slug === "family-room" || r.code === "family-room" || r.id === "family-room");
+        if (familyMatch) handleSelectRoom(familyMatch);
+      } else if (normalizedRaw.includes("budget") || normalizedRaw === "101" || normalizedRaw === "1" || normalizedRaw === "203" || normalizedRaw === "303") {
+        const budgetMatch = roomOptions.find((r) => r.slug === "budget-family-room" || r.code === "budget-family-room" || r.id === "budget-family-room");
+        if (budgetMatch) handleSelectRoom(budgetMatch);
+      } else {
+        const match = roomOptions.find(
+          (r) =>
+            String(r.id).toLowerCase() === normalizedRaw ||
+            String(r.slug).toLowerCase() === normalizedRaw ||
+            String(r.code).toLowerCase() === normalizedRaw ||
+            String(r.roomNumber).toLowerCase() === normalizedRaw ||
+            (r.aliases && r.aliases.includes(normalizedRaw)) ||
+            r.label.toLowerCase().includes(normalizedRaw)
+        );
+        if (match) {
+          handleSelectRoom(match);
+        }
       }
     }
   }, [id, searchParams, location.state, roomOptions]);

@@ -19,6 +19,7 @@ import BookingModal from "../HelperComponents/BookingModal";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
 import { FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { useCMS } from "../../Context/CMSContext";
+import { rooms as defaultRooms } from "../HelperComponents/RoomsData";
 import { HOTEL_PRESET_PHOTOS } from "../CMS/mediaUtils";
 
 export default function HomeIntro() {
@@ -37,9 +38,9 @@ export default function HomeIntro() {
   // 3. Budget Family Room photo from CMS
   // 4. Any additional clean images from the user's Gallery
   const heroSlides = useMemo(() => {
-    const budgetRoom = cmsRooms?.find((r) => r.id === 101 || String(r.id) === "101" || r.slug?.includes("budget")) || cmsRooms?.[0];
-    const deluxeRoom = cmsRooms?.find((r) => r.id === 201 || String(r.id) === "201" || r.slug?.includes("deluxe")) || cmsRooms?.[1];
-    const familyRoom = cmsRooms?.find((r) => r.id === 301 || String(r.id) === "301" || (r.slug?.includes("family") && !r.slug?.includes("budget"))) || cmsRooms?.[2];
+    const budgetRoom = cmsRooms?.find((r) => r.id === "budget-family-room" || r.slug?.includes("budget") || r.id === 101 || String(r.roomNumber) === "203" || String(r.roomNumber) === "303") || defaultRooms.find((r) => r.slug === "budget-family-room");
+    const deluxeRoom = cmsRooms?.find((r) => r.id === "deluxe-room" || r.slug?.includes("deluxe") || r.id === 201 || String(r.roomNumber) === "201" || String(r.roomNumber) === "301") || defaultRooms.find((r) => r.slug === "deluxe-room");
+    const familyRoom = cmsRooms?.find((r) => r.id === "family-room" || (r.slug?.includes("family") && !r.slug?.includes("budget")) || r.id === 302 || String(r.roomNumber) === "202" || String(r.roomNumber) === "302") || defaultRooms.find((r) => r.slug === "family-room");
 
     const getImg = (room, siteKey, fallback) => {
       const roomImg = Array.isArray(room?.image) ? room.image[0] : room?.image;

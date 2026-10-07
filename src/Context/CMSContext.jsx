@@ -332,15 +332,39 @@ export function CMSProvider({ children }) {
         const stored = localStorage.getItem(CMS_STORAGE_KEY);
         if (stored) {
           const parsed = JSON.parse(stored);
-          // Sanitize rooms to ensure categories have valid images
+          // Sanitize rooms to ensure categories have valid images and category slug IDs
           const sanitizedRooms = Array.isArray(parsed.rooms) && parsed.rooms.length > 0
-            ? parsed.rooms.slice(0, 3).map((r) => {
+            ? parsed.rooms.slice(0, 3).map((r, idx) => {
                 const cleanedImg = Array.isArray(r.image)
                   ? r.image.map((i) => typeof i === "string" && !i.startsWith("data:") ? i.replace(/\.jpeg$/i, ".webp") : i)
                   : typeof r.image === "string" && !r.image.startsWith("data:")
                   ? r.image.replace(/\.jpeg$/i, ".webp")
                   : r.image;
-                return { ...r, image: cleanedImg, Noroom: 2 };
+
+                const idStr = String(r.id || r.slug || r.name || r.type || "").toLowerCase();
+                const numStr = String(r.roomNumber || "");
+                const catSlug =
+                  idStr.includes("budget") || numStr === "203" || numStr === "303" || numStr === "101"
+                    ? "budget-family-room"
+                    : idStr.includes("deluxe") || numStr === "201" || numStr === "301"
+                    ? "deluxe-room"
+                    : (idStr.includes("family") && !idStr.includes("budget")) || numStr === "202" || numStr === "302"
+                    ? "family-room"
+                    : idx === 0
+                    ? "budget-family-room"
+                    : idx === 1
+                    ? "deluxe-room"
+                    : "family-room";
+                const catRoomNum = catSlug === "budget-family-room" ? "203" : catSlug === "deluxe-room" ? "201" : "302";
+
+                return {
+                  ...r,
+                  id: catSlug,
+                  slug: catSlug,
+                  roomNumber: catRoomNum,
+                  image: cleanedImg,
+                  Noroom: 2,
+                };
               })
             : DEFAULT_CMS_DATA.rooms;
 

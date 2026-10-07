@@ -24,20 +24,58 @@ import { useCMS } from "../../Context/CMSContext";
 
 export default function RoomDetail() {
   const { id } = useParams();
-  const { rooms: cmsRooms } = useCMS();
+  const rooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultRooms;
   const findMatchingRoom = (targetId) => {
-    const raw = String(targetId || "").toLowerCase();
-    return (
-      rooms.find(
-        (r) =>
-          String(r.slug).toLowerCase() === raw ||
-          String(r.id).toLowerCase() === raw ||
-          String(r.roomNumber).toLowerCase() === raw ||
-          (raw.includes("budget") || raw === "101" || raw === "1" || raw === "203" || raw === "303" ? (r.slug === "budget-family-room" || r.id === "budget-family-room") : false) ||
-          (raw.includes("deluxe") || raw === "201" || raw === "2" || raw === "202" ? (r.slug === "deluxe-room" || r.id === "deluxe-room") : false) ||
-          ((raw.includes("family") && !raw.includes("budget")) || raw === "301" || raw === "3" || raw === "302" ? (r.slug === "family-room" || r.id === "family-room") : false)
-      ) || rooms[0]
-    );
+    const raw = String(targetId || "").toLowerCase().trim();
+
+    const isDeluxeObj = (r) => {
+      if (!r) return false;
+      const idStr = String(r.id || r.slug || r.name || r.type || "").toLowerCase();
+      const numStr = String(r.roomNumber || "");
+      const phys = Array.isArray(r.availablePhysicalRooms) ? r.availablePhysicalRooms : [];
+      return idStr.includes("deluxe") || numStr === "201" || numStr === "301" || phys.includes("201") || phys.includes("301");
+    };
+
+    const isFamilyObj = (r) => {
+      if (!r) return false;
+      const idStr = String(r.id || r.slug || r.name || r.type || "").toLowerCase();
+      const numStr = String(r.roomNumber || "");
+      const phys = Array.isArray(r.availablePhysicalRooms) ? r.availablePhysicalRooms : [];
+      return (idStr.includes("family") && !idStr.includes("budget")) || numStr === "202" || numStr === "302" || phys.includes("202") || phys.includes("302");
+    };
+
+    const isBudgetObj = (r) => {
+      if (!r) return false;
+      const idStr = String(r.id || r.slug || r.name || r.type || "").toLowerCase();
+      const numStr = String(r.roomNumber || "");
+      const phys = Array.isArray(r.availablePhysicalRooms) ? r.availablePhysicalRooms : [];
+      return idStr.includes("budget") || numStr === "203" || numStr === "303" || numStr === "101" || phys.includes("203") || phys.includes("303");
+    };
+
+    // Deluxe Category
+    if (raw.includes("deluxe") || raw === "201" || raw === "301" || raw === "2") {
+      const match = rooms.find(isDeluxeObj) || defaultRooms.find(isDeluxeObj);
+      return match || defaultRooms.find(r => r.slug === "deluxe-room");
+    }
+
+    // Family Category (AC, non-budget)
+    if ((raw.includes("family") && !raw.includes("budget")) || raw === "202" || raw === "302" || raw === "3") {
+      const match = rooms.find(isFamilyObj) || defaultRooms.find(isFamilyObj);
+      return match || defaultRooms.find(r => r.slug === "family-room");
+    }
+
+    // Budget Family Category
+    if (raw.includes("budget") || raw === "203" || raw === "303" || raw === "101" || raw === "1") {
+      const match = rooms.find(isBudgetObj) || defaultRooms.find(isBudgetObj);
+      return match || defaultRooms.find(r => r.slug === "budget-family-room");
+    }
+
+    // Exact matching for other custom IDs
+    const exactMatch = rooms.find(r => String(r.id || r.slug || "").toLowerCase() === raw) || defaultRooms.find(r => String(r.id || r.slug || "").toLowerCase() === raw);
+    if (exactMatch) return exactMatch;
+
+    // Final defensive fallback by stable data lookup (Budget Family), NOT array index
+    return defaultRooms.find(isBudgetObj) || defaultRooms[0];
   };
 
   const localDefault = findMatchingRoom(id);
@@ -109,7 +147,7 @@ export default function RoomDetail() {
         setRoom(localMatch);
       } catch (error) {
         console.error("Error setting room details:", error);
-        setRoom(rooms[0]);
+        setRoom(localMatch);
       } finally {
         setLoading(false);
       }
