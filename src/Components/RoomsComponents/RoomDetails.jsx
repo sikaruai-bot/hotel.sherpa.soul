@@ -25,11 +25,22 @@ import { useCMS } from "../../Context/CMSContext";
 export default function RoomDetail() {
   const { id } = useParams();
   const { rooms: cmsRooms } = useCMS();
-  const rooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultRooms;
-  const localDefault =
-    rooms.find(
-      (r) => String(r.id) === String(id) || String(r.roomNumber) === String(id)
-    ) || rooms[0];
+  const findMatchingRoom = (targetId) => {
+    const raw = String(targetId || "").toLowerCase();
+    return (
+      rooms.find(
+        (r) =>
+          String(r.slug).toLowerCase() === raw ||
+          String(r.id).toLowerCase() === raw ||
+          String(r.roomNumber).toLowerCase() === raw ||
+          (raw.includes("budget") || raw === "101" || raw === "1" || raw === "203" || raw === "303" ? (r.slug === "budget-family-room" || r.id === "budget-family-room") : false) ||
+          (raw.includes("deluxe") || raw === "201" || raw === "2" || raw === "202" ? (r.slug === "deluxe-room" || r.id === "deluxe-room") : false) ||
+          ((raw.includes("family") && !raw.includes("budget")) || raw === "301" || raw === "3" || raw === "302" ? (r.slug === "family-room" || r.id === "family-room") : false)
+      ) || rooms[0]
+    );
+  };
+
+  const localDefault = findMatchingRoom(id);
   const [room, setRoom] = useState(localDefault);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("overview");
@@ -53,12 +64,7 @@ export default function RoomDetail() {
   useEffect(() => {
     const fetchRoom = async () => {
       try {
-        const localMatch =
-          rooms.find(
-            (r) =>
-              String(r.id) === String(id) ||
-              String(r.roomNumber) === String(id)
-          ) || rooms[0];
+        const localMatch = findMatchingRoom(id);
 
         try {
           const response = await api.get("/rooms");
@@ -217,16 +223,18 @@ export default function RoomDetail() {
   };
 
   const handleBookRoom = () => {
-    navigate(`/book/${room?.roomNumber || id}`);
+    navigate(`/book/${room?.slug || room?.id || id}`);
   };
 
-  const rId = Number(room?.id || id);
-  const roomName = rId === 101 ? t("homeRoomsData.budget.name", room.name) : rId === 201 ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
-  const roomOccupancy = rId === 101 ? t("homeRoomsData.budget.occupancy", room.occupancy) : rId === 201 ? t("homeRoomsData.deluxe.occupancy", room.occupancy) : t("homeRoomsData.family.occupancy", room.occupancy);
-  const roomBeds = rId === 101 ? t("homeRoomsData.budget.bed", room.beds) : rId === 201 ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);
-  let roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", room.description) : rId === 201 ? t("homeRoomsData.deluxe.desc", room.description) : t("homeRoomsData.family.desc", room.description);
+  const catKey = String(room?.slug || room?.id || id || "").toLowerCase();
+  const isBudget = catKey.includes("budget") || catKey === "101" || catKey === "1";
+  const isDeluxe = catKey.includes("deluxe") || catKey === "201" || catKey === "2";
+  const roomName = isBudget ? t("homeRoomsData.budget.name", room.name) : isDeluxe ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
+  const roomOccupancy = isBudget ? t("homeRoomsData.budget.occupancy", room.occupancy) : isDeluxe ? t("homeRoomsData.deluxe.occupancy", room.occupancy) : t("homeRoomsData.family.occupancy", room.occupancy);
+  const roomBeds = isBudget ? t("homeRoomsData.budget.bed", room.beds) : isDeluxe ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);
+  let roomDesc = isBudget ? t("homeRoomsData.budget.desc", room.description) : isDeluxe ? t("homeRoomsData.deluxe.desc", room.description) : t("homeRoomsData.family.desc", room.description);
   if (roomDesc && (roomDesc.includes("#") || roomDesc.length > 300)) {
-    roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", "A comfortable, budget-friendly family room.") : rId === 201 ? t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room with king-size bed.") : t("homeRoomsData.family.desc", "Spacious family suite featuring air conditioning.");
+    roomDesc = isBudget ? t("homeRoomsData.budget.desc", "A comfortable, budget-friendly family room.") : isDeluxe ? t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room with king-size bed.") : t("homeRoomsData.family.desc", "Spacious family suite featuring air conditioning.");
   }
 
   return (

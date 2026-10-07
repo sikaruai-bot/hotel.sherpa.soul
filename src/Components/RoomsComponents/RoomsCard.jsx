@@ -32,9 +32,10 @@ const RoomsCard = () => {
          let rawImg = Array.isArray(cat.image) ? cat.image[0] : cat.image;
          // Only use sitePhotos if cat.image is missing or empty
          if (!rawImg || rawImg.trim() === "") {
-           if (cat.id === 101 && sitePhotos?.roomCard_budget) rawImg = sitePhotos.roomCard_budget;
-           else if (cat.id === 201 && sitePhotos?.roomCard_deluxe) rawImg = sitePhotos.roomCard_deluxe;
-           else if (cat.id === 301 && sitePhotos?.roomCard_family) rawImg = sitePhotos.roomCard_family;
+           const idStr = String(cat.id || cat.slug || "").toLowerCase();
+           if ((idStr.includes("budget") || idStr === "101") && sitePhotos?.roomCard_budget) rawImg = sitePhotos.roomCard_budget;
+           else if ((idStr.includes("deluxe") || idStr === "201") && sitePhotos?.roomCard_deluxe) rawImg = sitePhotos.roomCard_deluxe;
+           else if ((idStr.includes("family") || idStr === "301") && sitePhotos?.roomCard_family) rawImg = sitePhotos.roomCard_family;
          }
 
          const cleanedImg = typeof rawImg === "string" ? rawImg.replace(/\.jpeg$/i, ".webp") : rawImg;
@@ -253,13 +254,15 @@ const RoomsCard = () => {
             : (typeof room.image === "string" ? room.image : room.image?.url) || "/changes_photo/deluxeRoom_ai.webp";
           const displayImage = String(rawImg).replace(/\.jpeg$/i, ".webp");
 
-          const rId = Number(room.id);
-          const roomName = rId === 101 ? t("homeRoomsData.budget.name", room.name) : rId === 201 ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
-          const roomOccupancy = rId === 101 ? t("homeRoomsData.budget.occupancy", room.occupancy) : rId === 201 ? t("homeRoomsData.deluxe.occupancy", room.occupancy) : t("homeRoomsData.family.occupancy", room.occupancy);
-          const roomBeds = rId === 101 ? t("homeRoomsData.budget.bed", room.beds) : rId === 201 ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);
-          let roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", room.description) : rId === 201 ? t("homeRoomsData.deluxe.desc", room.description) : t("homeRoomsData.family.desc", room.description);
+          const catKey = String(room.id || room.slug || "").toLowerCase();
+          const isBudget = catKey.includes("budget") || catKey === "101" || catKey === "1";
+          const isDeluxe = catKey.includes("deluxe") || catKey === "201" || catKey === "2";
+          const roomName = isBudget ? t("homeRoomsData.budget.name", room.name) : isDeluxe ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
+          const roomOccupancy = isBudget ? t("homeRoomsData.budget.occupancy", room.occupancy) : isDeluxe ? t("homeRoomsData.deluxe.occupancy", room.occupancy) : t("homeRoomsData.family.occupancy", room.occupancy);
+          const roomBeds = isBudget ? t("homeRoomsData.budget.bed", room.beds) : isDeluxe ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);
+          let roomDesc = isBudget ? t("homeRoomsData.budget.desc", room.description) : isDeluxe ? t("homeRoomsData.deluxe.desc", room.description) : t("homeRoomsData.family.desc", room.description);
           if (roomDesc && (roomDesc.includes("#") || roomDesc.length > 250)) {
-            roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", "Comfortable and budget-friendly family room.") : rId === 201 ? t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room with king-size bed.") : t("homeRoomsData.family.desc", "Spacious family suite featuring air conditioning.");
+            roomDesc = isBudget ? t("homeRoomsData.budget.desc", "Comfortable and budget-friendly family room.") : isDeluxe ? t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room with king-size bed.") : t("homeRoomsData.family.desc", "Spacious family suite featuring air conditioning.");
           }
 
           return (
@@ -399,16 +402,16 @@ const RoomsCard = () => {
                   </span>
                 </div>
 
-                {/* Action Buttons */}
+                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 pt-3 border-t border-gray-100">
-                  <Link to={`/room/${room.id}`} className="flex-1">
+                  <Link to={`/room/${room.slug || room.id}`} className="flex-1">
                     <button
                       className="w-full px-4 py-2.5 border text-sm rounded-lg font-medium transition-all duration-300 border-[#01366E] text-[#01366E] hover:bg-blue-50 hover:shadow-md"
                     >
                       {t("room.details")}
                     </button>
                   </Link>
-                  <Link to={`/book/${room.id}`} className="flex-1">
+                  <Link to={`/book/${room.slug || room.id}`} className="flex-1">
                     <button
                       className="w-full px-4 py-2.5 text-white rounded-lg font-medium text-sm transition-all duration-300 transform bg-[#01366E] hover:bg-[#072340] hover:shadow-lg hover:scale-105"
                     >

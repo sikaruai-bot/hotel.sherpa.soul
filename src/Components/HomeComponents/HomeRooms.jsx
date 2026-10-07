@@ -16,9 +16,9 @@ export default function HomeRooms() {
   // Map preset photos to room categories by index
   const presetPhotos = HOTEL_PRESET_PHOTOS;
 
-  const budgetRoom = cmsRooms?.find((r) => r.id === 101 || r.slug?.includes("budget")) || cmsRooms?.[0];
-  const deluxeRoom = cmsRooms?.find((r) => r.id === 201 || r.slug?.includes("deluxe")) || cmsRooms?.[1];
-  const familyRoom = cmsRooms?.find((r) => r.id === 301 || (r.slug?.includes("family") && !r.slug?.includes("budget"))) || cmsRooms?.[2];
+  const budgetRoom = cmsRooms?.find((r) => r.id === "budget-family-room" || r.slug?.includes("budget") || r.id === 101) || cmsRooms?.[0];
+  const deluxeRoom = cmsRooms?.find((r) => r.id === "deluxe-room" || r.slug?.includes("deluxe") || r.id === 201) || cmsRooms?.[1];
+  const familyRoom = cmsRooms?.find((r) => r.id === "family-room" || (r.slug?.includes("family") && !r.slug?.includes("budget")) || r.id === 301) || cmsRooms?.[2];
 
   const getRoomImg = (cmsRoom, sitePhotoKey, fallbackPath) => {
     if (cmsRoom) {
@@ -33,7 +33,7 @@ export default function HomeRooms() {
 
   const roomCategories = [
     {
-      id: 101,
+      id: "budget-family-room",
       slug: "budget-family-room",
       name: t("homeRoomsData.budget.name", "Budget Family Room"),
       image: getRoomImg(budgetRoom, "roomCard_budget", presetPhotos[2].path),
@@ -53,7 +53,7 @@ export default function HomeRooms() {
       hasAC: false,
     },
     {
-      id: 201,
+      id: "deluxe-room",
       slug: "deluxe-room",
       name: t("homeRoomsData.deluxe.name", "Deluxe Room (AC)"),
       image: getRoomImg(deluxeRoom, "roomCard_deluxe", presetPhotos[0].path),
@@ -74,7 +74,7 @@ export default function HomeRooms() {
       popular: true,
     },
     {
-      id: 301,
+      id: "family-room",
       slug: "family-room",
       name: t("homeRoomsData.family.name", "Family Room (AC)"),
       image: getRoomImg(familyRoom, "roomCard_family", presetPhotos[1].path),
@@ -198,7 +198,7 @@ export default function HomeRooms() {
                 <div className="pt-4 border-t border-slate-100">
                   <div className="grid grid-cols-2 gap-2">
                     <Link
-                      to={`/room/${room.id}`}
+                      to={`/room/${room.slug || room.id}`}
                       className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-1 min-h-[44px]"
                     >
                       <span>{t("homeRoomsData.viewDetails", "View Details")}</span>

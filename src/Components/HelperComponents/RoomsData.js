@@ -1,8 +1,9 @@
 export const rooms = [
   {
-    id: 101,
+    id: "budget-family-room",
     slug: "budget-family-room",
-    roomNumber: "101",
+    roomNumber: "203",
+    availablePhysicalRooms: ["203", "303"],
     name: "Budget Family Room",
     type: "Budget Family Room",
     guests: 4,
@@ -38,9 +39,10 @@ export const rooms = [
     ],
   },
   {
-    id: 201,
+    id: "deluxe-room",
     slug: "deluxe-room",
     roomNumber: "201",
+    availablePhysicalRooms: ["201", "202"],
     name: "Deluxe Room",
     type: "Deluxe Room",
     guests: 3,
@@ -75,9 +77,10 @@ export const rooms = [
     ],
   },
   {
-    id: 301,
+    id: "family-room",
     slug: "family-room",
     roomNumber: "301",
+    availablePhysicalRooms: ["301", "302"],
     name: "Family Room",
     type: "Family Room",
     guests: 4,

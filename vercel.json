@@ -107,6 +107,51 @@
   ],
   "redirects": [
     {
+      "source": "/room/101",
+      "destination": "/room/budget-family-room",
+      "permanent": true
+    },
+    {
+      "source": "/book/101",
+      "destination": "/book/budget-family-room",
+      "permanent": true
+    },
+    {
+      "source": "/book/1",
+      "destination": "/book/budget-family-room",
+      "permanent": true
+    },
+    {
+      "source": "/room/201",
+      "destination": "/room/deluxe-room",
+      "permanent": true
+    },
+    {
+      "source": "/book/201",
+      "destination": "/book/deluxe-room",
+      "permanent": true
+    },
+    {
+      "source": "/book/2",
+      "destination": "/book/deluxe-room",
+      "permanent": true
+    },
+    {
+      "source": "/room/301",
+      "destination": "/room/family-room",
+      "permanent": true
+    },
+    {
+      "source": "/book/301",
+      "destination": "/book/family-room",
+      "permanent": true
+    },
+    {
+      "source": "/book/3",
+      "destination": "/book/family-room",
+      "permanent": true
+    },
+    {
       "source": "/admin",
       "destination": "https://hotelsherpasoulpms-sigma.vercel.app",
       "permanent": false

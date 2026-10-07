@@ -35,11 +35,12 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
       const categories = fallbackRooms.map((r) => {
         let rawImg = Array.isArray(r.image) ? r.image[0] : r.image;
         if (!rawImg || rawImg.trim() === "") {
-          if (r.id === 101 && (sitePhotos?.bookNow_budget || sitePhotos?.roomCard_budget)) {
+          const idStr = String(r.id || r.slug || "").toLowerCase();
+          if ((idStr.includes("budget") || idStr === "101") && (sitePhotos?.bookNow_budget || sitePhotos?.roomCard_budget)) {
             rawImg = sitePhotos.bookNow_budget || sitePhotos.roomCard_budget;
-          } else if (r.id === 201 && (sitePhotos?.bookNow_deluxe || sitePhotos?.roomCard_deluxe)) {
+          } else if ((idStr.includes("deluxe") || idStr === "201") && (sitePhotos?.bookNow_deluxe || sitePhotos?.roomCard_deluxe)) {
             rawImg = sitePhotos.bookNow_deluxe || sitePhotos.roomCard_deluxe;
-          } else if (r.id === 301 && (sitePhotos?.bookNow_family || sitePhotos?.roomCard_family)) {
+          } else if ((idStr.includes("family") || idStr === "301") && (sitePhotos?.bookNow_family || sitePhotos?.roomCard_family)) {
             rawImg = sitePhotos.bookNow_family || sitePhotos.roomCard_family;
           }
         }
@@ -99,9 +100,9 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
   };
 
   const handleRoomSelect = (room) => {
-    // Close modal and navigate to booking page using normalized id
+    // Close modal and navigate to booking page using normalized category slug
     onClose();
-    navigate(`/book/${room.id}`, {
+    navigate(`/book/${room.slug || room.id}`, {
       state: { roomDetails: room },
     });
   };
@@ -212,12 +213,14 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
             {!loading && !error && rooms.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {rooms.map((room) => {
-                  const rId = Number(room.id);
-                  const roomName = rId === 101 ? t("homeRoomsData.budget.name", room.name) : rId === 201 ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
-                  const roomBeds = rId === 101 ? t("homeRoomsData.budget.bed", room.beds) : rId === 201 ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);
-                  let roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", room.description) : rId === 201 ? t("homeRoomsData.deluxe.desc", room.description) : t("homeRoomsData.family.desc", room.description);
+                  const catKey = String(room.id || room.slug || "").toLowerCase();
+                  const isBudget = catKey.includes("budget") || catKey === "101" || catKey === "1";
+                  const isDeluxe = catKey.includes("deluxe") || catKey === "201" || catKey === "2";
+                  const roomName = isBudget ? t("homeRoomsData.budget.name", room.name) : isDeluxe ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
+                  const roomBeds = isBudget ? t("homeRoomsData.budget.bed", room.beds) : isDeluxe ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);
+                  let roomDesc = isBudget ? t("homeRoomsData.budget.desc", room.description) : isDeluxe ? t("homeRoomsData.deluxe.desc", room.description) : t("homeRoomsData.family.desc", room.description);
                   if (roomDesc && (roomDesc.includes("#") || roomDesc.length > 250)) {
-                    roomDesc = rId === 101 ? t("homeRoomsData.budget.desc", "Comfortable family room.") : rId === 201 ? t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room.") : t("homeRoomsData.family.desc", "Spacious family suite.");
+                    roomDesc = isBudget ? t("homeRoomsData.budget.desc", "Comfortable family room.") : isDeluxe ? t("homeRoomsData.deluxe.desc", "Air-conditioned boutique room.") : t("homeRoomsData.family.desc", "Spacious family suite.");
                   }
 
                   return (

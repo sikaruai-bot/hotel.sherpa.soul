@@ -347,12 +347,12 @@ const ROUTES = [
                     <span class="text-white font-bold text-base">Direct Booking Discount Active</span>
                     <p class="text-slate-200 text-xs sm:text-sm font-light mt-0.5">Get an instant <strong class="text-amber-300 font-bold">10% OFF</strong> on all rooms when booking directly. Best rate guarantee, free luggage storage & no hidden charges.</p>
                   </div>
-                  <a href="/book/1" class="text-xs font-bold text-white bg-[#FB6C01] hover:bg-[#e05a00] px-4 py-2.5 rounded-xl transition-all shadow-md flex-shrink-0">Claim 10% Off &rarr;</a>
+                  <a href="/book/budget-family-room" class="text-xs font-bold text-white bg-[#FB6C01] hover:bg-[#e05a00] px-4 py-2.5 rounded-xl transition-all shadow-md flex-shrink-0">Claim 10% Off &rarr;</a>
                 </div>
               </div>
 
               <div class="flex flex-wrap items-center gap-4 pt-2">
-                <a href="/book/1" class="px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl transition-all">Book Direct & Save 10%</a>
+                <a href="/book/budget-family-room" class="px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl transition-all">Book Direct & Save 10%</a>
                 <a href="/rooms" class="px-8 py-4 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/70 font-semibold text-base sm:text-lg transition-all">Explore Our Rooms &rarr;</a>
               </div>
 
@@ -609,7 +609,7 @@ const ROUTES = [
                 <p class="text-xs text-slate-500 mb-4">3 Adults, 1 Child • 1 King Bed + 1 Single Bed</p>
                 <p class="text-sm text-slate-600 leading-relaxed mb-6">Features 1 King Bed + 1 Single Bed, en-suite bathroom, 24/7 hot shower, free Wi-Fi, and shared kitchen privileges.</p>
                 <div class="flex items-center gap-3">
-                  <a href="/book/1" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
+                  <a href="/book/budget-family-room" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
                 </div>
               </div>
             </div>
@@ -628,7 +628,7 @@ const ROUTES = [
                 <p class="text-xs text-slate-500 mb-4">2 Adults, 1 Child • 1 King Bed • Air Conditioned</p>
                 <p class="text-sm text-slate-600 leading-relaxed mb-6">Air-conditioned boutique room with king bed, sofa seating, private modern bathroom, fast Wi-Fi, and peaceful atmosphere.</p>
                 <div class="flex items-center gap-3">
-                  <a href="/book/2" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
+                  <a href="/book/deluxe-room" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
                 </div>
               </div>
             </div>
@@ -647,7 +647,7 @@ const ROUTES = [
                 <p class="text-xs text-slate-500 mb-4">3 Adults, 1 Child • King Bed + Single Bed • AC</p>
                 <p class="text-sm text-slate-600 leading-relaxed mb-6">Extra spacious deluxe family accommodation with air conditioning, premium linen, hot shower, and shared kitchen access.</p>
                 <div class="flex items-center gap-3">
-                  <a href="/book/3" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
+                  <a href="/book/family-room" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
                 </div>
               </div>
             </div>
@@ -763,10 +763,43 @@ const ROUTES = [
     content: getBookingPageContent('Reserve Your Peaceful Stay', 1)
   },
   {
-    path: '/book/1',
+    path: '/room/budget-family-room',
+    title: 'Budget Family Room | Hotel Sherpa Soul Thamel Kathmandu',
+    description: 'Budget Family Room at Hotel Sherpa Soul in Thamel, Kathmandu. 1 King + 1 Single Bed, private bathroom, free Wi-Fi, shared kitchen access.',
+    canonical: 'https://hotelsherpasoul.com/room/budget-family-room',
+    ogImage: 'https://hotelsherpasoul.com/triple.webp',
+    preload: `
+    <link rel="preload" as="image" href="/triple.webp" type="image/webp" fetchpriority="high" />
+    `,
+    content: getBookingPageContent('Budget Family Room ($20 / ~NPR 2,700)', 1)
+  },
+  {
+    path: '/room/deluxe-room',
+    title: 'Deluxe Room (AC) | Hotel Sherpa Soul Thamel Kathmandu',
+    description: 'Deluxe Air-Conditioned Room at Hotel Sherpa Soul in Thamel, Kathmandu. King Bed, private washroom, quiet ambiance, free Wi-Fi.',
+    canonical: 'https://hotelsherpasoul.com/room/deluxe-room',
+    ogImage: 'https://hotelsherpasoul.com/changes_photo/deluxeRoom_ai.webp',
+    preload: `
+    <link rel="preload" as="image" href="/changes_photo/deluxeRoom_ai.webp" type="image/webp" fetchpriority="high" />
+    `,
+    content: getBookingPageContent('Deluxe Room (AC) ($20 / ~NPR 2,700)', 2)
+  },
+  {
+    path: '/room/family-room',
+    title: 'Family Room (AC) | Hotel Sherpa Soul Thamel Kathmandu',
+    description: 'Spacious Family Room with AC at Hotel Sherpa Soul in Thamel, Kathmandu. King + Single Bed, modern washroom, shared kitchen privileges.',
+    canonical: 'https://hotelsherpasoul.com/room/family-room',
+    ogImage: 'https://hotelsherpasoul.com/changes_photo/doubleBed.webp',
+    preload: `
+    <link rel="preload" as="image" href="/changes_photo/doubleBed.webp" type="image/webp" fetchpriority="high" />
+    `,
+    content: getBookingPageContent('Family Room (AC) ($30 / ~NPR 4,000)', 3)
+  },
+  {
+    path: '/book/budget-family-room',
     title: 'Book Budget Family Room | Hotel Sherpa Soul Kathmandu',
     description: 'Reserve Budget Family Room at Hotel Sherpa Soul in Thamel, Kathmandu. 1 King + 1 Single Bed, en-suite bathroom, 10% direct booking discount.',
-    canonical: 'https://hotelsherpasoul.com/book/1',
+    canonical: 'https://hotelsherpasoul.com/book/budget-family-room',
     ogImage: 'https://hotelsherpasoul.com/triple.webp',
     preload: `
     <link rel="preload" as="image" href="/triple.webp" type="image/webp" fetchpriority="high" />
@@ -774,10 +807,10 @@ const ROUTES = [
     content: getBookingPageContent('Book Budget Family Room ($20 / ~NPR 2,700)', 1)
   },
   {
-    path: '/book/2',
+    path: '/book/deluxe-room',
     title: 'Book Deluxe Room (AC) | Hotel Sherpa Soul Kathmandu',
     description: 'Reserve Deluxe Air-Conditioned Room at Hotel Sherpa Soul in Thamel, Kathmandu. King Bed, sofa seating, modern washroom, 10% direct discount.',
-    canonical: 'https://hotelsherpasoul.com/book/2',
+    canonical: 'https://hotelsherpasoul.com/book/deluxe-room',
     ogImage: 'https://hotelsherpasoul.com/changes_photo/singleBedWithSofa.webp',
     preload: `
     <link rel="preload" as="image" href="/changes_photo/singleBedWithSofa.webp" type="image/webp" fetchpriority="high" />
@@ -785,10 +818,10 @@ const ROUTES = [
     content: getBookingPageContent('Book Deluxe Room (AC) ($20 / ~NPR 2,700)', 2)
   },
   {
-    path: '/book/3',
+    path: '/book/family-room',
     title: 'Book Family Room (AC) | Hotel Sherpa Soul Kathmandu',
     description: 'Reserve Family Room with AC at Hotel Sherpa Soul in Thamel, Kathmandu. King + Single Bed, spacious layout, 10% direct booking discount.',
-    canonical: 'https://hotelsherpasoul.com/book/3',
+    canonical: 'https://hotelsherpasoul.com/book/family-room',
     ogImage: 'https://hotelsherpasoul.com/changes_photo/doubleBed.webp',
     preload: `
     <link rel="preload" as="image" href="/changes_photo/doubleBed-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />

@@ -37,14 +37,15 @@ export default function BookNowPage() {
   // Dynamically synchronize room categories & photos with Book Your Stay (CMS/Modal)
   const roomOptions = useMemo(() => {
     const budgetRoom =
-      cmsRooms?.find((r) => r.id === 101 || String(r.roomNumber) === "101" || r.slug?.includes("budget")) ||
+      cmsRooms?.find((r) => r.id === "budget-family-room" || r.slug?.includes("budget") || r.id === 101 || String(r.roomNumber) === "101" || String(r.roomNumber) === "203") ||
       cmsRooms?.[0];
     const deluxeRoom =
-      cmsRooms?.find((r) => r.id === 201 || String(r.roomNumber) === "201" || r.slug?.includes("deluxe")) ||
+      cmsRooms?.find((r) => r.id === "deluxe-room" || r.slug?.includes("deluxe") || r.id === 201 || String(r.roomNumber) === "201") ||
       cmsRooms?.[1];
     const familyRoom =
       cmsRooms?.find(
         (r) =>
+          r.id === "family-room" ||
           r.id === 301 ||
           String(r.roomNumber) === "301" ||
           (r.slug?.includes("family") && !r.slug?.includes("budget"))
@@ -63,11 +64,13 @@ export default function BookNowPage() {
 
     return [
       {
-        id: "1",
-        code: "101",
+        id: "budget-family-room",
+        slug: "budget-family-room",
+        code: "budget-family-room",
+        aliases: ["1", "101", "203", "303", "budget", "budget-family-room"],
         label: "Budget Family Room",
         title: t("homeRoomsData.budget.name", budgetRoom?.name || "Budget Family Room"),
-        roomNumber: budgetRoom?.roomNumber || "101",
+        roomNumber: budgetRoom?.roomNumber || "203",
         price: budgetRoom?.price || 20,
         priceNpr: budgetRoom?.priceNprApprox || 2700,
         currency: "USD",
@@ -78,8 +81,10 @@ export default function BookNowPage() {
         badge: "10% OFF",
       },
       {
-        id: "2",
-        code: "201",
+        id: "deluxe-room",
+        slug: "deluxe-room",
+        code: "deluxe-room",
+        aliases: ["2", "201", "202", "deluxe", "deluxe-room"],
         label: "Deluxe Room (AC)",
         title: t("homeRoomsData.deluxe.name", deluxeRoom?.name || "Deluxe Room (AC)"),
         roomNumber: deluxeRoom?.roomNumber || "201",
@@ -93,8 +98,10 @@ export default function BookNowPage() {
         badge: "10% OFF",
       },
       {
-        id: "3",
-        code: "301",
+        id: "family-room",
+        slug: "family-room",
+        code: "family-room",
+        aliases: ["3", "301", "302", "family", "family-room"],
         label: "Family Room (AC)",
         title: t("homeRoomsData.family.name", familyRoom?.name || "Family Room (AC)"),
         roomNumber: familyRoom?.roomNumber || "301",
@@ -135,8 +142,10 @@ export default function BookNowPage() {
       const match = roomOptions.find(
         (r) =>
           String(r.id) === String(passed.id) ||
-          String(r.code) === String(passed.id) ||
+          String(r.slug) === String(passed.slug || passed.id) ||
+          String(r.code) === String(passed.code || passed.id) ||
           String(r.roomNumber) === String(passed.roomNumber) ||
+          (r.aliases && r.aliases.includes(String(passed.id || "").toLowerCase())) ||
           r.label.toLowerCase() === (passed.name || passed.title || "").toLowerCase()
       );
       if (match) {
@@ -147,12 +156,15 @@ export default function BookNowPage() {
 
     const rawId = id || searchParams.get("room") || searchParams.get("id");
     if (rawId) {
+      const normalizedRaw = String(rawId).toLowerCase();
       const match = roomOptions.find(
         (r) =>
-          String(r.id) === String(rawId) ||
-          String(r.code) === String(rawId) ||
-          String(r.roomNumber) === String(rawId) ||
-          r.label.toLowerCase().includes(String(rawId).toLowerCase())
+          String(r.id).toLowerCase() === normalizedRaw ||
+          String(r.slug).toLowerCase() === normalizedRaw ||
+          String(r.code).toLowerCase() === normalizedRaw ||
+          String(r.roomNumber).toLowerCase() === normalizedRaw ||
+          (r.aliases && r.aliases.includes(normalizedRaw)) ||
+          r.label.toLowerCase().includes(normalizedRaw)
       );
       if (match) {
         handleSelectRoom(match);

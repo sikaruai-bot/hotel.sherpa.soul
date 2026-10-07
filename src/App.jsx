@@ -98,10 +98,22 @@ function AppContent() {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
 
-            {/* Redirect old/broken slug routes → correct /room/:id routes */}
-            <Route path="/rooms/budget-family-room" element={<Navigate to="/room/101" replace />} />
-            <Route path="/rooms/deluxe-room" element={<Navigate to="/room/201" replace />} />
-            <Route path="/rooms/family-room" element={<Navigate to="/room/301" replace />} />
+            {/* Client-side fallback redirects for old room & booking URLs → new category slug URLs */}
+            <Route path="/room/101" element={<Navigate to="/room/budget-family-room" replace />} />
+            <Route path="/book/101" element={<Navigate to="/book/budget-family-room" replace />} />
+            <Route path="/book/1" element={<Navigate to="/book/budget-family-room" replace />} />
+
+            <Route path="/room/201" element={<Navigate to="/room/deluxe-room" replace />} />
+            <Route path="/book/201" element={<Navigate to="/book/deluxe-room" replace />} />
+            <Route path="/book/2" element={<Navigate to="/book/deluxe-room" replace />} />
+
+            <Route path="/room/301" element={<Navigate to="/room/family-room" replace />} />
+            <Route path="/book/301" element={<Navigate to="/book/family-room" replace />} />
+            <Route path="/book/3" element={<Navigate to="/book/family-room" replace />} />
+
+            <Route path="/rooms/budget-family-room" element={<Navigate to="/room/budget-family-room" replace />} />
+            <Route path="/rooms/deluxe-room" element={<Navigate to="/room/deluxe-room" replace />} />
+            <Route path="/rooms/family-room" element={<Navigate to="/room/family-room" replace />} />
             {/* Redirect /location → /contact (location info is in contact page) */}
             <Route path="/location" element={<Navigate to="/contact" replace />} />
             {/* Redirect /privacy-policy and /terms-and-conditions aliases */}
