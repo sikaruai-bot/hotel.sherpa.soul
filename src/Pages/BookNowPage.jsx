@@ -21,9 +21,11 @@ import api from "../Components/Utils/api";
 import { sendEmailNotification } from "../Components/Utils/emailService";
 import { useCMS } from "../Context/CMSContext";
 import { rooms as defaultRooms } from "../Components/HelperComponents/RoomsData";
+import { useExchangeRate } from "../Hooks/useExchangeRate";
 
 export default function BookNowPage() {
   const { t } = useTranslation();
+  const { formatNpr } = useExchangeRate();
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
@@ -197,7 +199,6 @@ export default function BookNowPage() {
     ? Math.max(1, Math.ceil((new Date(formData.checkOut) - new Date(formData.checkIn)) / (1000 * 60 * 60 * 24)))
     : 1;
   const estimatedTotalUsd = selectedRoomObj ? estimatedNights * selectedRoomObj.price * (Number(formData.numberOfRooms) || 1) : 0;
-  const estimatedTotalNpr = selectedRoomObj ? estimatedNights * (selectedRoomObj.priceNpr || (selectedRoomObj.price * 135)) * (Number(formData.numberOfRooms) || 1) : 0;
 
   const handleSelectRoom = (room) => {
     setMaxGuests(room.maxGuests);
@@ -422,7 +423,7 @@ export default function BookNowPage() {
                       )}
                       <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/75 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs">
                         <span className="font-bold text-[#FB6C01] text-sm">${room.price} USD</span>
-                        <span className="text-amber-300 font-semibold">~NPR {room.priceNpr.toLocaleString()} {t("roomsCard.perNight", "/ night")}</span>
+                        <span className="text-amber-300 font-semibold">~{formatNpr(room.price)} {t("roomsCard.perNight", "/ night")}</span>
                       </div>
                     </div>
 
@@ -899,7 +900,7 @@ export default function BookNowPage() {
                             ${estimatedTotalUsd} USD
                           </span>
                           <span className="text-sm font-bold text-amber-700 block">
-                            ~NPR {estimatedTotalNpr.toLocaleString()}
+                            ~{formatNpr(estimatedTotalUsd)}
                           </span>
                         </div>
                       </div>
@@ -968,7 +969,7 @@ export default function BookNowPage() {
                     <span className="text-gray-700 font-medium">{t("bookNowPage.totalRate", "Total Rate:")}</span>
                     <div className="text-right">
                       <span className="font-bold text-[#01366E] text-base">${Number(totalCalculated)} USD</span>
-                      <span className="text-xs font-semibold text-amber-700 block">~NPR ${(Number(totalCalculated) * 135).toLocaleString()}</span>
+                      <span className="text-xs font-semibold text-amber-700 block">~{formatNpr(totalCalculated)}</span>
                     </div>
                   </div>
                 </div>
@@ -993,7 +994,7 @@ export default function BookNowPage() {
                     `*Check-in:* ${formData.checkIn}\n` +
                     `*Check-out:* ${formData.checkOut}\n` +
                     `*Rooms:* ${formData.numberOfRooms} | *Guests:* ${formData.numberOfPeople}\n` +
-                    `*Total Payable:* $${Number(totalCalculated)} USD (~NPR ${(Number(totalCalculated) * 135).toLocaleString()})\n` +
+                    `*Total Payable:* $${Number(totalCalculated)} USD (~${formatNpr(totalCalculated)})\n` +
                     `*Phone:* ${formData.phone}\n\n` +
                     `Please confirm my reservation check-in. Thank you!`
                   )}`}

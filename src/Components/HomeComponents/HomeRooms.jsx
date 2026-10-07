@@ -7,10 +7,12 @@ import { trackBookingClick } from "../Analytics/pixelEvents";
 import { HOTEL_PRESET_PHOTOS } from "../CMS/mediaUtils";
 import { useCMS } from "../../Context/CMSContext";
 import { rooms as defaultRooms } from "../HelperComponents/RoomsData";
+import { useExchangeRate } from "../../Hooks/useExchangeRate";
 
 export default function HomeRooms() {
   const { t } = useTranslation();
   const { rooms: cmsRooms, sitePhotos } = useCMS();
+  const { formatNpr } = useExchangeRate();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedRoomForModal, setSelectedRoomForModal] = useState(null);
 
@@ -147,7 +149,7 @@ export default function HomeRooms() {
                 />
                 <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs font-semibold">
                   <span className="text-amber-300 font-bold text-sm sm:text-base">${room.priceUsd} USD</span>
-                  <span className="text-slate-300 text-[11px] block">~NPR {room.priceNpr} {t("homeRoomsData.perNight", "/ night")}</span>
+                  <span className="text-slate-300 text-[11px] block">~{formatNpr(room.priceUsd)} {t("homeRoomsData.perNight", "/ night")}</span>
                 </div>
               </div>
 

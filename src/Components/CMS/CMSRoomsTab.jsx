@@ -10,8 +10,10 @@ import {
   FolderOpen,
 } from "lucide-react";
 import { optimizeMediaFile } from "./mediaUtils";
+import { useExchangeRate } from "../../Hooks/useExchangeRate";
 
 export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
+  const { formatNpr } = useExchangeRate();
   const [editingRoom, setEditingRoom] = useState(null);
   const [showPresetPicker, setShowPresetPicker] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -207,18 +209,15 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Nepali Guest Rate (NPR)
+                    Approx. NPR (auto, read-only)
                   </label>
                   <input
-                    type="number"
-                    value={editingRoom.priceNprApprox || (editingRoom.price ? Math.round(editingRoom.price * 135) : 2700)}
-                    onChange={(e) =>
-                      setEditingRoom({
-                        ...editingRoom,
-                        priceNprApprox: Number(e.target.value),
-                      })
-                    }
-                    className="w-full px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm"
+                    type="text"
+                    readOnly
+                    tabIndex={-1}
+                    value={`~${formatNpr(editingRoom.price)}`}
+                    title="Calculated from the USD price using the live exchange rate. Not saved."
+                    className="w-full px-4 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-400 text-sm cursor-not-allowed"
                   />
                 </div>
               </div>
@@ -356,7 +355,7 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
                     ${room.price} USD
                   </p>
                   <p className="text-xs text-slate-300 font-medium">
-                    ~NPR {(room.priceNprApprox || (room.price * 135))?.toLocaleString()}
+                    ~{formatNpr(room.price)}
                   </p>
                 </div>
               </div>

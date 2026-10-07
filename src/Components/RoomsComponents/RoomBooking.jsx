@@ -24,12 +24,14 @@ import { rooms as defaultFallbackRooms } from "../HelperComponents/RoomsData";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
 import { useCMS } from "../../Context/CMSContext";
 import { sendEmailNotification } from "../Utils/emailService";
+import { useExchangeRate } from "../../Hooks/useExchangeRate";
 
 export default function BookingForm() {
   const [t] = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const { rooms: cmsRooms } = useCMS();
+  const { formatNpr } = useExchangeRate();
   const fallbackRooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultFallbackRooms;
 
   const [room, setRoom] = useState(null);
@@ -378,11 +380,10 @@ export default function BookingForm() {
     try {
       const roomNum = String(room?.roomNumber || id || "201");
       const roomUsdRate = Number(room?.price) || 20;
-      const roomNprRate = Number(room?.priceNprApprox) || (roomUsdRate * 135);
       const nightsCount = Math.max(1, nights);
       const roomsCount = Number(formData.numberOfRooms) || 1;
       const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (nightsCount * roomUsdRate * roomsCount);
-      const calcTotalNpr = nightsCount * roomNprRate * roomsCount;
+      const calcTotalNpr = formatNpr(calcTotal); // display-only estimate, e.g. "NPR 2,778"
       const isPmsOccupied = room?.status && room?.status !== "AVAILABLE";
 
       const payload = {
@@ -399,7 +400,7 @@ export default function BookingForm() {
         paidAmount: 0,
         status: isPmsOccupied ? "INQUIRY" : "CONFIRMED",
         source: "Direct Website",
-        specialRequests: `${isPmsOccupied ? '[PMS OCCUPIED - SPECIAL INQUIRY] ' : ''}Direct Booking for ${room?.name || 'Room ' + roomNum}. Number of Rooms: ${formData.numberOfRooms}. Total USD: $${calcTotal}, Total NPR: NPR ${calcTotalNpr.toLocaleString()}. ${idVerificationImages.length > 0 ? '(Guest attached ID images)' : ''}`,
+        specialRequests: `${isPmsOccupied ? '[PMS OCCUPIED - SPECIAL INQUIRY] ' : ''}Direct Booking for ${room?.name || 'Room ' + roomNum}. Number of Rooms: ${formData.numberOfRooms}. Total USD: $${calcTotal}, Total NPR: ${calcTotalNpr}. ${idVerificationImages.length > 0 ? '(Guest attached ID images)' : ''}`,
       };
 
       const response = await api.post("/reservations", payload);
@@ -472,11 +473,10 @@ export default function BookingForm() {
       console.warn("PMS reservation error, creating direct reservation reference:", error);
       const fallbackRef = `HSS-${Date.now().toString().slice(-6)}`;
       const roomUsdRate = Number(room?.price) || 20;
-      const roomNprRate = Number(room?.priceNprApprox) || (roomUsdRate * 135);
       const nightsCount = Math.max(1, nights);
       const roomsCount = Number(formData.numberOfRooms) || 1;
       const calcTotal = Number(totalPrice) > 0 ? Number(totalPrice) : (nightsCount * roomUsdRate * roomsCount);
-      const calcTotalNpr = nightsCount * roomNprRate * roomsCount;
+      const calcTotalNpr = formatNpr(calcTotal); // display-only estimate, e.g. "NPR 2,778"
 
       // Trigger official booking confirmation voucher & hotel staff alert email
       sendEmailNotification({
@@ -491,7 +491,7 @@ export default function BookingForm() {
         numberOfRooms: formData.numberOfRooms,
         numberOfGuests: formData.numberOfGuests,
         totalPrice: calcTotal,
-        specialRequests: `Direct Booking. Total USD: $${calcTotal}, Total NPR: NPR ${calcTotalNpr.toLocaleString()}. ID attached: ${idVerificationImages.length > 0}`,
+        specialRequests: `Direct Booking. Total USD: $${calcTotal}, Total NPR: ${calcTotalNpr}. ID attached: ${idVerificationImages.length > 0}`,
       }).catch((err) => console.warn("Booking email delivery notice:", err));
 
       setConfirmedBooking({
@@ -571,7 +571,7 @@ export default function BookingForm() {
       `*Room:* ${confirmedBooking.roomName} (Room ${confirmedBooking.roomNumber})\n` +
       `*Check-in:* ${confirmedBooking.checkIn}\n` +
       `*Check-out:* ${confirmedBooking.checkOut}\n` +
-      `*Total Rate:* $${Number(confirmedBooking.totalPrice).toLocaleString()} USD (~NPR ${Number(confirmedBooking.totalNpr || (confirmedBooking.totalPrice * 135)).toLocaleString()})\n` +
+      `*Total Rate:* $${Number(confirmedBooking.totalPrice).toLocaleString()} USD (~${formatNpr(confirmedBooking.totalPrice)})\n` +
       `*Phone:* ${confirmedBooking.phone}\n` +
       `*Email:* ${confirmedBooking.email}\n\n` +
       `Please confirm our check-in and booking availability. Thank you!`
@@ -609,7 +609,7 @@ export default function BookingForm() {
               <span className="text-gray-800">Total Payable at Hotel</span>
               <div className="text-right">
                 <span className="text-amber-700 block">${Number(confirmedBooking.totalPrice).toLocaleString()} USD</span>
-                <span className="text-xs text-gray-600 block font-semibold">~NPR {Number(confirmedBooking.totalNpr || (confirmedBooking.totalPrice * 135)).toLocaleString()}</span>
+                <span className="text-xs text-gray-600 block font-semibold">~{formatNpr(confirmedBooking.totalPrice)}</span>
               </div>
             </div>
           </div>
@@ -1162,7 +1162,7 @@ export default function BookingForm() {
                         ${room.price} USD / night
                       </span>
                       <span className="text-xs text-amber-600 font-medium block">
-                        ~NPR {(room.priceNprApprox || (room.price * 135)).toLocaleString()}
+                        ~{formatNpr(room.price)}
                       </span>
                     </div>
                   </div>
@@ -1177,7 +1177,7 @@ export default function BookingForm() {
                           ${room.price * formData.numberOfRooms} USD
                         </span>
                         <span className="text-xs text-amber-600 font-medium block">
-                          ~NPR {((room.priceNprApprox || (room.price * 135)) * formData.numberOfRooms).toLocaleString()}
+                          ~{formatNpr(room.price * formData.numberOfRooms)}
                         </span>
                       </div>
                     </div>
@@ -1193,7 +1193,7 @@ export default function BookingForm() {
                           ${totalPrice} USD
                         </span>
                         <span className="text-xs text-amber-600 font-medium block">
-                          ~NPR {((room.priceNprApprox || (room.price * 135)) * (nights || 1) * (formData.numberOfRooms || 1)).toLocaleString()}
+                          ~{formatNpr(totalPrice)}
                         </span>
                       </div>
                     </div>
@@ -1208,7 +1208,7 @@ export default function BookingForm() {
                         ${totalPrice || room.price} USD
                       </span>
                       <span className="text-sm font-semibold text-gray-700 block">
-                        ~NPR {((room.priceNprApprox || (room.price * 135)) * (nights || 1) * (formData.numberOfRooms || 1)).toLocaleString()}
+                        ~{formatNpr(totalPrice || room.price)}
                       </span>
                     </div>
                   </div>

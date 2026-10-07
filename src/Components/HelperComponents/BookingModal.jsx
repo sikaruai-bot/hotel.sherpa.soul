@@ -7,10 +7,12 @@ import api from "../Utils/api";
 import { rooms as defaultFallbackRooms } from "./RoomsData";
 import { useTranslation } from "react-i18next";
 import { useCMS } from "../../Context/CMSContext";
+import { useExchangeRate } from "../../Hooks/useExchangeRate";
 
 const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
   const { t } = useTranslation();
   const { rooms: cmsRooms, sitePhotos } = useCMS();
+  const { formatNpr } = useExchangeRate();
   const fallbackRooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultFallbackRooms;
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -334,7 +336,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                                   {t("bookingModal.discountApplied", "10% Direct Discount Applied")}
                                 </div>
                                 <div className="text-xs font-semibold text-amber-700">
-                                  ~NPR {Math.round((room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))) * 0.9).toLocaleString()}
+                                  ~{formatNpr(room.price * 0.9)}
                                 </div>
                               </div>
                             )}

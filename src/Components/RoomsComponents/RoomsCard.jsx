@@ -7,9 +7,11 @@ import api from "../Utils/api";
 
 import { rooms as defaultFallbackRooms } from "../HelperComponents/RoomsData";
 import { useCMS } from "../../Context/CMSContext";
+import { useExchangeRate } from "../../Hooks/useExchangeRate";
 
 const RoomsCard = () => {
   const { rooms: cmsRooms, media, sitePhotos } = useCMS();
+  const { formatNpr } = useExchangeRate();
   const fallbackRooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultFallbackRooms;
   const [rooms, setRooms] = useState(fallbackRooms);
   const [currentPage, setCurrentPage] = useState(1);
@@ -314,7 +316,7 @@ const RoomsCard = () => {
                     <span className="text-xs font-normal opacity-80">{t("roomsCard.perNight", "/ night")}</span>
                   </div>
                   <span className="text-amber-200 text-xs font-medium">
-                    ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                    ~{formatNpr(room.price)}
                   </span>
                 </div>
 
@@ -398,7 +400,7 @@ const RoomsCard = () => {
                     <span className="text-xs text-gray-500 ml-1">/ night</span>
                   </div>
                   <span className="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                    ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                    ~{formatNpr(room.price)}
                   </span>
                 </div>
 

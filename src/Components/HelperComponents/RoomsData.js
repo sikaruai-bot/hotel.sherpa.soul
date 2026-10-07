@@ -29,7 +29,6 @@ export const rooms = [
     ],
     price: 20,
     currency: "USD",
-    priceNprApprox: 2700,
     status: "AVAILABLE",
     image: [
       "/triple.webp",
@@ -67,7 +66,6 @@ export const rooms = [
     ],
     price: 20,
     currency: "USD",
-    priceNprApprox: 2700,
     status: "AVAILABLE",
     image: [
       "/changes_photo/deluxeRoom_ai.webp",
@@ -106,7 +104,6 @@ export const rooms = [
     ],
     price: 30,
     currency: "USD",
-    priceNprApprox: 4000,
     status: "AVAILABLE",
     image: [
       "/changes_photo/doubleBed.webp",

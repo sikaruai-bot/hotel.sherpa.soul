@@ -21,10 +21,12 @@ import { useTranslation } from "react-i18next";
 import api from "../Utils/api";
 import { trackMetaEvent } from "../Analytics/pixelEvents";
 import { useCMS } from "../../Context/CMSContext";
+import { useExchangeRate } from "../../Hooks/useExchangeRate";
 
 export default function RoomDetail() {
   const { id } = useParams();
   const { rooms: cmsRooms } = useCMS();
+  const { formatNpr } = useExchangeRate();
   const rooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultRooms;
   const findMatchingRoom = (targetId) => {
     const raw = String(targetId || "").toLowerCase().trim();
@@ -418,7 +420,7 @@ export default function RoomDetail() {
                     ${room.price} USD
                   </span>
                   <span className="text-xl sm:text-2xl font-bold text-amber-600">
-                    (~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()})
+                    (~{formatNpr(room.price)})
                   </span>
                   <span className="text-base sm:text-lg text-gray-500 font-medium">{t("roomsCard.perNight", "/ night")}</span>
                 </div>
@@ -427,7 +429,7 @@ export default function RoomDetail() {
                     <span>🔥</span> {t("roomsCard.onlyLeft", "Only 2 rooms left!")}
                   </span>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
-                    {t("roomdetails.nepaliRate", "Nepali Guests:")} ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                    {t("roomdetails.nepaliRate", "Nepali Guests:")} ~{formatNpr(room.price)}
                   </span>
                   <span>• {t("roomdetails.bestDirectRate", "Best direct rate guaranteed")}</span>
                 </div>
@@ -533,7 +535,7 @@ export default function RoomDetail() {
                         ${room.price} USD
                       </div>
                       <div className="text-xs font-semibold text-amber-700 mt-0.5">
-                        ~NPR {(room.priceNprApprox || (Number(room.price) <= 100 ? Number(room.price) * 135 : Number(room.price))).toLocaleString()}
+                        ~{formatNpr(room.price)}
                       </div>
                       <div className="text-[11px] text-gray-500">Per Night</div>
                     </div>

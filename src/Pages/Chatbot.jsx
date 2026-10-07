@@ -13,9 +13,11 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useExchangeRate } from "../Hooks/useExchangeRate";
 
 export default function HotelChatBot() {
   const { t } = useTranslation();
+  const { formatNpr } = useExchangeRate();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -38,7 +40,7 @@ export default function HotelChatBot() {
       id: "rooms",
       text: "🛏️ " + t("chatbot.option1.title", "Room Types & Pricing"),
       icon: "🛏️",
-      response: t("chatbot.option1.response", "We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• Ceiling fan/heating, private hot shower & free Wi-Fi\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~NPR 2,700)\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~NPR 4,000)\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• ❄️ **Air Conditioning (AC)**, extra spacious living\n\nAll rooms include high-speed Wi-Fi. (Shared self-kitchen available) 🍳"),
+      response: t("chatbot.option1.response", `We offer three comfortable room categories:\n\n🏨 **(A) Budget Family Room** - $20 USD/night (~${formatNpr(20)})\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• Ceiling fan/heating, private hot shower & free Wi-Fi\n\n🏨 **(B) Deluxe Room** - $20 USD/night (~${formatNpr(20)})\n• Occupancy: 2 Adults, 1 Child\n• Bed: 1 King size\n• ❄️ **Air Conditioning (AC)**, work desk & peaceful rest\n\n🏨 **(C) Family Room** - $30 USD/night (~${formatNpr(30)})\n• Occupancy: 3 Adults, 1 Child\n• Beds: 1 King size + 1 Single\n• ❄️ **Air Conditioning (AC)**, extra spacious living\n\nAll rooms include high-speed Wi-Fi. (Shared self-kitchen available) 🍳`),
     },
     {
       id: "facilities",
@@ -145,7 +147,7 @@ export default function HotelChatBot() {
     const msg = customMessage.toLowerCase();
     if (msg.includes("price") || msg.includes("cost") || msg.includes("rate")) {
       response =
-        "💰 Our room rates are: Deluxe Room at $20 USD/night (~NPR 2,700), Budget Family Room at $20 USD/night (~NPR 2,700), and Family Room at $30 USD/night (~NPR 4,000). Would you like to check details? Please select 'Room Types & Pricing' above!";
+        `💰 Our room rates are: Deluxe Room at $20 USD/night (~${formatNpr(20)}), Budget Family Room at $20 USD/night (~${formatNpr(20)}), and Family Room at $30 USD/night (~${formatNpr(30)}). Would you like to check details? Please select 'Room Types & Pricing' above!`;
     } else if (msg.includes("book") || msg.includes("reservation")) {
       response =
         "📅 I'd love to help you book! Please call +977 9851068219, WhatsApp +977 9851068219, or email info@hotelsherpasoul.com for reservations. You can also select 'Make a Reservation' above for all booking options!";
