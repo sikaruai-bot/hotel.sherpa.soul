@@ -56,13 +56,13 @@ export default function HotelChatBot() {
       id: "booking",
       text: "📅 " + t("chatbot.option4.title", "Make a Reservation"),
       icon: "📅",
-      response: t("chatbot.option4.response", "Ready to book your stay? Here are your options:\n\n📞 **Call directly:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n\nBook direct with us for our best 10% discount rate!"),
+      response: t("chatbot.option4.response", "Ready to book your stay? Here are your options:\n\n📞 **Call directly:** +977 9851068219\n💬 **WhatsApp:** +977 9851068219\n📧 **Email:** info@hotelsherpasoul.com\n\nBook direct with us for our best 10% discount rate!"),
     },
     {
       id: "contact",
       text: "📞 " + t("chatbot.option5.title", "Contact Information"),
       icon: "📞",
-      response: t("chatbot.option5.response", "📞 **Call:** +977 9851068219\n💬 **WhatsApp:** +977 9818259472\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Thamel Bhagawati Marg 26, Kathmandu, Nepal\n\n🕐 **Reception:** 24/7"),
+      response: t("chatbot.option5.response", "📞 **Call:** +977 9851068219\n💬 **WhatsApp:** +977 9851068219\n📧 **Email:** info@hotelsherpasoul.com\n📍 **Address:** Thamel Bhagawati Marg 26, Kathmandu, Nepal\n\n🕐 **Reception:** 24/7"),
     },
   ];
 
@@ -140,7 +140,7 @@ export default function HotelChatBot() {
 
     // Simple auto-responses based on keywords
     let response =
-      "Thank you for your message! For personalized assistance, please call us directly at +977 9851068219, message our WhatsApp at +977 9818259472, or use the quick options above. Our team is always ready to help! 😊";
+      "Thank you for your message! For personalized assistance, please call us directly at +977 9851068219, message our WhatsApp at +977 9851068219, or use the quick options above. Our team is always ready to help! 😊";
 
     const msg = customMessage.toLowerCase();
     if (msg.includes("price") || msg.includes("cost") || msg.includes("rate")) {
@@ -148,7 +148,7 @@ export default function HotelChatBot() {
         "💰 Our room rates are: Deluxe Room at $20 USD/night (~NPR 2,700), Budget Family Room at $20 USD/night (~NPR 2,700), and Family Room at $30 USD/night (~NPR 4,000). Would you like to check details? Please select 'Room Types & Pricing' above!";
     } else if (msg.includes("book") || msg.includes("reservation")) {
       response =
-        "📅 I'd love to help you book! Please call +977 9851068219, WhatsApp +977 9818259472, or email info@hotelsherpasoul.com for reservations. You can also select 'Make a Reservation' above for all booking options!";
+        "📅 I'd love to help you book! Please call +977 9851068219, WhatsApp +977 9851068219, or email info@hotelsherpasoul.com for reservations. You can also select 'Make a Reservation' above for all booking options!";
     } else if (msg.includes("location") || msg.includes("address")) {
       response =
         "📍 We're located in Thamel, the heart of Kathmandu! Perfect for exploring the city. Select 'Location & Nearby' above for detailed information about our location and nearby attractions.";
@@ -363,7 +363,7 @@ export default function HotelChatBot() {
                           handleOption({
                             id: `quick-${index}`,
                             text: reply,
-                            response: `Thank you for asking about "${reply}". Please call us directly at +977 9851068219 or WhatsApp +977 9818259472 for immediate assistance, or select a detailed option below! 😊`,
+                            response: `Thank you for asking about "${reply}". Please call us directly at +977 9851068219 or WhatsApp +977 9851068219 for immediate assistance, or select a detailed option below! 😊`,
                           })
                         }
                       >

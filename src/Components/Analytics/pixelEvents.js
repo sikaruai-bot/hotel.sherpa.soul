@@ -59,48 +59,76 @@ export const initializeMetaPixel = (customPixelId) => {
 };
 
 // Unified tracking function for Meta Pixel, Google Analytics 4, and Google Tag Manager
+const STANDARD_META_EVENTS = [
+  "PageView",
+  "InitiateCheckout",
+  "Lead",
+  "Purchase",
+  "Contact",
+  "ViewContent",
+  "Search",
+  "AddToCart",
+  "CompleteRegistration",
+];
+
 export const trackEvent = (eventName, parameters = {}) => {
   if (typeof window === "undefined") return;
   const consent = getConsent();
+  if (consent === "essential") return;
 
-  // 1. Meta / Facebook Pixel (Fires unless user explicitly opted out to essential)
-  if (consent !== "essential") {
-    initializeMetaPixel();
-    if (window.fbq) {
-      window.fbq("track", eventName, parameters);
+  const currentPath = window.location.pathname || "/";
+  const enrichedParams = {
+    page_type: currentPath === "/" ? "home" : currentPath.replace(/^\//, ""),
+    ...parameters,
+  };
+
+  // 1. Meta / Facebook Pixel
+  initializeMetaPixel();
+  if (window.fbq) {
+    if (STANDARD_META_EVENTS.includes(eventName)) {
+      window.fbq("track", eventName, enrichedParams);
+    } else {
+      window.fbq("trackCustom", eventName, enrichedParams);
     }
   }
 
   // 2. Google Tag Manager / GA4 dataLayer
-  if (consent !== "essential") {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: eventName,
-      timestamp: new Date().toISOString(),
-      ...parameters,
-    });
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: eventName,
+    timestamp: new Date().toISOString(),
+    ...enrichedParams,
+  });
 
-    // 3. Google Analytics 4 (gtag.js) direct dispatch
-    if (typeof window.gtag === "function") {
-      const ga4EventMap = {
-        PageView: "page_view",
-        InitiateCheckout: "begin_checkout",
-        Lead: "generate_lead",
-        Purchase: "purchase",
-        Contact: "contact",
-        ViewContent: "view_item",
-        BookingClick: "booking_click",
-        WhatsAppClick: "whatsapp_click",
-        PhoneClick: "phone_click",
-        EmailClick: "email_click",
-        GoogleMapsClick: "maps_click",
-        ContactFormSubmit: "form_submit",
-        BookingFormSubmit: "booking_submit",
-      };
+  // 3. Google Analytics 4 (gtag.js) direct dispatch
+  if (typeof window.gtag === "function") {
+    const ga4EventMap = {
+      PageView: "page_view",
+      InitiateCheckout: "begin_booking",
+      begin_booking: "begin_booking",
+      Lead: "generate_lead",
+      Purchase: "purchase",
+      purchase: "purchase",
+      booking_confirmed: "booking_confirmed",
+      Contact: "contact",
+      ViewContent: "view_room",
+      view_room: "view_room",
+      WhatsAppClick: "whatsapp_click",
+      whatsapp_click: "whatsapp_click",
+      PhoneClick: "phone_click",
+      phone_click: "phone_click",
+      EmailClick: "email_click",
+      email_click: "email_click",
+      OtaClick: "ota_click",
+      ota_click: "ota_click",
+      GoogleMapsClick: "maps_click",
+      ContactFormSubmit: "form_submit",
+      BookingFormSubmit: "booking_submit",
+      booking_submit: "booking_submit",
+    };
 
-      const gaEventName = ga4EventMap[eventName] || eventName;
-      window.gtag("event", gaEventName, parameters);
-    }
+    const gaEventName = ga4EventMap[eventName] || eventName;
+    window.gtag("event", gaEventName, enrichedParams);
   }
 };
 
@@ -112,6 +140,14 @@ export const trackBookingClick = (entryPoint, extra = {}) => {
   trackEvent("InitiateCheckout", {
     content_category: "hotel_booking",
     entry_point: entryPoint,
+    cta_location: entryPoint,
+    cta_text: extra.cta_text || "Book Direct & Save 10%",
+    ...extra,
+  });
+  trackEvent("begin_booking", {
+    entry_point: entryPoint,
+    cta_location: entryPoint,
+    cta_text: extra.cta_text || "Book Direct & Save 10%",
     ...extra,
   });
 };
@@ -120,21 +156,56 @@ export const trackWhatsAppClick = (entryPoint, extra = {}) => {
   trackEvent("Contact", {
     channel: "whatsapp",
     entry_point: entryPoint,
+    cta_location: entryPoint,
+    ...extra,
+  });
+  trackEvent("whatsapp_click", {
+    entry_point: entryPoint,
+    cta_location: entryPoint,
     ...extra,
   });
 };
 
-export const trackPhoneClick = (entryPoint) => {
+export const trackPhoneClick = (entryPoint, extra = {}) => {
   trackEvent("Contact", {
     channel: "phone",
     entry_point: entryPoint,
+    cta_location: entryPoint,
+    ...extra,
+  });
+  trackEvent("phone_click", {
+    entry_point: entryPoint,
+    cta_location: entryPoint,
+    ...extra,
   });
 };
 
-export const trackEmailClick = (entryPoint) => {
+export const trackEmailClick = (entryPoint, extra = {}) => {
   trackEvent("Contact", {
     channel: "email",
     entry_point: entryPoint,
+    cta_location: entryPoint,
+    ...extra,
+  });
+  trackEvent("email_click", {
+    entry_point: entryPoint,
+    cta_location: entryPoint,
+    ...extra,
+  });
+};
+
+export const trackOtaClick = (otaName, entryPoint = "footer", extra = {}) => {
+  trackEvent("OtaClick", {
+    ota_name: otaName,
+    entry_point: entryPoint,
+    cta_location: entryPoint,
+    ...extra,
+  });
+  trackEvent("ota_click", {
+    ota_name: otaName,
+    entry_point: entryPoint,
+    cta_location: entryPoint,
+    ...extra,
   });
 };
 
@@ -153,7 +224,7 @@ export const trackContactFormSubmit = (data = {}) => {
 };
 
 export const trackBookingFormSubmit = (data = {}) => {
-  trackEvent("Purchase", {
+  trackEvent("booking_submit", {
     form_type: "direct_booking_form",
     ...data,
   });

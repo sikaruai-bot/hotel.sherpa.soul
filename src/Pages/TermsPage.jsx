@@ -101,7 +101,7 @@ export default function TermsPage() {
               <p><strong>Hotel Sherpa Soul</strong></p>
               <p>Address: Thamel Bhagawati Marg 26, Kathmandu, Nepal</p>
               <p>Email: <a href="mailto:info@hotelsherpasoul.com" className="text-[#FB6C01] hover:underline font-semibold">info@hotelsherpasoul.com</a></p>
-              <p>WhatsApp: <a href="https://wa.me/9779818259472" className="text-[#FB6C01] hover:underline font-semibold">+977 9818259472</a> / Phone: <a href="tel:+9779851068219" className="text-[#FB6C01] hover:underline font-semibold">+977 9851068219</a></p>
+              <p>WhatsApp: <a href="https://wa.me/9779851068219" className="text-[#FB6C01] hover:underline font-semibold">+977 9851068219</a> / Phone: <a href="tel:+9779851068219" className="text-[#FB6C01] hover:underline font-semibold">+977 9851068219</a></p>
             </div>
           </section>
         </div>

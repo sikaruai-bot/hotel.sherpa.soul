@@ -426,14 +426,24 @@ export default function BookingForm() {
           content_ids: [roomNum],
           content_name: room?.name,
           value: calcTotal,
-          currency: "NPR",
+          currency: "USD",
         });
 
         trackMetaEvent("Purchase", {
+          transaction_id: bookingRef,
+          value: Number(calcTotal),
+          currency: "USD",
           content_type: "hotel_booking",
+          content_name: room?.name || `Room ${roomNum}`,
           content_ids: [roomNum],
-          value: calcTotal,
-          currency: "NPR",
+          items: [
+            {
+              item_id: String(roomNum),
+              item_name: room?.name || `Room ${roomNum}`,
+              price: Number(room?.price) || 20,
+              quantity: Number(formData.numberOfRooms) || 1,
+            },
+          ],
         });
 
         // Trigger official booking confirmation voucher & hotel staff alert email

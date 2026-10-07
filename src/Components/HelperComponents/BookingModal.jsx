@@ -170,7 +170,7 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
               </span>
             </div>
             <span className="hidden sm:inline-block bg-[#FB6C01] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-              {t("bookingModal.bestRateGuaranteed", "Best Rate Guaranteed")}
+              {t("bookingModal.bestRateGuaranteed", "Book Direct & Save 10%")}
             </span>
           </div>
 

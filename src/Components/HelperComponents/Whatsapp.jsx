@@ -4,11 +4,11 @@ import { trackWhatsAppClick } from "../Analytics/pixelEvents";
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
+      href="https://wa.me/9779851068219?text=Hi%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Hotel Sherpa Soul on WhatsApp"
-      onClick={() => trackWhatsAppClick("floating_whatsapp_button")}
+      onClick={() => trackWhatsAppClick("floating_whatsapp_button", { cta_text: "WhatsApp Us" })}
       className="flex items-center justify-center w-14 h-14 min-w-[48px] min-h-[48px] rounded-full bg-green-500 hover:bg-green-600 text-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
     >
       {/* WhatsApp Icon */}

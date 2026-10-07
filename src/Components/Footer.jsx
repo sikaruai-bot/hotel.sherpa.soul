@@ -15,7 +15,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import BookingModal from "./HelperComponents/BookingModal";
-import { trackMetaEvent } from "./Analytics/pixelEvents";
+import { trackMetaEvent, trackOtaClick } from "./Analytics/pixelEvents";
 import hotelLogo from "../assets/logo.webp";
 import { useCMS } from "../Context/CMSContext";
 
@@ -53,7 +53,7 @@ export default function Footer() {
     },
     {
       icon: FaWhatsapp,
-      href: "https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates.",
+      href: "https://wa.me/9779851068219?text=Hi%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability.",
       label: "WhatsApp",
       color: "hover:text-green-500 hover:bg-green-500/10",
     },
@@ -306,6 +306,7 @@ export default function Footer() {
                           href={channels?.bookingCom?.url || "https://www.booking.com/hotel/np/hotel-sherpa-soul.html"}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => trackOtaClick("booking_com", "footer")}
                           className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white border border-blue-500/30 text-xs font-medium transition-all duration-200"
                         >
                           <Smartphone size={13} />
@@ -318,6 +319,7 @@ export default function Footer() {
                           href={channels?.airbnb?.url || "https://www.airbnb.com/rooms/1760024961976448522"}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => trackOtaClick("airbnb", "footer")}
                           className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 text-xs font-medium transition-all duration-200"
                         >
                           <span>{t("footer.otas.airbnb", "Book on Airbnb")}</span>
@@ -329,6 +331,7 @@ export default function Footer() {
                           href={channels.agoda.url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => trackOtaClick("agoda", "footer")}
                           className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 text-xs font-medium transition-all duration-200"
                         >
                           <span>{t("footer.otas.agoda", "Book on Agoda")}</span>
@@ -340,6 +343,7 @@ export default function Footer() {
                           href={channels?.tripCom?.url || "https://www.trip.com/hotels/list?keyword=Hotel%20Sherpa%20Soul%20Kathmandu"}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => trackOtaClick("trip_com", "footer")}
                           className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/30 text-xs font-medium transition-all duration-200"
                         >
                           <span>{t("footer.otas.tripCom", "Book on Trip.com")}</span>

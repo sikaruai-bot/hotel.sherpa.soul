@@ -104,7 +104,7 @@ export default function Navbar() {
                 <strong className="text-amber-300 font-bold">{t("nav.ribbonDiscount", "10% Discount")}</strong>{" "}
                 {t("nav.ribbonOnAll", "on all rooms!")}
               </span>
-              <span className="hidden md:inline text-white/40">{t("nav.ribbonBestRate", "• Best Rate Guaranteed")}</span>
+              <span className="hidden md:inline text-white/40">{t("nav.ribbonBestRate", "• Book Direct & Save 10%")}</span>
             </div>
             <button
               onClick={handleBookingClick}

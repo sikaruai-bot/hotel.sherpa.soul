@@ -25,7 +25,7 @@ export default function HomeDirectOffer() {
       icon: <Clock className="w-5 h-5 text-emerald-600" />,
     },
     {
-      title: t("directOffer.bestRateTitle", "Best Rate Guarantee"),
+      title: t("directOffer.bestRateTitle", "Book Direct & Save 10%"),
       desc: t("directOffer.bestRateDesc", "Transparent, honest pricing with no hidden fees."),
       icon: <ShieldCheck className="w-5 h-5 text-[#FB6C01]" />,
     },

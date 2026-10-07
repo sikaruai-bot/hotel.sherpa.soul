@@ -39,12 +39,12 @@ export default function GetInTouch() {
 
   const handlePhoneClick = async () => {
     try {
-      await navigator.clipboard.writeText("+977 9818259472");
+      await navigator.clipboard.writeText("+977 9851068219");
       showToast(t("getInTouch.phoneCopied"));
     } catch (err) {
       // Fallback for older browsers
       const textArea = document.createElement("textarea");
-      textArea.value = "+977 9818259472";
+      textArea.value = "+977 9851068219";
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand("copy");
@@ -66,7 +66,7 @@ export default function GetInTouch() {
     {
       icon: Phone,
       title: t("getInTouch.callWhatsApp"),
-      detail: "+977 9818259472",
+      detail: "+977 9851068219 / +977-1-4530311",
       description: t("getInTouch.whatsappDescription"),
       gradient: "from-emerald-400 to-teal-500",
       onClick: handlePhoneClick,
@@ -82,7 +82,7 @@ export default function GetInTouch() {
     {
       icon: MapPin,
       title: t("getInTouch.visitUs"),
-      detail: "Thamel, Kathmandu, Nepal",
+      detail: "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
       description: t("getInTouch.visitDescription"),
       gradient: "from-orange-400 to-red-500",
       onClick: handleMapClick,

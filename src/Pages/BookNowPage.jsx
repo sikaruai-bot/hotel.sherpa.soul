@@ -258,13 +258,24 @@ export default function BookNowPage() {
         content_category: "hotel_booking",
         content_name: formData.roomType,
         value: totalAmount,
-        currency: "NPR",
+        currency: "USD",
       });
 
       trackMetaEvent("Purchase", {
+        transaction_id: refId,
+        value: Number(totalAmount),
+        currency: "USD",
         content_type: "hotel_booking",
-        value: totalAmount,
-        currency: "NPR",
+        content_name: formData.roomType,
+        content_ids: [String(selectedRoom.roomNumber)],
+        items: [
+          {
+            item_id: String(selectedRoom.roomNumber),
+            item_name: formData.roomType,
+            price: Number(selectedRoom.price) || 20,
+            quantity: Number(formData.numberOfRooms) || 1,
+          },
+        ],
       });
     } catch (err) {
       console.warn("PMS reservation request recorded with direct reference:", err);
@@ -432,7 +443,7 @@ export default function BookNowPage() {
 
                 <div className="space-y-4">
                   <a
-                    href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
+                    href="https://wa.me/9779851068219?text=Hi%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block group hover:scale-105 transition-all duration-300"
@@ -444,7 +455,7 @@ export default function BookNowPage() {
                       <div>
                         <h3 className="font-bold text-gray-800">WhatsApp</h3>
                         <p className="text-green-600 font-semibold text-lg">
-                          +977 9818259472
+                          +977 9851068219
                         </p>
                       </div>
                     </div>
@@ -942,7 +953,7 @@ export default function BookNowPage() {
 
               <div className="pt-6">
                 <a
-                  href={`https://wa.me/9779818259472?text=${encodeURIComponent(
+                  href={`https://wa.me/9779851068219?text=${encodeURIComponent(
                     `*🏨 New Website Reservation - Hotel Sherpa Soul*\n\n` +
                     `*Booking Ref:* ${bookingRefId}\n` +
                     `*Guest Name:* ${formData.fullName}\n` +
@@ -959,7 +970,7 @@ export default function BookNowPage() {
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Phone className="w-5 h-5" />
-                  {t("bookNowPage.confirmWhatsApp", "Confirm on WhatsApp (+977 9818259472)")}
+                  {t("bookNowPage.confirmWhatsApp", "Confirm on WhatsApp (+977 9851068219)")}
                 </a>
               </div>
             </div>
