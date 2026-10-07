@@ -36,11 +36,11 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
         let rawImg = Array.isArray(r.image) ? r.image[0] : r.image;
         if (!rawImg || rawImg.trim() === "") {
           const idStr = String(r.id || r.slug || "").toLowerCase();
-          if ((idStr.includes("budget") || idStr === "101") && (sitePhotos?.bookNow_budget || sitePhotos?.roomCard_budget)) {
+          if ((idStr.includes("budget") || idStr === "203" || idStr === "303" || idStr === "101") && (sitePhotos?.bookNow_budget || sitePhotos?.roomCard_budget)) {
             rawImg = sitePhotos.bookNow_budget || sitePhotos.roomCard_budget;
-          } else if ((idStr.includes("deluxe") || idStr === "201") && (sitePhotos?.bookNow_deluxe || sitePhotos?.roomCard_deluxe)) {
+          } else if ((idStr.includes("deluxe") || idStr === "201" || idStr === "301") && (sitePhotos?.bookNow_deluxe || sitePhotos?.roomCard_deluxe)) {
             rawImg = sitePhotos.bookNow_deluxe || sitePhotos.roomCard_deluxe;
-          } else if ((idStr.includes("family") || idStr === "301") && (sitePhotos?.bookNow_family || sitePhotos?.roomCard_family)) {
+          } else if ((idStr.includes("family") || idStr === "202" || idStr === "302") && (sitePhotos?.bookNow_family || sitePhotos?.roomCard_family)) {
             rawImg = sitePhotos.bookNow_family || sitePhotos.roomCard_family;
           }
         }

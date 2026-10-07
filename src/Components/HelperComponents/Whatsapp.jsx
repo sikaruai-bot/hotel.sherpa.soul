@@ -4,7 +4,7 @@ import { trackWhatsAppClick } from "../Analytics/pixelEvents";
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/9779851068219?text=Hi%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability."
+      href="https://wa.me/9779818259472?text=Hi%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Hotel Sherpa Soul on WhatsApp"

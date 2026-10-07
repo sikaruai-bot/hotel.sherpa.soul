@@ -96,7 +96,7 @@ export default function HomeIntro() {
     },
     {
       icon: FaWhatsapp,
-      href: "https://wa.me/9779851068219?text=Hi%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability.",
+      href: "https://wa.me/9779818259472?text=Hi%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability.",
       label: "WhatsApp",
       colorClass: "text-[#25D366]",
     },

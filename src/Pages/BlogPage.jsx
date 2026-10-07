@@ -215,7 +215,7 @@ Transportation Options:
 2. Prepaid Airport Taxi: Booked directly at the official counter inside the arrivals lobby. Fares typically range between NPR 800 and 1,000.
 3. Ride-Hailing Apps: Apps like Pathao or InDrive operate in Kathmandu. Walk past the main parking area to meet your driver.
 
-Traveler Tip: Contact Hotel Sherpa Soul via WhatsApp (+977 9851068219) prior to boarding your flight to arrange direct private transfer.`,
+Traveler Tip: Contact Hotel Sherpa Soul via WhatsApp (+977 9818259472) prior to boarding your flight to arrange direct private transfer.`,
     },
     {
       id: 10,

@@ -24,6 +24,7 @@ import { useCMS } from "../../Context/CMSContext";
 
 export default function RoomDetail() {
   const { id } = useParams();
+  const { rooms: cmsRooms } = useCMS();
   const rooms = cmsRooms && cmsRooms.length > 0 ? cmsRooms : defaultRooms;
   const findMatchingRoom = (targetId) => {
     const raw = String(targetId || "").toLowerCase().trim();
@@ -264,9 +265,9 @@ export default function RoomDetail() {
     navigate(`/book/${room?.slug || room?.id || id}`);
   };
 
-  const catKey = String(room?.slug || room?.id || id || "").toLowerCase();
-  const isBudget = catKey.includes("budget") || catKey === "101" || catKey === "1";
-  const isDeluxe = catKey.includes("deluxe") || catKey === "201" || catKey === "2";
+  const catKey = String(room?.slug || room?.id || room?.roomNumber || id || "").toLowerCase();
+  const isBudget = catKey.includes("budget") || catKey === "203" || catKey === "303" || catKey === "101" || catKey === "1";
+  const isDeluxe = catKey.includes("deluxe") || catKey === "201" || catKey === "301" || catKey === "2";
   const roomName = isBudget ? t("homeRoomsData.budget.name", room.name) : isDeluxe ? t("homeRoomsData.deluxe.name", room.name) : t("homeRoomsData.family.name", room.name);
   const roomOccupancy = isBudget ? t("homeRoomsData.budget.occupancy", room.occupancy) : isDeluxe ? t("homeRoomsData.deluxe.occupancy", room.occupancy) : t("homeRoomsData.family.occupancy", room.occupancy);
   const roomBeds = isBudget ? t("homeRoomsData.budget.bed", room.beds) : isDeluxe ? t("homeRoomsData.deluxe.bed", room.beds) : t("homeRoomsData.family.bed", room.beds);

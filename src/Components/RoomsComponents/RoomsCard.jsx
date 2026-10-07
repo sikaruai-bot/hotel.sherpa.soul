@@ -33,9 +33,9 @@ const RoomsCard = () => {
          // Only use sitePhotos if cat.image is missing or empty
          if (!rawImg || rawImg.trim() === "") {
            const idStr = String(cat.id || cat.slug || "").toLowerCase();
-           if ((idStr.includes("budget") || idStr === "101") && sitePhotos?.roomCard_budget) rawImg = sitePhotos.roomCard_budget;
-           else if ((idStr.includes("deluxe") || idStr === "201") && sitePhotos?.roomCard_deluxe) rawImg = sitePhotos.roomCard_deluxe;
-           else if ((idStr.includes("family") || idStr === "301") && sitePhotos?.roomCard_family) rawImg = sitePhotos.roomCard_family;
+           if ((idStr.includes("budget") || idStr === "203" || idStr === "303" || idStr === "101") && sitePhotos?.roomCard_budget) rawImg = sitePhotos.roomCard_budget;
+           else if ((idStr.includes("deluxe") || idStr === "201" || idStr === "301") && sitePhotos?.roomCard_deluxe) rawImg = sitePhotos.roomCard_deluxe;
+           else if ((idStr.includes("family") || idStr === "202" || idStr === "302") && sitePhotos?.roomCard_family) rawImg = sitePhotos.roomCard_family;
          }
 
          const cleanedImg = typeof rawImg === "string" ? rawImg.replace(/\.jpeg$/i, ".webp") : rawImg;
