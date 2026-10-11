@@ -4,9 +4,6 @@ import { verifyAdmin, parseJsonBody } from "./_auth.js";
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export default async function handler(req, res) {
-  const admin = verifyAdmin(req, res);
-  if (!admin) return;
-
   if (req.method === "GET") {
     try {
       const rows = await sql`
@@ -20,6 +17,7 @@ export default async function handler(req, res) {
         return res.status(404).json({ error: "CMS record not found" });
       }
 
+      res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate=60");
       return res.status(200).json({
         data: rows[0].data,
         updatedAt: rows[0].updated_at,
@@ -31,6 +29,9 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "PUT") {
+    const admin = verifyAdmin(req, res);
+    if (!admin) return;
+
     let body;
     try {
       body = await parseJsonBody(req);
