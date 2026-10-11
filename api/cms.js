@@ -68,7 +68,8 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: `Invalid blobUrl for upload: ${ref.uploadId}` });
       }
       if (!serializedData.includes(ref.blobUrl)) {
-        return res.status(400).json({ error: `blobUrl ${ref.blobUrl} is not referenced anywhere in submitted data` });
+        // Skip orphaned or unreferenced upload ref
+        continue;
       }
 
       const uploadRows = await sql`
@@ -81,8 +82,8 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: `Upload record ${ref.uploadId} not found in database` });
       }
       const uploadRecord = uploadRows[0];
-      if (uploadRecord.status !== "ready") {
-        return res.status(400).json({ error: `Upload ${ref.uploadId} status is '${uploadRecord.status}'; expected 'ready'` });
+      if (uploadRecord.status !== "ready" && uploadRecord.status !== "referenced") {
+        return res.status(400).json({ error: `Upload ${ref.uploadId} status is '${uploadRecord.status}'; expected 'ready' or 'referenced'` });
       }
       if (uploadRecord.blob_url !== ref.blobUrl) {
         return res.status(400).json({ error: `Upload ${ref.uploadId} blobUrl mismatch against recorded upload` });
@@ -91,8 +92,11 @@ export default async function handler(req, res) {
 
     const updateResult = await sql`
       UPDATE cms
-      SET data = ${data}, updated_at = now()
-      WHERE id = 1 AND updated_at = ${normalizedUpdatedAt}::timestamptz
+      SET data = ${data}, updated_at = date_trunc('milliseconds', now())
+      WHERE id = 1 AND (
+        updated_at = ${normalizedUpdatedAt}::timestamptz
+        OR date_trunc('milliseconds', updated_at) = date_trunc('milliseconds', ${normalizedUpdatedAt}::timestamptz)
+      )
       RETURNING updated_at
     `;
 

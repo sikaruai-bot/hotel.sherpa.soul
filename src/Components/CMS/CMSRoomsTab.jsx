@@ -62,8 +62,8 @@ export default function CMSRoomsTab({ rooms, onUpdateRooms }) {
   const handleResetPhoto = () => {
     if (!editingRoom) return;
     const defaultImg =
-      editingRoom.id === 101 ? "/triple.webp" :
-      editingRoom.id === 201 ? "/changes_photo/deluxeRoom_ai.webp" :
+      editingRoom.id === "budget-family-room" || editingRoom.roomNumber === "203" || editingRoom.id === 101 ? "/triple.webp" :
+      editingRoom.id === "deluxe-room" || editingRoom.roomNumber === "201" || editingRoom.id === 201 ? "/changes_photo/deluxeRoom_ai.webp" :
       "/changes_photo/doubleBed.webp";
     const nextImgs = [...(editingRoom.image || [])];
     nextImgs[0] = defaultImg;

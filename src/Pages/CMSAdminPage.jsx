@@ -34,6 +34,7 @@ export default function CMSAdminPage() {
     isSaving,
     saveError,
     conflict,
+    resolveConflict,
     isAuthenticated,
     loginAdmin,
     logoutAdmin,
@@ -99,10 +100,15 @@ export default function CMSAdminPage() {
                   <span className="text-amber-300">Saving changes...</span>
                 </>
               ) : conflict ? (
-                <>
-                  <span className="w-2 h-2 rounded-full bg-red-400" />
-                  <span className="text-red-400 font-semibold">Conflict: Server Updated</span>
-                </>
+                <button
+                  type="button"
+                  onClick={() => resolveConflict(true)}
+                  className="flex items-center gap-1.5 text-red-400 hover:text-red-300 font-semibold cursor-pointer"
+                  title="Click to overwrite and save your changes"
+                >
+                  <span className="w-2 h-2 rounded-full bg-red-400 animate-ping" />
+                  <span>Conflict: Click to Overwrite</span>
+                </button>
               ) : saveError ? (
                 <>
                   <span className="w-2 h-2 rounded-full bg-red-400" />
@@ -141,6 +147,33 @@ export default function CMSAdminPage() {
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        {/* Conflict Resolution Banner */}
+        {conflict && (
+          <div className="bg-amber-950/60 border border-amber-500/40 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-amber-200 animate-fadeIn">
+            <div className="flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping shrink-0" />
+              <div>
+                <p className="font-semibold text-sm text-white">Server Conflict: Server has newer updates</p>
+                <p className="text-xs text-amber-300/80">Would you like to keep your latest changes or load the server version?</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => resolveConflict(true)}
+                className="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-semibold transition-all shadow"
+              >
+                Overwrite With My Edits
+              </button>
+              <button
+                onClick={() => resolveConflict(false)}
+                className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold transition-all"
+              >
+                Discard & Reload Server
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Navigation Tabs Bar */}
         <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-slate-800/80">
           {navTabs.map((tab) => {

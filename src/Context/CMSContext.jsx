@@ -616,6 +616,24 @@ export function CMSProvider({ children }) {
     return enqueueSave(nextData, uploadRefs);
   };
 
+  const resolveConflict = (keepLocal = true) => {
+    if (!conflict) return;
+    if (keepLocal) {
+      serverUpdatedAtRef.current = conflict.serverUpdatedAt;
+      const draftToSave = conflict.pendingDraft || data;
+      setConflict(null);
+      setSaveError(null);
+      enqueueSave(draftToSave);
+    } else {
+      setData(conflict.serverData);
+      latestDataRef.current = conflict.serverData;
+      serverUpdatedAtRef.current = conflict.serverUpdatedAt;
+      setServerUpdatedAt(conflict.serverUpdatedAt);
+      setConflict(null);
+      setSaveError(null);
+    }
+  };
+
   const loginAdmin = async (password) => {
     try {
       const res = await fetch("/api/cms-login", {
@@ -699,10 +717,21 @@ export function CMSProvider({ children }) {
 
   // Room-to-gallery/sitePhoto mapping
   // When a room photo changes, auto-sync it to the gallery and site photo cards
+  const isBudgetRoom = (r) => String(r.id) === "budget-family-room" || String(r.id) === "101" || String(r.roomNumber) === "203";
+  const isDeluxeRoom = (r) => String(r.id) === "deluxe-room" || String(r.id) === "201" || String(r.roomNumber) === "201";
+  const isFamilyRoom = (r) => String(r.id) === "family-room" || String(r.id) === "301" || String(r.roomNumber) === "302";
+
+  // Room-to-gallery/sitePhoto mapping
+  // When a room photo changes, auto-sync it to the gallery and site photo cards
   const ROOM_GALLERY_MAP = {
-    101: { galleryId: "g4",  sitePhotoKeys: ["roomCard_budget", "bookNow_budget"]  },
-    201: { galleryId: "g1",  sitePhotoKeys: ["roomCard_deluxe", "bookNow_deluxe", "homeHero"]  },
-    301: { galleryId: "g2",  sitePhotoKeys: ["roomCard_family", "bookNow_family"]  },
+    101: { galleryId: "g4", sitePhotoKeys: ["roomCard_budget", "bookNow_budget"] },
+    201: { galleryId: "g1", sitePhotoKeys: ["roomCard_deluxe", "bookNow_deluxe", "homeHero"] },
+    301: { galleryId: "g2", sitePhotoKeys: ["roomCard_family", "bookNow_family"] },
+    "budget-family-room": { galleryId: "g4", sitePhotoKeys: ["roomCard_budget", "bookNow_budget"] },
+    "deluxe-room": { galleryId: "g1", sitePhotoKeys: ["roomCard_deluxe", "bookNow_deluxe", "homeHero"] },
+    "family-room": { galleryId: "g2", sitePhotoKeys: ["roomCard_family", "bookNow_family"] },
+    "203": { galleryId: "g4", sitePhotoKeys: ["roomCard_budget", "bookNow_budget"] },
+    "302": { galleryId: "g2", sitePhotoKeys: ["roomCard_family", "bookNow_family"] },
   };
 
   const updateSitePhotos = (newPhotos) => {
@@ -710,10 +739,10 @@ export function CMSProvider({ children }) {
       let updatedRooms = Array.isArray(prev.rooms) ? [...prev.rooms] : [...DEFAULT_CMS_DATA.rooms];
       let updatedGallery = Array.isArray(prev.media?.gallery) ? [...prev.media.gallery] : [...DEFAULT_CMS_DATA.media.gallery];
 
-      // Bi-directional sync: if roomCard_budget is updated, update room 101 image[0] and gallery g4
+      // Bi-directional sync: if roomCard_budget is updated, update room budget image[0] and gallery g4
       if (newPhotos.roomCard_budget) {
         updatedRooms = updatedRooms.map((r) =>
-          (Number(r.id) === 101 || String(r.id) === "101")
+          isBudgetRoom(r)
             ? { ...r, image: [newPhotos.roomCard_budget, ...(Array.isArray(r.image) ? r.image.slice(1) : [])] }
             : r
         );
@@ -722,7 +751,7 @@ export function CMSProvider({ children }) {
       if (newPhotos.roomCard_deluxe || newPhotos.homeHero) {
         const src = newPhotos.roomCard_deluxe || newPhotos.homeHero;
         updatedRooms = updatedRooms.map((r) =>
-          (Number(r.id) === 201 || String(r.id) === "201")
+          isDeluxeRoom(r)
             ? { ...r, image: [src, ...(Array.isArray(r.image) ? r.image.slice(1) : [])] }
             : r
         );
@@ -730,7 +759,7 @@ export function CMSProvider({ children }) {
       }
       if (newPhotos.roomCard_family) {
         updatedRooms = updatedRooms.map((r) =>
-          (Number(r.id) === 301 || String(r.id) === "301")
+          isFamilyRoom(r)
             ? { ...r, image: [newPhotos.roomCard_family, ...(Array.isArray(r.image) ? r.image.slice(1) : [])] }
             : r
         );
@@ -757,7 +786,7 @@ export function CMSProvider({ children }) {
         const newPhoto = Array.isArray(room.image) ? room.image[0] : room.image;
 
         if (newPhoto && typeof newPhoto === "string" && newPhoto.trim() !== "") {
-          const mapping = ROOM_GALLERY_MAP[rId] || ROOM_GALLERY_MAP[room.id];
+          const mapping = ROOM_GALLERY_MAP[room.id] || ROOM_GALLERY_MAP[room.roomNumber] || ROOM_GALLERY_MAP[rId];
           if (mapping) {
             // Update gallery entry
             updatedGallery = updatedGallery.map((g) =>
@@ -912,6 +941,7 @@ export function CMSProvider({ children }) {
         enqueueSave,
         fetchServerCMS,
         registerUploadRef,
+        resolveConflict,
       }}
     >
       {children}
