@@ -4,55 +4,48 @@
  * Vercel serverless (hotel-sherpa-soul.vercel.app), and local development.
  */
 export async function sendEmailNotification(payload) {
-  const isCpanelDomain =
-    typeof window !== "undefined" &&
-    (window.location.hostname === "hotelsherpasoul.com" ||
-      window.location.hostname === "www.hotelsherpasoul.com");
+  const endpoints = [];
 
-  const primaryEndpoint = isCpanelDomain
-    ? "https://hotel-sherpa-soul.vercel.app/api/send-email"
-    : "/api/send-email";
+  // 1. Same-origin relative endpoint (fastest and directly handles hotelsherpasoul.com)
+  if (typeof window !== "undefined") {
+    endpoints.push("/api/send-email");
+  }
 
-  try {
-    const res = await fetch(primaryEndpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+  // 2. Primary production endpoint (hotelsherpasoul.com)
+  endpoints.push("https://hotelsherpasoul.com/api/send-email");
 
-    // Check if the response is valid JSON (cPanel might return HTML on 404/rewrite)
-    const contentType = res.headers.get("content-type") || "";
-    if (contentType.includes("application/json")) {
-      const data = await res.json();
-      if (res.ok && data?.success) {
-        return data;
-      }
-    }
+  // 3. Backup cloud endpoint (hotel-sherpa-soul.vercel.app)
+  endpoints.push("https://hotel-sherpa-soul.vercel.app/api/send-email");
 
-    // If primary returned non-JSON or error and wasn't already the direct Vercel URL, fallback
-    if (primaryEndpoint !== "https://hotel-sherpa-soul.vercel.app/api/send-email") {
-      console.warn("Primary email route did not succeed, attempting Vercel cloud fallback...");
-      const fallbackRes = await fetch("https://hotel-sherpa-soul.vercel.app/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      return await fallbackRes.json();
-    }
+  // Deduplicate endpoints preserving priority order
+  const uniqueEndpoints = [...new Set(endpoints)];
 
-    return { success: false, error: "Email delivery failed" };
-  } catch (err) {
-    console.warn("Email network attempt error, attempting direct Vercel fallback:", err);
+  let lastError = null;
+
+  for (const endpoint of uniqueEndpoints) {
     try {
-      const fallbackRes = await fetch("https://hotel-sherpa-soul.vercel.app/api/send-email", {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      return await fallbackRes.json();
-    } catch (fallbackErr) {
-      console.error("All email endpoints failed:", fallbackErr);
-      return { success: false, error: fallbackErr.message };
+
+      const contentType = res.headers.get("content-type") || "";
+      if (contentType.includes("application/json")) {
+        const data = await res.json();
+        if (res.ok && data?.success) {
+          return data;
+        }
+        lastError = data?.error || `HTTP ${res.status}`;
+      } else {
+        lastError = `Unexpected content-type (${res.status}): ${contentType}`;
+      }
+    } catch (err) {
+      lastError = err.message;
+      console.warn(`[emailService] Dispatch attempt failed at ${endpoint}:`, err);
     }
   }
+
+  console.error("[emailService] All email dispatch endpoints failed. Last error:", lastError);
+  return { success: false, error: lastError || "Email delivery failed" };
 }

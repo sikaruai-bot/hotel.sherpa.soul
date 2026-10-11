@@ -12,11 +12,11 @@ export default defineConfig({
         changeOrigin: true,
       },
       "/api/send-email": {
-        target: "https://hotel-sherpa-soul.vercel.app",
+        target: "https://hotelsherpasoul.com",
         changeOrigin: true,
       },
       "/api/contact": {
-        target: "https://hotel-sherpa-soul.vercel.app",
+        target: "https://hotelsherpasoul.com",
         changeOrigin: true,
       },
       "/api": {
