@@ -41,3 +41,5 @@ lh_*.json
 response.json
 scratch/
 *_backup.webp
+migration-report.json
+*.backup-*.json

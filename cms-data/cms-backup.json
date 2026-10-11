@@ -1,0 +1,458 @@
+{
+  "admin": {
+    "password": "sherpasoul2026"
+  },
+  "seo": {
+    "global": {
+      "defaultTitle": "Hotel Sherpa Soul | Peaceful Hotel in Thamel, Kathmandu",
+      "defaultDescription": "Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy comfortable rooms, a central location and a peaceful stay for travelers exploring Nepal.",
+      "defaultKeywords": "hotel in Thamel Kathmandu, hotel in Thamel, Thamel hotel, hotel Kathmandu, hotel near Thamel, accommodation in Thamel, Thamel accommodation, Kathmandu accommodation, budget hotel Kathmandu, hotel for travelers Kathmandu, peaceful hotel in Thamel, comfortable hotel in Kathmandu, hotel for trekkers Kathmandu, Nepal travel accommodation, where to stay in Thamel, best area to stay in Kathmandu, Kathmandu travel guide, Thamel travel guide, Nepal trekking accommodation",
+      "author": "Hotel Sherpa Soul",
+      "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+      "canonicalBase": "https://hotelsherpasoul.com"
+    },
+    "pages": {
+      "/": {
+        "title": "Hotel Sherpa Soul | Peaceful Hotel in Thamel, Kathmandu",
+        "description": "Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy comfortable rooms, a central location and a peaceful stay for travelers exploring Nepal.",
+        "keywords": "hotel in Thamel Kathmandu, peaceful hotel in Thamel, hotel in Thamel, Thamel accommodation",
+        "ogImage": "https://hotelsherpasoul.com/hero1.webp"
+      },
+      "/about": {
+        "title": "About Hotel Sherpa Soul | Hotel in Thamel, Kathmandu",
+        "description": "Learn about Hotel Sherpa Soul, a peaceful and comfortable hotel in Thamel, Kathmandu, designed for travelers exploring Nepal and the Himalayas.",
+        "keywords": "About Hotel Sherpa Soul, Hotel in Thamel Kathmandu, Peaceful hotel Thamel",
+        "ogImage": "https://hotelsherpasoul.com/hero1.webp"
+      },
+      "/rooms": {
+        "title": "Hotel Rooms in Thamel Kathmandu | Hotel Sherpa Soul",
+        "description": "Explore comfortable hotel rooms at Hotel Sherpa Soul in Thamel, Kathmandu. Find a peaceful place to rest before or after your Nepal adventure.",
+        "keywords": "Hotel Rooms in Thamel Kathmandu, Hotel Sherpa Soul rooms, accommodation in Thamel",
+        "ogImage": "https://hotelsherpasoul.com/room1/room.webp"
+      },
+      "/location": {
+        "title": "Hotel Location in Thamel Kathmandu | Hotel Sherpa Soul",
+        "description": "Stay in the heart of Thamel, Kathmandu at Hotel Sherpa Soul. Enjoy convenient access to Thamel's shops, cafés, travel services and attractions.",
+        "keywords": "hotel in Thamel Kathmandu, Hotel Location in Thamel, Hotel near Thamel",
+        "ogImage": "https://hotelsherpasoul.com/hero1.webp"
+      },
+      "/blog": {
+        "title": "Kathmandu Travel Guide | Thamel & Nepal Travel Tips",
+        "description": "Explore our Kathmandu travel guide for Thamel tips, Nepal travel advice, trekking information, places to visit and practical tips for travelers.",
+        "keywords": "Kathmandu Travel Guide, Thamel travel guide, Nepal travel advice, trekking tips",
+        "ogImage": "https://hotelsherpasoul.com/hero1.webp"
+      },
+      "/contact": {
+        "title": "Contact Hotel Sherpa Soul | Thamel Kathmandu",
+        "description": "Contact Hotel Sherpa Soul in Thamel, Kathmandu. Get in touch with us about rooms, availability, bookings and your stay in Nepal.",
+        "keywords": "Contact Hotel Sherpa Soul, Thamel Kathmandu, Phone WhatsApp",
+        "ogImage": "https://hotelsherpasoul.com/hero1.webp"
+      },
+      "/book-now": {
+        "title": "Book Direct | Hotel Sherpa Soul Kathmandu",
+        "description": "Book your stay directly at Hotel Sherpa Soul for the best rates, instant WhatsApp confirmation, and authentic Himalayan hospitality.",
+        "keywords": "Book Hotel Sherpa Soul, Hotel Reservation Thamel Kathmandu",
+        "ogImage": "https://hotelsherpasoul.com/hero1.webp"
+      },
+      "/gallery": {
+        "title": "Photo & Video Gallery | Hotel Sherpa Soul Kathmandu",
+        "description": "Take a visual tour of Hotel Sherpa Soul, our comfortable guest rooms, shared amenities, private balconies, and Kathmandu surroundings.",
+        "keywords": "Hotel Sherpa Soul Photos, Thamel Hotel Video Gallery, Room Pictures",
+        "ogImage": "https://hotelsherpasoul.com/hero1.webp"
+      },
+      "/services": {
+        "title": "Services & Amenities | Hotel Sherpa Soul Kathmandu",
+        "description": "Practical facilities designed for travellers: shared self-kitchen for long-stay guests, elevator, 24/7 hot water, high-speed Wi-Fi, and luggage storage.",
+        "keywords": "Hotel Sherpa Soul Amenities, Shared Kitchen Long Stay Thamel, Kathmandu Facilities",
+        "ogImage": "https://hotelsherpasoul.com/hero1.webp"
+      }
+    },
+    "social": {
+      "ogType": "website",
+      "ogSiteName": "Hotel Sherpa Soul",
+      "ogTitle": "Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu",
+      "ogDescription": "Experience peaceful boutique comfort in the heart of Thamel, Kathmandu. Modern rooms, shared kitchen for long-stay guests, rooftop terrace, and authentic Sherpa hospitality.",
+      "ogImage": "https://hotelsherpasoul.com/hero1.webp",
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu",
+      "twitterDescription": "Warm Himalayan hospitality in the vibrant center of Thamel, Kathmandu. Book direct for the best experience.",
+      "twitterImage": "https://hotelsherpasoul.com/hero1.webp"
+    },
+    "analytics": {
+      "ga4Id": "G-E7Z3QDR3KD",
+      "gtmId": "GTM-PFRV7ZTV",
+      "metaPixelId": "1022329224109595",
+      "googleVerification": "E9sWdPkI-frcA6WZQyLOuTU9tZL2qfoUnzIYk6c3h3c",
+      "customHeadScript": "",
+      "customBodyScript": ""
+    },
+    "schema": {
+      "hotelName": "Hotel Sherpa Soul",
+      "alternateName": "Sherpa Soul Hotel Thamel",
+      "description": "Experience peaceful boutique stay at Hotel Sherpa Soul in Thamel Bhagawati Marg, Kathmandu. Featuring modern deluxe rooms, shared kitchen for long-stay guests, 24/7 front desk, high-speed Wi-Fi, and authentic Himalayan hospitality.",
+      "telephone": "+977-9851068219",
+      "email": "info@hotelsherpasoul.com",
+      "addressStreet": "Thamel Bhagawati Marg 26",
+      "addressLocality": "Kathmandu",
+      "addressRegion": "Bagmati",
+      "postalCode": "44600",
+      "addressCountry": "NP",
+      "latitude": "27.7154",
+      "longitude": "85.3106",
+      "priceRange": "$$",
+      "checkinTime": "Flexible",
+      "checkoutTime": "12:00",
+      "currenciesAccepted": "NPR, USD, EUR"
+    }
+  },
+  "content": {
+    "hero": {
+      "title": "A Simple Stay in Thamel. A Better Night's Sleep.",
+      "subtitle": "No Restaurant. No Noise. Sleep Well.",
+      "paragraph": "Welcome to Hotel Sherpa Soul, a small and comfortable hotel in the heart of Thamel, Kathmandu. We keep things simple: comfortable rooms, a peaceful place to rest, practical facilities, friendly service and a convenient location for exploring Kathmandu.",
+      "bookButtonText": "Book Your Stay",
+      "tourButtonText": "View Our Rooms",
+      "bgImage": "/hero/hero1.webp",
+      "bgVideo": ""
+    },
+    "aboutVision": {
+      "title": "Philosophy: No Restaurant. No Noise. Sleep Well.",
+      "part1": "We intentionally keep the hotel simple and peaceful. Instead of running a busy restaurant or entertainment space, our focus is entirely on ",
+      "highlight": "peaceful accommodation and restful sleep",
+      "part2": "for travellers exploring Kathmandu.",
+      "para2": "Hotel Sherpa Soul is built around a simple understanding of hospitality: travellers need a place where they feel comfortable, welcome and able to rest after walking Kathmandu's vibrant streets or returning from a Himalayan trek.",
+      "para3": "What we offer is simpler and more meaningful: a comfortable room, a convenient location in Thamel, a quiet night's sleep, and genuine Sherpa warmth welcoming you to Nepal.",
+      "startJourneyText": "Book Your Stay",
+      "buddhistAlt": "Sherpa Heritage & Peace"
+    },
+    "contact": {
+      "phone": "+977 9851068219",
+      "whatsapp": "+977 9851139414",
+      "email": "info@hotelsherpasoul.com",
+      "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.186847847385!2d85.3106263!3d27.7154032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19502be1b869%3A0xb304b7b2fb66a1ec!2sHotel%20Sherpa%20Soul!5e0!3m2!1sen!2snp!4v1717000000000!5m2!1sen!2snp",
+      "hours": "24/7 Front Desk"
+    },
+    "footer": {
+      "bio": "A peaceful hotel in Thamel, Kathmandu. Focused on comfortable rooms, practical facilities, and a restful night's sleep. No Restaurant. No Noise. Sleep Well.",
+      "emergency": "+977 9851068219",
+      "copyright": "© 2026 Hotel Sherpa Soul. All rights reserved."
+    },
+    "virtualTour": {
+      "enabled": true,
+      "badge": "Hotel Video Tour",
+      "title": "Take a Video Tour of Hotel Sherpa Soul",
+      "subtitle": "Experience Our Peaceful Stay Before You Arrive",
+      "paragraph": "Watch our hotel walkthrough video to explore our comfortable rooms, private balconies, quiet corridors, and shared rooftop kitchen in Thamel, Kathmandu.",
+      "tourType": "youtube",
+      "embedUrl": "https://youtu.be/fvznqsF-kkM?si=wmKJwCcIt_2IH3jA",
+      "coverImage": "https://img.youtube.com/vi/fvznqsF-kkM/maxresdefault.jpg",
+      "buttonText": "Book Your Stay Direct (10% Off)",
+      "buttonLink": "/book-now",
+      "features": [
+        "Cozy, Clean & Peaceful Rooms",
+        "Air Conditioned Deluxe Amenities",
+        "Shared Kitchen for Long-Stay Guests",
+        "Quiet Sleep Environment in Thamel"
+      ]
+    }
+  },
+  "media": {
+    "gallery": [
+      {
+        "id": "g1",
+        "src": "/changes_photo/deluxeRoom_ai.webp",
+        "type": "image",
+        "title": "Deluxe Room with AC (King Bed)",
+        "alt": "Hotel Sherpa Soul Deluxe Room Thamel Kathmandu",
+        "category": "rooms"
+      },
+      {
+        "id": "g2",
+        "src": "/changes_photo/doubleBed.webp",
+        "type": "image",
+        "title": "Family Room AC (King + Single Bed)",
+        "alt": "Hotel Sherpa Soul Family Room Thamel Kathmandu",
+        "category": "rooms"
+      },
+      {
+        "id": "g3",
+        "src": "/changes_photo/balkani.webp",
+        "type": "image",
+        "title": "Private Balcony & Views",
+        "alt": "Hotel Sherpa Soul Private Balcony View",
+        "category": "exterior"
+      },
+      {
+        "id": "g4",
+        "src": "/triple.webp",
+        "type": "image",
+        "title": "Budget Family Room (King & Single Bed)",
+        "alt": "Hotel Sherpa Soul Budget Family Room",
+        "category": "rooms"
+      },
+      {
+        "id": "g_frontdesk",
+        "src": "/assets/frontdesk_new-JHvt5Fe8.webp",
+        "type": "image",
+        "title": "24/7 Front Desk & Reception",
+        "alt": "Hotel Sherpa Soul 24/7 Front Desk & Reception",
+        "category": "amenities"
+      },
+      {
+        "id": "g_kitchen",
+        "src": "/assets/shared_kitchen_new-HROE-pWG.webp",
+        "type": "image",
+        "title": "Shared Self-Kitchen & Dining",
+        "alt": "Hotel Sherpa Soul Shared Self-Kitchen",
+        "category": "amenities"
+      },
+      {
+        "id": "g5",
+        "src": "/changes_photo/viewSeen.webp",
+        "type": "image",
+        "title": "Scenic Thamel Rooftop Skyline",
+        "alt": "Scenic Kathmandu Valley View from Hotel Sherpa Soul",
+        "category": "exterior"
+      },
+      {
+        "id": "g6",
+        "src": "/changes_photo/washRoom.webp",
+        "type": "image",
+        "title": "Modern En-Suite Bathroom",
+        "alt": "Hotel Sherpa Soul Modern En-Suite Bathroom",
+        "category": "amenities"
+      },
+      {
+        "id": "g7",
+        "src": "/changes_photo/storeRoom.webp",
+        "type": "image",
+        "title": "Guest Luggage & Storage",
+        "alt": "Hotel Sherpa Soul Guest Amenities and Storage",
+        "category": "amenities"
+      },
+      {
+        "id": "g8",
+        "src": "/hero1.webp",
+        "type": "image",
+        "title": "Hotel Sherpa Soul Thamel Main",
+        "alt": "Hotel Sherpa Soul Thamel Main",
+        "category": "exterior"
+      }
+    ],
+    "library": [
+      {
+        "label": "Deluxe King Room with Sofa (AC)",
+        "path": "/changes_photo/deluxeRoom_ai.webp"
+      },
+      {
+        "label": "Family Room AC (Wood Panel & Balcony)",
+        "path": "/changes_photo/doubleBed.webp"
+      },
+      {
+        "label": "Budget Family Room (King + Single Bed)",
+        "path": "/triple.webp"
+      },
+      {
+        "label": "Hotel Front Desk & 24/7 Reception",
+        "path": "/assets/frontdesk_new-JHvt5Fe8.webp"
+      },
+      {
+        "label": "Shared Self-Kitchen & Dining",
+        "path": "/assets/shared_kitchen_new-HROE-pWG.webp"
+      },
+      {
+        "label": "Hotel Sherpa Soul Thamel Main",
+        "path": "/hero1.webp"
+      }
+    ]
+  },
+  "sitePhotos": {
+    "homeHero": "/changes_photo/deluxeRoom_ai.webp",
+    "roomCard_budget": "/triple.webp",
+    "roomCard_deluxe": "/changes_photo/deluxeRoom_ai.webp",
+    "roomCard_family": "/changes_photo/doubleBed.webp",
+    "bookNow_hero": "/changes_photo/deluxeRoom_ai.webp",
+    "bookNow_budget": "/triple.webp",
+    "bookNow_deluxe": "/changes_photo/deluxeRoom_ai.webp",
+    "bookNow_family": "/changes_photo/doubleBed.webp",
+    "about_main": "/changes_photo/deluxeRoom_ai.webp",
+    "services_kitchen": "/assets/shared_kitchen_new-HROE-pWG.webp",
+    "services_frontdesk": "/assets/frontdesk_new-JHvt5Fe8.webp",
+    "washroom": "/changes_photo/washRoom.webp",
+    "balcony": "/changes_photo/balkani.webp",
+    "rooftop": "/changes_photo/viewSeen.webp",
+    "storage": "/changes_photo/storeRoom.webp"
+  },
+  "rooms": [
+    {
+      "id": "budget-family-room",
+      "slug": "budget-family-room",
+      "roomNumber": "203",
+      "availablePhysicalRooms": [
+        "203",
+        "303"
+      ],
+      "name": "Budget Family Room",
+      "type": "Budget Family Room",
+      "guests": 4,
+      "occupancy": "3 Adults, 1 Child",
+      "size": "224 Sq. Ft.",
+      "beds": "1 King Bed + 1 Single Bed",
+      "bedDetails": {
+        "king": "1 King Size Bed",
+        "single": "1 Single Bed"
+      },
+      "features": [
+        "Budget Friendly",
+        "En-suite Bathroom",
+        "High-Speed Wi-Fi"
+      ],
+      "description": "A comfortable, budget-friendly family room designed for families, small groups, or trekkers resting before and after Himalayan trails. Features one King size bed and one Single bed, accommodating up to 3 adults and 1 child. Includes private attached bathroom with 24/7 hot water, bright natural light, clean linen, and shared self-kitchen privileges.",
+      "amenities": [
+        "High-speed Fiber Wi-Fi",
+        "1 King Bed + 1 Single Bed",
+        "Private Attached Bathroom (24/7 Hot Water)",
+        "Ceiling Fan / Heating",
+        "Shared Guest Kitchen Access",
+        "Complimentary Trekker Luggage Storage",
+        "Daily Housekeeping",
+        "24/7 Front Desk Assistance"
+      ],
+      "price": 20,
+      "currency": "USD",
+      "status": "AVAILABLE",
+      "image": [
+        "/triple.webp",
+        "/changes_photo/doubleBedRoom.webp",
+        "/changes_photo/washRoom.webp",
+        "/changes_photo/balkani.webp"
+      ]
+    },
+    {
+      "id": "deluxe-room",
+      "slug": "deluxe-room",
+      "roomNumber": "201",
+      "availablePhysicalRooms": [
+        "201",
+        "301"
+      ],
+      "name": "Deluxe Room",
+      "type": "Deluxe Room",
+      "guests": 3,
+      "occupancy": "2 Adults, 1 Child",
+      "size": "168 Sq. Ft.",
+      "beds": "1 King Bed",
+      "bedDetails": {
+        "king": "1 King Size Bed"
+      },
+      "features": [
+        "Air Conditioned (AC)",
+        "Work Desk",
+        "Quiet Rest"
+      ],
+      "description": "A serene and comfortable deluxe room featuring a restful King size bed accommodating up to 2 adults and 1 child. Perfect for couples, solo travelers, or digital nomads seeking quiet, peaceful sleep in the heart of Thamel. Equipped with individual climate control (air conditioning), private modern ensuite bathroom with 24/7 hot shower, work desk, and shared guest kitchen access.",
+      "amenities": [
+        "Air Conditioning (AC)",
+        "High-speed Fiber Wi-Fi",
+        "1 King Size Bed",
+        "Private Ensuite Bathroom (24/7 Hot Water)",
+        "Work Desk & Seating",
+        "Shared Guest Kitchen Access",
+        "Complimentary Trekker Luggage Storage",
+        "Daily Housekeeping"
+      ],
+      "price": 20,
+      "currency": "USD",
+      "status": "AVAILABLE",
+      "image": [
+        "/changes_photo/deluxeRoom_ai.webp",
+        "/changes_photo/washRoom.webp",
+        "/changes_photo/balkani.webp",
+        "/changes_photo/viewSeen.webp"
+      ]
+    },
+    {
+      "id": "family-room",
+      "slug": "family-room",
+      "roomNumber": "302",
+      "availablePhysicalRooms": [
+        "202",
+        "302"
+      ],
+      "name": "Family Room",
+      "type": "Family Room",
+      "guests": 4,
+      "occupancy": "3 Adults, 1 Child",
+      "size": "224 Sq. Ft.",
+      "beds": "1 King Bed + 1 Single Bed",
+      "bedDetails": {
+        "king": "1 King Size Bed",
+        "single": "1 Single Bed"
+      },
+      "features": [
+        "Air Conditioned (AC)",
+        "Spacious Layout",
+        "Family Friendly"
+      ],
+      "description": "Spacious and peaceful family accommodation designed for 3 adults and 1 child. Equipped with air conditioning (AC), one King size bed and one Single bed with comfortable mattresses, ample space for luggage, private attached bathroom with continuous hot water shower, and access to our shared self-kitchen.",
+      "amenities": [
+        "Air Conditioning (AC)",
+        "High-speed Fiber Wi-Fi",
+        "1 King Bed + 1 Single Bed",
+        "Private Attached Bathroom (24/7 Hot Water)",
+        "Comfortable Seating Area",
+        "Shared Guest Kitchen Access",
+        "Complimentary Trekker Luggage Storage",
+        "Daily Housekeeping"
+      ],
+      "price": 30,
+      "currency": "USD",
+      "status": "AVAILABLE",
+      "image": [
+        "/changes_photo/doubleBed.webp",
+        "/changes_photo/washRoom.webp",
+        "/changes_photo/balkani.webp",
+        "/changes_photo/viewSeen.webp"
+      ]
+    }
+  ],
+  "channels": {
+    "bookingCom": {
+      "id": "bookingCom",
+      "name": "Booking.com",
+      "url": "https://www.booking.com/hotel/np/hotel-sherpa-soul.html",
+      "iCalUrl": "",
+      "enabled": true,
+      "badgeColor": "bg-blue-600",
+      "accentColor": "#003580"
+    },
+    "airbnb": {
+      "id": "airbnb",
+      "name": "Airbnb",
+      "url": "https://www.airbnb.com/rooms/1760024961976448522",
+      "iCalUrl": "",
+      "enabled": true,
+      "badgeColor": "bg-rose-600",
+      "accentColor": "#FF5A5F"
+    },
+    "agoda": {
+      "id": "agoda",
+      "name": "Agoda",
+      "url": "",
+      "iCalUrl": "",
+      "enabled": true,
+      "badgeColor": "bg-purple-600",
+      "accentColor": "#5856D6"
+    },
+    "tripCom": {
+      "id": "tripCom",
+      "name": "Trip.com",
+      "url": "https://www.trip.com/hotels/list?keyword=Hotel%20Sherpa%20Soul%20Kathmandu",
+      "iCalUrl": "",
+      "enabled": true,
+      "badgeColor": "bg-sky-600",
+      "accentColor": "#2681FF"
+    }
+  }
+}

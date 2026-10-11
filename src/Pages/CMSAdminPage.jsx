@@ -31,6 +31,9 @@ export default function CMSAdminPage() {
     rooms,
     channels,
     lastSaved,
+    isSaving,
+    saveError,
+    conflict,
     isAuthenticated,
     loginAdmin,
     logoutAdmin,
@@ -88,12 +91,29 @@ export default function CMSAdminPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Autosave status indicator */}
+            {/* Real-time Save status indicator */}
             <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-slate-800/80 border border-slate-700/60 rounded-full text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>
-                {lastSaved ? `Autosaved ${lastSaved}` : "Live Sync Active"}
-              </span>
+              {isSaving ? (
+                <>
+                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+                  <span className="text-amber-300">Saving changes...</span>
+                </>
+              ) : conflict ? (
+                <>
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
+                  <span className="text-red-400 font-semibold">Conflict: Server Updated</span>
+                </>
+              ) : saveError ? (
+                <>
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
+                  <span className="text-red-400">Save Failed</span>
+                </>
+              ) : (
+                <>
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>{lastSaved ? `Saved ${lastSaved}` : "Live Sync Active"}</span>
+                </>
+              )}
             </div>
 
             {/* Quick link to live public site */}

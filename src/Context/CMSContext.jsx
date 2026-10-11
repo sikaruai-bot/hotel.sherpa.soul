@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from "react";
 import { rooms as initialRooms } from "../Components/HelperComponents/RoomsData";
 import { HOTEL_PRESET_PHOTOS } from "../Components/CMS/mediaUtils";
 
@@ -316,6 +316,14 @@ const DEFAULT_CMS_DATA = {
 
 const CMSContext = createContext(null);
 
+let externalPendingUploadRefs = [];
+
+export const registerUploadRef = (ref) => {
+  if (ref && ref.uploadId && ref.blobUrl) {
+    externalPendingUploadRefs.push(ref);
+  }
+};
+
 export function CMSProvider({ children }) {
   const [data, setData] = useState(() => {
     try {
@@ -425,96 +433,231 @@ export function CMSProvider({ children }) {
     if (typeof window !== "undefined" && window.sessionStorage) {
       try {
         return sessionStorage.getItem(CMS_AUTH_KEY) === "true";
-      } catch (e) {
+      } catch {
         return false;
       }
     }
     return false;
   });
 
+  const latestDataRef = useRef(DEFAULT_CMS_DATA);
+  const serverUpdatedAtRef = useRef(null);
+  const pendingDraftRef = useRef(null);
+  const pendingUploadRefs = useRef([]);
+  const queueRef = useRef([]);
+  const isProcessingRef = useRef(false);
+
+  const [serverUpdatedAt, setServerUpdatedAt] = useState(null);
+  const [isLoadingServer, setIsLoadingServer] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState(null);
+  const [conflict, setConflict] = useState(null);
   const [lastSaved, setLastSaved] = useState(null);
 
-  // Auto-save to localStorage whenever data changes
-  const saveCMSData = (updater) => {
-    setData((prev) => {
-      const nextData = typeof updater === "function" ? updater(prev) : updater;
-      try {
-        localStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(nextData));
-        setLastSaved(new Date().toLocaleTimeString());
-      } catch (err) {
-        console.error("Error saving CMS to localStorage:", err);
+  const fetchServerCMS = useCallback(async () => {
+    setIsLoadingServer(true);
+    try {
+      const res = await fetch("/api/cms", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      if (res.ok) {
+        const { data: serverData, updatedAt } = await res.json();
+        if (serverData) {
+          setData(serverData);
+          latestDataRef.current = serverData;
+          serverUpdatedAtRef.current = updatedAt;
+          setServerUpdatedAt(updatedAt);
+          setSaveError(null);
+          setConflict(null);
+          try {
+            localStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(serverData));
+          } catch {
+            // Ignore quota errors
+          }
+          setIsLoadingServer(false);
+          return { success: true, data: serverData };
+        }
+      } else if (res.status === 401 || res.status === 403) {
+        setIsAuthenticated(false);
+      } else if (res.status === 404) {
+        console.warn("CMS database is unseeded. Falling back to default configuration.");
+      } else {
+        setSaveError(`Server returned status ${res.status}`);
       }
-      return nextData;
+    } catch (err) {
+      console.warn("Server CMS fetch failed, operating in offline/fallback mode:", err);
+      setSaveError("Offline or server unreachable");
+    } finally {
+      setIsLoadingServer(false);
+    }
+    return { success: false };
+  }, []);
+
+  // Server-first initial load
+  useEffect(() => {
+    fetchServerCMS().then((result) => {
+      if (!result?.success) {
+        try {
+          const stored = localStorage.getItem(CMS_STORAGE_KEY);
+          if (stored) {
+            const parsed = JSON.parse(stored);
+            setData((prev) => ({ ...prev, ...parsed }));
+            latestDataRef.current = { ...DEFAULT_CMS_DATA, ...parsed };
+          }
+        } catch {
+          // Ignore parse errors on localStorage
+        }
+      }
+    });
+  }, [fetchServerCMS]);
+
+  // Serialized queue executor with Promise settling
+  const processQueue = async () => {
+    if (isProcessingRef.current || queueRef.current.length === 0) return;
+    isProcessingRef.current = true;
+    setIsSaving(true);
+    setSaveError(null);
+
+    while (queueRef.current.length > 0) {
+      const batch = [...queueRef.current];
+      queueRef.current = [];
+      const activeJob = batch[batch.length - 1];
+
+      try {
+        const allRefs = [
+          ...pendingUploadRefs.current,
+          ...externalPendingUploadRefs,
+        ];
+        const uniqueUploadRefs = Array.from(
+          new Map(allRefs.filter(Boolean).map((r) => [r.uploadId, r])).values()
+        );
+
+        const payload = {
+          data: activeJob.draft,
+          updatedAt: serverUpdatedAtRef.current,
+          uploadRefs: uniqueUploadRefs,
+        };
+
+        const res = await fetch("/api/cms", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify(payload),
+        });
+
+        if (res.status === 409) {
+          const conflictPayload = await res.json();
+          setConflict({
+            serverData: conflictPayload.data,
+            serverUpdatedAt: conflictPayload.updatedAt,
+            pendingDraft: activeJob.draft,
+          });
+          latestDataRef.current = conflictPayload.data;
+          serverUpdatedAtRef.current = conflictPayload.updatedAt;
+          setSaveError("Conflict detected: server has newer data");
+          const err = new Error("409 Conflict");
+          err.conflict = conflictPayload;
+          batch.forEach((job) => job.reject(err));
+          break;
+        }
+
+        if (!res.ok) {
+          const errBody = await res.json().catch(() => ({}));
+          throw new Error(errBody.error || `Save failed with status ${res.status}`);
+        }
+
+        const result = await res.json();
+        latestDataRef.current = result.data;
+        serverUpdatedAtRef.current = result.updatedAt;
+        setServerUpdatedAt(result.updatedAt);
+        pendingDraftRef.current = null;
+        pendingUploadRefs.current = [];
+        externalPendingUploadRefs = [];
+        setConflict(null);
+        setSaveError(null);
+        setLastSaved(new Date().toLocaleTimeString());
+
+        try {
+          localStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(result.data));
+        } catch (e) {
+          console.warn("Failed to update localStorage after PUT:", e);
+        }
+
+        batch.forEach((job) => job.resolve(result));
+      } catch (err) {
+        console.error("CMS save failed:", err);
+        setSaveError(err.message || "Failed to save CMS data to server");
+        batch.forEach((job) => job.reject(err));
+        break;
+      }
+    }
+
+    setIsSaving(false);
+    isProcessingRef.current = false;
+  };
+
+  const enqueueSave = (nextData, uploadRefs = []) => {
+    pendingDraftRef.current = nextData;
+    if (Array.isArray(uploadRefs) && uploadRefs.length > 0) {
+      pendingUploadRefs.current = [...pendingUploadRefs.current, ...uploadRefs];
+    }
+    return new Promise((resolve, reject) => {
+      queueRef.current.push({ draft: nextData, resolve, reject });
+      processQueue();
     });
   };
 
-  // Strong password policy check
-  const isStrongPassword = (pwd) => {
-    if (!pwd || pwd.length < 8) return false;
-    const hasLetter = /[a-zA-Z]/.test(pwd);
-    const hasNumber = /[0-9]/.test(pwd);
-    return hasLetter && hasNumber;
+  const saveCMSData = (updater, uploadRefs = []) => {
+    const currentBase = pendingDraftRef.current || data || latestDataRef.current || DEFAULT_CMS_DATA;
+    const nextData = typeof updater === "function" ? updater(currentBase) : { ...currentBase, ...updater };
+    setData(nextData);
+    return enqueueSave(nextData, uploadRefs);
   };
 
-  // Auth actions with Strong Password & 2FA support
-  const loginAdmin = (enteredPassword, twoFactorCode = "") => {
-    const validPassword = data?.admin?.password || DEFAULT_PASSWORD;
-    const is2FAEnabled = data?.admin?.twoFactorEnabled ?? true;
-    const valid2FACode = data?.admin?.twoFactorCode || "8219"; // Default 2FA PIN based on official hotel phone 9851068219
-
-    const pwd = (enteredPassword || "").trim();
-    const code = (twoFactorCode || "").trim();
-
-    if (pwd !== validPassword) {
-      return { success: false, message: "Incorrect master password." };
-    }
-
-    // If 2FA is enabled and code is provided, verify it
-    if (is2FAEnabled) {
-      if (!code) {
-        return { success: false, requires2FA: true, message: "Please enter your 2FA verification PIN." };
+  const loginAdmin = async (password) => {
+    try {
+      const res = await fetch("/api/cms-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ password }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: json.error || "Authentication failed" };
       }
-      if (code !== String(valid2FACode).trim()) {
-        return { success: false, requires2FA: true, message: "Invalid 2FA verification PIN." };
-      }
+      sessionStorage.setItem(CMS_AUTH_KEY, "true");
+      setIsAuthenticated(true);
+      await fetchServerCMS();
+      return { success: true };
+    } catch (err) {
+      return { success: false, message: err.message || "Login request failed" };
     }
-
-    sessionStorage.setItem(CMS_AUTH_KEY, "true");
-    setIsAuthenticated(true);
-    return { success: true };
   };
 
-  const logoutAdmin = () => {
-    sessionStorage.removeItem(CMS_AUTH_KEY);
-    setIsAuthenticated(false);
-  };
-
-  const updateAdminPassword = (newPassword) => {
-    const cleanPwd = (newPassword || "").trim();
-    if (!isStrongPassword(cleanPwd)) {
-      return {
-        success: false,
-        message: "Strong password required: at least 8 characters with letters and numbers.",
-      };
+  const logoutAdmin = async () => {
+    try {
+      await fetch("/api/cms-logout", {
+        method: "POST",
+        credentials: "include",
+      });
+    } finally {
+      sessionStorage.removeItem(CMS_AUTH_KEY);
+      setIsAuthenticated(false);
     }
-    saveCMSData((prev) => ({
-      ...prev,
-      admin: { ...prev.admin, password: cleanPwd },
-    }));
-    return { success: true, message: "Admin password updated successfully with strong security policy!" };
   };
 
-  const updateAdmin2FA = (enabled, code = "8219") => {
-    saveCMSData((prev) => ({
-      ...prev,
-      admin: {
-        ...prev.admin,
-        twoFactorEnabled: !!enabled,
-        twoFactorCode: String(code).trim() || "8219",
-      },
-    }));
-    return { success: true, message: `2FA ${enabled ? "enabled" : "disabled"} successfully!` };
-  };
+  const updateAdminPassword = () => ({
+    success: false,
+    message: "Admin password can only be updated via the CMS_ADMIN_PASSWORD_HASH server variable.",
+  });
+
+  const updateAdmin2FA = () => ({
+    success: false,
+    message: "2FA configuration is handled at the platform environment level.",
+  });
 
   // Section update helpers
   const updateSEO = (newSeo) => {
@@ -761,6 +904,14 @@ export function CMSProvider({ children }) {
         exportConfigJSON,
         importConfigJSON,
         resetToDefaults,
+        serverUpdatedAt,
+        isLoadingServer,
+        isSaving,
+        saveError,
+        conflict,
+        enqueueSave,
+        fetchServerCMS,
+        registerUploadRef,
       }}
     >
       {children}
