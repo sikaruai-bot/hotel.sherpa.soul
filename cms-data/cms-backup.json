@@ -193,10 +193,10 @@
       },
       {
         "id": "g_frontdesk",
-        "src": "/assets/frontdesk_new-JHvt5Fe8.webp",
+        "src": "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp",
         "type": "image",
-        "title": "24/7 Front Desk & Reception",
-        "alt": "Hotel Sherpa Soul 24/7 Front Desk & Reception",
+        "title": "Hotel Sherpa Soul Entrance & 24/7 Reception",
+        "alt": "Hotel Sherpa Soul Entrance Corridor & 24/7 Reception Thamel Kathmandu",
         "category": "amenities"
       },
       {
@@ -254,8 +254,8 @@
         "path": "/triple.webp"
       },
       {
-        "label": "Hotel Front Desk & 24/7 Reception",
-        "path": "/assets/frontdesk_new-JHvt5Fe8.webp"
+        "label": "Hotel Sherpa Soul Entrance & 24/7 Reception",
+        "path": "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp"
       },
       {
         "label": "Shared Self-Kitchen & Dining",
@@ -278,7 +278,7 @@
     "bookNow_family": "/changes_photo/doubleBed.webp",
     "about_main": "/changes_photo/deluxeRoom_ai.webp",
     "services_kitchen": "/assets/shared_kitchen_new-HROE-pWG.webp",
-    "services_frontdesk": "/assets/frontdesk_new-JHvt5Fe8.webp",
+    "services_frontdesk": "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp",
     "washroom": "/changes_photo/washRoom.webp",
     "balcony": "/changes_photo/balkani.webp",
     "rooftop": "/changes_photo/viewSeen.webp",

@@ -201,10 +201,10 @@ const DEFAULT_CMS_DATA = {
       },
       {
         id: "g_frontdesk",
-        src: "/assets/frontdesk_new-JHvt5Fe8.webp",
+        src: "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp",
         type: "image",
-        title: "24/7 Front Desk & Reception",
-        alt: "Hotel Sherpa Soul 24/7 Front Desk & Reception",
+        title: "Hotel Sherpa Soul Entrance & 24/7 Reception",
+        alt: "Hotel Sherpa Soul Entrance Corridor & 24/7 Reception Thamel Kathmandu",
         category: "amenities",
       },
       {
@@ -266,7 +266,7 @@ const DEFAULT_CMS_DATA = {
     about_main: "/changes_photo/deluxeRoom_ai.webp",
     // Services Page
     services_kitchen: "/assets/shared_kitchen_new-HROE-pWG.webp",
-    services_frontdesk: "/assets/frontdesk_new-JHvt5Fe8.webp",
+    services_frontdesk: "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp",
     // General/Other
     washroom: "/changes_photo/washRoom.webp",
     balcony: "/changes_photo/balkani.webp",

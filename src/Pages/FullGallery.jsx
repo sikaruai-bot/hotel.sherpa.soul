@@ -102,7 +102,7 @@ export default function GalleryPage() {
     {
       src: frontDeskPhoto,
       type: "image",
-      alt: "Hotel Sherpa Soul 24/7 Front Desk & Reception",
+      alt: "Hotel Sherpa Soul Entrance Corridor & 24/7 Reception",
     },
     {
       src: kitchenPhoto,
