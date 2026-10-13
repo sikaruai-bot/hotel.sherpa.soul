@@ -160,6 +160,14 @@
   "media": {
     "gallery": [
       {
+        "id": "g_frontdesk",
+        "src": "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp",
+        "type": "image",
+        "title": "Hotel Sherpa Soul Entrance & 24/7 Reception",
+        "alt": "Hotel Sherpa Soul Entrance Corridor & 24/7 Reception Thamel Kathmandu",
+        "category": "amenities"
+      },
+      {
         "id": "g1",
         "src": "/changes_photo/deluxeRoom_ai.webp",
         "type": "image",
@@ -190,14 +198,6 @@
         "title": "Budget Family Room (King & Single Bed)",
         "alt": "Hotel Sherpa Soul Budget Family Room",
         "category": "rooms"
-      },
-      {
-        "id": "g_frontdesk",
-        "src": "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp",
-        "type": "image",
-        "title": "Hotel Sherpa Soul Entrance & 24/7 Reception",
-        "alt": "Hotel Sherpa Soul Entrance Corridor & 24/7 Reception Thamel Kathmandu",
-        "category": "amenities"
       },
       {
         "id": "g_kitchen",
@@ -282,7 +282,8 @@
     "washroom": "/changes_photo/washRoom.webp",
     "balcony": "/changes_photo/balkani.webp",
     "rooftop": "/changes_photo/viewSeen.webp",
-    "storage": "/changes_photo/storeRoom.webp"
+    "storage": "/changes_photo/storeRoom.webp",
+    "gallery_hero": "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp"
   },
   "rooms": [
     {

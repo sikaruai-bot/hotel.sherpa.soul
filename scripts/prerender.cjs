@@ -834,13 +834,12 @@ const ROUTES = [
     title: 'Photo & Video Gallery | Rooms & Facilities | Hotel Sherpa Soul',
     description: 'Explore photos of guest rooms, private balconies, modern bathrooms, shared kitchen, and Kathmandu valley views at Hotel Sherpa Soul in Thamel.',
     canonical: 'https://hotelsherpasoul.com/gallery',
-    ogImage: 'https://hotelsherpasoul.com/changes_photo/doubleBedRoom.webp',
+    ogImage: 'https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp',
     preload: `
-    <link rel="preload" as="image" href="/changes_photo/doubleBedRoom-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/changes_photo/doubleBedRoom.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/front-desk.webp" type="image/webp" fetchpriority="high" />
     `,
     content: `
-      ${NAV_HTML}
+      \${NAV_HTML}
       <main class="min-h-screen pt-28 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10">
           <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">VISUAL TOUR</span>
@@ -848,13 +847,13 @@ const ROUTES = [
           <p class="text-slate-600 text-lg mt-2">Take a tour of our comfortable guest rooms, facilities, and Thamel surroundings.</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <img src="/changes_photo/doubleBedRoom.webp" alt="Hotel Sherpa Soul Spacious Double Bedroom" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
-          <img src="/changes_photo/singlesitter.webp" alt="Hotel Sherpa Soul Single Room with Seating" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
+          <img src="/front-desk.webp" alt="Hotel Sherpa Soul Entrance Corridor & 24/7 Reception" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
+          <img src="/changes_photo/deluxeRoom_ai.webp" alt="Hotel Sherpa Soul Deluxe Room" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
           <img src="/changes_photo/viewSeen.webp" alt="Kathmandu Valley View from Hotel Sherpa Soul" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
           <img src="/changes_photo/balkani.webp" alt="Hotel Sherpa Soul Private Balcony View" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
         </div>
       </main>
-      ${FOOTER_HTML}
+      \${FOOTER_HTML}
     `
   },
   {

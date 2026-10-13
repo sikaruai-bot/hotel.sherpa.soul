@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useRef, useCallb
 import { rooms as initialRooms } from "../Components/HelperComponents/RoomsData";
 import { HOTEL_PRESET_PHOTOS } from "../Components/CMS/mediaUtils";
 
-const CMS_STORAGE_KEY = "HSS_CMS_DATA_V3";
+const CMS_STORAGE_KEY = "HSS_CMS_DATA_V4";
 const CMS_AUTH_KEY = "HSS_CMS_AUTH_TOKEN";
 const DEFAULT_PASSWORD = "sherpasoul2026";
 
@@ -168,6 +168,14 @@ const DEFAULT_CMS_DATA = {
   media: {
     gallery: [
       {
+        id: "g_frontdesk",
+        src: "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp",
+        type: "image",
+        title: "Hotel Sherpa Soul Entrance & 24/7 Reception",
+        alt: "Hotel Sherpa Soul Entrance Corridor & 24/7 Reception Thamel Kathmandu",
+        category: "amenities",
+      },
+      {
         id: "g1",
         src: "/changes_photo/deluxeRoom_ai.webp",
         type: "image",
@@ -198,14 +206,6 @@ const DEFAULT_CMS_DATA = {
         title: "Budget Family Room (King & Single Bed)",
         alt: "Hotel Sherpa Soul Budget Family Room",
         category: "rooms",
-      },
-      {
-        id: "g_frontdesk",
-        src: "https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp",
-        type: "image",
-        title: "Hotel Sherpa Soul Entrance & 24/7 Reception",
-        alt: "Hotel Sherpa Soul Entrance Corridor & 24/7 Reception Thamel Kathmandu",
-        category: "amenities",
       },
       {
         id: "g_kitchen",
@@ -333,6 +333,7 @@ export function CMSProvider({ children }) {
           localStorage.removeItem("HSS_CMS_DATA");
           localStorage.removeItem("HSS_CMS_DATA_V1");
           localStorage.removeItem("HSS_CMS_DATA_V2");
+          localStorage.removeItem("HSS_CMS_DATA_V3");
         } catch (e) {
           // ignore
         }

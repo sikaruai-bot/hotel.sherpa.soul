@@ -80,6 +80,11 @@ export default function GalleryPage() {
 
   const gallery = media?.gallery && media.gallery.length > 0 ? media.gallery : [
     {
+      src: frontDeskPhoto,
+      type: "image",
+      alt: "Hotel Sherpa Soul Entrance Corridor & 24/7 Reception",
+    },
+    {
       src: "/changes_photo/deluxeRoom_ai.webp",
       type: "image",
       alt: "Hotel Sherpa Soul Deluxe King Room with Mountain Art & Sofa",
@@ -98,11 +103,6 @@ export default function GalleryPage() {
       src: "/changes_photo/doubleBedRoom.webp",
       type: "image",
       alt: "Hotel Sherpa Soul Twin Bed Guest Room",
-    },
-    {
-      src: frontDeskPhoto,
-      type: "image",
-      alt: "Hotel Sherpa Soul Entrance Corridor & 24/7 Reception",
     },
     {
       src: kitchenPhoto,
@@ -164,21 +164,17 @@ export default function GalleryPage() {
       {/* Hero Section */}
       <section className="relative w-full h-[70vh] lg:h-[80vh] overflow-hidden">
         <div className="absolute inset-0">
-          <picture className="w-full h-full block">
-            <source media="(max-width: 768px)" srcSet="/changes_photo/doubleBedRoom-mobile.webp" type="image/webp" />
-            <source media="(min-width: 769px)" srcSet="/changes_photo/doubleBedRoom.webp" type="image/webp" />
-            <img
-              src="/changes_photo/doubleBedRoom.webp"
-              alt="Hotel Sherpa Soul Deluxe Room Gallery Preview"
-              className="w-full h-full object-cover"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              width="768"
-              height="512"
-            />
-          </picture>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60"></div>
+          <img
+            src={frontDeskPhoto}
+            alt="Hotel Sherpa Soul Entrance & 24/7 Reception"
+            className="w-full h-full object-cover object-[center_35%]"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width="1024"
+            height="1024"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
         </div>
         <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6 lg:px-8 text-white">
           <div className="max-w-4xl mx-auto">
