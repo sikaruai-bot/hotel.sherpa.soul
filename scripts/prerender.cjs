@@ -31,14 +31,15 @@ const NAV_HTML = `
           <img src="/logo.webp" alt="Hotel Sherpa Soul - Boutique Stay in Thamel, Kathmandu" class="h-14 sm:h-16 w-auto max-w-[220px] object-contain" width="200" height="60" />
         </a>
       </div>
-      <div class="hidden lg:flex space-x-8">
+      <div class="hidden lg:flex space-x-5 xl:space-x-7">
         <a href="/" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Home</a>
         <a href="/rooms" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Rooms</a>
         <a href="/about" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">About Us</a>
-        <a href="/services" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Services</a>
         <a href="/gallery" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Gallery</a>
+        <a href="/#location" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Location</a>
         <a href="/blog" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Blog</a>
         <a href="/contact" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Contact</a>
+        <a href="/guest-guide" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Guest Guide</a>
       </div>
       <div class="flex items-center space-x-2 lg:space-x-3 z-50">
         <a href="/book-now" class="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all text-sm lg:text-base">Book Your Stay</a>

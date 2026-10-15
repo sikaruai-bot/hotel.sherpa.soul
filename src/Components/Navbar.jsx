@@ -25,6 +25,7 @@ export default function Navbar() {
     { id: "location", label: t("nav.location", "Location"), href: "/#location" },
     { id: "blog", label: t("nav.blog", "Blog"), href: "/blog" },
     { id: "contact", label: t("nav.contact", "Contact"), href: "/contact" },
+    { id: "guest-guide", label: t("nav.guestGuide", "Guest Guide"), href: "/guest-guide" },
   ];
 
   useEffect(() => {
@@ -58,7 +59,7 @@ export default function Navbar() {
           to={item.href}
           onClick={onClick}
           className={`relative transition-colors duration-300 font-semibold text-sm lg:text-base ${
-            mobile ? "block text-xl py-4 px-6 rounded-lg" : "py-3 px-1"
+            mobile ? "flex items-center text-xl py-3.5 px-6 rounded-lg min-h-[44px]" : "py-3 px-1"
           } ${
             isActive
               ? "text-[#FB6C01]"
@@ -133,7 +134,7 @@ export default function Navbar() {
             </motion.div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex space-x-8">
+            <div className="hidden lg:flex space-x-5 xl:space-x-7">
               {navItems.map((item) => (
                 <NavLink key={item.id} item={item} />
               ))}
