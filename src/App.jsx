@@ -15,6 +15,7 @@ const BookNowPage = lazy(() => import("./Pages/BookNowPage"));
 const BlogPage = lazy(() => import("./Pages/BlogPage"));
 const PrivacyPage = lazy(() => import("./Pages/PrivacyPage"));
 const TermsPage = lazy(() => import("./Pages/TermsPage"));
+const GuestGuidePage = lazy(() => import("./Pages/GuestGuidePage"));
 
 import ScrollToTop from "./Components/HelperComponents/ScrollToTop";
 import Layout from "./Components/HelperComponents/Layout";
@@ -97,6 +98,7 @@ function AppContent() {
             <Route path="/gallery" element={<FullGallery />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
+            <Route path="/guest-guide" element={<GuestGuidePage />} />
 
             {/* Client-side fallback redirects for old room & booking URLs → new category slug URLs */}
             <Route path="/room/101" element={<Navigate to="/room/budget-family-room" replace />} />

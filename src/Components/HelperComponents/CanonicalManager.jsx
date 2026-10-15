@@ -25,6 +25,7 @@ const DEFAULT_ROUTE_TITLES = {
   "/terms": "Terms of Service & Booking Policies | Hotel Sherpa Soul",
   "/terms-and-conditions": "Terms of Service & Booking Policies | Hotel Sherpa Soul",
   "/cancellation-policy": "Cancellation Policy | Hotel Sherpa Soul Kathmandu",
+  "/guest-guide": "Guest Guide & House Rules | Hotel Sherpa Soul",
 };
 
 /**

@@ -99,4 +99,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+
+  <!-- Guest Guide & House Rules -->
+  <url>
+    <loc>https://hotelsherpasoul.com/guest-guide</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
