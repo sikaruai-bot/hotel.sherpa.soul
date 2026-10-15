@@ -920,6 +920,209 @@ const ROUTES = [
       </main>
       ${FOOTER_HTML}
     `
+  },
+  {
+    path: '/guest-guide',
+    title: 'Guest Guide & House Rules | Hotel Sherpa Soul',
+    description: 'Guest information, Wi-Fi, check-out, payment guidance, house rules and contact details for Hotel Sherpa Soul in Thamel, Kathmandu.',
+    canonical: 'https://hotelsherpasoul.com/guest-guide',
+    ogImage: 'https://hotelsherpasoul.com/hero1.webp',
+    content: `
+      ${NAV_HTML}
+      <main class="min-h-screen pt-24 sm:pt-28 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+        <header class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200 mb-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider mb-3">
+            Peaceful Hotel in Thamel, Kathmandu
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#01366E] tracking-tight mb-2">
+            Hotel Sherpa Soul
+          </h1>
+          <p class="text-xl sm:text-2xl font-semibold text-[#FB6C01] mb-4">
+            Guest Guide &amp; House Rules
+          </p>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Welcome to Hotel Sherpa Soul! We are happy to have you with us. This guide provides useful information to help you enjoy a clean, comfortable and peaceful stay in Kathmandu.
+          </p>
+        </header>
+
+        <div class="space-y-8">
+          <!-- 1. Wi-Fi Access -->
+          <section id="wifi" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">1. Wi-Fi Access</h2>
+            <p class="text-slate-600 mb-4">Complimentary fiber Wi-Fi is available in all rooms and common areas.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <span class="text-xs uppercase font-semibold text-slate-500 block mb-1">Network (SSID)</span>
+                <span class="text-lg font-mono font-bold text-slate-900 select-all">netis-525AF4</span>
+              </div>
+              <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200">
+                <span class="text-xs uppercase font-semibold text-amber-900 block mb-1">Password</span>
+                <span class="text-lg font-mono font-bold text-[#01366E] select-all">thamel@123</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. Check-in & Check-out -->
+          <section id="checkin-checkout" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-4">2. Check-in &amp; Check-out</h2>
+            <div class="space-y-3 text-slate-700">
+              <p><strong>Check-in:</strong> Please confirm with reception.</p>
+              <p><strong>Check-out:</strong> By 11:00 AM.</p>
+              <p class="text-sm text-slate-600">Guests who need a late check-out or stay extension should contact reception in advance. Extensions depend on room availability.</p>
+            </div>
+          </section>
+
+          <!-- 3. Payment Information -->
+          <section id="payment" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">3. Payment Information</h2>
+            <div class="space-y-2 text-slate-700">
+              <p>If you have not completed payment at check-in, please contact reception to settle your outstanding room balance as agreed.</p>
+              <p>If you have already paid, you may disregard this reminder.</p>
+              <p>For billing questions or payment clarification, please speak with reception.</p>
+            </div>
+          </section>
+
+          <!-- 4. Hot Water & Room Facilities -->
+          <section id="room-facilities" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">4. Hot Water &amp; Room Facilities</h2>
+            <ul class="space-y-2 list-disc pl-5 text-slate-700">
+              <li>Hot water is available at all times.</li>
+              <li>Air conditioning is available only in selected rooms. Room facilities vary by room type.</li>
+              <li>If something is not working properly, please inform reception.</li>
+            </ul>
+          </section>
+
+          <!-- 5. Room Cleaning & Towels -->
+          <section id="cleaning" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">5. Room Cleaning &amp; Towels</h2>
+            <div class="space-y-2 text-slate-700">
+              <p>Room cleaning is available on request.</p>
+              <p>Guests may contact reception for cleaning, fresh towels or essential supplies.</p>
+            </div>
+          </section>
+
+          <!-- 6. Quiet Hours -->
+          <section id="quiet-hours" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">6. Quiet Hours</h2>
+            <div class="space-y-3 text-slate-700">
+              <p class="font-semibold text-slate-900">Quiet hours: 10:00 PM to 7:00 AM.</p>
+              <p>Please:</p>
+              <ul class="space-y-1.5 list-disc pl-5">
+                <li>Keep noise to a minimum during quiet hours.</li>
+                <li>Keep conversations and phone calls quiet in corridors and shared spaces.</li>
+                <li>Close doors gently.</li>
+                <li>Respect other guests' privacy and comfort.</li>
+              </ul>
+              <p class="text-sm text-slate-600">The goal is to maintain a peaceful sleeping environment for everyone.</p>
+            </div>
+          </section>
+
+          <!-- 7. Shared Kitchen -->
+          <section id="shared-kitchen" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">7. Shared Kitchen</h2>
+            <div class="space-y-3 text-slate-700">
+              <p>The shared kitchen is available to eligible long-stay guests staying at least two weeks, subject to confirmation with reception.</p>
+              <p class="font-semibold text-slate-900">Rules:</p>
+              <ul class="space-y-1.5 list-disc pl-5">
+                <li>Confirm access with reception before using the kitchen.</li>
+                <li>Use your designated food storage space.</li>
+                <li>Clean utensils and work surfaces after use.</li>
+                <li>Switch off cooking appliances after use.</li>
+                <li>Keep the kitchen clean and safe.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 8. Safety & Security -->
+          <section id="safety" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">8. Safety &amp; Security</h2>
+            <ul class="space-y-2 list-disc pl-5 text-slate-700">
+              <li>Lock your room when leaving.</li>
+              <li>Keep your valuables and personal belongings secure.</li>
+              <li>Report damage, maintenance problems and safety concerns to reception.</li>
+              <li>Treat hotel property, staff and fellow guests with respect.</li>
+              <li>Follow reasonable safety instructions from hotel staff.</li>
+            </ul>
+          </section>
+
+          <!-- 9. Legal Compliance & Prohibited Activities -->
+          <section id="legal" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">Legal Compliance &amp; Prohibited Activities</h2>
+            <div class="space-y-3 text-slate-700">
+              <p>All guests must comply with the applicable laws of Nepal while staying at the hotel.</p>
+              <p class="font-semibold text-slate-900">The following activities are prohibited on hotel premises:</p>
+              <ul class="space-y-1.5 list-disc pl-5">
+                <li>Possession, use, sale or distribution of illegal drugs or other substances prohibited by law.</li>
+                <li>Human trafficking, exploitation, sexual abuse, or activities involving coercion or minors.</li>
+                <li>Theft, fraud, violence, threats, harassment or deliberate damage to hotel property.</li>
+                <li>Possession or use of illegal weapons or other items prohibited by law.</li>
+                <li>Any other activity prohibited by applicable laws of Nepal.</li>
+              </ul>
+              <h3 class="font-bold text-slate-900 pt-2">Guest Identification:</h3>
+              <p>Guests must provide accurate identification and registration information as required by applicable law and hotel procedures.</p>
+              <h3 class="font-bold text-slate-900 pt-2">Safety and Reporting:</h3>
+              <p>Guests should inform reception about unsafe or potentially illegal activity.</p>
+              <h3 class="font-bold text-slate-900 pt-2">Enforcement:</h3>
+              <p>Suspected illegal activity may be reported to the relevant authorities. The hotel will cooperate with lawful requests and take appropriate action in accordance with applicable law.</p>
+            </div>
+          </section>
+
+          <!-- 10. Local Help & Important Information -->
+          <section id="local-help" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">10. Local Help &amp; Important Information</h2>
+            <div class="space-y-3 text-slate-700">
+              <p>Guests may ask reception for local directions, transport assistance, sightseeing suggestions and general travel information.</p>
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <p class="font-bold text-slate-900">Important:</p>
+                <p class="text-slate-700 text-sm">Hotel Sherpa Soul does not have an on-site restaurant or private parking.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 11. Contact Hotel Sherpa Soul -->
+          <section id="contact" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-4">11. Contact Hotel Sherpa Soul</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200">
+                <div class="text-xs uppercase font-bold text-emerald-800">WhatsApp</div>
+                <a href="https://wa.me/9779818259472" target="_blank" rel="noopener noreferrer" class="text-base font-bold text-emerald-700 hover:underline">+977 9818259472</a>
+              </div>
+              <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200">
+                <div class="text-xs uppercase font-bold text-blue-800">Direct Call</div>
+                <a href="tel:+9779851068219" class="text-base font-bold text-[#01366E] hover:underline">+977 9851068219</a>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div class="text-xs uppercase font-bold text-slate-600">Email</div>
+                <a href="mailto:info@hotelsherpasoul.com" class="text-base font-bold text-slate-800 hover:underline">info@hotelsherpasoul.com</a>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div class="text-xs uppercase font-bold text-slate-600">Website</div>
+                <a href="https://www.hotelsherpasoul.com" class="text-base font-bold text-slate-800 hover:underline">www.hotelsherpasoul.com</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 12. Thank You & Google Review Invitation -->
+          <section id="review" class="bg-gradient-to-br from-[#01366E] via-[#0A2540] to-[#01366E] text-white rounded-3xl p-6 sm:p-10 shadow-lg border border-amber-400/30">
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-4">Thank You for Staying with Us!</h2>
+            <div class="space-y-3 text-slate-200 text-sm sm:text-base leading-relaxed mb-6">
+              <p>We hope you enjoyed a clean, comfortable and peaceful stay at Hotel Sherpa Soul.</p>
+              <p>If you enjoyed your experience, we would truly appreciate your honest feedback. Your review helps other travellers discover our hotel and helps our small team continue to improve.</p>
+              <p>Thank you for choosing Hotel Sherpa Soul. We wish you safe travels and hope to welcome you again!</p>
+            </div>
+            <div class="mb-6 text-amber-200 text-sm font-semibold">
+              Warm regards,<br />Team Hotel Sherpa Soul
+            </div>
+            <div>
+              <a href="https://g.page/r/CdbILHoQEzN_EBI/review" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-base sm:text-lg shadow-xl transition-all">
+                Leave Us a Google Review &rarr;
+              </a>
+            </div>
+          </section>
+        </div>
+      </main>
+      ${FOOTER_HTML}
+    `
   }
 ];
 
