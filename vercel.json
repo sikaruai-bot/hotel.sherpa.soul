@@ -82,7 +82,11 @@
   "rewrites": [
     {
       "source": "/api/chat/:path*",
-      "destination": "https://hotel-chatbot-mingma.vercel.app/api/chat/:path*"
+      "destination": "https://bot.hotelsherpasoul.com/api/chat/:path*"
+    },
+    {
+      "source": "/api/webhooks/:path*",
+      "destination": "https://bot.hotelsherpasoul.com/api/webhooks/:path*"
     },
     {
       "source": "/robots.txt",
