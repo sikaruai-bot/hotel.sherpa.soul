@@ -9,7 +9,9 @@ if (!fs.existsSync(INDEX_PATH)) {
   process.exit(1);
 }
 
-const templateHtml = fs.readFileSync(INDEX_PATH, 'utf-8');
+let templateHtml = fs.readFileSync(INDEX_PATH, 'utf-8');
+// Reset root div if dist/index.html already contains pre-rendered content
+templateHtml = templateHtml.replace(/<div id="root">[\s\S]*?<\/body>/i, '<div id="root"></div>\n  </body>');
 
 // Shared Navigation Component HTML
 const NAV_HTML = `
@@ -316,8 +318,8 @@ const ROUTES = [
     canonical: 'https://hotelsherpasoul.com/',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     preload: `
-    <link rel="preload" as="image" href="/hero/hero1-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero/hero_deluxe_room-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero/hero_deluxe_room.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
     `,
     content: `
       ${NAV_HTML}
@@ -326,9 +328,9 @@ const ROUTES = [
         <section class="relative min-h-[90vh] flex items-center bg-slate-900 text-white overflow-hidden">
           <div class="absolute inset-0 z-0">
             <picture>
-              <source media="(max-width: 768px)" srcset="/hero/hero1-mobile.webp" type="image/webp" />
-              <source media="(min-width: 769px)" srcset="/hero/hero1.webp" type="image/webp" />
-              <img src="/hero/hero1.webp" alt="Hotel Sherpa Soul - Boutique Room in Thamel Kathmandu" class="w-full h-full object-cover opacity-60" width="1376" height="768" fetchpriority="high" loading="eager" />
+              <source media="(max-width: 768px)" srcset="/hero/hero_deluxe_room-mobile.webp" type="image/webp" />
+              <source media="(min-width: 769px)" srcset="/hero/hero_deluxe_room.webp" type="image/webp" />
+              <img src="/hero/hero_deluxe_room.webp" alt="Hotel Sherpa Soul - Deluxe Boutique Room in Thamel Kathmandu" class="w-full h-full object-cover opacity-60" width="1376" height="768" fetchpriority="high" loading="eager" />
             </picture>
             <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
           </div>
@@ -339,7 +341,7 @@ const ROUTES = [
                 <span class="text-xs sm:text-sm font-semibold text-amber-200">Direct Booking Offer: <strong class="text-white font-extrabold underline">Save 10% Instantly</strong></span>
               </div>
               <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-300 font-semibold">WELCOME TO HOTEL SHERPA SOUL</p>
-              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight text-white drop-shadow-md">Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu</h1>
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight text-white drop-shadow-md">Quiet Boutique &amp; Budget Hotel in Thamel, Kathmandu</h1>
               <p class="text-white/95 text-base sm:text-lg leading-relaxed font-light">Discover a peaceful and comfortable boutique hotel at Hotel Sherpa Soul, located in the vibrant heart of Thamel, Kathmandu. Explore the city by day, return to a quiet room at night, and wake up refreshed for your next Himalayan adventure.</p>
               
               <div class="p-4 rounded-2xl bg-black/70 border border-amber-400/50 backdrop-blur-md">
@@ -670,20 +672,39 @@ const ROUTES = [
     `,
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-28 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">OUR STORY & PHILOSOPHY</span>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-2 mb-6">About Hotel Sherpa Soul</h1>
-        <div class="space-y-6 text-slate-700 leading-relaxed text-base sm:text-lg">
-          <p>Hotel Sherpa Soul was created for travelers who want to experience Kathmandu without giving up the comfort of a peaceful night's sleep. Located in Thamel Bhagawati Marg 26, one of Kathmandu's most popular traveler neighborhoods, we offer a simple, warm, and comfortable base for exploring the city, preparing for a trek, or resting afterwards.</p>
-          <div class="p-6 rounded-2xl bg-amber-50 border border-amber-200">
-            <h2 class="text-xl font-bold text-[#01366E] mb-2">Our Core Philosophy: No Restaurant. No Noise. Sleep Well.</h2>
-            <p class="text-slate-600 text-sm sm:text-base">We intentionally do not operate a noisy on-site bar or restaurant. Instead, we offer guests a fully equipped shared guest kitchen, allowing you to prepare meals and brew fresh Himalayan tea anytime in a calm environment.</p>
-          </div>
-          <p>Drawing from our authentic Sherpa mountain heritage, our team provides 24/7 front desk service, airport transfers, licensed trekking guide arrangements, permit assistance for Everest and Annapurna, and complimentary luggage storage.</p>
+      <main class="min-h-screen pt-28 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase bg-amber-100 px-3 py-1 rounded-full">OUR STORY</span>
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-3 mb-4">About Hotel Sherpa Soul</h1>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">Authentic Himalayan hospitality, quiet rooms, and honest hospitality in the heart of Thamel, Kathmandu.</p>
+        </div>
+
+        <div class="space-y-12">
+          <section class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4 text-slate-700 leading-relaxed text-base">
+            <h2 class="text-2xl font-bold text-[#01366E]">Born from the High Himalayas</h2>
+            <p>Hotel Sherpa Soul was founded by a local family with roots in the Solukhumbu region of Nepal—the legendary homeland of Mount Everest. For generations, the Sherpa people have been celebrated worldwide for their strength, quiet resilience, and profound tradition of hospitality to travelers passing through high mountain passes.</p>
+            <p>We created Hotel Sherpa Soul to bring that authentic spirit down into Kathmandu: providing an unpretentious, warm, and thoroughly restful haven where travelers from all over the world can recharge between adventures.</p>
+          </section>
+
+          <section class="p-8 sm:p-10 rounded-3xl bg-amber-50/60 border border-amber-200 shadow-sm space-y-4 text-slate-700 leading-relaxed text-base">
+            <h2 class="text-2xl font-bold text-[#01366E]">The Philosophy: "No Restaurant. No Noise. Sleep Well."</h2>
+            <p>Kathmandu is one of Asia's most exciting cities, filled with ancient temples, bustling markets, and mountain energy. But after a full day of sightseeing or a 15-day trek along the Annapurna Circuit, what travelers need most is quiet, deep, restorative sleep.</p>
+            <p>Many hotels in Thamel feature loud ground-floor bars, sports lounges, or rooftop nightclubs that blast music past midnight. We made a conscious, deliberate choice to do the opposite: we operate no noisy public bar or commercial restaurant inside our hotel. Instead, our rooms remain peacefully insulated from party and traffic sounds, while our shared rooftop kitchen allows guests to brew their own morning tea and prepare healthy meals at leisure.</p>
+          </section>
+
+          <section class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4 text-slate-700 leading-relaxed text-base">
+            <h2 class="text-2xl font-bold text-[#01366E]">Prime Location on Thamel Bhagawati Marg</h2>
+            <p>Situated on Bhagawati Marg 26, Hotel Sherpa Soul gives you the ultimate Kathmandu location advantage: you are a mere 2-minute stroll from central Thamel's shopping lanes, 4 minutes from the serene Garden of Dreams, and 7 minutes from the upscale dining and bank ATMs of Durbar Marg (King's Way). Yet because Bhagawati Marg is a wider, quieter residential street, you bypass the narrow alley traffic jams that plague inner Thamel.</p>
+            <div class="pt-4 flex flex-wrap items-center gap-4 text-sm font-bold">
+              <a href="/rooms" class="text-[#FB6C01] hover:underline">View Our Rooms &rarr;</a>
+              <a href="/services" class="text-[#01366E] hover:underline">Explore Hotel Services &rarr;</a>
+              <a href="/contact" class="text-emerald-700 hover:underline">Contact Front Desk &rarr;</a>
+            </div>
+          </section>
         </div>
       </main>
       ${FOOTER_HTML}
-    `
+`
   },
   {
     path: '/services',
@@ -693,31 +714,65 @@ const ROUTES = [
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-28 pb-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">GUEST CONVENIENCE</span>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-2 mb-6">Services & Facilities at Hotel Sherpa Soul</h1>
-        <p class="text-slate-600 text-lg mb-10">We provide essential, practical amenities designed specifically for backpackers, trekkers, and long-stay guests exploring Nepal.</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <h2 class="text-xl font-bold text-[#01366E] mb-2">🍳 Shared Self-Kitchen</h2>
-            <p class="text-slate-600 text-sm leading-relaxed">Cook your favorite food, prepare specialized diets, brew Himalayan tea, and store food in our shared guest refrigerator.</p>
+      <main class="min-h-screen pt-28 pb-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase bg-amber-100 px-3 py-1 rounded-full">HOTEL FACILITIES</span>
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-3 mb-4">Services &amp; Facilities at Hotel Sherpa Soul</h1>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">Thoughtfully designed for Himalayan trekkers, international vacationers, and long-stay guests looking for practical comfort in Thamel, Kathmandu.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-[#FB6C01] flex items-center justify-center text-2xl mb-5">🍳</div>
+            <h2 class="text-xl font-bold text-[#01366E] mb-2">Shared Guest Kitchen</h2>
+            <p class="text-slate-600 text-sm leading-relaxed">Our clean, fully-equipped rooftop kitchen is free for all guests. Includes gas burners, cookware, microwave, refrigerator, and purified water. Ideal for preparing home meals, brewing morning tea, or catering to specific dietary needs.</p>
           </div>
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <h2 class="text-xl font-bold text-[#01366E] mb-2">🚿 24/7 Hot Water Showers</h2>
-            <p class="text-slate-600 text-sm leading-relaxed">High pressure hot water available around the clock, perfect for warming up after arriving from a mountain trek.</p>
+
+          <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-blue-100 text-[#01366E] flex items-center justify-center text-2xl mb-5">🚿</div>
+            <h2 class="text-xl font-bold text-[#01366E] mb-2">24/7 Hot Water Showers</h2>
+            <p class="text-slate-600 text-sm leading-relaxed">Continuous, high-pressure hot water available day and night. Powered by commercial solar heating with electric geyser backup to ensure you always have a steaming hot shower after trekking or arriving from flights.</p>
           </div>
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <h2 class="text-xl font-bold text-[#01366E] mb-2">🛄 Free Trekker Luggage Storage</h2>
-            <p class="text-slate-600 text-sm leading-relaxed">Complimentary secure luggage holding while you hike Everest Base Camp, Annapurna Circuit, or Langtang.</p>
+
+          <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-5">🛄</div>
+            <h2 class="text-xl font-bold text-[#01366E] mb-2">Free Trekker Luggage Storage</h2>
+            <p class="text-slate-600 text-sm leading-relaxed">Complimentary secure luggage lockup for all guests embarking on Himalayan treks (Everest Base Camp, Annapurna, Langtang). Leave city clothes and heavy suitcases safely behind without daily storage fees.</p>
           </div>
-          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <h2 class="text-xl font-bold text-[#01366E] mb-2">🚐 Airport Transfers & Tours</h2>
-            <p class="text-slate-600 text-sm leading-relaxed">Reliable airport pickups, flight bookings to Lukla/Pokhara, and Kathmandu valley sightseeing arrangements.</p>
+
+          <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-2xl mb-5">📶</div>
+            <h2 class="text-xl font-bold text-[#01366E] mb-2">High-Speed Fiber Wi-Fi</h2>
+            <p class="text-slate-600 text-sm leading-relaxed">Reliable dual-band fiber internet with repeaters on every floor. Perfect for remote workers, video conferencing, itinerary planning, and streaming media without buffering interruptions.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-2xl mb-5">🚐</div>
+            <h2 class="text-xl font-bold text-[#01366E] mb-2">Airport Transfers &amp; Taxis</h2>
+            <p class="text-slate-600 text-sm leading-relaxed">Pre-arranged private transfers to and from Tribhuvan International Airport (TIA). Our driver meets you outside arrival gates with a personalized sign, ensuring a smooth and hassle-free journey directly to our hotel.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-2xl mb-5">🏔️</div>
+            <h2 class="text-xl font-bold text-[#01366E] mb-2">Trek &amp; Tour Assistance</h2>
+            <p class="text-slate-600 text-sm leading-relaxed">Benefit from genuine Sherpa mountaineering advice. We assist with mountain flight tickets to Lukla, Pokhara tourist buses, national park permits, certified local trekking guides, and Kathmandu heritage tours.</p>
+          </div>
+        </div>
+
+        <!-- Practical Perks Section -->
+        <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-[#01366E] to-slate-900 text-white flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 class="text-2xl font-bold mb-2">Ready to Book Your Peaceful Stay?</h3>
+            <p class="text-slate-300 text-sm sm:text-base">Reserve directly through our official website to enjoy our lowest price guarantee and an instant 10% discount on all room categories.</p>
+          </div>
+          <div class="flex items-center gap-4 flex-shrink-0">
+            <a href="/rooms" class="px-6 py-3.5 rounded-xl bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-sm shadow-lg transition-all">Explore Rooms &rarr;</a>
+            <a href="/contact" class="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-all">Contact Us</a>
           </div>
         </div>
       </main>
       ${FOOTER_HTML}
-    `
+`
   },
   {
     path: '/contact',
@@ -731,20 +786,84 @@ const ROUTES = [
     `,
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-28 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">24/7 FRONT DESK</span>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-2 mb-6">Contact Hotel Sherpa Soul</h1>
-        <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
-          <p class="text-slate-700 text-base sm:text-lg">Have a question about room availability, airport pickup, or trekking in Nepal? Get in touch directly with our team:</p>
-          <div class="space-y-4 text-slate-700">
-            <div><strong>Address:</strong> Thamel Bhagawati Marg 26, Kathmandu 44600, Bagmati, Nepal</div>
-            <div><strong>Direct Phone:</strong> <a href="tel:+9779851068219" class="text-[#FB6C01] font-bold hover:underline">+977-9851068219</a></div>
-            <div><strong>WhatsApp:</strong> <a href="https://wa.me/9779818259472" class="text-emerald-600 font-bold hover:underline">+977 9818259472 (Instant Chat)</a></div>
-            <div><strong>Official Email:</strong> <a href="mailto:info@hotelsherpasoul.com" class="text-[#01366E] font-bold hover:underline">info@hotelsherpasoul.com</a></div>
-            <div><strong>Check-in:</strong> 14:00 (2:00 PM) • <strong>Check-out:</strong> 12:00 (12:00 PM noon)</div>
+      <main class="min-h-screen pt-28 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase bg-amber-100 px-3.5 py-1 rounded-full">24/7 FRONT DESK &amp; TRAVEL DESK</span>
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-3 mb-4">Contact Hotel Sherpa Soul</h1>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">Reach our friendly Sherpa family team directly for room reservations, private airport transfers, trekking logistics, and personalized Kathmandu recommendations.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+          <!-- Primary Contact Information Card -->
+          <div class="lg:col-span-7 p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
+            <h2 class="text-2xl font-bold text-[#01366E] border-b border-slate-100 pb-3">Get in Touch Directly</h2>
+            <p class="text-slate-700 text-base leading-relaxed">Whether you are arriving late at night from an international flight, coordinating early morning departures for Himalayan trails, or seeking direct booking rates, our reception desk is open 24 hours a day, 7 days a week.</p>
+            
+            <div class="space-y-4 text-slate-700 text-sm sm:text-base">
+              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
+                <span class="text-xl">📍</span>
+                <div>
+                  <strong>Physical Address:</strong><br />
+                  <span>Hotel Sherpa Soul, Thamel Bhagawati Marg 26, Kathmandu 44600, Bagmati Province, Nepal</span>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3">
+                <span class="text-xl">💬</span>
+                <div>
+                  <strong>WhatsApp &amp; Fast Messaging:</strong><br />
+                  <a href="https://wa.me/9779818259472" class="text-emerald-700 font-bold hover:underline">+977 9818259472 (Instant Assistance &amp; Room Holds)</a>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 flex items-start gap-3">
+                <span class="text-xl">📞</span>
+                <div>
+                  <strong>Front Desk Direct Phone:</strong><br />
+                  <a href="tel:+9779851068219" class="text-[#FB6C01] font-bold hover:underline">+977-9851068219</a> / <a href="tel:+9779818259472" class="text-[#FB6C01] font-bold hover:underline">+977-9818259472</a>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-blue-50 border border-blue-200 flex items-start gap-3">
+                <span class="text-xl">✉️</span>
+                <div>
+                  <strong>Email Inquiries:</strong><br />
+                  <a href="mailto:info@hotelsherpasoul.com" class="text-[#01366E] font-bold hover:underline">info@hotelsherpasoul.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2 flex flex-wrap gap-4 text-sm font-bold">
+              <a href="/book-now" class="inline-block py-3 px-6 bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold rounded-xl shadow-md transition-all">Book Online &amp; Save 10% &rarr;</a>
+              <a href="/rooms" class="inline-block py-3 px-6 bg-[#01366E] hover:bg-[#024a94] text-white font-bold rounded-xl shadow-md transition-all">View All Rooms &rarr;</a>
+            </div>
           </div>
-          <div class="pt-4 border-t border-slate-100">
-            <a href="/book-now" class="inline-block py-3 px-6 bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold rounded-xl shadow-md transition-all">Book Online with 10% Discount &rarr;</a>
+
+          <!-- Directions & Airport Transit Card -->
+          <div class="lg:col-span-5 p-8 rounded-3xl bg-slate-900 text-white shadow-xl space-y-6">
+            <h2 class="text-2xl font-bold text-amber-400 border-b border-slate-700 pb-3">How to Find Us</h2>
+            
+            <div class="space-y-4 text-sm text-slate-200 leading-relaxed">
+              <div>
+                <h3 class="font-bold text-white text-base mb-1">From Tribhuvan Airport (TIA):</h3>
+                <p>Located approximately 6.5 kilometers west of the airport. Driving time is 20-35 minutes depending on traffic. We offer private pre-arranged airport pickups with a driver holding your name placard at the arrival exit for $15 USD.</p>
+              </div>
+
+              <div>
+                <h3 class="font-bold text-white text-base mb-1">Walking From Local Landmarks:</h3>
+                <ul class="space-y-1.5 list-disc pl-5">
+                  <li><strong>Garden of Dreams:</strong> 4-minute walk (350 meters)</li>
+                  <li><strong>Durbar Marg (King's Way):</strong> 7-minute walk (600 meters)</li>
+                  <li><strong>Sorhakhutte Tourist Bus Station:</strong> 5-minute walk (450 meters)</li>
+                  <li><strong>Kathmandu Durbar Square:</strong> 15-minute scenic stroll</li>
+                </ul>
+              </div>
+
+              <div class="pt-2 border-t border-slate-800 text-xs text-slate-400">
+                <p><strong>Check-in Time:</strong> 14:00 (2:00 PM) | <strong>Check-out Time:</strong> 11:00 AM (or 12:00 PM upon request)</p>
+                <p class="mt-1">Complimentary secure luggage lockup is available for all guests while trekking in the Himalayas.</p>
+              </div>
+            </div>
           </div>
         </div>
       </main>
@@ -841,21 +960,52 @@ const ROUTES = [
     `,
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-28 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-10">
-          <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">VISUAL TOUR</span>
-          <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-2">Hotel Sherpa Soul Gallery</h1>
-          <p class="text-slate-600 text-lg mt-2">Take a tour of our comfortable guest rooms, facilities, and Thamel surroundings.</p>
+      <main class="min-h-screen pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase bg-amber-100 px-3 py-1 rounded-full">VISUAL TOUR</span>
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-3 mb-4">Hotel Sherpa Soul Photo &amp; Video Gallery</h1>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">Take a visual tour of our quiet boutique rooms, shared guest kitchen, private balconies, and 24/7 reception in Thamel, Kathmandu.</p>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <img src="/front-desk.webp" alt="Hotel Sherpa Soul Entrance Corridor & 24/7 Reception" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
-          <img src="/changes_photo/deluxeRoom_ai.webp" alt="Hotel Sherpa Soul Deluxe Room" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
-          <img src="/changes_photo/viewSeen.webp" alt="Kathmandu Valley View from Hotel Sherpa Soul" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
-          <img src="/changes_photo/balkani.webp" alt="Hotel Sherpa Soul Private Balcony View" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div class="space-y-3 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <img src="/front-desk.webp" alt="Hotel Sherpa Soul Entrance Corridor &amp; 24/7 Reception" class="w-full h-56 object-cover rounded-xl" width="400" height="240" loading="eager" />
+            <h3 class="font-bold text-[#01366E] text-base">Reception &amp; Lobby</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">Welcoming front desk staffed 24 hours a day with local travel assistance and secure luggage holding.</p>
+          </div>
+
+          <div class="space-y-3 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <img src="/changes_photo/singleBedWithSofa.webp" alt="Deluxe Room with AC &amp; King Bed - Hotel Sherpa Soul" class="w-full h-56 object-cover rounded-xl" width="400" height="240" loading="lazy" />
+            <h3 class="font-bold text-[#01366E] text-base">Deluxe Room (AC)</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">Spacious boutique room with King bed, sofa seating, private bathroom, and air conditioning.</p>
+          </div>
+
+          <div class="space-y-3 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <img src="/triple.webp" alt="Budget Family Room with King and Single Bed" class="w-full h-56 object-cover rounded-xl" width="400" height="240" loading="lazy" />
+            <h3 class="font-bold text-[#01366E] text-base">Budget Family Room</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">Comfortable family accommodation featuring 1 King Bed plus 1 Single Bed with attached hot shower.</p>
+          </div>
+
+          <div class="space-y-3 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <img src="/changes_photo/doubleBed.webp" alt="Family AC Room with City Views" class="w-full h-56 object-cover rounded-xl" width="400" height="240" loading="lazy" />
+            <h3 class="font-bold text-[#01366E] text-base">Family Room (AC)</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">Air-conditioned family suite with natural sunlight, wardrobe storage, and city mountain vistas.</p>
+          </div>
         </div>
+
+        <section class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4 text-slate-700 leading-relaxed mb-12">
+          <h2 class="text-2xl font-bold text-[#01366E]">What You Will Experience at Hotel Sherpa Soul</h2>
+          <p>Every photo in our gallery reflects our genuine, unedited hotel environment on Thamel Bhagawati Marg 26. We prioritize cleanliness, natural ventilation, quality orthopedic mattresses, and high-pressure hot water.</p>
+          <p>Our shared rooftop guest kitchen is fully stocked for guest cooking, and our rooftop terrace offers sweeping views of the Kathmandu valley and surrounding green hills. Whether relaxing after a long international flight or recovering from a mountain expedition, our hotel provides an authentic, quiet home base.</p>
+          <div class="pt-2 flex flex-wrap gap-4 text-sm font-bold">
+            <a href="/rooms" class="text-[#FB6C01] hover:underline">Check Room Availability &rarr;</a>
+            <a href="/book-now" class="text-[#01366E] hover:underline">Book Online (Save 10%) &rarr;</a>
+            <a href="/services" class="text-emerald-700 hover:underline">View Hotel Services &rarr;</a>
+          </div>
+        </section>
       </main>
       ${FOOTER_HTML}
-    `
+`
   },
   {
     path: '/blog',
@@ -869,30 +1019,107 @@ const ROUTES = [
     `,
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-28 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">LOCAL INSIGHTS</span>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-2 mb-6">Kathmandu & Thamel Travel Guide</h1>
-        <div class="space-y-6">
-          <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <h2 class="text-xl font-bold text-[#01366E] mb-2">Where to Stay in Kathmandu: Why Thamel is the Best Choice</h2>
-            <p class="text-sm text-slate-600 leading-relaxed">Thamel is the vibrant travel heart of Kathmandu. Surrounded by artisanal shops, organic bakeries, gear rentals, and cultural temples, staying at a quiet hotel like Hotel Sherpa Soul offers the best balance of convenience and peaceful rest.</p>
-            <div class="flex items-center gap-4 text-xs font-bold pt-3 mt-3 border-t border-slate-100">
-              <a href="/rooms" class="text-[#FB6C01] hover:underline">Explore Rooms &rarr;</a>
-              <a href="/contact" class="text-[#01366E] hover:underline">Contact Front Desk &rarr;</a>
+      <main class="min-h-screen pt-28 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase bg-amber-100 px-3 py-1 rounded-full">OFFICIAL TRAVEL GUIDES</span>
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mt-3 mb-4">Kathmandu &amp; Thamel Travel Guides</h1>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">Expert local advice, neighborhood guides, budget accommodation tips, and trekking logistics from the Hotel Sherpa Soul team in Thamel, Kathmandu.</p>
+        </div>
+
+        <div class="space-y-16">
+          <!-- Article 1: Budget Hotels in Thamel -->
+          <article class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
+            <span class="text-xs font-bold px-3 py-1 bg-blue-50 text-[#01366E] rounded-full uppercase tracking-wider">Accommodation Guide • 7 Min Read</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#01366E] tracking-tight">The Complete Guide to Budget Hotels in Thamel, Kathmandu (2026 Edition)</h2>
+            <div class="prose max-w-none text-slate-700 text-base leading-relaxed space-y-4">
+              <p>Thamel has long been celebrated as the undisputed epicenter of budget travel in Nepal. Packed with hundreds of lodges, cafes, handicraft stalls, and trekking agencies, this vibrant neighborhood welcomes international adventurers, solo backpackers, cultural explorers, and mountaineers every day.</p>
+              <p>However, finding the right budget hotels in Thamel Kathmandu can often feel like a gamble. Behind attractive online photos, travelers frequently encounter unexpected issues: deafening street noise from late-night nightclubs, erratic solar hot water on chilly winter mornings, hidden service charges, and cramped windowless rooms.</p>
+              
+              <h3 class="text-xl font-bold text-[#01366E] pt-2">5 Critical Checks Before You Book a Budget Hotel in Thamel</h3>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Noise Insulation:</strong> Avoid main party streets like Paryatan Marg. Choose quiet residential alleys like Bhagawati Marg where hotels operate without noisy in-house bars.</li>
+                <li><strong>True 24/7 Hot Water:</strong> Ensure your hotel has electric backup heating so showers stay piping hot even on cloudy days.</li>
+                <li><strong>Free Trekker Luggage Storage:</strong> Save heavy mountain flight fees by storing excess baggage safely while trekking in the Himalayas.</li>
+                <li><strong>Shared Self-Kitchen:</strong> Having kitchen access saves money and allows you to brew fresh tea or cook healthy meals.</li>
+                <li><strong>Direct Booking 10% Discount:</strong> Book directly to bypass high OTA commissions and lock in lower rates.</li>
+              </ul>
+
+              <h3 class="text-xl font-bold text-[#01366E] pt-2">Why Hotel Sherpa Soul Redefines Budget Hospitality</h3>
+              <p>At Hotel Sherpa Soul (Bhagawati Marg 26), our "No Restaurant. No Noise. Sleep Well" commitment ensures spotless, peaceful rooms starting at just $20 USD (~NPR 2,700) per night, complete with King beds, en-suite bathrooms, free Wi-Fi, and shared rooftop kitchen privileges.</p>
+
+              <div class="p-6 rounded-2xl bg-amber-50/80 border border-amber-200 space-y-3">
+                <h4 class="font-bold text-[#01366E] text-lg">Frequently Asked Questions (FAQs)</h4>
+                <p><strong>Q: What is the average price of a budget hotel in Thamel?</strong><br />A: Quality budget rooms with private bathrooms typically cost $18 to $25 USD (NPR 2,400 to NPR 3,400) per night. Direct bookings at Hotel Sherpa Soul include an exclusive 10% discount.</p>
+                <p><strong>Q: Can I store my luggage for free while trekking?</strong><br />A: Yes! Hotel Sherpa Soul provides free, secure luggage holding for all our guests during their mountain treks.</p>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex flex-wrap items-center gap-4 text-sm font-bold">
+              <a href="/rooms" class="text-[#FB6C01] hover:underline">View Budget Rooms ($20 / Night) &rarr;</a>
+              <a href="/book-now" class="text-[#01366E] hover:underline">Book Direct &amp; Save 10% &rarr;</a>
             </div>
           </article>
-          <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <h2 class="text-xl font-bold text-[#01366E] mb-2">Trekking Preparation: Essential Gear Check in Thamel</h2>
-            <p class="text-sm text-slate-600 leading-relaxed">Tips on preparing for Everest, Annapurna, or Langtang treks, including permit processing, warm gear procurement, and luggage storage.</p>
-            <div class="flex items-center gap-4 text-xs font-bold pt-3 mt-3 border-t border-slate-100">
-              <a href="/rooms" class="text-[#FB6C01] hover:underline">View Quiet Trekker Rooms &rarr;</a>
-              <a href="/contact" class="text-[#01366E] hover:underline">Ask Us About Permits &rarr;</a>
+
+          <!-- Article 2: Where to Stay in Thamel for First-Time Visitors -->
+          <article class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
+            <span class="text-xs font-bold px-3 py-1 bg-amber-50 text-amber-900 rounded-full uppercase tracking-wider">Thamel Guide • 8 Min Read</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#01366E] tracking-tight">Where to Stay in Thamel for First-Time Visitors: Neighborhood Secrets &amp; Noise Survival</h2>
+            <div class="prose max-w-none text-slate-700 text-base leading-relaxed space-y-4">
+              <p>Arriving in Kathmandu for the first time is an exhilarating immersion. The colorful prayer flags, aromatic incense, and bustling street markets are wonderful, but choosing where to stay in Thamel determines whether you sleep deeply or stay awake listening to nightclub bass.</p>
+              <p>Thamel is divided into distinct zones: noisy central party lanes versus peaceful eastern avenues like Bhagawati Marg. Choosing Bhagawati Marg gives you the ultimate convenience: 2 minutes walk from central Thamel, 4 minutes walk from the Garden of Dreams, and 7 minutes from Durbar Marg, while remaining blissfully quiet at night.</p>
+
+              <h3 class="text-xl font-bold text-[#01366E] pt-2">Essential Logistics for First-Time Visitors</h3>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Airport Pickups:</strong> Pre-book private hotel transfers to avoid confusing negotiations at Tribhuvan Airport.</li>
+                <li><strong>Local SIM Cards:</strong> Obtain an Ncell or Nepal Telecom tourist SIM right at TIA arrivals for inexpensive 4G data.</li>
+                <li><strong>ATMs &amp; Money:</strong> Bhagawati Marg features secure bank ATMs with 24/7 security guards accepting international cards.</li>
+              </ul>
+
+              <div class="p-6 rounded-2xl bg-blue-50/80 border border-blue-200 space-y-3">
+                <h4 class="font-bold text-[#01366E] text-lg">Frequently Asked Questions (FAQs)</h4>
+                <p><strong>Q: Is Thamel safe for first-time solo travelers?</strong><br />A: Yes, Thamel is very safe with friendly locals and strong tourist police presence. Family-run hotels with 24/7 front desk teams offer total peace of mind.</p>
+                <p><strong>Q: How do I avoid street noise in Kathmandu?</strong><br />A: Select hotels located on Bhagawati Marg that have no in-house bar or live-music restaurant, such as Hotel Sherpa Soul.</p>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex flex-wrap items-center gap-4 text-sm font-bold">
+              <a href="/room/deluxe-room" class="text-[#FB6C01] hover:underline">Explore Deluxe AC Rooms &rarr;</a>
+              <a href="/guest-guide" class="text-[#01366E] hover:underline">Read Our Official Guest Guide &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Article 3: Thamel Hotel Near Durbar Marg & Attractions -->
+          <article class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
+            <span class="text-xs font-bold px-3 py-1 bg-emerald-50 text-emerald-900 rounded-full uppercase tracking-wider">Sightseeing Guide • 8 Min Read</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#01366E] tracking-tight">Staying in a Thamel Hotel Near Durbar Marg, Garden of Dreams &amp; Kathmandu Attractions</h2>
+            <div class="prose max-w-none text-slate-700 text-base leading-relaxed space-y-4">
+              <p>Location is everything when exploring Kathmandu. Staying on the eastern border of Thamel (Bhagawati Marg) allows you to effortlessly walk to both bohemian Thamel markets and upscale Durbar Marg (King's Way) within minutes.</p>
+
+              <h3 class="text-xl font-bold text-[#01366E] pt-2">Walking Itinerary From Hotel Sherpa Soul:</h3>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Garden of Dreams:</strong> 4-minute walk to tranquil neo-classical gardens, marble fountains, and cafes.</li>
+                <li><strong>Narayanhiti Palace Museum:</strong> 7-minute walk to Nepal's modern royal palace on Durbar Marg.</li>
+                <li><strong>Kathmandu Durbar Square:</strong> 15-minute heritage stroll through historic Asan spice bazaars to ancient temples.</li>
+                <li><strong>Swayambhunath (Monkey Temple):</strong> 25-minute scenic walk or 7-minute taxi ride for panoramic valley views.</li>
+                <li><strong>Sorhakhutte Tourist Bus Station:</strong> 5-minute walk for early morning departures to Pokhara and Chitwan.</li>
+              </ul>
+
+              <div class="p-6 rounded-2xl bg-amber-50/80 border border-amber-200 space-y-3">
+                <h4 class="font-bold text-[#01366E] text-lg">Frequently Asked Questions (FAQs)</h4>
+                <p><strong>Q: How far is Hotel Sherpa Soul from Durbar Marg?</strong><br />A: It is an easy 7-minute walk (approx. 600m) along well-lit sidewalks.</p>
+                <p><strong>Q: Can I walk to tourist bus stations in the morning?</strong><br />A: Yes, the Pokhara tourist coach hub at Sorhakhutte is just 5 minutes walk from our door.</p>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex flex-wrap items-center gap-4 text-sm font-bold">
+              <a href="/rooms" class="text-[#FB6C01] hover:underline">View All Available Rooms &rarr;</a>
+              <a href="/contact" class="text-[#01366E] hover:underline">Contact Front Desk on WhatsApp &rarr;</a>
             </div>
           </article>
         </div>
       </main>
       ${FOOTER_HTML}
-    `
+`
   },
   {
     path: '/privacy',
@@ -902,15 +1129,26 @@ const ROUTES = [
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-28 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mb-6">Privacy Policy</h1>
-        <div class="space-y-4 text-slate-700 leading-relaxed">
-          <p>Hotel Sherpa Soul is committed to protecting your privacy and personal data. We disclose our collection practices, Google Tag Manager (GTM-PFRV7ZTV), Google Analytics 4 (G-E7Z3QDR3KD), and Meta Pixel usage in full transparency.</p>
-          <p>For questions or requests, contact: <strong>info@hotelsherpasoul.com</strong> or phone <strong>+977-9851068219</strong>.</p>
+      <main class="min-h-screen pt-28 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mb-6">Privacy Policy &amp; Cookie Disclosures</h1>
+        <div class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6 text-slate-700 text-base leading-relaxed">
+          <p>Hotel Sherpa Soul (accessible at https://hotelsherpasoul.com) values your privacy. This policy outlines the types of personal information received and collected when you visit our website, submit direct booking inquiries, or communicate with our front desk.</p>
+
+          <h2 class="text-xl font-bold text-[#01366E]">1. Information We Collect</h2>
+          <p>When you make an inquiry or room booking, we may collect your name, email address, phone/WhatsApp number, country of residence, check-in/out dates, and specific room preferences. We never store credit card or payment card numbers on our local servers.</p>
+
+          <h2 class="text-xl font-bold text-[#01366E]">2. How We Use Your Information</h2>
+          <p>Information is used solely to confirm room reservations, coordinate airport pickups, respond to guest inquiries, and deliver personalized Himalayan hospitality during your stay. We never sell, rent, or trade your personal data to third parties.</p>
+
+          <h2 class="text-xl font-bold text-[#01366E]">3. Analytics &amp; Cookies</h2>
+          <p>We use industry-standard web analytics tools including Google Analytics 4 (G-E7Z3QDR3KD) and Meta Pixel to understand website traffic patterns, improve site speed, and measure user engagement. Cookies help remember your preferred language and direct booking discount sessions. You may manage or opt out of non-essential cookies via your browser settings or our cookie consent banner.</p>
+
+          <h2 class="text-xl font-bold text-[#01366E]">4. Contact Details</h2>
+          <p>For questions or privacy requests, please contact our data coordinator at <strong>info@hotelsherpasoul.com</strong> or call <strong>+977-9851068219</strong>.</p>
         </div>
       </main>
       ${FOOTER_HTML}
-    `
+`
   },
   {
     path: '/terms',
@@ -920,15 +1158,29 @@ const ROUTES = [
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-28 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mb-6">Terms of Service</h1>
-        <div class="space-y-4 text-slate-700 leading-relaxed">
-          <p>Check-in is from 14:00 (2:00 PM) and check-out is by 12:00 (12:00 PM). Direct bookings made through our site or WhatsApp receive a 10% discount off standard rates.</p>
-          <p>Quiet hours are observed between 22:00 and 07:00 to honor our "No Noise. Sleep Well" commitment.</p>
+      <main class="min-h-screen pt-28 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#01366E] mb-6">Terms of Service &amp; House Policies</h1>
+        <div class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6 text-slate-700 text-base leading-relaxed">
+          <p>Welcome to Hotel Sherpa Soul. By accessing our website (https://hotelsherpasoul.com) or confirming a room reservation, you agree to comply with and be bound by the following terms, conditions, and guest house policies.</p>
+
+          <h2 class="text-xl font-bold text-[#01366E]">1. Check-in and Check-out Policies</h2>
+          <p>Standard check-in time is from 14:00 (2:00 PM). Check-out time is by 11:00 AM (or 12:00 PM noon upon prior request). Early check-in and late checkout are subject to room availability on the date of arrival/departure. A valid government photo ID or passport is required upon registration.</p>
+
+          <h2 class="text-xl font-bold text-[#01366E]">2. Direct Booking Guarantee &amp; 10% Discount</h2>
+          <p>Guests booking directly through our website (/book-now) or via verified WhatsApp front desk receive a guaranteed 10% discount off standard rates. Best rate guarantee applies to all direct reservations.</p>
+
+          <h2 class="text-xl font-bold text-[#01366E]">3. Quiet Hours &amp; "No Noise" Commitment</h2>
+          <p>To honor our brand promise ("No Restaurant. No Noise. Sleep Well"), quiet hours are strictly observed between 22:00 (10:00 PM) and 07:00 (7:00 AM). Guests are kindly requested to respect the peace of fellow travelers in hallways and common stairwells.</p>
+
+          <h2 class="text-xl font-bold text-[#01366E]">4. Shared Kitchen Etiquette</h2>
+          <p>The shared rooftop kitchen is provided free of charge for guest convenience. Guests must clean utensils, wipe down counters, and properly dispose of food scraps after use. Smoking is strictly prohibited inside guest rooms.</p>
+
+          <h2 class="text-xl font-bold text-[#01366E]">5. Luggage Storage Terms</h2>
+          <p>Complimentary luggage storage is provided to guests trekking in Nepal. While storage areas are locked and monitored, high-value personal valuables (passports, cash, fine jewelry) should be kept with the traveler.</p>
         </div>
       </main>
       ${FOOTER_HTML}
-    `
+`
   },
   {
     path: '/guest-guide',
@@ -1228,7 +1480,7 @@ function getRoomSchemaForRoute(route) {
   const roomSlug = route.path.replace('/room/', '');
   const roomData = {
     'budget-family-room': {
-      name: 'Budget Family Room',
+      name: 'Budget Family Room in Thamel, Kathmandu',
       description: 'Budget-friendly family room with 1 King Bed and 1 Single Bed, en-suite bathroom with 24/7 hot water, free Wi-Fi, and shared kitchen privileges.',
       bed: '1 King Bed + 1 Single Bed',
       occupancy: 4,
@@ -1236,7 +1488,7 @@ function getRoomSchemaForRoute(route) {
       image: `${baseUrl}/triple.webp`
     },
     'deluxe-room': {
-      name: 'Deluxe Room (AC)',
+      name: 'Deluxe Room (AC) in Thamel, Kathmandu',
       description: 'Air-conditioned boutique room with king bed, sofa seating, private modern bathroom, fast Wi-Fi, and peaceful atmosphere in Thamel.',
       bed: '1 King Bed',
       occupancy: 3,
@@ -1244,7 +1496,7 @@ function getRoomSchemaForRoute(route) {
       image: `${baseUrl}/changes_photo/singleBedWithSofa.webp`
     },
     'family-room': {
-      name: 'Family Room (AC)',
+      name: 'Family Room (AC) in Thamel, Kathmandu',
       description: 'Spacious family suite with King plus Single bed, full air conditioning, private modern washroom, city views, and shared kitchen privileges.',
       bed: '1 King Bed + 1 Single Bed',
       occupancy: 4,

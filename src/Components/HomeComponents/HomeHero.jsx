@@ -230,11 +230,11 @@ export default function HomeIntro() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight text-white drop-shadow-md">
-              {t("homeHero.title", "Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu")}
+              {t("homeHero.title", "Quiet Boutique & Budget Hotel in Thamel, Kathmandu")}
             </h1>
 
             <p className="text-white/90 text-base sm:text-lg leading-relaxed font-light drop-shadow">
-              {t("homeHero.description", "A boutique hotel on Thamel Bhagawati Marg 26 — clean rooms, peaceful nights, 24/7 hot showers, free luggage storage, and warm Himalayan hospitality.")}
+              {t("homeHero.description", "Your peaceful hotel near Thamel Kathmandu on Bhagawati Marg 26 — spotless quiet rooms, 24/7 hot showers, free trekking luggage storage, shared kitchen, and warm Himalayan hospitality.")}
             </p>
 
             {/* 2 Clean CTAs */}

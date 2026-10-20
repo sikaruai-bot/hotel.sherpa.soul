@@ -81,11 +81,28 @@ export default function HomeGoogleReviews() {
         const res = await fetch("/api/reviews");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        if (isMounted && data && Array.isArray(data.reviews) && data.reviews.length > 0) {
+        if (isMounted && data) {
           setReviewsData(data);
+
+          // Dynamically sync schema-hotel aggregateRating to Google's live verified metrics
+          if (data.rating && data.userRatingCount) {
+            const schemaEl = document.getElementById("schema-hotel");
+            if (schemaEl) {
+              try {
+                const schemaObj = JSON.parse(schemaEl.textContent);
+                if (schemaObj.aggregateRating) {
+                  schemaObj.aggregateRating.ratingValue = String(data.rating);
+                  schemaObj.aggregateRating.reviewCount = String(data.userRatingCount);
+                  schemaEl.textContent = JSON.stringify(schemaObj, null, 2);
+                }
+              } catch (e) {
+                console.warn("Could not sync schema-hotel aggregateRating:", e);
+              }
+            }
+          }
         }
       } catch (err) {
-        console.warn("Could not fetch live Google reviews, using cached verified reviews:", err);
+        console.warn("Could not fetch live Google reviews, using verified fallback reviews:", err);
       } finally {
         if (isMounted) setLoading(false);
       }
@@ -279,6 +296,38 @@ export default function HomeGoogleReviews() {
               </div>
             );
           })}
+        </div>
+
+        {/* Required Powered by Google Attribution & Read All Reviews */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 -mt-10 mb-14 px-5 py-3.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+          <a
+            href={reviewsData.googleMapsUri || googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-xs sm:text-sm text-slate-300 hover:text-white transition-colors"
+          >
+            <span className="text-slate-400">Powered by</span>
+            <span className="font-semibold text-white flex items-center gap-1.5">
+              <svg className="w-4 h-4 inline-block" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+              </svg>
+              Google Maps
+            </span>
+            <span className="text-slate-400 hidden md:inline">• {reviewsData.userRatingCount || 2} Verified Reviews</span>
+          </a>
+
+          <a
+            href={reviewsData.googleMapsUri || googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-amber-300 hover:text-white font-semibold text-xs sm:text-sm transition-all shadow-sm"
+          >
+            <span>Read all reviews on Google Maps</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
         </div>
 
         {/* Authentic Hospitality & Direct Booking Banner */}

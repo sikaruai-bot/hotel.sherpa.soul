@@ -389,7 +389,7 @@ export default function RoomDetail() {
 
           {/* Room Title Overlay */}
           <div className="absolute bottom-8 left-8 text-white max-w-4xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{roomName}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{roomName} in Thamel, Kathmandu</h1>
             <div className="flex flex-wrap gap-6 text-base md:text-lg opacity-90">
               <span className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-[#FB6C01]" />

@@ -1,11 +1,11 @@
 import https from 'https';
 
-// In-memory cache for serverless environment
+// In-memory cache for serverless environment (24 hours)
 let cache = {
   data: null,
   timestamp: 0,
 };
-const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 const PLACE_ID = process.env.GOOGLE_PLACE_ID || 'ChIJE3xLXdEZ6zkR1sgsehATM38';
 
@@ -101,7 +101,7 @@ export default async function handler(req, res) {
   // Set CORS and Cache-Control headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=86400');
 
   const now = Date.now();
   if (cache.data && now - cache.timestamp < CACHE_TTL_MS) {
