@@ -488,6 +488,24 @@ const RoomsCard = () => {
         </div>
       )}
 
+      {/* Helpful links for guests */}
+      <div className="max-w-4xl mx-auto mt-14 px-4 text-center">
+        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-left">
+            <h4 className="font-bold text-[#01366E] text-sm sm:text-base">Planning Your Stay at Hotel Sherpa Soul?</h4>
+            <p className="text-xs sm:text-sm text-slate-600 mt-0.5">Read our check-in policies, quiet hours, shared kitchen etiquette, and privacy disclosures.</p>
+          </div>
+          <div className="flex items-center gap-3 shrink-0">
+            <Link to="/guest-guide" className="px-4 py-2 bg-slate-100 hover:bg-[#FB6C01] hover:text-white text-slate-800 text-xs font-bold rounded-xl transition-all">
+              Guest Guide &amp; Rules &rarr;
+            </Link>
+            <Link to="/privacy" className="px-4 py-2 bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-800 text-xs font-bold rounded-xl transition-all">
+              Privacy Policy &rarr;
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <style>{`
         @keyframes fadeInUp {
           from {

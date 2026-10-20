@@ -918,6 +918,22 @@ export default function BookNowPage() {
                       <Sparkles className="w-5 h-5" />
                     </span>
                   </button>
+
+                  <p className="text-xs text-slate-500 text-center mt-3 leading-relaxed">
+                    By confirming this reservation, you agree to our{" "}
+                    <a href="/terms" className="text-[#01366E] font-medium underline">
+                      Terms of Service
+                    </a>
+                    ,{" "}
+                    <a href="/guest-guide" className="text-[#01366E] font-medium underline">
+                      Guest Guide &amp; House Rules
+                    </a>
+                    , and{" "}
+                    <a href="/privacy" className="text-[#01366E] font-medium underline">
+                      Privacy Policy
+                    </a>
+                    .
+                  </p>
                 </div>
               </div>
             </div>

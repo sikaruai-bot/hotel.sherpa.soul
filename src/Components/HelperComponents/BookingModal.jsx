@@ -359,6 +359,22 @@ const BookingModal = ({ isOpen, onClose, selectedLanguage = "EN" }) => {
                 })}
               </div>
             )}
+
+            {/* Modal Legal & Guide Links */}
+            <div className="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center justify-between text-[11px] text-gray-500 gap-2">
+              <span className="font-medium text-emerald-700">✓ Best Rate Guarantee (10% Off Direct Booking)</span>
+              <div className="flex items-center gap-3">
+                <a href="/guest-guide" onClick={onClose} className="hover:text-[#FB6C01] underline">
+                  Guest Guide
+                </a>
+                <a href="/terms" onClick={onClose} className="hover:text-[#FB6C01] underline">
+                  Terms
+                </a>
+                <a href="/privacy" onClick={onClose} className="hover:text-[#FB6C01] underline">
+                  Privacy Policy
+                </a>
+              </div>
+            </div>
           </div>
         </motion.div>
       </motion.div>

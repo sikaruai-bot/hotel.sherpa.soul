@@ -92,6 +92,7 @@ const FOOTER_HTML = `
             <li><a href="/services" class="hover:text-[#FB6C01] transition-colors">Services & Amenities</a></li>
             <li><a href="/gallery" class="hover:text-[#FB6C01] transition-colors">Photo & Video Gallery</a></li>
             <li><a href="/blog" class="hover:text-[#FB6C01] transition-colors">Kathmandu & Thamel Travel Blog</a></li>
+            <li><a href="/guest-guide" class="hover:text-[#FB6C01] transition-colors">Guest Guide & House Rules</a></li>
             <li><a href="/contact" class="hover:text-[#FB6C01] transition-colors">Contact & Location</a></li>
           </ul>
         </div>
@@ -127,6 +128,7 @@ const FOOTER_HTML = `
       <div class="flex flex-wrap gap-4 sm:gap-6 items-center">
         <a href="/privacy" class="hover:text-[#FB6C01] transition-colors">Privacy Policy</a>
         <a href="/terms" class="hover:text-[#FB6C01] transition-colors">Terms of Service</a>
+        <a href="/guest-guide" class="hover:text-[#FB6C01] transition-colors">Guest Guide</a>
         <button type="button" class="hover:text-[#FB6C01] transition-colors text-left cursor-pointer">Cookie Preferences</button>
       </div>
     </div>
@@ -289,6 +291,7 @@ function getBookingPageContent(roomTitle, roomId) {
               <span class="font-bold text-[#FB6C01]">10% Discount Automatically Applied</span>
             </div>
             <button type="submit" class="w-full py-4 px-6 bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-lg rounded-2xl shadow-lg transition-all cursor-pointer">Confirm & Reserve Room &rarr;</button>
+            <p class="text-xs text-slate-500 text-center mt-3">By submitting, you agree to our <a href="/terms" class="text-[#01366E] font-medium underline">Terms of Service</a>, <a href="/guest-guide" class="text-[#01366E] font-medium underline">Guest Guide &amp; House Rules</a>, and <a href="/privacy" class="text-[#01366E] font-medium underline">Privacy Policy</a>.</p>
           </form>
         </div>
         <div class="space-y-6">
@@ -524,6 +527,10 @@ const ROUTES = [
               <h3 class="font-bold text-slate-800 text-base">Can I store my luggage while on a trek?</h3>
               <p class="text-sm text-slate-600 mt-2">Yes, we offer complimentary secure luggage storage before check-in, after check-out, and during multi-day Himalayan journeys until you return.</p>
             </div>
+            <div class="p-5 rounded-2xl bg-amber-50/70 border border-amber-200 shadow-sm">
+              <h3 class="font-bold text-slate-800 text-base">Where can I read your house rules, Wi-Fi, and guest guide?</h3>
+              <p class="text-sm text-slate-600 mt-2">Please explore our comprehensive <a href="/guest-guide" class="text-[#FB6C01] font-bold hover:underline">Guest Guide &amp; House Rules</a> for quiet hours, Wi-Fi instructions, shared kitchen etiquette, and front desk assistance. All reservations are protected under our <a href="/privacy" class="text-[#01366E] font-bold hover:underline">Privacy Policy</a> and <a href="/terms" class="text-[#01366E] font-bold hover:underline">Terms of Service</a>.</p>
+            </div>
           </div>
         </section>
       </main>
@@ -652,6 +659,24 @@ const ROUTES = [
                 <div class="flex items-center gap-3">
                   <a href="/book/family-room" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white text-center font-bold rounded-xl text-sm shadow-md">Book Room &rarr;</a>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Helpful Links Banner -->
+          <div class="max-w-4xl mx-auto mt-14 px-4 text-center">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="text-left">
+                <h4 class="font-bold text-[#01366E] text-sm sm:text-base">Planning Your Stay at Hotel Sherpa Soul?</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-0.5">Read our check-in policies, quiet hours, shared kitchen etiquette, and privacy disclosures.</p>
+              </div>
+              <div class="flex items-center gap-3 shrink-0">
+                <a href="/guest-guide" class="px-4 py-2 bg-slate-100 hover:bg-[#FB6C01] hover:text-white text-slate-800 text-xs font-bold rounded-xl transition-all">
+                  Guest Guide &amp; Rules &rarr;
+                </a>
+                <a href="/privacy" class="px-4 py-2 bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-800 text-xs font-bold rounded-xl transition-all">
+                  Privacy Policy &rarr;
+                </a>
               </div>
             </div>
           </div>
@@ -862,6 +887,7 @@ const ROUTES = [
               <div class="pt-2 border-t border-slate-800 text-xs text-slate-400">
                 <p><strong>Check-in Time:</strong> 14:00 (2:00 PM) | <strong>Check-out Time:</strong> 11:00 AM (or 12:00 PM upon request)</p>
                 <p class="mt-1">Complimentary secure luggage lockup is available for all guests while trekking in the Himalayas.</p>
+                <p class="mt-2 text-slate-300">Need house rules, Wi-Fi, or privacy details? View our <a href="/guest-guide" class="text-amber-300 underline font-semibold">Guest Guide &amp; House Rules</a> and <a href="/privacy" class="text-amber-300 underline font-semibold">Privacy Policy</a>.</p>
               </div>
             </div>
           </div>

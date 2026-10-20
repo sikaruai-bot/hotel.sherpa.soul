@@ -64,6 +64,26 @@ export default function HomeFAQ() {
       a: t("homeFAQSection.a11", "You can book directly through our official website by clicking 'Check Availability', or contact our front desk directly via WhatsApp at +977 9818259472 for instant booking confirmation with our best 10% direct rate guarantee."),
       icon: <BedDouble className="w-5 h-5 text-[#FB6C01]" />,
     },
+    {
+      q: t("homeFAQSection.q12", "Where can I view the Guest Guide, House Rules, and Privacy Policy?"),
+      a: (
+        <span>
+          Please consult our dedicated{" "}
+          <a href="/guest-guide" className="text-[#FB6C01] font-semibold hover:underline">
+            Guest Guide &amp; House Rules
+          </a>{" "}
+          for quiet hours, Wi-Fi details, and kitchen guidelines. Your bookings and inquiries are protected under our{" "}
+          <a href="/privacy" className="text-[#01366E] font-semibold hover:underline">
+            Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a href="/terms" className="text-[#01366E] font-semibold hover:underline">
+            Terms of Service
+          </a>.
+        </span>
+      ),
+      icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
+    },
   ];
 
   const toggleAccordion = (index) => {

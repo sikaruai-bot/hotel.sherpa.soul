@@ -85,11 +85,13 @@ export default function Footer() {
 
   const quickLinks = [
     { to: "/", key: "home", defaultLabel: "Home" },
-    { to: "/rooms", key: "rooms", defaultLabel: "Rooms" },
+    { to: "/rooms", key: "rooms", defaultLabel: "Rooms & Suites" },
     { to: "/about", key: "aboutUs", defaultLabel: "About Us" },
-    { to: "/gallery", key: "gallery", defaultLabel: "Gallery" },
-    { to: "/blog", key: "blog", defaultLabel: "Blog" },
-    { to: "/contact", key: "contact", defaultLabel: "Contact" },
+    { to: "/services", key: "services", defaultLabel: "Services & Amenities" },
+    { to: "/gallery", key: "gallery", defaultLabel: "Photo Gallery" },
+    { to: "/blog", key: "blog", defaultLabel: "Travel Blog" },
+    { to: "/guest-guide", key: "guestGuide", defaultLabel: "Guest Guide" },
+    { to: "/contact", key: "contact", defaultLabel: "Contact & Location" },
   ];
 
   return (
@@ -386,6 +388,13 @@ export default function Footer() {
                 className="hover:text-[#FB6C01] transition-colors duration-300 relative group"
               >
                 {t("footer.legal.terms", "Terms of Service")}
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-[#FB6C01] group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link
+                to="/guest-guide"
+                className="hover:text-[#FB6C01] transition-colors duration-300 relative group"
+              >
+                {t("footer.legal.guestGuide", "Guest Guide & House Rules")}
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#FB6C01] group-hover:w-full transition-all duration-300"></span>
               </Link>
               <button

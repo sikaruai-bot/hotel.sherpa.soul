@@ -27,8 +27,11 @@ export default function ContactPage() {
             <Link to="/rooms" className="px-5 py-2.5 bg-[#01366E] hover:bg-[#072545] text-white font-semibold rounded-xl text-sm transition-all shadow-sm">
               View Rooms &amp; Rates &rarr;
             </Link>
-            <Link to="/blog" className="px-5 py-2.5 bg-white hover:bg-slate-100 text-[#01366E] border border-slate-300 font-semibold rounded-xl text-sm transition-all shadow-sm">
-              Kathmandu Travel Guide &rarr;
+            <Link to="/guest-guide" className="px-5 py-2.5 bg-white hover:bg-slate-100 text-[#01366E] border border-slate-300 font-semibold rounded-xl text-sm transition-all shadow-sm">
+              Guest Guide &amp; House Rules &rarr;
+            </Link>
+            <Link to="/privacy" className="px-5 py-2.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-semibold rounded-xl text-sm transition-all shadow-sm">
+              Privacy Policy &rarr;
             </Link>
           </div>
         </div>
