@@ -63,7 +63,23 @@
     <!-- GA4 Direct gtag.js -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7Z3QDR3KD"></script>
 
-    <!-- Deferred Third-Party Integration (Meta Pixel & Chatbot) to protect Mobile FCP & LCP -->
+    <!-- ⚠️ META PIXEL PROTECTION: The Meta Pixel code in index.html must NEVER be removed or modified during upgrades/redesigns. It loads from VITE_META_PIXEL_ID. The build fails automatically if pixel code is missing. -->
+    <script id="meta-pixel-base">
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('consent', 'grant');
+      fbq('init', '%VITE_META_PIXEL_ID%');
+      fbq('track', 'PageView');
+    </script>
+    <!-- END META PIXEL PROTECTION -->
+
+    <!-- Deferred Third-Party Integration (Chatbot) to protect Mobile FCP & LCP -->
     <script>
       (function() {
         var scriptsLoaded = false;
@@ -71,21 +87,7 @@
           if (scriptsLoaded) return;
           scriptsLoaded = true;
 
-          // 1. Meta Pixel
-          !function(f,b,e,v,n,t,s){
-            if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window,document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('consent', 'grant');
-          fbq('init', '1022329224109595');
-          fbq('init', '1952950858737501');
-          fbq('track', 'PageView');
-
-          // 2. AI Chatbot Widget
+          // AI Chatbot Widget
           var chatScript = document.createElement('script');
           chatScript.src = '/widget.js';
           chatScript.defer = true;
@@ -370,9 +372,8 @@
   </head>
   <body>
     <!-- Meta Pixel Noscript Fallback -->
-    <noscript>
-      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1022329224109595&ev=PageView&noscript=1" alt="Meta Pixel" />
-      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1952950858737501&ev=PageView&noscript=1" alt="Meta Pixel" />
+    <noscript id="meta-pixel-noscript">
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=%VITE_META_PIXEL_ID%&ev=PageView&noscript=1" alt="Meta Pixel" />
     </noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFRV7ZTV"

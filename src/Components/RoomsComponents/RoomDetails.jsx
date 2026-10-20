@@ -164,11 +164,11 @@ export default function RoomDetail() {
     if (!room) return;
 
     trackMetaEvent("ViewContent", {
-      content_ids: [room.id],
+      content_ids: [String(room.roomNumber || room.id || room.slug || "deluxe-room")],
       content_name: room.name,
-      content_type: "hotel_room",
+      content_type: "product",
       value: Number(room.price) || 0,
-      currency: "NPR",
+      currency: "USD",
     });
   }, [room]);
 

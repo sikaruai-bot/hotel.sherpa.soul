@@ -21,7 +21,7 @@ export default function MetaPixel() {
 
   const ga4Id = seo?.analytics?.ga4Id || import.meta.env.VITE_GA4_ID || "";
   const metaPixelId =
-    seo?.analytics?.metaPixelId || "1022329224109595";
+    import.meta.env.VITE_META_PIXEL_ID || seo?.analytics?.metaPixelId || "1022329224109595";
 
   // Listen for consent updates from CookieConsent component
   useEffect(() => {
@@ -71,6 +71,10 @@ export default function MetaPixel() {
       location.pathname.startsWith("/book/");
 
     if (isCheckout && lastCheckoutPage !== page && hasMarketingConsent) {
+      trackMetaEvent("Lead", {
+        content_name: "Booking Form Start",
+        content_category: "hotel_booking",
+      });
       trackMetaEvent("InitiateCheckout", {
         content_category: "hotel_booking",
       });

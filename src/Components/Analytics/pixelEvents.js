@@ -1,4 +1,5 @@
-const DEFAULT_META_PIXEL_IDS = ["1022329224109595", "1952950858737501"];
+const envPixelId = typeof import.meta !== "undefined" && import.meta.env ? import.meta.env.VITE_META_PIXEL_ID : null;
+const DEFAULT_META_PIXEL_IDS = envPixelId ? [envPixelId] : ["1022329224109595"];
 const initializedPixelIds = new Set();
 
 const getConsent = () => {
@@ -221,6 +222,12 @@ export const trackBookingClick = (entryPoint, extra = {}) => {
     entry_point: entryPoint,
     cta_location: entryPoint,
     cta_text: extra.cta_text || "Book Direct & Save 10%",
+    ...extra,
+  });
+  trackEvent("Lead", {
+    content_name: "Booking Inquiry",
+    content_category: "hotel_booking",
+    entry_point: entryPoint,
     ...extra,
   });
   trackEvent("begin_booking", {
