@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   ChevronLeft,
@@ -21,7 +21,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../Utils/api";
 import { rooms as defaultFallbackRooms } from "../HelperComponents/RoomsData";
-import { trackMetaEvent } from "../Analytics/pixelEvents";
+import { trackMetaEvent, trackBookingCompleted } from "../Analytics/pixelEvents";
 import { useCMS } from "../../Context/CMSContext";
 import { sendEmailNotification } from "../Utils/emailService";
 import { useExchangeRate } from "../../Hooks/useExchangeRate";
@@ -514,6 +514,25 @@ export default function BookingForm() {
       setIsSubmitting(false);
     }
   };
+
+  // GA4 + GTM Conversion Tracking: fire booking_completed ONLY upon successful booking confirmation
+  const hasTrackedRoomBookingRef = useRef(false);
+  useEffect(() => {
+    if (confirmedBooking && !hasTrackedRoomBookingRef.current) {
+      hasTrackedRoomBookingRef.current = true;
+      trackBookingCompleted({
+        room_type: confirmedBooking.roomName || room?.name || "Deluxe Room",
+        check_in_date: confirmedBooking.checkIn,
+        check_out_date: confirmedBooking.checkOut,
+        value: Number(confirmedBooking.totalPrice) || 0,
+        currency: "USD",
+        booking_id: confirmedBooking.id,
+        transaction_id: confirmedBooking.id,
+        number_of_rooms: Number(formData.numberOfRooms) || 1,
+        number_of_guests: Number(formData.numberOfGuests) || 1,
+      });
+    }
+  }, [confirmedBooking, room, formData]);
 
   if (loading) {
     return (

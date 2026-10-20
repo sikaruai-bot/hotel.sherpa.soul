@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { initializeMetaPixel, trackMetaEvent } from "./pixelEvents";
+import { initializeMetaPixel, trackMetaEvent, trackWhatsAppClick, trackPhoneClick } from "./pixelEvents";
 import { useCMS } from "../../Context/CMSContext";
 import { getStoredConsent } from "../HelperComponents/consentUtils";
 
@@ -120,20 +120,20 @@ export default function MetaPixel() {
       const link = event.target.closest("a");
       if (!link) return;
 
-      const href = link.href || "";
+      const href = link.href || link.getAttribute("href") || "";
       if (href.startsWith("mailto:")) {
         trackMetaEvent("Contact", { contact_method: "email" });
-      } else if (href.includes("wa.me/") || href.includes("whatsapp.com/")) {
-        trackMetaEvent("Contact", { contact_method: "whatsapp" });
-        trackMetaEvent("Lead", {
-          content_name: "WhatsApp Inquiry",
-          method: "whatsapp",
+      } else if (href.includes("wa.me") || href.includes("whatsapp.com") || href.includes("api.whatsapp.com")) {
+        trackWhatsAppClick("link_click", {
+          click_url: href,
+          page_path: window.location.pathname || "/",
         });
       } else if (href.startsWith("tel:")) {
-        trackMetaEvent("Contact", { contact_method: "phone_call" });
-        trackMetaEvent("Lead", {
-          content_name: "Direct Phone Call",
-          method: "phone",
+        const rawPhone = href.replace(/^tel:/i, "").trim();
+        trackPhoneClick("link_click", {
+          phone_number: rawPhone,
+          click_url: href,
+          page_path: window.location.pathname || "/",
         });
       }
     };

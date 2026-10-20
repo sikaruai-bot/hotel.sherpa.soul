@@ -32,7 +32,38 @@
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
 
-    <!-- Deferred Third-Party Integration (Meta Pixel, GA4, GTM, Chatbot) to protect Mobile FCP & LCP -->
+    <!-- Google Consent Mode Default & DataLayer Setup -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      var storedConsent = null;
+      try { storedConsent = localStorage.getItem('hss_cookie_consent'); } catch (e) {}
+      var isOptedOut = storedConsent === 'essential';
+      gtag('consent', 'default', {
+        'analytics_storage': isOptedOut ? 'denied' : 'granted',
+        'ad_storage': isOptedOut ? 'denied' : 'granted',
+        'ad_user_data': isOptedOut ? 'denied' : 'granted',
+        'ad_personalization': isOptedOut ? 'denied' : 'granted',
+        'wait_for_update': 500
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-E7Z3QDR3KD', { send_page_view: false });
+    </script>
+
+    <!-- Google Tag Manager (Installed in HEAD on ALL pages) -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PFRV7ZTV');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- GA4 Direct gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7Z3QDR3KD"></script>
+
+    <!-- Deferred Third-Party Integration (Meta Pixel & Chatbot) to protect Mobile FCP & LCP -->
     <script>
       (function() {
         var scriptsLoaded = false;
@@ -54,46 +85,14 @@
           fbq('init', '1952950858737501');
           fbq('track', 'PageView');
 
-          // 2. Google Tag Manager / GA4
-          var storedConsent = null;
-          try { storedConsent = localStorage.getItem('hss_cookie_consent'); } catch (e) {}
-          var isOptedOut = storedConsent === 'essential';
-
-          var gaScript = document.createElement('script');
-          gaScript.async = true;
-          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-E7Z3QDR3KD';
-          document.head.appendChild(gaScript);
-
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('consent', 'default', {
-            'analytics_storage': isOptedOut ? 'denied' : 'granted',
-            'ad_storage': isOptedOut ? 'denied' : 'granted',
-            'ad_user_data': isOptedOut ? 'denied' : 'granted',
-            'ad_personalization': isOptedOut ? 'denied' : 'granted',
-            'wait_for_update': 500
-          });
-
-          gtag('config', 'G-E7Z3QDR3KD', { send_page_view: true });
-
-          if (!isOptedOut) {
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-PFRV7ZTV');
-          }
-
-          // 3. AI Chatbot Widget
+          // 2. AI Chatbot Widget
           var chatScript = document.createElement('script');
           chatScript.src = '/widget.js';
           chatScript.defer = true;
           document.body.appendChild(chatScript);
         }
 
-        // Trigger loading after critical rendering or user interaction (3.5s delay to keep TBT under 200ms on mobile)
+        // Trigger loading after critical rendering or user interaction
         if (document.readyState === 'complete') {
           setTimeout(loadDeferredThirdParties, 3500);
         } else {

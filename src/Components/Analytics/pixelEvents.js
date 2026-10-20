@@ -109,14 +109,16 @@ export const trackEvent = (eventName, parameters = {}) => {
       Lead: "generate_lead",
       Purchase: "purchase",
       purchase: "purchase",
-      booking_confirmed: "booking_confirmed",
+      booking_completed: "booking_completed",
+      booking_confirmed: "booking_completed",
       Contact: "contact",
       ViewContent: "view_room",
       view_room: "view_room",
       WhatsAppClick: "whatsapp_click",
       whatsapp_click: "whatsapp_click",
-      PhoneClick: "phone_click",
-      phone_click: "phone_click",
+      PhoneClick: "phone_call_click",
+      phone_click: "phone_call_click",
+      phone_call_click: "phone_call_click",
       EmailClick: "email_click",
       email_click: "email_click",
       OtaClick: "ota_click",
@@ -135,7 +137,84 @@ export const trackEvent = (eventName, parameters = {}) => {
 // Backward compatibility alias
 export const trackMetaEvent = trackEvent;
 
-// Specific CRO conversion tracking helpers
+// Specific conversion tracking helpers for GA4, GTM & Meta Pixel
+export const trackBookingCompleted = ({
+  room_type,
+  check_in_date,
+  check_out_date,
+  value,
+  currency = "USD",
+  booking_id,
+  transaction_id,
+  ...extra
+} = {}) => {
+  if (typeof window === "undefined") return;
+  const currentPath = window.location.pathname || "/";
+  const numValue = Number(value) || 0;
+  const refId = String(booking_id || transaction_id || `HSS-${Date.now().toString().slice(-6)}`);
+  const roomTypeStr = String(room_type || "Deluxe Room");
+
+  const bookingParams = {
+    room_type: roomTypeStr,
+    check_in_date: String(check_in_date || ""),
+    check_out_date: String(check_out_date || ""),
+    value: numValue,
+    currency,
+    booking_id: refId,
+    transaction_id: refId,
+    page_path: currentPath,
+    ...extra,
+  };
+
+  // 1. Google Tag Manager / GA4 dataLayer event
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "booking_completed",
+    timestamp: new Date().toISOString(),
+    ecommerce: {
+      transaction_id: refId,
+      value: numValue,
+      currency,
+      items: [
+        {
+          item_name: roomTypeStr,
+          price: numValue,
+          quantity: Number(extra.number_of_rooms) || 1,
+        },
+      ],
+    },
+    ...bookingParams,
+  });
+
+  // 2. Direct GA4 gtag dispatch
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "booking_completed", bookingParams);
+    // Also dispatch standard purchase for GA4 monetization reports
+    window.gtag("event", "purchase", {
+      transaction_id: refId,
+      value: numValue,
+      currency,
+      items: [
+        {
+          item_name: roomTypeStr,
+          price: numValue,
+          quantity: Number(extra.number_of_rooms) || 1,
+        },
+      ],
+    });
+  }
+
+  // 3. Meta Pixel Purchase
+  initializeMetaPixel();
+  if (window.fbq) {
+    window.fbq("track", "Purchase", {
+      content_name: roomTypeStr,
+      value: numValue,
+      currency,
+    });
+  }
+};
+
 export const trackBookingClick = (entryPoint, extra = {}) => {
   trackEvent("InitiateCheckout", {
     content_category: "hotel_booking",
@@ -152,32 +231,49 @@ export const trackBookingClick = (entryPoint, extra = {}) => {
   });
 };
 
-export const trackWhatsAppClick = (entryPoint, extra = {}) => {
+export const trackWhatsAppClick = (entryPoint = "direct", extra = {}) => {
+  const currentPath = typeof window !== "undefined" ? window.location.pathname || "/" : "/";
+  const defaultClickUrl = "https://wa.me/9779818259472?text=Hi%20Hotel%20Sherpa%20Soul";
+  const clickUrl = extra.click_url || extra.url || defaultClickUrl;
+
+  const params = {
+    click_url: clickUrl,
+    page_path: currentPath,
+    entry_point: entryPoint,
+    ...extra,
+  };
+
+  // Meta Pixel
   trackEvent("Contact", {
     channel: "whatsapp",
-    entry_point: entryPoint,
-    cta_location: entryPoint,
-    ...extra,
+    ...params,
   });
-  trackEvent("whatsapp_click", {
-    entry_point: entryPoint,
-    cta_location: entryPoint,
-    ...extra,
-  });
+
+  // GA4 + GTM event
+  trackEvent("whatsapp_click", params);
 };
 
-export const trackPhoneClick = (entryPoint, extra = {}) => {
+export const trackPhoneClick = (entryPoint = "direct", extra = {}) => {
+  const currentPath = typeof window !== "undefined" ? window.location.pathname || "/" : "/";
+  const defaultPhone = "+9779818259472";
+  const rawNumber = extra.phone_number || extra.phone || extra.phoneNumber || defaultPhone;
+  const phoneNumber = String(rawNumber).replace(/^tel:/i, "").trim();
+
+  const params = {
+    phone_number: phoneNumber,
+    page_path: currentPath,
+    entry_point: entryPoint,
+    ...extra,
+  };
+
+  // Meta Pixel
   trackEvent("Contact", {
     channel: "phone",
-    entry_point: entryPoint,
-    cta_location: entryPoint,
-    ...extra,
+    ...params,
   });
-  trackEvent("phone_click", {
-    entry_point: entryPoint,
-    cta_location: entryPoint,
-    ...extra,
-  });
+
+  // GA4 + GTM event (phone_call_click)
+  trackEvent("phone_call_click", params);
 };
 
 export const trackEmailClick = (entryPoint, extra = {}) => {

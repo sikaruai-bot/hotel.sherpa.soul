@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useParams, useSearchParams, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
@@ -16,7 +16,7 @@ import {
   FileText,
   Sparkles,
 } from "lucide-react";
-import { trackMetaEvent } from "../Components/Analytics/pixelEvents";
+import { trackMetaEvent, trackBookingCompleted } from "../Components/Analytics/pixelEvents";
 import api from "../Components/Utils/api";
 import { sendEmailNotification } from "../Components/Utils/emailService";
 import { useCMS } from "../Context/CMSContext";
@@ -335,6 +335,25 @@ export default function BookNowPage() {
       setSubmitted(true);
     }
   };
+
+  // GA4 + GTM Conversion Tracking: fire booking_completed ONLY upon successful booking confirmation
+  const hasTrackedBookingRef = useRef(false);
+  useEffect(() => {
+    if (submitted && !hasTrackedBookingRef.current) {
+      hasTrackedBookingRef.current = true;
+      trackBookingCompleted({
+        room_type: selectedRoomObj?.title || formData.roomType || "Deluxe Room",
+        check_in_date: formData.checkIn,
+        check_out_date: formData.checkOut,
+        value: Number(totalCalculated) || Number(estimatedTotalUsd) || 0,
+        currency: "USD",
+        booking_id: bookingRefId,
+        transaction_id: bookingRefId,
+        number_of_rooms: Number(formData.numberOfRooms) || 1,
+        number_of_guests: Number(formData.numberOfPeople) || 1,
+      });
+    }
+  }, [submitted, selectedRoomObj, formData, totalCalculated, estimatedTotalUsd, bookingRefId]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
