@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { rooms as defaultRooms } from "../HelperComponents/RoomsData";
 import {
   ChevronLeft,
@@ -778,6 +778,30 @@ export default function RoomDetail() {
               {t("roomdetails.buttons.book")}
               <ArrowRight className="w-5 h-5" />
             </button>
+          </div>
+
+          {/* Internal Navigation Links: Rooms, Contact, Blog */}
+          <div className="mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+            <Link
+              to="/rooms"
+              className="text-[#01366E] hover:text-[#FB6C01] font-bold flex items-center gap-1.5 transition-colors"
+            >
+              <span>← View All Rooms &amp; Suites</span>
+            </Link>
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+              <Link
+                to="/contact"
+                className="text-slate-600 hover:text-[#FB6C01] font-medium transition-colors"
+              >
+                Questions? Contact Front Desk &rarr;
+              </Link>
+              <Link
+                to="/blog"
+                className="text-slate-600 hover:text-[#FB6C01] font-medium transition-colors"
+              >
+                Kathmandu Travel Guide &rarr;
+              </Link>
+            </div>
           </div>
         </div>
       </div>

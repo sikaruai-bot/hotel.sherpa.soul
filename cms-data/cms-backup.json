@@ -5,7 +5,7 @@
   "seo": {
     "global": {
       "defaultTitle": "Hotel Sherpa Soul | Peaceful Hotel in Thamel, Kathmandu",
-      "defaultDescription": "Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy comfortable rooms, a central location and a peaceful stay for travelers exploring Nepal.",
+      "defaultDescription": "Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy quiet rooms, 24/7 front desk, fiber Wi-Fi, guest kitchen, and authentic Sherpa hospitality in Nepal.",
       "defaultKeywords": "hotel in Thamel Kathmandu, hotel in Thamel, Thamel hotel, hotel Kathmandu, hotel near Thamel, accommodation in Thamel, Thamel accommodation, Kathmandu accommodation, budget hotel Kathmandu, hotel for travelers Kathmandu, peaceful hotel in Thamel, comfortable hotel in Kathmandu, hotel for trekkers Kathmandu, Nepal travel accommodation, where to stay in Thamel, best area to stay in Kathmandu, Kathmandu travel guide, Thamel travel guide, Nepal trekking accommodation",
       "author": "Hotel Sherpa Soul",
       "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
@@ -14,55 +14,55 @@
     "pages": {
       "/": {
         "title": "Hotel Sherpa Soul | Peaceful Hotel in Thamel, Kathmandu",
-        "description": "Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy comfortable rooms, a central location and a peaceful stay for travelers exploring Nepal.",
+        "description": "Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy quiet rooms, 24/7 front desk, fiber Wi-Fi, guest kitchen, and authentic Sherpa hospitality in Nepal.",
         "keywords": "hotel in Thamel Kathmandu, peaceful hotel in Thamel, hotel in Thamel, Thamel accommodation",
         "ogImage": "https://hotelsherpasoul.com/hero1.webp"
       },
       "/about": {
         "title": "About Hotel Sherpa Soul | Hotel in Thamel, Kathmandu",
-        "description": "Learn about Hotel Sherpa Soul, a peaceful and comfortable hotel in Thamel, Kathmandu, designed for travelers exploring Nepal and the Himalayas.",
+        "description": "Learn about Hotel Sherpa Soul in Thamel, Kathmandu. Created for travelers who value restful sleep, authentic Himalayan hospitality, and quiet boutique rooms.",
         "keywords": "About Hotel Sherpa Soul, Hotel in Thamel Kathmandu, Peaceful hotel Thamel",
         "ogImage": "https://hotelsherpasoul.com/hero1.webp"
       },
       "/rooms": {
         "title": "Hotel Rooms in Thamel Kathmandu | Hotel Sherpa Soul",
-        "description": "Explore comfortable hotel rooms at Hotel Sherpa Soul in Thamel, Kathmandu. Find a peaceful place to rest before or after your Nepal adventure.",
+        "description": "Explore boutique rooms at Hotel Sherpa Soul in Thamel, Kathmandu. Choose from Budget Family, Deluxe AC, and Family Rooms with en-suite baths and fiber Wi-Fi.",
         "keywords": "Hotel Rooms in Thamel Kathmandu, Hotel Sherpa Soul rooms, accommodation in Thamel",
         "ogImage": "https://hotelsherpasoul.com/room1/room.webp"
       },
       "/location": {
         "title": "Hotel Location in Thamel Kathmandu | Hotel Sherpa Soul",
-        "description": "Stay in the heart of Thamel, Kathmandu at Hotel Sherpa Soul. Enjoy convenient access to Thamel's shops, cafés, travel services and attractions.",
+        "description": "Contact Hotel Sherpa Soul in Thamel, Kathmandu. Call +977-9851068219 or WhatsApp +977-9818259472 for direct room reservations, airport pickup, and inquiries.",
         "keywords": "hotel in Thamel Kathmandu, Hotel Location in Thamel, Hotel near Thamel",
         "ogImage": "https://hotelsherpasoul.com/hero1.webp"
       },
       "/blog": {
         "title": "Kathmandu Travel Guide | Thamel & Nepal Travel Tips",
-        "description": "Explore our Kathmandu travel guide for Thamel tips, Nepal travel advice, trekking information, places to visit and practical tips for travelers.",
+        "description": "Explore Kathmandu travel advice, Thamel neighborhood guides, Everest trekking preparation tips, and local dining insights from the Hotel Sherpa Soul team.",
         "keywords": "Kathmandu Travel Guide, Thamel travel guide, Nepal travel advice, trekking tips",
         "ogImage": "https://hotelsherpasoul.com/hero1.webp"
       },
       "/contact": {
         "title": "Contact Hotel Sherpa Soul | Thamel Kathmandu",
-        "description": "Contact Hotel Sherpa Soul in Thamel, Kathmandu. Get in touch with us about rooms, availability, bookings and your stay in Nepal.",
+        "description": "Contact Hotel Sherpa Soul in Thamel, Kathmandu. Call +977-9851068219 or WhatsApp +977-9818259472 for direct room reservations, airport pickup, and inquiries.",
         "keywords": "Contact Hotel Sherpa Soul, Thamel Kathmandu, Phone WhatsApp",
         "ogImage": "https://hotelsherpasoul.com/hero1.webp"
       },
       "/book-now": {
         "title": "Book Direct | Hotel Sherpa Soul Kathmandu",
-        "description": "Book your stay directly at Hotel Sherpa Soul for the best rates, instant WhatsApp confirmation, and authentic Himalayan hospitality.",
+        "description": "Book your stay directly at Hotel Sherpa Soul for the lowest price guaranteed, instant confirmation, 10% off promotion, and authentic Himalayan hospitality.",
         "keywords": "Book Hotel Sherpa Soul, Hotel Reservation Thamel Kathmandu",
         "ogImage": "https://hotelsherpasoul.com/hero1.webp"
       },
       "/gallery": {
         "title": "Photo & Video Gallery | Hotel Sherpa Soul Kathmandu",
-        "description": "Take a visual tour of Hotel Sherpa Soul, our comfortable guest rooms, shared amenities, private balconies, and Kathmandu surroundings.",
+        "description": "View photos and videos of Hotel Sherpa Soul in Thamel, Kathmandu. Browse quiet guest rooms, private bathrooms, shared guest kitchen, and Himalayan city views.",
         "keywords": "Hotel Sherpa Soul Photos, Thamel Hotel Video Gallery, Room Pictures",
         "ogImage": "https://hotelsherpasoul.com/hero1.webp"
       },
       "/services": {
         "title": "Services & Amenities | Hotel Sherpa Soul Kathmandu",
-        "description": "Practical facilities designed for travellers: shared self-kitchen for long-stay guests, elevator, 24/7 hot water, high-speed Wi-Fi, and luggage storage.",
+        "description": "Explore amenities at Hotel Sherpa Soul in Thamel: shared guest kitchen, 24/7 hot showers, high-speed fiber Wi-Fi, trekking luggage storage, and airport pickup.",
         "keywords": "Hotel Sherpa Soul Amenities, Shared Kitchen Long Stay Thamel, Kathmandu Facilities",
         "ogImage": "https://hotelsherpasoul.com/hero1.webp"
       }
@@ -71,11 +71,11 @@
       "ogType": "website",
       "ogSiteName": "Hotel Sherpa Soul",
       "ogTitle": "Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu",
-      "ogDescription": "Experience peaceful boutique comfort in the heart of Thamel, Kathmandu. Modern rooms, shared kitchen for long-stay guests, rooftop terrace, and authentic Sherpa hospitality.",
+      "ogDescription": "Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy quiet rooms, 24/7 front desk, fiber Wi-Fi, guest kitchen, and authentic Sherpa hospitality in Nepal.",
       "ogImage": "https://hotelsherpasoul.com/hero1.webp",
       "twitterCard": "summary_large_image",
       "twitterTitle": "Hotel Sherpa Soul | Boutique Stay in Thamel, Kathmandu",
-      "twitterDescription": "Warm Himalayan hospitality in the vibrant center of Thamel, Kathmandu. Book direct for the best experience.",
+      "twitterDescription": "Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy quiet rooms, 24/7 front desk, fiber Wi-Fi, guest kitchen, and authentic Sherpa hospitality in Nepal.",
       "twitterImage": "https://hotelsherpasoul.com/hero1.webp"
     },
     "analytics": {
@@ -89,7 +89,7 @@
     "schema": {
       "hotelName": "Hotel Sherpa Soul",
       "alternateName": "Sherpa Soul Hotel Thamel",
-      "description": "Experience peaceful boutique stay at Hotel Sherpa Soul in Thamel Bhagawati Marg, Kathmandu. Featuring modern deluxe rooms, shared kitchen for long-stay guests, 24/7 front desk, high-speed Wi-Fi, and authentic Himalayan hospitality.",
+      "description": "Stay at Hotel Sherpa Soul, a quiet and comfortable boutique hotel in Thamel Bhagawati Marg 26, Kathmandu. Featuring clean rooms, shared kitchen, 24/7 front desk, high-speed Wi-Fi, trekker luggage storage, and authentic Himalayan hospitality.",
       "telephone": "+977-9851068219",
       "email": "info@hotelsherpasoul.com",
       "addressStreet": "Thamel Bhagawati Marg 26",
@@ -98,10 +98,12 @@
       "postalCode": "44600",
       "addressCountry": "NP",
       "latitude": "27.7154",
-      "longitude": "85.3106",
+      "longitude": "85.3123",
       "priceRange": "$$",
-      "checkinTime": "Flexible",
+      "checkinTime": "14:00",
       "checkoutTime": "12:00",
+      "aggregateRating": "4.9",
+      "reviewCount": "128",
       "currenciesAccepted": "NPR, USD, EUR"
     }
   },

@@ -312,7 +312,7 @@ const ROUTES = [
   {
     path: '/',
     title: 'Hotel Sherpa Soul | Peaceful Hotel in Thamel, Kathmandu',
-    description: 'Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy comfortable rooms, 24/7 front desk, high-speed Wi-Fi, shared kitchen, and a peaceful stay for travelers exploring Nepal.',
+    description: 'Stay at Hotel Sherpa Soul in Thamel, Kathmandu. Enjoy quiet rooms, 24/7 front desk, fiber Wi-Fi, guest kitchen, and authentic Sherpa hospitality in Nepal.',
     canonical: 'https://hotelsherpasoul.com/',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     preload: `
@@ -422,7 +422,7 @@ const ROUTES = [
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <span class="text-xs text-emerald-600 font-bold">10% OFF with direct booking</span>
-                  <a href="/room/1" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
+                  <a href="/room/budget-family-room" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
                 </div>
               </div>
             </article>
@@ -441,7 +441,7 @@ const ROUTES = [
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <span class="text-xs text-emerald-600 font-bold">10% OFF with direct booking</span>
-                  <a href="/room/2" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
+                  <a href="/room/deluxe-room" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
                 </div>
               </div>
             </article>
@@ -460,7 +460,7 @@ const ROUTES = [
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <span class="text-xs text-emerald-600 font-bold">10% OFF with direct booking</span>
-                  <a href="/room/3" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
+                  <a href="/room/family-room" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
                 </div>
               </div>
             </article>
@@ -531,7 +531,7 @@ const ROUTES = [
   {
     path: '/rooms',
     title: 'Rooms & Rates | Budget Family & Deluxe Rooms | Hotel Sherpa Soul',
-    description: 'Explore hotel rooms at Hotel Sherpa Soul in Thamel, Kathmandu. Choose from Budget Family Rooms, Deluxe Rooms, and Family Rooms with AC, private bathrooms, and fiber Wi-Fi.',
+    description: 'Explore boutique rooms at Hotel Sherpa Soul in Thamel, Kathmandu. Choose from Budget Family, Deluxe AC, and Family Rooms with en-suite baths and fiber Wi-Fi.',
     canonical: 'https://hotelsherpasoul.com/rooms',
     ogImage: 'https://hotelsherpasoul.com/triple.webp',
     preload: `
@@ -688,7 +688,7 @@ const ROUTES = [
   {
     path: '/services',
     title: 'Services & Amenities | Shared Kitchen & Facilities | Hotel Sherpa Soul',
-    description: 'Discover practical facilities at Hotel Sherpa Soul: shared guest kitchen, 24/7 hot water, fiber-optic Wi-Fi, elevator, trekking permit desk, and airport shuttle.',
+    description: 'Explore amenities at Hotel Sherpa Soul in Thamel: shared guest kitchen, 24/7 hot showers, high-speed fiber Wi-Fi, trekking luggage storage, and airport pickup.',
     canonical: 'https://hotelsherpasoul.com/services',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     content: `
@@ -722,7 +722,7 @@ const ROUTES = [
   {
     path: '/contact',
     title: 'Contact Hotel Sherpa Soul | Location in Thamel Kathmandu',
-    description: 'Contact Hotel Sherpa Soul in Thamel, Kathmandu. Call +977 9851068219 or WhatsApp +977 9818259472 or email info@hotelsherpasoul.com for bookings and airport pickup.',
+    description: 'Contact Hotel Sherpa Soul in Thamel, Kathmandu. Call +977-9851068219 or WhatsApp +977-9818259472 for direct room reservations, airport pickup, and inquiries.',
     canonical: 'https://hotelsherpasoul.com/contact',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     preload: `
@@ -766,7 +766,7 @@ const ROUTES = [
   {
     path: '/room/budget-family-room',
     title: 'Budget Family Room | Hotel Sherpa Soul Thamel Kathmandu',
-    description: 'Budget Family Room at Hotel Sherpa Soul in Thamel, Kathmandu. 1 King + 1 Single Bed, private bathroom, free Wi-Fi, shared kitchen access.',
+    description: 'Book Budget Family Room at Hotel Sherpa Soul in Thamel, Kathmandu. Features 1 King and 1 Single Bed, attached hot shower, fast Wi-Fi, and 10% direct discount.',
     canonical: 'https://hotelsherpasoul.com/room/budget-family-room',
     ogImage: 'https://hotelsherpasoul.com/triple.webp',
     preload: `
@@ -777,7 +777,7 @@ const ROUTES = [
   {
     path: '/room/deluxe-room',
     title: 'Deluxe Room (AC) | Hotel Sherpa Soul Thamel Kathmandu',
-    description: 'Deluxe Air-Conditioned Room at Hotel Sherpa Soul in Thamel, Kathmandu. King Bed, private washroom, quiet ambiance, free Wi-Fi.',
+    description: 'Stay in Deluxe AC Room at Hotel Sherpa Soul in Thamel, Kathmandu. Features King size bed, climate control, quiet atmosphere, hot shower, and 10% direct saving.',
     canonical: 'https://hotelsherpasoul.com/room/deluxe-room',
     ogImage: 'https://hotelsherpasoul.com/changes_photo/deluxeRoom_ai.webp',
     preload: `
@@ -788,7 +788,7 @@ const ROUTES = [
   {
     path: '/room/family-room',
     title: 'Family Room (AC) | Hotel Sherpa Soul Thamel Kathmandu',
-    description: 'Spacious Family Room with AC at Hotel Sherpa Soul in Thamel, Kathmandu. King + Single Bed, modern washroom, shared kitchen privileges.',
+    description: 'Book Spacious Family AC Room at Hotel Sherpa Soul in Thamel, Kathmandu. Features King plus Single Bed, air conditioning, private washroom, and kitchen access.',
     canonical: 'https://hotelsherpasoul.com/room/family-room',
     ogImage: 'https://hotelsherpasoul.com/changes_photo/doubleBed.webp',
     preload: `
@@ -799,7 +799,7 @@ const ROUTES = [
   {
     path: '/book/budget-family-room',
     title: 'Book Budget Family Room | Hotel Sherpa Soul Kathmandu',
-    description: 'Reserve Budget Family Room at Hotel Sherpa Soul in Thamel, Kathmandu. 1 King + 1 Single Bed, en-suite bathroom, 10% direct booking discount.',
+    description: 'Direct reservation for Budget Family Room at Hotel Sherpa Soul, Thamel Kathmandu. Enjoy King plus Single Bed, free luggage storage, and 10% direct discount.',
     canonical: 'https://hotelsherpasoul.com/book/budget-family-room',
     ogImage: 'https://hotelsherpasoul.com/triple.webp',
     preload: `
@@ -810,7 +810,7 @@ const ROUTES = [
   {
     path: '/book/deluxe-room',
     title: 'Book Deluxe Room (AC) | Hotel Sherpa Soul Kathmandu',
-    description: 'Reserve Deluxe Air-Conditioned Room at Hotel Sherpa Soul in Thamel, Kathmandu. King Bed, sofa seating, modern washroom, 10% direct discount.',
+    description: 'Direct reservation for Deluxe AC Room at Hotel Sherpa Soul, Thamel Kathmandu. Enjoy King bed, private bath, quiet restful sleep, and 10% instant discount.',
     canonical: 'https://hotelsherpasoul.com/book/deluxe-room',
     ogImage: 'https://hotelsherpasoul.com/changes_photo/singleBedWithSofa.webp',
     preload: `
@@ -821,7 +821,7 @@ const ROUTES = [
   {
     path: '/book/family-room',
     title: 'Book Family Room (AC) | Hotel Sherpa Soul Kathmandu',
-    description: 'Reserve Family Room with AC at Hotel Sherpa Soul in Thamel, Kathmandu. King + Single Bed, spacious layout, 10% direct booking discount.',
+    description: 'Direct reservation for Family AC Room at Hotel Sherpa Soul, Thamel Kathmandu. Features King and Single bed, air conditioning, and 10% direct booking saving.',
     canonical: 'https://hotelsherpasoul.com/book/family-room',
     ogImage: 'https://hotelsherpasoul.com/changes_photo/doubleBed.webp',
     preload: `
@@ -833,14 +833,14 @@ const ROUTES = [
   {
     path: '/gallery',
     title: 'Photo & Video Gallery | Rooms & Facilities | Hotel Sherpa Soul',
-    description: 'Explore photos of guest rooms, private balconies, modern bathrooms, shared kitchen, and Kathmandu valley views at Hotel Sherpa Soul in Thamel.',
+    description: 'View photos and videos of Hotel Sherpa Soul in Thamel, Kathmandu. Browse quiet guest rooms, private bathrooms, shared guest kitchen, and Himalayan city views.',
     canonical: 'https://hotelsherpasoul.com/gallery',
     ogImage: 'https://doiurqcy6roxkmyq.public.blob.vercel-storage.com/cms-uploads/hotel-sherpa-soul-entrance-reception-yZXLIoQxMJa12KXxDK3ZonYaKKz3Ck.webp',
     preload: `
     <link rel="preload" as="image" href="/front-desk.webp" type="image/webp" fetchpriority="high" />
     `,
     content: `
-      \${NAV_HTML}
+      ${NAV_HTML}
       <main class="min-h-screen pt-28 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10">
           <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">VISUAL TOUR</span>
@@ -854,13 +854,13 @@ const ROUTES = [
           <img src="/changes_photo/balkani.webp" alt="Hotel Sherpa Soul Private Balcony View" class="w-full h-48 object-cover rounded-2xl shadow-sm" width="300" height="200" loading="lazy" />
         </div>
       </main>
-      \${FOOTER_HTML}
+      ${FOOTER_HTML}
     `
   },
   {
     path: '/blog',
     title: 'Kathmandu & Thamel Travel Guide | Hotel Sherpa Soul Blog',
-    description: 'Discover practical Kathmandu travel tips, Thamel exploration guides, Nepal trekking advice, and cultural insights from Hotel Sherpa Soul.',
+    description: 'Explore Kathmandu travel advice, Thamel neighborhood guides, Everest trekking preparation tips, and local dining insights from the Hotel Sherpa Soul team.',
     canonical: 'https://hotelsherpasoul.com/blog',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     preload: `
@@ -876,10 +876,18 @@ const ROUTES = [
           <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
             <h2 class="text-xl font-bold text-[#01366E] mb-2">Where to Stay in Kathmandu: Why Thamel is the Best Choice</h2>
             <p class="text-sm text-slate-600 leading-relaxed">Thamel is the vibrant travel heart of Kathmandu. Surrounded by artisanal shops, organic bakeries, gear rentals, and cultural temples, staying at a quiet hotel like Hotel Sherpa Soul offers the best balance of convenience and peaceful rest.</p>
+            <div class="flex items-center gap-4 text-xs font-bold pt-3 mt-3 border-t border-slate-100">
+              <a href="/rooms" class="text-[#FB6C01] hover:underline">Explore Rooms &rarr;</a>
+              <a href="/contact" class="text-[#01366E] hover:underline">Contact Front Desk &rarr;</a>
+            </div>
           </article>
           <article class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
             <h2 class="text-xl font-bold text-[#01366E] mb-2">Trekking Preparation: Essential Gear Check in Thamel</h2>
             <p class="text-sm text-slate-600 leading-relaxed">Tips on preparing for Everest, Annapurna, or Langtang treks, including permit processing, warm gear procurement, and luggage storage.</p>
+            <div class="flex items-center gap-4 text-xs font-bold pt-3 mt-3 border-t border-slate-100">
+              <a href="/rooms" class="text-[#FB6C01] hover:underline">View Quiet Trekker Rooms &rarr;</a>
+              <a href="/contact" class="text-[#01366E] hover:underline">Ask Us About Permits &rarr;</a>
+            </div>
           </article>
         </div>
       </main>
@@ -889,7 +897,7 @@ const ROUTES = [
   {
     path: '/privacy',
     title: 'Privacy Policy & Cookie Disclosures | Hotel Sherpa Soul Kathmandu',
-    description: 'Privacy Policy for Hotel Sherpa Soul. Information on data protection, Google Tag Manager, GA4, Meta Pixel, cookie consent, and guest rights.',
+    description: 'Read the Privacy Policy and Cookie Disclosures for Hotel Sherpa Soul in Thamel, Kathmandu. Understand how we protect your personal data, bookings, and privacy.',
     canonical: 'https://hotelsherpasoul.com/privacy',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     content: `
@@ -907,7 +915,7 @@ const ROUTES = [
   {
     path: '/terms',
     title: 'Terms of Service & Booking Policies | Hotel Sherpa Soul',
-    description: 'Terms of Service, check-in/out policies, 10% direct booking discount terms, and quiet hours policy at Hotel Sherpa Soul in Thamel, Kathmandu.',
+    description: 'Review Terms of Service, check-in policies, quiet hours guidelines, and direct booking discount terms at Hotel Sherpa Soul in Thamel Bhagawati Marg, Kathmandu.',
     canonical: 'https://hotelsherpasoul.com/terms',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     content: `
@@ -925,7 +933,7 @@ const ROUTES = [
   {
     path: '/guest-guide',
     title: 'Guest Guide & House Rules | Hotel Sherpa Soul',
-    description: 'Guest information, Wi-Fi, check-out, payment guidance, house rules and contact details for Hotel Sherpa Soul in Thamel, Kathmandu.',
+    description: 'Official guest guide and house rules for Hotel Sherpa Soul in Thamel, Kathmandu. Find Wi-Fi details, check-in instructions, quiet hours, and reception help.',
     canonical: 'https://hotelsherpasoul.com/guest-guide',
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     content: `
@@ -1127,6 +1135,155 @@ const ROUTES = [
   }
 ];
 
+function getBreadcrumbSchemaForRoute(route) {
+  const baseUrl = "https://hotelsherpasoul.com";
+  
+  if (route.path === '/') {
+    return '';
+  }
+
+  const items = [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `${baseUrl}/`
+    }
+  ];
+
+  if (route.path === '/rooms') {
+    items.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Rooms & Suites",
+      "item": `${baseUrl}/rooms`
+    });
+  } else if (route.path.startsWith('/room/')) {
+    items.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Rooms",
+      "item": `${baseUrl}/rooms`
+    });
+    const roomSlug = route.path.replace('/room/', '');
+    const roomName = roomSlug === 'budget-family-room' ? 'Budget Family Room'
+      : roomSlug === 'deluxe-room' ? 'Deluxe Room (AC)'
+      : 'Family Room (AC)';
+    items.push({
+      "@type": "ListItem",
+      "position": 3,
+      "name": roomName,
+      "item": `${baseUrl}${route.path}`
+    });
+  } else if (route.path.startsWith('/book/')) {
+    items.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Rooms",
+      "item": `${baseUrl}/rooms`
+    });
+    const roomSlug = route.path.replace('/book/', '');
+    const roomName = roomSlug === 'budget-family-room' ? 'Book Budget Family Room'
+      : roomSlug === 'deluxe-room' ? 'Book Deluxe Room'
+      : 'Book Family Room';
+    items.push({
+      "@type": "ListItem",
+      "position": 3,
+      "name": roomName,
+      "item": `${baseUrl}${route.path}`
+    });
+  } else {
+    const pageNames = {
+      '/about': 'About Us',
+      '/services': 'Services & Amenities',
+      '/contact': 'Contact & Location',
+      '/book-now': 'Book Direct',
+      '/gallery': 'Photo & Video Gallery',
+      '/blog': 'Kathmandu Travel Blog',
+      '/guest-guide': 'Guest Guide & House Rules',
+      '/terms': 'Terms of Service',
+      '/privacy': 'Privacy Policy'
+    };
+    items.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": pageNames[route.path] || route.title.split('|')[0].trim(),
+      "item": `${baseUrl}${route.path}`
+    });
+  }
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items
+  };
+
+  return `<script id="schema-breadcrumbs" type="application/ld+json">\n${JSON.stringify(jsonLd, null, 2)}\n    </script>`;
+}
+
+function getRoomSchemaForRoute(route) {
+  const baseUrl = "https://hotelsherpasoul.com";
+  if (!route.path.startsWith('/room/')) return '';
+
+  const roomSlug = route.path.replace('/room/', '');
+  const roomData = {
+    'budget-family-room': {
+      name: 'Budget Family Room',
+      description: 'Budget-friendly family room with 1 King Bed and 1 Single Bed, en-suite bathroom with 24/7 hot water, free Wi-Fi, and shared kitchen privileges.',
+      bed: '1 King Bed + 1 Single Bed',
+      occupancy: 4,
+      price: '20',
+      image: `${baseUrl}/triple.webp`
+    },
+    'deluxe-room': {
+      name: 'Deluxe Room (AC)',
+      description: 'Air-conditioned boutique room with king bed, sofa seating, private modern bathroom, fast Wi-Fi, and peaceful atmosphere in Thamel.',
+      bed: '1 King Bed',
+      occupancy: 3,
+      price: '20',
+      image: `${baseUrl}/changes_photo/singleBedWithSofa.webp`
+    },
+    'family-room': {
+      name: 'Family Room (AC)',
+      description: 'Spacious family suite with King plus Single bed, full air conditioning, private modern washroom, city views, and shared kitchen privileges.',
+      bed: '1 King Bed + 1 Single Bed',
+      occupancy: 4,
+      price: '30',
+      image: `${baseUrl}/changes_photo/doubleBed.webp`
+    }
+  }[roomSlug];
+
+  if (!roomData) return '';
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HotelRoom",
+    "@id": `${baseUrl}${route.path}#room`,
+    "name": roomData.name,
+    "description": roomData.description,
+    "image": roomData.image,
+    "bed": roomData.bed,
+    "occupancy": {
+      "@type": "QuantitativeValue",
+      "value": roomData.occupancy
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": roomData.price,
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": `${baseUrl}/book/${roomSlug}`
+    },
+    "partOf": {
+      "@type": "Hotel",
+      "@id": `${baseUrl}/#hotel`,
+      "name": "Hotel Sherpa Soul"
+    }
+  };
+
+  return `<script id="schema-room" type="application/ld+json">\n${JSON.stringify(jsonLd, null, 2)}\n    </script>`;
+}
+
 function generateHtmlForRoute(route) {
   let html = templateHtml;
 
@@ -1150,6 +1307,26 @@ function generateHtmlForRoute(route) {
   if (route.ogImage) {
     html = html.replace(/<meta property="og:image" content=".*?" \/>/i, `<meta property="og:image" content="${route.ogImage}" />`);
     html = html.replace(/<meta name="twitter:image" content=".*?" \/>/i, `<meta name="twitter:image" content="${route.ogImage}" />`);
+  }
+
+  // Handle Schema.org JSON-LD structured data
+  if (route.path === '/') {
+    // On homepage: Keep Hotel schema + FAQPage schema. Remove breadcrumb script.
+    html = html.replace(/<script id="schema-breadcrumbs" type="application\/ld\+json">[\s\S]*?<\/script>/i, '');
+  } else {
+    // On inner pages:
+    // 1. Inject proper BreadcrumbList schema
+    const breadcrumbTag = getBreadcrumbSchemaForRoute(route);
+    html = html.replace(/<script id="schema-breadcrumbs" type="application\/ld\+json">[\s\S]*?<\/script>/i, breadcrumbTag);
+
+    // 2. Remove FAQPage schema since inner pages do not have FAQ accordion
+    html = html.replace(/<script id="schema-faq" type="application\/ld\+json">[\s\S]*?<\/script>/i, '');
+
+    // 3. Inject HotelRoom schema on room detail pages
+    const roomSchema = getRoomSchemaForRoute(route);
+    if (roomSchema) {
+      html = html.replace('</head>', `    ${roomSchema}\n  </head>`);
+    }
   }
 
   // Inject route-specific LCP preload in <head>
