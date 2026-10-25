@@ -1,14 +1,26 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import HomeHero from "./HomeHero";
 import HomeDirectOffer from "./HomeDirectOffer";
 import HomeStats from "./HomeStats";
-import HomeRooms from "./HomeRooms";
-import HomeFacilities from "./HomeFacilities";
-import HomeLocation from "./HomeLocation";
-import HomeTrekkers from "./HomeTrekkers";
-import HomeGoogleReviews from "./HomeGoogleReviews";
-import HomeFAQ from "./HomeFAQ";
-import HomeBookingCTA from "./HomeBookingCTA";
+
+// Below-the-fold sections are lazy-loaded to reduce the initial JS bundle.
+// They are rendered only after the critical above-the-fold content (Hero, Offer, Stats).
+const HomeRooms         = lazy(() => import("./HomeRooms"));
+const HomeFacilities    = lazy(() => import("./HomeFacilities"));
+const HomeLocation      = lazy(() => import("./HomeLocation"));
+const HomeTrekkers      = lazy(() => import("./HomeTrekkers"));
+const HomeGoogleReviews = lazy(() => import("./HomeGoogleReviews"));
+const HomeFAQ           = lazy(() => import("./HomeFAQ"));
+const HomeBookingCTA    = lazy(() => import("./HomeBookingCTA"));
+
+// Minimal inline fallback — no extra imports needed, no layout shift
+function SectionSkeleton() {
+  return (
+    <div className="py-16 flex items-center justify-center" aria-hidden="true">
+      <div className="w-8 h-8 border-2 border-amber-500/30 border-t-amber-500 rounded-full animate-spin" />
+    </div>
+  );
+}
 
 /**
  * Homepage Structure (Ordered strictly per Hotel SEO & Conversion Architecture):
@@ -27,35 +39,43 @@ import HomeBookingCTA from "./HomeBookingCTA";
 export default function HomeMain() {
   return (
     <div className="overflow-x-hidden">
-      {/* 1. Hero Section */}
+      {/* 1. Hero Section — above the fold, eagerly loaded */}
       <HomeHero />
 
-      {/* 2. Direct Booking Offer */}
+      {/* 2. Direct Booking Offer — above the fold, eagerly loaded */}
       <HomeDirectOffer />
 
-      {/* 3. Why Stay at Hotel Sherpa Soul */}
+      {/* 3. Why Stay at Hotel Sherpa Soul — eagerly loaded (just below fold) */}
       <HomeStats />
 
-      {/* 4. Room Types */}
-      <HomeRooms />
+      {/* 4–10. Below the fold: lazy-loaded via Suspense */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <HomeRooms />
+      </Suspense>
 
-      {/* 5. Hotel Facilities and Services */}
-      <HomeFacilities />
+      <Suspense fallback={<SectionSkeleton />}>
+        <HomeFacilities />
+      </Suspense>
 
-      {/* 6. Location and Nearby Attractions */}
-      <HomeLocation />
+      <Suspense fallback={<SectionSkeleton />}>
+        <HomeLocation />
+      </Suspense>
 
-      {/* 7. Trekker-Friendly Services */}
-      <HomeTrekkers />
+      <Suspense fallback={<SectionSkeleton />}>
+        <HomeTrekkers />
+      </Suspense>
 
-      {/* 8. Guest Reviews (Genuine Google Reviews Card) */}
-      <HomeGoogleReviews />
+      <Suspense fallback={<SectionSkeleton />}>
+        <HomeGoogleReviews />
+      </Suspense>
 
-      {/* 9. FAQ Section */}
-      <HomeFAQ />
+      <Suspense fallback={<SectionSkeleton />}>
+        <HomeFAQ />
+      </Suspense>
 
-      {/* 10. Final Booking CTA */}
-      <HomeBookingCTA />
+      <Suspense fallback={<SectionSkeleton />}>
+        <HomeBookingCTA />
+      </Suspense>
     </div>
   );
 }

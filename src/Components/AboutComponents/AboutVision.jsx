@@ -1,9 +1,9 @@
 import { ChevronRight, Heart, Sparkles, Star } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useCMS } from "../../Context/CMSContext";
-import BookingModal from "../HelperComponents/BookingModal";
+const BookingModal = lazy(() => import("../HelperComponents/BookingModal"));
 import { trackMetaEvent } from "../Analytics/pixelEvents";
 
 export default function AboutVision() {
@@ -22,10 +22,14 @@ export default function AboutVision() {
 
   return (
     <div>
-      <BookingModal
-        isOpen={isBookingModalOpen}
-        onClose={() => setIsBookingModalOpen(false)}
-      />
+      {isBookingModalOpen && (
+        <Suspense fallback={null}>
+          <BookingModal
+            isOpen={isBookingModalOpen}
+            onClose={() => setIsBookingModalOpen(false)}
+          />
+        </Suspense>
+      )}
       <section className="relative min-h-[80vh] flex items-center justify-center px-4 md:px-8 bg-slate-400 overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">

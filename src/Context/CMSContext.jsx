@@ -496,22 +496,34 @@ export function CMSProvider({ children }) {
     return { success: false };
   }, []);
 
-  // Server-first initial load
+  // Deferred server load — render children immediately with localStorage/default data first,
+  // then silently update with server data after first paint to avoid blocking LCP.
   useEffect(() => {
-    fetchServerCMS().then((result) => {
-      if (!result?.success) {
-        try {
-          const stored = localStorage.getItem(CMS_STORAGE_KEY);
-          if (stored) {
-            const parsed = JSON.parse(stored);
-            setData((prev) => ({ ...prev, ...parsed }));
-            latestDataRef.current = { ...DEFAULT_CMS_DATA, ...parsed };
+    const run = () => {
+      fetchServerCMS().then((result) => {
+        if (!result?.success) {
+          try {
+            const stored = localStorage.getItem(CMS_STORAGE_KEY);
+            if (stored) {
+              const parsed = JSON.parse(stored);
+              setData((prev) => ({ ...prev, ...parsed }));
+              latestDataRef.current = { ...DEFAULT_CMS_DATA, ...parsed };
+            }
+          } catch {
+            // Ignore parse errors on localStorage
           }
-        } catch {
-          // Ignore parse errors on localStorage
         }
-      }
-    });
+      });
+    };
+
+    // Defer fetch until after first paint so hero renders immediately
+    if (typeof window !== "undefined" && typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(run, { timeout: 4000 });
+      return () => window.cancelIdleCallback(id);
+    } else {
+      const id = setTimeout(run, 0);
+      return () => clearTimeout(id);
+    }
   }, [fetchServerCMS]);
 
   // Serialized queue executor with Promise settling

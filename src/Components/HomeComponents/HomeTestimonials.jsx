@@ -132,13 +132,15 @@ const HomeTestimonials = () => {
         <style>{`
           @keyframes scroll {
             0% {
-              transform: translateX(0);
+              transform: translate3d(0, 0, 0);
             }
             100% {
-              transform: translateX(calc(-452px * ${testimonials.length}));
+              transform: translate3d(calc(-452px * ${testimonials.length}), 0, 0);
             }
           }
           .animate-scroll {
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
             animation: scroll ${testimonials.length * 8}s linear infinite;
           }
           .animate-scroll:hover {

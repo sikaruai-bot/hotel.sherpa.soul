@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { loadLanguage } from "../../i18n";
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
@@ -43,7 +44,9 @@ export default function LanguageSwitcher() {
     { code: "rs", label: "RU", flag: "🇷🇺", name: "Русский (Russian)" },
   ];
 
-  const selectLanguage = (langCode) => {
+  const selectLanguage = async (langCode) => {
+    // Lazy-load the locale bundle before switching so translations are ready
+    await loadLanguage(langCode);
     i18n.changeLanguage(langCode);
     setIsOpen(false);
   };

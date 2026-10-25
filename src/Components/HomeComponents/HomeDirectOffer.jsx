@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { ShieldCheck, Tag, Clock, Briefcase, Calendar, Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import BookingModal from "../HelperComponents/BookingModal";
+// Lazy-load so framer-motion stays out of the critical bundle
+const BookingModal = lazy(() => import("../HelperComponents/BookingModal"));
 import { trackBookingClick } from "../Analytics/pixelEvents";
 
 export default function HomeDirectOffer() {
@@ -79,10 +80,14 @@ export default function HomeDirectOffer() {
         </div>
       </div>
 
-      <BookingModal
-        isOpen={isBookingModalOpen}
-        onClose={() => setIsBookingModalOpen(false)}
-      />
+      {isBookingModalOpen && (
+        <Suspense fallback={null}>
+          <BookingModal
+            isOpen={isBookingModalOpen}
+            onClose={() => setIsBookingModalOpen(false)}
+          />
+        </Suspense>
+      )}
     </section>
   );
 }

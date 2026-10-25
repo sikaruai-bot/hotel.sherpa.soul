@@ -307,16 +307,15 @@ const RoomsCard = () => {
 
                 {/* Price Badge */}
                 <div className="absolute top-4 right-4 bg-[#01366E]/95 backdrop-blur-md text-white px-3.5 py-1.5 rounded-xl shadow-lg flex flex-col items-end">
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-gray-300 line-through text-xs">${room.price}</span>
                     <span className="text-[#FB6C01] font-bold text-sm sm:text-base">
-                      {room.currency === "USD" || Number(room.price) <= 100
-                        ? `$${room.price} USD`
-                        : `NPR ${Number(room.price).toLocaleString()}`}
+                      ${Math.round(room.price * 0.9)} USD
                     </span>
                     <span className="text-xs font-normal opacity-80">{t("roomsCard.perNight", "/ night")}</span>
                   </div>
                   <span className="text-amber-200 text-xs font-medium">
-                    ~{formatNpr(room.price)}
+                    ~{formatNpr(room.price * 0.9)}
                   </span>
                 </div>
 
@@ -394,13 +393,19 @@ const RoomsCard = () => {
                 {/* Price Display */}
                 <div className="flex items-baseline justify-between pt-1">
                   <div>
-                    <span className="text-xl font-bold text-[#01366E]">
-                      ${room.price} USD
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs text-gray-400 line-through">${room.price}</span>
+                      <span className="text-xl font-bold text-[#01366E]">
+                        ${Math.round(room.price * 0.9)} USD
+                      </span>
+                      <span className="text-xs text-gray-500">/ night</span>
+                    </div>
+                    <span className="text-[10px] font-bold text-emerald-600 block">
+                      10% Direct OFF
                     </span>
-                    <span className="text-xs text-gray-500 ml-1">/ night</span>
                   </div>
                   <span className="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                    ~{formatNpr(room.price)}
+                    ~{formatNpr(room.price * 0.9)}
                   </span>
                 </div>
 
@@ -510,11 +515,11 @@ const RoomsCard = () => {
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translate3d(0, 30px, 0);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate3d(0, 0, 0);
           }
         }
 

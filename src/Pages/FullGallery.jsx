@@ -38,16 +38,17 @@ const LazyMotionItem = ({ type, src, alt }) => {
   );
 };
 
-// Skeleton shimmer effect for loading state
+// Skeleton shimmer effect for loading state (100% GPU composited)
 const SkeletonShimmer = () => (
-  <div className="animate-pulse h-full">
+  <div className="relative overflow-hidden bg-gray-200 rounded-3xl h-full w-full">
     <div
-      className="bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 rounded-3xl h-full w-full"
+      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
       style={{
-        backgroundSize: "200% 100%",
-        animation: "shimmer 2.5s infinite linear",
+        animation: "shimmerSlide 1.8s infinite",
+        willChange: "transform",
+        transform: "translate3d(-100%, 0, 0)",
       }}
-    ></div>
+    />
   </div>
 );
 
@@ -151,12 +152,12 @@ export default function GalleryPage() {
   return (
     <>
       <style jsx>{`
-        @keyframes shimmer {
+        @keyframes shimmerSlide {
           0% {
-            background-position: -200% 0;
+            transform: translate3d(-100%, 0, 0);
           }
           100% {
-            background-position: 200% 0;
+            transform: translate3d(100%, 0, 0);
           }
         }
       `}</style>

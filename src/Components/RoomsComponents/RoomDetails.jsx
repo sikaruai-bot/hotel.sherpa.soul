@@ -416,20 +416,26 @@ export default function RoomDetail() {
             <div className="flex items-center gap-4">
               <div className="text-center md:text-left">
                 <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                  <span className="text-xl text-gray-400 line-through">
+                    ${room.price}
+                  </span>
                   <span className="text-3xl sm:text-4xl font-extrabold text-[#01366E]">
-                    ${room.price} USD
+                    ${Math.round(room.price * 0.9)} USD
                   </span>
                   <span className="text-xl sm:text-2xl font-bold text-amber-600">
-                    (~{formatNpr(room.price)})
+                    (~{formatNpr(room.price * 0.9)})
                   </span>
                   <span className="text-base sm:text-lg text-gray-500 font-medium">{t("roomsCard.perNight", "/ night")}</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+                  <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full text-xs font-bold bg-[#FB6C01] text-white">
+                    🏷️ 10% Direct OFF
+                  </span>
                   <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
                     <span>🔥</span> {t("roomsCard.onlyLeft", "Only 2 rooms left!")}
                   </span>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
-                    {t("roomdetails.nepaliRate", "Nepali Guests:")} ~{formatNpr(room.price)}
+                    {t("roomdetails.nepaliRate", "Nepali Guests:")} ~{formatNpr(room.price * 0.9)}
                   </span>
                   <span>• {t("roomdetails.bestDirectRate", "Best direct rate guaranteed")}</span>
                 </div>

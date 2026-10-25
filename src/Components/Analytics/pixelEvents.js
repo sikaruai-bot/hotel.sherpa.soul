@@ -164,8 +164,17 @@ export const trackBookingCompleted = ({
     booking_id: refId,
     transaction_id: refId,
     page_path: currentPath,
+    debug_mode: true, // Guarantees real-time display in GA4 DebugView
     ...extra,
   };
+
+  console.log("[Analytics] Firing trackBookingCompleted:", {
+    refId,
+    value: numValue,
+    currency,
+    room_type: roomTypeStr,
+    bookingParams,
+  });
 
   // 1. Google Tag Manager / GA4 dataLayer event
   window.dataLayer = window.dataLayer || [];
@@ -190,11 +199,12 @@ export const trackBookingCompleted = ({
   // 2. Direct GA4 gtag dispatch
   if (typeof window.gtag === "function") {
     window.gtag("event", "booking_completed", bookingParams);
-    // Also dispatch standard purchase for GA4 monetization reports
+    // Also dispatch standard purchase for GA4 monetization reports & DebugView
     window.gtag("event", "purchase", {
       transaction_id: refId,
       value: numValue,
       currency,
+      debug_mode: true,
       items: [
         {
           item_name: roomTypeStr,
@@ -203,16 +213,55 @@ export const trackBookingCompleted = ({
         },
       ],
     });
+  } else if (typeof window.dataLayer !== "undefined") {
+    window.dataLayer.push([
+      "event",
+      "booking_completed",
+      bookingParams,
+    ]);
+    window.dataLayer.push([
+      "event",
+      "purchase",
+      {
+        transaction_id: refId,
+        value: numValue,
+        currency,
+        debug_mode: true,
+        items: [
+          {
+            item_name: roomTypeStr,
+            price: numValue,
+            quantity: Number(extra.number_of_rooms) || 1,
+          },
+        ],
+      },
+    ]);
   }
 
-  // 3. Meta Pixel Purchase
+  // 3. Meta Pixel Purchase (calls fbq with value, currency: 'USD', transaction_id)
   initializeMetaPixel();
-  if (window.fbq) {
+  if (typeof window.fbq === "function") {
     window.fbq("track", "Purchase", {
-      content_name: roomTypeStr,
       value: numValue,
-      currency,
+      currency: currency || "USD",
+      transaction_id: refId,
+      content_name: roomTypeStr,
+      content_type: "product",
+      contents: [
+        {
+          id: refId,
+          quantity: Number(extra.number_of_rooms) || 1,
+          item_price: numValue,
+        },
+      ],
     });
+    console.log("[Analytics] Meta Pixel fbq('track', 'Purchase') sent successfully", {
+      value: numValue,
+      currency: currency || "USD",
+      transaction_id: refId,
+    });
+  } else {
+    console.warn("[Analytics] window.fbq is not available on window during trackBookingCompleted");
   }
 };
 

@@ -245,17 +245,17 @@ function getBookingPageContent(roomTitle, roomId) {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Guest Full Name *</label>
-                <input type="text" name="name" required placeholder="e.g. John Doe" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#FB6C01] outline-none" />
+                <input type="text" name="fullName" id="booking-fullName" required placeholder="e.g. John Doe" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#FB6C01] outline-none" />
               </div>
               <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address *</label>
-                <input type="email" name="email" required placeholder="john@example.com" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#FB6C01] outline-none" />
+                <input type="email" name="email" id="booking-email" required placeholder="john@example.com" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#FB6C01] outline-none" />
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Phone / WhatsApp Number *</label>
-                <input type="tel" name="number" required placeholder="+977-98..." class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#FB6C01] outline-none" />
+                <input type="tel" name="phone" id="booking-phone" required placeholder="+977-98..." class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#FB6C01] outline-none" />
               </div>
               <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Selected Room Category *</label>

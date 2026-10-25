@@ -1,11 +1,18 @@
-import React, { useState, useRef, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import BookingModal from "./HelperComponents/BookingModal";
 import { trackMetaEvent } from "./Analytics/pixelEvents";
 import LanguageSwitcher from "./HelperComponents/LanguageSwticher";
-import hotelLogo from "../assets/logo.webp";
+import hotelLogo from "../assets/logo2.webp";
+
+// Lazy-load BookingModal so framer-motion (which it uses) stays out of the
+// critical-path bundle. The modal chunk is fetched only on first booking click.
+const BookingModal = lazy(() => import("./HelperComponents/BookingModal"));
+
+// Replaced framer-motion with CSS transitions in Navbar.
+// framer-motion is still used in pages/modals that are lazily loaded
+// (BookingModal, FullGallery, BlogPage, AboutPage, RoomsPage etc.).
+// Removing it from the Navbar eliminates it from the critical-path JS bundle.
 
 export default function Navbar() {
   const location = useLocation();
@@ -50,11 +57,7 @@ export default function Navbar() {
   const NavLink = ({ item, mobile = false, onClick }) => {
     const isActive = currentPath === item.href;
     return (
-      <motion.div
-        className="relative"
-        whileHover={{ y: mobile ? 0 : -1 }}
-        whileTap={{ scale: 0.98 }}
-      >
+      <div className="relative group/navlink">
         <Link
           to={item.href}
           onClick={onClick}
@@ -70,28 +73,24 @@ export default function Navbar() {
         >
           {item.label}
           {!mobile && (
-            <motion.span
-              className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: isActive ? 1 : 0 }}
-              whileHover={{ scaleX: 1 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+            <span
+              className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left transition-transform duration-300 ease-in-out ${
+                isActive ? "scale-x-100" : "scale-x-0 group-hover/navlink:scale-x-100"
+              }`}
             />
           )}
         </Link>
-      </motion.div>
+      </div>
     );
   };
 
   return (
     <>
-      <motion.nav
-        className={`fixed top-0 left-0 right-0 shadow-sm border-b border-slate-100 transition-all duration-300 z-50 ${
+      <nav
+        className={`fixed top-0 left-0 right-0 shadow-sm border-b border-slate-100 transition-[background-color,box-shadow,backdrop-filter] duration-300 z-50 translate-y-0 ${
           isScrolled ? "bg-white/95 backdrop-blur-md shadow-md" : "bg-white/90 backdrop-blur-sm"
         }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        style={{ animation: "navSlideDown 0.6s ease-out both", willChange: "transform, opacity" }}
       >
         {/* Top 10% Discount Announcement Ribbon */}
         <div className="bg-gradient-to-r from-[#01366E] via-[#0A2540] to-[#01366E] text-white py-1.5 px-3 sm:px-6 border-b border-amber-400/20">
@@ -119,19 +118,17 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <motion.div
-              className="flex-shrink-0 z-50 py-1"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-            >
+            <div className="flex-shrink-0 z-50 py-1 transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]">
               <Link to="/" className="flex items-center justify-center">
                 <img
                   src={hotelLogo}
                   alt="Hotel Sherpa Soul - Boutique Stay in Thamel, Kathmandu"
                   className="h-14 sm:h-16 w-auto max-w-[220px] object-contain transition-all duration-300"
-                />
+                  loading="lazy"
+                  decoding="async"
+                 />
               </Link>
-            </motion.div>
+            </div>
 
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex space-x-5 xl:space-x-7">
@@ -146,109 +143,108 @@ export default function Navbar() {
               <LanguageSwitcher />
 
               {/* Book Now Button */}
-              <motion.button
+              <button
                 onClick={handleBookingClick}
-                className="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-200 text-sm lg:text-base"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
+                className="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-200 text-sm lg:text-base hover:scale-[1.04] active:scale-[0.96]"
               >
                 {t("nav.quick", "Book Your Stay")}
-              </motion.button>
+              </button>
 
               {/* Mobile Hamburger Menu */}
-              <motion.button
+              <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden flex flex-col justify-center items-center w-11 h-11 min-w-[44px] min-h-[44px] p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/90 hover:bg-slate-100 space-y-1.5 z-50 focus:outline-none focus:ring-2 focus:ring-[#01366E]"
+                className="lg:hidden flex flex-col justify-center items-center w-11 h-11 min-w-[44px] min-h-[44px] p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/90 hover:bg-slate-100 space-y-1.5 z-50 focus:outline-none focus:ring-2 focus:ring-[#01366E] active:scale-95 transition-transform"
                 aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={isMobileMenuOpen}
-                whileTap={{ scale: 0.95 }}
               >
-                <motion.span
-                  className="w-6 h-0.5 rounded-full transition-colors duration-300 bg-[#01366E]"
-                  animate={{
-                    rotate: isMobileMenuOpen ? 45 : 0,
-                    y: isMobileMenuOpen ? 6 : 0,
-                  }}
+                <span
+                  className={`w-6 h-0.5 rounded-full bg-[#01366E] transition-transform duration-300 ${
+                    isMobileMenuOpen ? "rotate-45 translate-y-[6px]" : ""
+                  }`}
                 />
-                <motion.span
-                  className="w-6 h-0.5 rounded-full transition-colors duration-300 bg-[#01366E]"
-                  animate={{
-                    opacity: isMobileMenuOpen ? 0 : 1,
-                    scale: isMobileMenuOpen ? 0 : 1,
-                  }}
+                <span
+                  className={`w-6 h-0.5 rounded-full bg-[#01366E] transition-all duration-300 ${
+                    isMobileMenuOpen ? "opacity-0 scale-x-0" : ""
+                  }`}
                 />
-                <motion.span
-                  className="w-6 h-0.5 rounded-full transition-colors duration-300 bg-[#01366E]"
-                  animate={{
-                    rotate: isMobileMenuOpen ? -45 : 0,
-                    y: isMobileMenuOpen ? -6 : 0,
-                  }}
+                <span
+                  className={`w-6 h-0.5 rounded-full bg-[#01366E] transition-transform duration-300 ${
+                    isMobileMenuOpen ? "-rotate-45 -translate-y-[6px]" : ""
+                  }`}
                 />
-              </motion.button>
+              </button>
             </div>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            <motion.div
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+      {/* Mobile Menu Overlay — CSS transition replaces framer-motion AnimatePresence */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          style={{ animation: "fadeIn 0.3s ease both" }}
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      <div
+        className={`fixed top-28 bottom-0 left-0 right-0 bg-white shadow-2xl overflow-y-auto z-50 rounded-t-3xl border-t border-slate-200/80 pb-8 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden ${
+          isMobileMenuOpen ? "translate-y-0" : "translate-y-full"
+        }`}
+        aria-hidden={!isMobileMenuOpen}
+      >
+        {/* Mobile Menu 10% Discount Banner */}
+        <div className="mx-4 mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#01366E] to-[#0A2540] text-white border border-amber-400/40 shadow-lg">
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="bg-[#FB6C01] text-white font-black text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              {t("nav.ribbonBadge", "10% OFF")}
+            </span>
+            <span className="font-bold text-sm text-amber-300">{t("nav.mobileSpecial", "Direct Booking Special")}</span>
+          </div>
+          <p className="text-xs text-slate-200 mb-3 leading-relaxed">
+            {t("nav.mobileDiscountDesc", "Book direct on our website & save 10% on your entire stay in Thamel.")}
+          </p>
+          <button
+            onClick={handleBookingClick}
+            className="w-full py-3 px-4 min-h-[44px] bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-[#E05A00] hover:to-amber-600 text-white font-bold text-sm rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-98"
+          >
+            <span>{t("nav.mobileBookBtn", "Book with 10% Discount")}</span>
+            <span>&rarr;</span>
+          </button>
+        </div>
+
+        <nav className="flex flex-col px-4 py-4 space-y-1">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.id}
+              item={item}
+              mobile
               onClick={() => setIsMobileMenuOpen(false)}
             />
+          ))}
+        </nav>
+      </div>
 
-            <motion.div
-              className="fixed top-28 bottom-0 left-0 right-0 bg-white shadow-2xl overflow-y-auto z-50 rounded-t-3xl border-t border-slate-200/80 pb-8"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            >
-              {/* Mobile Menu 10% Discount Banner */}
-              <div className="mx-4 mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#01366E] to-[#0A2540] text-white border border-amber-400/40 shadow-lg">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="bg-[#FB6C01] text-white font-black text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                    {t("nav.ribbonBadge", "10% OFF")}
-                  </span>
-                  <span className="font-bold text-sm text-amber-300">{t("nav.mobileSpecial", "Direct Booking Special")}</span>
-                </div>
-                <p className="text-xs text-slate-200 mb-3 leading-relaxed">
-                  {t("nav.mobileDiscountDesc", "Book direct on our website & save 10% on your entire stay in Thamel.")}
-                </p>
-                <button
-                  onClick={handleBookingClick}
-                  className="w-full py-3 px-4 min-h-[44px] bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-[#E05A00] hover:to-amber-600 text-white font-bold text-sm rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-98"
-                >
-                  <span>{t("nav.mobileBookBtn", "Book with 10% Discount")}</span>
-                  <span>&rarr;</span>
-                </button>
-              </div>
+      {/* BookingModal is lazy-loaded — only fetched on first booking click */}
+      {isBookingModalOpen && (
+        <Suspense fallback={null}>
+          <BookingModal
+            isOpen={isBookingModalOpen}
+            onClose={() => setIsBookingModalOpen(false)}
+          />
+        </Suspense>
+      )}
 
-              <nav className="flex flex-col px-4 py-4 space-y-1">
-                {navItems.map((item) => (
-                  <NavLink
-                    key={item.id}
-                    item={item}
-                    mobile
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  />
-                ))}
-              </nav>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
-      <BookingModal
-        isOpen={isBookingModalOpen}
-        onClose={() => setIsBookingModalOpen(false)}
-      />
+      <style>{`
+        @keyframes navSlideDown {
+          from { transform: translate3d(0, -100%, 0); opacity: 0; }
+          to   { transform: translate3d(0, 0, 0);     opacity: 1; }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+      `}</style>
     </>
   );
 }

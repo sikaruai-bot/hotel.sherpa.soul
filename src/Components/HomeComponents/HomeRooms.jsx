@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Users, Bed, Wifi, Wind, Bath, Utensils, CheckCircle2, ArrowRight, Calendar, Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import BookingModal from "../HelperComponents/BookingModal";
+const BookingModal = lazy(() => import("../HelperComponents/BookingModal"));
 import { trackBookingClick } from "../Analytics/pixelEvents";
 import { HOTEL_PRESET_PHOTOS } from "../CMS/mediaUtils";
 import { useCMS } from "../../Context/CMSContext";
@@ -245,10 +245,14 @@ export default function HomeRooms() {
         </div>
       </div>
 
-      <BookingModal
-        isOpen={isBookingModalOpen}
-        onClose={() => setIsBookingModalOpen(false)}
-      />
+      {isBookingModalOpen && (
+        <Suspense fallback={null}>
+          <BookingModal
+            isOpen={isBookingModalOpen}
+            onClose={() => setIsBookingModalOpen(false)}
+          />
+        </Suspense>
+      )}
     </section>
   );
 }

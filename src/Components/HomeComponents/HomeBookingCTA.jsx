@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { Calendar, Phone, Sparkles } from "lucide-react";
-import BookingModal from "../HelperComponents/BookingModal";
+const BookingModal = lazy(() => import("../HelperComponents/BookingModal"));
 import { trackBookingClick, trackPhoneClick } from "../Analytics/pixelEvents";
 
 export default function HomeBookingCTA() {
@@ -57,10 +57,14 @@ export default function HomeBookingCTA() {
         </p>
       </div>
 
-      <BookingModal
-        isOpen={isBookingModalOpen}
-        onClose={() => setIsBookingModalOpen(false)}
-      />
+      {isBookingModalOpen && (
+        <Suspense fallback={null}>
+          <BookingModal
+            isOpen={isBookingModalOpen}
+            onClose={() => setIsBookingModalOpen(false)}
+          />
+        </Suspense>
+      )}
     </section>
   );
 }

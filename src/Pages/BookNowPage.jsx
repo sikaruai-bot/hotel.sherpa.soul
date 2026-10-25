@@ -82,8 +82,10 @@ export default function BookNowPage() {
         label: "Budget Family Room",
         title: t("homeRoomsData.budget.name", budgetRoom?.name || "Budget Family Room"),
         roomNumber: budgetRoom?.roomNumber || "203",
-        price: budgetRoom?.price || 20,
-        priceNpr: budgetRoom?.priceNprApprox || 2700,
+        originalPrice: budgetRoom?.price || 20,
+        price: Math.round((budgetRoom?.price || 20) * 0.9), // 10% direct discount: $18 USD
+        priceNpr: Math.round((budgetRoom?.priceNprApprox || 2700) * 0.9),
+        originalPriceNpr: budgetRoom?.priceNprApprox || 2700,
         currency: "USD",
         maxGuests: budgetRoom?.guests || 4,
         bedInfo: t("homeRoomsData.budget.bed", budgetRoom?.beds || "1 King Bed + 1 Single Bed"),
@@ -99,8 +101,10 @@ export default function BookNowPage() {
         label: "Deluxe Room (AC)",
         title: t("homeRoomsData.deluxe.name", deluxeRoom?.name || "Deluxe Room (AC)"),
         roomNumber: deluxeRoom?.roomNumber || "201",
-        price: deluxeRoom?.price || 20,
-        priceNpr: deluxeRoom?.priceNprApprox || 2700,
+        originalPrice: deluxeRoom?.price || 20,
+        price: Math.round((deluxeRoom?.price || 20) * 0.9), // 10% direct discount: $18 USD
+        priceNpr: Math.round((deluxeRoom?.priceNprApprox || 2700) * 0.9),
+        originalPriceNpr: deluxeRoom?.priceNprApprox || 2700,
         currency: "USD",
         maxGuests: deluxeRoom?.guests || 3,
         bedInfo: t("homeRoomsData.deluxe.bed", deluxeRoom?.beds ? `${deluxeRoom.beds} • Air Conditioned` : "1 King Bed • Air Conditioned"),
@@ -116,8 +120,10 @@ export default function BookNowPage() {
         label: "Family Room (AC)",
         title: t("homeRoomsData.family.name", familyRoom?.name || "Family Room (AC)"),
         roomNumber: familyRoom?.roomNumber || "301",
-        price: familyRoom?.price || 30,
-        priceNpr: familyRoom?.priceNprApprox || 4000,
+        originalPrice: familyRoom?.price || 30,
+        price: Math.round((familyRoom?.price || 30) * 0.9), // 10% direct discount: $27 USD
+        priceNpr: Math.round((familyRoom?.priceNprApprox || 4000) * 0.9),
+        originalPriceNpr: familyRoom?.priceNprApprox || 4000,
         currency: "USD",
         maxGuests: familyRoom?.guests || 4,
         bedInfo: t("homeRoomsData.family.bed", familyRoom?.beds ? `${familyRoom.beds} • Air Conditioned` : "King + Single • Air Conditioned"),
@@ -246,7 +252,8 @@ export default function BookNowPage() {
       1,
       Math.ceil((new Date(formData.checkOut) - new Date(formData.checkIn)) / (1000 * 60 * 60 * 24))
     );
-    const totalAmount = nights * (selectedRoom.price || 20) * (formData.numberOfRooms || 1);
+    const directRate = selectedRoom.price || Math.round((selectedRoom.originalPrice || 20) * 0.9);
+    const totalAmount = nights * directRate * (formData.numberOfRooms || 1);
     setTotalCalculated(totalAmount);
 
     try {
@@ -264,7 +271,7 @@ export default function BookNowPage() {
         paidAmount: 0,
         status: "CONFIRMED",
         source: "Direct Website",
-        specialRequests: `Direct Booking for ${formData.roomType}. Rooms: ${formData.numberOfRooms}. ${uploadedDocument ? '(ID uploaded)' : ''}`,
+        specialRequests: `Direct Booking for ${formData.roomType}. Rooms: ${formData.numberOfRooms}. 10% Direct Discount applied. Total: $${totalAmount} USD. ${uploadedDocument ? '(ID uploaded)' : ''}`,
       };
 
       const response = await api.post("/reservations", payload);
@@ -293,23 +300,6 @@ export default function BookNowPage() {
         value: totalAmount,
         currency: "USD",
       });
-
-      trackMetaEvent("Purchase", {
-        transaction_id: refId,
-        value: Number(totalAmount),
-        currency: "USD",
-        content_type: "hotel_booking",
-        content_name: formData.roomType,
-        content_ids: [String(selectedRoom.roomNumber)],
-        items: [
-          {
-            item_id: String(selectedRoom.roomNumber),
-            item_name: formData.roomType,
-            price: Number(selectedRoom.price) || 20,
-            quantity: Number(formData.numberOfRooms) || 1,
-          },
-        ],
-      });
     } catch (err) {
       console.warn("PMS reservation request recorded with direct reference:", err);
       const fallbackRef = `HSS-${Date.now().toString().slice(-6)}`;
@@ -328,7 +318,7 @@ export default function BookNowPage() {
         numberOfRooms: formData.numberOfRooms,
         numberOfGuests: formData.numberOfPeople,
         totalPrice: totalAmount,
-        specialRequests: `Direct Booking for ${formData.roomType}. Rooms: ${formData.numberOfRooms}`,
+        specialRequests: `Direct Booking for ${formData.roomType}. Rooms: ${formData.numberOfRooms}. 10% Direct Discount applied. Total: $${totalAmount} USD`,
       }).catch((e) => console.warn("Booking email delivery notice:", e));
     } finally {
       setIsSubmitting(false);
@@ -341,19 +331,26 @@ export default function BookNowPage() {
   useEffect(() => {
     if (submitted && !hasTrackedBookingRef.current) {
       hasTrackedBookingRef.current = true;
+      const refId = bookingRefId || `HSS-${Date.now().toString().slice(-6)}`;
+      const confirmedValue = Number(totalCalculated) > 0 ? Number(totalCalculated) : (Number(estimatedTotalUsd) || 18);
+      console.log("[Analytics] BookNowPage confirmation view rendered -> executing trackBookingCompleted", {
+        refId,
+        value: confirmedValue,
+        roomType: selectedRoomObj?.title || formData.roomType,
+      });
       trackBookingCompleted({
         room_type: selectedRoomObj?.title || formData.roomType || "Deluxe Room",
         check_in_date: formData.checkIn,
         check_out_date: formData.checkOut,
-        value: Number(totalCalculated) || Number(estimatedTotalUsd) || 0,
+        value: confirmedValue,
         currency: "USD",
-        booking_id: bookingRefId,
-        transaction_id: bookingRefId,
+        booking_id: refId,
+        transaction_id: refId,
         number_of_rooms: Number(formData.numberOfRooms) || 1,
         number_of_guests: Number(formData.numberOfPeople) || 1,
       });
     }
-  }, [submitted, selectedRoomObj, formData, totalCalculated, estimatedTotalUsd, bookingRefId]);
+  }, [submitted, bookingRefId, totalCalculated, estimatedTotalUsd, selectedRoomObj, formData]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -441,7 +438,10 @@ export default function BookNowPage() {
                         </div>
                       )}
                       <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/75 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs">
-                        <span className="font-bold text-[#FB6C01] text-sm">${room.price} USD</span>
+                        <div className="flex items-baseline gap-1.5">
+                          <span className="text-gray-400 line-through text-[11px]">${room.originalPrice || 20}</span>
+                          <span className="font-bold text-[#FB6C01] text-sm">${room.price} USD</span>
+                        </div>
                         <span className="text-amber-300 font-semibold">~{formatNpr(room.price)} {t("roomsCard.perNight", "/ night")}</span>
                       </div>
                     </div>
@@ -766,7 +766,7 @@ export default function BookNowPage() {
                             <option value="">{t("bookNowPage.selectRoomType", "Select Room Type")}</option>
                             {roomOptions.map((room, idx) => (
                               <option key={idx} value={room.label}>
-                                {room.title} (Max {room.maxGuests} {t("room.guest", "Guest")}{room.maxGuests > 1 ? "s" : ""})
+                                {room.title} (Max {room.maxGuests} {room.maxGuests > 1 ? "Guests" : "Guest"})
                               </option>
                             ))}
                           </select>
@@ -907,17 +907,30 @@ export default function BookNowPage() {
                     <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 mb-2">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                         <div>
-                          <span className="text-xs font-bold text-amber-800 uppercase tracking-wider block">
-                            {t("bookNowPage.estimatedTotal", { nights: estimatedNights, nightPlural: estimatedNights === 1 ? "" : "s", rooms: formData.numberOfRooms, roomPlural: formData.numberOfRooms > 1 ? "s" : "", defaultValue: `Estimated Total (${estimatedNights} ${estimatedNights === 1 ? "night" : "nights"}, ${formData.numberOfRooms} ${formData.numberOfRooms > 1 ? "rooms" : "room"})` })}
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-xs font-bold text-amber-800 uppercase tracking-wider block">
+                              {t("bookNowPage.estimatedTotal", { nights: estimatedNights, nightPlural: estimatedNights === 1 ? "" : "s", rooms: formData.numberOfRooms, roomPlural: formData.numberOfRooms > 1 ? "s" : "", defaultValue: `Estimated Total (${estimatedNights} ${estimatedNights === 1 ? "night" : "nights"}, ${formData.numberOfRooms} ${formData.numberOfRooms > 1 ? "rooms" : "room"})` })}
+                            </span>
+                            <span className="bg-[#FB6C01] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                              10% DIRECT OFF
+                            </span>
+                          </div>
+                          <span className="text-xs text-gray-600 block mb-1">
+                            Rack rate: <span className="line-through text-gray-500">${(selectedRoomObj.originalPrice || 20) * estimatedNights * (parseInt(formData.numberOfRooms) || 1)} USD</span> • Direct saving: <span className="text-emerald-700 font-semibold">-${((selectedRoomObj.originalPrice || 20) - selectedRoomObj.price) * estimatedNights * (parseInt(formData.numberOfRooms) || 1)} USD</span>
                           </span>
                           <span className="text-xs text-gray-600">
                             {t("bookNowPage.nprNotice", "Nepali guests pay in NPR at front desk")}
                           </span>
                         </div>
                         <div className="text-left sm:text-right">
-                          <span className="text-2xl font-bold text-[#01366E] block">
-                            ${estimatedTotalUsd} USD
-                          </span>
+                          <div className="flex items-baseline sm:justify-end gap-2">
+                            <span className="text-sm text-gray-400 line-through">
+                              ${(selectedRoomObj.originalPrice || 20) * estimatedNights * (parseInt(formData.numberOfRooms) || 1)} USD
+                            </span>
+                            <span className="text-2xl font-bold text-[#01366E] block">
+                              ${estimatedTotalUsd} USD
+                            </span>
+                          </div>
                           <span className="text-sm font-bold text-amber-700 block">
                             ~{formatNpr(estimatedTotalUsd)}
                           </span>
@@ -1001,7 +1014,12 @@ export default function BookNowPage() {
                     <p className="font-semibold">{formData.numberOfRooms}</p>
                   </div>
                   <div className="col-span-2 pt-2 border-t border-blue-200 flex justify-between items-center">
-                    <span className="text-gray-700 font-medium">{t("bookNowPage.totalRate", "Total Rate:")}</span>
+                    <div>
+                      <span className="text-gray-700 font-medium">{t("bookNowPage.totalRate", "Total Rate:")}</span>
+                      <span className="ml-2 inline-block bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                        10% Direct Discount Applied
+                      </span>
+                    </div>
                     <div className="text-right">
                       <span className="font-bold text-[#01366E] text-base">${Number(totalCalculated)} USD</span>
                       <span className="text-xs font-semibold text-amber-700 block">~{formatNpr(totalCalculated)}</span>
@@ -1029,7 +1047,7 @@ export default function BookNowPage() {
                     `*Check-in:* ${formData.checkIn}\n` +
                     `*Check-out:* ${formData.checkOut}\n` +
                     `*Rooms:* ${formData.numberOfRooms} | *Guests:* ${formData.numberOfPeople}\n` +
-                    `*Total Payable:* $${Number(totalCalculated)} USD (~${formatNpr(totalCalculated)})\n` +
+                    `*Total Rate:* $${Number(totalCalculated)} USD (~${formatNpr(totalCalculated)}) [10% Direct Booking Discount Applied]\n` +
                     `*Phone:* ${formData.phone}\n\n` +
                     `Please confirm my reservation check-in. Thank you!`
                   )}`}

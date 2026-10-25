@@ -80,22 +80,26 @@ export default function BookingForm() {
             );
             if (pmsRoom) {
               const rateVal = Number(pmsRoom.dailyRate) || 0;
-              const resolvedUsd =
+              const rackUsd =
                 rateVal > 100
                   ? localMatch.price || Math.round(rateVal / 135)
                   : rateVal || localMatch.price || 20;
-              const resolvedNpr =
+              const directUsd = Math.round(rackUsd * 0.9); // 10% direct discount
+              const rackNpr =
                 rateVal > 100
                   ? rateVal
-                  : localMatch.priceNprApprox || Math.round(resolvedUsd * 135);
+                  : localMatch.priceNprApprox || Math.round(rackUsd * 135);
+              const directNpr = Math.round(rackNpr * 0.9);
 
               const matched = {
                 ...localMatch,
                 id: localMatch.id,
                 roomNumber: pmsRoom.number || localMatch.roomNumber,
                 name: localMatch.name,
-                price: resolvedUsd,
-                priceNprApprox: resolvedNpr,
+                originalPrice: rackUsd,
+                price: directUsd,
+                priceNprApprox: directNpr,
+                originalPriceNpr: rackNpr,
                 guests: pmsRoom.capacity || localMatch.guests,
                 status: pmsRoom.status,
                 availableRooms: 2,
@@ -113,8 +117,17 @@ export default function BookingForm() {
           console.warn("Using local room data for booking:", apiErr);
         }
 
+        const fallbackRackUsd = Number(localMatch.price) || 20;
+        const fallbackDirectUsd = Math.round(fallbackRackUsd * 0.9);
+        const fallbackRackNpr = localMatch.priceNprApprox || Math.round(fallbackRackUsd * 135);
+        const fallbackDirectNpr = Math.round(fallbackRackNpr * 0.9);
+
         setRoom({
           ...localMatch,
+          originalPrice: fallbackRackUsd,
+          price: fallbackDirectUsd,
+          priceNprApprox: fallbackDirectNpr,
+          originalPriceNpr: fallbackRackNpr,
           availableRooms: 2,
         });
         setFormData((prev) => ({
@@ -430,23 +443,6 @@ export default function BookingForm() {
           currency: "USD",
         });
 
-        trackMetaEvent("Purchase", {
-          transaction_id: bookingRef,
-          value: Number(calcTotal),
-          currency: "USD",
-          content_type: "hotel_booking",
-          content_name: room?.name || `Room ${roomNum}`,
-          content_ids: [roomNum],
-          items: [
-            {
-              item_id: String(roomNum),
-              item_name: room?.name || `Room ${roomNum}`,
-              price: Number(room?.price) || 20,
-              quantity: Number(formData.numberOfRooms) || 1,
-            },
-          ],
-        });
-
         // Trigger official booking confirmation voucher & hotel staff alert email
         sendEmailNotification({
           type: "booking",
@@ -519,6 +515,7 @@ export default function BookingForm() {
   const hasTrackedRoomBookingRef = useRef(false);
   useEffect(() => {
     if (confirmedBooking && !hasTrackedRoomBookingRef.current) {
+      console.log("[Analytics] RoomBooking confirmation rendered -> executing trackBookingCompleted", confirmedBooking);
       hasTrackedRoomBookingRef.current = true;
       trackBookingCompleted({
         room_type: confirmedBooking.roomName || room?.name || "Deluxe Room",
@@ -590,7 +587,7 @@ export default function BookingForm() {
       `*Room:* ${confirmedBooking.roomName} (Room ${confirmedBooking.roomNumber})\n` +
       `*Check-in:* ${confirmedBooking.checkIn}\n` +
       `*Check-out:* ${confirmedBooking.checkOut}\n` +
-      `*Total Rate:* $${Number(confirmedBooking.totalPrice).toLocaleString()} USD (~${formatNpr(confirmedBooking.totalPrice)})\n` +
+      `*Total Rate:* $${Number(confirmedBooking.totalPrice).toLocaleString()} USD (~${formatNpr(confirmedBooking.totalPrice)}) [10% Direct Booking Discount Applied]\n` +
       `*Phone:* ${confirmedBooking.phone}\n` +
       `*Email:* ${confirmedBooking.email}\n\n` +
       `Please confirm our check-in and booking availability. Thank you!`
@@ -625,7 +622,12 @@ export default function BookingForm() {
               <span className="font-semibold text-gray-800">{confirmedBooking.checkIn} → {confirmedBooking.checkOut}</span>
             </div>
             <div className="flex justify-between items-center border-t border-amber-200/50 pt-2 text-base font-bold">
-              <span className="text-gray-800">Total Payable at Hotel</span>
+              <div>
+                <span className="text-gray-800">Total Rate</span>
+                <span className="ml-2 inline-block bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  10% Direct Discount Applied
+                </span>
+              </div>
               <div className="text-right">
                 <span className="text-amber-700 block">${Number(confirmedBooking.totalPrice).toLocaleString()} USD</span>
                 <span className="text-xs text-gray-600 block font-semibold">~{formatNpr(confirmedBooking.totalPrice)}</span>
@@ -635,7 +637,7 @@ export default function BookingForm() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/9779818259472?text=Hello%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability%20and%20direct%20booking%20rates."
+              href={`https://wa.me/9779818259472?text=${waText}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
@@ -1175,11 +1177,19 @@ export default function BookingForm() {
 
                 <div className="border-t pt-4 space-y-2.5 text-sm">
                   <div className="flex justify-between items-start">
-                    <span className="text-gray-600">{t("book.rate")}:</span>
-                    <div className="text-right">
-                      <span className="font-semibold text-gray-900 block">
-                        ${room.price} USD / night
+                    <div>
+                      <span className="text-gray-600 block">{t("book.rate")}:</span>
+                      <span className="text-[10px] font-bold text-emerald-600">
+                        10% Direct OFF
                       </span>
+                    </div>
+                    <div className="text-right">
+                      <div className="flex items-center gap-1.5 justify-end">
+                        <span className="text-xs text-gray-400 line-through">${room.originalPrice || 20}</span>
+                        <span className="font-semibold text-gray-900 block">
+                          ${room.price} USD / night
+                        </span>
+                      </div>
                       <span className="text-xs text-amber-600 font-medium block">
                         ~{formatNpr(room.price)}
                       </span>
