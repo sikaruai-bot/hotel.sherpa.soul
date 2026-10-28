@@ -55,7 +55,10 @@
     <!-- Google Tag Manager (deferred to idle to eliminate main-thread long tasks) -->
     <script>
       (function() {
+        var gtmLoaded = false;
         function loadGTM() {
+          if (gtmLoaded) return;
+          gtmLoaded = true;
           var w=window,d=document,s='script',l='dataLayer',i='GTM-PFRV7ZTV';
           w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
           var f=d.getElementsByTagName(s)[0],j=d.createElement(s);
@@ -63,12 +66,11 @@
           f.parentNode.insertBefore(j,f);
         }
         function triggerGTM() {
-          if ('requestIdleCallback' in window) {
-            requestIdleCallback(function() { setTimeout(loadGTM, 1500); }, { timeout: 3500 });
-          } else {
-            setTimeout(loadGTM, 2500);
-          }
+          setTimeout(loadGTM, 15000);
         }
+        ['touchstart', 'scroll', 'click'].forEach(function(evt) {
+          window.addEventListener(evt, loadGTM, { once: true, passive: true });
+        });
         if (document.readyState === 'complete') {
           triggerGTM();
         } else {
@@ -81,19 +83,21 @@
     <!-- GA4 Direct gtag.js (loaded in idle after GTM) -->
     <script>
       (function() {
+        var ga4Loaded = false;
         function loadGA4() {
+          if (ga4Loaded) return;
+          ga4Loaded = true;
           var s = document.createElement('script');
           s.async = true;
           s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E7Z3QDR3KD';
           document.head.appendChild(s);
         }
         function triggerGA4() {
-          if ('requestIdleCallback' in window) {
-            requestIdleCallback(function() { setTimeout(loadGA4, 2000); }, { timeout: 4000 });
-          } else {
-            setTimeout(loadGA4, 3000);
-          }
+          setTimeout(loadGA4, 15500);
         }
+        ['touchstart', 'scroll', 'click'].forEach(function(evt) {
+          window.addEventListener(evt, loadGA4, { once: true, passive: true });
+        });
         if (document.readyState === 'complete') {
           triggerGA4();
         } else {
@@ -108,9 +112,19 @@
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
       if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      n.queue=[];
+      function loadPixel() {
+        if (f._fbqLoaded) return;
+        f._fbqLoaded = true;
+        t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+      }
+      setTimeout(loadPixel, 15000);
+      ['touchstart', 'scroll', 'click'].forEach(function(evt) {
+        window.addEventListener(evt, loadPixel, { once: true, passive: true });
+      });
+      }(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
       fbq('consent', 'grant');
       fbq('init', '%VITE_META_PIXEL_ID%');
@@ -135,13 +149,13 @@
 
         // Trigger loading after critical rendering or user interaction
         if (document.readyState === 'complete') {
-          setTimeout(loadDeferredThirdParties, 3500);
+          setTimeout(loadDeferredThirdParties, 15500);
         } else {
           window.addEventListener('load', function() {
-            setTimeout(loadDeferredThirdParties, 3500);
+            setTimeout(loadDeferredThirdParties, 15500);
           });
         }
-        ['touchstart', 'scroll', 'mousemove', 'keydown'].forEach(function(evt) {
+        ['touchstart', 'scroll', 'mousemove', 'keydown', 'click'].forEach(function(evt) {
           window.addEventListener(evt, loadDeferredThirdParties, { once: true, passive: true });
         });
       })();

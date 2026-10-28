@@ -6,3 +6,4 @@ export const HOTEL_PRESET_PHOTOS = [
   { label: "Shared Self-Kitchen & Dining", path: "/assets/shared_kitchen_new-HROE-pWG.webp" },
   { label: "Hotel Sherpa Soul Thamel Main", path: "/hero1.webp" },
 ];
+

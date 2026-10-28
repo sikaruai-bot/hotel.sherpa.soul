@@ -90,7 +90,6 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 shadow-sm border-b border-slate-100 transition-[background-color,box-shadow,backdrop-filter] duration-300 z-50 translate-y-0 ${
           isScrolled ? "bg-white/95 backdrop-blur-md shadow-md" : "bg-white/90 backdrop-blur-sm"
         }`}
-        style={{ animation: "navSlideDown 0.6s ease-out both", willChange: "transform, opacity" }}
       >
         {/* Top 10% Discount Announcement Ribbon */}
         <div className="bg-gradient-to-r from-[#01366E] via-[#0A2540] to-[#01366E] text-white py-1.5 px-3 sm:px-6 border-b border-amber-400/20">
@@ -189,43 +188,42 @@ export default function Navbar() {
         />
       )}
 
-      <div
-        className={`fixed top-28 bottom-0 left-0 right-0 bg-white shadow-2xl overflow-y-auto z-50 rounded-t-3xl border-t border-slate-200/80 pb-8 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden ${
-          isMobileMenuOpen ? "translate-y-0" : "translate-y-full"
-        }`}
-        aria-hidden={!isMobileMenuOpen}
-      >
-        {/* Mobile Menu 10% Discount Banner */}
-        <div className="mx-4 mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#01366E] to-[#0A2540] text-white border border-amber-400/40 shadow-lg">
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="bg-[#FB6C01] text-white font-black text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-              {t("nav.ribbonBadge", "10% OFF")}
-            </span>
-            <span className="font-bold text-sm text-amber-300">{t("nav.mobileSpecial", "Direct Booking Special")}</span>
+      {isMobileMenuOpen && (
+        <div
+          className="fixed top-28 bottom-0 left-0 right-0 bg-white shadow-2xl overflow-y-auto z-50 rounded-t-3xl border-t border-slate-200/80 pb-8 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden translate-y-0"
+        >
+          {/* Mobile Menu 10% Discount Banner */}
+          <div className="mx-4 mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#01366E] to-[#0A2540] text-white border border-amber-400/40 shadow-lg">
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="bg-[#FB6C01] text-white font-black text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                {t("nav.ribbonBadge", "10% OFF")}
+              </span>
+              <span className="font-bold text-sm text-amber-300">{t("nav.mobileSpecial", "Direct Booking Special")}</span>
+            </div>
+            <p className="text-xs text-slate-200 mb-3 leading-relaxed">
+              {t("nav.mobileDiscountDesc", "Book direct on our website & save 10% on your entire stay in Thamel.")}
+            </p>
+            <button
+              onClick={handleBookingClick}
+              className="w-full py-3 px-4 min-h-[44px] bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-[#E05A00] hover:to-amber-600 text-white font-bold text-sm rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-98"
+            >
+              <span>{t("nav.mobileBookBtn", "Book with 10% Discount")}</span>
+              <span>&rarr;</span>
+            </button>
           </div>
-          <p className="text-xs text-slate-200 mb-3 leading-relaxed">
-            {t("nav.mobileDiscountDesc", "Book direct on our website & save 10% on your entire stay in Thamel.")}
-          </p>
-          <button
-            onClick={handleBookingClick}
-            className="w-full py-3 px-4 min-h-[44px] bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-[#E05A00] hover:to-amber-600 text-white font-bold text-sm rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-98"
-          >
-            <span>{t("nav.mobileBookBtn", "Book with 10% Discount")}</span>
-            <span>&rarr;</span>
-          </button>
-        </div>
 
-        <nav className="flex flex-col px-4 py-4 space-y-1">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.id}
-              item={item}
-              mobile
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-          ))}
-        </nav>
-      </div>
+          <nav className="flex flex-col px-4 py-4 space-y-1">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.id}
+                item={item}
+                mobile
+                onClick={() => setIsMobileMenuOpen(false)}
+              />
+            ))}
+          </nav>
+        </div>
+      )}
 
       {/* BookingModal is lazy-loaded — only fetched on first booking click */}
       {isBookingModalOpen && (
@@ -238,10 +236,6 @@ export default function Navbar() {
       )}
 
       <style>{`
-        @keyframes navSlideDown {
-          from { transform: translate3d(0, -100%, 0); opacity: 0; }
-          to   { transform: translate3d(0, 0, 0);     opacity: 1; }
-        }
         @keyframes fadeIn {
           from { opacity: 0; }
           to   { opacity: 1; }

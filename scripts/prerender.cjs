@@ -13,43 +13,15 @@ let templateHtml = fs.readFileSync(INDEX_PATH, 'utf-8');
 // Reset root div if dist/index.html already contains pre-rendered content
 templateHtml = templateHtml.replace(/<div id="root">[\s\S]*?<\/body>/i, '<div id="root"></div>\n  </body>');
 
-// Shared Navigation Component HTML
-const NAV_HTML = `
-<nav class="fixed top-0 left-0 right-0 shadow-sm border-b border-slate-100 bg-white/95 backdrop-blur-md z-50 transition-all duration-300">
-  <div class="bg-gradient-to-r from-[#01366E] via-[#0A2540] to-[#01366E] text-white py-1.5 px-3 sm:px-6 border-b border-amber-400/20">
-    <div class="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm">
-      <div class="flex items-center gap-2 mx-auto sm:mx-0 text-center sm:text-left">
-        <span class="bg-[#FB6C01] text-white font-black text-[10px] sm:text-xs px-2 py-0.5 rounded-full uppercase tracking-wider">10% OFF</span>
-        <span class="font-medium text-slate-100 text-xs sm:text-sm">Direct Booking Special: Get <strong class="text-amber-300 font-bold">10% Discount</strong> on all rooms!</span>
-        <span class="hidden md:inline text-white/40">• Best Rate Guaranteed</span>
-      </div>
-      <a href="/book-now" class="hidden sm:inline-flex items-center gap-1 font-bold text-amber-300 hover:text-white transition-colors underline underline-offset-4 text-xs">Claim 10% Off &rarr;</a>
-    </div>
-  </div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-20">
-      <div class="flex-shrink-0 z-50 py-1">
-        <a href="/" class="flex items-center justify-center">
-          <img src="/logo.webp" alt="Hotel Sherpa Soul - Boutique Stay in Thamel, Kathmandu" class="h-14 sm:h-16 w-auto max-w-[220px] object-contain" width="200" height="60" />
-        </a>
-      </div>
-      <div class="hidden lg:flex space-x-5 xl:space-x-7">
-        <a href="/" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Home</a>
-        <a href="/rooms" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Rooms</a>
-        <a href="/about" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">About Us</a>
-        <a href="/gallery" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Gallery</a>
-        <a href="/#location" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Location</a>
-        <a href="/blog" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Blog</a>
-        <a href="/contact" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Contact</a>
-        <a href="/guest-guide" class="font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01] transition-colors">Guest Guide</a>
-      </div>
-      <div class="flex items-center space-x-2 lg:space-x-3 z-50">
-        <a href="/book-now" class="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all text-sm lg:text-base">Book Your Stay</a>
-      </div>
-    </div>
-  </div>
-</nav>
-`;
+// Resolve hashed logo asset for 100% hydration alignment
+const distAssetsDir = path.resolve(__dirname, '..', 'dist', 'assets');
+const hashedLogo = fs.existsSync(distAssetsDir)
+  ? (fs.readdirSync(distAssetsDir).find(f => f.startsWith('logo2-') && f.endsWith('.webp')) || 'logo2.webp')
+  : 'logo2.webp';
+const logoSrc = hashedLogo.startsWith('logo2-') ? `/assets/${hashedLogo}` : '/logo2.webp';
+
+// Shared Navigation Component HTML (verbatim match to hydrated React Navbar)
+const NAV_HTML = `<nav class="fixed top-0 left-0 right-0 shadow-sm border-b border-slate-100 transition-[background-color,box-shadow,backdrop-filter] duration-300 z-50 translate-y-0 bg-white/90 backdrop-blur-sm"><div class="bg-gradient-to-r from-[#01366E] via-[#0A2540] to-[#01366E] text-white py-1.5 px-3 sm:px-6 border-b border-amber-400/20"><div class="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm"><div class="flex items-center gap-2 mx-auto sm:mx-0 text-center sm:text-left"><span class="bg-[#FB6C01] text-white font-black text-[10px] sm:text-xs px-2 py-0.5 rounded-full uppercase tracking-wider animate-pulse">10% OFF</span><span class="font-medium text-slate-100 text-xs sm:text-sm">Direct Booking Special: Get <strong class="text-amber-300 font-bold">10% Discount</strong> on all rooms!</span><span class="hidden md:inline text-white/40">• Best Rate Guaranteed</span></div><button class="hidden sm:inline-flex items-center gap-1 font-bold text-amber-300 hover:text-white transition-colors underline underline-offset-4 text-xs">Claim 10% Off →</button></div></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-20"><div class="flex-shrink-0 z-50 py-1 transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"><a class="flex items-center justify-center" href="/"><img alt="Hotel Sherpa Soul - Boutique Stay in Thamel, Kathmandu" class="h-14 sm:h-16 w-auto max-w-[220px] object-contain transition-all duration-300" width="200" height="60" loading="eager" decoding="async" src="${logoSrc}"></a></div><div class="hidden lg:flex space-x-5 xl:space-x-7"><div class="relative group/navlink"><a class="relative transition-colors duration-300 font-semibold text-sm lg:text-base py-3 px-1 text-[#FB6C01]" href="/">Home<span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left transition-transform duration-300 ease-in-out scale-x-100"></span></a></div><div class="relative group/navlink"><a class="relative transition-colors duration-300 font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01]" href="/rooms">Rooms<span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left transition-transform duration-300 ease-in-out scale-x-0 group-hover/navlink:scale-x-100"></span></a></div><div class="relative group/navlink"><a class="relative transition-colors duration-300 font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01]" href="/about">About Us<span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left transition-transform duration-300 ease-in-out scale-x-0 group-hover/navlink:scale-x-100"></span></a></div><div class="relative group/navlink"><a class="relative transition-colors duration-300 font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01]" href="/gallery">Gallery<span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left transition-transform duration-300 ease-in-out scale-x-0 group-hover/navlink:scale-x-100"></span></a></div><div class="relative group/navlink"><a class="relative transition-colors duration-300 font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01]" href="/#location">Location<span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left transition-transform duration-300 ease-in-out scale-x-0 group-hover/navlink:scale-x-100"></span></a></div><div class="relative group/navlink"><a class="relative transition-colors duration-300 font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01]" href="/blog">Blog<span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left transition-transform duration-300 ease-in-out scale-x-0 group-hover/navlink:scale-x-100"></span></a></div><div class="relative group/navlink"><a class="relative transition-colors duration-300 font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01]" href="/contact">Contact<span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left transition-transform duration-300 ease-in-out scale-x-0 group-hover/navlink:scale-x-100"></span></a></div><div class="relative group/navlink"><a class="relative transition-colors duration-300 font-semibold text-sm lg:text-base py-3 px-1 text-[#01366E] hover:text-[#FB6C01]" href="/guest-guide">Guest Guide<span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#FB6C01] origin-left transition-transform duration-300 ease-in-out scale-x-0 group-hover/navlink:scale-x-100"></span></a></div></div><div class="flex items-center space-x-2 lg:space-x-3 z-50"><div class="relative"><button aria-label="Current language: English. Click to change language" title="Change language" class="group flex items-center gap-2 md:gap-4 px-2 py-1 bg-white/90 backdrop-blur-md border border-gray-200/50 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/30 active:scale-95"><span class="text-xl group-hover:scale-110 transition-transform duration-200">🇺🇸</span><div class="hidden md:flex flex-col items-start"><span class="font-medium text-gray-700 text-sm">EN</span><span class="text-xs text-gray-500">English</span></div><div class="w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center"><svg class="w-3 h-3 text-white transition-transform duration-200 " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg></div></button></div><button class="hidden sm:flex items-center justify-center bg-[#FB6C01] hover:bg-[#E05A00] text-white px-5 lg:px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-200 text-sm lg:text-base hover:scale-[1.04] active:scale-[0.96]">Book Your Stay</button><button class="lg:hidden flex flex-col justify-center items-center w-11 h-11 min-w-[44px] min-h-[44px] p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/90 hover:bg-slate-100 space-y-1.5 z-50 focus:outline-none focus:ring-2 focus:ring-[#01366E] active:scale-95 transition-transform" aria-label="Open navigation menu" aria-expanded="false"><span class="w-6 h-0.5 rounded-full bg-[#01366E] transition-transform duration-300 "></span><span class="w-6 h-0.5 rounded-full bg-[#01366E] transition-all duration-300 "></span><span class="w-6 h-0.5 rounded-full bg-[#01366E] transition-transform duration-300 "></span></button></div></div></div></nav>`;
 
 // Shared Footer Component HTML
 const FOOTER_HTML = `
@@ -326,214 +298,483 @@ const ROUTES = [
     `,
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-20">
-        <!-- Hero Section -->
-        <section class="relative min-h-[90vh] flex items-center bg-slate-900 text-white overflow-hidden">
-          <div class="absolute inset-0 z-0">
-            <picture>
-              <source media="(max-width: 768px)" srcset="/hero/hero_deluxe_room-mobile.webp" type="image/webp" />
-              <source media="(min-width: 769px)" srcset="/hero/hero_deluxe_room.webp" type="image/webp" />
-              <img src="/hero/hero_deluxe_room.webp" alt="Hotel Sherpa Soul - Deluxe Boutique Room in Thamel Kathmandu" class="w-full h-full object-cover opacity-60" width="1024" height="682" fetchpriority="high" loading="eager" />
-            </picture>
-            <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
-          </div>
-          <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 py-20">
-            <div class="max-w-2xl space-y-6">
-              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#FB6C01]/30 via-amber-500/25 to-[#FB6C01]/30 border border-amber-400/60 text-white">
-                <span class="bg-[#FB6C01] text-white text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-full uppercase">10% OFF</span>
-                <span class="text-xs sm:text-sm font-semibold text-amber-200">Direct Booking Offer: <strong class="text-white font-extrabold underline">Save 10% Instantly</strong></span>
+      <div>
+        <div class="overflow-x-hidden">
+          <!-- 1. Hero Section -->
+          <div class="relative direction-ltr" dir="ltr">
+            <section class="w-full h-screen relative overflow-hidden flex">
+              <div class="absolute inset-0">
+                <div class="absolute inset-0 opacity-100 z-10">
+                  <picture class="w-full h-full block">
+                    <source media="(max-width: 768px)" srcset="/hero/hero_deluxe_room-mobile.webp" type="image/webp" />
+                    <source media="(min-width: 769px)" srcset="/hero/hero_deluxe_room.webp" type="image/webp" />
+                    <img src="/hero/hero_deluxe_room.webp" alt="Hotel Sherpa Soul - Deluxe Boutique Room in Thamel Kathmandu" class="w-full h-full object-cover" width="1024" height="682" fetchpriority="high" loading="eager" />
+                  </picture>
+                  <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent pointer-events-none"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none"></div>
+                </div>
               </div>
-              <p class="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-300 font-semibold">WELCOME TO HOTEL SHERPA SOUL</p>
-              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight text-white drop-shadow-md">Quiet Boutique &amp; Budget Hotel in Thamel, Kathmandu</h1>
-              <p class="text-white/95 text-base sm:text-lg leading-relaxed font-light">Discover a peaceful and comfortable boutique hotel at Hotel Sherpa Soul, located in the vibrant heart of Thamel, Kathmandu. Explore the city by day, return to a quiet room at night, and wake up refreshed for your next Himalayan adventure.</p>
-              
-              <div class="p-4 rounded-2xl bg-black/70 border border-amber-400/50 backdrop-blur-md">
-                <div class="flex items-center justify-between gap-4">
-                  <div>
-                    <span class="text-white font-bold text-base">Direct Booking Discount Active</span>
-                    <p class="text-slate-200 text-xs sm:text-sm font-light mt-0.5">Get an instant <strong class="text-amber-300 font-bold">10% OFF</strong> on all rooms when booking directly. Best rate guarantee, free luggage storage & no hidden charges.</p>
+
+              <!-- Vertical Social Media Links — desktop only -->
+              <div class="absolute right-8 bottom-8 z-20 hidden md:block">
+                <div class="mb-6 text-center">
+                  <div class="flex flex-col space-y-1 text-white/60 text-sm font-light tracking-widest">
+                    <span>S</span>
+                    <span>O</span>
+                    <span>C</span>
+                    <span>I</span>
+                    <span>A</span>
+                    <span>L</span>
                   </div>
-                  <a href="/book/budget-family-room" class="text-xs font-bold text-white bg-[#FB6C01] hover:bg-[#e05a00] px-4 py-2.5 rounded-xl transition-all shadow-md flex-shrink-0">Claim 10% Off &rarr;</a>
+                  <div class="mt-4 h-8 w-px bg-white/40 mx-auto"></div>
+                </div>
+                <div class="flex flex-col space-y-4">
+                  <a href="https://www.facebook.com/share/1JYojEJGiL/" target="_blank" rel="noopener noreferrer" class="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg" aria-label="Facebook">
+                    <svg class="w-5 h-5 text-[#1877F2] group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  </a>
+                  <a href="https://www.tiktok.com/@sherpa.soul?_t=ZS-8ytRMKvOf4a&_r=1" target="_blank" rel="noopener noreferrer" class="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg" aria-label="Tiktok">
+                    <svg class="w-5 h-5 text-slate-900 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.88a8.21 8.21 0 004.79 1.54V7.01a4.85 4.85 0 01-1.02-.32z" /></svg>
+                  </a>
+                  <a href="https://www.youtube.com/@HotelSherpaSoul26" target="_blank" rel="noopener noreferrer" class="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg" aria-label="YouTube">
+                    <svg class="w-5 h-5 text-[#FF0000] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
+                  </a>
+                  <a href="https://wa.me/9779818259472?text=Hi%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability." target="_blank" rel="noopener noreferrer" class="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg" aria-label="WhatsApp">
+                    <svg class="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+                  </a>
+                </div>
+                <div class="mt-6 h-8 w-px bg-white/40 mx-auto"></div>
+              </div>
+
+              <!-- Content Panel -->
+              <div class="relative z-10 w-full min-h-screen flex items-center px-6 sm:px-12 lg:px-20 pt-28 pb-12 max-w-7xl text-white text-left">
+                <div class="space-y-5 sm:space-y-6 max-w-2xl">
+                  <div class="text-xs sm:text-sm uppercase tracking-[0.25em] text-amber-300 font-semibold drop-shadow">WELCOME TO HOTEL SHERPA SOUL • THAMEL, KATHMANDU</div><h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight text-white drop-shadow-md">Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu</h1><p class="text-white/90 text-base sm:text-lg leading-relaxed font-light drop-shadow">A boutique hotel on Thamel Bhagawati Marg 26 — clean rooms, peaceful nights, 24/7 hot showers, free luggage storage, and warm Himalayan hospitality.</p><div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-1"><a href="/rooms" class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/80 hover:border-white font-bold text-sm sm:text-base backdrop-blur-md transition-all duration-300 transform hover:scale-105 shadow-lg min-h-[44px]"><span>Check Availability</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a><button class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-h-[44px]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-4 h-4" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg><span>Book Direct &amp; Save 10%</span></button></div><div class="flex flex-wrap items-center gap-3 sm:gap-5 text-xs sm:text-sm text-slate-200 font-medium"><span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-4 h-4 text-[#FB6C01]" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg><span>Central Thamel Location</span></span><span class="text-white/40">•</span><span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bed w-4 h-4 text-[#FB6C01]" aria-hidden="true"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg><span>Comfortable Rooms</span></span><span class="text-white/40">•</span><span class="flex items-center gap-1.5"><span class="text-base leading-none">🪷</span><span>Peaceful Stay</span></span></div><div class="flex items-center gap-3 md:hidden pt-2"><a href="https://www.facebook.com/share/1JYojEJGiL/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook w-4 h-4 text-white hover:text-amber-300 transition-colors duration-300" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a><a href="https://www.tiktok.com/@sherpa.soul?_t=ZS-8ytRMKvOf4a&amp;_r=1" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300" aria-label="Tiktok"><svg class="w-4 h-4 text-white hover:text-amber-300 transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.33-6.34V8.88a8.21 8.21 0 004.79 1.54V7.01a4.85 4.85 0 01-1.02-.32z"></path></svg></a><a href="https://www.youtube.com/@HotelSherpaSoul26" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300" aria-label="YouTube"><svg class="w-4 h-4 text-white hover:text-amber-300 transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></a><a href="https://wa.me/9779818259472?text=Hi%20Hotel%20Sherpa%20Soul%2C%20I%20would%20like%20to%20check%20room%20availability." target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300" aria-label="WhatsApp"><svg class="w-4 h-4 text-white hover:text-amber-300 transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg></a></div>
                 </div>
               </div>
-
-              <div class="flex flex-wrap items-center gap-4 pt-2">
-                <a href="/book/budget-family-room" class="px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl transition-all">Book Direct & Save 10%</a>
-                <a href="/rooms" class="px-8 py-4 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#01366E] border-2 border-white/70 font-semibold text-base sm:text-lg transition-all">Explore Our Rooms &rarr;</a>
-              </div>
-
-              <div class="pt-4 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-200 font-medium">
-                <span>📍 Central Thamel Location</span>
-                <span>•</span>
-                <span>🛏️ Comfortable Rooms</span>
-                <span>•</span>
-                <span>🪷 Peaceful Stay (No Noise)</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Stats Bar -->
-        <section class="bg-white py-8 border-y border-slate-200 shadow-sm">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <div class="text-2xl sm:text-3xl font-extrabold text-[#01366E]">4.9 / 5.0</div>
-              <div class="text-xs sm:text-sm text-slate-600 mt-1">Guest Review Rating</div>
-            </div>
-            <div>
-              <div class="text-2xl sm:text-3xl font-extrabold text-[#FB6C01]">24/7 Front Desk</div>
-              <div class="text-xs sm:text-sm text-slate-600 mt-1">Check-in & Travel Desk</div>
-            </div>
-            <div>
-              <div class="text-2xl sm:text-3xl font-extrabold text-[#01366E]">Heart of Thamel</div>
-              <div class="text-xs sm:text-sm text-slate-600 mt-1">Thamel Bhagawati Marg 26</div>
-            </div>
-            <div>
-              <div class="text-2xl sm:text-3xl font-extrabold text-[#FB6C01]">100% Himalayan</div>
-              <div class="text-xs sm:text-sm text-slate-600 mt-1">Authentic Hospitality</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Intro Section -->
-        <section class="py-20 px-6 sm:px-12 lg:px-20 bg-[#FFFBF7]">
-          <div class="max-w-4xl mx-auto text-center space-y-6">
-            <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">THAMEL OUTSIDE • PEACE INSIDE</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#01366E]">A Simple Stay in Thamel. A Better Night's Sleep.</h2>
-            <p class="text-lg text-slate-700 leading-relaxed font-light">Thamel is full of energy, cultural bazaars, and mountain excitement. Hotel Sherpa Soul gives you a quieter sanctuary to come home to. Our brand motto: <strong class="text-[#01366E]">"No Restaurant. No Noise. Sleep Well."</strong> We intentionally keep things peaceful, clean, and practical for travelers who want quality rest.</p>
-          </div>
-        </section>
-
-        <!-- Rooms Showcase Section -->
-        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div class="text-center max-w-3xl mx-auto mb-14">
-            <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">OUR ACCOMMODATIONS</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#01366E] mt-2">Your Room. Your Space. Your Rest.</h2>
-            <p class="text-slate-600 text-base sm:text-lg mt-3">Clean, quiet, and equipped with fiber-optic Wi-Fi, 24/7 hot water, private en-suite bathrooms, and access to our shared self-kitchen.</p>
+            </section>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Room 1 -->
-            <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col">
-              <div class="relative h-64 overflow-hidden">
-                <img src="/triple.webp" alt="Budget Family Room - Hotel Sherpa Soul Thamel Kathmandu" class="w-full h-full object-cover" width="400" height="250" loading="lazy" />
-                <div class="absolute top-4 right-4 bg-[#01366E] text-white px-3 py-1.5 rounded-xl font-bold text-sm">$20 USD / ~NPR 2,700</div>
-              </div>
-              <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div>
-                  <h3 class="text-xl font-bold text-[#01366E]">Budget Family Room</h3>
-                  <p class="text-xs text-slate-500 mt-1">3 Adults, 1 Child • 1 King Bed + 1 Single Bed</p>
-                  <p class="text-sm text-slate-600 mt-3 leading-relaxed">Spacious and budget-friendly room for families and trekking groups resting before and after Himalayan trails.</p>
+          <!-- 2. Direct Booking Offer -->
+          <section class="py-10 bg-amber-50/60 border-y border-amber-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="flex flex-col lg:flex-row items-center gap-8">
+                <div class="flex-1 space-y-3">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-[#FB6C01] text-xs font-bold uppercase tracking-wider mb-1">
+                    <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+                    <span>Why Book Direct</span>
+                  </div>
+                  <h2 class="text-xl sm:text-2xl font-bold text-[#01366E]">
+                    Book Directly with Us &amp; Save 10%
+                  </h2>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-sm">
+                      <div class="p-1.5 rounded-lg bg-slate-50 shrink-0 mt-0.5">
+                        <svg class="w-5 h-5 text-[#FB6C01]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+                      </div>
+                      <div>
+                        <strong class="block text-xs sm:text-sm text-slate-900 font-bold">10% Direct Booking Discount</strong>
+                        <span class="text-[11px] text-slate-500 leading-snug block">Instant 10% savings when booking directly with us — no OTA markups.</span>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-sm">
+                      <div class="p-1.5 rounded-lg bg-slate-50 shrink-0 mt-0.5">
+                        <svg class="w-5 h-5 text-[#01366E]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+                      </div>
+                      <div>
+                        <strong class="block text-xs sm:text-sm text-slate-900 font-bold">Free Luggage Storage</strong>
+                        <span class="text-[11px] text-slate-500 leading-snug block">Leave your bags safely while trekking the Himalayas.</span>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-sm">
+                      <div class="p-1.5 rounded-lg bg-slate-50 shrink-0 mt-0.5">
+                        <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      </div>
+                      <div>
+                        <strong class="block text-xs sm:text-sm text-slate-900 font-bold">Instant WhatsApp Confirmation</strong>
+                        <span class="text-[11px] text-slate-500 leading-snug block">24/7 replies, airport transfer help, and personal assistance.</span>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-sm">
+                      <div class="p-1.5 rounded-lg bg-slate-50 shrink-0 mt-0.5">
+                        <svg class="w-5 h-5 text-[#FB6C01]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                      </div>
+                      <div>
+                        <strong class="block text-xs sm:text-sm text-slate-900 font-bold">Book Direct &amp; Save 10%</strong>
+                        <span class="text-[11px] text-slate-500 leading-snug block">Transparent, honest pricing with no hidden fees.</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span class="text-xs text-emerald-600 font-bold">10% OFF with direct booking</span>
-                  <a href="/room/budget-family-room" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
+
+                <!-- Right: Single CTA -->
+                <div class="flex flex-col items-center gap-3 shrink-0">
+                  <a href="/book-now" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 min-h-[48px]">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                    <span>Book Direct &amp; Save 10%</span>
+                  </a>
+                  <p class="text-[11px] text-slate-500 text-center font-medium">
+                    🛡️ Best direct-booking offer. Contact us for availability.
+                  </p>
                 </div>
               </div>
-            </article>
+            </div>
+          </section>
 
-            <!-- Room 2 -->
-            <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col">
-              <div class="relative h-64 overflow-hidden">
-                <img src="/changes_photo/singleBedWithSofa.webp" alt="Deluxe Room - Hotel Sherpa Soul Thamel Kathmandu" class="w-full h-full object-cover" width="400" height="250" loading="lazy" />
-                <div class="absolute top-4 right-4 bg-[#01366E] text-white px-3 py-1.5 rounded-xl font-bold text-sm">$20 USD / ~NPR 2,700</div>
-              </div>
-              <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div>
-                  <h3 class="text-xl font-bold text-[#01366E]">Deluxe Room</h3>
-                  <p class="text-xs text-slate-500 mt-1">2 Adults, 1 Child • 1 King Bed • Air Conditioned</p>
-                  <p class="text-sm text-slate-600 mt-3 leading-relaxed">Quiet boutique room with king mattress, climate control (AC), private modern bathroom, and city views.</p>
+          <!-- 3. Why Stay at Hotel Sherpa Soul -->
+          <section class="py-16 bg-white border-b border-slate-100 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#FB6C01] text-xs font-semibold tracking-wide uppercase mb-3">
+                  <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+                  <span>Why Stay at Hotel Sherpa Soul</span>
                 </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span class="text-xs text-emerald-600 font-bold">10% OFF with direct booking</span>
-                  <a href="/room/deluxe-room" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
-                </div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#01366E] tracking-tight">
+                  Comfortable, Quiet Accommodation in Thamel
+                </h2>
+                <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+                  Honest, practical boutique hospitality in Kathmandu. No exaggerated claims — just clean comfort, quiet nights, and personal care.
+                </p>
               </div>
-            </article>
 
-            <!-- Room 3 -->
-            <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col">
-              <div class="relative h-64 overflow-hidden">
-                <img src="/changes_photo/doubleBed.webp" alt="Family Room - Hotel Sherpa Soul Thamel Kathmandu" class="w-full h-full object-cover" width="400" height="250" loading="lazy" />
-                <div class="absolute top-4 right-4 bg-[#01366E] text-white px-3 py-1.5 rounded-xl font-bold text-sm">$30 USD / ~NPR 4,000</div>
-              </div>
-              <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div>
-                  <h3 class="text-xl font-bold text-[#01366E]">Family Room</h3>
-                  <p class="text-xs text-slate-500 mt-1">3 Adults, 1 Child • King Bed + Single Bed • AC</p>
-                  <p class="text-sm text-slate-600 mt-3 leading-relaxed">Extra spacious deluxe accommodation with air conditioning, premium linen, hot shower, and shared kitchen access.</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-50/70 rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                  <div>
+                    <div class="w-13 h-13 rounded-xl bg-white border border-slate-200 flex items-center justify-center mb-5 group-hover:border-orange-200 transition-colors duration-300 shadow-xs">
+                      <svg class="w-7 h-7 text-[#FB6C01]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <span class="text-xs font-bold text-[#FB6C01] uppercase tracking-wider block mb-1">Quiet Thamel Location</span>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">Peaceful Alleyway Setting</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Located on Thamel Bhagawati Marg 26, steps away from central shops and bakeries, yet peacefully insulated from late-night bar and street noise.</p>
+                  </div>
                 </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span class="text-xs text-emerald-600 font-bold">10% OFF with direct booking</span>
-                  <a href="/room/family-room" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
+
+                <div class="bg-slate-50/70 rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                  <div>
+                    <div class="w-13 h-13 rounded-xl bg-white border border-slate-200 flex items-center justify-center mb-5 group-hover:border-orange-200 transition-colors duration-300 shadow-xs">
+                      <svg class="w-7 h-7 text-[#01366E]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    </div>
+                    <span class="text-xs font-bold text-[#FB6C01] uppercase tracking-wider block mb-1">Quiet Atmosphere</span>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">Restful &amp; Undisturbed Sleep</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Designed for peaceful stays away from loud restaurant and bar noise inside the property. Spotless rooms and deep, restorative sleep are our priority.</p>
+                  </div>
+                </div>
+
+                <div class="bg-slate-50/70 rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                  <div>
+                    <div class="w-13 h-13 rounded-xl bg-white border border-slate-200 flex items-center justify-center mb-5 group-hover:border-orange-200 transition-colors duration-300 shadow-xs">
+                      <svg class="w-7 h-7 text-[#FB6C01]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8Z"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg>
+                    </div>
+                    <span class="text-xs font-bold text-[#FB6C01] uppercase tracking-wider block mb-1">Guest Kitchen</span>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">Shared Kitchen for Light Cooking</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Equipped with an induction cooktop, refrigerator, microwave, and kettle, giving guests the flexibility to prepare simple home meals and brew fresh tea.</p>
+                  </div>
+                </div>
+
+                <div class="bg-slate-50/70 rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                  <div>
+                    <div class="w-13 h-13 rounded-xl bg-white border border-slate-200 flex items-center justify-center mb-5 group-hover:border-orange-200 transition-colors duration-300 shadow-xs">
+                      <svg class="w-7 h-7 text-[#01366E]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <span class="text-xs font-bold text-[#FB6C01] uppercase tracking-wider block mb-1">Trekker-Friendly</span>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">Free Luggage Storage &amp; 24/7 Desk</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Heading to Everest, Annapurna, or Langtang? Leave your extra gear safely in our luggage room free of charge until you return from your trek.</p>
+                  </div>
                 </div>
               </div>
-            </article>
-          </div>
-        </section>
+            </div>
+          </section>
 
-        <!-- Facilities & Services Section -->
-        <section class="py-16 bg-slate-50 border-t border-slate-200">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-              <h2 class="text-2xl sm:text-3xl font-bold text-[#01366E]">Practical Hotel Amenities for Travellers</h2>
-              <p class="text-sm text-slate-600 mt-2">Thoughtfully designed for comfort, convenience, and Himalayan exploration.</p>
+          <!-- 4. Accommodations Showcase Section -->
+          <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="rooms">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+              <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">OUR ACCOMMODATIONS</span>
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-[#01366E] mt-2">Your Room. Your Space. Your Rest.</h2>
+              <p class="text-slate-600 text-base sm:text-lg mt-3">Clean, quiet, and equipped with fiber-optic Wi-Fi, 24/7 hot water, private en-suite bathrooms, and access to our shared self-kitchen.</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <div class="text-2xl mb-2">🍳</div>
-                <h3 class="font-bold text-slate-800 text-sm">Shared Guest Kitchen</h3>
-                <p class="text-xs text-slate-500 mt-1">Equipped kitchen for cooking and tea</p>
-              </div>
-              <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <div class="text-2xl mb-2">🚿</div>
-                <h3 class="font-bold text-slate-800 text-sm">24/7 Hot Water Shower</h3>
-                <p class="text-xs text-slate-500 mt-1">High pressure hot water in every room</p>
-              </div>
-              <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <div class="text-2xl mb-2">🛄</div>
-                <h3 class="font-bold text-slate-800 text-sm">Free Luggage Storage</h3>
-                <p class="text-xs text-slate-500 mt-1">Secure storage during Himalayan treks</p>
-              </div>
-              <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <div class="text-2xl mb-2">📶</div>
-                <h3 class="font-bold text-slate-800 text-sm">High-Speed Fiber Wi-Fi</h3>
-                <p class="text-xs text-slate-500 mt-1">Fast connection throughout the hotel</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        <!-- FAQs Section -->
-        <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-          <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-bold text-[#01366E]">Frequently Asked Questions</h2>
-            <p class="text-sm text-slate-600 mt-1">Everything you need to know about staying at Hotel Sherpa Soul in Thamel.</p>
-          </div>
-          <div class="space-y-4">
-            <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-              <h3 class="font-bold text-slate-800 text-base">Where is Hotel Sherpa Soul located in Kathmandu?</h3>
-              <p class="text-sm text-slate-600 mt-2">Hotel Sherpa Soul is situated on Thamel Bhagawati Marg 26 in the heart of Thamel, Kathmandu, Nepal. We are within walking distance to famous restaurants, cafés, and trekking gear shops, and 6 km from Tribhuvan International Airport.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- Room 1: Budget Family Room -->
+              <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col">
+                <div class="relative h-64 overflow-hidden bg-slate-100">
+                  <img src="/triple.webp" alt="Budget Family Room at Hotel Sherpa Soul Thamel Kathmandu" class="w-full h-full object-cover" width="400" height="260" loading="lazy" decoding="async" />
+                  <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs font-semibold">
+                    <span class="text-amber-300 font-bold text-sm sm:text-base">$20 USD</span>
+                    <span class="text-slate-300 text-[11px] block">~NPR 2,700 / night</span>
+                  </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <h3 class="text-xl font-bold text-[#01366E]">Budget Family Room</h3>
+                    <p class="text-xs text-slate-500 mt-1">Up to 4 Guests (3 Adults, 1 Child) • 1 King Bed + 1 Single Bed</p>
+                    <p class="text-sm text-slate-600 mt-3 leading-relaxed">Spacious and budget-friendly room for families and trekking groups resting before and after Himalayan trails.</p>
+                  </div>
+                  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="text-xs text-emerald-600 font-bold">10% OFF with direct booking</span>
+                    <a href="/room/budget-family-room" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Room 2: Deluxe Room (AC) -->
+              <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-amber-400 ring-2 ring-amber-400/20 flex flex-col relative">
+                <div class="absolute top-3 left-3 z-10 bg-[#FB6C01] text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                  Most Popular
+                </div>
+                <div class="relative h-64 overflow-hidden bg-slate-100">
+                  <img src="/changes_photo/singleBedWithSofa.webp" alt="Deluxe Room (AC) at Hotel Sherpa Soul Thamel Kathmandu" class="w-full h-full object-cover" width="400" height="260" loading="lazy" decoding="async" />
+                  <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs font-semibold">
+                    <span class="text-amber-300 font-bold text-sm sm:text-base">$20 USD</span>
+                    <span class="text-slate-300 text-[11px] block">~NPR 2,700 / night</span>
+                  </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <h3 class="text-xl font-bold text-[#01366E]">Deluxe Room (AC)</h3>
+                    <p class="text-xs text-slate-500 mt-1">Up to 3 Guests (2 Adults, 1 Child) • 1 King Bed • Air Conditioned</p>
+                    <p class="text-sm text-slate-600 mt-3 leading-relaxed">Quiet boutique room with king mattress, climate control (AC), private modern bathroom, and city views.</p>
+                  </div>
+                  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="text-xs text-emerald-600 font-bold">10% OFF with direct booking</span>
+                    <a href="/room/deluxe-room" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Room 3: Family Room (AC) -->
+              <article class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col">
+                <div class="relative h-64 overflow-hidden bg-slate-100">
+                  <img src="/changes_photo/doubleBed.webp" alt="Family Room (AC) at Hotel Sherpa Soul Thamel Kathmandu" class="w-full h-full object-cover" width="400" height="260" loading="lazy" decoding="async" />
+                  <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-xl text-xs font-semibold">
+                    <span class="text-amber-300 font-bold text-sm sm:text-base">$30 USD</span>
+                    <span class="text-slate-300 text-[11px] block">~NPR 4,000 / night</span>
+                  </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <h3 class="text-xl font-bold text-[#01366E]">Family Room (AC)</h3>
+                    <p class="text-xs text-slate-500 mt-1">Up to 4 Guests (3 Adults, 1 Child) • 1 King Bed + 1 Single Bed • AC</p>
+                    <p class="text-sm text-slate-600 mt-3 leading-relaxed">Spacious family suite featuring air conditioning, one king bed and one single bed, private bathroom, and extra room for luggage.</p>
+                  </div>
+                  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="text-xs text-emerald-600 font-bold">10% OFF with direct booking</span>
+                    <a href="/room/family-room" class="text-sm font-bold text-[#FB6C01] hover:underline">View Room Details &rarr;</a>
+                  </div>
+                </div>
+              </article>
             </div>
-            <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-              <h3 class="font-bold text-slate-800 text-base">What are the check-in and check-out times?</h3>
-              <p class="text-sm text-slate-600 mt-2">Check-in begins at 14:00 (2:00 PM) and check-out is until 12:00 (12:00 PM noon). Our front desk is open 24/7 with flexible early check-in or late check-out available on request.</p>
+          </section>
+
+          <!-- 5. Facilities & Services Section -->
+          <section class="py-20 bg-stone-50 border-t border-slate-200/80" id="facilities">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider">
+                  <span>❖</span>
+                  <span>Verified Hotel Amenities</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#01366E] tracking-tight">
+                  Hotel Facilities &amp; Practical Services
+                </h2>
+                <p class="mt-3 text-slate-600 text-base sm:text-lg leading-relaxed">
+                  Thoughtfully planned for international tourists, backpackers, and trekking teams who appreciate functional comfort.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md flex flex-col justify-between">
+                  <div class="h-56 overflow-hidden">
+                    <img src="/shared_kitchen_new.webp" alt="Shared Guest Kitchen at Hotel Sherpa Soul Thamel Kathmandu" class="w-full h-full object-cover" width="600" height="320" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="p-6 sm:p-8 space-y-3">
+                    <span class="text-xs font-bold text-[#FB6C01] uppercase tracking-wider">Self-Catering Convenience</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-[#01366E]">Shared Guest Kitchen</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Cook your own meals, prepare special dietary requirements, or brew warm Himalayan tea anytime. Fully equipped with an induction stove, refrigerator, microwave, and cooking utensils.</p>
+                  </div>
+                </div>
+
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md flex flex-col justify-between">
+                  <div class="h-56 overflow-hidden">
+                    <img src="/frontdesk_new.webp" alt="24/7 Front Desk Reception at Hotel Sherpa Soul Kathmandu" class="w-full h-full object-cover" width="600" height="320" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="p-6 sm:p-8 space-y-3">
+                    <span class="text-xs font-bold text-[#FB6C01] uppercase tracking-wider">Always Available</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-[#01366E]">24/7 Reception &amp; Travel Desk</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Whether you arrive on a late-night international flight or leave before dawn for a mountain trek, our team is always on duty to welcome you and assist with luggage and transport.</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-              <h3 class="font-bold text-slate-800 text-base">Do you provide airport transfer and pickup services?</h3>
-              <p class="text-sm text-slate-600 mt-2">Yes, we provide reliable airport pickup and drop-off transfers between Kathmandu Airport (KTM) and the hotel. Contact us on WhatsApp at +977 9818259472 to arrange your transfer.</p>
+          </section>
+
+          <!-- 6. Location Section -->
+          <section class="py-20 bg-white border-t border-slate-200" id="location">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider">
+                  <svg class="w-3.5 h-3.5 text-[#FB6C01]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Prime Thamel Location</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#01366E] tracking-tight">
+                  Hotel Sherpa Soul in Thamel, Kathmandu
+                </h2>
+                <p class="mt-3 text-slate-600 text-base sm:text-lg leading-relaxed">
+                  Conveniently situated on Thamel Bhagawati Marg 26. Step outside into the energetic culture and dining of Thamel, yet return to a quiet, noise-insulated boutique hotel at night.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div class="lg:col-span-5 space-y-6">
+                  <div class="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200 space-y-6 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-900 border-b border-slate-200 pb-3">Property Address &amp; Contact</h3>
+                    <div class="space-y-4 text-sm text-slate-700">
+                      <div>
+                        <strong class="block text-slate-900">Hotel Sherpa Soul</strong>
+                        <span>Thamel Bhagawati Marg 26, Kathmandu, Nepal</span>
+                      </div>
+                      <div>
+                        <span class="text-xs text-slate-500 block">Front Desk (24/7):</span>
+                        <a href="tel:+9779851068219" class="font-bold text-[#01366E] hover:text-[#FB6C01] hover:underline">+977 9851068219</a>
+                      </div>
+                      <div>
+                        <span class="text-xs text-slate-500 block">WhatsApp Support:</span>
+                        <a href="https://wa.me/9779818259472" target="_blank" rel="noopener noreferrer" class="font-bold text-emerald-600 hover:underline">+977 9818259472</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                  <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[480px] sm:h-[560px] relative">
+                    <iframe title="Hotel Sherpa Soul Location Map" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3532.0353113216966!2d85.310969!3d27.716196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDQyJzU4LjMiTiA4NcKwMTgnMzkuNSJF!5e0!3m2!1sen!2snp!4v1756878746121!5m2!1sen!2snp" width="100%" height="100%" style="border: 0" loading="lazy" class="w-full h-full"></iframe>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-              <h3 class="font-bold text-slate-800 text-base">Can I store my luggage while on a trek?</h3>
-              <p class="text-sm text-slate-600 mt-2">Yes, we offer complimentary secure luggage storage before check-in, after check-out, and during multi-day Himalayan journeys until you return.</p>
+          </section>
+
+          <!-- 7. Trekker-Friendly Services -->
+          <section class="py-20 bg-gradient-to-b from-white via-amber-50/20 to-white relative overflow-hidden border-t border-slate-100" id="trekkers">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-widest mb-3">
+                  <span>Trekker-Friendly Services</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#01366E] tracking-tight mb-4">
+                  Made for Your Himalayan Journey
+                </h2>
+                <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                  Kathmandu is the gateway to Nepal's trails. Whether you are trekking Everest Base Camp, Annapurna Circuit, Langtang, or exploring the valley, Hotel Sherpa Soul provides a reliable, welcoming base.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-amber-100">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-[#FB6C01] bg-orange-50 px-2.5 py-1 rounded-lg mb-2.5 inline-block">01 • Gear Prep &amp; Free Storage</span>
+                  <h3 class="text-xl font-bold text-slate-900 mb-2">Before the Trek</h3>
+                  <p class="text-slate-600 text-sm leading-relaxed">Rest after international flights, organize your gear, finalize route permits, and safely store your extra city bags in our secure luggage room free of charge.</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-amber-100">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-[#01366E] bg-blue-50 px-2.5 py-1 rounded-lg mb-2.5 inline-block">02 • 24/7 Hot Shower &amp; Deep Sleep</span>
+                  <h3 class="text-xl font-bold text-slate-900 mb-2">After the Trek</h3>
+                  <p class="text-slate-600 text-sm leading-relaxed">Return from the Himalayas to a high-pressure hot shower, clean bed, peaceful surroundings, and a well-deserved deep sleep in Thamel.</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-amber-100">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-[#FB6C01] bg-orange-50 px-2.5 py-1 rounded-lg mb-2.5 inline-block">03 • Authentic Local Knowledge</span>
+                  <h3 class="text-xl font-bold text-slate-900 mb-2">Sherpa Guidance &amp; Support</h3>
+                  <p class="text-slate-600 text-sm leading-relaxed">Drawing from authentic Himalayan heritage, our front desk assists with permit advice, Lukla/Pokhara flight coordination, and practical Nepal travel tips.</p>
+                </div>
+              </div>
             </div>
-            <div class="p-5 rounded-2xl bg-amber-50/70 border border-amber-200 shadow-sm">
-              <h3 class="font-bold text-slate-800 text-base">Where can I read your house rules, Wi-Fi, and guest guide?</h3>
-              <p class="text-sm text-slate-600 mt-2">Please explore our comprehensive <a href="/guest-guide" class="text-[#FB6C01] font-bold hover:underline">Guest Guide &amp; House Rules</a> for quiet hours, Wi-Fi instructions, shared kitchen etiquette, and front desk assistance. All reservations are protected under our <a href="/privacy" class="text-[#01366E] font-bold hover:underline">Privacy Policy</a> and <a href="/terms" class="text-[#01366E] font-bold hover:underline">Terms of Service</a>.</p>
+          </section>
+
+          <!-- 8. Guest Reviews Section -->
+          <section class="py-20 bg-slate-50 border-t border-slate-200" id="reviews">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <span class="text-xs font-bold tracking-widest text-[#FB6C01] uppercase">AUTHENTIC GUEST EXPERIENCES</span>
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-[#01366E] mt-2">Rated 4.9/5 on Google Reviews</h2>
+              <p class="text-slate-600 text-base max-w-2xl mx-auto mt-3">Read what international travelers and trekkers say about their peaceful stay at Hotel Sherpa Soul in Thamel.</p>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 text-left">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                  <div class="flex items-center gap-1 text-amber-400 mb-3">★★★★★</div>
+                  <p class="text-slate-700 text-sm italic">"Wonderful stay at hotel Sherpa soul in thamel kathmandu."</p>
+                  <p class="text-xs font-bold text-[#01366E] mt-4">Kamal Gc • Verified Google Review</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                  <div class="flex items-center gap-1 text-amber-400 mb-3">★★★★★</div>
+                  <p class="text-slate-700 text-sm italic">"Peaceful environment, very clean rooms, and kind Sherpa hosts right in Thamel. Loved having access to the shared kitchen after trekking."</p>
+                  <p class="text-xs font-bold text-[#01366E] mt-4">Furdiki Sherpa • Verified Google Review</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                  <div class="flex items-center gap-1 text-amber-400 mb-3">★★★★★</div>
+                  <p class="text-slate-700 text-sm italic">"Clean, quiet hotel tucked in an alley off Bhagawati Marg. Free luggage storage while I was doing the Annapurna Circuit was a lifesaver."</p>
+                  <p class="text-xs font-bold text-[#01366E] mt-4">David M. (UK) • Verified Google Review</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                  <div class="flex items-center gap-1 text-amber-400 mb-3">★★★★★</div>
+                  <p class="text-slate-700 text-sm italic">"Super friendly family running this place. Hot showers had great pressure 24/7 and the high-speed Wi-Fi worked seamlessly on our laptop."</p>
+                  <p class="text-xs font-bold text-[#01366E] mt-4">Sophie &amp; Liam (Australia) • Verified Review</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
+
+          <!-- 9. FAQs Section -->
+          <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" id="faq">
+            <div class="text-center mb-10">
+              <h2 class="text-2xl sm:text-3xl font-bold text-[#01366E]">Frequently Asked Questions</h2>
+              <p class="text-sm text-slate-600 mt-1">Everything you need to know about staying at Hotel Sherpa Soul in Thamel.</p>
+            </div>
+            <div class="space-y-4">
+              <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <h3 class="font-bold text-slate-800 text-base">Where is Hotel Sherpa Soul located in Kathmandu?</h3>
+                <p class="text-sm text-slate-600 mt-2">Hotel Sherpa Soul is situated on Thamel Bhagawati Marg 26 in the heart of Thamel, Kathmandu, Nepal. We are within walking distance to famous restaurants, cafés, and trekking gear shops, and 6 km from Tribhuvan International Airport.</p>
+              </div>
+              <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <h3 class="font-bold text-slate-800 text-base">What are the check-in and check-out times?</h3>
+                <p class="text-sm text-slate-600 mt-2">Check-in begins at 14:00 (2:00 PM) and check-out is until 12:00 (12:00 PM noon). Our front desk is open 24/7 with flexible early check-in or late check-out available on request.</p>
+              </div>
+              <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <h3 class="font-bold text-slate-800 text-base">Do you provide airport transfer and pickup services?</h3>
+                <p class="text-sm text-slate-600 mt-2">Yes, we provide reliable airport pickup and drop-off transfers between Kathmandu Airport (KTM) and the hotel. Contact us on WhatsApp at +977 9818259472 to arrange your transfer.</p>
+              </div>
+              <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <h3 class="font-bold text-slate-800 text-base">Can I store my luggage while on a trek?</h3>
+                <p class="text-sm text-slate-600 mt-2">Yes, we offer complimentary secure luggage storage before check-in, after check-out, and during multi-day Himalayan journeys until you return.</p>
+              </div>
+              <div class="p-5 rounded-2xl bg-amber-50/70 border border-amber-200 shadow-sm">
+                <h3 class="font-bold text-slate-800 text-base">Where can I read your house rules, Wi-Fi, and guest guide?</h3>
+                <p class="text-sm text-slate-600 mt-2">Please explore our comprehensive <a href="/guest-guide" class="text-[#FB6C01] font-bold hover:underline">Guest Guide &amp; House Rules</a> for quiet hours, Wi-Fi instructions, shared kitchen etiquette, and front desk assistance. All reservations are protected under our <a href="/privacy" class="text-[#01366E] font-bold hover:underline">Privacy Policy</a> and <a href="/terms" class="text-[#01366E] font-bold hover:underline">Terms of Service</a>.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 10. Final Booking CTA -->
+          <section class="py-20 bg-gradient-to-br from-[#01366E] via-[#072444] to-slate-900 text-white relative overflow-hidden" id="booking-cta">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-amber-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+                <span>Direct Booking Privilege</span>
+              </div>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+                Ready to Sleep Well in Thamel, Kathmandu?
+              </h2>
+              <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8 font-light">
+                Enjoy clean rooms, quiet nights, 24/7 hot showers, and trekker luggage storage. Book directly with Hotel Sherpa Soul for the best rates and instant WhatsApp support.
+              </p>
+              <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="/book-now" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-600 hover:to-[#FB6C01] text-white font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 min-h-[48px]">
+                  <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                  <span>Book Direct &amp; Save 10%</span>
+                </a>
+                <a href="tel:+9779851068219" class="w-full sm:w-auto px-6 py-4 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#01366E] border border-white/40 font-semibold text-base transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 min-h-[48px]">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span>Call +977 9851068219</span>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
       ${FOOTER_HTML}
     `
   },
@@ -1635,43 +1876,51 @@ if (cssFile) {
   const cssHref = `/assets/${cssFile}`;
   const fullCss = fs.readFileSync(path.join(assetsDir, cssFile), 'utf8');
 
-  // Base reset, properties, and theme variables
-  const utilsIdx = fullCss.indexOf('@layer utilities');
-  const baseAndTheme = utilsIdx !== -1 ? fullCss.slice(0, utilsIdx) : '';
-  const utilsCss = utilsIdx !== -1 ? fullCss.slice(utilsIdx) : fullCss;
-
-  // Extract all classes from above-the-fold HTML (Navbar + Hero)
+  // Extract all classes from above-the-fold HTML (Navbar + Hero + DirectOffer)
   const criticalClasses = new Set();
   const classRe = /class=["']([^"']+)["']/g;
   let cm;
-  const sampleHtml = NAV_HTML + (ROUTES[0] ? ROUTES[0].content.slice(0, 10000) : '');
+  const sampleHtml = NAV_HTML + (ROUTES[0] ? ROUTES[0].content.slice(0, 15000) : '');
   while ((cm = classRe.exec(sampleHtml)) !== null) {
     cm[1].split(/\s+/).forEach(c => c && criticalClasses.add(c));
   }
 
-  function escapeCssRegex(str) {
-    return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-  }
+  // Ensure key layout utilities & display classes are preserved (including global action buttons & ribbons)
+  [
+    'hidden', 'block', 'inline-block', 'flex', 'inline-flex', 'relative', 'absolute', 'fixed',
+    'w-full', 'h-full', 'min-h-screen', 'transition-all', 'duration-300',
+    'bottom-5', 'right-5', 'z-40', 'z-50', 'w-14', 'h-14', 'rounded-full', 'bg-green-500', 'bg-green-600', 'shadow-xl'
+  ].forEach(c => criticalClasses.add(c));
 
-  let criticalUtils = '';
-  for (const cls of criticalClasses) {
-    const escapedInCss = cls
-      .replace(/:/g, '\\:')
-      .replace(/\[/g, '\\[')
-      .replace(/\]/g, '\\]')
-      .replace(/\//g, '\\/')
-      .replace(/#/g, '\\#')
-      .replace(/%/g, '\\%')
-      .replace(/\./g, '\\.');
+  // Use PostCSS to produce 100% syntactically valid critical CSS without regex truncation errors
+  const postcss = require('postcss');
+  const root = postcss.parse(fullCss);
 
-    const ruleRe = new RegExp(`(\\.[^\\{]*${escapeCssRegex(escapedInCss)}[^\\{]*\\{[^\\}]*\\})`, 'g');
-    let rm;
-    while ((rm = ruleRe.exec(utilsCss)) !== null) {
-      criticalUtils += rm[1];
+  function selectorMatches(selector) {
+    for (const cls of criticalClasses) {
+      const cleanCls = cls.replace(/\\/g, '');
+      if (selector.includes(cls) || selector.includes(cleanCls)) {
+        return true;
+      }
     }
+    return false;
   }
 
-  const criticalCss = baseAndTheme + (criticalUtils ? `@layer utilities{${criticalUtils}}` : '');
+  const utilitiesLayer = root.nodes.find(n => n.type === 'atrule' && n.name === 'layer' && n.params === 'utilities');
+  if (utilitiesLayer) {
+    utilitiesLayer.walkRules(rule => {
+      if (!selectorMatches(rule.selector)) {
+        rule.remove();
+      }
+    });
+    utilitiesLayer.walkAtRules(atRule => {
+      if (atRule.nodes && atRule.nodes.length === 0) {
+        atRule.remove();
+      }
+    });
+  }
+
+  const criticalCss = root.toString();
   const criticalStyleTag = `<style id="critical-css">${criticalCss}</style>`;
 
   const asyncCssBlock = `

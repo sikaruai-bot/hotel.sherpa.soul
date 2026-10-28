@@ -516,14 +516,46 @@ export function CMSProvider({ children }) {
       });
     };
 
-    // Defer fetch until after first paint so hero renders immediately
-    if (typeof window !== "undefined" && typeof window.requestIdleCallback === "function") {
-      const id = window.requestIdleCallback(run, { timeout: 4000 });
-      return () => window.cancelIdleCallback(id);
-    } else {
-      const id = setTimeout(run, 0);
-      return () => clearTimeout(id);
+    // Defer fetch until after first paint & interaction so hero renders immediately without long tasks
+    const trigger = () => {
+      run();
+      cleanup();
+    };
+    const cleanup = () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", trigger);
+        window.removeEventListener("touchstart", trigger);
+        window.removeEventListener("mousemove", trigger);
+      }
+    };
+
+    const isCmsAdmin = typeof window !== "undefined" && window.location.pathname.startsWith("/cms");
+    if (isCmsAdmin) {
+      run();
+      return;
     }
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", trigger, { passive: true, once: true });
+      window.addEventListener("touchstart", trigger, { passive: true, once: true });
+      window.addEventListener("mousemove", trigger, { passive: true, once: true });
+    }
+
+    let id;
+    if (typeof window !== "undefined" && typeof window.requestIdleCallback === "function") {
+      id = window.requestIdleCallback(trigger, { timeout: 15000 });
+    } else {
+      id = setTimeout(trigger, 15000);
+    }
+
+    return () => {
+      cleanup();
+      if (typeof window !== "undefined" && window.cancelIdleCallback) {
+        window.cancelIdleCallback(id);
+      } else {
+        clearTimeout(id);
+      }
+    };
   }, [fetchServerCMS]);
 
   // Serialized queue executor with Promise settling

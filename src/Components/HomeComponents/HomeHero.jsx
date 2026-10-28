@@ -226,7 +226,7 @@ export default function HomeIntro() {
 
         {/* Vertical Social Media Links — desktop only */}
         <div
-          className={`absolute ${isArabic ? "left-8" : "right-8"} bottom-8 z-20 hidden md:block animate-social-slide-in`}
+          className={`absolute ${isArabic ? "left-8" : "right-8"} bottom-8 z-20 hidden md:block`}
         >
           <div className="mb-6 text-center">
             <div className="flex flex-col space-y-1 text-white/60 text-sm font-light tracking-widest">
@@ -241,7 +241,7 @@ export default function HomeIntro() {
           </div>
 
           <div className="flex flex-col space-y-4">
-            {socialLinks.map((social, index) => {
+            {socialLinks.map((social) => {
               const IconComponent = social.icon;
               return (
                 <a
@@ -249,8 +249,7 @@ export default function HomeIntro() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg animate-social-link"
-                  style={{ animationDelay: `${0.8 + index * 0.1}s` }}
+                  className="group w-10 h-10 bg-white backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/30 hover:border-white/50 transition-all duration-300 hover:scale-110 shadow-lg"
                   aria-label={social.label}
                 >
                   <IconComponent
@@ -331,7 +330,7 @@ export default function HomeIntro() {
 
             {/* Mobile Social Links */}
             <div className="flex items-center gap-3 md:hidden pt-2">
-              {socialLinks.map((social, index) => {
+              {socialLinks.map((social) => {
                 const IconComponent = social.icon;
                 return (
                   <a
@@ -339,8 +338,7 @@ export default function HomeIntro() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 animate-social-link"
-                    style={{ animationDelay: `${0.8 + index * 0.1}s` }}
+                    className="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300"
                     aria-label={social.label}
                   >
                     <IconComponent className="w-4 h-4 text-white hover:text-amber-300 transition-colors duration-300" />
@@ -410,22 +408,6 @@ export default function HomeIntro() {
         .animate-float {
           animation: float 3s ease-in-out infinite;
           will-change: transform;
-        }
-        @keyframes social-slide-in {
-          from { opacity: 0; transform: translate3d(30px, 0, 0); }
-          to   { opacity: 1; transform: translate3d(0, 0, 0); }
-        }
-        .animate-social-slide-in {
-          animation: social-slide-in 0.8s ease-out 0.5s both;
-          will-change: transform, opacity;
-        }
-        @keyframes social-fade-up {
-          from { opacity: 0; transform: translate3d(0, 15px, 0); }
-          to   { opacity: 1; transform: translate3d(0, 0, 0); }
-        }
-        .animate-social-link {
-          animation: social-fade-up 0.5s ease-out both;
-          will-change: transform, opacity;
         }
       `}</style>
     </div>

@@ -15,6 +15,8 @@ export default function WhatsAppButton() {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 32"
+        width="28"
+        height="28"
         className="w-7 h-7 text-white"
         fill="currentColor"
         aria-hidden="true"
