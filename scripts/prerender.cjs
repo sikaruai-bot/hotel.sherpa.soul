@@ -1880,7 +1880,7 @@ if (cssFile) {
   const criticalClasses = new Set();
   const classRe = /class=["']([^"']+)["']/g;
   let cm;
-  const sampleHtml = NAV_HTML + (ROUTES[0] ? ROUTES[0].content.slice(0, 15000) : '');
+  const sampleHtml = NAV_HTML + (ROUTES[0] ? ROUTES[0].content.slice(0, 30000) : '');
   while ((cm = classRe.exec(sampleHtml)) !== null) {
     cm[1].split(/\s+/).forEach(c => c && criticalClasses.add(c));
   }
@@ -1897,9 +1897,9 @@ if (cssFile) {
   const root = postcss.parse(fullCss);
 
   function selectorMatches(selector) {
+    const cleanSelector = selector.replace(/\\/g, '');
     for (const cls of criticalClasses) {
-      const cleanCls = cls.replace(/\\/g, '');
-      if (selector.includes(cls) || selector.includes(cleanCls)) {
+      if (cleanSelector.includes(cls)) {
         return true;
       }
     }
