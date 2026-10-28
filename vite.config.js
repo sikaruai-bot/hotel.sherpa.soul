@@ -86,6 +86,16 @@ export default defineConfig({
             return "vendor-icons";
           }
 
+          // ---------- axios (booking / API only) ----------
+          if (id.includes("axios")) {
+            return "vendor-axios";
+          }
+
+          // ---------- @vercel/blob (CMS only) ----------
+          if (id.includes("@vercel/blob")) {
+            return "vendor-blob";
+          }
+
           // Everything else goes into a generic vendor chunk
           return "vendor-libs";
         },

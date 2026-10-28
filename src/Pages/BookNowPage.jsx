@@ -16,12 +16,15 @@ import {
   FileText,
   Sparkles,
 } from "lucide-react";
-import { trackMetaEvent, trackBookingCompleted } from "../Components/Analytics/pixelEvents";
+import { trackMetaEvent, trackBookingCompleted, initializeMetaPixel } from "../Components/Analytics/pixelEvents";
 import api from "../Components/Utils/api";
 import { sendEmailNotification } from "../Components/Utils/emailService";
 import { useCMS } from "../Context/CMSContext";
 import { rooms as defaultRooms } from "../Components/HelperComponents/RoomsData";
 import { useExchangeRate } from "../Hooks/useExchangeRate";
+
+// Initialize Meta Pixel early to ensure tracking events fire reliably
+initializeMetaPixel();
 
 export default function BookNowPage() {
   const { t } = useTranslation();
@@ -151,7 +154,10 @@ export default function BookNowPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingRefId, setBookingRefId] = useState("");
   const [totalCalculated, setTotalCalculated] = useState(0);
-
+useEffect(() => {
+  // Initialize Meta Pixel (and GTM) as early as possible
+  initializeMetaPixel();
+}, []);
   // Auto-detect room from router navigation state (e.g. from Book Your Stay modal), URL param, or query
   useEffect(() => {
     if (location.state?.roomDetails) {
@@ -247,12 +253,14 @@ export default function BookNowPage() {
     }
 
     setIsSubmitting(true);
-    const selectedRoom = roomOptions.find((r) => r.label === formData.roomType) || roomOptions[0];
+    const selectedRoom = roomOptions.find(
+      (r) => r.label === formData.roomType || r.title === formData.roomType
+    ) ?? roomOptions[0];
     const nights = Math.max(
       1,
       Math.ceil((new Date(formData.checkOut) - new Date(formData.checkIn)) / (1000 * 60 * 60 * 24))
     );
-    const directRate = selectedRoom.price || Math.round((selectedRoom.originalPrice || 20) * 0.9);
+    const directRate = selectedRoom.price;
     const totalAmount = nights * directRate * (formData.numberOfRooms || 1);
     setTotalCalculated(totalAmount);
 
@@ -277,6 +285,30 @@ export default function BookNowPage() {
       const response = await api.post("/reservations", payload);
       const refId = response.data?.data?.id || `HSS-${Date.now().toString().slice(-6)}`;
       setBookingRefId(refId);
+      // Trigger conversion tracking events with discounted total
+      trackBookingCompleted({
+        room_type: selectedRoom.title,
+        check_in_date: formData.checkIn,
+        check_out_date: formData.checkOut,
+        value: totalAmount,
+        currency: "USD",
+        booking_id: refId,
+        transaction_id: refId,
+        number_of_rooms: formData.numberOfRooms,
+        number_of_guests: formData.numberOfPeople,
+      });
+// Debug: ensure fbq exists and payload is correct
+console.log("[Analytics] Purchase event payload", {
+  fbqExists: typeof window !== "undefined" && typeof window.fbq === "function",
+  value: Number(totalAmount),
+  currency: "USD",
+  transaction_id: String(refId),
+});
+trackMetaEvent("Purchase", {
+  value: Number(totalAmount),
+  currency: "USD",
+  transaction_id: String(refId),
+});
 
       // Trigger official booking confirmation voucher & hotel staff alert email
       sendEmailNotification({
@@ -304,6 +336,31 @@ export default function BookNowPage() {
       console.warn("PMS reservation request recorded with direct reference:", err);
       const fallbackRef = `HSS-${Date.now().toString().slice(-6)}`;
       setBookingRefId(fallbackRef);
+
+      // Trigger conversion tracking events for fallback booking
+      trackBookingCompleted({
+        room_type: selectedRoom.title,
+        check_in_date: formData.checkIn,
+        check_out_date: formData.checkOut,
+        value: totalAmount,
+        currency: "USD",
+        booking_id: fallbackRef,
+        transaction_id: fallbackRef,
+        number_of_rooms: formData.numberOfRooms,
+        number_of_guests: formData.numberOfPeople,
+      });
+// Debug: ensure fbq exists and payload is correct (fallback)
+console.log("[Analytics] Purchase event payload (fallback)", {
+  fbqExists: typeof window !== "undefined" && typeof window.fbq === "function",
+  value: Number(totalAmount),
+  currency: "USD",
+  transaction_id: String(fallbackRef),
+});
+trackMetaEvent("Purchase", {
+  value: Number(totalAmount),
+  currency: "USD",
+  transaction_id: String(fallbackRef),
+});
 
       // Trigger official booking confirmation voucher & hotel staff alert email
       sendEmailNotification({

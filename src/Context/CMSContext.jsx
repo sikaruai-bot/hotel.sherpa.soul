@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from "react";
 import { rooms as initialRooms } from "../Components/HelperComponents/RoomsData";
-import { HOTEL_PRESET_PHOTOS } from "../Components/CMS/mediaUtils";
+import { HOTEL_PRESET_PHOTOS } from "../Components/CMS/presetPhotos";
 
 const CMS_STORAGE_KEY = "HSS_CMS_DATA_V4";
 const CMS_AUTH_KEY = "HSS_CMS_AUTH_TOKEN";

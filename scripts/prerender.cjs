@@ -333,7 +333,7 @@ const ROUTES = [
             <picture>
               <source media="(max-width: 768px)" srcset="/hero/hero_deluxe_room-mobile.webp" type="image/webp" />
               <source media="(min-width: 769px)" srcset="/hero/hero_deluxe_room.webp" type="image/webp" />
-              <img src="/hero/hero_deluxe_room.webp" alt="Hotel Sherpa Soul - Deluxe Boutique Room in Thamel Kathmandu" class="w-full h-full object-cover opacity-60" width="1376" height="768" fetchpriority="high" loading="eager" />
+              <img src="/hero/hero_deluxe_room.webp" alt="Hotel Sherpa Soul - Deluxe Boutique Room in Thamel Kathmandu" class="w-full h-full object-cover opacity-60" width="1024" height="682" fetchpriority="high" loading="eager" />
             </picture>
             <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
           </div>
@@ -1622,6 +1622,78 @@ function generateHtmlForRoute(route) {
 }
 
 console.log('🚀 Starting SSG Pre-rendering for Hotel Sherpa Soul...');
+
+// ============================================================================
+// CRITICAL CSS EXTRACTION & ASYNC FULL STYLESHEET LOADER (LCP Fix)
+// ============================================================================
+const assetsDir = path.join(DIST_DIR, 'assets');
+const cssFile = fs.existsSync(assetsDir)
+  ? fs.readdirSync(assetsDir).find(f => f.startsWith('index-') && f.endsWith('.css'))
+  : null;
+
+if (cssFile) {
+  const cssHref = `/assets/${cssFile}`;
+  const fullCss = fs.readFileSync(path.join(assetsDir, cssFile), 'utf8');
+
+  // Base reset, properties, and theme variables
+  const utilsIdx = fullCss.indexOf('@layer utilities');
+  const baseAndTheme = utilsIdx !== -1 ? fullCss.slice(0, utilsIdx) : '';
+  const utilsCss = utilsIdx !== -1 ? fullCss.slice(utilsIdx) : fullCss;
+
+  // Extract all classes from above-the-fold HTML (Navbar + Hero)
+  const criticalClasses = new Set();
+  const classRe = /class=["']([^"']+)["']/g;
+  let cm;
+  const sampleHtml = NAV_HTML + (ROUTES[0] ? ROUTES[0].content.slice(0, 10000) : '');
+  while ((cm = classRe.exec(sampleHtml)) !== null) {
+    cm[1].split(/\s+/).forEach(c => c && criticalClasses.add(c));
+  }
+
+  function escapeCssRegex(str) {
+    return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  }
+
+  let criticalUtils = '';
+  for (const cls of criticalClasses) {
+    const escapedInCss = cls
+      .replace(/:/g, '\\:')
+      .replace(/\[/g, '\\[')
+      .replace(/\]/g, '\\]')
+      .replace(/\//g, '\\/')
+      .replace(/#/g, '\\#')
+      .replace(/%/g, '\\%')
+      .replace(/\./g, '\\.');
+
+    const ruleRe = new RegExp(`(\\.[^\\{]*${escapeCssRegex(escapedInCss)}[^\\{]*\\{[^\\}]*\\})`, 'g');
+    let rm;
+    while ((rm = ruleRe.exec(utilsCss)) !== null) {
+      criticalUtils += rm[1];
+    }
+  }
+
+  const criticalCss = baseAndTheme + (criticalUtils ? `@layer utilities{${criticalUtils}}` : '');
+  const criticalStyleTag = `<style id="critical-css">${criticalCss}</style>`;
+
+  const asyncCssBlock = `
+    ${criticalStyleTag}
+    <link rel="preload" as="style" href="${cssHref}" crossorigin />
+    <link rel="stylesheet" href="${cssHref}" media="print" onload="this.media='all'" crossorigin />
+    <noscript><link rel="stylesheet" href="${cssHref}" crossorigin /></noscript>
+  `.trim();
+
+  // Replace render-blocking stylesheet link with async pattern
+  const linkRegex = new RegExp(`<link rel="stylesheet"[^>]*href="${cssHref.replace(/\./g, '\\.')}"[^>]*>`, 'i');
+  if (linkRegex.test(templateHtml)) {
+    templateHtml = templateHtml.replace(linkRegex, asyncCssBlock);
+  } else {
+    templateHtml = templateHtml.replace(/<link rel="stylesheet"[^>]*>/i, asyncCssBlock);
+  }
+
+  // Remove vendor-libs modulepreload from <head> so it does not block initial page interactive
+  templateHtml = templateHtml.replace(/<link rel="modulepreload"[^>]*href="\/assets\/vendor-libs-[^"]+\.js"[^>]*>\s*/gi, '');
+  console.log(`✓ Critical CSS inlined (${criticalCss.length} bytes, ~${require('zlib').gzipSync(criticalCss).length} bytes gzip). Full CSS set to async.`);
+}
+
 
 let count = 0;
 for (const route of ROUTES) {

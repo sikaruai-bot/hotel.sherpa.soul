@@ -124,9 +124,11 @@ export default function Navbar() {
                   src={hotelLogo}
                   alt="Hotel Sherpa Soul - Boutique Stay in Thamel, Kathmandu"
                   className="h-14 sm:h-16 w-auto max-w-[220px] object-contain transition-all duration-300"
-                  loading="lazy"
+                  width="200"
+                  height="60"
+                  loading="eager"
                   decoding="async"
-                 />
+                />
               </Link>
             </div>
 
