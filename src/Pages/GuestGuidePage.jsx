@@ -253,7 +253,7 @@ export default function GuestGuidePage() {
                 </div>
                 <a
                   href={`https://wa.me/?text=${encodeURIComponent(
-                    "Namaste! Thank you for staying at Hotel Sherpa Soul 🙏 If you enjoyed your stay, could you take 30 seconds to leave us a Google review? It helps us a lot: https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38"
+                    "Namaste! Thank you for staying at Hotel Sherpa Soul 🙏 If you enjoyed your stay, could you take 30 seconds to leave us a Google review? It helps us a lot: https://www.google.com/maps?cid=9165690628119251158"
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -650,17 +650,31 @@ export default function GuestGuidePage() {
                 Team Hotel Sherpa Soul
               </div>
 
-              <div className="pt-4">
-                <a
-                  href="https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
-                >
-                  <Star className="w-5 h-5 fill-white text-white" />
-                  <span>Leave Us a Google Review</span>
-                  <ExternalLink className="w-4 h-4 opacity-80" />
-                </a>
+              <div className="pt-4 space-y-2">
+                <div>
+                  <a
+                    href="https://www.google.com/maps?cid=9165690628119251158"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
+                  >
+                    <Star className="w-5 h-5 fill-white text-white" />
+                    <span>Review us on Google ⭐</span>
+                    <ExternalLink className="w-4 h-4 opacity-80" />
+                  </a>
+                </div>
+                <div className="text-xs text-slate-300 flex flex-wrap items-center gap-1.5 pt-1">
+                  <span>Tap the stars on our Google listing to leave a review</span>
+                  <span className="hidden sm:inline text-white/40">•</span>
+                  <a
+                    href="https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden sm:inline text-amber-300 hover:text-white underline underline-offset-2 transition-colors"
+                  >
+                    Write a review directly &rarr;
+                  </a>
+                </div>
               </div>
             </div>
           </section>

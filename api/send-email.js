@@ -448,9 +448,12 @@ export default async function handler(req, res) {
                     <p style="margin: 0 0 10px 0; color: #92400e; font-size: 13px; font-weight: 600;">
                       After your stay, we warmly invite your feedback to help fellow travellers:
                     </p>
-                    <a href="https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38" target="_blank" rel="noopener noreferrer" style="background: #FB6C01; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: bold; display: inline-block;">
-                      Leave a Google Review ⭐
+                    <a href="https://www.google.com/maps?cid=9165690628119251158" target="_blank" rel="noopener noreferrer" style="background: #FB6C01; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: bold; display: inline-block;">
+                      Review us on Google ⭐
                     </a>
+                    <p style="margin: 8px 0 0 0; color: #b45309; font-size: 11px;">
+                      Tap the stars on our Google listing to leave a review
+                    </p>
                   </div>
                 </div>
                 <div style="background: #f1f5f9; padding: 16px; text-align: center; color: #64748b; font-size: 12px; border-top: 1px solid #e2e8f0;">
@@ -538,14 +541,17 @@ export default async function handler(req, res) {
               If you enjoyed your stay, could you please take 30 seconds to leave us a quick Google review? As a family-run boutique hotel, honest feedback from guests like you helps fellow travellers discover our hotel and means the world to our small team.
             </p>
 
-            <div style="text-align: center; margin: 28px 0;">
-              <a href="${reviewUrl}" target="_blank" rel="noopener noreferrer" style="background: #FB6C01; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 10px; font-size: 15px; font-weight: bold; display: inline-block; box-shadow: 0 4px 14px rgba(251, 108, 1, 0.35);">
-                Leave a Google Review ⭐
+            <div style="text-align: center; margin: 28px 0 16px 0;">
+              <a href="${mapsListingUrl}" target="_blank" rel="noopener noreferrer" style="background: #FB6C01; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 10px; font-size: 15px; font-weight: bold; display: inline-block; box-shadow: 0 4px 14px rgba(251, 108, 1, 0.35);">
+                Review us on Google ⭐
               </a>
+              <p style="margin: 8px 0 0 0; color: #64748b; font-size: 12px;">
+                Tap the stars on our Google listing to leave a review
+              </p>
             </div>
 
             <p style="text-align: center; font-size: 12px; color: #64748b; margin: 16px 0 24px 0;">
-              Having trouble? You can also <a href="${mapsListingUrl}" target="_blank" rel="noopener noreferrer" style="color: #01366E; text-decoration: underline;">view our listing directly on Google Maps</a>.
+              Logged into Google on desktop? You can also <a href="${reviewUrl}" target="_blank" rel="noopener noreferrer" style="color: #01366E; text-decoration: underline;">write a review directly &rarr;</a>
             </p>
 
             <div style="border-top: 1px solid #f1f5f9; padding-top: 16px; margin-top: 24px; color: #64748b; font-size: 13px;">

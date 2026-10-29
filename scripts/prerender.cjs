@@ -716,6 +716,24 @@ const ROUTES = [
                   <p class="text-xs font-bold text-[#01366E] mt-4">Sophie &amp; Liam (Australia) • Verified Review</p>
                 </div>
               </div>
+
+              <div class="mt-10 flex flex-col items-center justify-center gap-2">
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                  <a href="https://www.google.com/maps?cid=9165690628119251158" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#FB6C01] to-amber-500 text-white font-bold text-xs sm:text-sm shadow-lg flex items-center gap-2">
+                    <span>Review us on Google ⭐</span>
+                  </a>
+                  <a href="https://www.google.com/maps?cid=9165690628119251158" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-2xl bg-slate-100 border border-slate-300 text-slate-700 font-semibold text-xs sm:text-sm flex items-center gap-2">
+                    <span>View Location</span>
+                  </a>
+                </div>
+                <div class="text-[11px] text-slate-500 text-center flex flex-wrap items-center justify-center gap-1.5 pt-1">
+                  <span>Tap the stars on our Google listing to leave a review</span>
+                  <span class="hidden sm:inline text-slate-400">•</span>
+                  <a href="https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38" target="_blank" rel="noopener noreferrer" class="hidden sm:inline text-[#01366E] hover:underline">
+                    Write a review directly &rarr;
+                  </a>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -1506,7 +1524,7 @@ const ROUTES = [
                     Tap to open WhatsApp with the pre-filled 30-second review request ready to send to departing guests.
                   </p>
                 </div>
-                <a href="https://wa.me/?text=Namaste!%20Thank%20you%20for%20staying%20at%20Hotel%20Sherpa%20Soul%20%F0%9F%99%8F%20If%20you%20enjoyed%20your%20stay%2C%20could%20you%20take%2030%20seconds%20to%20leave%20us%20a%20Google%20review%3F%20It%20helps%20us%20a%20lot%3A%20https%3A%2F%2Fsearch.google.com%2Flocal%2Fwritereview%3Fplaceid%3DChIJE3xLXdEZ6zkR1sgsehATM38" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm shadow-md transition-all">
+                <a href="https://wa.me/?text=Namaste!%20Thank%20you%20for%20staying%20at%20Hotel%20Sherpa%20Soul%20%F0%9F%99%8F%20If%20you%20enjoyed%20your%20stay%2C%20could%20you%20take%2030%20seconds%20to%20leave%20us%20a%20Google%20review%3F%20It%20helps%20us%20a%20lot%3A%20https%3A%2F%2Fwww.google.com%2Fmaps%3Fcid%3D9165690628119251158" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm shadow-md transition-all">
                   Send Review Request on WhatsApp
                 </a>
               </div>
@@ -1654,10 +1672,19 @@ const ROUTES = [
             <div class="mb-6 text-amber-200 text-sm font-semibold">
               Warm regards,<br />Team Hotel Sherpa Soul
             </div>
-            <div>
-              <a href="https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-base sm:text-lg shadow-xl transition-all">
-                Leave Us a Google Review &rarr;
-              </a>
+            <div class="space-y-2">
+              <div>
+                <a href="https://www.google.com/maps?cid=9165690628119251158" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-base sm:text-lg shadow-xl transition-all">
+                  Review us on Google ⭐
+                </a>
+              </div>
+              <div class="text-xs text-slate-300 pt-1">
+                <span>Tap the stars on our Google listing to leave a review</span>
+                <span class="inline mx-1.5 text-white/40">•</span>
+                <a href="https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38" target="_blank" rel="noopener noreferrer" class="text-amber-300 hover:text-white underline underline-offset-2 transition-colors">
+                  Write a review directly &rarr;
+                </a>
+              </div>
             </div>
           </section>
         </div>

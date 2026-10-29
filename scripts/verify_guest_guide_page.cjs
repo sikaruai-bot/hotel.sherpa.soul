@@ -49,8 +49,8 @@ async function verify() {
     'info@hotelsherpasoul.com',
     'https://www.hotelsherpasoul.com',
     'Thank You for Staying with Us!',
-    'Leave Us a Google Review',
-    'https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38',
+    'Review us on Google',
+    'https://www.google.com/maps?cid=9165690628119251158',
     'https://hotelsherpasoul.com/guest-guide'
   ];
 
