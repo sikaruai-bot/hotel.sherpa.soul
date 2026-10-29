@@ -61,8 +61,11 @@ const DEFAULT_REVIEWS = [
 
 export default function HomeGoogleReviews() {
   const { t } = useTranslation();
-  const googleMapsUrl = "https://maps.app.goo.gl/nDB9DnLtb6taeaLRA";
-  const googleWriteReviewUrl = "https://g.page/r/CdbILHoQEzN_EBI/review";
+  const googlePlaceId = "ChIJE3xLXdEZ6zkR1sgsehATM38";
+  const googleMapsUrl = "https://www.google.com/maps?cid=9165690628119251158";
+  const googleWriteReviewUrl = googlePlaceId
+    ? `https://search.google.com/local/writereview?placeid=${googlePlaceId}`
+    : googleMapsUrl;
 
   const [reviewsData, setReviewsData] = useState({
     rating: 5.0,
@@ -180,7 +183,7 @@ export default function HomeGoogleReviews() {
 
           <div className="flex flex-wrap items-center justify-center gap-3 w-full md:w-auto">
             <a
-              href={googleWriteReviewUrl}
+              href={googleWriteReviewUrl || googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#FB6C01] to-amber-500 hover:from-amber-500 hover:to-[#FB6C01] text-white font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/25 hover:scale-105 active:scale-95 transition-all flex items-center gap-2"

@@ -1642,7 +1642,7 @@ const ROUTES = [
               Warm regards,<br />Team Hotel Sherpa Soul
             </div>
             <div>
-              <a href="https://g.page/r/CdbILHoQEzN_EBI/review" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-base sm:text-lg shadow-xl transition-all">
+              <a href="https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#FB6C01] hover:bg-[#e05a00] text-white font-bold text-base sm:text-lg shadow-xl transition-all">
                 Leave Us a Google Review &rarr;
               </a>
             </div>
