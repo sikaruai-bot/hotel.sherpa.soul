@@ -239,6 +239,30 @@ export default function GuestGuidePage() {
                   Guests who need a late check-out or stay extension should contact reception in advance. Extensions depend on room availability.
                 </p>
               </div>
+
+              {/* Front Desk 1-Click WhatsApp Review Quick Share */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 text-emerald-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="text-xs uppercase font-bold text-emerald-800 tracking-wider flex items-center gap-1.5">
+                    <MessageCircle className="w-4 h-4 text-emerald-600" />
+                    <span>Front Desk • 1-Click Review Request</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Tap to open WhatsApp with the pre-filled 30-second review request ready to send to departing guests.
+                  </p>
+                </div>
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent(
+                    "Namaste! Thank you for staying at Hotel Sherpa Soul 🙏 If you enjoyed your stay, could you take 30 seconds to leave us a Google review? It helps us a lot: https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38"
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Send Review Request on WhatsApp</span>
+                </a>
+              </div>
             </div>
           </section>
 

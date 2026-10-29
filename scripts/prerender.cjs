@@ -1497,6 +1497,19 @@ const ROUTES = [
               <p><strong>Check-in:</strong> Please confirm with reception.</p>
               <p><strong>Check-out:</strong> By 11:00 AM.</p>
               <p class="text-sm text-slate-600">Guests who need a late check-out or stay extension should contact reception in advance. Extensions depend on room availability.</p>
+              <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 text-emerald-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-4">
+                <div class="space-y-1">
+                  <div class="text-xs uppercase font-bold text-emerald-800 tracking-wider">
+                    Front Desk • 1-Click Review Request
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Tap to open WhatsApp with the pre-filled 30-second review request ready to send to departing guests.
+                  </p>
+                </div>
+                <a href="https://wa.me/?text=Namaste!%20Thank%20you%20for%20staying%20at%20Hotel%20Sherpa%20Soul%20%F0%9F%99%8F%20If%20you%20enjoyed%20your%20stay%2C%20could%20you%20take%2030%20seconds%20to%20leave%20us%20a%20Google%20review%3F%20It%20helps%20us%20a%20lot%3A%20https%3A%2F%2Fsearch.google.com%2Flocal%2Fwritereview%3Fplaceid%3DChIJE3xLXdEZ6zkR1sgsehATM38" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm shadow-md transition-all">
+                  Send Review Request on WhatsApp
+                </a>
+              </div>
             </div>
           </section>
 

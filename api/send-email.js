@@ -444,6 +444,14 @@ export default async function handler(req, res) {
                     <p style="margin: 4px 0; color: #475569; font-size: 13px;">💬 WhatsApp: +977 9818259472</p>
                     <p style="margin: 4px 0; color: #475569; font-size: 13px;">✉️ Email: <a href=\"mailto:${hotelEmail}\" style=\"color: #d97706;\">${hotelEmail}</a></p>
                   </div>
+                  <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 16px; margin: 24px 0; text-align: center;">
+                    <p style="margin: 0 0 10px 0; color: #92400e; font-size: 13px; font-weight: 600;">
+                      After your stay, we warmly invite your feedback to help fellow travellers:
+                    </p>
+                    <a href="https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38" target="_blank" rel="noopener noreferrer" style="background: #FB6C01; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: bold; display: inline-block;">
+                      Leave a Google Review ⭐
+                    </a>
+                  </div>
                 </div>
                 <div style="background: #f1f5f9; padding: 16px; text-align: center; color: #64748b; font-size: 12px; border-top: 1px solid #e2e8f0;">
                   <p style="margin: 0;">Hotel Sherpa Soul | No Restaurant. No Noise. Sleep Well.</p>
@@ -477,6 +485,96 @@ export default async function handler(req, res) {
           success: true,
           message: "Booking confirmation email sent successfully!",
         });
+    }
+
+    // 3. Post-Checkout Automated Review Request Email
+    if (type === "post-checkout" || type === "checkout" || type === "review-request") {
+      const b = booking || req.body || {};
+      const guestName = b.guestName || b.name || name || "Valued Guest";
+      const guestEmail = b.email || email;
+
+      if (!guestEmail || !guestEmail.includes("@")) {
+        return res.status(400).json({
+          success: false,
+          error: "A valid guest email is required for post-checkout review request.",
+        });
+      }
+
+      // Check if guest has already submitted a review (if detectable)
+      const hasReviewedExplicit = Boolean(b.hasReviewed || req.body?.hasReviewed);
+      const knownReviewers = ["kamal gc", "furdiki sherpa", "david m.", "sophie & liam"];
+      const guestNameNorm = String(guestName).toLowerCase().trim();
+      const hasReviewedDetected =
+        hasReviewedExplicit ||
+        knownReviewers.some((k) => guestNameNorm.includes(k) || k.includes(guestNameNorm));
+
+      if (hasReviewedDetected) {
+        console.log(
+          `[Email Dispatch] Guest "${guestName}" (${guestEmail}) already submitted a review. Skipping post-checkout email.`
+        );
+        return res.status(200).json({
+          success: true,
+          skipped: true,
+          message: "Guest has already reviewed. Review email omitted.",
+        });
+      }
+
+      const reviewUrl = "https://search.google.com/local/writereview?placeid=ChIJE3xLXdEZ6zkR1sgsehATM38";
+      const mapsListingUrl = "https://www.google.com/maps?cid=9165690628119251158";
+
+      const postCheckoutHtml = `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+          <div style="background: #1e293b; padding: 28px; text-align: center; border-bottom: 3px solid #FB6C01;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Hotel Sherpa Soul</h1>
+            <p style="color: #cbd5e1; margin: 4px 0 0 0; font-size: 13px;">Thamel, Kathmandu, Nepal</p>
+          </div>
+
+          <div style="padding: 28px;">
+            <h2 style="color: #01366E; margin-top: 0; margin-bottom: 14px; font-size: 18px;">Namaste ${guestName} 🙏</h2>
+            <p style="color: #334155; font-size: 14px; line-height: 1.6; margin: 0 0 14px 0;">
+              Thank you for choosing to stay with us at <strong>Hotel Sherpa Soul</strong>. We hope you had a peaceful, comfortable stay and a memorable time exploring Kathmandu and Nepal.
+            </p>
+            <p style="color: #334155; font-size: 14px; line-height: 1.6; margin: 0 0 24px 0;">
+              If you enjoyed your stay, could you please take 30 seconds to leave us a quick Google review? As a family-run boutique hotel, honest feedback from guests like you helps fellow travellers discover our hotel and means the world to our small team.
+            </p>
+
+            <div style="text-align: center; margin: 28px 0;">
+              <a href="${reviewUrl}" target="_blank" rel="noopener noreferrer" style="background: #FB6C01; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 10px; font-size: 15px; font-weight: bold; display: inline-block; box-shadow: 0 4px 14px rgba(251, 108, 1, 0.35);">
+                Leave a Google Review ⭐
+              </a>
+            </div>
+
+            <p style="text-align: center; font-size: 12px; color: #64748b; margin: 16px 0 24px 0;">
+              Having trouble? You can also <a href="${mapsListingUrl}" target="_blank" rel="noopener noreferrer" style="color: #01366E; text-decoration: underline;">view our listing directly on Google Maps</a>.
+            </p>
+
+            <div style="border-top: 1px solid #f1f5f9; padding-top: 16px; margin-top: 24px; color: #64748b; font-size: 13px;">
+              <p style="margin: 0; color: #334155; font-weight: 600;">Warm regards,</p>
+              <p style="margin: 4px 0 0 0;">Team Hotel Sherpa Soul</p>
+              <p style="margin: 4px 0 0 0; font-size: 12px; color: #94a3b8;">${hotelAddress} | Phone: ${hotelPhone} | WhatsApp: +977 9818259472</p>
+            </div>
+          </div>
+
+          <div style="background: #f1f5f9; padding: 16px; text-align: center; color: #64748b; font-size: 12px; border-top: 1px solid #e2e8f0;">
+            <p style="margin: 0;">Hotel Sherpa Soul | No Restaurant. No Noise. Sleep Well.</p>
+          </div>
+        </div>
+      `;
+
+      const mailOptions = {
+        from: `"Hotel Sherpa Soul" <${hotelEmail}>`,
+        to: guestEmail,
+        replyTo: hotelEmail,
+        subject: `🙏 Namaste from Hotel Sherpa Soul - How was your stay?`,
+        html: postCheckoutHtml,
+      };
+
+      const dispatchResult = await sendMailUnified(mailOptions);
+      return res.status(200).json({
+        success: true,
+        message: "Post-checkout review email sent successfully!",
+        dispatch: dispatchResult,
+      });
     }
 
     return res.status(400).json({ success: false, error: "Invalid email request type" });
