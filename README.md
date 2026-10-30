@@ -14,8 +14,7 @@
 - **Styling**: Tailwind CSS
 - **Analytics & Tracking**:
   - **Meta Pixel**: Permanent setup in `index.html` + SPA route tracker `MetaPixel.jsx`
-  - **Google Tag Manager**: `GTM-PFRV7ZTV` in `<head>` and `<noscript>`
-  - **Google Analytics 4**: `G-E7Z3QDR3KD` with Google Consent Mode v2
+  - **Google Analytics 4**: `G-E7Z3QDR3KD` with Google Consent Mode v2 (direct `gtag.js`)
 - **Conversion Events**:
   - `PageView`: Automatic across all pages and SPA transitions
   - `ViewContent`: Room details (`/room/*`) with room details & USD value

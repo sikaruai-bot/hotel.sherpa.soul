@@ -52,35 +52,7 @@
       gtag('config', 'G-E7Z3QDR3KD', { send_page_view: false });
     </script>
 
-    <!-- Google Tag Manager (deferred to idle to eliminate main-thread long tasks) -->
-    <script>
-      (function() {
-        var gtmLoaded = false;
-        function loadGTM() {
-          if (gtmLoaded) return;
-          gtmLoaded = true;
-          var w=window,d=document,s='script',l='dataLayer',i='GTM-PFRV7ZTV';
-          w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-          var f=d.getElementsByTagName(s)[0],j=d.createElement(s);
-          j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;
-          f.parentNode.insertBefore(j,f);
-        }
-        function triggerGTM() {
-          setTimeout(loadGTM, 15000);
-        }
-        ['touchstart', 'scroll', 'click'].forEach(function(evt) {
-          window.addEventListener(evt, loadGTM, { once: true, passive: true });
-        });
-        if (document.readyState === 'complete') {
-          triggerGTM();
-        } else {
-          window.addEventListener('load', triggerGTM, { once: true });
-        }
-      })();
-    </script>
-    <!-- End Google Tag Manager -->
-
-    <!-- GA4 Direct gtag.js (loaded in idle after GTM) -->
+    <!-- GA4 Direct gtag.js -->
     <script>
       (function() {
         var ga4Loaded = false;
@@ -428,10 +400,6 @@
     <noscript id="meta-pixel-noscript">
       <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=%VITE_META_PIXEL_ID%&ev=PageView&noscript=1" alt="Meta Pixel" />
     </noscript>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFRV7ZTV"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

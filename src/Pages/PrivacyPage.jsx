@@ -82,10 +82,10 @@ export default function PrivacyPage() {
             <div className="space-y-4 my-4">
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <h3 className="font-bold text-[#01366E] text-base mb-1">
-                  Google Tag Manager (GTM) & Google Analytics 4 (GA4)
+                  Google Analytics 4 (GA4)
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600">
-                  We use Google Analytics (Property ID: <code>G-E7Z3QDR3KD</code>) via Google Tag Manager (Container ID: <code>GTM-PFRV7ZTV</code>) to monitor aggregate website traffic, popular room views, and technical performance. We utilize Google Consent Mode v2 with IP anonymization enabled.
+                  We use Google Analytics (Property ID: <code>G-E7Z3QDR3KD</code>) to monitor aggregate website traffic, popular room views, and technical performance. We utilize Google Consent Mode v2 with IP anonymization enabled.
                 </p>
               </div>
 
