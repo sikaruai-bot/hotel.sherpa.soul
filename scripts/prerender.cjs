@@ -1475,7 +1475,150 @@ const ROUTES = [
     ogImage: 'https://hotelsherpasoul.com/hero1.webp',
     content: `
       ${NAV_HTML}
-      <main class="min-h-screen pt-24 sm:pt-28 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+      <main class="min-h-screen pt-20 sm:pt-28 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+        <!-- Navigation Breadcrumb -->
+        <div class="mb-3 sm:mb-4">
+          <a href="/" class="inline-flex items-center gap-2 text-sm text-[#01366E] hover:text-[#FB6C01] font-semibold transition-colors">
+            &larr; Back to Hotel Sherpa Soul Home
+          </a>
+        </div>
+
+        <!-- ⚠️ Important Hotel Policies Section -->
+        <section id="policies" class="bg-gradient-to-br from-amber-50/95 via-orange-50/30 to-red-50/40 rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-md border-2 border-amber-500 mb-6 scroll-mt-28 relative overflow-hidden">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 sm:mb-4 pb-3 border-b border-amber-200/80">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[11px] sm:text-xs font-extrabold uppercase tracking-wider mb-1.5 shadow-xs">
+                ⚠️ Important Hotel Policies
+              </div>
+              <h2 class="text-lg sm:text-2xl font-extrabold text-[#01366E] tracking-tight">
+                House Rules &amp; Stay Guidelines
+              </h2>
+            </div>
+            <p class="text-xs text-slate-600 max-w-sm sm:text-right leading-relaxed">
+              Please review these essential rules for a safe, respectful, and peaceful stay at Hotel Sherpa Soul.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5">
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Quiet Hours">🔇</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm flex items-center gap-1.5 flex-wrap">
+                  <span>Quiet Hours</span>
+                  <span class="px-1.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700 text-[10px] font-bold border border-indigo-100">10:00 PM – 7:00 AM</span>
+                </div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Keep noise, music, and phone calls low to respect other guests.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Damage & Lost Items">🛠️</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">Damage &amp; Lost Items</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Guests are responsible for damage to hotel property or loss of items (keys, towels, linens, appliances, furniture). Repair/replacement costs charged at fair market value and settled at check-out.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Room Key">🔑</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">Room Key</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Lost keys or access cards may incur a replacement fee. Return all keys at check-out.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="No Smoking">🚭</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">No Smoking</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Smoking, vapes, and e-cigarettes are strictly prohibited in rooms and indoor areas. A cleaning fee may apply if detected. Use designated outdoor areas.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="No Alcohol & Intoxicants">🍺</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">No Alcohol &amp; Intoxicants</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Do not bring, store, or consume alcohol, beer, or intoxicating substances in guest rooms. Illegal drugs are strictly prohibited and may be reported to authorities.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Keep Your Room Clean">🗑️</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">Keep Your Room Clean</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Dispose of all waste (wrappers, bottles, tissues) in the dustbin provided. Do not leave trash on floors, beds, or outside the room. Housekeeping can assist with extra bins on request.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Visitors">👥</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">Visitors</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Outside visitors are not permitted in guest rooms after 10:00 PM without prior approval from reception.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Shared Kitchen">🍳</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">Shared Kitchen</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Kitchen access is for approved long-stay guests only. Clean all utensils and surfaces after use.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Payment & Extensions">💳</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">Payment &amp; Extensions</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Outstanding balances must be settled at check-out. Late check-out or extensions are subject to availability and additional charges.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Guest Responsibility">🛡️</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">Guest Responsibility</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Lock your room and secure valuables. Guests are responsible for personal belongings.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5 md:col-span-2">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Legal Compliance & Police Cooperation">⚖️</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">Legal Compliance &amp; Police Cooperation</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">All guests must comply with the laws of Nepal. Prohibited activities (drugs, exploitation, violence, theft, weapons) are strictly forbidden. If police or other law enforcement visits to investigate or enforce the law, guests must cooperate fully and respectfully. The hotel will cooperate with lawful requests and may share guest registration information as required by law. Suspected illegal activity may be reported to authorities, and the hotel reserves the right to end a stay immediately in such cases.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 p-2.5 rounded-xl bg-amber-100/90 border border-amber-300 text-slate-900 text-[11px] sm:text-xs font-semibold text-center leading-snug shadow-2xs">
+            Management reserves the right to refuse service or end a stay for serious violations of these policies or applicable law.
+          </div>
+        </section>
+
+        <!-- Compact Quick Jump Navigation -->
+        <nav aria-label="Guest Guide sections" class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 mb-6">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5 flex items-center gap-1.5">
+            Quick Jump to Section:
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <a href="#policies" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-amber-500 text-white shadow-xs">⚠️ Important Policies</a>
+            <a href="#wifi" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Wi-Fi</a>
+            <a href="#checkin-checkout" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Check-in &amp; Out</a>
+            <a href="#payment" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Payment</a>
+            <a href="#room-facilities" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Hot Water &amp; Facilities</a>
+            <a href="#cleaning" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Cleaning</a>
+            <a href="#quiet-hours" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Quiet Hours</a>
+            <a href="#shared-kitchen" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Shared Kitchen</a>
+            <a href="#safety" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Safety &amp; Security</a>
+            <a href="#legal" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Legal &amp; House Rules</a>
+            <a href="#local-help" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Local Help</a>
+            <a href="#contact" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Contact Reception</a>
+            <a href="#review" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Google Review</a>
+          </div>
+        </nav>
+
         <header class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200 mb-8">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider mb-3">
             Peaceful Hotel in Thamel, Kathmandu

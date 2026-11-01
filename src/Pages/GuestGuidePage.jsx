@@ -22,6 +22,7 @@ import {
   Building,
   Info,
   Lock,
+  AlertTriangle,
 } from "lucide-react";
 
 export default function GuestGuidePage() {
@@ -47,6 +48,7 @@ export default function GuestGuidePage() {
   };
 
   const jumpLinks = [
+    { href: "#policies", label: "⚠️ Important Policies" },
     { href: "#wifi", label: "Wi-Fi" },
     { href: "#checkin-checkout", label: "Check-in & Out" },
     { href: "#payment", label: "Payment" },
@@ -61,8 +63,68 @@ export default function GuestGuidePage() {
     { href: "#review", label: "Google Review" },
   ];
 
+  const hotelPolicies = [
+    {
+      icon: "🔇",
+      title: "Quiet Hours",
+      time: "10:00 PM – 7:00 AM",
+      desc: "Keep noise, music, and phone calls low to respect other guests.",
+    },
+    {
+      icon: "🛠️",
+      title: "Damage & Lost Items",
+      desc: "Guests are responsible for damage to hotel property or loss of items (keys, towels, linens, appliances, furniture). Repair/replacement costs charged at fair market value and settled at check-out.",
+    },
+    {
+      icon: "🔑",
+      title: "Room Key",
+      desc: "Lost keys or access cards may incur a replacement fee. Return all keys at check-out.",
+    },
+    {
+      icon: "🚭",
+      title: "No Smoking",
+      desc: "Smoking, vapes, and e-cigarettes are strictly prohibited in rooms and indoor areas. A cleaning fee may apply if detected. Use designated outdoor areas.",
+    },
+    {
+      icon: "🍺",
+      title: "No Alcohol & Intoxicants",
+      desc: "Do not bring, store, or consume alcohol, beer, or intoxicating substances in guest rooms. Illegal drugs are strictly prohibited and may be reported to authorities.",
+    },
+    {
+      icon: "🗑️",
+      title: "Keep Your Room Clean",
+      desc: "Dispose of all waste (wrappers, bottles, tissues) in the dustbin provided. Do not leave trash on floors, beds, or outside the room. Housekeeping can assist with extra bins on request.",
+    },
+    {
+      icon: "👥",
+      title: "Visitors",
+      desc: "Outside visitors are not permitted in guest rooms after 10:00 PM without prior approval from reception.",
+    },
+    {
+      icon: "🍳",
+      title: "Shared Kitchen",
+      desc: "Kitchen access is for approved long-stay guests only. Clean all utensils and surfaces after use.",
+    },
+    {
+      icon: "💳",
+      title: "Payment & Extensions",
+      desc: "Outstanding balances must be settled at check-out. Late check-out or extensions are subject to availability and additional charges.",
+    },
+    {
+      icon: "🛡️",
+      title: "Guest Responsibility",
+      desc: "Lock your room and secure valuables. Guests are responsible for personal belongings.",
+    },
+    {
+      icon: "⚖️",
+      title: "Legal Compliance & Police Cooperation",
+      desc: "All guests must comply with the laws of Nepal. Prohibited activities (drugs, exploitation, violence, theft, weapons) are strictly forbidden. If police or other law enforcement visits to investigate or enforce the law, guests must cooperate fully and respectfully. The hotel will cooperate with lawful requests and may share guest registration information as required by law. Suspected illegal activity may be reported to authorities, and the hotel reserves the right to end a stay immediately in such cases.",
+      isWide: true,
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-slate-50 pt-24 sm:pt-28 pb-20 font-sans text-slate-800 antialiased">
+    <div className="min-h-screen bg-slate-50 pt-20 sm:pt-28 pb-20 font-sans text-slate-800 antialiased">
       {/* Accessible live region for screen readers */}
       <div
         role="status"
@@ -74,7 +136,7 @@ export default function GuestGuidePage() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Navigation Breadcrumb */}
-        <div className="mb-6">
+        <div className="mb-3 sm:mb-4">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-sm text-[#01366E] hover:text-[#FB6C01] font-semibold transition-colors"
@@ -82,6 +144,83 @@ export default function GuestGuidePage() {
             <ArrowLeft className="w-4 h-4" /> Back to Hotel Sherpa Soul Home
           </Link>
         </div>
+
+        {/* ⚠️ Prominent Important Hotel Policies Section (Placed at the very top, immediately visible on mobile) */}
+        <section
+          id="policies"
+          className="bg-gradient-to-br from-amber-50/95 via-orange-50/30 to-red-50/40 rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-md border-2 border-amber-500 mb-6 scroll-mt-28 relative overflow-hidden"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 sm:mb-4 pb-3 border-b border-amber-200/80">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[11px] sm:text-xs font-extrabold uppercase tracking-wider mb-1.5 shadow-xs">
+                <AlertTriangle className="w-3.5 h-3.5" /> Important Hotel Policies
+              </div>
+              <h2 className="text-lg sm:text-2xl font-extrabold text-[#01366E] tracking-tight">
+                House Rules &amp; Stay Guidelines
+              </h2>
+            </div>
+            <p className="text-xs text-slate-600 max-w-sm sm:text-right leading-relaxed">
+              Please review these essential rules for a safe, respectful, and peaceful stay at Hotel Sherpa Soul.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5">
+            {hotelPolicies.map((policy) => (
+              <div
+                key={policy.title}
+                className={`p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5 transition-all hover:border-amber-400 ${
+                  policy.isWide ? "md:col-span-2" : ""
+                }`}
+              >
+                <span className="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label={policy.title}>
+                  {policy.icon}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="font-bold text-slate-900 text-xs sm:text-sm flex items-center gap-1.5 flex-wrap">
+                    <span>{policy.title}</span>
+                    {policy.time && (
+                      <span className="px-1.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700 text-[10px] font-bold border border-indigo-100">
+                        {policy.time}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">
+                    {policy.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-3 p-2.5 rounded-xl bg-amber-100/90 border border-amber-300 text-slate-900 text-[11px] sm:text-xs font-semibold text-center leading-snug shadow-2xs">
+            Management reserves the right to refuse service or end a stay for serious violations of these policies or applicable law.
+          </div>
+        </section>
+
+        {/* Compact Quick Jump Navigation for Mobile and Desktop */}
+        <nav
+          aria-label="Guest Guide sections"
+          className="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 mb-6"
+        >
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5 flex items-center gap-1.5">
+            <Compass className="w-4 h-4 text-[#FB6C01]" /> Quick Jump to Section:
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {jumpLinks.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors ${
+                  item.href === "#policies"
+                    ? "bg-amber-500 text-white font-bold shadow-xs hover:bg-amber-600"
+                    : "bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </nav>
 
         {/* Hero Banner Header */}
         <header className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200/90 mb-8 relative overflow-hidden">
@@ -101,27 +240,6 @@ export default function GuestGuidePage() {
             </p>
           </div>
         </header>
-
-        {/* Compact Quick Jump Navigation for Mobile and Desktop */}
-        <nav
-          aria-label="Guest Guide sections"
-          className="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 mb-8"
-        >
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5 flex items-center gap-1.5">
-            <Compass className="w-4 h-4 text-[#FB6C01]" /> Quick Jump to Section:
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {jumpLinks.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700 transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </nav>
 
         {/* Main Content Sections */}
         <main className="space-y-8">

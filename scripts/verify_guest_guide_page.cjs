@@ -51,7 +51,16 @@ async function verify() {
     'Thank You for Staying with Us!',
     'Review us on Google',
     'https://www.google.com/maps?cid=9165690628119251158',
-    'https://hotelsherpasoul.com/guest-guide'
+    'https://hotelsherpasoul.com/guest-guide',
+    'Important Hotel Policies',
+    'Quiet Hours',
+    '10:00 PM – 7:00 AM',
+    'Damage &amp; Lost Items',
+    'No Smoking',
+    'No Alcohol &amp; Intoxicants',
+    'Keep Your Room Clean',
+    'Legal Compliance &amp; Police Cooperation',
+    'Management reserves the right to refuse service or end a stay'
   ];
 
   let missing = [];
