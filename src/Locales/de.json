@@ -99,8 +99,8 @@
     "emailResponseTime": "Wir antworten normalerweise innerhalb von 24 Stunden",
     "visitUs": "Besuchen Sie uns",
     "visitDescription": "Im Herzen des touristischen Bezirks von Kathmandu",
-    "getIn": "In Kontakt treten",
-    "touch": "Kontakt",
+    "getIn": "Nehmen Sie",
+    "touch": "Kontakt auf",
     "readyDescription": "Bereit, authentische Sherpa-Gastfreundschaft zu erleben? Kontaktieren Sie uns für Buchungen, Fragen oder Vorschläge.",
     "visitDetail": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
   },
@@ -510,15 +510,15 @@
       "desc": "Füllen Sie das untenstehende Formular aus und wir melden uns schnellstmöglich bei Ihnen!",
       "data": {
         "name": "Vollständiger Name",
-        "email": "Email Address",
+        "email": "E-Mail-Adresse",
         "msg": "Ihre Nachricht",
         "name2": "Geben Sie Ihren vollständigen Namen ein",
         "email2": "your@gmail.com",
         "msg2": "Teilen Sie uns Ihr Anliegen mit",
         "phone": "Telefonnummer (Optional)"
       },
-      "send": "通过 WhatsApp 发送",
-      "send2": "Sending...",
+      "send": "Über WhatsApp senden",
+      "send2": "Wird gesendet...",
       "placeholders": {
         "name": "Vollständigen Namen eingeben",
         "phone": "+977 98XXXXXXXX",

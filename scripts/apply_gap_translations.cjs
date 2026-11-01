@@ -1720,3 +1720,4 @@ for (const lang of allLangs) {
 }
 
 console.log('\nAll gap translations merged successfully into src/Locales/*.json');
+

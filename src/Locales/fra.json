@@ -1055,8 +1055,8 @@
     "pack": "Rooms are completely packed"
   },
   "contact": {
-    "title": "Let's Start a Conversation",
-    "subtitle": "Whether you're planning your visit, need assistance, or want to share feedback, we're here to help make your experience at Hotel Sherpa Soul unforgettable.",
+    "title": "Commençons une Conversation",
+    "subtitle": "Que vous prépariez votre séjour, ayez besoin d'aide ou souhaitiez des conseils pour votre voyage, nous sommes à votre entière disposition.",
     "card": {
       "res": {
         "title": "Réponse Rapide",
@@ -1072,19 +1072,19 @@
       }
     },
     "form": {
-      "title": "Send Message",
+      "title": "Envoyer un Message",
       "desc": "Remplissez le formulaire ci-dessous et nous vous répondrons rapidement !",
       "data": {
-        "name": "Full Name",
-        "email": "Email Address",
-        "msg": "Your Message",
+        "name": "Nom Complet",
+        "email": "Adresse E-mail",
+        "msg": "Votre Message",
         "name2": "Enter your full name",
         "email2": "your@gmail.com",
         "msg2": "Tell us about your request or inqury",
         "phone": "Numéro de Téléphone (Facultatif)"
       },
-      "send": "Send via WhatsApp",
-      "send2": "Sending...",
+      "send": "Envoyer via WhatsApp",
+      "send2": "Envoi en cours...",
       "placeholders": {
         "name": "Entrez votre nom complet",
         "phone": "+977 98XXXXXXXX",

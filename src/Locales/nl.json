@@ -514,8 +514,8 @@
     "pack": "Voorzieningen"
   },
   "contact": {
-    "title": "Contact",
-    "subtitle": "Neem gerust contact met ons op",
+    "title": "Laten we een Gesprek Beginnen",
+    "subtitle": "Of u nu uw verblijf plant, hulp nodig heeft of vragen heeft over trekking: wij staan altijd voor u klaar in Thamel.",
     "card": {
       "res": {
         "title": "Snelle Reactie",
@@ -531,19 +531,19 @@
       }
     },
     "form": {
-      "title": "Send Message",
+      "title": "Bericht Versturen",
       "desc": "Vul het onderstaande formulier in en we nemen zo spoedig mogelijk contact met u op!",
       "data": {
-        "name": "Full Name",
-        "email": "Email Address",
-        "msg": "Your Message",
+        "name": "Volledige Naam",
+        "email": "E-mailadres",
+        "msg": "Uw Bericht",
         "name2": "Enter your full name",
         "email2": "your@gmail.com",
         "msg2": "Tell us about your request or inqury",
         "phone": "Telefoonnummer (Optioneel)"
       },
-      "send": "Send via WhatsApp",
-      "send2": "Sending...",
+      "send": "Verstuur via WhatsApp",
+      "send2": "Verzenden...",
       "placeholders": {
         "name": "Vul uw volledige naam in",
         "phone": "+977 98XXXXXXXX",

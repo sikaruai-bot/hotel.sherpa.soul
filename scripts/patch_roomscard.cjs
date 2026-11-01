@@ -16,3 +16,4 @@ file = file.replace(
 
 fs.writeFileSync(filePath, file, 'utf8');
 console.log('Successfully patched RoomsCard.jsx');
+
