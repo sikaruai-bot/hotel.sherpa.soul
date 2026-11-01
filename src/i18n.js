@@ -22,6 +22,7 @@ const supportedLanguages = [
   "de",
   "it",
   "fra",
+  "fr",
 ];
 
 // Map each language code to its lazy-import function.
@@ -41,6 +42,7 @@ const lazyLocales = {
   de:  () => import("./Locales/de.json"),
   it:  () => import("./Locales/it.json"),
   fra: () => import("./Locales/fra.json"),
+  fr:  () => import("./Locales/fra.json"),
 };
 
 // Ensure stored language is valid
