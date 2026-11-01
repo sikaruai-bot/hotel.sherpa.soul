@@ -40,7 +40,7 @@ async function verify() {
     'applicable laws of Nepal',
     'Possession, use, sale or distribution of illegal drugs',
     'Human trafficking, exploitation, sexual abuse',
-    'Hotel Sherpa Soul does not have an on-site restaurant or private parking.',
+    'Hotel Sherpa Soul does not have an on-site restaurant or private parking',
     'https://wa.me/9779818259472',
     '+977 9818259472',
     'tel:+9779851068219',
@@ -59,6 +59,11 @@ async function verify() {
     'No Smoking',
     'No Alcohol &amp; Intoxicants',
     'Keep Your Room Clean',
+    'Save Energy — Switch Off Before Leaving',
+    'Food &amp; Dining',
+    'Useful Information',
+    'Luggage Storage',
+    'Drinking Water',
     'Legal Compliance &amp; Police Cooperation',
     'Management reserves the right to refuse service or end a stay'
   ];

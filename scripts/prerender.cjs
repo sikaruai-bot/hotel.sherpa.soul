@@ -1583,6 +1583,14 @@ const ROUTES = [
               </div>
             </div>
 
+            <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5">
+              <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Save Energy">💡</span>
+              <div class="min-w-0 flex-1">
+                <div class="font-bold text-slate-900 text-xs sm:text-sm">Save Energy — Switch Off Before Leaving</div>
+                <p class="text-[11px] sm:text-xs text-slate-600 leading-snug mt-0.5">Before leaving your room, please switch off all electrical devices — air conditioner, fan, lights, heater/geyser, TV, and chargers. This helps us save energy and keep the environment safe. Thank you for your cooperation!</p>
+              </div>
+            </div>
+
             <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-amber-200/90 shadow-2xs flex items-start gap-2.5 md:col-span-2">
               <span class="text-xl shrink-0 select-none pt-0.5 leading-none" role="img" aria-label="Legal Compliance & Police Cooperation">⚖️</span>
               <div class="min-w-0 flex-1">
@@ -1608,9 +1616,11 @@ const ROUTES = [
             <a href="#checkin-checkout" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Check-in &amp; Out</a>
             <a href="#payment" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Payment</a>
             <a href="#room-facilities" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Hot Water &amp; Facilities</a>
+            <a href="#food-dining" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Food &amp; Dining</a>
             <a href="#cleaning" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Cleaning</a>
             <a href="#quiet-hours" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Quiet Hours</a>
             <a href="#shared-kitchen" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Shared Kitchen</a>
+            <a href="#useful-info" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Useful Info</a>
             <a href="#safety" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Safety &amp; Security</a>
             <a href="#legal" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Legal &amp; House Rules</a>
             <a href="#local-help" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Local Help</a>
@@ -1694,18 +1704,36 @@ const ROUTES = [
             </ul>
           </section>
 
-          <!-- 5. Room Cleaning & Towels -->
+          <!-- 5. Food & Dining -->
+          <section id="food-dining" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">5. Food &amp; Dining</h2>
+            <div class="space-y-3 text-slate-700">
+              <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/80 text-amber-950">
+                <p class="font-semibold text-slate-900 mb-1">A Peaceful Stay by Design:</p>
+                <p class="text-slate-700 text-sm">Hotel Sherpa Soul does not have an on-site restaurant — this helps us keep the hotel quiet, clean, and peaceful for all guests.</p>
+              </div>
+              <p class="font-semibold text-slate-900">Dining in Thamel:</p>
+              <ul class="space-y-1.5 list-disc pl-5 text-slate-600">
+                <li><strong>In the Heart of Thamel:</strong> You are in the heart of Thamel — within a 2–10 minute walk you will find dozens of restaurants, cafés, and local eateries serving Nepali, Indian, Continental, and international food.</li>
+                <li><strong>Ask Reception:</strong> Ask reception for personal recommendations — we know great nearby spots for every budget.</li>
+                <li><strong>Food Delivery:</strong> Food delivery can be received at reception — please collect it promptly and dispose of waste in the dustbin.</li>
+                <li><strong>Dining Areas:</strong> Please enjoy meals in designated areas, not in corridors or shared spaces.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 6. Room Cleaning & Towels -->
           <section id="cleaning" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 class="text-2xl font-bold text-[#01366E] mb-3">5. Room Cleaning &amp; Towels</h2>
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">6. Room Cleaning &amp; Towels</h2>
             <div class="space-y-2 text-slate-700">
               <p>Room cleaning is available on request.</p>
               <p>Guests may contact reception for cleaning, fresh towels or essential supplies.</p>
             </div>
           </section>
 
-          <!-- 6. Quiet Hours -->
+          <!-- 7. Quiet Hours -->
           <section id="quiet-hours" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 class="text-2xl font-bold text-[#01366E] mb-3">6. Quiet Hours</h2>
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">7. Quiet Hours</h2>
             <div class="space-y-3 text-slate-700">
               <p class="font-semibold text-slate-900">Quiet hours: 10:00 PM to 7:00 AM.</p>
               <p>Please:</p>
@@ -1719,9 +1747,9 @@ const ROUTES = [
             </div>
           </section>
 
-          <!-- 7. Shared Kitchen -->
+          <!-- 8. Shared Kitchen -->
           <section id="shared-kitchen" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 class="text-2xl font-bold text-[#01366E] mb-3">7. Shared Kitchen</h2>
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">8. Shared Kitchen</h2>
             <div class="space-y-3 text-slate-700">
               <p>The shared kitchen is available to eligible long-stay guests staying at least two weeks, subject to confirmation with reception.</p>
               <p class="font-semibold text-slate-900">Rules:</p>
@@ -1735,9 +1763,36 @@ const ROUTES = [
             </div>
           </section>
 
-          <!-- 8. Safety & Security -->
+          <!-- 9. Useful Information -->
+          <section id="useful-info" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">9. Useful Information</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div class="font-bold text-slate-900 text-sm">🧳 Luggage Storage</div>
+                <p class="text-xs text-slate-600 mt-1">Free luggage storage is available before check-in and after check-out — please confirm with reception.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div class="font-bold text-slate-900 text-sm">🪪 ID Requirement</div>
+                <p class="text-xs text-slate-600 mt-1">All guests must present a valid passport or government ID at check-in, as required by Nepal law.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div class="font-bold text-slate-900 text-sm">🚨 Emergency Contact</div>
+                <p class="text-xs text-slate-600 mt-1">For medical, fire, or security emergencies, contact reception 24/7 at <a href="tel:+9779851068219" class="text-[#01366E] font-bold underline">+977 9851068219</a>.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div class="font-bold text-slate-900 text-sm">🐕 Pets</div>
+                <p class="text-xs text-slate-600 mt-1">Pets are not allowed in the hotel.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 sm:col-span-2">
+                <div class="font-bold text-slate-900 text-sm">💧 Drinking Water</div>
+                <p class="text-xs text-slate-600 mt-1">Complimentary drinking water is available at reception.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 10. Safety & Security -->
           <section id="safety" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 class="text-2xl font-bold text-[#01366E] mb-3">8. Safety &amp; Security</h2>
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">10. Safety &amp; Security</h2>
             <ul class="space-y-2 list-disc pl-5 text-slate-700">
               <li>Lock your room when leaving.</li>
               <li>Keep your valuables and personal belongings secure.</li>
@@ -1747,9 +1802,9 @@ const ROUTES = [
             </ul>
           </section>
 
-          <!-- 9. Legal Compliance & Prohibited Activities -->
+          <!-- 11. Legal Compliance & Prohibited Activities -->
           <section id="legal" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 class="text-2xl font-bold text-[#01366E] mb-3">Legal Compliance &amp; Prohibited Activities</h2>
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">11. Legal Compliance &amp; Prohibited Activities</h2>
             <div class="space-y-3 text-slate-700">
               <p>All guests must comply with the applicable laws of Nepal while staying at the hotel.</p>
               <p class="font-semibold text-slate-900">The following activities are prohibited on hotel premises:</p>
@@ -1769,21 +1824,21 @@ const ROUTES = [
             </div>
           </section>
 
-          <!-- 10. Local Help & Important Information -->
+          <!-- 12. Local Help & Important Information -->
           <section id="local-help" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 class="text-2xl font-bold text-[#01366E] mb-3">10. Local Help &amp; Important Information</h2>
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">12. Local Help &amp; Important Information</h2>
             <div class="space-y-3 text-slate-700">
               <p>Guests may ask reception for local directions, transport assistance, sightseeing suggestions and general travel information.</p>
               <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <p class="font-bold text-slate-900">Important:</p>
-                <p class="text-slate-700 text-sm">Hotel Sherpa Soul does not have an on-site restaurant or private parking.</p>
+                <p class="text-slate-700 text-sm">Hotel Sherpa Soul does not have an on-site restaurant or private parking — but reception will gladly assist with nearby dining recommendations and public parking options.</p>
               </div>
             </div>
           </section>
 
-          <!-- 11. Contact Hotel Sherpa Soul -->
+          <!-- 13. Contact Hotel Sherpa Soul -->
           <section id="contact" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 class="text-2xl font-bold text-[#01366E] mb-4">11. Contact Hotel Sherpa Soul</h2>
+            <h2 class="text-2xl font-bold text-[#01366E] mb-4">13. Contact Hotel Sherpa Soul</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200">
                 <div class="text-xs uppercase font-bold text-emerald-800">WhatsApp</div>
@@ -1804,7 +1859,7 @@ const ROUTES = [
             </div>
           </section>
 
-          <!-- 12. Thank You & Google Review Invitation -->
+          <!-- 14. Thank You & Google Review Invitation -->
           <section id="review" class="bg-gradient-to-br from-[#01366E] via-[#0A2540] to-[#01366E] text-white rounded-3xl p-6 sm:p-10 shadow-lg border border-amber-400/30">
             <h2 class="text-2xl sm:text-3xl font-extrabold mb-4">Thank You for Staying with Us!</h2>
             <div class="space-y-3 text-slate-200 text-sm sm:text-base leading-relaxed mb-6">

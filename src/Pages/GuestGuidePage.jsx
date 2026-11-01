@@ -53,9 +53,11 @@ export default function GuestGuidePage() {
     { href: "#checkin-checkout", label: "Check-in & Out" },
     { href: "#payment", label: "Payment" },
     { href: "#room-facilities", label: "Hot Water & Facilities" },
+    { href: "#food-dining", label: "Food & Dining" },
     { href: "#cleaning", label: "Cleaning" },
     { href: "#quiet-hours", label: "Quiet Hours" },
     { href: "#shared-kitchen", label: "Shared Kitchen" },
+    { href: "#useful-info", label: "Useful Info" },
     { href: "#safety", label: "Safety & Security" },
     { href: "#legal", label: "Legal & House Rules" },
     { href: "#local-help", label: "Local Help" },
@@ -114,6 +116,11 @@ export default function GuestGuidePage() {
       icon: "🛡️",
       title: "Guest Responsibility",
       desc: "Lock your room and secure valuables. Guests are responsible for personal belongings.",
+    },
+    {
+      icon: "💡",
+      title: "Save Energy — Switch Off Before Leaving",
+      desc: "Before leaving your room, please switch off all electrical devices — air conditioner, fan, lights, heater/geyser, TV, and chargers. This helps us save energy and keep the environment safe. Thank you for your cooperation!",
     },
     {
       icon: "⚖️",
@@ -442,7 +449,52 @@ export default function GuestGuidePage() {
             </div>
           </section>
 
-          {/* 5. Room Cleaning & Towels */}
+          {/* 5. Food & Dining */}
+          <section
+            id="food-dining"
+            className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 scroll-mt-28"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2.5 bg-amber-50 text-[#FB6C01] rounded-xl border border-amber-200">
+                <UtensilsCrossed className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">Section 5</span>
+                <h2 className="text-2xl font-bold text-[#01366E]">5. Food &amp; Dining</h2>
+              </div>
+            </div>
+
+            <div className="space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
+              <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/80 text-amber-950">
+                <p className="font-semibold text-slate-900 mb-1">
+                  A Peaceful Stay by Design:
+                </p>
+                <p className="text-slate-700 text-sm">
+                  Hotel Sherpa Soul does not have an on-site restaurant — this helps us keep the hotel quiet and peaceful for all guests.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-slate-900 mb-2">Dining in Thamel:</p>
+                <ul className="space-y-2 list-disc pl-5 text-slate-600">
+                  <li>
+                    <strong>In the Heart of Thamel:</strong> You are in the heart of Thamel — within a 2–10 minute walk you will find dozens of restaurants, cafés, and local eateries serving Nepali, Indian, Continental, and international food.
+                  </li>
+                  <li>
+                    <strong>Ask Reception:</strong> Ask reception for personal recommendations — we know great nearby spots for every budget.
+                  </li>
+                  <li>
+                    <strong>Food Delivery:</strong> Food delivery can be received at reception — please collect it promptly and dispose of waste in the dustbin.
+                  </li>
+                  <li>
+                    <strong>Dining Areas:</strong> Please enjoy meals in designated areas, not in corridors or shared spaces.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* 6. Room Cleaning & Towels */}
           <section
             id="cleaning"
             className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 scroll-mt-28"
@@ -452,8 +504,8 @@ export default function GuestGuidePage() {
                 <Sparkles className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-bold text-sky-700 uppercase tracking-wider">Section 5</span>
-                <h2 className="text-2xl font-bold text-[#01366E]">5. Room Cleaning &amp; Towels</h2>
+                <span className="text-xs font-bold text-sky-700 uppercase tracking-wider">Section 6</span>
+                <h2 className="text-2xl font-bold text-[#01366E]">6. Room Cleaning &amp; Towels</h2>
               </div>
             </div>
 
@@ -467,7 +519,7 @@ export default function GuestGuidePage() {
             </div>
           </section>
 
-          {/* 6. Quiet Hours */}
+          {/* 7. Quiet Hours */}
           <section
             id="quiet-hours"
             className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 scroll-mt-28"
@@ -477,8 +529,8 @@ export default function GuestGuidePage() {
                 <Moon className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-bold text-indigo-700 uppercase tracking-wider">Section 6</span>
-                <h2 className="text-2xl font-bold text-[#01366E]">6. Quiet Hours</h2>
+                <span className="text-xs font-bold text-indigo-700 uppercase tracking-wider">Section 7</span>
+                <h2 className="text-2xl font-bold text-[#01366E]">7. Quiet Hours</h2>
               </div>
             </div>
 
@@ -501,7 +553,7 @@ export default function GuestGuidePage() {
             </div>
           </section>
 
-          {/* 7. Shared Kitchen */}
+          {/* 8. Shared Kitchen */}
           <section
             id="shared-kitchen"
             className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 scroll-mt-28"
@@ -511,8 +563,8 @@ export default function GuestGuidePage() {
                 <UtensilsCrossed className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">Section 7</span>
-                <h2 className="text-2xl font-bold text-[#01366E]">7. Shared Kitchen</h2>
+                <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">Section 8</span>
+                <h2 className="text-2xl font-bold text-[#01366E]">8. Shared Kitchen</h2>
               </div>
             </div>
 
@@ -534,7 +586,75 @@ export default function GuestGuidePage() {
             </div>
           </section>
 
-          {/* 8. Safety & Security */}
+          {/* 9. Useful Information */}
+          <section
+            id="useful-info"
+            className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 scroll-mt-28"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2.5 bg-blue-50 text-[#01366E] rounded-xl border border-blue-200">
+                <Info className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">Section 9</span>
+                <h2 className="text-2xl font-bold text-[#01366E]">9. Useful Information</h2>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
+                <span className="text-xl shrink-0 pt-0.5 select-none" role="img" aria-label="Luggage Storage">🧳</span>
+                <div>
+                  <div className="font-bold text-slate-900 text-sm">Luggage Storage</div>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Free luggage storage is available before check-in and after check-out — please confirm with reception.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
+                <span className="text-xl shrink-0 pt-0.5 select-none" role="img" aria-label="ID Requirement">🪪</span>
+                <div>
+                  <div className="font-bold text-slate-900 text-sm">ID Requirement</div>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    All guests must present a valid passport or government ID at check-in, as required by Nepal law.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
+                <span className="text-xl shrink-0 pt-0.5 select-none" role="img" aria-label="Emergency Contact">🚨</span>
+                <div>
+                  <div className="font-bold text-slate-900 text-sm">Emergency Contact</div>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    For medical, fire, or security emergencies, contact reception 24/7 at <a href="tel:+9779851068219" className="text-[#01366E] font-bold underline">+977 9851068219</a>.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
+                <span className="text-xl shrink-0 pt-0.5 select-none" role="img" aria-label="Pets">🐕</span>
+                <div>
+                  <div className="font-bold text-slate-900 text-sm">Pets</div>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Pets are not allowed in the hotel.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3 sm:col-span-2">
+                <span className="text-xl shrink-0 pt-0.5 select-none" role="img" aria-label="Drinking Water">💧</span>
+                <div>
+                  <div className="font-bold text-slate-900 text-sm">Drinking Water</div>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Complimentary drinking water is available at reception.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 10. Safety & Security */}
           <section
             id="safety"
             className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 scroll-mt-28"
@@ -544,8 +664,8 @@ export default function GuestGuidePage() {
                 <Lock className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Section 8</span>
-                <h2 className="text-2xl font-bold text-[#01366E]">8. Safety &amp; Security</h2>
+                <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Section 10</span>
+                <h2 className="text-2xl font-bold text-[#01366E]">10. Safety &amp; Security</h2>
               </div>
             </div>
 
@@ -560,7 +680,7 @@ export default function GuestGuidePage() {
             </div>
           </section>
 
-          {/* 9. Legal Compliance & Prohibited Activities */}
+          {/* 11. Legal Compliance & Prohibited Activities */}
           <section
             id="legal"
             className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 scroll-mt-28"
@@ -570,8 +690,8 @@ export default function GuestGuidePage() {
                 <Scale className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-bold text-rose-700 uppercase tracking-wider">Section 9</span>
-                <h2 className="text-2xl font-bold text-[#01366E]">9. Legal Compliance &amp; Prohibited Activities</h2>
+                <span className="text-xs font-bold text-rose-700 uppercase tracking-wider">Section 11</span>
+                <h2 className="text-2xl font-bold text-[#01366E]">11. Legal Compliance &amp; Prohibited Activities</h2>
               </div>
             </div>
 
@@ -616,7 +736,7 @@ export default function GuestGuidePage() {
             </div>
           </section>
 
-          {/* 10. Local Help & Important Information */}
+          {/* 12. Local Help & Important Information */}
           <section
             id="local-help"
             className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 scroll-mt-28"
@@ -626,8 +746,8 @@ export default function GuestGuidePage() {
                 <Compass className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">Section 10</span>
-                <h2 className="text-2xl font-bold text-[#01366E]">10. Local Help &amp; Important Information</h2>
+                <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">Section 12</span>
+                <h2 className="text-2xl font-bold text-[#01366E]">12. Local Help &amp; Important Information</h2>
               </div>
             </div>
 
@@ -641,13 +761,13 @@ export default function GuestGuidePage() {
                   <Info className="w-4 h-4 text-[#FB6C01]" /> Important:
                 </p>
                 <p className="text-slate-700 text-sm">
-                  Hotel Sherpa Soul does not have an on-site restaurant or private parking.
+                  Hotel Sherpa Soul does not have an on-site restaurant or private parking — but reception will gladly assist with nearby dining recommendations and public parking options.
                 </p>
               </div>
             </div>
           </section>
 
-          {/* 11. Contact Hotel Sherpa Soul */}
+          {/* 13. Contact Hotel Sherpa Soul */}
           <section
             id="contact"
             className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 scroll-mt-28"
@@ -657,8 +777,8 @@ export default function GuestGuidePage() {
                 <Phone className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">Section 11</span>
-                <h2 className="text-2xl font-bold text-[#01366E]">11. Contact Hotel Sherpa Soul</h2>
+                <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">Section 13</span>
+                <h2 className="text-2xl font-bold text-[#01366E]">13. Contact Hotel Sherpa Soul</h2>
               </div>
             </div>
 
@@ -735,7 +855,7 @@ export default function GuestGuidePage() {
             </div>
           </section>
 
-          {/* 12. Thank You & Google Review Invitation */}
+          {/* 14. Thank You & Google Review Invitation */}
           <section
             id="review"
             className="bg-gradient-to-br from-[#01366E] via-[#0A2540] to-[#01366E] text-white rounded-3xl p-6 sm:p-10 shadow-lg border border-amber-400/30 scroll-mt-28 relative overflow-hidden"
