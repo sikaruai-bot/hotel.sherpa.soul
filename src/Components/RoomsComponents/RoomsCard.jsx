@@ -107,6 +107,12 @@ const RoomsCard = () => {
   const currentRooms = rooms.slice(indexOfFirstRoom, indexOfLastRoom);
   const totalPages = Math.ceil(rooms.length / roomsPerPage);
 
+  const getAmenityLabel = (amenity) => {
+    if (!amenity) return "";
+    const key = amenity.toLowerCase().replace(/[^a-z0-9]/g, "_");
+    return t(`roomAmenities.${key}`, amenity);
+  };
+
   // Loading Screen Component
   const LoadingScreen = () => (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 md:py-16">
@@ -385,7 +391,7 @@ const RoomsCard = () => {
                       key={idx}
                       className="px-2.5 py-1 bg-blue-50 text-[#01366E] text-xs font-medium rounded-full border border-blue-100"
                     >
-                      {amenity}
+                      {getAmenityLabel(amenity)}
                     </span>
                   ))}
                 </div>
@@ -398,10 +404,10 @@ const RoomsCard = () => {
                       <span className="text-xl font-bold text-[#01366E]">
                         ${Math.round(room.price * 0.9)} USD
                       </span>
-                      <span className="text-xs text-gray-500">/ night</span>
+                      <span className="text-xs text-gray-500">{t("roomsCard.perNight", "/ night")}</span>
                     </div>
                     <span className="text-[10px] font-bold text-emerald-600 block">
-                      10% Direct OFF
+                      {t("roomsCard.directOff", "10% Direct OFF")}
                     </span>
                   </div>
                   <span className="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">

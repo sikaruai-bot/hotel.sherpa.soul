@@ -330,3 +330,4 @@ module.exports = {
     copyright: "© 2026 Hotel Sherpa Soul. All rights reserved."
   }
 };
+

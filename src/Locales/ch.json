@@ -101,7 +101,8 @@
     "visitDescription": "加德满都旅游区的中心地带",
     "getIn": "保持联系",
     "touch": "联络",
-    "readyDescription": "准备体验正宗的雪巴热情好客吗？联系我们预订、咨询或提供建议。"
+    "readyDescription": "准备体验正宗的雪巴热情好客吗？联系我们预订、咨询或提供建议。",
+    "visitDetail": "尼泊尔加德满都泰米尔巴格瓦蒂街26号 (邮编 44600)"
   },
   "contactMap": {
     "en": {
@@ -189,9 +190,10 @@
     "from": "起价",
     "guest": "位客人",
     "guestsSuffix": "位",
-    "categoriesAvailable": "提供 3 种客房类型",
+    "categoriesAvailable": "提供3种精选客房房型",
     "perNight": "/ 晚",
-    "onlyLeft": "仅剩 2 间空房！"
+    "onlyLeft": "仅剩最后2间客房！",
+    "directOff": "官网直订立享9折"
   },
   "roomDetails": {
     "title": "房间详情",
@@ -234,18 +236,20 @@
   "footer": {
     "brand": {
       "title": "夏尔巴之魂酒店",
-      "description": "位于塔梅尔中心的宁静之地，融合舒适、文化和雪巴式热情好客",
-      "tagline": "加德满都泰梅尔闹中取静的舒适精品酒店。洁净客房、24/7热水与诚挚待客之道。"
+      "description": "夏尔巴之魂酒店是位于加德满都泰米尔核心区的一家静谧舒适精品酒店，专为寻求便利位置、舒适客房与优质睡眠的全球旅行者打造。",
+      "tagline": "无餐厅喧哗 • 无噪音干扰 • 尽享安睡"
     },
     "quickLinks": {
       "title": "快速导航",
       "links": {
         "home": "首页",
         "aboutUs": "关于我们",
-        "rooms": "客房",
-        "gallery": "画廊",
-        "contact": "联系我们",
-        "blog": "旅游博客"
+        "rooms": "客房与套房",
+        "gallery": "照片画廊",
+        "contact": "联系与位置",
+        "blog": "旅行博客",
+        "services": "服务与设施",
+        "guestGuide": "住客入住指南"
       },
       "home": "首页",
       "rooms": "客房与套房",
@@ -260,7 +264,7 @@
       "title": "联系我们",
       "phone": "+977 9851068219 / +977-1-4530311",
       "email": "info@hotelsherpasoul.com",
-      "address": "尼泊尔加德满都泰梅尔巴格瓦蒂路26号"
+      "address": "尼泊尔加德满都泰米尔巴格瓦蒂街26号"
     },
     "followUs": {
       "title": "关注我们",
@@ -268,25 +272,30 @@
       "instagram": "Instagram",
       "tripAdvisor": "猫途鹰"
     },
-    "copyright": "© 2026 夏尔巴之魂酒店。版权所有。",
+    "copyright": {
+      "prefix": "©",
+      "hotelName": "夏尔巴之魂酒店",
+      "suffix": "版权所有。"
+    },
     "cta": {
-      "badge": "夏尔巴之魂酒店 • 加德满都泰梅尔",
-      "heading": "准备好享受宁静安眠了吗？",
-      "copy": "入住泰梅尔中心，让夏尔巴之魂酒店成为您加德满都之行与尼泊尔探险的温馨大本营。",
-      "button": "立即预订"
+      "badge": "夏尔巴之魂酒店 • 加德满都泰米尔",
+      "heading": "准备好享受宁静舒适的深度睡眠了吗？",
+      "copy": "入住泰米尔核心街区，让夏尔巴之魂酒店成为您加德满都与尼泊尔喜马拉雅探索之旅的宁静港湾。",
+      "button": "立即预订客房"
     },
     "legal": {
       "privacy": "隐私政策",
       "terms": "服务条款",
-      "cookies": "Cookie 设置",
-      "cms": "CMS 管理门户"
+      "cookies": "Cookie 偏好设置",
+      "cms": "CMS 管理后台",
+      "guestGuide": "住客指南与入住守则"
     },
     "otas": {
-      "title": "官方平台预订",
-      "bookingCom": "Booking.com 预订",
-      "airbnb": "Airbnb 预订",
-      "agoda": "Agoda 预订",
-      "tripCom": "Trip.com 预订"
+      "title": "在主流预订平台预订",
+      "bookingCom": "在 Booking.com 预订",
+      "airbnb": "在 Airbnb 预订",
+      "agoda": "在 Agoda 预订",
+      "tripCom": "在携程 Trip.com 预订"
     }
   },
   "homeServices": {
@@ -484,17 +493,21 @@
     "subtitle": "无论您是计划旅行、需要帮助还是想要分享反馈，我们都将竭诚为您服务，让您在 Hotel Sherpa Soul 拥有难忘的体验。",
     "card": {
       "res": {
-        "title": "快速反应",
-        "des": "24小时内"
+        "title": "快速响应",
+        "des": "24小时内极速回复"
       },
       "per": {
-        "title": "个人风格",
-        "des": "专门的支持"
+        "title": "贴心服务",
+        "des": "专属管家全程协助"
+      },
+      "quick": {
+        "title": "快速响应",
+        "des": "24小时内极速回复"
       }
     },
     "form": {
       "title": "发送消息",
-      "desc": "填写下面的表格，我们会尽快回复您！",
+      "desc": "请填写以下表格，我们将在第一时间与您取得联系！",
       "data": {
         "name": "姓名",
         "email": "电子邮件",
@@ -507,9 +520,9 @@
       "send": "通过 WhatsApp 发送",
       "send2": "发送...",
       "placeholders": {
-        "name": "请输入您的全名",
+        "name": "请输入您的姓名",
         "phone": "+977 98XXXXXXXX",
-        "message": "请告诉我们您的咨询内容、入住日期或特殊要求..."
+        "message": "请告诉我们您的咨询需求、入住日期或特殊要求..."
       }
     },
     "badge": "前台与咨询"
@@ -579,21 +592,21 @@
     }
   },
   "aboutstats": {
-    "title1": "您的家外之家",
+    "title1": "您在远方的温馨之",
     "title2": "家",
-    "para1": "在我们温馨舒适的宾馆体验地道的夏尔巴式待客之道。我们相信舒适的住宿不应该花费太多。我们家庭经营的宾馆提供温馨的个性化服务，并配备所有必需设施，确保您拥有难忘的住宿体验。",
-    "para2": "无论您是商务出差、休闲度假还是旅途中途停留，我们都为您提供干净、安全、温馨的环境，让每位宾客都能感受到宾至如归的待遇。我们致力于打造价格实惠的奢华体验，让您在享受卓越品质和舒适体验的同时，也能享受到物超所值的体验。",
+    "para1": "在我们温馨的精品客栈中体验纯正温厚的夏尔巴待客之道。我们始终坚信，舒适品质的住宿无需昂贵门槛。家庭式经营带来细致入微、体贴周到的专属关怀。",
+    "para2": "无论您是前往喜马拉雅徒步、深度游览加德满都，还是旅途小憩，我们都为您提供干净、安全、宾至如归的居住环境。",
     "amenities": {
-      "1": "舒适的客房",
-      "2": "整栋建筑均覆盖无线网络",
-      "3": "黄金地段",
-      "4": "接送请求"
+      "1": "舒适静谧客房",
+      "2": "全楼覆盖高速无线网络",
+      "3": "泰米尔黄金静谧地段",
+      "4": "机场接送预约服务"
     },
     "stat": {
-      "1": "多年经验",
-      "2": "快乐的客人",
-      "3": "支持",
-      "4": "等级"
+      "1": "24小时前台贴心服务",
+      "2": "100% 宁静无噪音客房",
+      "3": "官网直接预订立享9折",
+      "4": "免费徒步装备行李寄存"
     }
   },
   "modal": {
@@ -1385,5 +1398,20 @@
       "guestGuide": "住客指南与酒店守则",
       "privacyPolicy": "隐私政策"
     }
+  },
+  "roomAmenities": {
+    "high_speed_fiber_wi_fi": "高速光纤无线网络",
+    "1_king_bed___1_single_bed": "1张特大床 + 1张单人床",
+    "1_king_size_bed": "1张豪华特大床",
+    "private_attached_bathroom__24_7_hot_water_": "独立卫浴套间 (24小时充沛热水)",
+    "private_ensuite_bathroom__24_7_hot_water_": "客房独立卫生间 (24小时充沛热水)",
+    "ceiling_fan___heating": "吊扇 / 电暖设备",
+    "shared_guest_kitchen_access": "住客共享自助厨房使用权",
+    "complimentary_trekker_luggage_storage": "徒步登山客免费安全行李寄存",
+    "daily_housekeeping": "每日客房清洁整理",
+    "24_7_front_desk_assistance": "24小时前台贴心服务",
+    "air_conditioning__ac_": "冷暖空调 (AC)",
+    "work_desk___seating": "办公书桌与舒适座椅",
+    "comfortable_seating_area": "惬意休息会客区"
   }
 }

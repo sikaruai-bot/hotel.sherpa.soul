@@ -195,7 +195,8 @@
     "visitDescription": "ネパール、カトマンズ、タメル バガワティ・マーグ26",
     "getIn": "お気軽に",
     "touch": "お問い合わせください",
-    "readyDescription": "カトマンズでの快適なご滞在をお手伝いいたします。"
+    "readyDescription": "カトマンズでの快適なご滞在をお手伝いいたします。",
+    "visitDetail": "ネパール カトマンズ 44600、タメル・バガワティ・マルグ26"
   },
   "contactMap": {
     "en": {
@@ -284,9 +285,10 @@
     "from": "〜",
     "guest": "名",
     "guestsSuffix": "名様",
-    "categoriesAvailable": "3タイプの客室をご用意",
+    "categoriesAvailable": "3つの客室カテゴリーをご用意",
     "perNight": "/ 泊",
-    "onlyLeft": "残りわずか 2 室！"
+    "onlyLeft": "残りわずか2室！",
+    "directOff": "直販予約で10%OFF"
   },
   "roomDetails": {
     "title": "客室詳細",
@@ -334,16 +336,16 @@
     "cta": {
       "title": "快適な睡眠を体験しませんか？",
       "desc": "タメルの中心で静寂な夜をお過ごしください。",
-      "button": "宿泊を予約する",
+      "button": "今すぐ予約する",
       "badge": "ホテル・シェルパ・ソウル • カトマンズ・タメル",
-      "heading": "静かで快適な夜を過ごす準備はできましたか？",
-      "copy": "タメルの中心に滞在し、シェルパ・ソウルをネパール滞在の温かな拠点にしてください。"
+      "heading": "静かで快適な睡眠をお届けします",
+      "copy": "タメルの中心に滞在し、ホテル・シェルパ・ソウルをカトマンズやネパール旅行の快適な拠点にしてください。"
     },
     "brand": {
-      "tagline": "カトマンズ・タメルにある静かで快適なブティックホテル。清潔なお部屋、24時間給湯、心温まるおもてなし。",
+      "tagline": "レストランなし。騒音なし。快適な睡眠。",
       "desc": "ホテル・シェルパ・ソウルは、タメルの静かな一角にある快適なホテルです。",
       "title": "ホテル・シェルパ・ソウル",
-      "description": "ホテルシェルパソウルは、ネパール・カトマンズのタメル地区中心部に位置する静かで快適なブティックホテルです。優れた立地、清潔な客室、上質な睡眠を提供します。"
+      "description": "ホテル・シェルパ・ソウルは、便利な立地、清潔で快適な客室、上質な睡眠を求める旅行者のためのタメルの静かなブティックホテルです。"
     },
     "quickLinks": {
       "title": "クイックリンク",
@@ -356,10 +358,12 @@
       "links": {
         "home": "ホーム",
         "rooms": "客室＆スイート",
-        "aboutUs": "ホテル概要",
-        "gallery": "ギャラリー",
-        "blog": "旅ブログ",
-        "contact": "お問い合わせ"
+        "aboutUs": "ホテル紹介",
+        "gallery": "フォトギャラリー",
+        "blog": "旅行ブログ",
+        "contact": "お問い合わせ＆アクセス",
+        "services": "サービス＆設備",
+        "guestGuide": "ゲストガイド"
       },
       "services": "サービス",
       "guestGuide": "ゲストガイド"
@@ -368,23 +372,28 @@
       "title": "お問い合わせ",
       "phone": "+977 9851068219 / +977-1-4530311",
       "email": "info@hotelsherpasoul.com",
-      "address": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      "address": "ネパール カトマンズ 44600、タメル・バガワティ・マルグ26"
     },
     "followUs": {
-      "title": "SNSをフォロー",
+      "title": "公式SNS",
       "facebook": "Facebook",
       "instagram": "Instagram",
       "tripAdvisor": "TripAdvisor"
     },
-    "copyright": "© 2026 Hotel Sherpa Soul. All rights reserved.",
+    "copyright": {
+      "prefix": "©",
+      "hotelName": "ホテル・シェルパ・ソウル",
+      "suffix": "All rights reserved."
+    },
     "legal": {
       "privacy": "プライバシーポリシー",
       "terms": "利用規約",
-      "cookies": "Cookie設定",
-      "cms": "CMSポータル"
+      "cookies": "クッキー設定",
+      "cms": "CMSポータル",
+      "guestGuide": "ゲストガイド＆ハウスルール"
     },
     "otas": {
-      "title": "予約サイト一覧",
+      "title": "主要予約サイトで予約",
       "bookingCom": "Booking.comで予約",
       "airbnb": "Airbnbで予約",
       "agoda": "Agodaで予約",
@@ -509,17 +518,21 @@
     "subtitle": "お気軽にご相談ください",
     "card": {
       "res": {
-        "title": "Quick Response",
-        "des": "Within 24 hours"
+        "title": "迅速な対応",
+        "des": "24時間以内にご返信"
       },
       "per": {
-        "title": "Personal Touch",
-        "des": "Dedicated Support"
+        "title": "親身なサポート",
+        "des": "お客様一人ひとりに丁寧に対応"
+      },
+      "quick": {
+        "title": "迅速な対応",
+        "des": "24時間以内にご返信"
       }
     },
     "form": {
       "title": "Send Message",
-      "desc": "Fill out the form below and we'll get back to you soon!",
+      "desc": "以下のフォームにご記入ください。折り返しご連絡いたします！",
       "data": {
         "name": "Full Name",
         "email": "Email Address",
@@ -532,9 +545,9 @@
       "send": "Send via WhatsApp",
       "send2": "Sending...",
       "placeholders": {
-        "name": "お名前をご入力ください",
+        "name": "お名前を入力してください",
         "phone": "+977 98XXXXXXXX",
-        "message": "お問い合わせ内容、宿泊希望日、ご要望などをご記入ください..."
+        "message": "ご質問、ご宿泊日程、ご要望などをお知らせください..."
       }
     },
     "badge": "フロント＆お問い合わせ"
@@ -604,21 +617,21 @@
     }
   },
   "aboutstats": {
-    "title1": "私たちの",
-    "title2": "強み",
-    "para1": "快適さと静寂を第一に考えています。",
-    "para2": "カトマンズの賑やかさの中で、穏やかな休息をお届けします。",
+    "title1": "旅先で我が家のように寛げる",
+    "title2": "場所",
+    "para1": "温かみのある当ホテルで、シェルパの心からのホスピタリティをご体験ください。快適な滞在に高額な料金は必要ありません。家族経営ならではの丁寧で行き届いたおもてなしを提供します。",
+    "para2": "ヒマラヤトレッキング、市内観光、または長旅の休息など、どのお客様も家族のように温かくお迎えし、清潔で安全な環境をご用意しています。",
     "amenities": {
-      "1": "Comfortable Rooms",
-      "2": "Wifi throughout the building",
-      "3": "Prime Location",
-      "4": "Pick up & Drop Request"
+      "1": "清潔で快適な客室",
+      "2": "館内全域の高速Wi-Fi",
+      "3": "タメル中心の抜群の立地",
+      "4": "空港送迎手配（リクエスト制）"
     },
     "stat": {
-      "1": "Front Desk Support",
-      "2": "Quiet & Peaceful",
-      "3": "Direct Booking Discount",
-      "4": "Luggage Storage"
+      "1": "24時間フロント対応",
+      "2": "100% 静かで穏やかな環境",
+      "3": "直販予約で10%割引",
+      "4": "無料トレッカー荷物預かり"
     }
   },
   "modal": {
@@ -1374,5 +1387,20 @@
       "guestGuide": "ゲストガイドとハウスルール",
       "privacyPolicy": "プライバシーポリシー"
     }
+  },
+  "roomAmenities": {
+    "high_speed_fiber_wi_fi": "高速光ファイバーWi-Fi",
+    "1_king_bed___1_single_bed": "キングベッド1台 + シングルベッド1台",
+    "1_king_size_bed": "大型キングサイズベッド1台",
+    "private_attached_bathroom__24_7_hot_water_": "専用バスルーム完備 (24時間温水シャワー)",
+    "private_ensuite_bathroom__24_7_hot_water_": "専用エンスイートバス (24時間温水シャワー)",
+    "ceiling_fan___heating": "シーリングファン / 暖房",
+    "shared_guest_kitchen_access": "宿泊者専用の共有キッチンのご利用",
+    "complimentary_trekker_luggage_storage": "トレッキング中の無料荷物預かりサービス",
+    "daily_housekeeping": "毎日の客室清掃サービス",
+    "24_7_front_desk_assistance": "24時間フロント対応",
+    "air_conditioning__ac_": "個別エアコン完備 (AC)",
+    "work_desk___seating": "ワークデスク＆快適チェア",
+    "comfortable_seating_area": "くつろげるリビングエリア"
   }
 }

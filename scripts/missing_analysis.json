@@ -1,0 +1,5692 @@
+{
+  "Rooms": {
+    "es": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Privacy Policy",
+        "cur": "Privacy Policy"
+      },
+      {
+        "cat": "footer",
+        "base": "Terms of Service",
+        "cur": "Terms of Service"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      }
+    ],
+    "fra": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Privacy Policy",
+        "cur": "Privacy Policy"
+      },
+      {
+        "cat": "footer",
+        "base": "Terms of Service",
+        "cur": "Terms of Service"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      }
+    ],
+    "de": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Privacy Policy",
+        "cur": "Privacy Policy"
+      },
+      {
+        "cat": "footer",
+        "base": "Terms of Service",
+        "cur": "Terms of Service"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      }
+    ],
+    "it": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Privacy Policy",
+        "cur": "Privacy Policy"
+      },
+      {
+        "cat": "footer",
+        "base": "Terms of Service",
+        "cur": "Terms of Service"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      }
+    ],
+    "pt": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "nl": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "rs": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Privacy Policy",
+        "cur": "Privacy Policy"
+      },
+      {
+        "cat": "footer",
+        "base": "Terms of Service",
+        "cur": "Terms of Service"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ar": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Privacy Policy",
+        "cur": "Privacy Policy"
+      },
+      {
+        "cat": "footer",
+        "base": "Terms of Service",
+        "cur": "Terms of Service"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "CMS Portal",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ko": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "he": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ]
+  },
+  "Contact": {
+    "es": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "fra": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "body",
+        "base": "Dedicated Support",
+        "cur": "Dedicated Support"
+      },
+      {
+        "cat": "body",
+        "base": "Fill out the form below and we'll get back to you soon!",
+        "cur": "Fill out the form below and we'll get back to you soon!"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Personal Touch\n\nDedicated Support",
+        "cur": "Personal Touch\n\nDedicated Support"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "de": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "it": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "pt": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "body",
+        "base": "Dedicated Support",
+        "cur": "Dedicated Support"
+      },
+      {
+        "cat": "body",
+        "base": "Fill out the form below and we'll get back to you soon!",
+        "cur": "Fill out the form below and we'll get back to you soon!"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Personal Touch\n\nDedicated Support",
+        "cur": "Personal Touch\n\nDedicated Support"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "nl": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "body",
+        "base": "Dedicated Support",
+        "cur": "Dedicated Support"
+      },
+      {
+        "cat": "body",
+        "base": "Fill out the form below and we'll get back to you soon!",
+        "cur": "Fill out the form below and we'll get back to you soon!"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Personal Touch\n\nDedicated Support",
+        "cur": "Personal Touch\n\nDedicated Support"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "rs": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ar": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ko": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "body",
+        "base": "Dedicated Support",
+        "cur": "Dedicated Support"
+      },
+      {
+        "cat": "body",
+        "base": "Fill out the form below and we'll get back to you soon!",
+        "cur": "Fill out the form below and we'll get back to you soon!"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Personal Touch\n\nDedicated Support",
+        "cur": "Personal Touch\n\nDedicated Support"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "26 Thamel Bhagawati Marg, קטמנדו 44600, נפאל",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "he": [
+      {
+        "cat": "body",
+        "base": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "body",
+        "base": "contact.card.quick.des",
+        "cur": "contact.card.quick.des"
+      },
+      {
+        "cat": "body",
+        "base": "Dedicated Support",
+        "cur": "Dedicated Support"
+      },
+      {
+        "cat": "body",
+        "base": "Fill out the form below and we'll get back to you soon!",
+        "cur": "Fill out the form below and we'll get back to you soon!"
+      },
+      {
+        "cat": "cards",
+        "base": "contact.card.quick.title\n\ncontact.card.quick.des",
+        "cur": "contact.card.quick.title\n\ncontact.card.quick.des"
+      },
+      {
+        "cat": "cards",
+        "base": "Personal Touch\n\nDedicated Support",
+        "cur": "Personal Touch\n\nDedicated Support"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ]
+  },
+  "About": {
+    "es": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "fra": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "de": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "it": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "pt": [
+      {
+        "cat": "cards",
+        "base": "Comfortable Rooms",
+        "cur": "Comfortable Rooms"
+      },
+      {
+        "cat": "cards",
+        "base": "Prime Location",
+        "cur": "Prime Location"
+      },
+      {
+        "cat": "cards",
+        "base": "Wifi throughout the building",
+        "cur": "Wifi throughout the building"
+      },
+      {
+        "cat": "cards",
+        "base": "Pick up & Drop Request",
+        "cur": "Pick up & Drop Request"
+      },
+      {
+        "cat": "cards",
+        "base": "24/7\nFront Desk Support\n100%\nQuiet & Peaceful\n10%\nDirect Booking Discount\nFree\nLuggage Storage",
+        "cur": "24/7\nFront Desk Support\n100%\nQuiet & Peaceful\n10%\nDirect Booking Discount\nFree\nLuggage Storage"
+      },
+      {
+        "cat": "cards",
+        "base": "24/7\nFront Desk Support",
+        "cur": "24/7\nFront Desk Support"
+      },
+      {
+        "cat": "cards",
+        "base": "100%\nQuiet & Peaceful",
+        "cur": "100%\nQuiet & Peaceful"
+      },
+      {
+        "cat": "cards",
+        "base": "10%\nDirect Booking Discount",
+        "cur": "10%\nDirect Booking Discount"
+      },
+      {
+        "cat": "cards",
+        "base": "Free\nLuggage Storage",
+        "cur": "Free\nLuggage Storage"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "nl": [
+      {
+        "cat": "cards",
+        "base": "Comfortable Rooms",
+        "cur": "Comfortable Rooms"
+      },
+      {
+        "cat": "cards",
+        "base": "Prime Location",
+        "cur": "Prime Location"
+      },
+      {
+        "cat": "cards",
+        "base": "Wifi throughout the building",
+        "cur": "Wifi throughout the building"
+      },
+      {
+        "cat": "cards",
+        "base": "Pick up & Drop Request",
+        "cur": "Pick up & Drop Request"
+      },
+      {
+        "cat": "cards",
+        "base": "24/7\nFront Desk Support\n100%\nQuiet & Peaceful\n10%\nDirect Booking Discount\nFree\nLuggage Storage",
+        "cur": "24/7\nFront Desk Support\n100%\nQuiet & Peaceful\n10%\nDirect Booking Discount\nFree\nLuggage Storage"
+      },
+      {
+        "cat": "cards",
+        "base": "24/7\nFront Desk Support",
+        "cur": "24/7\nFront Desk Support"
+      },
+      {
+        "cat": "cards",
+        "base": "100%\nQuiet & Peaceful",
+        "cur": "100%\nQuiet & Peaceful"
+      },
+      {
+        "cat": "cards",
+        "base": "10%\nDirect Booking Discount",
+        "cur": "10%\nDirect Booking Discount"
+      },
+      {
+        "cat": "cards",
+        "base": "Free\nLuggage Storage",
+        "cur": "Free\nLuggage Storage"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "rs": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ar": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ko": [
+      {
+        "cat": "cards",
+        "base": "Comfortable Rooms",
+        "cur": "Comfortable Rooms"
+      },
+      {
+        "cat": "cards",
+        "base": "Prime Location",
+        "cur": "Prime Location"
+      },
+      {
+        "cat": "cards",
+        "base": "Wifi throughout the building",
+        "cur": "Wifi throughout the building"
+      },
+      {
+        "cat": "cards",
+        "base": "Pick up & Drop Request",
+        "cur": "Pick up & Drop Request"
+      },
+      {
+        "cat": "cards",
+        "base": "24/7\nFront Desk Support\n100%\nQuiet & Peaceful\n10%\nDirect Booking Discount\nFree\nLuggage Storage",
+        "cur": "24/7\nFront Desk Support\n100%\nQuiet & Peaceful\n10%\nDirect Booking Discount\nFree\nLuggage Storage"
+      },
+      {
+        "cat": "cards",
+        "base": "24/7\nFront Desk Support",
+        "cur": "24/7\nFront Desk Support"
+      },
+      {
+        "cat": "cards",
+        "base": "100%\nQuiet & Peaceful",
+        "cur": "100%\nQuiet & Peaceful"
+      },
+      {
+        "cat": "cards",
+        "base": "10%\nDirect Booking Discount",
+        "cur": "10%\nDirect Booking Discount"
+      },
+      {
+        "cat": "cards",
+        "base": "Free\nLuggage Storage",
+        "cur": "Free\nLuggage Storage"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "26 Thamel Bhagawati Marg, קטמנדו 44600, נפאל",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "he": [
+      {
+        "cat": "cards",
+        "base": "Comfortable Rooms",
+        "cur": "Comfortable Rooms"
+      },
+      {
+        "cat": "cards",
+        "base": "Prime Location",
+        "cur": "Prime Location"
+      },
+      {
+        "cat": "cards",
+        "base": "Wifi throughout the building",
+        "cur": "Wifi throughout the building"
+      },
+      {
+        "cat": "cards",
+        "base": "Pick up & Drop Request",
+        "cur": "Pick up & Drop Request"
+      },
+      {
+        "cat": "cards",
+        "base": "24/7\nFront Desk Support\n100%\nQuiet & Peaceful\n10%\nDirect Booking Discount\nFree\nLuggage Storage",
+        "cur": "24/7\nFront Desk Support\n100%\nQuiet & Peaceful\n10%\nDirect Booking Discount\nFree\nLuggage Storage"
+      },
+      {
+        "cat": "cards",
+        "base": "24/7\nFront Desk Support",
+        "cur": "24/7\nFront Desk Support"
+      },
+      {
+        "cat": "cards",
+        "base": "100%\nQuiet & Peaceful",
+        "cur": "100%\nQuiet & Peaceful"
+      },
+      {
+        "cat": "cards",
+        "base": "10%\nDirect Booking Discount",
+        "cur": "10%\nDirect Booking Discount"
+      },
+      {
+        "cat": "cards",
+        "base": "Free\nLuggage Storage",
+        "cur": "Free\nLuggage Storage"
+      },
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ]
+  },
+  "Home": {
+    "es": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "fra": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "de": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "it": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "pt": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "nl": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "rs": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ar": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ko": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "26 Thamel Bhagawati Marg, קטמנדו 44600, נפאל",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "he": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ]
+  },
+  "Gallery": {
+    "es": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "fra": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "de": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "it": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "pt": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "nl": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "rs": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ar": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      },
+      {
+        "cat": "footer",
+        "base": "פורטל CMS",
+        "cur": "CMS Portal"
+      }
+    ],
+    "ko": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "26 Thamel Bhagawati Marg, קטמנדו 44600, נפאל",
+        "cur": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ],
+    "he": [
+      {
+        "cat": "cards",
+        "base": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com",
+        "cur": "Book on Top OTAs\nBook on Booking.com\nBook on Airbnb\nBook on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep.",
+        "cur": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Home",
+        "cur": "Home"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "Rooms",
+        "cur": "Rooms"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "About Us",
+        "cur": "About Us"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Services & Amenities",
+        "cur": "Services & Amenities"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Gallery",
+        "cur": "Gallery"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Blog",
+        "cur": "Blog"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide",
+        "cur": "Guest Guide"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Contact",
+        "cur": "Contact"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Top OTAs",
+        "cur": "Book on Top OTAs"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Booking.com",
+        "cur": "Book on Booking.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Airbnb",
+        "cur": "Book on Airbnb"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Book on Trip.com",
+        "cur": "Book on Trip.com"
+      },
+      {
+        "cat": "footer",
+        "base": "Guest Guide & House Rules",
+        "cur": "Guest Guide & House Rules"
+      }
+    ]
+  }
+}

@@ -195,7 +195,8 @@
     "visitDescription": "טאמל בהגוואטי מארג 26, קטמנדו, נפאל",
     "getIn": "צרו איתנו",
     "touch": "קשר ישיר",
-    "readyDescription": "נשמח לעזור לכם לתכנן את השהייה בקטמנדו."
+    "readyDescription": "נשמח לעזור לכם לתכנן את השהייה בקטמנדו.",
+    "visitDetail": "תאמל בהגוואטי מארג 26, קטמנדו 44600, נפאל"
   },
   "contactMap": {
     "en": {
@@ -284,9 +285,10 @@
     "from": "החל מ-",
     "guest": "אורח",
     "guestsSuffix": "אורחים",
-    "categoriesAvailable": "3 Room Categories Available",
-    "perNight": "/ night",
-    "onlyLeft": "Only 2 rooms left!"
+    "categoriesAvailable": "3 קטגוריות חדרים זמינות",
+    "perNight": "/ לילה",
+    "onlyLeft": "נותרו 2 חדרים בלבד!",
+    "directOff": "10% הנחה ישירה"
   },
   "roomDetails": {
     "title": "פרטי החדר",
@@ -335,15 +337,15 @@
       "title": "מוכנים לשינה עמוקה וטובה?",
       "desc": "התארחו בלב טאמל ותיהנו משקט מוחלט.",
       "button": "הזמינו את שהייתכם",
-      "badge": "מלון שרפה סול • טאמל, קטמנדו",
-      "heading": "מוכנים לשינה שלווה ואיכותית?",
-      "copy": "התארחו בלב טאמל והפכו את שרפה סול לבית הנוח והחם שלכם בנפאל."
+      "badge": "מלון שרפה סול • תאמל, קטמנדו",
+      "heading": "מוכנים לשינה שקטה ואיכותית?",
+      "copy": "התארחו בלב תאמל והפכו את מלון שרפה סול לבסיס הנוח והשקט שלכם בקטמנדו ובמסעכם בנפאל."
     },
     "brand": {
-      "tagline": "מלון בוטיק שקט ונוח בטאמל, קטמנדו. חדרים נקיים, מים חמים 24/7 ואירוח חם מכל הלב.",
+      "tagline": "בלי מסעדה. בלי רעש. שינה מעולה.",
       "desc": "מלון שרפה סול הוא מלון שקט ונעים בטאמל, קטמנדו.",
       "title": "מלון שרפה סול",
-      "description": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      "description": "מלון שרפה סול הוא מלון שקט ונעים בתאמל, קטמנדו, המיועד למטיילים המחפשים מיקום מעולה, חדרים נקיים ומנוחה אמיתית."
     },
     "quickLinks": {
       "title": "קישורים מהירים",
@@ -354,12 +356,14 @@
       "blog": "מדריך למטייל",
       "contact": "צור קשר",
       "links": {
-        "home": "Home",
-        "rooms": "Rooms",
-        "aboutUs": "About Us",
-        "gallery": "Gallery",
-        "blog": "Blog",
-        "contact": "Contact"
+        "home": "דף הבית",
+        "rooms": "חדרים וסוויטות",
+        "aboutUs": "אודותינו",
+        "gallery": "גלריית תמונות",
+        "blog": "בלוג טיולים",
+        "contact": "יצירת קשר ומיקום",
+        "services": "שירותים ומתקנים",
+        "guestGuide": "מדריך לאורח"
       },
       "services": "שירותים",
       "guestGuide": "מדריך לאורח"
@@ -368,7 +372,7 @@
       "title": "צרו קשר",
       "phone": "+977 9851068219 / +977-1-4530311",
       "email": "info@hotelsherpasoul.com",
-      "address": "26 Thamel Bhagawati Marg, קטמנדו 44600, נפאל"
+      "address": "תאמל בהגוואטי מארג 26, קטמנדו 44600, נפאל"
     },
     "followUs": {
       "title": "עקבו אחרינו",
@@ -376,19 +380,24 @@
       "instagram": "Instagram",
       "tripAdvisor": "TripAdvisor"
     },
-    "copyright": "© 2026 מלון שרפה סול. כל הזכויות שמורות.",
+    "copyright": {
+      "prefix": "©",
+      "hotelName": "מלון שרפה סול",
+      "suffix": "כל הזכויות שמורות."
+    },
     "legal": {
       "privacy": "מדיניות פרטיות",
       "terms": "תנאי שימוש",
-      "cookies": "הגדרות קובצי Cookie",
-      "cms": "פורטל CMS"
+      "cookies": "העדפות עוגיות",
+      "cms": "פורטל CMS",
+      "guestGuide": "מדריך לאורח וכללי הבית"
     },
     "otas": {
-      "title": "Book on Top OTAs",
-      "bookingCom": "Book on Booking.com",
-      "airbnb": "Book on Airbnb",
-      "agoda": "Book on Agoda",
-      "tripCom": "Book on Trip.com"
+      "title": "הזמינו בפלטפורמות המובילות",
+      "bookingCom": "הזמינו ב-Booking.com",
+      "airbnb": "הזמינו ב-Airbnb",
+      "agoda": "הזמינו ב-Agoda",
+      "tripCom": "הזמינו ב-Trip.com"
     }
   },
   "homeServices": {
@@ -509,17 +518,21 @@
     "subtitle": "דברו איתנו",
     "card": {
       "res": {
-        "title": "Quick Response",
-        "des": "Within 24 hours"
+        "title": "מענה מהיר",
+        "des": "תוך פחות מ-24 שעות"
       },
       "per": {
-        "title": "Personal Touch",
-        "des": "Dedicated Support"
+        "title": "יחס אישי וחם",
+        "des": "סיוע מסור בכל עת"
+      },
+      "quick": {
+        "title": "מענה מהיר",
+        "des": "תוך פחות מ-24 שעות"
       }
     },
     "form": {
       "title": "Send Message",
-      "desc": "Fill out the form below and we'll get back to you soon!",
+      "desc": "מלאו את הטופס למטה ונחזור אליכם בהקדם האפשרי!",
       "data": {
         "name": "Full Name",
         "email": "Email Address",
@@ -534,7 +547,7 @@
       "placeholders": {
         "name": "הזינו את שמכם המלא",
         "phone": "+977 98XXXXXXXX",
-        "message": "ספרו לנו על פנייתכם, תאריכי השהייה או בקשות מיוחדות..."
+        "message": "ספרו לנו על פנייתכם, תאריכי האירוח או כל בקשה מיוחדת..."
       }
     },
     "badge": "קבלה ופניות"
@@ -604,21 +617,21 @@
     }
   },
   "aboutstats": {
-    "title1": "המחויבות",
-    "title2": "שלנו",
-    "para1": "השקט והנוחות שלכם הם בראש סדר העדיפויות שלנו.",
-    "para2": "אי של שלווה בתוך קטמנדו התוססת.",
+    "title1": "הבית שלכם הרחק מן",
+    "title2": "הבית",
+    "para1": "בואו לחוות אירוח שרפה אותנטי וחם בבית ההארחה הנעים שלנו. אנו מאמינים שאירוח נוח ואיכותי אינו חייב להיות יקר. המלון המשפחתי שלנו מציע יחס אישי ולבבי.",
+    "para2": "בין אם הגעתם לטרקים בהימלאיה, סיורים בעיר או מנוחה ראויה, אנו מספקים סביבה נקייה, בטוחה ומזמינה בה כל אורח מרגיש חלק מהמשפחה.",
     "amenities": {
-      "1": "Comfortable Rooms",
-      "2": "Wifi throughout the building",
-      "3": "Prime Location",
-      "4": "Pick up & Drop Request"
+      "1": "חדרים נוחים ונקיים",
+      "2": "אינטרנט אלחוטי בכל המבנה",
+      "3": "מיקום מרכזי מעולה",
+      "4": "שירות הסעות משדה התעופה לפי בקשה"
     },
     "stat": {
-      "1": "Front Desk Support",
-      "2": "Quiet & Peaceful",
-      "3": "Direct Booking Discount",
-      "4": "Luggage Storage"
+      "1": "שירות קבלה 24/7",
+      "2": "100% שקט ושלווה",
+      "3": "10% הנחה בהזמנה ישירה",
+      "4": "שמירת חפצים ותרמילים חינם"
     }
   },
   "modal": {
@@ -1322,5 +1335,20 @@
       "guestGuide": "מדריך לאורח ונהלים",
       "privacyPolicy": "מדיניות פרטיות"
     }
+  },
+  "roomAmenities": {
+    "high_speed_fiber_wi_fi": "אינטרנט סיבים אופטיים מהיר",
+    "1_king_bed___1_single_bed": "מיטת קינג גדולה + מיטת יחיד",
+    "1_king_size_bed": "מיטת קינג סייז מרווחת",
+    "private_attached_bathroom__24_7_hot_water_": "חדר רחצה פרטי צמוד (מים חמים 24/7)",
+    "private_ensuite_bathroom__24_7_hot_water_": "חדר רחצה צמוד בחדר (מים חמים 24/7)",
+    "ceiling_fan___heating": "מאוורר תקרה / חימום",
+    "shared_guest_kitchen_access": "גישה למטבח משותף לאורחים",
+    "complimentary_trekker_luggage_storage": "אחסון תרמילים וציוד טרקים חינם",
+    "daily_housekeeping": "ניקיון חדרים יומי",
+    "24_7_front_desk_assistance": "סיוע קבלה 24/7",
+    "air_conditioning__ac_": "מיזוג אוויר מפוצל (AC)",
+    "work_desk___seating": "שולחן עבודה וכיסאות נוחים",
+    "comfortable_seating_area": "פינת ישיבה נעימה"
   }
 }

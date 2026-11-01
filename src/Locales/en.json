@@ -190,7 +190,8 @@
     "visitDescription": "Heart of Kathmandu's tourist district",
     "getIn": "Get In",
     "touch": "Touch",
-    "readyDescription": "Ready to experience authentic Sherpa hospitality? Reach out to us for bookings, questions, or suggestions."
+    "readyDescription": "Ready to experience authentic Sherpa hospitality? Reach out to us for bookings, questions, or suggestions.",
+    "visitDetail": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
   },
   "contactMap": {
     "en": {
@@ -280,7 +281,8 @@
     "guestsSuffix": "s",
     "categoriesAvailable": "3 Room Categories Available",
     "perNight": "/ night",
-    "onlyLeft": "Only 2 rooms left!"
+    "onlyLeft": "Only 2 rooms left!",
+    "directOff": "10% Direct OFF"
   },
   "roomDetails": {
     "title": "Room Details",
@@ -336,18 +338,20 @@
       "title": "Quick Links",
       "links": {
         "home": "Home",
-        "rooms": "Rooms",
+        "rooms": "Rooms & Suites",
         "aboutUs": "About Us",
-        "gallery": "Gallery",
-        "blog": "Blog",
-        "contact": "Contact"
+        "gallery": "Photo Gallery",
+        "blog": "Travel Blog",
+        "contact": "Contact & Location",
+        "services": "Services & Amenities",
+        "guestGuide": "Guest Guide"
       }
     },
     "contactUs": {
       "title": "Contact Us",
-      "phone": "+977 9851068219",
+      "phone": "+977 9851068219 / +977-1-4530311",
       "email": "info@hotelsherpasoul.com",
-      "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal"
+      "address": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
     },
     "followUs": {
       "title": "Follow Us",
@@ -358,13 +362,14 @@
     "copyright": {
       "prefix": "©",
       "hotelName": "Hotel Sherpa Soul",
-      "suffix": "All rights reserved"
+      "suffix": "All rights reserved."
     },
     "legal": {
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
       "cookies": "Cookie Preferences",
-      "cms": "CMS Portal"
+      "cms": "CMS Portal",
+      "guestGuide": "Guest Guide & House Rules"
     },
     "otas": {
       "title": "Book on Top OTAs",
@@ -506,6 +511,10 @@
       "per": {
         "title": "Personal Touch",
         "des": "Dedicated Support"
+      },
+      "quick": {
+        "title": "Quick Response",
+        "des": "Within 24 hours"
       }
     },
     "form": {
@@ -596,7 +605,7 @@
   },
   "aboutstats": {
     "title1": "Your Home Away From",
-    "title2": "Home ",
+    "title2": "Home",
     "para1": "Experience authentic Sherpa hospitality in our cozy guest house. We believe that comfortable accommodation shouldn't break the bank. Our family-run establishment offers warm, personalized service with all the essential amenities you need for a memorable stay.",
     "para2": "Whether you're here for trekking, sightseeing, or resting on your journey, we provide a clean, safe, and welcoming environment where every guest is treated like family. Our commitment to honest hospitality means you get exceptional comfort and value in the center of Thamel.",
     "amenities": {
@@ -1312,5 +1321,20 @@
       "guestGuide": "Guest Guide & House Rules",
       "privacyPolicy": "Privacy Policy"
     }
+  },
+  "roomAmenities": {
+    "high_speed_fiber_wi_fi": "High-speed Fiber Wi-Fi",
+    "1_king_bed___1_single_bed": "1 King Bed + 1 Single Bed",
+    "1_king_size_bed": "1 King Size Bed",
+    "private_attached_bathroom__24_7_hot_water_": "Private Attached Bathroom (24/7 Hot Water)",
+    "private_ensuite_bathroom__24_7_hot_water_": "Private Ensuite Bathroom (24/7 Hot Water)",
+    "ceiling_fan___heating": "Ceiling Fan / Heating",
+    "shared_guest_kitchen_access": "Shared Guest Kitchen Access",
+    "complimentary_trekker_luggage_storage": "Complimentary Trekker Luggage Storage",
+    "daily_housekeeping": "Daily Housekeeping",
+    "24_7_front_desk_assistance": "24/7 Front Desk Assistance",
+    "air_conditioning__ac_": "Air Conditioning (AC)",
+    "work_desk___seating": "Work Desk & Seating",
+    "comfortable_seating_area": "Comfortable Seating Area"
   }
 }

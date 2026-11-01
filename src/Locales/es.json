@@ -101,7 +101,8 @@
     "visitDescription": "En el corazón del distrito turístico de Katmandú",
     "getIn": "Ponerse en",
     "touch": "Contacto",
-    "readyDescription": "¿Listo para experimentar la auténtica hospitalidad Sherpa? Contáctanos para reservas, preguntas o sugerencias."
+    "readyDescription": "¿Listo para experimentar la auténtica hospitalidad Sherpa? Contáctanos para reservas, preguntas o sugerencias.",
+    "visitDetail": "26 Thamel Bhagawati Marg, Katmandú 44600, Nepal"
   },
   "contactMap": {
     "en": {
@@ -193,9 +194,10 @@
     "from": "desde",
     "guest": "Huésped",
     "guestsSuffix": "s",
-    "categoriesAvailable": "3 Room Categories Available",
-    "perNight": "/ night",
-    "onlyLeft": "Only 2 rooms left!"
+    "categoriesAvailable": "3 Categorías de Habitaciones Disponibles",
+    "perNight": "/ noche",
+    "onlyLeft": "¡Solo quedan 2 habitaciones!",
+    "directOff": "10% Descuento Directo"
   },
   "roomDetails": {
     "title": "Detalles de la Habitación",
@@ -238,18 +240,20 @@
   "footer": {
     "brand": {
       "title": "Hotel Sherpa Soul",
-      "description": "Un escape tranquilo en el corazón de Thamel, combinando confort, cultura y hospitalidad Sherpa",
-      "tagline": "Hotel boutique cómodo y tranquilo en Thamel, Katmandú. Habitaciones limpias, agua caliente 24/7 y trato familiar."
+      "description": "Hotel Sherpa Soul es un hotel tranquilo y cómodo en Thamel, Katmandú, creado para viajeros que buscan una ubicación práctica, habitaciones confortables y una noche de descanso reparador.",
+      "tagline": "Sin Restaurante. Sin Ruido. Duerma Bien."
     },
     "quickLinks": {
       "title": "Enlaces Rápidos",
       "links": {
         "home": "Inicio",
         "aboutUs": "Sobre Nosotros",
-        "rooms": "Habitaciones",
-        "gallery": "Galería",
-        "contact": "Contacto",
-        "blog": "Blog"
+        "rooms": "Habitaciones y Suites",
+        "gallery": "Galería de Fotos",
+        "contact": "Contacto y Ubicación",
+        "blog": "Blog de Viajes",
+        "services": "Servicios e Instalaciones",
+        "guestGuide": "Guía del Huésped"
       },
       "home": "Inicio",
       "rooms": "Habitaciones",
@@ -261,36 +265,41 @@
       "guestGuide": "Guía del Huésped"
     },
     "contactUs": {
-      "title": "Contacto",
+      "title": "Contáctenos",
       "phone": "+977 9851068219 / +977-1-4530311",
       "email": "info@hotelsherpasoul.com",
       "address": "26 Thamel Bhagawati Marg, Katmandú 44600, Nepal"
     },
     "followUs": {
-      "title": "Síguenos",
+      "title": "Síganos",
       "facebook": "Facebook",
       "instagram": "Instagram",
       "tripAdvisor": "TripAdvisor"
     },
-    "copyright": "© 2026 Hotel Sherpa Soul. Todos los derechos reservados.",
+    "copyright": {
+      "prefix": "©",
+      "hotelName": "Hotel Sherpa Soul",
+      "suffix": "Todos los derechos reservados."
+    },
     "cta": {
       "badge": "Hotel Sherpa Soul • Thamel, Katmandú",
-      "heading": "¿Listo para Descansar Bien?",
-      "copy": "Alójese en el corazón de Thamel y haga de Hotel Sherpa Soul su cómodo hogar en Nepal.",
-      "button": "Reservar su Estancia"
+      "heading": "¿Listo para Dormir Bien?",
+      "copy": "Alójese en el corazón de Thamel y haga del Hotel Sherpa Soul su base cómoda para Katmandú y su viaje por Nepal.",
+      "button": "Reserve su Estancia"
     },
     "legal": {
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "cookies": "Cookie Preferences",
-      "cms": "CMS Portal"
+      "privacy": "Política de Privacidad",
+      "terms": "Términos del Servicio",
+      "cookies": "Preferencias de Cookies",
+      "cms": "Portal CMS",
+      "guestGuide": "Guía del Huésped y Normas"
     },
     "otas": {
-      "title": "Book on Top OTAs",
-      "bookingCom": "Book on Booking.com",
-      "airbnb": "Book on Airbnb",
-      "agoda": "Book on Agoda",
-      "tripCom": "Book on Trip.com"
+      "title": "Reserve en las Principales OTAs",
+      "bookingCom": "Reservar en Booking.com",
+      "airbnb": "Reservar en Airbnb",
+      "agoda": "Reservar en Agoda",
+      "tripCom": "Reservar en Trip.com"
     }
   },
   "homeServices": {
@@ -481,16 +490,20 @@
     "card": {
       "res": {
         "title": "Respuesta Rápida",
-        "des": "Dentro de 24 horas"
+        "des": "En menos de 24 horas"
       },
       "per": {
-        "title": "Toque Personal",
-        "des": "Soporte Dedicado"
+        "title": "Trato Personalizado",
+        "des": "Atención Dedicada"
+      },
+      "quick": {
+        "title": "Respuesta Rápida",
+        "des": "En menos de 24 horas"
       }
     },
     "form": {
       "title": "Enviar Mensaje",
-      "desc": "¡Completa el formulario a continuación y nos pondremos en contacto contigo pronto!",
+      "desc": "¡Complete el formulario a continuación y le responderemos muy pronto!",
       "data": {
         "name": "Nombre Completo",
         "email": "Correo Electrónico",
@@ -503,9 +516,9 @@
       "send": "Enviar por WhatsApp",
       "send2": "Enviando...",
       "placeholders": {
-        "name": "Escriba su nombre completo",
+        "name": "Ingrese su nombre completo",
         "phone": "+977 98XXXXXXXX",
-        "message": "Cuéntenos sobre su consulta, fechas de reserva o requerimientos..."
+        "message": "Cuéntenos sobre su consulta, fechas de reserva o peticiones..."
       }
     },
     "badge": "Recepción y Consultas"
@@ -575,21 +588,21 @@
     }
   },
   "aboutstats": {
-    "title1": "Tu hogar lejos de",
+    "title1": "Su Hogar Lejos de",
     "title2": "Casa",
-    "para1": "Experimenta la auténtica hospitalidad sherpa en nuestra acogedora casa de huéspedes. Creemos que un alojamiento cómodo no debe ser costoso. Nuestro establecimiento familiar ofrece un servicio cálido y personalizado con todas las comodidades esenciales que necesitas para una estancia memorable.",
-    "para2": "Ya sea que estés aquí por negocios, por placer o de paso en tu viaje, ofrecemos un ambiente limpio, seguro y acogedor donde cada huésped es tratado como familia. Nuestro compromiso con el lujo asequible significa que obtienes un valor excepcional sin comprometer la calidad o el confort.",
+    "para1": "Experimente la auténtica hospitalidad sherpa en nuestra acogedora casa de huéspedes. Creemos que un alojamiento cómodo no debe ser costoso. Ofrecemos un servicio cálido y personalizado con todas las comodidades esenciales.",
+    "para2": "Ya sea que esté aquí para trekking, turismo o descanso en su viaje, le brindamos un ambiente limpio, seguro y acogedor donde cada huésped es tratado como familia.",
     "amenities": {
-      "1": "Habitaciones cómodas",
+      "1": "Habitaciones Cómodas",
       "2": "Wifi en todo el edificio",
-      "3": "Ubicación privilegiada",
-      "4": "Servicio de recogida y traslado"
+      "3": "Ubicación Privilegiada",
+      "4": "Traslado Bajo Petición"
     },
     "stat": {
-      "1": "Años de experiencia",
-      "2": "Huéspedes felices",
-      "3": "Soporte",
-      "4": "Calificación"
+      "1": "Atención de Recepción 24/7",
+      "2": "100% Tranquilo y Silencioso",
+      "3": "10% Descuento Reserva Directa",
+      "4": "Consigna de Equipaje Gratis"
     }
   },
   "modal": {
@@ -1382,5 +1395,20 @@
       "guestGuide": "Guía del Huésped y Normas",
       "privacyPolicy": "Política de Privacidad"
     }
+  },
+  "roomAmenities": {
+    "high_speed_fiber_wi_fi": "Wi-Fi de Fibra de Alta Velocidad",
+    "1_king_bed___1_single_bed": "1 Cama King + 1 Cama Individual",
+    "1_king_size_bed": "1 Cama King Size",
+    "private_attached_bathroom__24_7_hot_water_": "Baño Privado Adjunto (Agua Caliente 24/7)",
+    "private_ensuite_bathroom__24_7_hot_water_": "Baño Privado en Habitación (Agua Caliente 24/7)",
+    "ceiling_fan___heating": "Ventilador de Techo / Calefacción",
+    "shared_guest_kitchen_access": "Acceso a Cocina Compartida",
+    "complimentary_trekker_luggage_storage": "Consigna de Equipaje Gratuita para Trekkers",
+    "daily_housekeeping": "Servicio Diario de Limpieza",
+    "24_7_front_desk_assistance": "Atención de Recepción 24/7",
+    "air_conditioning__ac_": "Aire Acondicionado (AC)",
+    "work_desk___seating": "Escritorio de Trabajo y Asientos",
+    "comfortable_seating_area": "Área de Estar Confortable"
   }
 }

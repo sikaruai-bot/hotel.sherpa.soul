@@ -154,3 +154,4 @@ module.exports = {
     copyright: "© 2026 夏尔巴之魂酒店。版权所有。"
   }
 };
+

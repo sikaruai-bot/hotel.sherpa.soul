@@ -195,7 +195,8 @@
     "visitDescription": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
     "getIn": "Neem",
     "touch": "Contact Op",
-    "readyDescription": "Wij helpen u graag met uw verblijf in Kathmandu."
+    "readyDescription": "Wij helpen u graag met uw verblijf in Kathmandu.",
+    "visitDetail": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
   },
   "contactMap": {
     "en": {
@@ -284,9 +285,10 @@
     "from": "Vanaf",
     "guest": "Gast",
     "guestsSuffix": "Gasten",
-    "categoriesAvailable": "3 Room Categories Available",
-    "perNight": "/ night",
-    "onlyLeft": "Only 2 rooms left!"
+    "categoriesAvailable": "3 Kamercategorieën Beschikbaar",
+    "perNight": "/ nacht",
+    "onlyLeft": "Nog maar 2 kamers beschikbaar!",
+    "directOff": "10% Directe Korting"
   },
   "roomDetails": {
     "title": "Kamerdetails",
@@ -336,14 +338,14 @@
       "desc": "Verblijf in het hart van Thamel met rust en comfort.",
       "button": "Boek Uw Verblijf",
       "badge": "Hotel Sherpa Soul • Thamel, Kathmandu",
-      "heading": "Klaar voor een Onbezorgde Nachtrust?",
-      "copy": "Verblijf in het hart van Thamel en maak van Hotel Sherpa Soul uw vertrouwde thuis in Nepal."
+      "heading": "Klaar om Heerlijk te Slapen?",
+      "copy": "Verblijf in het hart van Thamel en maak Hotel Sherpa Soul uw comfortabele thuisbasis in Kathmandu en tijdens uw reis door Nepal."
     },
     "brand": {
-      "tagline": "Rustig en comfortabel boutique hotel in Thamel, Kathmandu. Schone kamers, 24/7 warm water en vriendelijke service.",
+      "tagline": "Geen Restaurant. Geen Lawaai. Slaap Goed.",
       "desc": "Hotel Sherpa Soul is een rustig hotel in Thamel, Kathmandu.",
       "title": "Hotel Sherpa Soul",
-      "description": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
+      "description": "Hotel Sherpa Soul is een rustig en comfortabel hotel in Thamel, Kathmandu, ontworpen voor reizigers die een centrale locatie en een rustgevende nachtrust wensen."
     },
     "quickLinks": {
       "title": "Snelle Links",
@@ -355,17 +357,19 @@
       "contact": "Contact",
       "links": {
         "home": "Home",
-        "rooms": "Rooms",
-        "aboutUs": "About Us",
-        "gallery": "Gallery",
-        "blog": "Blog",
-        "contact": "Contact"
+        "rooms": "Kamers & Suites",
+        "aboutUs": "Over Ons",
+        "gallery": "Fotogalerij",
+        "blog": "Reisblog",
+        "contact": "Contact & Locatie",
+        "services": "Diensten & Voorzieningen",
+        "guestGuide": "Gastengids"
       },
       "services": "Diensten",
       "guestGuide": "Gastengids"
     },
     "contactUs": {
-      "title": "Contact",
+      "title": "Neem Contact Op",
       "phone": "+977 9851068219 / +977-1-4530311",
       "email": "info@hotelsherpasoul.com",
       "address": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
@@ -376,19 +380,24 @@
       "instagram": "Instagram",
       "tripAdvisor": "TripAdvisor"
     },
-    "copyright": "© 2026 Hotel Sherpa Soul. Alle rechten voorbehouden.",
+    "copyright": {
+      "prefix": "©",
+      "hotelName": "Hotel Sherpa Soul",
+      "suffix": "Alle rechten voorbehouden."
+    },
     "legal": {
       "privacy": "Privacybeleid",
       "terms": "Algemene Voorwaarden",
-      "cookies": "Cookie-instellingen",
-      "cms": "CMS Portaal"
+      "cookies": "Cookievoorkeuren",
+      "cms": "CMS Portaal",
+      "guestGuide": "Gastengids & Huisregels"
     },
     "otas": {
-      "title": "Book on Top OTAs",
-      "bookingCom": "Book on Booking.com",
-      "airbnb": "Book on Airbnb",
-      "agoda": "Book on Agoda",
-      "tripCom": "Book on Trip.com"
+      "title": "Boek op de Beste Boekingssites",
+      "bookingCom": "Boeken op Booking.com",
+      "airbnb": "Boeken op Airbnb",
+      "agoda": "Boeken op Agoda",
+      "tripCom": "Boeken op Trip.com"
     }
   },
   "homeServices": {
@@ -509,17 +518,21 @@
     "subtitle": "Neem gerust contact met ons op",
     "card": {
       "res": {
-        "title": "Quick Response",
-        "des": "Within 24 hours"
+        "title": "Snelle Reactie",
+        "des": "Binnen 24 uur"
       },
       "per": {
-        "title": "Personal Touch",
-        "des": "Dedicated Support"
+        "title": "Persoonlijke Aandacht",
+        "des": "Toegewijde Ondersteuning"
+      },
+      "quick": {
+        "title": "Snelle Reactie",
+        "des": "Binnen 24 uur"
       }
     },
     "form": {
       "title": "Send Message",
-      "desc": "Fill out the form below and we'll get back to you soon!",
+      "desc": "Vul het onderstaande formulier in en we nemen zo spoedig mogelijk contact met u op!",
       "data": {
         "name": "Full Name",
         "email": "Email Address",
@@ -534,7 +547,7 @@
       "placeholders": {
         "name": "Vul uw volledige naam in",
         "phone": "+977 98XXXXXXXX",
-        "message": "Deel uw vraag, verblijfsdata of speciale wensen met ons..."
+        "message": "Vertel ons over uw vraag, reisdata of wensen..."
       }
     },
     "badge": "Receptie & Informatie"
@@ -604,21 +617,21 @@
     }
   },
   "aboutstats": {
-    "title1": "Onze",
-    "title2": "Focus",
-    "para1": "Rust en gastvrijheid staan bij ons centraal.",
-    "para2": "Een oase van rust in het bruisende Kathmandu.",
+    "title1": "Uw Thuis Ver van",
+    "title2": "Huis",
+    "para1": "Ervaar authentieke Sherpa-gastvrijheid in ons gezellige guesthouse. Wij geloven dat comfortabele accommodatie betaalbaar moet blijven. Ons familiebedrijf biedt persoonlijke en warme service.",
+    "para2": "Of u nu komt voor bergtochten, bezienswaardigheden of rust tijdens uw rondreis: wij bieden een schone, veilige en gastvrije omgeving waar u zich direct thuis voelt.",
     "amenities": {
-      "1": "Comfortable Rooms",
-      "2": "Wifi throughout the building",
-      "3": "Prime Location",
-      "4": "Pick up & Drop Request"
+      "1": "Comfortabele Kamers",
+      "2": "Wifi in het hele gebouw",
+      "3": "Toplocatie in Thamel",
+      "4": "Luchthaventransfer op Aanvraag"
     },
     "stat": {
-      "1": "Front Desk Support",
-      "2": "Quiet & Peaceful",
-      "3": "Direct Booking Discount",
-      "4": "Luggage Storage"
+      "1": "24/7 Receptie Ondersteuning",
+      "2": "100% Rustig & Vredig",
+      "3": "10% Directe Boekingskorting",
+      "4": "Gratis Bagageopslag"
     }
   },
   "modal": {
@@ -1322,5 +1335,20 @@
       "guestGuide": "Gastengids & Huisregels",
       "privacyPolicy": "Privacybeleid"
     }
+  },
+  "roomAmenities": {
+    "high_speed_fiber_wi_fi": "Supersnel Glasvezel Wi-Fi",
+    "1_king_bed___1_single_bed": "1 Kingsize Bed + 1 Eenpersoonsbed",
+    "1_king_size_bed": "1 Kingsize Tweepersoonsbed",
+    "private_attached_bathroom__24_7_hot_water_": "Eigen Aangrenzende Badkamer (24/7 Warm Water)",
+    "private_ensuite_bathroom__24_7_hot_water_": "Privé Ensuite Badkamer (24/7 Warm Water)",
+    "ceiling_fan___heating": "Plafondventilator / Verwarming",
+    "shared_guest_kitchen_access": "Toegang tot Gedeelde Gastenkeuken",
+    "complimentary_trekker_luggage_storage": "Gratis Bagageopslag voor Trekkers",
+    "daily_housekeeping": "Dagelijkse Schoonmaakservice",
+    "24_7_front_desk_assistance": "24/7 Receptie Ondersteuning",
+    "air_conditioning__ac_": "Airconditioning (AC)",
+    "work_desk___seating": "Werkbureau en Comfortabele Stoelen",
+    "comfortable_seating_area": "Gezellige Zithoek"
   }
 }

@@ -128,10 +128,10 @@ export default function ContactForm() {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-800">
-                        {t("contact.card.quick.title")}
+                        {t("contact.card.quick.title", t("contact.card.res.title", "Quick Response"))}
                       </h4>
                       <p className="text-slate-600 text-sm">
-                        {t("contact.card.quick.des")}
+                        {t("contact.card.quick.des", t("contact.card.res.des", "Within 24 hours"))}
                       </p>
                     </div>
                   </div>

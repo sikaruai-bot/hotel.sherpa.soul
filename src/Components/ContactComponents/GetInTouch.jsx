@@ -82,7 +82,7 @@ export default function GetInTouch() {
     {
       icon: MapPin,
       title: t("getInTouch.visitUs"),
-      detail: "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal",
+      detail: t("getInTouch.visitDetail", "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"),
       description: t("getInTouch.visitDescription"),
       gradient: "from-orange-400 to-red-500",
       onClick: handleMapClick,

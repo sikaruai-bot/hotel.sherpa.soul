@@ -117,3 +117,4 @@ for (const [lang, data] of Object.entries(contactMaps)) {
   fs.writeFileSync(jsonPath, JSON.stringify(json, null, 2) + '\n', 'utf-8');
   console.log(`✓ Patched contactMap for ${lang}`);
 }
+

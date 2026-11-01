@@ -101,7 +101,8 @@
     "visitDescription": "Im Herzen des touristischen Bezirks von Kathmandu",
     "getIn": "In Kontakt treten",
     "touch": "Kontakt",
-    "readyDescription": "Bereit, authentische Sherpa-Gastfreundschaft zu erleben? Kontaktieren Sie uns für Buchungen, Fragen oder Vorschläge."
+    "readyDescription": "Bereit, authentische Sherpa-Gastfreundschaft zu erleben? Kontaktieren Sie uns für Buchungen, Fragen oder Vorschläge.",
+    "visitDetail": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
   },
   "contactMap": {
     "en": {
@@ -189,9 +190,10 @@
     "from": "ab",
     "guest": "Gast",
     "guestsSuffix": "e",
-    "categoriesAvailable": "3 Room Categories Available",
-    "perNight": "/ night",
-    "onlyLeft": "Only 2 rooms left!"
+    "categoriesAvailable": "3 Zimmerkategorien Verfügbar",
+    "perNight": "/ Nacht",
+    "onlyLeft": "Nur noch 2 Zimmer frei!",
+    "directOff": "10% Direktrabatt"
   },
   "roomDetails": {
     "title": "Zimmerdetails",
@@ -234,18 +236,20 @@
   "footer": {
     "brand": {
       "title": "Hotel Sherpa Soul",
-      "description": "Ein friedlicher Rückzugsort im Herzen von Thamel, der Komfort, Kultur und Sherpa-Gastfreundschaft vereint",
-      "tagline": "Ruhiges, komfortables Boutique-Hotel in Thamel, Kathmandu. Saubere Zimmer, 24/7 Warmwasser und herzlicher Service."
+      "description": "Das Hotel Sherpa Soul ist ein ruhiges und gemütliches Hotel in Thamel, Kathmandu, geschaffen für Reisende, die eine praktische Lage und besten Schlaf suchen.",
+      "tagline": "Kein Restaurant. Kein Lärm. Gut Schlafen."
     },
     "quickLinks": {
-      "title": "Schnellzugriff",
+      "title": "Schnelllinks",
       "links": {
-        "home": "Heim",
-        "aboutUs": "Über uns",
-        "rooms": "Zimmer",
-        "gallery": "Galerie",
-        "contact": "Kontakt",
-        "blog": "Blog"
+        "home": "Startseite",
+        "aboutUs": "Über Uns",
+        "rooms": "Zimmer & Suiten",
+        "gallery": "Fotogalerie",
+        "contact": "Kontakt & Lage",
+        "blog": "Reiseblog",
+        "services": "Services & Ausstattung",
+        "guestGuide": "Gäste-Leitfaden"
       },
       "home": "Startseite",
       "rooms": "Zimmer",
@@ -263,30 +267,35 @@
       "address": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
     },
     "followUs": {
-      "title": "Folgen Sie uns",
+      "title": "Folgen Sie Uns",
       "facebook": "Facebook",
       "instagram": "Instagram",
       "tripAdvisor": "TripAdvisor"
     },
-    "copyright": "© 2026 Hotel Sherpa Soul. Alle Rechte vorbehalten.",
+    "copyright": {
+      "prefix": "©",
+      "hotelName": "Hotel Sherpa Soul",
+      "suffix": "Alle Rechte vorbehalten."
+    },
     "cta": {
       "badge": "Hotel Sherpa Soul • Thamel, Kathmandu",
       "heading": "Bereit für Erholsamen Schlaf?",
-      "copy": "Übernachten Sie im Herzen von Thamel und machen Sie Sherpa Soul zu Ihrem gemütlichen Zuhause in Nepal.",
+      "copy": "Übernachten Sie im Herzen von Thamel und machen Sie das Hotel Sherpa Soul zu Ihrem ruhigen Stützpunkt in Kathmandu.",
       "button": "Aufenthalt Buchen"
     },
     "legal": {
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "cookies": "Cookie Preferences",
-      "cms": "CMS Portal"
+      "privacy": "Datenschutzrichtlinie",
+      "terms": "Nutzungsbedingungen",
+      "cookies": "Cookie-Einstellungen",
+      "cms": "CMS-Portal",
+      "guestGuide": "Gäste-Leitfaden & Hausordnung"
     },
     "otas": {
-      "title": "Book on Top OTAs",
-      "bookingCom": "Book on Booking.com",
-      "airbnb": "Book on Airbnb",
-      "agoda": "Book on Agoda",
-      "tripCom": "Book on Trip.com"
+      "title": "Auf Top-Portalen Buchen",
+      "bookingCom": "Auf Booking.com buchen",
+      "airbnb": "Auf Airbnb buchen",
+      "agoda": "Auf Agoda buchen",
+      "tripCom": "Auf Trip.com buchen"
     }
   },
   "homeServices": {
@@ -488,13 +497,17 @@
         "des": "Innerhalb von 24 Stunden"
       },
       "per": {
-        "title": "Persönliche Note",
-        "des": "Dedizierter Support"
+        "title": "Persönliche Betreuung",
+        "des": "Engagierter Support"
+      },
+      "quick": {
+        "title": "Schnelle Antwort",
+        "des": "Innerhalb von 24 Stunden"
       }
     },
     "form": {
       "title": "Nachricht senden",
-      "desc": "Füllen Sie das untenstehende Formular aus und wir melden uns in Kürze bei Ihnen!",
+      "desc": "Füllen Sie das untenstehende Formular aus und wir melden uns schnellstmöglich bei Ihnen!",
       "data": {
         "name": "Vollständiger Name",
         "email": "Email Address",
@@ -507,7 +520,7 @@
       "send": "通过 WhatsApp 发送",
       "send2": "Sending...",
       "placeholders": {
-        "name": "Geben Sie Ihren vollständigen Namen ein",
+        "name": "Vollständigen Namen eingeben",
         "phone": "+977 98XXXXXXXX",
         "message": "Teilen Sie uns Ihre Anfrage, Reisedaten oder Wünsche mit..."
       }
@@ -579,21 +592,21 @@
     }
   },
   "aboutstats": {
-    "title1": "Ihr Zuhause fern von",
-    "title2": "Heim",
-    "para1": "Erleben Sie authentische Sherpa-Gastfreundschaft in unserem gemütlichen Gästehaus. Wir sind überzeugt, dass eine komfortable Unterkunft nicht zu teuer sein sollte. Unser familiengeführtes Haus bietet herzlichen, persönlichen Service und alle wichtigen Annehmlichkeiten für einen unvergesslichen Aufenthalt.",
-    "para2": "Ob Sie geschäftlich, privat oder auf der Durchreise sind, wir bieten Ihnen eine saubere, sichere und einladende Umgebung, in der sich jeder Gast wie ein Familienmitglied fühlt. Unser Engagement für erschwinglichen Luxus bedeutet für Sie ein außergewöhnliches Preis-Leistungs-Verhältnis ohne Kompromisse bei Qualität und Komfort.",
+    "title1": "Ihr Zuhause Fern von",
+    "title2": "Zuhause",
+    "para1": "Erleben Sie echte Sherpa-Gastfreundschaft in unserem gemütlichen Gästehaus. Wir bieten herzlichen, persönlichen Service und alle wichtigen Annehmlichkeiten für einen unvergesslichen Aufenthalt.",
+    "para2": "Ob für Trekking, Sightseeing oder Erholung auf Ihrer Reise: Bei uns finden Sie eine saubere, sichere und herzliche Umgebung.",
     "amenities": {
       "1": "Komfortable Zimmer",
       "2": "WLAN im gesamten Gebäude",
       "3": "Erstklassige Lage",
-      "4": "Abhol- und Bringanfrage"
+      "4": "Flughafentransfer auf Anfrage"
     },
     "stat": {
-      "1": "Jahre Erfahrung",
-      "2": "Glückliche Gäste",
-      "3": "Unterstützung",
-      "4": "Bewertung"
+      "1": "24/7 Rezeptionsservice",
+      "2": "100% Ruhig & Friedlich",
+      "3": "10% Direktbuchungsrabatt",
+      "4": "Kostenlose Gepäckaufbewahrung"
     }
   },
   "modal": {
@@ -1386,5 +1399,20 @@
       "guestGuide": "Gästeratgeber & Hausordnung",
       "privacyPolicy": "Datenschutzerklärung"
     }
+  },
+  "roomAmenities": {
+    "high_speed_fiber_wi_fi": "Highspeed-Glasfaser-WLAN",
+    "1_king_bed___1_single_bed": "1 Kingsize-Bett + 1 Einzelbett",
+    "1_king_size_bed": "1 Kingsize-Doppelbett",
+    "private_attached_bathroom__24_7_hot_water_": "Eigenes Angrenzendes Bad (24/7 Warmwasser)",
+    "private_ensuite_bathroom__24_7_hot_water_": "Privates Ensuite-Badezimmer (24/7 Warmwasser)",
+    "ceiling_fan___heating": "Deckenventilator / Heizung",
+    "shared_guest_kitchen_access": "Zugang zur Gemeinschaftsküche",
+    "complimentary_trekker_luggage_storage": "Kostenlose Trekking-Gepäckaufbewahrung",
+    "daily_housekeeping": "Tägliche Zimmerreinigung",
+    "24_7_front_desk_assistance": "24/7 Rezeptionsservice",
+    "air_conditioning__ac_": "Klimaanlage (AC)",
+    "work_desk___seating": "Schreibtisch und Sitzgelegenheiten",
+    "comfortable_seating_area": "Gemütlicher Sitzbereich"
   }
 }

@@ -67,3 +67,4 @@ module.exports = {
     ourPhilosophy: "हाम्रो दर्शन"
   }
 };
+
