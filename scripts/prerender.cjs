@@ -1617,6 +1617,7 @@ const ROUTES = [
             <a href="#payment" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Payment</a>
             <a href="#room-facilities" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Hot Water &amp; Facilities</a>
             <a href="#food-dining" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Food &amp; Dining</a>
+            <a href="#long-stay-kitchen" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">👨‍🍳 Kitchen Perk</a>
             <a href="#cleaning" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Cleaning</a>
             <a href="#quiet-hours" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Quiet Hours</a>
             <a href="#shared-kitchen" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#01366E] hover:text-white text-slate-700">Shared Kitchen</a>
@@ -1722,6 +1723,52 @@ const ROUTES = [
             </div>
           </section>
 
+          <!-- 👨‍🍳 Long-Stay Kitchen Highlight Section (Placed prominently right after Food & Dining) -->
+          <section id="long-stay-kitchen" class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-50 via-teal-50/40 to-green-50/80 border-2 border-emerald-500 shadow-md scroll-mt-28 relative overflow-hidden">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-extrabold uppercase tracking-wider shadow-xs">
+                🌟 Long-Stay Perk
+              </span>
+              <span class="text-xs font-semibold text-emerald-800 bg-emerald-100/80 px-2.5 py-0.5 rounded-full">
+                14+ Nights
+              </span>
+            </div>
+
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-3xl select-none" role="img" aria-label="Chef">👨‍🍳</span>
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#01366E] tracking-tight">
+                👨‍🍳 Free Shared Kitchen for Long-Stay Guests
+              </h2>
+            </div>
+
+            <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-medium mb-4">
+              Staying with us for 2 weeks or longer? Enjoy FREE access to our shared self-catering kitchen — cook your own meals, save money, and feel at home during your long stay in Kathmandu.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+              <div class="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs">
+                <span class="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Free for long-stay guests</strong> (minimum 2 weeks / 14 nights)</span>
+              </div>
+              <div class="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs">
+                <span class="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Self-catering</strong> — cook your own meals</span>
+              </div>
+              <div class="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs">
+                <span class="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Shared kitchen facilities</strong></span>
+              </div>
+              <div class="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs">
+                <span class="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Perfect for budget travelers</strong>, students, and long-term visitors</span>
+              </div>
+              <div class="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs sm:col-span-2">
+                <span class="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Ask reception</strong> for kitchen access details and house rules</span>
+              </div>
+            </div>
+          </section>
+
           <!-- 6. Room Cleaning & Towels -->
           <section id="cleaning" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
             <h2 class="text-2xl font-bold text-[#01366E] mb-3">6. Room Cleaning &amp; Towels</h2>
@@ -1749,43 +1796,8 @@ const ROUTES = [
 
           <!-- 8. Shared Kitchen -->
           <section id="shared-kitchen" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 class="text-2xl font-bold text-[#01366E] mb-3">8. Shared Kitchen</h2>
-            <div class="space-y-4 text-slate-700">
-              <!-- Prominent Callout Card for Long-Stay Kitchen -->
-              <div class="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50/50 to-amber-100/60 border-2 border-amber-400 shadow-md">
-                <div class="flex items-center gap-2.5 mb-2.5">
-                  <span class="text-2xl select-none" role="img" aria-label="Chef">👨‍🍳</span>
-                  <h3 class="text-lg sm:text-xl font-extrabold text-[#01366E]">
-                    Free Shared Kitchen for Long-Stay Guests
-                  </h3>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4">
-                  Staying with us for 2 weeks or longer? Enjoy FREE access to our shared self-catering kitchen — cook your own meals, save money, and feel at home during your long stay in Kathmandu.
-                </p>
-                <div class="space-y-2">
-                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span class="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Free for long-stay guests</strong> (minimum 2 weeks / 14 nights)</span>
-                  </div>
-                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span class="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Self-catering</strong> — cook your own meals</span>
-                  </div>
-                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span class="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Shared kitchen facilities</strong></span>
-                  </div>
-                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span class="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Perfect for budget travelers</strong>, students, long-term visitors</span>
-                  </div>
-                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span class="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Ask reception</strong> for kitchen access details and house rules</span>
-                  </div>
-                </div>
-              </div>
-
+            <h2 class="text-2xl font-bold text-[#01366E] mb-3">8. Shared Kitchen Guidelines</h2>
+            <div class="space-y-3 text-slate-700">
               <p>The shared kitchen is available to eligible long-stay guests staying at least two weeks, subject to confirmation with reception.</p>
               <p class="font-semibold text-slate-900">Rules:</p>
               <ul class="space-y-1.5 list-disc pl-5">
@@ -1816,15 +1828,15 @@ const ROUTES = [
               </div>
               <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <div class="font-bold text-slate-900 text-sm">🐕 Pets</div>
-                <p class="text-xs text-slate-600 mt-1">Not allowed.</p>
+                <p class="text-xs text-slate-600 mt-1">Pets are not allowed in the hotel.</p>
               </div>
               <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <div class="font-bold text-slate-900 text-sm">💧 Drinking Water</div>
-                <p class="text-xs text-slate-600 mt-1">2 complimentary bottles in room, more available nearby.</p>
+                <p class="text-xs text-slate-600 mt-1">2 complimentary bottles of drinking water are provided in your room. Additional water can be purchased nearby.</p>
               </div>
               <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 sm:col-span-2">
                 <div class="font-bold text-slate-900 text-sm">🧺 Laundry</div>
-                <p class="text-xs text-slate-600 mt-1">Not provided on-site; nearby shops, reception can direct.</p>
+                <p class="text-xs text-slate-600 mt-1">We do not provide laundry service. Laundry shops are available nearby — reception can direct you to the closest one.</p>
               </div>
             </div>
           </section>

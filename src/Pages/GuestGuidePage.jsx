@@ -54,6 +54,7 @@ export default function GuestGuidePage() {
     { href: "#payment", label: "Payment" },
     { href: "#room-facilities", label: "Hot Water & Facilities" },
     { href: "#food-dining", label: "Food & Dining" },
+    { href: "#long-stay-kitchen", label: "👨‍🍳 Kitchen Perk" },
     { href: "#cleaning", label: "Cleaning" },
     { href: "#quiet-hours", label: "Quiet Hours" },
     { href: "#shared-kitchen", label: "Shared Kitchen" },
@@ -494,6 +495,55 @@ export default function GuestGuidePage() {
             </div>
           </section>
 
+          {/* 👨‍🍳 Long-Stay Kitchen Highlight Section (Placed prominently right after Food & Dining) */}
+          <section
+            id="long-stay-kitchen"
+            className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-50 via-teal-50/40 to-green-50/80 border-2 border-emerald-500 shadow-md scroll-mt-28 relative overflow-hidden"
+          >
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-extrabold uppercase tracking-wider shadow-xs">
+                🌟 Long-Stay Perk
+              </span>
+              <span className="text-xs font-semibold text-emerald-800 bg-emerald-100/80 px-2.5 py-0.5 rounded-full">
+                14+ Nights
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl select-none" role="img" aria-label="Chef">👨‍🍳</span>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#01366E] tracking-tight">
+                👨‍🍳 Free Shared Kitchen for Long-Stay Guests
+              </h2>
+            </div>
+
+            <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium mb-4">
+              Staying with us for 2 weeks or longer? Enjoy FREE access to our shared self-catering kitchen — cook your own meals, save money, and feel at home during your long stay in Kathmandu.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+              <div className="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs">
+                <span className="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Free for long-stay guests</strong> (minimum 2 weeks / 14 nights)</span>
+              </div>
+              <div className="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs">
+                <span className="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Self-catering</strong> — cook your own meals</span>
+              </div>
+              <div className="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs">
+                <span className="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Shared kitchen facilities</strong></span>
+              </div>
+              <div className="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs">
+                <span className="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Perfect for budget travelers</strong>, students, and long-term visitors</span>
+              </div>
+              <div className="flex items-start gap-2 p-2.5 rounded-xl bg-white/90 border border-emerald-200/90 text-xs sm:text-sm text-slate-800 font-medium shadow-2xs sm:col-span-2">
+                <span className="text-emerald-600 font-bold shrink-0">✅</span>
+                <span><strong>Ask reception</strong> for kitchen access details and house rules</span>
+              </div>
+            </div>
+          </section>
+
           {/* 6. Room Cleaning & Towels */}
           <section
             id="cleaning"
@@ -564,46 +614,11 @@ export default function GuestGuidePage() {
               </div>
               <div>
                 <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">Section 8</span>
-                <h2 className="text-2xl font-bold text-[#01366E]">8. Shared Kitchen</h2>
+                <h2 className="text-2xl font-bold text-[#01366E]">8. Shared Kitchen Guidelines</h2>
               </div>
             </div>
 
-            <div className="space-y-5 text-slate-700 leading-relaxed text-sm sm:text-base">
-              {/* Prominent Callout Card for Long-Stay Kitchen */}
-              <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50/50 to-amber-100/60 border-2 border-amber-400 shadow-md">
-                <div className="flex items-center gap-2.5 mb-2.5">
-                  <span className="text-2xl select-none" role="img" aria-label="Chef">👨‍🍳</span>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-[#01366E]">
-                    Free Shared Kitchen for Long-Stay Guests
-                  </h3>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4">
-                  Staying with us for 2 weeks or longer? Enjoy FREE access to our shared self-catering kitchen — cook your own meals, save money, and feel at home during your long stay in Kathmandu.
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span className="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Free for long-stay guests</strong> (minimum 2 weeks / 14 nights)</span>
-                  </div>
-                  <div className="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span className="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Self-catering</strong> — cook your own meals</span>
-                  </div>
-                  <div className="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span className="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Shared kitchen facilities</strong></span>
-                  </div>
-                  <div className="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span className="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Perfect for budget travelers</strong>, students, long-term visitors</span>
-                  </div>
-                  <div className="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
-                    <span className="text-emerald-600 font-bold">✅</span>
-                    <span><strong>Ask reception</strong> for kitchen access details and house rules</span>
-                  </div>
-                </div>
-              </div>
-
+            <div className="space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
               <p>
                 The shared kitchen is available to eligible long-stay guests staying at least two weeks, subject to confirmation with reception.
               </p>
@@ -672,7 +687,7 @@ export default function GuestGuidePage() {
                 <div>
                   <div className="font-bold text-slate-900 text-sm">Pets</div>
                   <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                    Not allowed.
+                    Pets are not allowed in the hotel.
                   </p>
                 </div>
               </div>
@@ -682,7 +697,7 @@ export default function GuestGuidePage() {
                 <div>
                   <div className="font-bold text-slate-900 text-sm">Drinking Water</div>
                   <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                    2 complimentary bottles in room, more available nearby.
+                    2 complimentary bottles of drinking water are provided in your room. Additional water can be purchased nearby.
                   </p>
                 </div>
               </div>
@@ -692,7 +707,7 @@ export default function GuestGuidePage() {
                 <div>
                   <div className="font-bold text-slate-900 text-sm">Laundry</div>
                   <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                    Not provided on-site; nearby shops, reception can direct.
+                    We do not provide laundry service. Laundry shops are available nearby — reception can direct you to the closest one.
                   </p>
                 </div>
               </div>
