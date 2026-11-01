@@ -110,7 +110,7 @@ export default function ContactForm() {
             <div className="text-slate-900">
               <div className="mb-10">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#FB6C01] text-xs font-semibold tracking-wide uppercase mb-4">
-                  <span>❖</span> Front Desk & Inquiries
+                  <span>❖</span> {t("contact.badge", "Front Desk & Inquiries")}
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-[#01366E]">
                   {t("contact.title")}
@@ -220,7 +220,7 @@ export default function ContactForm() {
 
                   <div className="group">
                     <label htmlFor="contact-phone" className="block text-sm font-bold text-slate-800 mb-2 transition-colors group-focus-within:text-[#01366E]">
-                      Phone Number (Optional)
+                      {t("contact.form.data.phone", "Phone Number (Optional)")}
                     </label>
                     <input
                       type="tel"
@@ -229,7 +229,7 @@ export default function ContactForm() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full border-2 border-slate-200 rounded-xl p-4 min-h-[48px] bg-slate-50/50 text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#FB6C01] focus:bg-white transition-all duration-300"
-                      placeholder="+977 98XXXXXXXX"
+                      placeholder={t("contact.form.placeholders.phone", "+977 98XXXXXXXX")}
                     />
                   </div>
 

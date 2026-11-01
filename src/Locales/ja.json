@@ -96,23 +96,23 @@
   },
   "aboutPageContent": {
     "h1": "ホテル・シェルパ・ソウルについて",
-    "introHeading": "タメルの中心で、シンプルかつ温かいおもてなしを",
-    "copy": "ホテル・シェルパ・ソウルは、清潔で静か、そして安らぎのある滞在をお届けするブティックホテルです。",
+    "introHeading": "カトマンズ・タメルの中心にある、静かで心安らぐ居場所。",
+    "copy": "ホテル・シェルパ・ソウルは、カトマンズの活気ある街の魅力を味わいながらも、夜はぐっすりと眠りたい旅行者のために誕生しました。",
     "philosophy": {
-      "heading": "No Restaurant. No Noise. Sleep Well.",
-      "copy": "We believe a hotel doesn't need to be complicated to feel welcoming. For us, hospitality is about creating a comfortable space where travelers can rest, recharge and feel ready for the next day."
+      "heading": "レストランなし。騒音なし。快適な睡眠。",
+      "copy": "温かなホテルに必要なのは、複雑な設備ではなく心安らぐ空間です。皆様が心身を休められるよう努めています。"
     },
     "location": {
-      "heading": "At the Heart of Thamel",
-      "copy": "Thamel is one of Kathmandu's best-known areas for travelers, surrounded by cafés, shops, travel services and local experiences. Hotel Sherpa Soul gives you the convenience of staying close to it all while offering a peaceful place to return to."
+      "heading": "タメルの中心に位置",
+      "copy": "周辺にはカフェやショップが充実。すべてが徒歩圏内にありながら、夜は静かに過ごせる理想的な立地です。"
     },
     "forTravelers": {
-      "heading": "From Kathmandu to the Himalayas",
-      "copy": "Many journeys through Nepal begin in Kathmandu. Whether you are visiting Nepal for culture and sightseeing, preparing for a Himalayan trek or returning from the mountains, Sherpa Soul is designed to be your comfortable Kathmandu base."
+      "heading": "カトマンズからヒマラヤの大自然へ",
+      "copy": "ネパールの旅の多くはカトマンズから始まります。シェルパ・ソウルは旅立ちと帰着の安心できる拠点です。"
     },
     "closing": {
-      "heading": "Come for Kathmandu. Stay for the comfort. Sleep well for the journey ahead.",
-      "cta": "Book Your Stay"
+      "heading": "カトマンズを楽しみ、快適に滞在し、次の旅路へ向けて英気を養ってください。",
+      "cta": "宿泊を予約する"
     }
   },
   "about": {
@@ -206,45 +206,50 @@
       "phone": "+977 9851068219",
       "email": "info@hotelsherpasoul.com",
       "mapTitle": "Hotel Sherpa Soul Location"
-    }
+    },
+    "title": "ホテル・シェルパ・ソウル – カトマンズ・タメル",
+    "description": "カトマンズの活気あるタメルの中心に位置し、観光名所やレストラン、ショップまで徒歩すぐの便利な立地です。",
+    "address": "26 Thamel Bhagawati Marg, Kathmandu, Nepal",
+    "email": "info@hotelsherpasoul.com",
+    "mapTitle": "ホテル・シェルパ・ソウルの地図"
   },
   "aboutStory": {
-    "ourStory": "私たちのストーリー",
-    "welcomeTo": "ようこそ",
-    "sherpaSoul": "ホテル・シェルパ・ソウルへ",
-    "paragraph1": "賑やかなタメルの中で、夜は静かにぐっすりと眠れる宿を提供したいという思いから始まりました。",
-    "paragraph2": "シェルパの精神に基づいた誠実で温かいホスピタリティで、まるで我が家のような安心感をお届けします。",
+    "ourStory": "私たちの歩み",
+    "welcomeTo": "シンプルさを大切にする",
+    "sherpaSoul": "心温まるおもてなし",
+    "paragraph1": "ホテル・シェルパ・ソウルは、清潔さと快適さ、そして質の高い睡眠を何よりも大切にする旅行者のための小さなホテルです。",
+    "paragraph2": "私たちにとってのおもてなしとは、温かい笑顔、清潔なベッド、熱いシャワー、そしてタメルでの貴重な静けさです。",
     "paragraph3": "トレッキング前後の休息や街歩きの拠点として、穏やかなひとときをお過ごしください。",
     "exploreLocation": "場所を確認する",
     "imageAlt": "フロントデスク"
   },
   "aboutWhy": {
-    "whyChoose": "選ばれる理由",
-    "sherpaSoul": "シェルパ・ソウル",
-    "subtitle": "タメル中心部の静けさと実用的な快適さ",
+    "whyChoose": "ホテル・シェルパ・ソウルが",
+    "sherpaSoul": "選ばれる理由",
+    "subtitle": "休息と利便性を追求した、タメルで最も快適で実用的な滞在拠点",
     "authenticSherpaLifestyle": {
-      "title": "Peaceful Nights",
-      "description": "We do not have a restaurant or noisy entertainment area inside the hotel. Our focus is on a calm environment where you can relax and sleep comfortably."
+      "title": "静寂な夜",
+      "description": "深夜の騒音を防ぐため、館内にバーやレストランを置かず睡眠環境を守っています。"
     },
     "primeThamelLocation": {
-      "title": "In the Heart of Thamel",
-      "description": "Stay close to the energy, shops, cafés and trekking agencies of Thamel while having a comfortable, quiet place to return to."
+      "title": "タメルの好立地",
+      "description": "バガワティ・マルグ26番地。主要スポットに近く、車でのアクセスもスムーズです。"
     },
     "guestAmenities": {
-      "title": "Three Practical Room Options",
-      "description": "Choose from Budget Family Room (3 Adults, 1 Child), Deluxe Room (2 Adults, 1 Child), or Family Room (3 Adults, 1 Child) tailored for restful stays in Thamel."
+      "title": "充実した実用設備",
+      "description": "24時間給湯、高速光Wi-Fi、自炊も可能な共用ゲストキッチンを完備。"
     },
     "airportPickupForInternationalGuests": {
-      "title": "Air Conditioning & Free Wi-Fi",
-      "description": "Air-conditioned rooms and high-speed Wi-Fi keep you comfortable and connected with family, work or travel plans."
+      "title": "空港送迎サービス",
+      "description": "空港到着出口でお名前入りのボードを掲げてお出迎えいたします。"
     },
     "foreignCurrencyExchange": {
-      "title": "Shared Kitchen (Long Stay Only)",
-      "description": "Our shared self-use kitchen is reserved exclusively for registered long-stay guests, offering the flexibility to prepare simple home-cooked meals with induction cooktop, fridge, and microwave."
+      "title": "両替所とATM",
+      "description": "近隣に信頼できる公認両替所や海外カード対応ATMが多数ございます。"
     },
     "cleanAndSecure": {
-      "title": "Friendly, Personal Service",
-      "description": "We are a small hotel, so our guests are not just another room number. We make your Kathmandu stay easy, comfortable and welcoming."
+      "title": "清潔とセキュリティ",
+      "description": "徹底した除菌清掃、24時間スタッフ常駐、防犯カメラ完備で安心です。"
     },
     "showOtherLanguages": "その他の言語を表示",
     "hideOtherLanguages": "言語を閉じる",
@@ -266,7 +271,8 @@
     },
     "para2": "過度な装飾よりも、清潔さ、快適さ、静けさを追求します。",
     "para3": "世界中の旅行者に素晴らしいネパールの体験をお届けします。",
-    "startJourney": "旅を始める"
+    "startJourney": "旅を始める",
+    "ourPhilosophy": "私たちの理念"
   },
   "roomsCard": {
     "roomsSuites": "客室案内",
@@ -328,24 +334,24 @@
     "cta": {
       "title": "快適な睡眠を体験しませんか？",
       "desc": "タメルの中心で静寂な夜をお過ごしください。",
-      "button": "ご宿泊予約",
-      "badge": "ホテル シェルパ ソウル • タメル, カトマンズ",
-      "heading": "静かで快適な睡眠をお約束します",
-      "copy": "タメルの中心に位置する当ホテルを、カトマンズ観光やトレッキングの拠点はもちろん、ネパールの旅のベースキャンプとしてご利用ください。"
+      "button": "宿泊を予約する",
+      "badge": "ホテル・シェルパ・ソウル • カトマンズ・タメル",
+      "heading": "静かで快適な夜を過ごす準備はできましたか？",
+      "copy": "タメルの中心に滞在し、シェルパ・ソウルをネパール滞在の温かな拠点にしてください。"
     },
     "brand": {
-      "tagline": "レストランなし。騒音なし。快適な睡眠。",
+      "tagline": "カトマンズ・タメルにある静かで快適なブティックホテル。清潔なお部屋、24時間給湯、心温まるおもてなし。",
       "desc": "ホテル・シェルパ・ソウルは、タメルの静かな一角にある快適なホテルです。",
-      "title": "ホテル シェルパ ソウル",
+      "title": "ホテル・シェルパ・ソウル",
       "description": "ホテルシェルパソウルは、ネパール・カトマンズのタメル地区中心部に位置する静かで快適なブティックホテルです。優れた立地、清潔な客室、上質な睡眠を提供します。"
     },
     "quickLinks": {
       "title": "クイックリンク",
       "home": "ホーム",
       "rooms": "客室",
-      "about": "当ホテルについて",
+      "about": "ホテル概要",
       "gallery": "ギャラリー",
-      "blog": "ブログ",
+      "blog": "旅行ガイド",
       "contact": "お問い合わせ",
       "links": {
         "home": "ホーム",
@@ -354,13 +360,15 @@
         "gallery": "ギャラリー",
         "blog": "旅ブログ",
         "contact": "お問い合わせ"
-      }
+      },
+      "services": "サービス",
+      "guestGuide": "ゲストガイド"
     },
     "contactUs": {
-      "title": "ご連絡先",
-      "phone": "+977-9851068219",
+      "title": "お問い合わせ",
+      "phone": "+977 9851068219 / +977-1-4530311",
       "email": "info@hotelsherpasoul.com",
-      "address": "ネパール、カトマンズ、タメル バガワティ・マーグ26"
+      "address": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
     },
     "followUs": {
       "title": "SNSをフォロー",
@@ -368,11 +376,7 @@
       "instagram": "Instagram",
       "tripAdvisor": "TripAdvisor"
     },
-    "copyright": {
-      "prefix": "©",
-      "hotelName": "ホテル シェルパ ソウル",
-      "suffix": "All Rights Reserved. タメル, カトマンズ, ネパール."
-    },
+    "copyright": "© 2026 Hotel Sherpa Soul. All rights reserved.",
     "legal": {
       "privacy": "プライバシーポリシー",
       "terms": "利用規約",
@@ -522,11 +526,18 @@
         "msg": "Your Message",
         "name2": "Enter your full name",
         "email2": "your@gmail.com",
-        "msg2": "Tell us about your request or inqury"
+        "msg2": "Tell us about your request or inqury",
+        "phone": "お電話番号（任意）"
       },
       "send": "Send via WhatsApp",
-      "send2": "Sending..."
-    }
+      "send2": "Sending...",
+      "placeholders": {
+        "name": "お名前をご入力ください",
+        "phone": "+977 98XXXXXXXX",
+        "message": "お問い合わせ内容、宿泊希望日、ご要望などをご記入ください..."
+      }
+    },
+    "badge": "フロント＆お問い合わせ"
   },
   "roomdetails": {
     "back": "戻る",
@@ -670,56 +681,56 @@
   "loading": "客室情報を読み込み中...",
   "pleasewait": "しばらくお待ちください...",
   "homeHero": {
-    "welcome": "WELCOME TO HOTEL SHERPA SOUL • THAMEL, KATHMANDU",
-    "title": "Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu",
-    "description": "A boutique hotel on Thamel Bhagawati Marg 26 — clean rooms, peaceful nights, 24/7 hot showers, free luggage storage, and warm Himalayan hospitality.",
-    "checkAvailability": "Check Availability",
-    "bookDirect": "Book Direct & Save 10%",
-    "trust1": "Central Thamel Location",
-    "trust2": "Comfortable Rooms",
-    "trust3": "Peaceful Stay"
+    "welcome": "ホテル・シェルパ・ソウルへようこそ • カトマンズ・タメル",
+    "title": "カトマンズ・タメルの中心に佇む快適で静かなブティックホテル",
+    "description": "タメル・バガワティ・マルグ26番地：清潔な客室、静寂な夜、24時間ホットシャワー、無料荷物預かり、そして温かなヒマラヤのおもてなし。",
+    "checkAvailability": "空室状況を確認する",
+    "bookDirect": "直販で10%割引",
+    "trust1": "タメルの好立地",
+    "trust2": "快適な客室",
+    "trust3": "静かな睡眠環境"
   },
   "directOffer": {
-    "badge": "Why Book Direct",
-    "title": "Book Directly with Us & Save 10%",
-    "discountTitle": "10% Direct Booking Discount",
-    "discountDesc": "Instant 10% savings when booking directly with us — no OTA markups.",
-    "luggageTitle": "Free Luggage Storage",
-    "luggageDesc": "Leave your bags safely while trekking the Himalayas.",
-    "whatsappTitle": "Instant WhatsApp Confirmation",
-    "whatsappDesc": "24/7 replies, airport transfer help, and personal assistance.",
-    "bestRateTitle": "Best Rate Guarantee",
-    "bestRateDesc": "Transparent, honest pricing with no hidden fees.",
-    "cta": "Book Direct & Save 10%",
-    "disclaimer": "Best direct-booking offer. Contact us for availability."
+    "badge": "直販予約のメリット",
+    "title": "公式サイト直接予約で10%お得に宿泊",
+    "discountTitle": "直販限定10%割引",
+    "discountDesc": "仲介手数料のない公式サイトからの直接予約で、その場で10%の割引が適用されます。",
+    "luggageTitle": "トレッキング荷物の無料預かり",
+    "luggageDesc": "ヒマラヤトレッキングの間、スーツケースなどを鍵付きの安全な保管室に無料でお預かりします。",
+    "whatsappTitle": "WhatsAppでの迅速な確認",
+    "whatsappDesc": "24時間体制の迅速な返信、空港送迎の手配、丁寧な個別サポートをご提供します。",
+    "bestRateTitle": "ベストレート保証",
+    "bestRateDesc": "隠れた手数料のない、透明で誠実な安心価格設定です。",
+    "cta": "直販予約で10%割引を適用",
+    "disclaimer": "直販限定の最安値です。空室状況はお気軽にお問い合わせください。"
   },
   "homeStatsPillars": {
-    "badge": "Why Stay at Hotel Sherpa Soul",
-    "title": "Comfortable, Quiet Accommodation in Thamel",
-    "subtitle": "Honest, practical boutique hospitality in Kathmandu. No exaggerated claims — just clean comfort, quiet nights, and personal care.",
-    "p1Badge": "Quiet Thamel Location",
-    "p1Title": "Peaceful Alleyway Setting",
-    "p1Desc": "Located on Thamel Bhagawati Marg 26, steps away from central shops and bakeries, yet peacefully insulated from late-night bar and street noise.",
-    "p2Badge": "Quiet Atmosphere",
-    "p2Title": "Restful & Undisturbed Sleep",
-    "p2Desc": "Designed for peaceful stays away from loud restaurant and bar noise inside the property. Spotless rooms and deep, restorative sleep are our priority.",
-    "p3Badge": "Guest Kitchen",
-    "p3Title": "Shared Kitchen for Light Cooking",
-    "p3Desc": "Equipped with an induction cooktop, refrigerator, microwave, and kettle, giving guests the flexibility to prepare simple home meals and brew fresh tea.",
-    "p4Badge": "Trekker-Friendly",
-    "p4Title": "Free Luggage Storage & 24/7 Desk",
-    "p4Desc": "Heading to Everest, Annapurna, or Langtang? Leave your extra gear safely in our luggage room free of charge until you return from your trek."
+    "badge": "シェルパ・ソウルが選ばれる理由",
+    "title": "タメルでの快適で穏やかなご滞在",
+    "subtitle": "カトマンズでの誠実で機能的なブティック体験。誇張のない清潔さ、静かな夜、温かいおもてなしをお届けします。",
+    "p1Badge": "タメルの静かな一画",
+    "p1Title": "中心部にありながら静寂",
+    "p1Desc": "タメルの人気カフェやショップから徒歩わずか2分、夜は静まり返るバガワティ・マルグに位置しています。",
+    "p2Badge": "清潔で心地よい空間",
+    "p2Title": "深く安らかな眠り",
+    "p2Desc": "上質なキングサイズマットレス、清潔なリネン、心地よい自然光と換気のあるお部屋。",
+    "p3Badge": "24時間給湯",
+    "p3Title": "安定した高圧ホットシャワー",
+    "p3Desc": "季節や天候を問わず、昼夜いつでもすぐに温かいお湯をお使いいただけます。",
+    "p4Badge": "ゲスト専用キッチン",
+    "p4Title": "お茶や軽食の自炊が可能",
+    "p4Desc": "朝食作りやお茶の時間、食材の冷蔵保管ができる清潔な共用キッチンを完備しています。"
   },
   "homeRoomsData": {
-    "badge": "Room Types & Current Rates",
-    "title": "Clean, Quiet Rooms in Thamel",
-    "subtitle": "Every room includes private attached bathroom with continuous 24/7 hot water, high-speed fiber Wi-Fi, and access to our shared self-kitchen.",
-    "perNight": "/ night",
+    "badge": "客室のご案内",
+    "title": "快適で静かな客室",
+    "subtitle": "一人旅のトレッカーからご家族連れまで、清潔で心地よいお部屋をご用意しています。",
+    "perNight": "1泊あたり",
     "budget": {
-      "name": "Budget Family Room",
+      "name": "バジェット・ファミリールーム",
       "bed": "1 King Bed + 1 Single Bed",
       "occupancy": "Up to 4 Guests (3 Adults, 1 Child)",
-      "desc": "Comfortable and budget-conscious accommodation with en-suite hot shower, bright windows, and shared kitchen access for groups or families.",
+      "desc": "キングベッド1台とシングルベッド1台を備えた、トレッキング仲間やご家族に最適な広いお部屋。",
       "f1": "1 King Bed + 1 Single Bed",
       "f2": "Private Attached Bathroom (24/7 Hot Water)",
       "f3": "Free High-Speed Fiber Wi-Fi",
@@ -727,10 +738,10 @@
       "f5": "Trekker Luggage Storage Included"
     },
     "deluxe": {
-      "name": "Deluxe Room (AC)",
+      "name": "デラックスルーム（エアコン付）",
       "bed": "1 King Bed",
       "occupancy": "Up to 3 Guests (2 Adults, 1 Child)",
-      "desc": "Air-conditioned boutique room with king-size bed, private modern bathroom, work desk, and quiet ambiance for restful sleep.",
+      "desc": "キングベッドと静かなエアコンを備えた、ご夫婦や一人旅の休息に最適な心地よいお部屋。",
       "f1": "Individual Climate Control (AC)",
       "f2": "1 Comfortable King Bed",
       "f3": "Private Modern Bathroom (24/7 Hot Shower)",
@@ -738,43 +749,43 @@
       "f5": "Shared Guest Kitchen Access"
     },
     "family": {
-      "name": "Family Room (AC)",
+      "name": "ファミリールーム（エアコン付）",
       "bed": "1 King Bed + 1 Single Bed",
       "occupancy": "Up to 4 Guests (3 Adults, 1 Child)",
-      "desc": "Spacious family suite featuring air conditioning, one king bed and one single bed, private bathroom, and extra room for luggage.",
+      "desc": "最大4名様までゆったり過ごせる、エアコンと大きな窓を備えた開放的なお部屋。",
       "f1": "Individual Climate Control (AC)",
       "f2": "1 King Bed + 1 Single Bed",
       "f3": "Spacious Private Bathroom (24/7 Hot Water)",
       "f4": "Free High-Speed Fiber Wi-Fi",
       "f5": "Shared Guest Kitchen Access"
     },
-    "viewDetails": "View Details",
-    "checkAvailability": "Check Availability",
-    "mostPopular": "Most Popular",
-    "directOfferText": "Best Available Direct-Booking Offer",
-    "directOfferSub": "No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.",
-    "compareAll": "Compare All Rooms",
-    "bedLabel": "Bed:",
-    "occupancyLabel": "Occupancy:",
-    "sizeLabel": "Room Size:",
-    "keyAmenities": "Key Amenities"
+    "viewDetails": "詳細を見る",
+    "checkAvailability": "空室を検索",
+    "mostPopular": "一番人気",
+    "directOfferText": "直販限定10%割引",
+    "directOfferSub": "荷物預かり＆共用キッチンの無料利用特典付き",
+    "compareAll": "全客室を比較する",
+    "bedLabel": "ベッド",
+    "occupancyLabel": "定員",
+    "sizeLabel": "広さ",
+    "keyAmenities": "主な設備"
   },
   "facilitiesSection": {
-    "badge": "Verified Hotel Amenities",
-    "title": "Hotel Facilities & Practical Services",
-    "subtitle": "Thoughtfully planned for international tourists, backpackers, and trekking teams who appreciate functional comfort.",
-    "f1": "Free High-Speed Wi-Fi",
-    "d1": "Fast, reliable fiber-optic internet connection accessible throughout all guest rooms and public spaces.",
-    "f2": "24/7 Front Desk",
-    "d2": "Round-the-clock reception assistance for flexible check-ins, late arrivals, and local Kathmandu advice.",
-    "f3": "Luggage Storage for Trekkers",
-    "d3": "Complimentary, secure bag holding while you hike Everest Base Camp, Annapurna Circuit, or Langtang.",
-    "f4": "Airport Transfer Service",
-    "d4": "Convenient airport pickup and drop-off transfers between Tribhuvan International Airport (KTM) and the hotel.",
-    "f5": "Shared Guest Kitchen",
-    "d5": "Clean kitchen with induction cooktop, refrigerator, microwave, and electric kettle for self-cooking.",
-    "f6": "Trekking Support & Advice",
-    "d6": "Practical assistance with trekking permits, flight tickets to Lukla or Pokhara, and authentic Sherpa advice.",
+    "badge": "館内設備",
+    "title": "実用的な設備とサービス",
+    "subtitle": "機能性と居心地の良さを重視する外国人旅行者や登山者のために設計されています。",
+    "f1": "無料高速光ファイバーWi-Fi",
+    "d1": "館内全域で安定した高速インターネット。",
+    "f2": "24時間ホットシャワー",
+    "d2": "各部屋の専用バスルームでいつでも使える高圧給湯。",
+    "f3": "無料荷物預かり",
+    "d3": "トレッキング期間中の安全な無料保管サービス。",
+    "f4": "共用ゲストキッチン",
+    "d4": "お茶淹れや簡単な自炊ができる設備を完備。",
+    "f5": "24時間フロントデスク",
+    "d5": "夜間や早朝もスタッフが常駐しサポート。",
+    "f6": "空港専用車送迎",
+    "d6": "トリブバン空港からの安全でスムーズな送迎サービス。",
     "f7": "24/7 Hot Water Showers",
     "d7": "Continuous high-pressure hot and cold water in all private en-suite bathrooms at any hour.",
     "f8": "Daily Housekeeping",
@@ -783,89 +794,89 @@
     "d9": "Individual climate control equipped in Deluxe and Family room categories for year-round comfort.",
     "f10": "Workspace Friendly",
     "d10": "Work desk and stable connectivity suitable for remote professionals, digital nomads, and trip planners.",
-    "card1Badge": "Self-Catering Convenience",
-    "card1Title": "Shared Guest Kitchen",
-    "card1Desc": "Cook your own meals, prepare special dietary requirements, or brew warm Himalayan tea anytime. Fully equipped with an induction stove, refrigerator, microwave, and cooking utensils.",
-    "card2Badge": "Always Available",
-    "card2Title": "24/7 Reception & Travel Desk",
-    "card2Desc": "Whether you arrive on a late-night international flight or leave before dawn for a mountain trek, our team is always on duty to welcome you and assist with luggage and transport."
+    "card1Badge": "トレッカー歓迎",
+    "card1Title": "ヒマラヤ登山に最適",
+    "card1Desc": "大型ザックの保管、温かいシャワー、現地の信頼できるアドバイス。",
+    "card2Badge": "静寂へのこだわり",
+    "card2Title": "レストランなし。騒音なし。",
+    "card2Desc": "夜間の騒音を防ぎ良質な睡眠を守るため、館内にはバーやレストランを設けていません。"
   },
   "homeLocationSection": {
-    "badge": "Prime Thamel Location",
-    "title": "Hotel Sherpa Soul in Thamel, Kathmandu",
-    "subtitle": "Conveniently situated on Thamel Bhagawati Marg 26. Step outside into the energetic culture and dining of Thamel, yet return to a quiet, noise-insulated boutique hotel at night.",
-    "addressTitle": "Property Address & Contact",
-    "frontDesk": "Front Desk (24/7)",
-    "whatsapp": "WhatsApp Support",
-    "email": "Email Inquiries",
-    "openMaps": "Open in Google Maps",
-    "viewContact": "View Location & Contact",
-    "landmarksTitle": "Verified Nearby Landmarks",
-    "l1": "Thamel Gear Shops & Cafes",
-    "l1Dist": "Immediate vicinity (1-2 min walk)",
-    "l1Note": "Right outside on Thamel Bhagawati Marg",
-    "l2": "Garden of Dreams",
-    "l2Dist": "~800 meters (~10 min walk)",
-    "l2Note": "Historical neo-classical garden oasis",
-    "l3": "Kathmandu Durbar Square",
-    "l3Dist": "~1.8 km (~20 min walk or short taxi)",
-    "l3Note": "UNESCO World Heritage ancient royal complex",
-    "l4": "Swayambhunath (Monkey Temple)",
-    "l4Dist": "~3 km (~15 min drive)",
-    "l4Note": "Ancient hilltop Buddhist stupa with panoramic city views",
-    "l5": "Tribhuvan International Airport (KTM)",
-    "l5Dist": "~6 km (~20 to 30 min drive)",
-    "l5Note": "Airport pickup & drop-off available upon request"
+    "badge": "タメル中心の立地",
+    "title": "カトマンズ・タメルのホテル・シェルパ・ソウル",
+    "subtitle": "バガワティ・マルグ26番地。タメルの賑わいと観光を満喫し、夜は静かにぐっすりとお休みいただけます。",
+    "addressTitle": "所在地",
+    "frontDesk": "フロント",
+    "whatsapp": "WhatsApp相談",
+    "email": "メール",
+    "openMaps": "Googleマップで開く",
+    "viewContact": "お問い合わせページ",
+    "landmarksTitle": "周辺の見どころ",
+    "l1": "スワヤンブナート（目玉寺）",
+    "l1Dist": "2.8 km",
+    "l1Note": "タクシーで約10分",
+    "l2": "カトマンズ・ダルバール広場",
+    "l2Dist": "1.8 km",
+    "l2Note": "歴史的な街並みを徒歩で散策",
+    "l3": "夢の庭（Garden of Dreams）",
+    "l3Dist": "500 m",
+    "l3Note": "徒歩約5分",
+    "l4": "ナラヤンヒティ王宮博物館",
+    "l4Dist": "800 m",
+    "l4Note": "徒歩約10分",
+    "l5": "トリブバン国際空港（TIA）",
+    "l5Dist": "5.5 km",
+    "l5Note": "車で20〜30分"
   },
   "homeTrekkersSection": {
-    "badge": "Trekker-Friendly Services",
-    "title": "Made for Your Himalayan Journey",
-    "subtitle": "Kathmandu is the gateway to Nepal's trails. Whether you are trekking Everest Base Camp, Annapurna Circuit, Langtang, or exploring the valley, Hotel Sherpa Soul provides a reliable, welcoming base.",
-    "step1Tag": "Gear Prep & Free Storage",
-    "step1Title": "Before the Trek",
-    "step1Desc": "Rest after international flights, organize your gear, finalize route permits, and safely store your extra city bags in our secure luggage room free of charge.",
-    "step2Tag": "24/7 Hot Shower & Deep Sleep",
-    "step2Title": "After the Trek",
-    "step2Desc": "Return from the Himalayas to a high-pressure hot shower, clean bed, peaceful surroundings, and a well-deserved deep sleep in Thamel.",
-    "step3Tag": "Authentic Local Knowledge",
-    "step3Title": "Sherpa Guidance & Support",
-    "step3Desc": "Drawing from authentic Himalayan heritage, our front desk assists with permit advice, Lukla/Pokhara flight coordination, and practical Nepal travel tips.",
-    "complimentary": "Complimentary for all staying guests"
+    "badge": "登山者サポート",
+    "title": "ヒマラヤの旅のために作られたホテル",
+    "subtitle": "カトマンズはヒマラヤへの玄関口。シェルパ・ソウルは皆様の安心・安全な拠点です。",
+    "step1Tag": "出発前",
+    "step1Title": "荷物の整理と安全保管",
+    "step1Desc": "山へは必要な装備だけを持参し、残りの荷物は当ホテルの鍵付き保管室に無料でお預けください。",
+    "step2Tag": "トレッキング中",
+    "step2Title": "身軽で快適な山歩き",
+    "step2Desc": "お預かりしたお荷物は、下山して戻られるまで大切に保管いたします。",
+    "step3Tag": "下山後",
+    "step3Title": "温かいお風呂と極上の休息",
+    "step3Desc": "たっぷりのお湯で登山の疲れを癒やし、柔らかなベッドでゆったりとお過ごしください。",
+    "complimentary": "ご宿泊のすべてのお客様に100%無料"
   },
   "homeGoogleReviewsSection": {
-    "badge": "❖ Honest Hospitality & Verified Location",
-    "title1": "Real Hospitality.",
-    "title2": "Genuine Guest Experiences.",
-    "desc": "At Hotel Sherpa Soul, we believe in honest hospitality without fabricated stories or star-hotel exaggerations. We are a small boutique hotel on Bhagawati Marg, Thamel, dedicated to giving travelers a quiet, spotless, and comfortable stay in Kathmandu.",
-    "perk1": "Best Direct Price Guarantee — No OTA commission markups",
-    "perk2": "Instant 24/7 WhatsApp confirmation with front desk",
-    "perk3": "Complimentary secure luggage storage while you trek",
-    "perk4": "Flexible early check-in & late checkout (subject to availability)",
-    "bookDirectBtn": "Book Direct With Us",
-    "reviewPrompt": "Have you stayed with us? We warmly welcome our guests to leave an honest review on Google Maps to help fellow travelers make informed decisions.",
-    "writeReviewBtn": "Write a Google Review or View Map",
-    "verifiedNote": "100% verified, real-world traveler feedback on Google"
+    "badge": "❖ 誠実なおもてなし",
+    "title1": "本物の温もり。",
+    "title2": "宿泊ゲストの生の声。",
+    "desc": "ホテル・シェルパ・ソウルでは、誇張のない誠実なおもてなしを大切にしています。清潔なお部屋、静かな夜、温かな笑顔でお迎えします。",
+    "perk1": "確認済みの静かな夜",
+    "perk2": "行き届いた清潔さ",
+    "perk3": "安全な荷物保管",
+    "perk4": "24時間ホットシャワー",
+    "bookDirectBtn": "直販予約で10%割引を適用",
+    "reviewPrompt": "当ホテルにご宿泊いただきましたか？",
+    "writeReviewBtn": "Googleにクチコミを書く",
+    "verifiedNote": "Googleマップに寄せられた本物の旅行者レビュー"
   },
   "homeFAQSection": {
-    "badge": "Frequently Asked Questions",
-    "title": "Helpful Information for Your Stay",
-    "subtitle": "Real, verified information about staying at Hotel Sherpa Soul in Thamel, Kathmandu.",
-    "haveQuestion": "Have Another Question?",
-    "helpText": "Our 24/7 reception desk is available anytime via WhatsApp or phone.",
-    "whatsappBtn": "WhatsApp Us",
-    "callBtn": "Call Reception",
-    "q1": "Where is Hotel Sherpa Soul located?",
-    "a1": "Hotel Sherpa Soul is located on Thamel Bhagawati Marg 26 in the heart of Thamel, Kathmandu, Nepal. We are in a quiet alley within easy walking distance to trekking gear shops, bakeries, cafes, and historic Durbar Square.",
-    "q2": "How can I reach the hotel from Tribhuvan International Airport?",
-    "a2": "The hotel is approximately 6 km from Tribhuvan International Airport (KTM). Travel time is typically 20 to 30 minutes by taxi or private transfer depending on city traffic.",
-    "q3": "Does the hotel offer airport pickup?",
-    "a3": "Yes, we arrange reliable airport pickup and drop-off transfers directly between Kathmandu Airport and the hotel. You can request an airport transfer when booking directly or by contacting our front desk via WhatsApp at +977 9818259472.",
-    "q4": "Is luggage storage available for trekkers?",
-    "a4": "Yes, we offer complimentary secure luggage storage for all guests. Trekkers venturing on multi-day journeys to Everest, Annapurna, or Langtang can safely store their non-trekking luggage with us free of charge until they return.",
-    "q5": "Does the hotel have a restaurant?",
-    "a5": "Designed for peaceful stays away from loud restaurant and bar noise inside the property. While we do not operate a commercial on-site restaurant or bar, we provide guests with a fully equipped shared kitchen, and hundreds of Thamel's acclaimed restaurants and bakeries are just a 1 to 3 minute walk away.",
-    "q6": "Is a shared kitchen available?",
-    "a6": "Yes, Hotel Sherpa Soul provides a clean, well-equipped shared guest kitchen featuring an induction cooktop, refrigerator, microwave, and electric kettle where guests can prepare light meals, cook personal dietary favorites, or brew fresh Himalayan tea.",
+    "badge": "よくあるご質問",
+    "title": "ご滞在に役立つ基本情報",
+    "subtitle": "ホテル・シェルパ・ソウルでのご滞在に関する正確で分かりやすいご案内。",
+    "haveQuestion": "その他にご質問はございますか？",
+    "helpText": "24時間対応のフロントデスクがWhatsAppで迅速にお答えします。",
+    "whatsappBtn": "WhatsAppで質問する",
+    "callBtn": "電話で問い合わせる",
+    "q1": "チェックインとチェックアウトの時間は？",
+    "a1": "チェックインは12:00から、チェックアウトは11:00までです。空室状況によりアーリーチェックインも可能です。",
+    "q2": "空港への送迎サービスはありますか？",
+    "a2": "はい、トリブバン国際空港（TIA）からの安心で確実な専用車送迎を手配いたします。",
+    "q3": "お湯はいつでも出ますか？",
+    "a3": "はい、すべての専用バスルームで24時間いつでも高圧ホットシャワーをご利用いただけます。",
+    "q4": "トレッキング中に荷物を預けられますか？",
+    "a4": "はい、ご宿泊のお客様全員に完全無料の安全な荷物預かりサービスを提供しています。",
+    "q5": "夜間の静粛ルールはありますか？",
+    "a5": "皆様の良質な睡眠を守るため、夜22:00から翌朝07:00まではクワイエットタイム（静粛時間）としています。",
+    "q6": "ゲストが使えるキッチンはありますか？",
+    "a6": "はい、お茶を淹れたりお湯を沸かしたり、簡単な調理ができる清潔な共用キッチンがございます。",
     "q7": "What time is check-in and check-out?",
     "a7": "Standard check-in begins at 14:00 (2:00 PM) and check-out is until 12:00 (12:00 PM noon). Our front desk is staffed 24/7, and flexible early check-in or late check-out is accommodated whenever room availability allows.",
     "q8": "Is Wi-Fi available?",
@@ -878,12 +889,13 @@
     "a11": "You can book directly through our official website by clicking 'Check Availability', or contact our front desk directly via WhatsApp at +977 9818259472 for instant booking confirmation with our best 10% direct rate guarantee."
   },
   "homeBookingCTASection": {
-    "badge": "Direct Booking Privilege",
-    "title": "Ready to Sleep Well in Thamel, Kathmandu?",
-    "subtitle": "Enjoy clean rooms, quiet nights, 24/7 hot showers, and trekker luggage storage. Book directly with Hotel Sherpa Soul for the best rates and instant WhatsApp support.",
-    "bookBtn": "Book Direct & Save 10%",
+    "badge": "直販予約の特別特典",
+    "title": "タメルで心安らぐ睡眠を体験しませんか？",
+    "subtitle": "清潔なお部屋、静寂な夜、24時間給湯、無料荷物預かり。公式サイト直販で10%割引のベストレートを確保。",
+    "bookBtn": "直販で10%割引予約",
     "callBtn": "Call +977 9851068219",
-    "disclaimer": "Best available direct-booking offer. Contact us for availability and dates."
+    "disclaimer": "Best available direct-booking offer. Contact us for availability and dates.",
+    "whatsappBtn": "WhatsAppで連絡する"
   },
   "bookNowPage": {
     "heroBadge": "直前・公式サイト限定：全客室10%オフ",
@@ -1310,6 +1322,57 @@
     "accessibility": {
       "copiedAnnouncement": "{{field}} をクリップボードにコピーしました",
       "copyFailedAnnouncement": "コピーに失敗しました。手動でコピーしてください。"
+    }
+  },
+  "servicesPage": {
+    "pill": "実用的な設備 • 追加の隠れた費用なし",
+    "title": "ホテル・シェルパ・ソウルのサービスと設備",
+    "subtitle": "ネパールを旅する外国人旅行者、トレッカー、長期滞在のお客様のために心を込めて整えた快適な設備。",
+    "availableTag": "すべてのご宿泊ゲストにご利用いただけます",
+    "ctaBadge": "公式サイト直接予約で10%割引",
+    "ctaTitle": "タメルで心安らぐ静かな夜を過ごしませんか？",
+    "ctaText": "公式サイトまたはWhatsAppから直接ご予約いただくことで、最低料金保証、無料トレッキング荷物預かり、共用ゲストキッチンの無料利用が適用されます。",
+    "ctaButton": "宿泊を予約する",
+    "services": {
+      "kitchen": {
+        "title": "共用ゲストキッチン",
+        "desc": "お好みの料理を自炊したり、温かいヒマラヤ茶を淹れたり、共用冷蔵庫で食材を安全に保管できます。",
+        "badge": "ゲストに大好評"
+      },
+      "hotWater": {
+        "title": "24時間いつでも使える高圧ホットシャワー",
+        "desc": "すべての専用バスルームで24時間いつでも高圧・適温のホットシャワーをご利用いただけます。標高の高いトレッキングから戻った後の疲労回復に最適です。",
+        "badge": "高圧給湯"
+      },
+      "luggage": {
+        "title": "トレッカー向け無料荷物預かり",
+        "desc": "エベレスト・ベースキャンプ、アンナプルナ、ランタンなどのトレッキング中、大きな荷物を安全・無料で保管します。下山後にお受け取りいただけます。",
+        "badge": "100%無料"
+      },
+      "wifi": {
+        "title": "高速光ファイバーWi-Fi",
+        "desc": "館内全域で安定した高速光ファイバーインターネットをご利用いただけます。リモートワークや家族との連絡、旅の手配も快適です。",
+        "badge": "光回線"
+      },
+      "tour": {
+        "title": "空港送迎＆ツアーデスク",
+        "desc": "トリブバン国際空港（TIA）とホテル間の安心な専用車送迎、ルクラやポカラへの国内線航空券、公認ガイドの手配を承ります。",
+        "badge": "24時間対応"
+      },
+      "desk": {
+        "title": "24時間フロントデスク",
+        "desc": "昼夜を問わず柔軟なチェックイン・チェックアウトに対応。親切なスタッフが現地情報のご案内や緊急時のサポートをいたします。",
+        "badge": "常時対応"
+      }
+    }
+  },
+  "contactPage": {
+    "quickNav": {
+      "title": "ホテル・シェルパ・ソウルを見る",
+      "subtitle": "お部屋の選択やカトマンズ・トレッキングの旅行相談はお気軽にお問い合わせください。",
+      "viewRooms": "客室と料金を見る",
+      "guestGuide": "ゲストガイドとハウスルール",
+      "privacyPolicy": "プライバシーポリシー"
     }
   }
 }

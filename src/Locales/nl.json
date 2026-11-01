@@ -96,23 +96,23 @@
   },
   "aboutPageContent": {
     "h1": "Over Hotel Sherpa Soul",
-    "introHeading": "Eenvoudige en Oprechte Gastvrijheid in Thamel",
-    "copy": "Hotel Sherpa Soul is een rustig boetiekhotel in Thamel, Kathmandu, gericht op schone kamers en een goede nachtrust.",
+    "introHeading": "Een oase van rust en comfort in het hart van Thamel, Kathmandu.",
+    "copy": "Hotel Sherpa Soul is opgericht voor reizigers die Kathmandu willen beleven zonder in te leveren op een goede nachtrust.",
     "philosophy": {
-      "heading": "No Restaurant. No Noise. Sleep Well.",
-      "copy": "We believe a hotel doesn't need to be complicated to feel welcoming. For us, hospitality is about creating a comfortable space where travelers can rest, recharge and feel ready for the next day."
+      "heading": "Geen Restaurant. Geen Lawaai. Goed Slapen.",
+      "copy": "Wij geloven dat een fijn hotel niet ingewikkeld hoeft te zijn. Onze toewijding ligt bij uw comfort en ontspanning."
     },
     "location": {
-      "heading": "At the Heart of Thamel",
-      "copy": "Thamel is one of Kathmandu's best-known areas for travelers, surrounded by cafés, shops, travel services and local experiences. Hotel Sherpa Soul gives you the convenience of staying close to it all while offering a peaceful place to return to."
+      "heading": "In het Centrum van Thamel",
+      "copy": "Omringd door gezellige cafés, outdoorzaken en reisbureaus bevindt u zich overal dichtbij, terwijl onze straat rust biedt."
     },
     "forTravelers": {
-      "heading": "From Kathmandu to the Himalayas",
-      "copy": "Many journeys through Nepal begin in Kathmandu. Whether you are visiting Nepal for culture and sightseeing, preparing for a Himalayan trek or returning from the mountains, Sherpa Soul is designed to be your comfortable Kathmandu base."
+      "heading": "Van Kathmandu naar de Himalaya",
+      "copy": "Veel ontdekkingsreizen door Nepal starten hier. Sherpa Soul is uw betrouwbare en gezellige thuisbasis."
     },
     "closing": {
-      "heading": "Come for Kathmandu. Stay for the comfort. Sleep well for the journey ahead.",
-      "cta": "Book Your Stay"
+      "heading": "Kom voor Kathmandu, blijf voor het comfort en slaap uitstekend voor de reis die voor u ligt.",
+      "cta": "Boek Uw Verblijf"
     }
   },
   "about": {
@@ -206,45 +206,50 @@
       "phone": "+977 9851068219",
       "email": "info@hotelsherpasoul.com",
       "mapTitle": "Hotel Sherpa Soul Location"
-    }
+    },
+    "title": "Hotel Sherpa Soul – Thamel, Kathmandu",
+    "description": "Wij zijn gevestigd in Thamel, het levendige hart van Kathmandu – op loopafstand van bezienswaardigheden en restaurants.",
+    "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
+    "email": "info@hotelsherpasoul.com",
+    "mapTitle": "Locatie Hotel Sherpa Soul"
   },
   "aboutStory": {
     "ourStory": "Ons Verhaal",
-    "welcomeTo": "Welkom bij",
-    "sherpaSoul": "Hotel Sherpa Soul",
-    "paragraph1": "Ons hotel is ontstaan uit een eenvoudig idee: reizigers in Thamel een rustige, lawaaivrije nachtrust bieden.",
-    "paragraph2": "Onze Sherpa-cultuur staat voor gastvrijheid, eerlijkheid en zorgzaamheid.",
+    "welcomeTo": "Gastvrijheid die",
+    "sherpaSoul": "Eenvoud Koestert",
+    "paragraph1": "Hotel Sherpa Soul is een charmant boutique hotel in Thamel voor gasten die waarde hechten aan rust, netheid en een goede nachtrust.",
+    "paragraph2": "Gastvrijheid betekent voor ons een warme glimlach, kraakhelder beddengoed, gloeiend hete douches en rust in het centrum.",
     "paragraph3": "Of u nu voorbereidt op een trektocht of Kathmandu verkent, onze rustige sfeer biedt u hernieuwde energie.",
     "exploreLocation": "Bekijk Locatie",
     "imageAlt": "Receptie Hotel Sherpa Soul"
   },
   "aboutWhy": {
     "whyChoose": "Waarom Kiezen voor",
-    "sherpaSoul": "Sherpa Soul?",
-    "subtitle": "Rust en comfort in het centrum van Thamel",
+    "sherpaSoul": "Hotel Sherpa Soul?",
+    "subtitle": "Een praktische en rustige uitvalsbasis in Thamel, ontworpen voor ontspanning en gemak",
     "authenticSherpaLifestyle": {
-      "title": "Peaceful Nights",
-      "description": "We do not have a restaurant or noisy entertainment area inside the hotel. Our focus is on a calm environment where you can relax and sleep comfortably."
+      "title": "Rustgevende Nachten",
+      "description": "Geen luidruchtige hotelbar of restaurant voor een ongestoorde nachtrust."
     },
     "primeThamelLocation": {
-      "title": "In the Heart of Thamel",
-      "description": "Stay close to the energy, shops, cafés and trekking agencies of Thamel while having a comfortable, quiet place to return to."
+      "title": "Toplocatie in Thamel",
+      "description": "Aan Bhagawati Marg 26, op wandelafstand van alles maar afgeschermd van straatgeluid."
     },
     "guestAmenities": {
-      "title": "Three Practical Room Options",
-      "description": "Choose from Budget Family Room (3 Adults, 1 Child), Deluxe Room (2 Adults, 1 Child), or Family Room (3 Adults, 1 Child) tailored for restful stays in Thamel."
+      "title": "Praktisch Comfort",
+      "description": "24/7 warm water, snelle glasvezel en een gedeelde gastenkeuken."
     },
     "airportPickupForInternationalGuests": {
-      "title": "Air Conditioning & Free Wi-Fi",
-      "description": "Air-conditioned rooms and high-speed Wi-Fi keep you comfortable and connected with family, work or travel plans."
+      "title": "Ophaalservice Luchthaven",
+      "description": "Persoonlijk onthaal met een naambordje bij de uitgang van vliegveld TIA."
     },
     "foreignCurrencyExchange": {
-      "title": "Shared Kitchen (Long Stay Only)",
-      "description": "Our shared self-use kitchen is reserved exclusively for registered long-stay guests, offering the flexibility to prepare simple home-cooked meals with induction cooktop, fridge, and microwave."
+      "title": "Geldwisselkantoren & Pinautomaten",
+      "description": "Officiële wisselkantoren en internationale geldautomaten op korte loopafstand."
     },
     "cleanAndSecure": {
-      "title": "Friendly, Personal Service",
-      "description": "We are a small hotel, so our guests are not just another room number. We make your Kathmandu stay easy, comfortable and welcoming."
+      "title": "Schoon & Veilig",
+      "description": "Zorgvuldig gereinigde kamers, 24/7 receptie en camerabewaking."
     },
     "showOtherLanguages": "Meer Talen Tonen",
     "hideOtherLanguages": "Talen Verbergen",
@@ -266,7 +271,8 @@
     },
     "para2": "Wij focussen op echte rust, hygiëne en comfort.",
     "para3": "Reizigers van over de hele wereld een onvergetelijke Nepal-ervaring bieden.",
-    "startJourney": "Begin Uw Reis"
+    "startJourney": "Begin Uw Reis",
+    "ourPhilosophy": "Onze Filosofie"
   },
   "roomsCard": {
     "roomsSuites": "Onze Kamers",
@@ -330,11 +336,11 @@
       "desc": "Verblijf in het hart van Thamel met rust en comfort.",
       "button": "Boek Uw Verblijf",
       "badge": "Hotel Sherpa Soul • Thamel, Kathmandu",
-      "heading": "Ready to Sleep Well?",
-      "copy": "Stay in the heart of Thamel and make Hotel Sherpa Soul your comfortable base for Kathmandu and your journey through Nepal."
+      "heading": "Klaar voor een Onbezorgde Nachtrust?",
+      "copy": "Verblijf in het hart van Thamel en maak van Hotel Sherpa Soul uw vertrouwde thuis in Nepal."
     },
     "brand": {
-      "tagline": "Geen Restaurant. Geen Lawaai. Goed Slapen.",
+      "tagline": "Rustig en comfortabel boutique hotel in Thamel, Kathmandu. Schone kamers, 24/7 warm water en vriendelijke service.",
       "desc": "Hotel Sherpa Soul is een rustig hotel in Thamel, Kathmandu.",
       "title": "Hotel Sherpa Soul",
       "description": "Hotel Sherpa Soul is a peaceful and comfortable hotel in Thamel, Kathmandu, created for travelers looking for a convenient location, comfortable rooms and a good night's sleep."
@@ -345,7 +351,7 @@
       "rooms": "Kamers",
       "about": "Over Ons",
       "gallery": "Galerij",
-      "blog": "Blog",
+      "blog": "Reisgids",
       "contact": "Contact",
       "links": {
         "home": "Home",
@@ -354,13 +360,15 @@
         "gallery": "Gallery",
         "blog": "Blog",
         "contact": "Contact"
-      }
+      },
+      "services": "Diensten",
+      "guestGuide": "Gastengids"
     },
     "contactUs": {
-      "title": "Contactgegevens",
-      "phone": "+977 9851068219",
+      "title": "Contact",
+      "phone": "+977 9851068219 / +977-1-4530311",
       "email": "info@hotelsherpasoul.com",
-      "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal"
+      "address": "26 Thamel Bhagawati Marg, Kathmandu 44600, Nepal"
     },
     "followUs": {
       "title": "Volg Ons",
@@ -368,11 +376,7 @@
       "instagram": "Instagram",
       "tripAdvisor": "TripAdvisor"
     },
-    "copyright": {
-      "prefix": "©",
-      "hotelName": "Hotel Sherpa Soul",
-      "suffix": "All rights reserved"
-    },
+    "copyright": "© 2026 Hotel Sherpa Soul. Alle rechten voorbehouden.",
     "legal": {
       "privacy": "Privacybeleid",
       "terms": "Algemene Voorwaarden",
@@ -522,11 +526,18 @@
         "msg": "Your Message",
         "name2": "Enter your full name",
         "email2": "your@gmail.com",
-        "msg2": "Tell us about your request or inqury"
+        "msg2": "Tell us about your request or inqury",
+        "phone": "Telefoonnummer (Optioneel)"
       },
       "send": "Send via WhatsApp",
-      "send2": "Sending..."
-    }
+      "send2": "Sending...",
+      "placeholders": {
+        "name": "Vul uw volledige naam in",
+        "phone": "+977 98XXXXXXXX",
+        "message": "Deel uw vraag, verblijfsdata of speciale wensen met ons..."
+      }
+    },
+    "badge": "Receptie & Informatie"
   },
   "roomdetails": {
     "back": "Terug",
@@ -670,56 +681,56 @@
   "loading": "Kamerdetails laden...",
   "pleasewait": "Even geduld a.u.b...",
   "homeHero": {
-    "welcome": "WELCOME TO HOTEL SHERPA SOUL • THAMEL, KATHMANDU",
-    "title": "Comfortable, Quiet Hotel in the Heart of Thamel, Kathmandu",
-    "description": "A boutique hotel on Thamel Bhagawati Marg 26 — clean rooms, peaceful nights, 24/7 hot showers, free luggage storage, and warm Himalayan hospitality.",
-    "checkAvailability": "Check Availability",
-    "bookDirect": "Book Direct & Save 10%",
-    "trust1": "Central Thamel Location",
-    "trust2": "Comfortable Rooms",
-    "trust3": "Peaceful Stay"
+    "welcome": "WELKOM BIJ HOTEL SHERPA SOUL • THAMEL, KATHMANDU",
+    "title": "Comfortabel en Rustig Hotel in het Hart van Thamel, Kathmandu",
+    "description": "Boutique hotel aan Thamel Bhagawati Marg 26: brandschone kamers, rustige nachten, 24/7 warme douches, gratis bagageopslag en oprechte gastvrijheid.",
+    "checkAvailability": "Beschikbaarheid Bekijken",
+    "bookDirect": "10% Directe Boekingskorting",
+    "trust1": "Ideale Locatie in Thamel",
+    "trust2": "Comfortabele Kamers",
+    "trust3": "Gegarandeerde Nachtrust"
   },
   "directOffer": {
-    "badge": "Why Book Direct",
-    "title": "Book Directly with Us & Save 10%",
-    "discountTitle": "10% Direct Booking Discount",
-    "discountDesc": "Instant 10% savings when booking directly with us — no OTA markups.",
-    "luggageTitle": "Free Luggage Storage",
-    "luggageDesc": "Leave your bags safely while trekking the Himalayas.",
-    "whatsappTitle": "Instant WhatsApp Confirmation",
-    "whatsappDesc": "24/7 replies, airport transfer help, and personal assistance.",
-    "bestRateTitle": "Best Rate Guarantee",
-    "bestRateDesc": "Transparent, honest pricing with no hidden fees.",
-    "cta": "Book Direct & Save 10%",
-    "disclaimer": "Best direct-booking offer. Contact us for availability."
+    "badge": "Waarom Direct Boeken",
+    "title": "Boek Rechtstreeks bij Ons & Bespaar 10%",
+    "discountTitle": "10% Directe Boekingskorting",
+    "discountDesc": "Onmiddellijk 10% voordeel door rechtstreeks bij ons te boeken, zonder commissiekosten van boekingssites.",
+    "luggageTitle": "Gratis Bagageopslag",
+    "luggageDesc": "Laat uw koffers veilig en kosteloos achter tijdens uw trektocht in de Himalaya.",
+    "whatsappTitle": "Snelle Bevestiging via WhatsApp",
+    "whatsappDesc": "24/7 antwoord, coördinatie van uw luchthaventransfer en persoonlijke service.",
+    "bestRateTitle": "Beste Prijsgarantie",
+    "bestRateDesc": "Transparante en eerlijke prijzen zonder verborgen extra's.",
+    "cta": "Direct Boeken & 10% Besparen",
+    "disclaimer": "Beste deal rechtstreeks beschikbaar. Neem contact op voor actuele beschikbaarheid."
   },
   "homeStatsPillars": {
-    "badge": "Why Stay at Hotel Sherpa Soul",
-    "title": "Comfortable, Quiet Accommodation in Thamel",
-    "subtitle": "Honest, practical boutique hospitality in Kathmandu. No exaggerated claims — just clean comfort, quiet nights, and personal care.",
-    "p1Badge": "Quiet Thamel Location",
-    "p1Title": "Peaceful Alleyway Setting",
-    "p1Desc": "Located on Thamel Bhagawati Marg 26, steps away from central shops and bakeries, yet peacefully insulated from late-night bar and street noise.",
-    "p2Badge": "Quiet Atmosphere",
-    "p2Title": "Restful & Undisturbed Sleep",
-    "p2Desc": "Designed for peaceful stays away from loud restaurant and bar noise inside the property. Spotless rooms and deep, restorative sleep are our priority.",
-    "p3Badge": "Guest Kitchen",
-    "p3Title": "Shared Kitchen for Light Cooking",
-    "p3Desc": "Equipped with an induction cooktop, refrigerator, microwave, and kettle, giving guests the flexibility to prepare simple home meals and brew fresh tea.",
-    "p4Badge": "Trekker-Friendly",
-    "p4Title": "Free Luggage Storage & 24/7 Desk",
-    "p4Desc": "Heading to Everest, Annapurna, or Langtang? Leave your extra gear safely in our luggage room free of charge until you return from your trek."
+    "badge": "Waarom Kiezen voor Sherpa Soul",
+    "title": "Aangenaam en Rustig Verblijf in Thamel",
+    "subtitle": "Eerlijke, doordachte boutique gastvrijheid in Kathmandu. Geen loze beloftes: pure netheid, diepe slaap en persoonlijke aandacht.",
+    "p1Badge": "Stille Locatie in Thamel",
+    "p1Title": "Centraal en Toch Rustig",
+    "p1Desc": "Op slechts 2 minuten wandelen van winkels en cafés, gelegen in de rustige Bhagawati Marg.",
+    "p2Badge": "Schoon & Gezellig",
+    "p2Title": "Diepe en Herstellende Slaap",
+    "p2Desc": "Uitstekende King-matrassen, fris beddengoed en lichte kamers met natuurlijke ventilatie.",
+    "p3Badge": "24/7 Warm Water",
+    "p3Title": "Sterke en Constante Druk",
+    "p3Desc": "Ononderbroken warm water gegarandeerd, ongeacht het tijdstip of weeromstandigheden.",
+    "p4Badge": "Gedeelde Keuken",
+    "p4Title": "Zet Thee & Bereid Maaltijden",
+    "p4Desc": "Schone keuken voor het maken van ontbijt, water koken en bewaren van boodschappen in de koelkast."
   },
   "homeRoomsData": {
-    "badge": "Room Types & Current Rates",
-    "title": "Clean, Quiet Rooms in Thamel",
-    "subtitle": "Every room includes private attached bathroom with continuous 24/7 hot water, high-speed fiber Wi-Fi, and access to our shared self-kitchen.",
-    "perNight": "/ night",
+    "badge": "Onze Kamers",
+    "title": "Comfortabele & Stille Kamers",
+    "subtitle": "Verzorgde kamers voor elke reiziger, van solobergwandelaars tot families.",
+    "perNight": "per nacht",
     "budget": {
-      "name": "Budget Family Room",
+      "name": "Budget Familiekamer",
       "bed": "1 King Bed + 1 Single Bed",
       "occupancy": "Up to 4 Guests (3 Adults, 1 Child)",
-      "desc": "Comfortable and budget-conscious accommodation with en-suite hot shower, bright windows, and shared kitchen access for groups or families.",
+      "desc": "Ruime kamer met 1 King-bed en 1 Eenpersoonsbed, ideaal voor trekkingpartners of gezinnen.",
       "f1": "1 King Bed + 1 Single Bed",
       "f2": "Private Attached Bathroom (24/7 Hot Water)",
       "f3": "Free High-Speed Fiber Wi-Fi",
@@ -727,10 +738,10 @@
       "f5": "Trekker Luggage Storage Included"
     },
     "deluxe": {
-      "name": "Deluxe Room (AC)",
+      "name": "Deluxe Kamer (Airco)",
       "bed": "1 King Bed",
       "occupancy": "Up to 3 Guests (2 Adults, 1 Child)",
-      "desc": "Air-conditioned boutique room with king-size bed, private modern bathroom, work desk, and quiet ambiance for restful sleep.",
+      "desc": "Stille kamer met King-bed en airconditioning, optimaal voor koppels en een ongestoorde nachtrust.",
       "f1": "Individual Climate Control (AC)",
       "f2": "1 Comfortable King Bed",
       "f3": "Private Modern Bathroom (24/7 Hot Shower)",
@@ -738,43 +749,43 @@
       "f5": "Shared Guest Kitchen Access"
     },
     "family": {
-      "name": "Family Room (AC)",
+      "name": "Familiekamer (Airco)",
       "bed": "1 King Bed + 1 Single Bed",
       "occupancy": "Up to 4 Guests (3 Adults, 1 Child)",
-      "desc": "Spacious family suite featuring air conditioning, one king bed and one single bed, private bathroom, and extra room for luggage.",
+      "desc": "Riante kamer met airconditioning, King- en eenpersoonsbed voor maximaal 4 personen.",
       "f1": "Individual Climate Control (AC)",
       "f2": "1 King Bed + 1 Single Bed",
       "f3": "Spacious Private Bathroom (24/7 Hot Water)",
       "f4": "Free High-Speed Fiber Wi-Fi",
       "f5": "Shared Guest Kitchen Access"
     },
-    "viewDetails": "View Details",
-    "checkAvailability": "Check Availability",
-    "mostPopular": "Most Popular",
-    "directOfferText": "Best Available Direct-Booking Offer",
-    "directOfferSub": "No third-party commission markups. Contact us directly for availability and instant WhatsApp confirmation.",
-    "compareAll": "Compare All Rooms",
-    "bedLabel": "Bed:",
-    "occupancyLabel": "Occupancy:",
-    "sizeLabel": "Room Size:",
-    "keyAmenities": "Key Amenities"
+    "viewDetails": "Details Bekijken",
+    "checkAvailability": "Beschikbaarheid Checken",
+    "mostPopular": "Meest Gekozen",
+    "directOfferText": "10% Directe Boekingskorting",
+    "directOfferSub": "Inclusief bagageopslag en toegang tot gastenkeuken",
+    "compareAll": "Vergelijk Alle Kamers",
+    "bedLabel": "Bedden",
+    "occupancyLabel": "Capaciteit",
+    "sizeLabel": "Oppervlakte",
+    "keyAmenities": "Belangrijkste Voorzieningen"
   },
   "facilitiesSection": {
-    "badge": "Verified Hotel Amenities",
-    "title": "Hotel Facilities & Practical Services",
-    "subtitle": "Thoughtfully planned for international tourists, backpackers, and trekking teams who appreciate functional comfort.",
-    "f1": "Free High-Speed Wi-Fi",
-    "d1": "Fast, reliable fiber-optic internet connection accessible throughout all guest rooms and public spaces.",
-    "f2": "24/7 Front Desk",
-    "d2": "Round-the-clock reception assistance for flexible check-ins, late arrivals, and local Kathmandu advice.",
-    "f3": "Luggage Storage for Trekkers",
-    "d3": "Complimentary, secure bag holding while you hike Everest Base Camp, Annapurna Circuit, or Langtang.",
-    "f4": "Airport Transfer Service",
-    "d4": "Convenient airport pickup and drop-off transfers between Tribhuvan International Airport (KTM) and the hotel.",
-    "f5": "Shared Guest Kitchen",
-    "d5": "Clean kitchen with induction cooktop, refrigerator, microwave, and electric kettle for self-cooking.",
-    "f6": "Trekking Support & Advice",
-    "d6": "Practical assistance with trekking permits, flight tickets to Lukla or Pokhara, and authentic Sherpa advice.",
+    "badge": "Hotelfaciliteiten",
+    "title": "Praktische Diensten & Comfort",
+    "subtitle": "Ontwikkeld voor buitenlandse toeristen en trekkers die hechten aan praktische degelijkheid.",
+    "f1": "Gratis Snel Glasvezel Wi-Fi",
+    "d1": "Snel en stabiel internet in het hele hotel.",
+    "f2": "24/7 Warme Douches",
+    "d2": "Continu warm water in alle privébadkamers.",
+    "f3": "Gratis Bagageopslag",
+    "d3": "Veilige opslagruimte terwijl u in de bergen bent.",
+    "f4": "Gedeelde Gastenkeuken",
+    "d4": "Handig ingericht om thee te zetten en te koken.",
+    "f5": "24-Uurs Receptie",
+    "d5": "Dag en nacht iemand aanwezig voor al uw vragen.",
+    "f6": "Luchthaventransfer",
+    "d6": "Zorgeloos en stipt opgehaald op de luchthaven TIA.",
     "f7": "24/7 Hot Water Showers",
     "d7": "Continuous high-pressure hot and cold water in all private en-suite bathrooms at any hour.",
     "f8": "Daily Housekeeping",
@@ -783,89 +794,89 @@
     "d9": "Individual climate control equipped in Deluxe and Family room categories for year-round comfort.",
     "f10": "Workspace Friendly",
     "d10": "Work desk and stable connectivity suitable for remote professionals, digital nomads, and trip planners.",
-    "card1Badge": "Self-Catering Convenience",
-    "card1Title": "Shared Guest Kitchen",
-    "card1Desc": "Cook your own meals, prepare special dietary requirements, or brew warm Himalayan tea anytime. Fully equipped with an induction stove, refrigerator, microwave, and cooking utensils.",
-    "card2Badge": "Always Available",
-    "card2Title": "24/7 Reception & Travel Desk",
-    "card2Desc": "Whether you arrive on a late-night international flight or leave before dawn for a mountain trek, our team is always on duty to welcome you and assist with luggage and transport."
+    "card1Badge": "Voor Trekkers",
+    "card1Title": "Klaar voor de Himalaya",
+    "card1Desc": "Ruimte voor trekkingtassen, hete douches en betrouwbare routesuggesties.",
+    "card2Badge": "Rustbeleid",
+    "card2Title": "Geen Restaurant. Geen Lawaai.",
+    "card2Desc": "Geen openbare bar of druk restaurant in het hotel om uw nachtrust te beschermen."
   },
   "homeLocationSection": {
-    "badge": "Prime Thamel Location",
+    "badge": "Centrale Locatie",
     "title": "Hotel Sherpa Soul in Thamel, Kathmandu",
-    "subtitle": "Conveniently situated on Thamel Bhagawati Marg 26. Step outside into the energetic culture and dining of Thamel, yet return to a quiet, noise-insulated boutique hotel at night.",
-    "addressTitle": "Property Address & Contact",
-    "frontDesk": "Front Desk (24/7)",
-    "whatsapp": "WhatsApp Support",
-    "email": "Email Inquiries",
-    "openMaps": "Open in Google Maps",
-    "viewContact": "View Location & Contact",
-    "landmarksTitle": "Verified Nearby Landmarks",
-    "l1": "Thamel Gear Shops & Cafes",
-    "l1Dist": "Immediate vicinity (1-2 min walk)",
-    "l1Note": "Right outside on Thamel Bhagawati Marg",
-    "l2": "Garden of Dreams",
-    "l2Dist": "~800 meters (~10 min walk)",
-    "l2Note": "Historical neo-classical garden oasis",
-    "l3": "Kathmandu Durbar Square",
-    "l3Dist": "~1.8 km (~20 min walk or short taxi)",
-    "l3Note": "UNESCO World Heritage ancient royal complex",
-    "l4": "Swayambhunath (Monkey Temple)",
-    "l4Dist": "~3 km (~15 min drive)",
-    "l4Note": "Ancient hilltop Buddhist stupa with panoramic city views",
-    "l5": "Tribhuvan International Airport (KTM)",
-    "l5Dist": "~6 km (~20 to 30 min drive)",
-    "l5Note": "Airport pickup & drop-off available upon request"
+    "subtitle": "Gelegen aan Bhagawati Marg 26. Proef de sfeer van Thamel en geniet 's nachts van complete rust.",
+    "addressTitle": "Adres",
+    "frontDesk": "Receptie",
+    "whatsapp": "WhatsApp",
+    "email": "E-mail",
+    "openMaps": "Openen in Google Maps",
+    "viewContact": "Contactpagina",
+    "landmarksTitle": "Bezienswaardigheden in de Buurt",
+    "l1": "Swayambhunath (Apentempel)",
+    "l1Dist": "2.8 km",
+    "l1Note": "10 min per taxi",
+    "l2": "Kathmandu Durbar Square",
+    "l2Dist": "1.8 km",
+    "l2Note": "Historische wandelroute",
+    "l3": "Tuin van Dromen",
+    "l3Dist": "500 m",
+    "l3Note": "5 min te voet",
+    "l4": "Narayanhiti Paleis",
+    "l4Dist": "800 m",
+    "l4Note": "10 min te voet",
+    "l5": "Internationale Luchthaven (TIA)",
+    "l5Dist": "5.5 km",
+    "l5Note": "20-30 min per auto"
   },
   "homeTrekkersSection": {
-    "badge": "Trekker-Friendly Services",
-    "title": "Made for Your Himalayan Journey",
-    "subtitle": "Kathmandu is the gateway to Nepal's trails. Whether you are trekking Everest Base Camp, Annapurna Circuit, Langtang, or exploring the valley, Hotel Sherpa Soul provides a reliable, welcoming base.",
-    "step1Tag": "Gear Prep & Free Storage",
-    "step1Title": "Before the Trek",
-    "step1Desc": "Rest after international flights, organize your gear, finalize route permits, and safely store your extra city bags in our secure luggage room free of charge.",
-    "step2Tag": "24/7 Hot Shower & Deep Sleep",
-    "step2Title": "After the Trek",
-    "step2Desc": "Return from the Himalayas to a high-pressure hot shower, clean bed, peaceful surroundings, and a well-deserved deep sleep in Thamel.",
-    "step3Tag": "Authentic Local Knowledge",
-    "step3Title": "Sherpa Guidance & Support",
-    "step3Desc": "Drawing from authentic Himalayan heritage, our front desk assists with permit advice, Lukla/Pokhara flight coordination, and practical Nepal travel tips.",
-    "complimentary": "Complimentary for all staying guests"
+    "badge": "Trekker-Vriendelijk",
+    "title": "Ontworpen voor Uw Himalayareis",
+    "subtitle": "Kathmandu is de start van elke trektocht. Sherpa Soul is uw veilige en warme uitvalsbasis.",
+    "step1Tag": "Vóór Vertrek",
+    "step1Title": "Sorteer & Bewaar Uw Spullen",
+    "step1Desc": "Neem alleen het hoogstnodige mee op het bergpad; laat de rest gratis bij ons achter.",
+    "step2Tag": "Tijdens de Trek",
+    "step2Title": "Wandel Zonder Zorgen",
+    "step2Desc": "Uw waardevolle bagage blijft veilig achter slot en grendel tot u terugkomt.",
+    "step3Tag": "Bij Terugkomst",
+    "step3Title": "Warme Douche & Uitrusten",
+    "step3Desc": "Een heerlijke warme douche en een comfortabel bed om helemaal te herstellen.",
+    "complimentary": "100% Gratis voor alle hotelgasten"
   },
   "homeGoogleReviewsSection": {
-    "badge": "❖ Honest Hospitality & Verified Location",
-    "title1": "Real Hospitality.",
-    "title2": "Genuine Guest Experiences.",
-    "desc": "At Hotel Sherpa Soul, we believe in honest hospitality without fabricated stories or star-hotel exaggerations. We are a small boutique hotel on Bhagawati Marg, Thamel, dedicated to giving travelers a quiet, spotless, and comfortable stay in Kathmandu.",
-    "perk1": "Best Direct Price Guarantee — No OTA commission markups",
-    "perk2": "Instant 24/7 WhatsApp confirmation with front desk",
-    "perk3": "Complimentary secure luggage storage while you trek",
-    "perk4": "Flexible early check-in & late checkout (subject to availability)",
-    "bookDirectBtn": "Book Direct With Us",
-    "reviewPrompt": "Have you stayed with us? We warmly welcome our guests to leave an honest review on Google Maps to help fellow travelers make informed decisions.",
-    "writeReviewBtn": "Write a Google Review or View Map",
-    "verifiedNote": "100% verified, real-world traveler feedback on Google"
+    "badge": "❖ Eerlijke Gastvrijheid",
+    "title1": "Oprechte Gastvrijheid.",
+    "title2": "Echte Gastenervaringen.",
+    "desc": "Bij Hotel Sherpa Soul staan we voor gastvrijheid zonder opsmuk: schone kamers, rustige nachten en persoonlijke toewijding.",
+    "perk1": "Bewezen Rustige Nachten",
+    "perk2": "Grondige Schoonmaak",
+    "perk3": "Veilige Bagagebewaring",
+    "perk4": "24/7 Warm Water",
+    "bookDirectBtn": "Direct Boeken & 10% Besparen",
+    "reviewPrompt": "Heeft u bij ons verbleven?",
+    "writeReviewBtn": "Schrijf een Google Review",
+    "verifiedNote": "Geverifieerde recensies van reizigers op Google Maps"
   },
   "homeFAQSection": {
-    "badge": "Frequently Asked Questions",
-    "title": "Helpful Information for Your Stay",
-    "subtitle": "Real, verified information about staying at Hotel Sherpa Soul in Thamel, Kathmandu.",
-    "haveQuestion": "Have Another Question?",
-    "helpText": "Our 24/7 reception desk is available anytime via WhatsApp or phone.",
-    "whatsappBtn": "WhatsApp Us",
-    "callBtn": "Call Reception",
-    "q1": "Where is Hotel Sherpa Soul located?",
-    "a1": "Hotel Sherpa Soul is located on Thamel Bhagawati Marg 26 in the heart of Thamel, Kathmandu, Nepal. We are in a quiet alley within easy walking distance to trekking gear shops, bakeries, cafes, and historic Durbar Square.",
-    "q2": "How can I reach the hotel from Tribhuvan International Airport?",
-    "a2": "The hotel is approximately 6 km from Tribhuvan International Airport (KTM). Travel time is typically 20 to 30 minutes by taxi or private transfer depending on city traffic.",
-    "q3": "Does the hotel offer airport pickup?",
-    "a3": "Yes, we arrange reliable airport pickup and drop-off transfers directly between Kathmandu Airport and the hotel. You can request an airport transfer when booking directly or by contacting our front desk via WhatsApp at +977 9818259472.",
-    "q4": "Is luggage storage available for trekkers?",
-    "a4": "Yes, we offer complimentary secure luggage storage for all guests. Trekkers venturing on multi-day journeys to Everest, Annapurna, or Langtang can safely store their non-trekking luggage with us free of charge until they return.",
-    "q5": "Does the hotel have a restaurant?",
-    "a5": "Designed for peaceful stays away from loud restaurant and bar noise inside the property. While we do not operate a commercial on-site restaurant or bar, we provide guests with a fully equipped shared kitchen, and hundreds of Thamel's acclaimed restaurants and bakeries are just a 1 to 3 minute walk away.",
-    "q6": "Is a shared kitchen available?",
-    "a6": "Yes, Hotel Sherpa Soul provides a clean, well-equipped shared guest kitchen featuring an induction cooktop, refrigerator, microwave, and electric kettle where guests can prepare light meals, cook personal dietary favorites, or brew fresh Himalayan tea.",
+    "badge": "Veelgestelde Vragen",
+    "title": "Handige Informatie voor Uw Verblijf",
+    "subtitle": "Betrouwbare en duidelijke antwoorden over Hotel Sherpa Soul in Thamel, Kathmandu.",
+    "haveQuestion": "Heeft u nog een vraag?",
+    "helpText": "Onze 24/7 receptie staat altijd voor u klaar via WhatsApp.",
+    "whatsappBtn": "Vraag via WhatsApp",
+    "callBtn": "Bel Ons Direct",
+    "q1": "Wat zijn de in- en uitchecktijden?",
+    "a1": "Inchecken kan vanaf 12:00 uur en uitchecken is tot 11:00 uur. Vroeg inchecken op aanvraag naar beschikbaarheid.",
+    "q2": "Verzorgen jullie luchthavenvervoer?",
+    "a2": "Ja, we bieden stipte en comfortabele ophaaldiensten vanaf de luchthaven van Kathmandu (TIA).",
+    "q3": "Is er altijd warm water beschikbaar?",
+    "a3": "Ja, alle badkamers beschikken 24 uur per dag over warm water met krachtige waterdruk.",
+    "q4": "Kan ik bagage achterlaten tijdens mijn trekking?",
+    "a4": "Ja, wij bieden veilige en geheel kosteloze bagageopslag voor al onze gasten.",
+    "q5": "Wat is het nachtrustbeleid?",
+    "a5": "Tussen 22:00 en 07:00 uur hanteren we stilte-uren voor een ongestoorde nachtrust voor iedereen.",
+    "q6": "Mogen gasten de keuken gebruiken?",
+    "a6": "Ja, er is een nette gedeelde keuken aanwezig om thee te zetten, water te koken en eenvoudige gerechten te maken.",
     "q7": "What time is check-in and check-out?",
     "a7": "Standard check-in begins at 14:00 (2:00 PM) and check-out is until 12:00 (12:00 PM noon). Our front desk is staffed 24/7, and flexible early check-in or late check-out is accommodated whenever room availability allows.",
     "q8": "Is Wi-Fi available?",
@@ -878,12 +889,13 @@
     "a11": "You can book directly through our official website by clicking 'Check Availability', or contact our front desk directly via WhatsApp at +977 9818259472 for instant booking confirmation with our best 10% direct rate guarantee."
   },
   "homeBookingCTASection": {
-    "badge": "Direct Booking Privilege",
-    "title": "Ready to Sleep Well in Thamel, Kathmandu?",
-    "subtitle": "Enjoy clean rooms, quiet nights, 24/7 hot showers, and trekker luggage storage. Book directly with Hotel Sherpa Soul for the best rates and instant WhatsApp support.",
-    "bookBtn": "Book Direct & Save 10%",
+    "badge": "Voordeel Direct Boeken",
+    "title": "Klaar voor Goede Nachtrust in Thamel, Kathmandu?",
+    "subtitle": "Schone kamers, rustige nachten, 24/7 warm water en gratis bagageopslag. Boek direct en ontvang 10% korting.",
+    "bookBtn": "Direct Boeken met 10% Korting",
     "callBtn": "Call +977 9851068219",
-    "disclaimer": "Best available direct-booking offer. Contact us for availability and dates."
+    "disclaimer": "Best available direct-booking offer. Contact us for availability and dates.",
+    "whatsappBtn": "Stuur een WhatsApp"
   },
   "bookNowPage": {
     "heroBadge": "Direct Boeken Privilege: Ontvang 10% korting op alle kamers",
@@ -1258,6 +1270,57 @@
     "accessibility": {
       "copiedAnnouncement": "{{field}} gekopieerd naar het klembord",
       "copyFailedAnnouncement": "Kopiëren mislukt. Kopieer alstublieft handmatig."
+    }
+  },
+  "servicesPage": {
+    "pill": "PRAKTISCHE VOORZIENINGEN • GEEN VERBORGEN KOSTEN",
+    "title": "Diensten & Faciliteiten in Hotel Sherpa Soul",
+    "subtitle": "Zorgvuldig samengestelde voorzieningen, speciaal ontworpen voor internationale reizigers, trekkers en langverblijvers in Nepal.",
+    "availableTag": "Beschikbaar voor alle geregistreerde gasten",
+    "ctaBadge": "10% KORTING BIJ DIRECTE BOEKING",
+    "ctaTitle": "Klaar voor een rustgevend verblijf in Thamel?",
+    "ctaText": "Boek direct via onze website of WhatsApp en profiteer van de gegarandeerd laagste tarieven, gratis bagageopslag en volledige toegang tot de gastenkeuken.",
+    "ctaButton": "Boek Uw Verblijf",
+    "services": {
+      "kitchen": {
+        "title": "Gedeelde Gastenkeuken",
+        "desc": "Kook uw eigen maaltijden, zet authentieke Himalayathee en bewaar etenswaren vers in onze gedeelde koelkast.",
+        "badge": "Favoriet bij Gasten"
+      },
+      "hotWater": {
+        "title": "24/7 Warme Douches",
+        "desc": "Krachtige, warme douches dag en nacht beschikbaar in elke privébadkamer. Ideaal om weer op krachten te komen na lange bergtochten.",
+        "badge": "Hoge Waterdruk"
+      },
+      "luggage": {
+        "title": "Gratis Bagageopslag voor Trekkers",
+        "desc": "Veilige en kosteloze bagageruimte terwijl u Everest Base Camp, Annapurna of Langtang verkent. Haal uw spullen op bij terugkomst.",
+        "badge": "100% Gratis"
+      },
+      "wifi": {
+        "title": "Snel Glasvezel Wi-Fi",
+        "desc": "Betrouwbaar en snel internet in het hele hotel, uitstekend geschikt voor werken op afstand en videobellen naar huis.",
+        "badge": "Glasvezel"
+      },
+      "tour": {
+        "title": "Luchthaventransfers & Tourdesk",
+        "desc": "Vlotte transfers tussen de internationale luchthaven Tribhuvan (TIA) en het hotel, plus binnenlandse vluchten naar Lukla/Pokhara en berggidsen.",
+        "badge": "24/7 Beschikbaar"
+      },
+      "desk": {
+        "title": "24-Uurs Receptie",
+        "desc": "Flexibel in- en uitchecken op elk gewenst moment. Ons vriendelijke team staat altijd voor u klaar met advies en assistentie.",
+        "badge": "Altijd Open"
+      }
+    }
+  },
+  "contactPage": {
+    "quickNav": {
+      "title": "Ontdek Hotel Sherpa Soul",
+      "subtitle": "Klaar om uw kamer te kiezen of heeft u reisadvies nodig voor Kathmandu en trektochten?",
+      "viewRooms": "Bekijk Kamers & Tarieven",
+      "guestGuide": "Gastengids & Huisregels",
+      "privacyPolicy": "Privacybeleid"
     }
   }
 }

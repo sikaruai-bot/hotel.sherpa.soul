@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import ContactHero from "../Components/ContactComponents/ContactHero";
 import ContactForm from "../Components/ContactComponents/ContactForm";
 import ContactMap from "../Components/ContactComponents/ContactMap";
 
 export default function ContactPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="font-sans text-gray-800 overflow-hidden">
       {/* Hero Section */}
@@ -20,18 +23,22 @@ export default function ContactPage() {
       <section className="bg-slate-50 border-t border-slate-200 py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div>
-            <h3 className="text-lg font-bold text-[#01366E]">Explore Hotel Sherpa Soul</h3>
-            <p className="text-sm text-slate-600 mt-1">Ready to choose your room or need travel advice for Kathmandu and trekking?</p>
+            <h3 className="text-lg font-bold text-[#01366E]">
+              {t("contactPage.quickNav.title", "Explore Hotel Sherpa Soul")}
+            </h3>
+            <p className="text-sm text-slate-600 mt-1">
+              {t("contactPage.quickNav.subtitle", "Ready to choose your room or need travel advice for Kathmandu and trekking?")}
+            </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link to="/rooms" className="px-5 py-2.5 bg-[#01366E] hover:bg-[#072545] text-white font-semibold rounded-xl text-sm transition-all shadow-sm">
-              View Rooms &amp; Rates &rarr;
+              {t("contactPage.quickNav.viewRooms", "View Rooms & Rates")} &rarr;
             </Link>
             <Link to="/guest-guide" className="px-5 py-2.5 bg-white hover:bg-slate-100 text-[#01366E] border border-slate-300 font-semibold rounded-xl text-sm transition-all shadow-sm">
-              Guest Guide &amp; House Rules &rarr;
+              {t("contactPage.quickNav.guestGuide", "Guest Guide & House Rules")} &rarr;
             </Link>
             <Link to="/privacy" className="px-5 py-2.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-semibold rounded-xl text-sm transition-all shadow-sm">
-              Privacy Policy &rarr;
+              {t("contactPage.quickNav.privacyPolicy", "Privacy Policy")} &rarr;
             </Link>
           </div>
         </div>

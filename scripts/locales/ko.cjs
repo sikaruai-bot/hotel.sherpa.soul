@@ -256,3 +256,4 @@ module.exports = {
     copyFailedAnnouncement: "복사에 실패했습니다. 수동으로 복사해 주십시오."
   }
 };
+

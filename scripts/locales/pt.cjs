@@ -256,3 +256,4 @@ module.exports = {
     copyFailedAnnouncement: "Falha ao copiar. Por favor, copie manualmente."
   }
 };
+

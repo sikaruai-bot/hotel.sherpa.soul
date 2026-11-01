@@ -256,3 +256,4 @@ module.exports = {
     copyFailedAnnouncement: "Kopieren fehlgeschlagen. Bitte manuell kopieren."
   }
 };
+

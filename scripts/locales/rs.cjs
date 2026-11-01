@@ -256,3 +256,4 @@ module.exports = {
     copyFailedAnnouncement: "Не удалось скопировать. Пожалуйста, скопируйте вручную."
   }
 };
+

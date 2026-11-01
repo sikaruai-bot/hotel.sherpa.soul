@@ -51,7 +51,7 @@ export default function AboutVision() {
             {/* Main Heading */}
             <div>
               <span className="text-amber-300 text-sm font-bold uppercase tracking-widest block mb-2">
-                Our Philosophy
+                {t("aboutVision.ourPhilosophy", "Our Philosophy")}
               </span>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white">
                 {t(

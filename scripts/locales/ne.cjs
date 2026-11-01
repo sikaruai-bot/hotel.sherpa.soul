@@ -256,3 +256,4 @@ module.exports = {
     copyFailedAnnouncement: "कपी गर्न असफल भयो। कृपया म्यानुअल रूपमा कपी गर्नुहोस्।"
   }
 };
+

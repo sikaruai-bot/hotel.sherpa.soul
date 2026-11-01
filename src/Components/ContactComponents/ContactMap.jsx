@@ -28,13 +28,16 @@ export default function HomeLocation() {
         {/* Text Content */}
         <div>
           <h2 className="text-3xl md:text-4xl font-bold text-[#01366E] mb-6">
-            {t("contactMap.en.title")}
+            {t("contactMap.title", t("contactMap.en.title", "Hotel Sherpa Soul – Thamel, Kathmandu"))}
           </h2>
 
           <p className="text-base md:text-lg leading-relaxed mb-4">
             {t(
-              "contactMap.en.description",
-              "We are located in Thamel, the bustling heart of Kathmandu — just steps away from cultural landmarks, restaurants, shops, and local experiences."
+              "contactMap.description",
+              t(
+                "contactMap.en.description",
+                "We are located in Thamel, the bustling heart of Kathmandu — just steps away from cultural landmarks, restaurants, shops, and local experiences."
+              )
             )}
           </p>
 
@@ -42,7 +45,7 @@ export default function HomeLocation() {
             <li className="flex items-center gap-3">
               <MapPin className="text-[#FB6C01]" />
               <span>
-                {t("contactMap.en.address", "Thamel, Kathmandu, Nepal")}
+                {t("contactMap.address", t("contactMap.en.address", "Thamel Bhagawati Marg 26, Kathmandu, Nepal"))}
               </span>
             </li>
             <li className="flex items-center gap-3">
@@ -52,7 +55,7 @@ export default function HomeLocation() {
             <li className="flex items-center gap-3">
               <Mail className="text-[#FB6C01]" />
               <span>
-                {t("contactMap.en.email", "info@hotelsherpasoul.com")}
+                {t("contactMap.email", t("contactMap.en.email", "info@hotelsherpasoul.com"))}
               </span>
             </li>
           </ul>
@@ -62,7 +65,7 @@ export default function HomeLocation() {
         <div ref={mapRef} className="w-full h-[400px] rounded-xl overflow-hidden shadow-lg bg-slate-100 flex items-center justify-center">
           {loadMap ? (
             <iframe
-              title={t("contactMap.en.mapTitle", "Hotel Sherpa Soul Location")}
+              title={t("contactMap.mapTitle", t("contactMap.en.mapTitle", "Hotel Sherpa Soul Location"))}
               src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d443.03720922606624!2d85.31072286234645!3d27.716194896169135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1756790839653!5m2!1sen!2snp"
               width="100%"
               height="100%"
@@ -72,9 +75,9 @@ export default function HomeLocation() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           ) : (
-            <div className="text-center p-6 text-slate-500">
-              <MapPin className="w-8 h-8 text-[#FB6C01] mx-auto mb-2 animate-bounce" />
-              <p className="text-sm font-medium">Hotel Sherpa Soul, Thamel Kathmandu</p>
+            <div className="flex flex-col items-center gap-2 text-slate-400">
+              <MapPin className="w-8 h-8 animate-bounce text-[#FB6C01]" />
+              <span className="text-sm font-medium">Loading Map...</span>
             </div>
           )}
         </div>

@@ -45,3 +45,4 @@ for (const [lang, info] of Object.entries(localesMapping)) {
 }
 
 console.log('All 15 locales successfully updated!');
+

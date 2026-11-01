@@ -256,3 +256,4 @@ module.exports = {
     copyFailedAnnouncement: "ההעתקה נכשלה. אנא העתיקו ידנית."
   }
 };
+

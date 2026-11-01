@@ -256,3 +256,4 @@ module.exports = {
     copyFailedAnnouncement: "تعذر النسخ. يرجى النسخ يدوياً."
   }
 };
+
