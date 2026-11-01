@@ -64,6 +64,13 @@ async function verify() {
     'Useful Information',
     'Luggage Storage',
     'Drinking Water',
+    '2 complimentary bottles in room, more available nearby',
+    'Laundry',
+    'Not provided on-site; nearby shops, reception can direct',
+    'Free Shared Kitchen for Long-Stay Guests',
+    'Free for long-stay guests (minimum 2 weeks / 14 nights)',
+    'Self-catering',
+    'Hotel Sherpa Soul does not have an on-site restaurant or private parking — but we offer a free shared self-catering kitchen for long-stay guests (minimum 2 weeks), and reception is happy to recommend great nearby restaurants and cafés.',
     'Legal Compliance &amp; Police Cooperation',
     'Management reserves the right to refuse service or end a stay'
   ];

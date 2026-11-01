@@ -1750,7 +1750,42 @@ const ROUTES = [
           <!-- 8. Shared Kitchen -->
           <section id="shared-kitchen" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
             <h2 class="text-2xl font-bold text-[#01366E] mb-3">8. Shared Kitchen</h2>
-            <div class="space-y-3 text-slate-700">
+            <div class="space-y-4 text-slate-700">
+              <!-- Prominent Callout Card for Long-Stay Kitchen -->
+              <div class="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50/50 to-amber-100/60 border-2 border-amber-400 shadow-md">
+                <div class="flex items-center gap-2.5 mb-2.5">
+                  <span class="text-2xl select-none" role="img" aria-label="Chef">👨‍🍳</span>
+                  <h3 class="text-lg sm:text-xl font-extrabold text-[#01366E]">
+                    Free Shared Kitchen for Long-Stay Guests
+                  </h3>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4">
+                  Staying with us for 2 weeks or longer? Enjoy FREE access to our shared self-catering kitchen — cook your own meals, save money, and feel at home during your long stay in Kathmandu.
+                </p>
+                <div class="space-y-2">
+                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
+                    <span class="text-emerald-600 font-bold">✅</span>
+                    <span><strong>Free for long-stay guests</strong> (minimum 2 weeks / 14 nights)</span>
+                  </div>
+                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
+                    <span class="text-emerald-600 font-bold">✅</span>
+                    <span><strong>Self-catering</strong> — cook your own meals</span>
+                  </div>
+                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
+                    <span class="text-emerald-600 font-bold">✅</span>
+                    <span><strong>Shared kitchen facilities</strong></span>
+                  </div>
+                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
+                    <span class="text-emerald-600 font-bold">✅</span>
+                    <span><strong>Perfect for budget travelers</strong>, students, long-term visitors</span>
+                  </div>
+                  <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-800 font-medium">
+                    <span class="text-emerald-600 font-bold">✅</span>
+                    <span><strong>Ask reception</strong> for kitchen access details and house rules</span>
+                  </div>
+                </div>
+              </div>
+
               <p>The shared kitchen is available to eligible long-stay guests staying at least two weeks, subject to confirmation with reception.</p>
               <p class="font-semibold text-slate-900">Rules:</p>
               <ul class="space-y-1.5 list-disc pl-5">
@@ -1781,11 +1816,15 @@ const ROUTES = [
               </div>
               <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <div class="font-bold text-slate-900 text-sm">🐕 Pets</div>
-                <p class="text-xs text-slate-600 mt-1">Pets are not allowed in the hotel.</p>
+                <p class="text-xs text-slate-600 mt-1">Not allowed.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div class="font-bold text-slate-900 text-sm">💧 Drinking Water</div>
+                <p class="text-xs text-slate-600 mt-1">2 complimentary bottles in room, more available nearby.</p>
               </div>
               <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 sm:col-span-2">
-                <div class="font-bold text-slate-900 text-sm">💧 Drinking Water</div>
-                <p class="text-xs text-slate-600 mt-1">Complimentary drinking water is available at reception.</p>
+                <div class="font-bold text-slate-900 text-sm">🧺 Laundry</div>
+                <p class="text-xs text-slate-600 mt-1">Not provided on-site; nearby shops, reception can direct.</p>
               </div>
             </div>
           </section>
@@ -1831,7 +1870,7 @@ const ROUTES = [
               <p>Guests may ask reception for local directions, transport assistance, sightseeing suggestions and general travel information.</p>
               <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <p class="font-bold text-slate-900">Important:</p>
-                <p class="text-slate-700 text-sm">Hotel Sherpa Soul does not have an on-site restaurant or private parking — but reception will gladly assist with nearby dining recommendations and public parking options.</p>
+                <p class="text-slate-700 text-sm">Hotel Sherpa Soul does not have an on-site restaurant or private parking — but we offer a free shared self-catering kitchen for long-stay guests (minimum 2 weeks), and reception is happy to recommend great nearby restaurants and cafés.</p>
               </div>
             </div>
           </section>
