@@ -41,3 +41,4 @@ nl.contact.form.send = "Verstuur via WhatsApp";
 nl.contact.form.send2 = "Verzenden...";
 fs.writeFileSync(nlPath, JSON.stringify(nl, null, 2), 'utf8');
 console.log('✓ Patched nl.json');
+

@@ -113,7 +113,7 @@
       "email": "info@hotelsherpasoul.com",
       "mapTitle": "Standort Hotel Sherpa Soul"
     },
-    "title": "Hotel Sherpa Soul – Thamel, Kathmandu",
+    "title": "Hotel Sherpa Soul – Thamel, Kathmandu (Lage und Anfahrt)",
     "description": "Wir befinden uns in Thamel, dem pulsierenden Herzen von Kathmandu – nur wenige Schritte von Sehenswürdigkeiten und Cafés entfernt.",
     "address": "Thamel Bhagawati Marg 26, Kathmandu, Nepal",
     "email": "info@hotelsherpasoul.com",
@@ -506,7 +506,7 @@
       }
     },
     "form": {
-      "title": "Nachricht senden",
+      "title": "Nachricht Senden",
       "desc": "Füllen Sie das untenstehende Formular aus und wir melden uns schnellstmöglich bei Ihnen!",
       "data": {
         "name": "Vollständiger Name",
