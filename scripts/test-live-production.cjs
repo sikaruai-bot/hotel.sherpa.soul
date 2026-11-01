@@ -1,4 +1,7 @@
 const puppeteer = require('puppeteer');
+const os = require('os');
+const path = require('path');
+const fs = require('fs');
 
 (async () => {
   const targetUrl = process.env.TARGET_URL || 'https://hotelsherpasoul.com';
@@ -7,8 +10,11 @@ const puppeteer = require('puppeteer');
   console.log(`Target: ${targetUrl}`);
   console.log(`======================================================\n`);
 
+  const tempProfileDir = fs.mkdtempSync(path.join(os.tmpdir(), 'puppeteer_live_test_'));
+
   const browser = await puppeteer.launch({
     headless: 'new',
+    userDataDir: tempProfileDir,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
